@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4977433B-16AE-4144-A663-DDB4B03E9BEB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>E_MonthClose.My.MyApplication</StartupObject>
+    <RootNamespace>E_MonthClose</RootNamespace>
+    <AssemblyName>E-MonthClose</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Document, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer6, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports.Viewer6.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports6, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports6.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OposCashDrawer_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OposCashDrawer_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OPOSDISPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OPOSDISPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OPOSDRWLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OPOSDRWLib.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OposLineDisplay_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OposLineDisplay_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OposPOSPrinter_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OposPOSPrinter_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.OPOSPRINTERLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\bin\Debug\AxInterop.OPOSPRINTERLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cAdjustLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cAdjustLib\obj\Release\cAdjustLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cMessageLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cMessageLib\obj\Release\cMessageLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cOPOSControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\obj\Release\cOPOSControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cPOSControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cOPOSControlLib\obj\Release\cPOSControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cReportsLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cReportsLib\obj\Release\cReportsLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cStaffEntryLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cStaffEntryLib\obj\Release\cStaffEntryLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cStructureLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\cStructureLib\obj\Release\cStructureLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>obj\Release\Interop.ADODB.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.JRO, Version=2.6.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>obj\Release\Interop.JRO.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSMask, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>obj\Release\Interop.MSMask.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OposCashDrawer_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OposCashDrawer_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OPOSDISPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OPOSDISPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OPOSDRWLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OPOSDRWLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OposLineDisplay_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OposLineDisplay_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OposPOSPrinter_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OposPOSPrinter_CCO.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OPOSPRINTERLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\Dll\Interop.OPOSPRINTERLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Reference Assemblies\Microsoft\VBPowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Design, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Reference Assemblies\Microsoft\VBPowerPacks\v12.0\Microsoft.VisualBasic.PowerPacks.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Softgroup.NetButton, Version=3.0.4316.35604, Culture=neutral, PublicKeyToken=414472004535f54e" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TabControlEX, Version=0.0.3271.41578, Culture=neutral, PublicKeyToken=1db242dc828e4b4e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\TabControlEX.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Common\cDataAdjustDBIO.vb">
+      <Link>cDataAdjustDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataArrivalDBIO.vb">
+      <Link>cDataArrivalDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataArrivalSubDBIO.vb">
+      <Link>cDataArrivalSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataCalcDBIO.vb">
+      <Link>cDataCalcDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataOrderDBIO.vb">
+      <Link>cDataOrderDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataOrderSubDBIO.vb">
+      <Link>cDataOrderSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataRequestDBIO.vb">
+      <Link>cDataRequestDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataRequestSubDBIO.vb">
+      <Link>cDataRequestSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataShipmentDBIO.vb">
+      <Link>cDataShipmentDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataShipmentSubDBIO.vb">
+      <Link>cDataShipmentSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataTrnDBIO.vb">
+      <Link>cDataTrnDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cDataTrnSubDBIO.vb">
+      <Link>cDataTrnSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cMstAccountDBIO.vb">
+      <Link>cMstAccountDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cMstBumonDBIO.vb">
+      <Link>cMstBumonDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cMstChannelDBIO.vb">
+      <Link>cMstChannelDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cMstConfigDBIO.vb">
+      <Link>cMstConfigDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cMstSupplierDBIO.vb">
+      <Link>cMstSupplierDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cTool.vb">
+      <Link>cTool.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cViewTrnFullDBIO.vb">
+      <Link>cViewTrnFullDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\cViewTrnSummaryDBIO.vb">
+      <Link>cViewTrnSummaryDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\Common\mConst.vb">
+      <Link>mConst.vb</Link>
+    </Compile>
+    <Compile Include="fMonthClose.designer.vb">
+      <DependentUpon>fMonthClose.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fMonthClose.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="rMonthCloseReport.designer.vb">
+      <DependentUpon>rMonthCloseReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rMonthCloseReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rMonthCloseReportSub1.designer.vb">
+      <DependentUpon>rMonthCloseReportSub1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rMonthCloseReportSub1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="JRO">
+      <Guid>{AC3B8B4C-B6CA-11D1-9F31-00C04FC29D52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows インストーラ 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="fMonthClose.resx">
+      <DependentUpon>fMonthClose.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rMonthCloseReport.resx">
+      <DependentUpon>rMonthCloseReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rMonthCloseReportSub1.resx">
+      <DependentUpon>rMonthCloseReportSub1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

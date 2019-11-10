@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{335CAD44-2CF5-4A69-9B4D-B3E435451A1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cSelectLib</RootNamespace>
+    <AssemblyName>cSelectLib</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cMessageLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\cMessageLib\obj\Release\cMessageLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cStructureLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\cStructureLib\obj\Release\cStructureLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Softgroup.NetButton, Version=3.0.4316.35604, Culture=neutral, PublicKeyToken=414472004535f54e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Softgroup.NetButton.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TabControlEX, Version=0.0.3271.41578, Culture=neutral, PublicKeyToken=1db242dc828e4b4e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TabControlEX.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="cSelectLib" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\cDataArrivalDBIO.vb">
+      <Link>cDataArrivalDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataOrderDBIO.vb">
+      <Link>cDataOrderDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataOrderSubDBIO.vb">
+      <Link>cDataOrderSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataRequestDBIO.vb">
+      <Link>cDataRequestDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataShipmentDBIO.vb">
+      <Link>cDataShipmentDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataShipmentStatusDBIO.vb">
+      <Link>cDataShipmentStatusDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataTrnMsDBIO.vb">
+      <Link>cDataTrnMsDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstBumonDBIO.vb">
+      <Link>cMstBumonDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstChannelDBIO.vb">
+      <Link>cMstChannelDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstConfigDBIO.vb">
+      <Link>cMstConfigDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstDeliveryClassDBIO.vb">
+      <Link>cMstDeliveryClassDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstMemberDBIO.vb">
+      <Link>cMstMemberDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstPointMemberDBIO.vb">
+      <Link>cMstPointMemberDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstProductDBIO.vb">
+      <Link>cMstProductDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstSupplierDBIO.vb">
+      <Link>cMstSupplierDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstTaxClassDBIO.vb">
+      <Link>cMstTaxClassDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cTool.vb">
+      <Link>cTool.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cViewOrderDataFullDBIO.vb">
+      <Link>cViewOrderDataFullDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cViewShipmentDataFullDBIO.vb">
+      <Link>cViewShipmentDataFullDBIO.vb</Link>
+    </Compile>
+    <Compile Include="fTranHistSearch.designer.vb">
+      <DependentUpon>fTranHistSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fTranHistSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSelectBumon.designer.vb">
+      <DependentUpon>fSelectBumon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fSelectBumon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTaxClassrSearc.designer.vb">
+      <DependentUpon>fTaxClassrSearc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fTaxClassrSearc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fMakerSearch.designer.vb">
+      <DependentUpon>fMakerSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fMakerSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fMemberSearch.designer.vb">
+      <DependentUpon>fMemberSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fMemberSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fOrderSearch.designer.vb">
+      <DependentUpon>fOrderSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fOrderSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fProductSearch.designer.vb">
+      <DependentUpon>fProductSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fProductSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fRequestSearch.designer.vb">
+      <DependentUpon>fRequestSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fRequestSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSelectJAN.designer.vb">
+      <DependentUpon>fSelectJAN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fSelectJAN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mConst.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="fShipmentSearch.designer.vb">
+      <DependentUpon>fShipmentSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fShipmentSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fPointMemberSearch.designer.vb">
+      <DependentUpon>fPointMemberSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fPointMemberSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="fTranHistSearch.resx">
+      <DependentUpon>fTranHistSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSelectBumon.resx">
+      <DependentUpon>fSelectBumon.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTaxClassrSearc.resx">
+      <DependentUpon>fTaxClassrSearc.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fMakerSearch.resx">
+      <DependentUpon>fMakerSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fMemberSearch.resx">
+      <DependentUpon>fMemberSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fOrderSearch.resx">
+      <DependentUpon>fOrderSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fProductSearch.resx">
+      <DependentUpon>fProductSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fRequestSearch.resx">
+      <DependentUpon>fRequestSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSelectJAN.resx">
+      <DependentUpon>fSelectJAN.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fShipmentSearch.resx">
+      <DependentUpon>fShipmentSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fPointMemberSearch.resx">
+      <DependentUpon>fPointMemberSearch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="JRO">
+      <Guid>{AC3B8B4C-B6CA-11D1-9F31-00C04FC29D52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

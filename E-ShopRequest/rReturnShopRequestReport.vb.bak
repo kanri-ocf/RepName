@@ -1,0 +1,313 @@
+﻿Imports DataDynamics.ActiveReports 
+Imports DataDynamics.ActiveReports.Document 
+
+Public Class rReturnOrderReport
+    Private oConn As OleDb.OleDbConnection
+    Private oCommand As OleDb.OleDbCommand
+    Private oDataReader As OleDb.OleDbDataReader
+
+    Private oConf() As cStructureLib.sConfig
+    Private oMstConfigDBIO As cMstConfigDBIO
+
+    Private oOrderData() As cStructureLib.sOrderData
+    Private oDataOrderDBIO As cDataOrderDBIO
+
+    Private oOrderSubData() As cStructureLib.sOrderSubData
+    Private oDataOrderSubDBIO As cDataOrderSubDBIO
+
+    Private RECORD_CNT As Long
+    Private RECORD_NO As Long
+
+    Private ORDER_NUMBER As String
+    Private REPORT_MODE As String       '税込み or 税抜き
+
+    Private STAFF_CODE As String
+    Private STAFF_NAME As String
+
+    Private oTool As cTool
+
+    Dim iCnt As Integer         '詳細行の番号
+
+    Private oTran As System.Data.OleDb.OleDbTransaction
+
+    Sub New(ByRef iConn As OleDb.OleDbConnection, _
+        ByRef iCommand As OleDb.OleDbCommand, _
+        ByRef iDataReader As OleDb.OleDbDataReader, _
+        ByRef iOrderCode As String, _
+        ByVal iStaff_Code As String, _
+        ByVal iStaff_Name As String, _
+        ByVal iReportMode As String, _
+        ByRef iTran As System.Data.OleDb.OleDbTransaction)
+
+        Dim RecordCnt As Integer
+
+        ' この呼び出しは、Windows フォーム デザイナで必要です。
+        InitializeComponent()
+
+        oConn = iConn
+        oCommand = iCommand
+        oDataReader = iDataReader
+        oTran = iTran
+
+        ORDER_NUMBER = iOrderCode
+        STAFF_CODE = iStaff_Code
+        STAFF_NAME = iStaff_Name
+        REPORT_MODE = iReportMode
+
+        oTool = New cTool
+
+        '環境マスタ読込み
+        ReDim oConf(1)
+
+        oMstConfigDBIO = New cMstConfigDBIO(oConn, oCommand, oDataReader)
+        RecordCnt = oMstConfigDBIO.getConfMst(oConf, oTran)
+        If RecordCnt < 1 Then
+            'メッセージウィンドウ表示
+            Dim Message_form As cMessageLib.fMessage
+
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
+                                            "開発元にお問い合わせ下さい", _
+                                            Nothing, Nothing)
+            Message_form.ShowDialog()
+            Application.DoEvents()
+            oMstConfigDBIO = Nothing
+            Application.Exit()
+        End If
+        oMstConfigDBIO = Nothing
+
+        RECORD_CNT = 0
+
+        oDataOrderSubDBIO = New cDataOrderSubDBIO(oConn, oCommand, oDataReader)
+        oDataOrderSubDBIO.getOrderSubData(oOrderSubData, iOrderCode, Nothing, oTran)
+
+        RECORD_CNT = oOrderSubData.Length
+        RECORD_NO = 0
+
+        Me.Document.Name = "Eazy-POS 返品伝票"
+    End Sub
+
+    Private Sub rOrderReport_DataInitialize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.DataInitialize
+        ' ヘッダー情報
+        Fields.Add("SUPPLIER_NAME")
+        Fields.Add("ORDER_CODE")
+        Fields.Add("TOTAL_BEFORE_TAX_PRICE")
+        Fields.Add("TOTAL_TAX_PRICE")
+        Fields.Add("TOTAL_AFTER_TAX_PRICE")
+        Fields.Add("REQUEST_DATE")
+        Fields.Add("REQUEST_PLACE")
+        Fields.Add("PAYMENT")
+
+        Fields.Add("BARCODE")
+
+        '******************
+        '     弊社情報
+        '******************
+        Fields.Add("POSTAL_CODE")
+        Fields.Add("ADDRESS")
+        Fields.Add("CORP_NAME")
+        Fields.Add("TEL")
+        Fields.Add("FAX")
+        Fields.Add("TANTOU_NAME")
+
+        '単位：円(税込）
+        Fields.Add("REPORT_PEACE")
+
+        '******************
+        '     明細情報
+        '******************
+        Fields.Add("No")
+        Fields.Add("PRODUCT_NAME")
+        Fields.Add("JAN_CODE")
+        Fields.Add("OPTION_VALUE")
+        Fields.Add("PRICE")
+        Fields.Add("COST")
+        Fields.Add("CNT")
+        Fields.Add("T_PRICE")
+
+        '******************
+        '     集計情報
+        '******************
+        Fields.Add("POSTAGE")
+        Fields.Add("FEE")
+        Fields.Add("DISCOUNT")
+        Fields.Add("POINT_DISCOUNT")
+        Fields.Add("NO_TAX_TOTAL")
+        Fields.Add("TAX_TOTAL")
+        Fields.Add("IN_TAX_TOTAL")
+
+        ' フッダー情報
+        Fields.Add("MEMO")
+    End Sub
+
+    Private Sub rOrderReport_FetchData(ByVal sender As Object, ByVal eArgs As DataDynamics.ActiveReports.ActiveReport.FetchEventArgs) Handles Me.FetchData
+        '現金状況情報セット
+        If RECORD_NO = 0 Then
+            HEADER_INFO()
+        End If
+
+        If RECORD_NO >= RECORD_CNT Then
+            eArgs.EOF = True
+        Else
+            DETILE_INFO()
+            eArgs.EOF = False
+        End If
+
+        RECORD_NO = RECORD_NO + 1
+
+    End Sub
+
+    Private Sub HEADER_INFO()
+        Dim oSupplierDBIO As cMstSupplierDBIO
+        Dim oSupplier() As cStructureLib.sSupplier
+        Dim oMstPaymentDBIO As cMstPaymentDBIO
+        Dim oPayment() As cStructureLib.sPayment
+
+        '発注情報
+        oDataOrderDBIO = New cDataOrderDBIO(oConn, oCommand, oDataReader)
+        oDataOrderDBIO.getOrderData(oOrderData, ORDER_NUMBER, Nothing, oTran)
+
+
+        '仕入先情報取得
+        oSupplierDBIO = New cMstSupplierDBIO(oConn, oCommand, oDataReader)
+        ReDim oSupplier(0)
+        oSupplierDBIO.getSupplier(oSupplier, oOrderData(0).sSupplierCode, Nothing, oTran)
+        oSupplierDBIO = Nothing
+
+        Fields("SUPPLIER_NAME").Value = oSupplier(0).sSupplierName
+
+        Fields("ORDER_CODE").Value = ORDER_NUMBER
+
+        Fields("TOTAL_BEFORE_TAX_PRICE").Value = System.Math.Abs(oTool.AfterToBeforeTax(oOrderData(0).sTotalPrice, oConf(0).sTax, oConf(0).sFracProc))
+        Fields("TOTAL_TAX_PRICE").Value = System.Math.Abs(oTool.AfterToTax(oOrderData(0).sTotalPrice, oConf(0).sTax, oConf(0).sFracProc))
+        Fields("TOTAL_AFTER_TAX_PRICE").Value = System.Math.Abs(oOrderData(0).sTotalPrice)
+
+        Fields("REQUEST_DATE").Value = oOrderData(0).sRequestDate
+        Fields("REQUEST_PLACE").Value = oOrderData(0).sRequestPlace
+
+        '支払方法情報取得
+        oMstPaymentDBIO = New cMstPaymentDBIO(oConn, oCommand, oDataReader)
+        ReDim oPayment(0)
+        oMstPaymentDBIO.getPayment(oPayment, oOrderData(0).sPaymentCode, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
+        oMstPaymentDBIO = Nothing
+
+        Fields("PAYMENT").Value = oPayment(0).sPaymentName
+
+        Fields("BARCODE").Value = ORDER_NUMBER
+
+        '弊社情報セット
+        Fields("POSTAL_CODE").Value = "〒" & oConf(0).sPostCode
+        Fields("ADDRESS").Value = oConf(0).sAdderess1 & oConf(0).sAdderess2
+        Fields("CORP_NAME").Value = oConf(0).sCorpName
+        Fields("TEL").Value = "TEL：" & oConf(0).sTEL
+        Fields("FAX").Value = "FAX：" & oConf(0).sFAX
+        Fields("TANTOU_NAME").Value = STAFF_NAME
+
+        If REPORT_MODE = "税込み" Then
+            Fields("REPORT_PEACE").Value = "単位：円(税込み）"
+        Else
+            Fields("REPORT_PEACE").Value = "単位：円(税抜き）"
+        End If
+
+    End Sub
+
+    Private Sub DETILE_INFO()
+        Dim j As Integer
+        Dim str As String
+
+        If RECORD_NO < RECORD_CNT Then
+            Fields("No").Value = RECORD_NO + 1
+            Fields("PRODUCT_NAME").Value = oOrderSubData(RECORD_NO).sProductName & "(" & oOrderSubData(RECORD_NO).sProductCode & ")"
+            Fields("JAN_CODE").Value = oOrderSubData(RECORD_NO).sJANCode
+            str = ""
+            For j = 1 To 5
+                Select Case j
+                    Case 1
+                        If oOrderSubData(RECORD_NO).sOption1 <> "" Then
+                            str = str + oConf(0).sOptionName1 & "=" & oOrderSubData(RECORD_NO).sOption1
+                        End If
+                    Case 2
+                        If oOrderSubData(RECORD_NO).sOption2 <> "" Then
+                            If str <> "" Then
+                                str = str & Chr(10)
+                            End If
+                            str = str & oConf(0).sOptionName2 & "=" & oOrderSubData(RECORD_NO).sOption2
+                        End If
+                    Case 3
+                        If oOrderSubData(RECORD_NO).sOption3 <> "" Then
+                            If str <> "" Then
+                                str = str & Chr(10)
+                            End If
+                            str = str + oConf(0).sOptionName3 & "=" & oOrderSubData(RECORD_NO).sOption3
+                        End If
+                    Case 4
+                        If oOrderSubData(RECORD_NO).sOption4 <> "" Then
+                            If str <> "" Then
+                                str = str & Chr(10)
+                            End If
+                            str = str + oConf(0).sOptionName4 & "=" & oOrderSubData(RECORD_NO).sOption4
+                        End If
+                    Case 5
+                        If oOrderSubData(RECORD_NO).sOption5 <> "" Then
+                            If str <> "" Then
+                                str = str & Chr(10)
+                            End If
+                            str = str + oConf(0).sOptionName5 & "=" & oOrderSubData(RECORD_NO).sOption5
+                        End If
+                End Select
+            Next
+
+            Fields("OPTION_VALUE").Value = str
+            Fields("CNT").Value = oOrderSubData(RECORD_NO).sCount
+            If REPORT_MODE = "税込み" Then
+                Fields("PRICE").Value = oOrderSubData(RECORD_NO).sPrice
+                Fields("COST").Value = oOrderSubData(RECORD_NO).sCostPrice
+                Fields("T_PRICE").Value = System.Math.Abs(oOrderSubData(RECORD_NO).sPrice)
+            Else
+                Fields("PRICE").Value = oTool.AfterToBeforeTax(oOrderSubData(RECORD_NO).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                Fields("COST").Value = oTool.AfterToBeforeTax(oOrderSubData(RECORD_NO).sCostPrice, oConf(0).sTax, oConf(0).sFracProc)
+                Fields("T_PRICE").Value = oTool.AfterToBeforeTax(System.Math.Abs(oOrderSubData(RECORD_NO).sPrice), oConf(0).sTax, oConf(0).sFracProc)
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        oMstConfigDBIO = Nothing
+        oDataOrderSubDBIO = Nothing
+
+        MyBase.Finalize()
+    End Sub
+
+    Private Sub GroupFooter7_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter7.Format
+        '送料
+        POSTAGE.Value = oOrderData(0).sShippingCharge
+    End Sub
+    Private Sub GroupFooter6_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter6.Format
+        '手数料
+        FEE.Value = oOrderData(0).sPaymentCharge
+    End Sub
+    Private Sub GroupFooter5_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter5.Format
+        '値引き
+        DISCOUNT.Value = oOrderData(0).sDiscount
+    End Sub
+    Private Sub GroupFooter4_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter4.Format
+        'ポイント値引き
+        POINT_DISCOUNT.Value = oOrderData(0).sPointDisCount
+    End Sub
+    Private Sub GroupFooter3_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter3.Format
+        '発注金額（税抜き）
+        NO_TAX_TOTAL.Value = oOrderData(0).sNoTaxTotalPrice
+    End Sub
+    Private Sub GroupFooter2_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter2.Format
+        '消費税
+        If REPORT_MODE = "税込み" Then
+            TAX_TOTAL.Value = 0
+        Else
+            TAX_TOTAL.Value = oOrderData(0).sTaxTotal
+        End If
+    End Sub
+    Private Sub GroupFooter1_Format(ByVal sender As Object, ByVal e As System.EventArgs) Handles GroupFooter1.Format
+        '発注金額（税込み）
+        IN_TAX_TOTAL.Value = oOrderData(0).sTotalPrice
+        Fields("MEMO").Value = oOrderData(0).sMemo
+    End Sub
+End Class

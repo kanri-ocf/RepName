@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-CripNoteRead", "E-CripNoteRead.vbproj", "{37B640D9-718A-4F0C-BEC0-630E4F33E55C}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cMessageLib", "..\Dll\cMessageLib\cMessageLib.vbproj", "{1B88D28B-C691-4A70-A838-FFE508C0111A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cStructureLib", "..\Dll\cStructureLib\cStructureLib.vbproj", "{764C6916-1A08-44BB-966A-CA51802F3BE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37B640D9-718A-4F0C-BEC0-630E4F33E55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B640D9-718A-4F0C-BEC0-630E4F33E55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B640D9-718A-4F0C-BEC0-630E4F33E55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B640D9-718A-4F0C-BEC0-630E4F33E55C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B88D28B-C691-4A70-A838-FFE508C0111A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B88D28B-C691-4A70-A838-FFE508C0111A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B88D28B-C691-4A70-A838-FFE508C0111A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B88D28B-C691-4A70-A838-FFE508C0111A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764C6916-1A08-44BB-966A-CA51802F3BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764C6916-1A08-44BB-966A-CA51802F3BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764C6916-1A08-44BB-966A-CA51802F3BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764C6916-1A08-44BB-966A-CA51802F3BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,539 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{902EE070-6B0A-4FEB-9CA7-C59FF724D862}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cReportsLib</RootNamespace>
+    <AssemblyName>cReportsLib</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveReports.Chart, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports.Document, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveReports6, Version=6.6.4653.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\ActiveReportsNET6\Bin\v6.6.4653.1\ActiveReports6.dll</HintPath>
+    </Reference>
+    <Reference Include="cMessageLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\cMessageLib\obj\Release\cMessageLib.dll</HintPath>
+    </Reference>
+    <Reference Include="cStructureLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\cStructureLib\obj\Release\cStructureLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Softgroup.NetButton, Version=3.0.4316.35604, Culture=neutral, PublicKeyToken=414472004535f54e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Softgroup.NetButton.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\cDataAdjustDBIO.vb">
+      <Link>cDataAdjustDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataOrderDBIO.vb">
+      <Link>cDataOrderDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataOrderSubDBIO.vb">
+      <Link>cDataOrderSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataRequestDBIO.vb">
+      <Link>cDataRequestDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataRequestSubDBIO.vb">
+      <Link>cDataRequestSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataShipmentDBIO.vb">
+      <Link>cDataShipmentDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataShipmentSubDBIO.vb">
+      <Link>cDataShipmentSubDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataTagPrintStatusDBIO.vb">
+      <Link>cDataTagPrintStatusDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cDataTrnMsDBIO.vb">
+      <Link>ccDataTrnMsDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstAccountDBIO.vb">
+      <Link>cMstAccountDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstChannelDBIO.vb">
+      <Link>cMstChannelDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstChannelPaymentDBIO.vb">
+      <Link>cMstChannelPaymentDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstConfigDBIO.vb">
+      <Link>cMstConfigDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstMemberDBIO.vb">
+      <Link>cMstMemberDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstPaymentDBIO.vb">
+      <Link>cMstPaymentDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstPointMemberDBIO.vb">
+      <Link>cMstPointMemberDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstProductDBIO.vb">
+      <Link>cMstProductDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstServiceDBIO.vb">
+      <Link>cMstServiceDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstStaffDBIO.vb">
+      <Link>cMstStaffDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cMstSupplierDBIO.vb">
+      <Link>cMstSupplierDBIO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Common\cTool.vb">
+      <Link>cTool.vb</Link>
+    </Compile>
+    <Compile Include="cReportsLib.vb" />
+    <Compile Include="fMonthCloseReport.designer.vb">
+      <DependentUpon>fMonthCloseReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fMonthCloseReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fPointCardReportPage.designer.vb">
+      <DependentUpon>fPointCardReportPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fPointCardReportPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTagPrintPoint_TypeA.designer.vb">
+      <DependentUpon>fTagPrintPoint_TypeA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fTagPrintPoint_TypeA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTagPrintPoint_TypeB.designer.vb">
+      <DependentUpon>fTagPrintPoint_TypeB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fTagPrintPoint_TypeB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTagReportPage.designer.vb">
+      <DependentUpon>fTagReportPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fTagReportPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rDayCloseReport.designer.vb">
+      <DependentUpon>rDayCloseReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub2.designer.vb">
+      <DependentUpon>rDayCloseReportSub2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub2.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub3.designer.vb">
+      <DependentUpon>rDayCloseReportSub3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub3.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub4.designer.vb">
+      <DependentUpon>rDayCloseReportSub4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub4.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub1.designer.vb">
+      <DependentUpon>rDayCloseReportSub1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub1.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub5.Designer.vb">
+      <DependentUpon>rDayCloseReportSub5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub5.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rDayCloseReportSub6.Designer.vb">
+      <DependentUpon>rDayCloseReportSub6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rDayCloseReportSub6.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rMemberCard.designer.vb">
+      <DependentUpon>rMemberCard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rMemberCard.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rOrderReport.designer.vb">
+      <DependentUpon>rOrderReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rOrderReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rPointCard_Back.designer.vb">
+      <DependentUpon>rPointCard_Back.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rPointCard_Back.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rPointCard_Fore.designer.vb">
+      <DependentUpon>rPointCard_Fore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rPointCard_Fore.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rRequestReportPage.designer.vb">
+      <DependentUpon>rRequestReportPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rRequestReportPage.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rReturnOrderReport.designer.vb">
+      <DependentUpon>rReturnOrderReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rReturnOrderReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rShipmentReport.designer.vb">
+      <DependentUpon>rShipmentReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rShipmentReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rStaffCard.designer.vb">
+      <DependentUpon>rStaffCard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rStaffCard.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rStaffCard_Back.designer.vb">
+      <DependentUpon>rStaffCard_Back.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rStaffCard_Back.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rStaffCard_Fore.designer.vb">
+      <DependentUpon>rStaffCard_Fore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rStaffCard_Fore.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rTag_A.designer.vb">
+      <DependentUpon>rTag_A.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rTag_A.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rTag_B.designer.vb">
+      <DependentUpon>rTag_B.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rTag_B.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="fMemberCardReportPage.designer.vb">
+      <DependentUpon>fMemberCardReportPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fMemberCardReportPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rMemberCard_Fore.designer.vb">
+      <DependentUpon>rMemberCard_Fore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rMemberCard_Fore.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rMemberCard_back.designer.vb">
+      <DependentUpon>rMemberCard_back.vb</DependentUpon>
+    </Compile>
+    <Compile Include="rMemberCard_back.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="fStaffCardReportPage.designer.vb">
+      <DependentUpon>fStaffCardReportPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="fStaffCardReportPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="fMonthCloseReport.resx">
+      <DependentUpon>fMonthCloseReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fPointCardReportPage.resx">
+      <DependentUpon>fPointCardReportPage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTagPrintPoint_TypeA.resx">
+      <DependentUpon>fTagPrintPoint_TypeA.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTagPrintPoint_TypeB.resx">
+      <DependentUpon>fTagPrintPoint_TypeB.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTagReportPage.resx">
+      <DependentUpon>fTagReportPage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReport.resx">
+      <DependentUpon>rDayCloseReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub2.resx">
+      <DependentUpon>rDayCloseReportSub2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub3.resx">
+      <DependentUpon>rDayCloseReportSub3.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub4.resx">
+      <DependentUpon>rDayCloseReportSub4.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub1.resx">
+      <DependentUpon>rDayCloseReportSub1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub5.resx">
+      <DependentUpon>rDayCloseReportSub5.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rDayCloseReportSub6.resx">
+      <DependentUpon>rDayCloseReportSub6.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rMemberCard.resx">
+      <DependentUpon>rMemberCard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rOrderReport.resx">
+      <DependentUpon>rOrderReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rPointCard_Back.resx">
+      <DependentUpon>rPointCard_Back.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rPointCard_Fore.resx">
+      <DependentUpon>rPointCard_Fore.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rRequestReportPage.resx">
+      <DependentUpon>rRequestReportPage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rReturnOrderReport.resx">
+      <DependentUpon>rReturnOrderReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rShipmentReport.resx">
+      <DependentUpon>rShipmentReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rStaffCard.resx">
+      <DependentUpon>rStaffCard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rStaffCard_Back.resx">
+      <DependentUpon>rStaffCard_Back.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rStaffCard_Fore.resx">
+      <DependentUpon>rStaffCard_Fore.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rTag_A.resx">
+      <DependentUpon>rTag_A.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rTag_B.resx">
+      <DependentUpon>rTag_B.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fMemberCardReportPage.resx">
+      <DependentUpon>fMemberCardReportPage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rMemberCard_Fore.resx">
+      <DependentUpon>rMemberCard_Fore.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rMemberCard_back.resx">
+      <DependentUpon>rMemberCard_back.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fStaffCardReportPage.resx">
+      <DependentUpon>fStaffCardReportPage.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="JRO">
+      <Guid>{AC3B8B4C-B6CA-11D1-9F31-00C04FC29D52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

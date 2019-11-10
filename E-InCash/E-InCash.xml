@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+E-InCash
+</name>
+</assembly>
+<members>
+<member name="M:Eazy_POS.cTool.MidB(System.String,System.Int32,System.Int32)">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     文字列の指定されたバイト位置から、指定されたバイト数分の文字列を返します。</summary>
+	<param name="stTarget">
+     取り出す元になる文字列。</param>
+	<param name="iStart">
+     取り出しを開始する位置。</param>
+	<param name="iByteSize">
+     取り出すバイト数。</param>
+	<returns>
+     指定されたバイト位置から指定されたバイト数分の文字列。</returns>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="M:Eazy_POS.cTool.ToHalfAdjust(System.Double,System.Int32)">
+ ------------------------------------------------------------------------
+ <summary>
+     指定した精度の数値に四捨五入します。</summary>
+	<param name="dValue">
+     丸め対象の倍精度浮動小数点数。</param>
+	<param name="iDigits">
+     戻り値の有効桁数の精度。</param>
+	<returns>
+     iDigits に等しい精度の数値に四捨五入された数値。</returns>
+ ------------------------------------------------------------------------
+
+</member><member name="M:Eazy_POS.cTool.ToRoundUp(System.Double,System.Int32)">
+ ------------------------------------------------------------------------
+ <summary>
+     指定した精度の数値に切り上げします。</summary>
+	<param name="dValue">
+     丸め対象の倍精度浮動小数点数。</param>
+	<param name="iDigits">
+     戻り値の有効桁数の精度。</param>
+	<returns>
+     iDigits に等しい精度の数値に切り上げられた数値。</returns>
+ ------------------------------------------------------------------------
+
+</member><member name="M:Eazy_POS.cTool.ToRoundDown(System.Double,System.Int32)">
+ ------------------------------------------------------------------------
+ <summary>
+     指定した精度の数値に切り捨てします。</summary>
+	<param name="dValue">
+     丸め対象の倍精度浮動小数点数。</param>
+	<param name="iDigits">
+     戻り値の有効桁数の精度。</param>
+	<returns>
+     iDigits に等しい精度の数値に切り捨てられた数値。</returns>
+ ------------------------------------------------------------------------
+
+</member><member name="M:Eazy_POS.cTool.ShowPrevProcess">
+ ------------------------------------------------------------------------------------
+ <summary>
+     同名のプロセスが起動中の場合、メイン ウィンドウをアクティブにします。</summary>
+	<returns>
+     既に起動中であれば True。それ以外は False。</returns>
+ ------------------------------------------------------------------------------------
+
+</member><member name="P:Eazy_POS.My.Resources.Resources.ResourceManager">
+	<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member><member name="P:Eazy_POS.My.Resources.Resources.Culture">
+	<summary>
+  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member><member name="T:Eazy_POS.My.Resources.Resources">
+	<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member>
+</members>
+</doc>

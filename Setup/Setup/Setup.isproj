@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\..\E-AccountMst\E-AccountMst.vbproj">
+			<Name>E-AccountMst</Name>
+			<Project>{8BFB9793-86AE-4C5F-A57F-84ADEBA33D58}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-Arrival\E-Arrival.vbproj">
+			<Name>E-Arrival</Name>
+			<Project>{C7AE22BF-CC5E-4596-B9CB-BB5C62D76DF2}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-AutoImport\E-AutoImport.vbproj">
+			<Name>E-AutoImport</Name>
+			<Project>{6C982596-0EAC-4503-815F-1CEFDC9BFCCB}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-BomMst\E-BomMst.vbproj">
+			<Name>E-BomMst</Name>
+			<Project>{A20AB925-61A8-47BC-BE84-184FADEA9DCC}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-BumonMst\E-BumonMst.vbproj">
+			<Name>E-BumonMst</Name>
+			<Project>{9C9EC974-3929-4392-AAE8-4F187053FD9E}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-CTIConnect\E-CTIConnect.vbproj">
+			<Name>E-CTIConnect</Name>
+			<Project>{6C856C93-8845-444C-AC04-F87CF2B69D33}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-CategoryMst\E-CategoryMst.vbproj">
+			<Name>E-CategoryMst</Name>
+			<Project>{8154F741-2C4C-424E-94D8-D0479F2F2E17}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-ChannelMst\E-ChannelMst.vbproj">
+			<Name>E-ChannelMst</Name>
+			<Project>{B62398DA-F1F0-45FA-B4AE-17156C1C13AD}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-ConfigMst\E-ConfigMst.vbproj">
+			<Name>E-ConfigMst</Name>
+			<Project>{EC5E894F-A7DC-4E3C-ABC0-424E4814F7F7}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-CripNoteRead\E-CripNoteRead.vbproj">
+			<Name>E-CripNoteRead</Name>
+			<Project>{37B640D9-718A-4F0C-BEC0-630E4F33E55C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-DayClose\E-DayClose.vbproj">
+			<Name>E-DayClose</Name>
+			<Project>{8DD96150-0DA8-4400-BF8A-CFFAB5C10023}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-DeliveryCsvInput\E-DeliveryCSVInput.vbproj">
+			<Name>E-DeliveryCSVInput</Name>
+			<Project>{5F41EC76-9A7D-434A-B4F3-CA7DC5918B18}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-DeliveryCsvOutput\E-DeliveryCSVOutput.vbproj">
+			<Name>E-DeliveryCSVOutput</Name>
+			<Project>{16BBC1AE-999D-41C7-8063-5167F800CB88}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-DeliveryMst\E-DeliveryMst.vbproj">
+			<Name>E-DeliveryMst</Name>
+			<Project>{52E71AFD-F7E4-4F81-8017-DF7D81F8958C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-InCash\E-InCash.vbproj">
+			<Name>E-InCash</Name>
+			<Project>{EDFF339D-B531-4129-A42E-6BA8C4CCA3DC}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-InvCheck\E-InvCheck.vbproj">
+			<Name>E-InvCheck</Name>
+			<Project>{B069075F-593E-4885-928C-6BAE7DAE7F38}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-MemberMst\E-MemberMst.vbproj">
+			<Name>E-MemberMst</Name>
+			<Project>{23179808-3A4F-4736-94B2-5D79B56457B6}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-MonthClose\E-MonthClose.vbproj">
+			<Name>E-MonthClose</Name>
+			<Project>{4977433B-16AE-4144-A663-DDB4B03E9BEB}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-NetImport\E-NetImport.vbproj">
+			<Name>E-NetImport</Name>
+			<Project>{1C555DE8-609D-478E-ADF3-C4F2532DD955}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-Order\E-Order.vbproj">
+			<Name>E-Order</Name>
+			<Project>{893999A0-7FE8-40C6-8053-C51F77D8FE7A}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-OutCash\E-OutCash.vbproj">
+			<Name>E-OutCash</Name>
+			<Project>{65621614-000C-476C-8849-A69132BC7AC6}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-POS\E-POS.vbproj">
+			<Name>E-POS</Name>
+			<Project>{F9B0AE8B-EB7E-4BA0-A039-200ED886510C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-PaymentMst\E-PaymentMst.vbproj">
+			<Name>E-PaymentMst</Name>
+			<Project>{4A35F8B3-6BB6-444F-9588-2CB0EDB3F8C8}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-PointCard\E-PointCard.vbproj">
+			<Name>E-PointCard</Name>
+			<Project>{AE217B9A-CFE5-4B1B-B091-3DF4BE9C135C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-ProductMst\E-ProductMst.vbproj">
+			<Name>E-ProductMst</Name>
+			<Project>{E0555F07-2FD4-4E64-A4E9-640509DA59EB}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-RegOpen\E-RegOpen.vbproj">
+			<Name>E-RegOpen</Name>
+			<Project>{42C767A6-89C2-44E9-9B4C-EE65F9D7CF8E}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-Register\E-Register.vbproj">
+			<Name>E-Register</Name>
+			<Project>{B7970AC1-5789-43C2-9780-6D89CE4356BF}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-Reserv\E-Reserv.vbproj">
+			<Name>E-Reserv</Name>
+			<Project>{47C22DC8-01CB-4651-8600-1900D63AA02F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-RoleMst\E-RoleMst.vbproj">
+			<Name>E-RoleMst</Name>
+			<Project>{42A62802-8EF3-464A-84AC-8B0CF05915E4}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-RoomMst\E-RoomMst.vbproj">
+			<Name>E-RoomMst</Name>
+			<Project>{E3DA1311-ACA4-4750-AFF4-24FA7A1F5E1D}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-SaleDataCsvOutput\E-SaleDataCsvOutput.vbproj">
+			<Name>E-SaleDataCsvOutput</Name>
+			<Project>{4AC5150F-60C2-4F8D-BBF4-90758369D5DC}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-ServiceMst\E-ServiceMst.vbproj">
+			<Name>E-ServiceMst</Name>
+			<Project>{7565DF31-67AF-486A-B6CC-EFBFF52636C1}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-Shipment\E-Shipment.vbproj">
+			<Name>E-Shipment</Name>
+			<Project>{F4D60E67-2EA2-4B40-9F57-9EDD9171AF4A}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-StaffMst\E-StaffMst.vbproj">
+			<Name>E-StaffMst</Name>
+			<Project>{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-StockMst\E-StockMst.vbproj">
+			<Name>E-StockMst</Name>
+			<Project>{1D087FE0-97FD-4F95-B928-0A5D57AF1FC5}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-SupplierMst\E-SupplierMst.vbproj">
+			<Name>E-SupplierMst</Name>
+			<Project>{1204C590-8F94-44FD-A7CD-19C385DA4B80}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\E-TagPrint\E-TagPrint.vbproj">
+			<Name>E-TagPrint</Name>
+			<Project>{7E284D0C-888F-4219-BC1D-E17A56BE2385}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cAdjustLib\cAdjustLib.vbproj">
+			<Name>cAdjustLib</Name>
+			<Project>{66329FAD-0EE0-4576-96D4-47B32EB52284}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cLookUpLib\cLookUpLib.vbproj">
+			<Name>cLookUpLib</Name>
+			<Project>{5C745F29-1FBD-4383-8ACE-6BDAC754E1AD}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cMasterMenteLib\cMasterMenteLib.vbproj">
+			<Name>cMasterMenteLib</Name>
+			<Project>{0DBB8BF5-6F6C-463C-A82A-1E5FF23B5A2C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cMessageLib\cMessageLib.vbproj">
+			<Name>cMessageLib</Name>
+			<Project>{1B88D28B-C691-4A70-A838-FFE508C0111A}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cOPOSControlLib\cOPOSControlLib.vbproj">
+			<Name>cOPOSControlLib</Name>
+			<Project>{945951B0-7CC2-4C03-BF3E-1FD3F9BBFF0F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cReportsLib\cReportsLib.vbproj">
+			<Name>cReportsLib</Name>
+			<Project>{902EE070-6B0A-4FEB-9CA7-C59FF724D862}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cSelectLib\cSelectLib.vbproj">
+			<Name>cSelectLib</Name>
+			<Project>{335CAD44-2CF5-4A69-9B4D-B3E435451A1F}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cStaffEntryLib\cStaffEntryLib.vbproj">
+			<Name>cStaffEntryLib</Name>
+			<Project>{2276DF0F-F891-4241-A169-B793C722DC64}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\..\Dll\cStructureLib\cStructureLib.vbproj">
+			<Name>cStructureLib</Name>
+			<Project>{764C6916-1A08-44BB-966A-CA51802F3BE5}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>
