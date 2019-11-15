@@ -2425,6 +2425,16 @@ Public Class fRegister
                                                                  SelectJAN_form.PRODUCT_CODE_T.Text,
                                                                  Nothing,
                                                                  oTran)
+                        '2019.11.15 R.Takashima From
+                        '戻るボタン押下の処理を追加
+                    ElseIf SelectJAN_form.DialogResult = Windows.Forms.DialogResult.Cancel Then
+                        '変数初期化
+                        VALUE_INIT(1)
+
+                        'JANコードにセットフォーカス
+                        JAN_CODE_T.Focus()
+                        Exit Sub
+                        '2019.11.15 R.Takashima To
                     Else
                         Dim message_form As New cMessageLib.fMessage(1,
                                           "対象商品が登録されていません",
@@ -2889,6 +2899,12 @@ Public Class fRegister
                 TFEE_T.Text = 0
                 TBILL_T.Text = 0
                 TTAX_T.Text = 0
+
+                '2019.11.15 R.Takashima From
+                'ポイント値引き、チケット値引きの値が初期化されていないため追加
+                PDISCOUNT_T.Text = 0
+                CDISCOUNT_T.Text = 0
+                '2019.11.15 R.Takashima To
         End Select
     End Sub
 
@@ -5542,7 +5558,7 @@ Public Class fRegister
                 '課題表No138 Star追加
             Case "STAR"
                 'pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \             {0,9:C}", POSTAGE_CASH) & Chr(10)
-                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \             {0,9:C}", SOURYOU) & Chr(10)
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \            {0,9:C}", SOURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa e
                 '2019.11.02 R.Takashima To
         End Select
@@ -5563,7 +5579,7 @@ Public Class fRegister
                 '課題表No138 Star追加
             Case "STAR"
                 'pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \           {0,9:C}", FEE_CASH) & Chr(10)
-                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \           {0,9:C}", TESUURYOU) & Chr(10)
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \          {0,9:C}", TESUURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa e
                 '2019.11.02 R.Takashima To
         End Select
@@ -5912,7 +5928,7 @@ Public Class fRegister
         str = oTool.MidB(str.ToString, str.Length - 9, 10)
 
         pData = Chr(27) & "|1C" &
-               String.Format("               取引番号:{0,10:##0}", str) & Chr(10)
+               String.Format("                取引番号:{0,10:##0}", str) & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '改行
@@ -5920,7 +5936,7 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '宛名印刷部分を印刷
-        pData = Chr(27) & "|1uC" & Chr(27) & "|4C" & "　　　　　　　様" & Chr(10)
+        pData = Chr(27) & "|1uC" & Chr(27) & "|4C" & "　　　　　　　　様" & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '改行
@@ -5932,12 +5948,22 @@ Public Class fRegister
             String.Format("     {0,9:C}.-  ", oTrn(0).sTotalPrice)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData) & Chr(10)
 
-        pData = Chr(27) & "|1C" & String.Format("                      (消費税込み)") & Chr(10)
+        pData = Chr(27) & "|1C" & String.Format("                       (消費税込み)") & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '但し書き部分印刷
-        pData = Chr(27) & "|1C" &
-               String.Format("（但し　　 として領収致しました）") & Chr(10)
+        '2019.11.15 R.Takashima From
+        '但し書き部分が少なかったので
+        '改行して表示するよう変更
+
+        'pData = Chr(27) & "|1C" &
+        '       String.Format("（但し　　    として領収致しました）") & Chr(10)
+
+        pData = Chr(10) & Chr(27) & "|1C" &
+               String.Format("（但し") & Chr(10) & Chr(10)
+        pData = pData & "　　　　　    として領収致しました）" & Chr(10)
+        '2019.11.15 R.Takashima To
+
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
         '改行()
         pData = "" & Chr(10)
