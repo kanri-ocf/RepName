@@ -22,12 +22,14 @@ Partial Class fSelectJAN
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.PRODUCT_LIST_V = New System.Windows.Forms.DataGridView
-        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.PRODUCT_LIST_V = New System.Windows.Forms.DataGridView()
+        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox()
+        Me.ReturnButton = New Softgroup.NetButton.NetButton(Me.components)
         CType(Me.PRODUCT_LIST_V, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -76,13 +78,26 @@ Partial Class fSelectJAN
         Me.PRODUCT_CODE_T.Text = "PRODUCT_CODE"
         Me.PRODUCT_CODE_T.Visible = False
         '
+        'ReturnButton
+        '
+        Me.ReturnButton.ColorBottom = System.Drawing.Color.Wheat
+        Me.ReturnButton.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.ReturnButton.Location = New System.Drawing.Point(633, 393)
+        Me.ReturnButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.ReturnButton.Name = "ReturnButton"
+        Me.ReturnButton.Size = New System.Drawing.Size(148, 42)
+        Me.ReturnButton.TabIndex = 329
+        Me.ReturnButton.TabStop = False
+        Me.ReturnButton.TextButton = "戻　る"
+        '
         'fSelectJAN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(793, 398)
+        Me.ClientSize = New System.Drawing.Size(793, 443)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ReturnButton)
         Me.Controls.Add(Me.PRODUCT_CODE_T)
         Me.Controls.Add(Me.PRODUCT_LIST_V)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -98,4 +113,5 @@ Partial Class fSelectJAN
     End Sub
     Friend WithEvents PRODUCT_LIST_V As System.Windows.Forms.DataGridView
     Public WithEvents PRODUCT_CODE_T As System.Windows.Forms.TextBox
+    Friend WithEvents ReturnButton As Softgroup.NetButton.NetButton
 End Class
