@@ -2433,6 +2433,9 @@ Public Class fRegister
 
                         'JANコードにセットフォーカス
                         JAN_CODE_T.Focus()
+
+                        '初期化をする
+                        ReDim oProductSalePrice(0)
                         Exit Sub
                         '2019.11.15 R.Takashima To
                     Else
@@ -7153,6 +7156,12 @@ Public Class fRegister
                                              oTran)
 
             PRODUCT_SET(oProductSalePrice(0))
+
+            '2019.11.15 R.Takashima From
+            '初期化をしないと別の場所で異なる値が入る
+            ReDim oProductSalePrice(0)
+            '2019.11.15 R.Takashima To
+
         Else
             '2019.10.15 R.Takashima FROM
             '値引時の商品情報を処理
