@@ -647,7 +647,7 @@
         End Select
     End Sub
 
-    'ShowDialogをオーバーライドをし、天気だけデータをクリックされた状態にしてShowDialogを呼び出す
+    'ShowDialogをオーバーロードをし、天気だけデータをクリックされた状態にしてShowDialogを呼び出す
     Public Overloads Sub ShowDialog(ByVal weather As String)
         Dim i As Integer = 0
         If IsNothing(ConArry) = False Then
