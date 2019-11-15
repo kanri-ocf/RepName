@@ -64,13 +64,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.OposCashDrawer_CCO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AxInterop.OposCashDrawer_CCO">
       <HintPath>..\..\bin\Release\AxInterop.OposCashDrawer_CCO.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.OPOSDISPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\Release\AxInterop.OPOSDISPLib.dll</HintPath>
+      <HintPath>obj\Release\AxInterop.OPOSDISPLib.dll</HintPath>
     </Reference>
     <Reference Include="AxInterop.OPOSDRWLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
