@@ -39,7 +39,12 @@
 
         oDrawer = iDrawer
 
-        oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
+        '2019.11.16 R.Takashima From
+        '決定ボタンでNothingにされているため呼び出し元がオブジェクトを保持してる場合
+        '再読み込み時にoMstMemberDBIOが無効になっているためエラーが発生する
+        'よってこの処理をLoadイベントに移動
+        'oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
+        '2019.11.16 R.Takashima To
 
     End Sub
     '******************************************************************
@@ -91,6 +96,8 @@
         ConArry(12) = WEA_C4
 
         MEMBER_CODE_T.Focus()
+
+        oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
     End Sub
     Public Sub SetData(ByVal Code, ByVal Name)
         STAFF_NAME_T.Text = Name

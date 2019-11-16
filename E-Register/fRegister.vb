@@ -5737,7 +5737,7 @@ Public Class fRegister
                         pData = String.Format("クレジットご請求金額      {0,9:C}", RECEIVE_CASH) & Chr(10)
                         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
                     Case "STAR"
-                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("クレジットご請求金額{0,9:C}", RECEIVE_CASH) & Chr(10)
+                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("クレジットご請求金額 {0,9:C}", RECEIVE_CASH) & Chr(10)
                         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
                 End Select
             Case POINT
@@ -5988,7 +5988,7 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         'ローテート印刷 Off (通常印刷モード設定)
-        ret = oPrinter.RotatePrint(PTR_S_RECEIPT, PTR_RP_NORMAL)
+        'ret = oPrinter.RotatePrint(PTR_S_RECEIPT, PTR_RP_NORMAL)
 
         '改行()
         pData = "" & Chr(10)
