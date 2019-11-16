@@ -2998,7 +2998,12 @@ Public Class fRegister
                     End If
                     POINT_CASH = INPUT                                  'ポイント値引き額
                     DISCOUNT_CASH = INPUT                               '値引金額
-                    TOTAL_CASH = TOTAL_CASH - DISCOUNT_CASH             '本商品までの合計金額を計算
+
+                    '2019.11.16 R.Takashima From
+                    '既に行っている計算をさらに行っているため値がおかしくなっている
+                    'TOTAL_CASH = TOTAL_CASH - DISCOUNT_CASH             '本商品までの合計金額を計算
+                    '2019.11.16 R.Takashima To
+
                     DISPLAY_T.Text = TOTAL_CASH                         '合計金額を画面に表示
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
