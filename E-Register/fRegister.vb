@@ -6488,6 +6488,32 @@ Public Class fRegister
             Else                                    '入力ありの場合
                 ret = CAL_PROC(Mode)      '集計（カテゴリ番号）
 
+                '2019.11.16 R.Takashima From
+                '値引き額が入力されていないとき（D_MODE = 0）は
+                '入力を促すメッセージを表示し、処理を終了させる
+                If ret = False Then
+                    Dim mes = New cMessageLib.fMessage(1,
+                                                "金額が入力されていません。",
+                                                "入力してから割引ボタンを押下してください。",
+                                                Nothing,
+                                                Nothing
+                                                )
+                    mes.ShowDialog()
+                    mes.Dispose()
+
+                    '入力モードのリセット
+                    D_MODE = 0
+
+                    '取引データ入力中を設定
+                    T_MODE = 1
+
+                    '取引明細区分=売上を設定
+                    SUBTRNCLASS = 1
+
+                    Exit Sub
+                End If
+                '2019.11.16 R.Takashima To
+
                 '日次取引明細データ更新
                 If Mode = "%" Then
                     DAY_SUBTRN_INSERT(Mode, DISCOUNT_RATE)
