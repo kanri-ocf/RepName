@@ -657,6 +657,10 @@
     'ShowDialogをオーバーロードをし、天気だけデータをクリックされた状態にしてShowDialogを呼び出す
     Public Overloads Sub ShowDialog(ByVal weather As String)
         Dim i As Integer = 0
+        '2019.11.16 R.Takashima FROM
+        '値の初期化
+        MEMBER_INIT()
+        '2019.11.16 R.Takashima TO
         If IsNothing(ConArry) = False Then
 
             For Each arry As CheckBox In ConArry

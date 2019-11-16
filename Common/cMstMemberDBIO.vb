@@ -94,7 +94,14 @@
                                 strSelect = strSelect & "WHERE "
                             End If
                             strSelect = strSelect & "(契約開始日 <= Now() AND 契約満了日 >= Now())"
-                            strSelect = strSelect & "AND 退会日 = """" "
+
+                            '2019.11.16 R.Takashima From
+                            'データベースの退会日において空白とNULLが混在しており
+                            '値の抽出ができなったため、変更
+                            'strSelect = strSelect & "AND 退会日 = """" "
+                            strSelect = strSelect & "AND (退会日 = """" Or 退会日 IS NULL) "
+                            '2019.11.16 R.Takashima To
+
                             scnt = scnt + 1
                     End Select
                     i = i * 2

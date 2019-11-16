@@ -6882,9 +6882,6 @@ Public Class fRegister
 
                 MEMBER_SET(Customer_form.MEMBER_CODE_T.Text)
 
-                '会員LEDの表示切換え
-                LED_CHANGE()
-
             Else
                 MEMBER_CODE = ""
                 MEMBER_CODE_T.Text = ""
