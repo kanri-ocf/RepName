@@ -16,7 +16,7 @@
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
-    <OptionInfer>On</OptionInfer>
+    <OptionInfer>Off</OptionInfer>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <FileUpgradeFlags>
@@ -124,6 +124,11 @@
     <Reference Include="cStructureLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\cStructureLib\obj\Release\cStructureLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.OPOSPRINTERLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\bin\Debug\Interop.OPOSPRINTERLib.dll</HintPath>
     </Reference>
     <Reference Include="Softgroup.NetButton, Version=3.0.4316.35604, Culture=neutral, PublicKeyToken=414472004535f54e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

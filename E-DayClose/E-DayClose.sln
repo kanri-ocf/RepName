@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "cReportsLib", "..\Dll\cReportsLib\cReportsLib.vbproj", "{902EE070-6B0A-4FEB-9CA7-C59FF724D862}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -82,5 +82,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B5FD9F0-9312-454A-90F6-266F8C00D40F}
 	EndGlobalSection
 EndGlobal
