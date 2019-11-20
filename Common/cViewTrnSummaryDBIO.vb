@@ -27,6 +27,11 @@ Public Class cViewTrnSummaryDBIO
         Dim strSelectTrn As String
         Dim i As Integer
 
+
+        '2019.11.17 R.Takashima FROM
+        'Sum(日次取引明細データ.送料) AS 送料の合計
+        'Sum(日次取引明細データ.手数料) AS 手数料の合計
+        '追加
         Try
             strSelectTrn =
                 "SELECT " &
@@ -39,6 +44,8 @@ Public Class cViewTrnSummaryDBIO
                     "支払方法マスタ.支払方法名称, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税抜商品金額) AS 税抜金額の合計, " &
+                    "Sum(日次取引明細データ.送料) AS 送料の合計, " &
+                    "Sum(日次取引明細データ.手数料) AS 手数料の合計, " &
                     "Sum(日次取引明細データ.値引き) AS 値引きの合計, " &
                     "Sum(日次取引明細データ.ポイント値引き) AS ポイント値引きの合計, " &
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
@@ -51,6 +58,7 @@ Public Class cViewTrnSummaryDBIO
                         "ON 日次取引明細データ.部門コード = 部門マスタ.部門コード) " &
                     "LEFT JOIN 支払方法マスタ " &
                         "ON 日次取引データ.支払方法コード = 支払方法マスタ.支払方法コード "
+            '2019.11.17 R.Takashima TO
 
             If keyCloseDate = Nothing Then
                 strSelectTrn = strSelectTrn & "WHERE (日次取引データ.日次締め日 Is Null " &
@@ -125,18 +133,18 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parTrnSummary(i).sNoTaxProductPrice = CLng(pDataReader("税抜金額の合計"))
                 End If
-                ''送料の合計
-                'If IsDBNull(pDataReader("送料の合計")) = True Then
-                '    parTrnSummary(i).sShippingCharge = 0
-                'Else
-                '    parTrnSummary(i).sShippingCharge = CLng(pDataReader("送料の合計"))
-                'End If
-                ''手数料の合計
-                'If IsDBNull(pDataReader("手数料の合計")) = True Then
-                '    parTrnSummary(i).sPaymentCharge = 0
-                'Else
-                'parTrnSummary(i).sPaymentCharge = CLng(pDataReader("手数料の合計"))
-                'End If
+                '送料の合計
+                If IsDBNull(pDataReader("送料の合計")) = True Then
+                    parTrnSummary(i).sShippingCharge = 0
+                Else
+                    parTrnSummary(i).sShippingCharge = CLng(pDataReader("送料の合計"))
+                End If
+                '手数料の合計
+                If IsDBNull(pDataReader("手数料の合計")) = True Then
+                    parTrnSummary(i).sPaymentCharge = 0
+                Else
+                    parTrnSummary(i).sPaymentCharge = CLng(pDataReader("手数料の合計"))
+                End If
                 '値引き
                 If IsDBNull(pDataReader("値引きの合計")) = True Then
                     parTrnSummary(i).sDiscountPrice = 0

@@ -16,6 +16,7 @@
         B_5.MaxLength = 3
 
         'aaaaaa
+        'aaa
 
 
     End Sub

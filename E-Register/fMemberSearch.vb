@@ -210,11 +210,11 @@
         End If
         '2016.06.30 K.Oikawa e
 
-        RecordCount = oMstMemberDBIO.getMember(oMember, _
-                                               fMember_form.MEMBER_CODE_T.Text, _
-                                               "", _
-                                               "", _
-                                               Nothing, _
+        RecordCount = oMstMemberDBIO.getMember(oMember,
+                                               fMember_form.MEMBER_CODE_T.Text,
+                                               "",
+                                               "",
+                                               Nothing,
                                                oTran)
 
         MEMBER_CODE_T.Text = fMember_form.MEMBER_CODE_T.Text

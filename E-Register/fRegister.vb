@@ -1144,43 +1144,47 @@ Public Class fRegister
             End If
 
 
+            '2019.11.02 R.Takashima From
+            '返品時ポイントは戻さないためコメントアウト
+
             '返品対象の商品購入時に使用したポイントを戻す
             '使用したポイントを取得する
-            ADD_POINT_i = CLng(PDISCOUNT_T.Text)
-            If ADD_POINT_i <> 0 Then
-                '使用ポイントの取り消し
-                POINT_i = POINT_INSERT(0, ADD_POINT_i)
-            End If
+            'ADD_POINT_i = CLng(PDISCOUNT_T.Text)
+            'If ADD_POINT_i <> 0 Then
+            '    '使用ポイントの取り消し
+            '    POINT_i = POINT_INSERT(0, ADD_POINT_i)
+            'End If
 
 
             '返品対象商品の購入時に取得したポイントの減算
-            If POINT_MEMBER_CODE_T.Text <> "" Then
+            'If POINT_MEMBER_CODE_T.Text <> "" Then
 
-                '現所有ポイント
-                Dim getPoint As Integer
-                getPoint = oDataPointDBIO.getPoint(POINT_MEMBER_CODE_T.Text, oTran)
+            '    '現所有ポイント
+            '    Dim getPoint As Integer
+            '    getPoint = oDataPointDBIO.getPoint(POINT_MEMBER_CODE_T.Text, oTran)
 
-                '購入時に得たポイントを取得する
-                pGetPointi = oTool.ToRoundDown(TOTAL_CASH * (oConf(0).sPointRATE / oConf(0).sPointEN), 0)
+            '    '購入時に得たポイントを取得する
+            '    pGetPointi = oTool.ToRoundDown(TOTAL_CASH * (oConf(0).sPointRATE / oConf(0).sPointEN), 0)
 
-                If getPoint < pGetPointi Then
-                    'ポイントの減算
+            '    If getPoint < pGetPointi Then
+            '        'ポイントの減算
 
-                    'ポイントをある分だけ減算する
-                    POINT_i = POINT_INSERT((getPoint * -1), 0)
+            '        'ポイントをある分だけ減算する
+            '        POINT_i = POINT_INSERT((getPoint * -1), 0)
 
-                    '返金額の減算
-                    returnOver = pGetPointi - getPoint
+            '        '返金額の減算
+            '        returnOver = pGetPointi - getPoint
 
-                Else
-                    '購入時に得たポイントを減算
-                    POINT_i = POINT_INSERT((pGetPointi * -1), 0)
-                    returnOver = 0
-                End If
-            Else
-                POINT_i = 0
-                returnOver = 0
-            End If
+            '    Else
+            '        '購入時に得たポイントを減算
+            '        POINT_i = POINT_INSERT((pGetPointi * -1), 0)
+            '        returnOver = 0
+            '    End If
+            'Else
+            '    POINT_i = 0
+            '    returnOver = 0
+            'End If
+            '2019.11.02 R.Takashima
 
             If pTrnUpdFlg <> 0 Then
                 '現金更新
@@ -1219,10 +1223,10 @@ Public Class fRegister
             '2016.07.06 K.Oikawa s
             '課題表No18 返品時のみレシートの印刷は行わない
             'レシート印刷
-            oMstChannelDBIO.getChannelMst(oChannel, CHANNEL_CODE, Nothing, Nothing, Nothing, oTran)
-            If oChannel(0).sReceiptPrint = True Then
-                RECEIPT_PRINTING()
-            End If
+            'oMstChannelDBIO.getChannelMst(oChannel, CHANNEL_CODE, Nothing, Nothing, Nothing, oTran)
+            'If oChannel(0).sReceiptPrint = True Then
+            '    RECEIPT_PRINTING()
+            'End If
             '2016.07.06 K.Oikawa e
 
         End If
@@ -1230,11 +1234,13 @@ Public Class fRegister
 
         '2016.07.06 K.Oikawa s
         '課題表No18 返品時にレシートの印刷は行わない
+        '2019.11.02 R.Takashima
+        '返品時もレシートの印刷をするように変更
         ''レシート印刷
-        'oMstChannelDBIO.getChannelMst(oChannel, CHANNEL_CODE, Nothing, Nothing, Nothing, oTran)
-        'If oChannel(0).sReceiptPrint = True Then
-        '    RECEIPT_PRINTING()
-        'End If
+        oMstChannelDBIO.getChannelMst(oChannel, CHANNEL_CODE, Nothing, Nothing, Nothing, oTran)
+        If oChannel(0).sReceiptPrint = True Then
+            RECEIPT_PRINTING()
+        End If
         '2016.07.06 K.Oikawa e
 
         'ラインディスプレー表示 
@@ -1263,7 +1269,7 @@ Public Class fRegister
         oTran = Nothing
 
 
-        'STAFF_ENTRY()
+        STAFF_ENTRY()
 
         STAFF_CODE_T.Text = STAFF_CODE
         STAFF_NAME_T.Text = STAFF_NAME
@@ -2390,7 +2396,6 @@ Public Class fRegister
             BUMON_INDEX = BUMON_INDEX_GET(sender.TextButton)
         Else
             BUMON_INDEX = BUMON_INDEX_GET(BumonName)
-
         End If
 
         SUBTRNCLASS = 1
@@ -2403,7 +2408,9 @@ Public Class fRegister
                                                         Nothing,
                                                         oBumon(BUMON_INDEX).sBumonCode,
                                                         oTran)
-                If RecordCount > 1 Then
+                '商品が１つでもあったらウィンドウを表示させる
+                'If RecordCount > 1 Then
+                If RecordCount > 0 Then
                     Dim SelectJAN_form As New cSelectLib.fSelectJAN(oConn,
                                          oCommand,
                                          oDataReader,
@@ -2418,6 +2425,19 @@ Public Class fRegister
                                                                  SelectJAN_form.PRODUCT_CODE_T.Text,
                                                                  Nothing,
                                                                  oTran)
+                        '2019.11.15 R.Takashima From
+                        '戻るボタン押下の処理を追加
+                    ElseIf SelectJAN_form.DialogResult = Windows.Forms.DialogResult.Cancel Then
+                        '変数初期化
+                        VALUE_INIT(1)
+
+                        'JANコードにセットフォーカス
+                        JAN_CODE_T.Focus()
+
+                        '初期化をする
+                        ReDim oProductSalePrice(0)
+                        Exit Sub
+                        '2019.11.15 R.Takashima To
                     Else
                         Dim message_form As New cMessageLib.fMessage(1,
                                           "対象商品が登録されていません",
@@ -2435,6 +2455,25 @@ Public Class fRegister
                         Exit Sub
                     End If
                     SelectJAN_form = Nothing
+                Else
+                    '2019.11.15 R.Takashima From
+                    '該当商品が見つからないときにメッセージを表示する
+                    Dim message_form As New cMessageLib.fMessage(1,
+                                          Nothing,
+                                          "該当する商品がありません。",
+                                          Nothing, Nothing)
+                    message_form.ShowDialog()
+                    message_form = Nothing
+
+                    '変数初期化
+                    VALUE_INIT(1)
+
+                    'JANコードにセットフォーカス
+                    JAN_CODE_T.Focus()
+
+                    Exit Sub
+
+                    '2019.11.15 R.Takashima To
                 End If
             End If
         End If
@@ -2617,41 +2656,41 @@ Public Class fRegister
             Select Case MEISAI_V("商品名称", i).Value.ToString
                 Case "(値引き)"
                     If T_MODE <> 2 Then
-                        sdiscount = sdiscount + oTool.ToRoundDown(MEISAI_V("値引き", i).Value, 0)        '単品値引き合計算出
+                        sdiscount = sdiscount + MEISAI_V("値引き", i).Value      '単品値引き合計算出
                         '2019.10.27 R.Takashima 税別ごとに消費税のみの金額を算出
                         sDiscountTotalTax += oTool.AfterToTax(MEISAI_V("値引き", i).Value, tax, oConf(0).sFracProc)
                     Else
-                        sdiscount = sdiscount + oTool.ToRoundDown(MEISAI_V("返金額", i).Value, 0)        '単品値引き合計算出（返品時）
+                        sdiscount = sdiscount + MEISAI_V("返金額", i).Value       '単品値引き合計算出（返品時）
                         '2019.10.27 R.Takashima 税別ごとに消費税のみの金額を算出
                         sDiscountTotalTax += oTool.AfterToTax(MEISAI_V("返金額", i).Value, tax, oConf(0).sFracProc)
                     End If
                 Case "(会員値引き)"
                     If T_MODE <> 2 Then
-                        sdiscount = sdiscount + oTool.ToRoundDown(MEISAI_V("値引き", i).Value, 0)        '単品値引き合計算出
+                        sdiscount = sdiscount + MEISAI_V("値引き", i).Value       '単品値引き合計算出
                         '2019.10.27 R.Takashima 税別ごとに消費税のみの金額を算出
                         sDiscountTotalTax += oTool.AfterToTax(MEISAI_V("値引き", i).Value, tax, oConf(0).sFracProc)
                     Else
-                        sdiscount = sdiscount + oTool.ToRoundDown(MEISAI_V("返金額", i).Value, 0)        '単品値引き合計算出（返品時）
+                        sdiscount = sdiscount + MEISAI_V("返金額", i).Value      '単品値引き合計算出（返品時）
                         '2019.10.27 R.Takashima 税別ごとに消費税のみの金額を算出
                         sDiscountTotalTax += oTool.AfterToTax(MEISAI_V("返金額", i).Value, tax, oConf(0).sFracProc)
                     End If
                 Case "(合計値引き)"
                     If T_MODE <> 2 Then
-                        tdiscount = tdiscount + oTool.ToRoundDown(MEISAI_V("値引き", i).Value, 0)        '合計値引き合計算出
+                        tdiscount = tdiscount + MEISAI_V("値引き", i).Value       '合計値引き合計算出
                     Else
-                        tdiscount = tdiscount + oTool.ToRoundDown(MEISAI_V("返金額", i).Value, 0)        '合計値引き合計算出（返品時）
+                        tdiscount = tdiscount + MEISAI_V("返金額", i).Value       '合計値引き合計算出（返品時）
                     End If
                 Case "(ポイント値引き)"
                     If T_MODE <> 2 Then
-                        pdiscount = pdiscount + oTool.ToRoundDown(MEISAI_V("値引き", i).Value, 0)         'ポイント値引き合計算出
+                        pdiscount = pdiscount + MEISAI_V("値引き", i).Value     'ポイント値引き合計算出
                     Else
-                        pdiscount = pdiscount + oTool.ToRoundDown(MEISAI_V("返金額", i).Value, 0)        'ポイント値引き合計算出（返品時）
+                        pdiscount = pdiscount + MEISAI_V("返金額", i).Value        'ポイント値引き合計算出（返品時）
                     End If
                 Case "(チケット値引き)"
                     If T_MODE <> 2 Then
-                        cdiscount = cdiscount + oTool.ToRoundDown(MEISAI_V("値引き", i).Value, 0)        'チケット値引き合計算出
+                        cdiscount = cdiscount + MEISAI_V("値引き", i).Value        'チケット値引き合計算出
                     Else
-                        cdiscount = cdiscount + oTool.ToRoundDown(MEISAI_V("返金額", i).Value, 0)        'チケット値引き合計算出（返品時）
+                        cdiscount = cdiscount + MEISAI_V("返金額", i).Value        'チケット値引き合計算出（返品時）
                     End If
                 Case "(送料)"
                     If T_MODE <> 2 Then
@@ -2863,6 +2902,12 @@ Public Class fRegister
                 TFEE_T.Text = 0
                 TBILL_T.Text = 0
                 TTAX_T.Text = 0
+
+                '2019.11.15 R.Takashima From
+                'ポイント値引き、チケット値引きの値が初期化されていないため追加
+                PDISCOUNT_T.Text = 0
+                CDISCOUNT_T.Text = 0
+                '2019.11.15 R.Takashima To
         End Select
     End Sub
 
@@ -2953,7 +2998,12 @@ Public Class fRegister
                     End If
                     POINT_CASH = INPUT                                  'ポイント値引き額
                     DISCOUNT_CASH = INPUT                               '値引金額
-                    TOTAL_CASH = TOTAL_CASH - DISCOUNT_CASH             '本商品までの合計金額を計算
+
+                    '2019.11.16 R.Takashima From
+                    '既に行っている計算をさらに行っているため値がおかしくなっている
+                    'TOTAL_CASH = TOTAL_CASH - DISCOUNT_CASH             '本商品までの合計金額を計算
+                    '2019.11.16 R.Takashima To
+
                     DISPLAY_T.Text = TOTAL_CASH                         '合計金額を画面に表示
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
@@ -3553,22 +3603,62 @@ Public Class fRegister
                 oSubTrn(0).sPayCharge = 0
                 oSubTrn(0).sDiscountPrice = 0
 
+                Dim totalPrice As Long
+                Dim discountNormalPrice As Long '通常税率分の値引き額
+                Dim discountReducePrice As Long '軽減税率分の値引き額
+
+                totalPrice = 0
+                discountNormalPrice = 0
+                discountReducePrice = 0
+                ReDim subTrn(0)
+
+                oSubDataTrnDBIO.getSubTrn(subTrn, TRNCODE, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
+
+                '2019.10.27 R.Takashima From
+                '商品の税率ごとに値引き税額を算出する
+                For i = 0 To MEISAI_V.RowCount - 1
+
+                    totalPrice += MEISAI_V("金額", i).Value
+
+                    For j = i + 1 To MEISAI_V.RowCount - 1
+                        If IsNothing(MEISAI_V("値引き", j).Value) = False And MEISAI_V("値引き", j).Value > 0 Then
+                            totalPrice -= MEISAI_V("値引き", j).Value
+                        Else
+                            i = j - 1
+                            Exit For
+                        End If
+                    Next
+
+                    If subTrn(i).sReducedTaxRatePrice > 0 Then
+                        discountReducePrice += totalPrice / (TOTAL_CASH + DISCOUNT_CASH) * DISCOUNT_CASH
+                    Else
+                        discountNormalPrice += totalPrice / (TOTAL_CASH + DISCOUNT_CASH) * DISCOUNT_CASH
+                    End If
+                    totalPrice = 0
+                Next
+
                 '2019.10.11 R.Takashima FROM
                 'oSubTrn(0).sPointDiscountPrice = oTool.AfterToBeforeTax(POINT_CASH, oConf(0).sTax, oConf(0).sFracProc) * -1
                 oSubTrn(0).sPointDiscountPrice = POINT_CASH * -1
                 '2019.10.11 R.Takashima TO
 
                 oSubTrn(0).sTicketDiscountPrice = 0
-                oSubTrn(0).sPrice = oTool.AfterToBeforeTax(POINT_CASH, tax, oConf(0).sFracProc) * -1
-                oSubTrn(0).sNoTaxPrice = oSubTrn(0).sPointDiscountPrice
+                oSubTrn(0).sPrice = oSubTrn(0).sPointDiscountPrice
+                'oSubTrn(0).sNoTaxPrice = oTool.AfterToBeforeTax(POINT_CASH, tax, oConf(0).sFracProc) * -1
+                oSubTrn(0).sNoTaxPrice = (oTool.AfterToBeforeTax(discountReducePrice, REDUCE_TAX, oConf(0).sFracProc) +
+                                         oTool.AfterToBeforeTax(discountNormalPrice, oConf(0).sTax, oConf(0).sFracProc)) * -1
 
                 '2019.10.11 R.Takashima FROM
-                If tax = REDUCE_TAX Then
-                    oSubTrn(0).sReducedTaxRatePrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
-                Else
-                    oSubTrn(0).sTaxPrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
-                End If
+                'If tax = REDUCE_TAX Then
+                '    oSubTrn(0).sReducedTaxRatePrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
+                'Else
+                '    oSubTrn(0).sTaxPrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
+                'End If
                 '2019.10.11 R.Takashima TO
+                oSubTrn(0).sReducedTaxRatePrice = oTool.AfterToTax(discountReducePrice, REDUCE_TAX, oConf(0).sFracProc) * -1
+                oSubTrn(0).sTaxPrice = oTool.AfterToTax(discountNormalPrice, oConf(0).sTax, oConf(0).sFracProc) * -1
+
+                '2019.11.02 R.Takashima
 
             Case M_DISCOUNT_C  'チケット値引き
                 oSubTrn(0).sProductCode = "99999-06"
@@ -3589,13 +3679,15 @@ Public Class fRegister
                 oSubTrn(0).sDiscountPrice = 0
                 oSubTrn(0).sPointDiscountPrice = 0
 
+
+
                 '2019.10.11 R.Takashima FROM
                 'oSubTrn(0).sTicketDiscountPrice = oTool.AfterToBeforeTax(TICKET_CASH, oConf(0).sTax, oConf(0).sFracProc) * -1
                 oSubTrn(0).sTicketDiscountPrice = TICKET_CASH * -1
                 '2019.10.11 R.Takashima TO
 
-                oSubTrn(0).sPrice = oTool.AfterToBeforeTax(TICKET_CASH, tax, oConf(0).sFracProc) * -1
-                oSubTrn(0).sNoTaxPrice = oSubTrn(0).sTicketDiscountPrice
+                oSubTrn(0).sPrice = oSubTrn(0).sTicketDiscountPrice
+                oSubTrn(0).sNoTaxPrice = oTool.AfterToBeforeTax(TICKET_CASH, tax, oConf(0).sFracProc) * -1
 
                 '2019.10.11 R.Takashima FROM
                 If tax = REDUCE_TAX Then
@@ -3625,17 +3717,11 @@ Public Class fRegister
                 oSubTrn(0).sPayCharge = 0
 
                 Dim totalPrice As Long
-                Dim noTotalTaxPrice As Long
-                Dim normalTaxPrice As Long
-                Dim reduceTaxPrice As Long
 
                 Dim discountNormalPrice As Long '通常税率分の値引き額
                 Dim discountReducePrice As Long '軽減税率分の値引き額
 
                 totalPrice = 0
-                noTotalTaxPrice = 0
-                normalTaxPrice = 0
-                reduceTaxPrice = 0
                 discountNormalPrice = 0
                 discountReducePrice = 0
                 ReDim subTrn(0)
@@ -3645,7 +3731,6 @@ Public Class fRegister
                 '2019.10.27 R.Takashima From
                 '商品の税率ごとに値引き税額を算出する
                 For i = 0 To MEISAI_V.RowCount - 1
-
 
                     totalPrice += MEISAI_V("金額", i).Value
 
@@ -3693,7 +3778,6 @@ Public Class fRegister
                 oSubTrn(0).sTaxPrice = oTool.AfterToTax(discountNormalPrice, oConf(0).sTax, oConf(0).sFracProc) * -1
 
                 '2019.10.27 R.Takashima To
-
 
         End Select
         oSubTrn(0).sMemo = ""
@@ -4708,7 +4792,6 @@ Public Class fRegister
     '   なし
     '**************************************************
     Sub DROWER_OPEN()
-        Exit Sub
         'Dim i As Long
 
         '2019.10.23 R.Takashima  FROM
@@ -4720,6 +4803,8 @@ Public Class fRegister
                                           Nothing, Nothing)
             message_form.Show()
             Application.DoEvents()
+
+            oTool.Wait(10)
 
             oDrawer.OpenDrawer()
 
@@ -4769,24 +4854,35 @@ Public Class fRegister
         '2019.10.18 R.Takashima FROM
         Dim tax As Integer
         Dim trnCode As Long
-        Dim sumPriceOfNormalTax As Long
-        Dim sumPriceOfReduceTax As Long
+        Dim sumPriceOfNormalTax As Long '通常税率合計金額
+        Dim sumPriceOfReduceTax As Long '軽減税率合計金額
+        Dim normalTemp As Long '通常税率合計金額退避変数
+        Dim reduceTemp As Long '軽減税率合計金額退避変数
         Dim sumDiscount As Long '値引き、会員値引きの合計
-        Dim product As cStructureLib.sViewProductSalePrice()
-        'Dim product As cStructureLib.sSubTrn()
-        Dim productCount As Long
+        'Dim product As cStructureLib.sViewProductSalePrice()
+        Dim product As cStructureLib.sSubTrn()
+        Dim sumPrice As Long
 
         tax = oConf(0).sTax
         sumPriceOfNormalTax = 0
         sumPriceOfReduceTax = 0
+        normalTemp = 0
+        reduceTemp = 0
         sumDiscount = 0
+        sumPrice = 0
         '2019.10.18 R.Takashima TO
 
-        Exit Sub
+
         '2019.10.24 R.Takashima From
         '取引コードがない場合（見つからない場合）は印刷はしない
         If (IsNothing(Me.TRNCODE) = False And Me.TRNCODE <> 0) Then
             trnCode = Me.TRNCODE
+
+            '取引コードから取引データを取得する
+            'レシート発行時は取引コードを取得して日次取引明細データから発行するように変更する
+            '既に計算しているデータを使うため新たに計算する必要がなくなる。
+            ReDim product(0)
+            oSubDataTrnDBIO.getSubTrn(product, trnCode, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         Else
             Dim mes As cMessageLib.fMessage = New cMessageLib.fMessage(1,
                                                                 Nothing,
@@ -4798,14 +4894,21 @@ Public Class fRegister
             Exit Sub
         End If
         '2019.10.24 R.Takashima To
-        'R.Takashima 予告
-        'レシート発行時は取引番号取得して取引明細データから発行するように変更する
-        'すなわちデータを挿入する場所は全て変更する
-        'これならデータを誤って変えてもレシートにだけ影響ができるため、安全
 
-        'productCount = oSubDataTrnDBIO.getSubTrn(product, trnCode, Nothing,)
+        '2019.11.02 R.Takashima From
+        'レシートを発行するかの確認メッセージ
+        Dim mess As cMessageLib.fMessage = New cMessageLib.fMessage(2,
+                                                                    Nothing,
+                                                                    "レシートを発行します。",
+                                                                    "よろしいですか。",
+                                                                    Nothing)
 
-        '****************************************
+        If mess.ShowDialog = DialogResult.No Then
+            mess.Dispose()
+            Exit Sub
+        End If
+        '2019.11.02 R.Takashima To
+
 
         oTool = New cTool
 
@@ -4821,7 +4924,6 @@ Public Class fRegister
             TOTAL_CASH = oTrn(0).sTotalPrice
         End If
         '2019.10.18 R.Takashima TO
-
 
         'ロゴ印刷
         'レシートBitMapの読込み
@@ -4854,186 +4956,528 @@ Public Class fRegister
         pData = "" & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
-        SYUKEI = 0
-        ITEM_i = 0
-        For i = 0 To MEISAI_V.Rows.Count - 1
-            Select Case oMeisai(i).sJANCode
-                Case "(値引き)"
-                    If oMeisai(i).sProductCode = "%" Then
+
+        '2019.11.1 R.Takashima From
+        For Each p In product
+
+            Select Case p.sSubTrnClass
+
+                Case M_DISCOUNT_U '単品値引き
+
+                    If p.sProductName.Substring(0, 9) = "(単品値引き)-%" Then
                         Select Case PRINTER_MAKER
                             Case "TEC"
                                 pData = String.Format("(単品値引き)  {0,2:###}%         {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                    CLng(p.sProductName.Substring(10)),
+                                                    CLng(p.sPrice)) & Chr(10)
                             Case "EPSON"
                                 pData = String.Format("(単品値引き)  {0,2:###}%    {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                    CLng(p.sProductName.Substring(10)),
+                                                    CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa s
                                 '課題表No138 Star追加
                             Case "STAR"
                                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  {0,2:###}%    {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                    CLng(p.sProductName.Substring(10)),
+                                                    CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa e
                         End Select
+
                     Else
+
                         Select Case PRINTER_MAKER
                             Case "TEC"
                                 pData = String.Format("(単品値引き)  \           {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                        CLng(p.sPrice)) & Chr(10)
                             Case "EPSON"
                                 pData = String.Format("(単品値引き)  \      {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                        CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa s
                                 '課題表No138 Star追加
                             Case "STAR"
                                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  \      {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                        CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa e
                         End Select
+
                     End If
+
                     ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-                    SYUKEI = SYUKEI - MEISAI_V("値引き", i).Value
-                    sumDiscount += MEISAI_V("値引き", i).Value
-                Case "(会員値引き)"
-                    If oMeisai(i).sProductCode = "%" Then
+
+                    'sPriceは値引き時にマイナスが入っているため集計を足している。
+                    SYUKEI = SYUKEI + p.sPrice
+                    sumDiscount += p.sPrice
+
+                    '2019.11.02 R.Takashima From
+                    If p.sTaxPrice < 0 Then
+                        sumPriceOfNormalTax += p.sPrice
+                    ElseIf p.sReducedTaxRatePrice < 0 Then
+                        sumPriceOfReduceTax += p.sPrice
+                    End If
+                    '2019.11.02 R.Takashima To
+
+                Case M_DISCOUNT_M '会員値引き
+
+                    If p.sProductName.Substring(0, 9) = "(会員値引き)-%" Then
                         Select Case PRINTER_MAKER
                             Case "TEC"
                                 pData = String.Format("(会員値引き)  {0,2:###}%         {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                CLng(p.sProductName.Substring(10)),
+                                                CLng(p.sPrice)) & Chr(10)
                             Case "EPSON"
                                 pData = String.Format("(会員値引き)  {0,2:###}%    {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                CLng(p.sProductName.Substring(10)),
+                                                CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa s
                                 '課題表No138 Star追加
                             Case "STAR"
                                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(会員値引き)  {0,2:###}%    {1,9:C}",
-                                                    CLng(MEISAI_V("オプション", i).Value),
-                                                    CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                                CLng(p.sProductName.Substring(10)),
+                                                CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa e
                         End Select
+
                     Else
+
                         Select Case PRINTER_MAKER
                             Case "TEC"
                                 pData = String.Format("(単品値引き)  \           {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                    CLng(p.sPrice)) & Chr(10)
                             Case "EPSON"
                                 pData = String.Format("(単品値引き)  \      {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                    CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa s
                                 '課題表No138 Star追加
                             Case "STAR"
                                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  \      {0,9:C}",
-                                        CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+                                    CLng(p.sPrice)) & Chr(10)
                                 '2016.07.01 K.Oikawa e
                         End Select
                     End If
+
                     ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-                    SYUKEI = SYUKEI - MEISAI_V("値引き", i).Value
-                    sumDiscount += MEISAI_V("値引き", i).Value
-                Case "(合計値引き)"
-                    DGOUKEI = DGOUKEI - MEISAI_V("値引き", i).Value
-                Case "(送料)"
-                    SOURYOU = SOURYOU + MEISAI_V("金額", i).Value
-                Case "(手数料)"
-                    TESUURYOU = TESUURYOU + MEISAI_V("金額", i).Value
-                Case "(ポイント値引き)"
-                    DPGOUKEI = DPGOUKEI - MEISAI_V("値引き", i).Value
-                Case "(チケット値引き)"
-                    DTGOUKEI = DTGOUKEI - MEISAI_V("値引き", i).Value
-                Case Else
 
-                    ReDim product(0)
-                    If oMstProductDBIO.getProductSalePrice(product,
-                                                CHANNEL_CODE,
-                                                MEISAI_V("商品コード", i).Value,
-                                                MEISAI_V("JANコード", i).Value,
-                                                oTran
-                                                ) <> 0 Then
+                    'sPriceは値引き時にマイナスが入っているため集計を足している。
+                    SYUKEI = SYUKEI + p.sPrice
+                    sumDiscount += p.sPrice
 
-                        '販売価格 × 数量 = 金額
+                    '2019.11.02 R.Takashima From
+                    If p.sTaxPrice < 0 Then
+                        sumPriceOfNormalTax += p.sPrice
+                    ElseIf p.sReducedTaxRatePrice < 0 Then
+                        sumPriceOfReduceTax += p.sPrice
+                    End If
+                    '2019.11.02 R.Takashima To
+
+                Case M_POSTAGE '送料
+                    SOURYOU += p.sPrice
+
+                Case M_FEE '手数料
+                    TESUURYOU += p.sPrice
+
+                Case M_DISCOUNT_P 'ポイント値引き
+                    '返品時は通常の値引きで対応する
+                    If T_MODE = 2 Then
                         Select Case PRINTER_MAKER
                             Case "TEC"
-                                '単品明細（販売額）印刷
-                                '商品名　カラー　サイズ
-                                pData = oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
-                                pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
-
-                                '2019.10.18 R.Takashima FROM
-                                If product(0).sReducedTaxRate = True Then
-                                    pData += REDUCE_TAX_MARK & Chr(10)
-                                    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
-                                Else
-                                    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
-                                End If
-                                '2019.10.18 R.Takashima TO
-
-                                ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-
-                                pData = String.Format("      {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
-                                           CLng(MEISAI_V("販売価格", i).Value),
-                                           CInt(MEISAI_V("数量", i).Value),
-                                           CLng(MEISAI_V("金額", i).Value)
-                                           ) & Chr(10)
+                                pData = String.Format("(単品値引き)  \           {0,9:C}",
+                                    CLng(p.sPrice)) & Chr(10)
                             Case "EPSON"
-                                '単品明細（販売額）印刷
-                                '商品名　カラー　サイズ
-                                pData = oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
-                                pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
+                                pData = String.Format("(単品値引き)  \      {0,9:C}",
+                                    CLng(p.sPrice)) & Chr(10)
+                            Case "STAR"
+                                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  \      {0,9:C}",
+                                    CLng(p.sPrice)) & Chr(10)
+                        End Select
+                        USE_POINT_i = 0
+                        ADD_POINT_i = 0
+                        DPGOUKEI = p.sPrice
+                        SYUKEI += p.sPrice
+                    Else
+                        '値引き時はマイナスのためプラスに直す
+                        DPGOUKEI += p.sPrice * -1
+                    End If
 
-                                '2019.10.18 R.Takashima FROM
-                                If product(0).sReducedTaxRate = True Then
-                                    pData += REDUCE_TAX_MARK & Chr(10)
-                                    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
-                                Else
-                                    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
-                                End If
-                                '2019.10.18 R.Takashima TO
+                Case M_DISCOUNT_C 'チケット値引き
+                    '値引き時はマイナスのためプラスに直す
+                    DTGOUKEI += p.sPrice * -1
 
-                                ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+                Case M_DISCOUNT_T '合計値引き
+                    '値引き時はマイナスのためプラスに直す
+                    DGOUKEI += p.sPrice * -1
 
-                                pData = String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
-                                                CLng(MEISAI_V("販売価格", i).Value),
-                                                CInt(MEISAI_V("数量", i).Value),
-                                                CLng(MEISAI_V("金額", i).Value)
-                                                ) & Chr(10)
+                Case M_SALE '売上
+
+                    Select Case PRINTER_MAKER
+
+                        Case "TEC"
+                            '単品明細（販売額）印刷
+                            '商品名　カラー　サイズ
+
+                            pData = RECEIPT_LEFT_MARGIN_STAR & oTool.MidB(p.sProductName, 1, 20) & " "
+
+                            '取引明細データには個別にオプションが入っているため全て一つの文字列としてあわせる。
+                            '区切りにはコロン（：）を付けている
+                            If p.sOption1 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption1, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption2 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption2, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption3 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption3, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption4 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption4, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption5 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption5, 1, 20)
+                            End If
+
+                            If p.sReducedTaxRatePrice > 0 Then
+                                pData += REDUCE_TAX_MARK
+                            End If
+
+                            pData = pData & Chr(10)
+
+                            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+                            pData = RECEIPT_LEFT_MARGIN_STAR & String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+                                            CLng(p.sUnitPrice + p.sTaxPrice + p.sReducedTaxRatePrice),
+                                            CInt(p.sCount),
+                                            CLng(p.sPrice)
+                                            ) & Chr(10)
+
+                        Case "EPSON"
+
+                            '単品明細（販売額）印刷
+                            '商品名　カラー　サイズ
+                            pData = RECEIPT_LEFT_MARGIN_STAR & oTool.MidB(p.sProductName, 1, 20) & " "
+
+                            '取引明細データには個別にオプションが入っているため全て一つの文字列としてあわせる。
+                            '区切りにはコロン（：）を付けている
+                            If p.sOption1 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption1, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption2 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption2, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption3 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption3, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption4 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption4, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption5 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption5, 1, 20)
+                            End If
+
+                            If p.sReducedTaxRatePrice > 0 Then
+                                pData += REDUCE_TAX_MARK
+                            End If
+
+                            pData = pData & Chr(10)
+
+                            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+                            pData = RECEIPT_LEFT_MARGIN_STAR & String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+                                            CLng(p.sUnitPrice + p.sTaxPrice + p.sReducedTaxRatePrice),
+                                            CInt(p.sCount),
+                                            CLng(p.sPrice)
+                                            ) & Chr(10)
+
                             '2016.07.01 K.Oikawa s
                             '課題表No138 Star追加
-                            Case "STAR"
-                                '単品明細（販売額）印刷
-                                '商品名　カラー　サイズ
-                                pData = RECEIPT_LEFT_MARGIN_STAR & oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
-                                pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
 
-                                '2019.10.18 R.Takashima FROM
-                                If product(0).sReducedTaxRate = True Then
-                                    pData += REDUCE_TAX_MARK & Chr(10)
-                                    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
-                                Else
-                                    pData += Chr(10)
-                                    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
-                                End If
-                                '2019.10.18 R.Takashima TO
+                        Case "STAR"
 
-                                ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+                            '単品明細（販売額）印刷
+                            '商品名　カラー　サイズ
+                            pData = RECEIPT_LEFT_MARGIN_STAR & oTool.MidB(p.sProductName, 1, 20) & " "
 
-                                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
-                                                CLng(MEISAI_V("販売価格", i).Value),
-                                                CInt(MEISAI_V("数量", i).Value),
-                                                CLng(MEISAI_V("金額", i).Value)
-                                                ) & Chr(10)
-                                '2016.07.01 K.Oikawa e
-                        End Select
-                        ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-                        SYUKEI = SYUKEI + CLng(MEISAI_V("金額", i).Value)
-                        ITEM_i = ITEM_i + CInt(MEISAI_V("数量", i).Value)
+                            '取引明細データには個別にオプションが入っているため全て一つの文字列としてあわせる。
+                            '区切りにはコロン（：）を付けている
+                            If p.sOption1 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption1, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption2 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption2, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption3 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption3, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption4 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption4, 1, 20)
+                                pData = pData & " : "
+                            End If
+                            If p.sOption5 <> "" Then
+                                pData = pData & oTool.MidB(p.sOption5, 1, 20)
+                            End If
 
+                            If p.sReducedTaxRatePrice > 0 Then
+                                pData += REDUCE_TAX_MARK
+                            End If
+
+                            pData = pData & Chr(10)
+
+                            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+                            pData = RECEIPT_LEFT_MARGIN_STAR & String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+                                            CLng(p.sNoTaxPrice + p.sTaxPrice + p.sReducedTaxRatePrice),
+                                            CInt(p.sCount),
+                                            CLng(p.sPrice)
+                                            ) & Chr(10)
+                            '2016.07.01 K.Oikawa e
+                    End Select
+
+                    ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+                    SYUKEI = SYUKEI + CLng(p.sPrice)
+                    ITEM_i = ITEM_i + CInt(p.sCount)
+
+                    '2019.11.02 R.Takashima From
+                    If p.sTaxPrice > 0 Then
+                        sumPriceOfNormalTax += p.sPrice
+                    ElseIf p.sReducedTaxRatePrice > 0 Then
+                        sumPriceOfReduceTax += p.sPrice
                     End If
+                    '2019.11.02 R.Takashima To
+
             End Select
-        Next i
+        Next
+        '2019.11.1 R.Takashima To
+
+
+        '2019.11.02 R.Takashima From
+        '値の退避
+        normalTemp = sumPriceOfNormalTax
+        reduceTemp = sumPriceOfReduceTax
+
+        'ポイント値引きの按分計算
+        If DPGOUKEI > 0 Then
+            sumPriceOfNormalTax -= DPGOUKEI * normalTemp / SYUKEI
+            sumPriceOfReduceTax -= DPGOUKEI * reduceTemp / SYUKEI
+
+        End If
+
+        'チケット値引きの按分計算
+        'If DTGOUKEI > 0 Then
+        '            sumPriceOfNormalTax -= DTGOUKEI * normalTemp / SYUKEI
+        '            sumPriceOfReduceTax -= DTGOUKEI * reduceTemp / SYUKEI
+        'End If
+        'チケット値引きは今は通常税率で計算する
+        'もし税率を分けるときは上のコードを使う
+        If DTGOUKEI > 0 Then
+            sumPriceOfNormalTax -= DTGOUKEI
+        End If
+
+        '合計値引きの按分計算
+        If DGOUKEI > 0 Then
+
+            sumPriceOfNormalTax -= DGOUKEI * normalTemp / SYUKEI
+            sumPriceOfReduceTax -= DGOUKEI * reduceTemp / SYUKEI
+
+        End If
+
+        '2019.11.02 R.Takashima To
+
+
+
+        '2019.11.02 R.Takashima From
+        'コメントアウト
+
+        'SYUKEI = 0
+        'ITEM_i = 0
+        'For i = 0 To MEISAI_V.Rows.Count - 1
+        '    Select Case oMeisai(i).sJANCode
+        '        Case "(値引き)"
+        '            If oMeisai(i).sProductCode = "%" Then
+        '                Select Case PRINTER_MAKER
+        '                    Case "TEC"
+        '                        pData = String.Format("(単品値引き)  {0,2:###}%         {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                    Case "EPSON"
+        '                        pData = String.Format("(単品値引き)  {0,2:###}%    {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa s
+        '                        '課題表No138 Star追加
+        '                    Case "STAR"
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  {0,2:###}%    {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa e
+        '                End Select
+        '            Else
+        '                Select Case PRINTER_MAKER
+        '                    Case "TEC"
+        '                        pData = String.Format("(単品値引き)  \           {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                    Case "EPSON"
+        '                        pData = String.Format("(単品値引き)  \      {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa s
+        '                        '課題表No138 Star追加
+        '                    Case "STAR"
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  \      {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa e
+        '                End Select
+        '            End If
+        '            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+        '            SYUKEI = SYUKEI - MEISAI_V("値引き", i).Value
+        '            sumDiscount += MEISAI_V("値引き", i).Value
+        '        Case "(会員値引き)"
+        '            If oMeisai(i).sProductCode = "%" Then
+        '                Select Case PRINTER_MAKER
+        '                    Case "TEC"
+        '                        pData = String.Format("(会員値引き)  {0,2:###}%         {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                    Case "EPSON"
+        '                        pData = String.Format("(会員値引き)  {0,2:###}%    {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa s
+        '                        '課題表No138 Star追加
+        '                    Case "STAR"
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(会員値引き)  {0,2:###}%    {1,9:C}",
+        '                                            CLng(MEISAI_V("オプション", i).Value),
+        '                                            CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa e
+        '                End Select
+        '            Else
+        '                Select Case PRINTER_MAKER
+        '                    Case "TEC"
+        '                        pData = String.Format("(単品値引き)  \           {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                    Case "EPSON"
+        '                        pData = String.Format("(単品値引き)  \      {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa s
+        '                        '課題表No138 Star追加
+        '                    Case "STAR"
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(単品値引き)  \      {0,9:C}",
+        '                                CLng(MEISAI_V("値引き", i).Value)) & Chr(10)
+        '                        '2016.07.01 K.Oikawa e
+        '                End Select
+        '            End If
+        '            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+        '            SYUKEI = SYUKEI - MEISAI_V("値引き", i).Value
+        '            sumDiscount += MEISAI_V("値引き", i).Value
+        '        Case "(合計値引き)"
+        '            DGOUKEI = DGOUKEI - MEISAI_V("値引き", i).Value
+        '        Case "(送料)"
+        '            SOURYOU = SOURYOU + MEISAI_V("金額", i).Value
+        '        Case "(手数料)"
+        '            TESUURYOU = TESUURYOU + MEISAI_V("金額", i).Value
+        '        Case "(ポイント値引き)"
+        '            DPGOUKEI = DPGOUKEI - MEISAI_V("値引き", i).Value
+        '        Case "(チケット値引き)"
+        '            DTGOUKEI = DTGOUKEI - MEISAI_V("値引き", i).Value
+        '        Case Else
+
+        '            ReDim product(0)
+        '            'If oMstProductDBIO.getProductSalePrice(product,
+        '            '                            CHANNEL_CODE,
+        '            '                            MEISAI_V("商品コード", i).Value,
+        '            '                            MEISAI_V("JANコード", i).Value,
+        '            '                            oTran
+        '            '                            ) <> 0 Then
+        '            If True Then
+        '                '販売価格 × 数量 = 金額
+        '                Select Case PRINTER_MAKER
+        '                    Case "TEC"
+        '                        '単品明細（販売額）印刷
+        '                        '商品名　カラー　サイズ
+        '                        pData = oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
+        '                        pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
+
+        '                        '2019.10.18 R.Takashima FROM
+        '                        'If product(0).sReducedTaxRate = True Then
+        '                        '    pData += REDUCE_TAX_MARK & Chr(10)
+        '                        '    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
+        '                        'Else
+        '                        '    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
+        '                        'End If
+        '                        '2019.10.18 R.Takashima TO
+
+        '                        ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+        '                        pData = String.Format("      {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+        '                                   CLng(MEISAI_V("販売価格", i).Value),
+        '                                   CInt(MEISAI_V("数量", i).Value),
+        '                                   CLng(MEISAI_V("金額", i).Value)
+        '                                   ) & Chr(10)
+        '                    Case "EPSON"
+        '                        '単品明細（販売額）印刷
+        '                        '商品名　カラー　サイズ
+        '                        pData = oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
+        '                        pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
+
+        '                        '2019.10.18 R.Takashima FROM
+        '                        'If product(0).sReducedTaxRate = True Then
+        '                        '    pData += REDUCE_TAX_MARK & Chr(10)
+        '                        '    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
+        '                        'Else
+        '                        '    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
+        '                        'End If
+        '                        '2019.10.18 R.Takashima TO
+
+        '                        ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+        '                        pData = String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+        '                                        CLng(MEISAI_V("販売価格", i).Value),
+        '                                        CInt(MEISAI_V("数量", i).Value),
+        '                                        CLng(MEISAI_V("金額", i).Value)
+        '                                        ) & Chr(10)
+        '                    '2016.07.01 K.Oikawa s
+        '                    '課題表No138 Star追加
+        '                    Case "STAR"
+        '                        '単品明細（販売額）印刷
+        '                        '商品名　カラー　サイズ
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & oTool.MidB(oMeisai(i).sProductName, 1, 20) & " "
+        '                        pData = pData & oTool.MidB(MEISAI_V("オプション", i).Value, 1, 20)
+
+        '                        '2019.10.18 R.Takashima FROM
+        '                        'If product(0).sReducedTaxRate = True Then
+        '                        '    pData += REDUCE_TAX_MARK & Chr(10)
+        '                        '    sumPriceOfReduceTax += MEISAI_V("金額", i).Value
+        '                        'Else
+        '                        '    pData += Chr(10)
+        '                        '    sumPriceOfNormalTax += MEISAI_V("金額", i).Value
+        '                        'End If
+        '                        '2019.10.18 R.Takashima TO
+
+        '                        ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
+        '                        pData = RECEIPT_LEFT_MARGIN_STAR & String.Format(" {0,6:C} × {1,7:#,##0.#} = {2,9:C}",
+        '                                        CLng(MEISAI_V("販売価格", i).Value),
+        '                                        CInt(MEISAI_V("数量", i).Value),
+        '                                        CLng(MEISAI_V("金額", i).Value)
+        '                                        ) & Chr(10)
+        '                        '2016.07.01 K.Oikawa e
+        '                End Select
+        '                ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+        '                SYUKEI = SYUKEI + CLng(MEISAI_V("金額", i).Value)
+        '                ITEM_i = ITEM_i + CInt(MEISAI_V("数量", i).Value)
+
+        '            End If
+        '    End Select
+        'Next i
+        '2019.11.1 R.Takashima To
+
 
         '小計行印刷
         Select Case PRINTER_MAKER
@@ -5050,10 +5494,11 @@ Public Class fRegister
             Case "STAR"
                 pData = RECEIPT_LEFT_MARGIN_STAR & "------------------------------" & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("小計                  {0,9:C}", SYUKEI) & Chr(10)
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("小計                 {0,9:C}", SYUKEI) & Chr(10)
                 '2016.07.01 K.Oikawa e
         End Select
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
 
         '合計値引き額印刷
         Select Case PRINTER_MAKER
@@ -5071,20 +5516,26 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         'ポイント値引き額印刷
-        If POINT_MEMBER_CODE <> "" Then
-            Select Case PRINTER_MAKER
-                Case "TEC"
-                    pData = String.Format("(ポイント値引き)  \       {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
-                Case "EPSON"
-                    pData = String.Format("(ポイント値引き)  \  {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
+
+        '2019.11.1 R.Takashima From
+        '会員ではなくても明細には表示させる
+        'If POINT_MEMBER_CODE <> "" Then
+        '2019.11.1 R.Takashima To
+
+        Select Case PRINTER_MAKER
+            Case "TEC"
+                pData = String.Format("(ポイント値引き)  \       {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
+            Case "EPSON"
+                pData = String.Format("(ポイント値引き)  \  {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
                     '2016.07.01 K.Oikawa s
                     '課題表No138 Star追加
-                Case "STAR"
-                    pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(ポイント値引き)  \   {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
-                    '2016.07.01 K.Oikawa e
-            End Select
+            Case "STAR"
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(ポイント値引き)  \  {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
+                '2016.07.01 K.Oikawa e
+        End Select
             ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-        End If
+        'End If
+
 
         'チケット値引き額印刷
         Select Case PRINTER_MAKER
@@ -5095,69 +5546,99 @@ Public Class fRegister
                 '2016.07.01 K.Oikawa s
                 '課題表No138 Star追加
             Case "STAR"
-                '2019.10.23　文字の微調整により空白を削除
                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(チケット値引き)  \  {0,9:C}", System.Math.Abs(DTGOUKEI)) & Chr(10)
                 '2016.07.01 K.Oikawa e
         End Select
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
+
         '送料印刷
         Select Case PRINTER_MAKER
+            '2019.11.02 R.Takashima From
+            '明細読み込み時にデータを入れているのに使われていなかったため変更
             Case "TEC"
-                pData = String.Format("(送料)  \            {0,9:C}", POSTAGE_CASH) & Chr(10)
+                'pData = String.Format("(送料)  \            {0,9:C}", POSTAGE_CASH) & Chr(10)
+                pData = String.Format("(送料)  \            {0,9:C}", SOURYOU) & Chr(10)
             Case "EPSON"
-                pData = String.Format("(送料)  \            {0,9:C}", POSTAGE_CASH) & Chr(10)
+                'pData = String.Format("(送料)  \            {0,9:C}", POSTAGE_CASH) & Chr(10)
+                pData = String.Format("(送料)  \            {0,9:C}", SOURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa s
                 '課題表No138 Star追加
             Case "STAR"
-                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \             {0,9:C}", POSTAGE_CASH) & Chr(10)
+                'pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \             {0,9:C}", POSTAGE_CASH) & Chr(10)
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(送料)  \            {0,9:C}", SOURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa e
+                '2019.11.02 R.Takashima To
         End Select
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
 
         '手数料印刷
         Select Case PRINTER_MAKER
+            '2019.11.02 R.Takashima From
+            '明細読み込み時にデータを入れているのに使われていなかったため変更
             Case "TEC"
-                pData = String.Format("(手数料)  \               {0,9:C}", FEE_CASH) & Chr(10)
+                'pData = String.Format("(手数料)  \               {0,9:C}", FEE_CASH) & Chr(10)
+                pData = String.Format("(手数料)  \               {0,9:C}", TESUURYOU) & Chr(10)
             Case "EPSON"
-                pData = String.Format("(手数料)  \          {0,9:C}", FEE_CASH) & Chr(10)
+                'pData = String.Format("(手数料)  \          {0,9:C}", FEE_CASH) & Chr(10)
+                pData = String.Format("(手数料)  \          {0,9:C}", TESUURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa s
                 '課題表No138 Star追加
             Case "STAR"
-                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \           {0,9:C}", FEE_CASH) & Chr(10)
+                'pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \           {0,9:C}", FEE_CASH) & Chr(10)
+                pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(手数料)  \          {0,9:C}", TESUURYOU) & Chr(10)
                 '2016.07.01 K.Oikawa e
+                '2019.11.02 R.Takashima To
         End Select
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
+
+        '2019.11.02 R.Takashima From
+        '請求金額の合計を追加
+        sumPrice = SYUKEI - DGOUKEI - DPGOUKEI - DTGOUKEI + SOURYOU + TESUURYOU
+        '2019.11.02 R.Takashima To
+
+
         '最終請求額印刷
         Select Case PRINTER_MAKER
+            '2019.11.02 R.Takashima From
+            'TOTAL_CASHを変更
             Case "TEC"
                 pData = "-----------------------------------" & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+                'pData = Chr(27) & "|bC" &
+                '        String.Format("ご請求金額                {0,9:C}", TOTAL_CASH) & Chr(10)
                 pData = Chr(27) & "|bC" &
-                        String.Format("ご請求金額                {0,9:C}", TOTAL_CASH) & Chr(10)
+                        String.Format("ご請求金額                 {0,9:C}", sumPrice) & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
             Case "EPSON"
                 pData = "------------------------------" & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+                'pData = Chr(27) & "|bC" &
+                '        String.Format("ご請求金額           {0,9:C}", TOTAL_CASH) & Chr(10)
                 pData = Chr(27) & "|bC" &
-                        String.Format("ご請求金額           {0,9:C}", TOTAL_CASH) & Chr(10)
+                        String.Format("ご請求金額                 {0,9:C}", sumPrice) & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
                 '2016.07.01 K.Oikawa s
                 '課題表No138 Star追加
             Case "STAR"
                 pData = RECEIPT_LEFT_MARGIN_STAR & "------------------------------" & Chr(10)
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
-                'pData = Chr(27) & "|bC" & _
-                '        String.Format("ご請求金額           {0,9:C}", TOTAL_CASH) & Chr(10)
+
+                'pData = Chr(27) & "|bC" &
+                '        RECEIPT_LEFT_MARGIN_STAR & String.Format("ご請求金額           {0,9:C}", TOTAL_CASH) & Chr(10)
 
                 pData = Chr(27) & "|bC" &
-                        RECEIPT_LEFT_MARGIN_STAR & String.Format("ご請求金額           {0,9:C}", TOTAL_CASH) & Chr(10)
+                        RECEIPT_LEFT_MARGIN_STAR & String.Format("ご請求金額           {0,9:C}", sumPrice) & Chr(10)
 
                 ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
                 '2016.07.01 K.Oikawa e
+                '2019.11.02 R.Takashima
         End Select
 
+        '2019.10.18 R.Takashima From
+        'コメントアウト
         ''消費税
         'Select Case PRINTER_MAKER
         '    Case "TEC"
@@ -5173,11 +5654,18 @@ Public Class fRegister
         '                RECEIPT_LEFT_MARGIN_STAR & String.Format("（内消費税）         {0,9:C}", oTool.AfterToTax(TOTAL_CASH, oConf(0).sTax, oConf(0).sFracProc)) & Chr(10)
         '        '2016.07.01 K.Oikawa e
         'End Select
+        '2019.10.18 R.Takashima To
+
 
 
         '2019.10.18 R.Takashima FROM
         '税区分ごとの消費税
-        sumPriceOfNormalTax = sumPriceOfNormalTax + POSTAGE_CASH + FEE_CASH + DGOUKEI + DPGOUKEI + DTGOUKEI - sumDiscount
+
+        '2019.11.02 R.Takashima From
+        '送料と手数料以外は既に計算してあるのでここでは計算しない
+        'sumPriceOfNormalTax = sumPriceOfNormalTax + POSTAGE_CASH + FEE_CASH + DGOUKEI + DPGOUKEI + DTGOUKEI - sumDiscount
+        sumPriceOfNormalTax += POSTAGE_CASH + FEE_CASH
+        '2019.11.02 R.Takashima To
         Select Case PRINTER_MAKER
             Case "TEC"
                 tax = oConf(0).sTax
@@ -5214,6 +5702,7 @@ Public Class fRegister
 
         End Select
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+
 
 
         Select Case SEISAN_MODE
@@ -5438,7 +5927,7 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '日付時間印刷
-        pData = Chr(27) & "|1C" & Format(Now, "                      yyyy年MM月dd日") & Chr(10)
+        pData = Chr(27) & "|1C" & Format(Now, "                     yyyy年MM月dd日") & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
 
@@ -5447,7 +5936,7 @@ Public Class fRegister
         str = oTool.MidB(str.ToString, str.Length - 9, 10)
 
         pData = Chr(27) & "|1C" &
-               String.Format("                 取引番号:{0,10:##0}", str) & Chr(10)
+               String.Format("                取引番号:{0,10:##0}", str) & Chr(10)
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '改行
@@ -5471,8 +5960,18 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         '但し書き部分印刷
-        pData = Chr(27) & "|1C" &
-               String.Format("（但し　　　　として領収致しました）") & Chr(10)
+        '2019.11.15 R.Takashima From
+        '但し書き部分が少なかったので
+        '改行して表示するよう変更
+
+        'pData = Chr(27) & "|1C" &
+        '       String.Format("（但し　　    として領収致しました）") & Chr(10)
+
+        pData = Chr(10) & Chr(27) & "|1C" &
+               String.Format("（但し") & Chr(10) & Chr(10)
+        pData = pData & "　　　　　    として領収致しました）" & Chr(10)
+        '2019.11.15 R.Takashima To
+
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
         '改行()
         pData = "" & Chr(10)
@@ -5489,7 +5988,7 @@ Public Class fRegister
         ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
 
         'ローテート印刷 Off (通常印刷モード設定)
-        ret = oPrinter.RotatePrint(PTR_S_RECEIPT, PTR_RP_NORMAL)
+        'ret = oPrinter.RotatePrint(PTR_S_RECEIPT, PTR_RP_NORMAL)
 
         '改行()
         pData = "" & Chr(10)
@@ -5994,6 +6493,32 @@ Public Class fRegister
             Else                                    '入力ありの場合
                 ret = CAL_PROC(Mode)      '集計（カテゴリ番号）
 
+                '2019.11.16 R.Takashima From
+                '値引き額が入力されていないとき（D_MODE = 0）は
+                '入力を促すメッセージを表示し、処理を終了させる
+                If ret = False Then
+                    Dim mes = New cMessageLib.fMessage(1,
+                                                "金額が入力されていません。",
+                                                "入力してから割引ボタンを押下してください。",
+                                                Nothing,
+                                                Nothing
+                                                )
+                    mes.ShowDialog()
+                    mes.Dispose()
+
+                    '入力モードのリセット
+                    D_MODE = 0
+
+                    '取引データ入力中を設定
+                    T_MODE = 1
+
+                    '取引明細区分=売上を設定
+                    SUBTRNCLASS = 1
+
+                    Exit Sub
+                End If
+                '2019.11.16 R.Takashima To
+
                 '日次取引明細データ更新
                 If Mode = "%" Then
                     DAY_SUBTRN_INSERT(Mode, DISCOUNT_RATE)
@@ -6357,9 +6882,6 @@ Public Class fRegister
 
                 MEMBER_SET(Customer_form.MEMBER_CODE_T.Text)
 
-                '会員LEDの表示切換え
-                LED_CHANGE()
-
             Else
                 MEMBER_CODE = ""
                 MEMBER_CODE_T.Text = ""
@@ -6662,6 +7184,12 @@ Public Class fRegister
                                              oTran)
 
             PRODUCT_SET(oProductSalePrice(0))
+
+            '2019.11.15 R.Takashima From
+            '初期化をしないと別の場所で異なる値が入る
+            ReDim oProductSalePrice(0)
+            '2019.11.15 R.Takashima To
+
         Else
             '2019.10.15 R.Takashima FROM
             '値引時の商品情報を処理
@@ -7196,39 +7724,57 @@ Public Class fRegister
         'RECEIPT_PRINTING()
         '課題表No134　再発行が機能していない ここで画面に取引コードをセットし直すなどの処理が必要
         'フラグ設定：取引コードを読み込むが、返品処理ではない
-
         If Not IsNumeric(TRNCODE) Then
             Exit Sub
         End If
+
+        R_MODE = True
+
+        '取得したJANコード(取引コード)を使って読み込み
+        If TRN_SEARCH(oTool.JANCD("98" _
+                  & String.Format("{0:0}", CHANNEL_CODE) _
+                  & String.Format("{0:000000000}", TRNCODE - 1)
+                 )) Then
+
+            TRN_SET(oTrn)
+
+            RECEIPT_PRINTING()
+
+            VALUE_INIT(0)
+
+            R_MODE = False
+
+        End If
+        '2016.07.04 K.Oikawa e
 
         '2019.10.25 R.Takashima From
         '返品時や取引中止時にはレシート発行しないが
         '再発行時はレシートの発行が出来るため、出来ないように修正
 
-        R_MODE = True
+        'R_MODE = True
 
-        '取得したJANコード(取引コード)を使って読み込み
-        While True
-            If TRN_SEARCH(oTool.JANCD("98" _
-                  & String.Format("{0:0}", CHANNEL_CODE) _
-                  & String.Format("{0:000000000}", TRNCODE - 1)
-                 )) Then
-                If oTrn(0).sTrnClass <> "中止" And oTrn(0).sTrnClass <> "戻入" Then
+        ''取得したJANコード(取引コード)を使って読み込み
+        'While True
+        '    If TRN_SEARCH(oTool.JANCD("98" _
+        '          & String.Format("{0:0}", CHANNEL_CODE) _
+        '          & String.Format("{0:000000000}", TRNCODE - 1)
+        '         )) Then
+        '        If oTrn(0).sTrnClass <> "中止" And oTrn(0).sTrnClass <> "戻入" Then
 
-                    TRN_SET(oTrn)
+        '            TRN_SET(oTrn)
 
-                    RECEIPT_PRINTING()
+        '            RECEIPT_PRINTING()
 
-                    VALUE_INIT(0)
+        '            VALUE_INIT(0)
 
-                    R_MODE = False
-                Else
-                    TRNCODE -= 1
-                End If
-            Else
-                Exit While
-            End If
-        End While
+        '            R_MODE = False
+        '        Else
+        '            TRNCODE -= 1
+        '        End If
+        '    Else
+        '        Exit While
+        '    End If
+        'End While
         '2019.10.25 R.Takashima To
         '2016.07.04 K.Oikawa e
     End Sub
@@ -7347,51 +7893,65 @@ Public Class fRegister
             DISP_INIT("PRODUCT")
 
             '精算ボタンイネーブル
-            CASH_B.Enabled = True
-            CREDIT_B.Enabled = True
-
+            '2019.11.15 R.Takashima From
+            'チャンネルによって信用払いのみの場合があるため修正
+            'CASH_B.Enabled = True
+            'CREDIT_B.Enabled = True
+            If oChannel(0).sChannelClass = 1 Then
+                CASH_B.Enabled = True
+                CREDIT_B.Enabled = True
+                NOVEL_B.Enabled = True
+                IN_SALES_B.Enabled = True
+            ElseIf oChannel(0).sChannelClass = 2 Then
+                CASH_B.Enabled = False
+                CREDIT_B.Enabled = True
+                NOVEL_B.Enabled = False
+                IN_SALES_B.Enabled = False
+            End If
             '2016.09.12 K.Oikawa s
             '課題表No.169 返品モード以外で「戻入」は使用しない
             'TRADE_RETURN_B.Enabled = True
             TRADE_RETURN_B.Enabled = False
             '2016.09.12 K.Oikawa e
 
-            NOVEL_B.Enabled = True
-            IN_SALES_B.Enabled = True
+            'NOVEL_B.Enabled = True
+            'IN_SALES_B.Enabled = True
+
+            '2019.11.15 R.Takashima To
 
             '合計モード On
             G_MODE = True
 
-            MORE_B.Enabled = False
-        Else    '返品モードの場合
+                MORE_B.Enabled = False
+            Else    '返品モードの場合
 
-            '2016.06.28 K.Oikawa s
-            'ポイントメンバーの場合、利用ポイント数の入力
-            'If POINT_MEMBER_CODE <> "" Then
-            '    fPointCheck_form = New fPointCheck(oConn, oCommand, oDataReader, oConf(0), POINT_MEMBER_CODE, TOTAL_CASH * -1, 0, oTran)
-            '    fPointCheck_form.ShowDialog()
-            '    If fPointCheck_form.DialogResult = Windows.Forms.DialogResult.Cancel Or CLng(fPointCheck_form.USE_POINT_T.Text) = 0 Then
-            '        fPointCheck_form.Dispose()
-            '        fPointCheck_form = Nothing
-            '    Else
-            '        USE_POINT_i = USE_POINT_i + CLng(fPointCheck_form.USE_POINT_T.Text)
-            '        POINT_i = POINT_INSERT(0, CLng(fPointCheck_form.USE_POINT_T.Text))
-            '        DISPLAY_T.Text = fPointCheck_form.USE_POINT_T.Text
-            '        fPointCheck_form.Dispose()
-            '        fPointCheck_form = Nothing
+                '2016.06.28 K.Oikawa s
+                'ポイントメンバーの場合、利用ポイント数の入力
+                'If POINT_MEMBER_CODE <> "" Then
+                '    fPointCheck_form = New fPointCheck(oConn, oCommand, oDataReader, oConf(0), POINT_MEMBER_CODE, TOTAL_CASH * -1, 0, oTran)
+                '    fPointCheck_form.ShowDialog()
+                '    If fPointCheck_form.DialogResult = Windows.Forms.DialogResult.Cancel Or CLng(fPointCheck_form.USE_POINT_T.Text) = 0 Then
+                '        fPointCheck_form.Dispose()
+                '        fPointCheck_form = Nothing
+                '    Else
+                '        USE_POINT_i = USE_POINT_i + CLng(fPointCheck_form.USE_POINT_T.Text)
+                '        POINT_i = POINT_INSERT(0, CLng(fPointCheck_form.USE_POINT_T.Text))
+                '        DISPLAY_T.Text = fPointCheck_form.USE_POINT_T.Text
+                '        fPointCheck_form.Dispose()
+                '        fPointCheck_form = Nothing
 
-            '        D_MODE = 1
+                '        D_MODE = 1
 
-            '        '取引明細区分=値引きを設定
-            '        SUBTRNCLASS = M_DISCOUNT_P
+                '        '取引明細区分=値引きを設定
+                '        SUBTRNCLASS = M_DISCOUNT_P
 
-            '        DISCOUNT_PROC(Nothing)
-            '    End If
-            'End If
-            '2016.06.28 K.Oikawa e
+                '        DISCOUNT_PROC(Nothing)
+                '    End If
+                'End If
+                '2016.06.28 K.Oikawa e
 
-            'キー入力音出力
-            oTool.PlaySound()
+                'キー入力音出力
+                oTool.PlaySound()
 
             '取引明細区分=値引きを設定
             SUBTRNCLASS = M_DISCOUNT_T

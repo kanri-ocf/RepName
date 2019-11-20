@@ -68,7 +68,7 @@
   <ItemGroup>
     <Reference Include="cMessageLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\cMessageLib\obj\Release\cMessageLib.dll</HintPath>
+      <HintPath>..\cMessageLib\cMessageLib.dll</HintPath>
     </Reference>
     <Reference Include="cStructureLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>

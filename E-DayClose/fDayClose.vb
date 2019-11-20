@@ -1016,14 +1016,21 @@
         '-------------------------------------------------------------------------------------------
         '2019/10/5 suzuki「送料の合計」と「手数料の合計」を正しく取るためのメゾット呼び出し追加
         '-------------------------------------------------------------------------------------------
+        '2019/11/16 Takashima  From
+        'getTrnSummary2で送料と手数料を取得する際にgetTrnSummaryで取得した値を上書きしている。
+        'RecordCntはgetTrnSummaryで取得した値を使っているためgetTrnSummary2で取得した値は配列の範囲外になる。
+        'よってgetTrnSummaryで送料、手数料を取得しgetTrnSummary2はコメントアウトする
+        '-------------------------------------------------------------------------------------------
         ReDim oTrnSummary(0)
         If KeyCloseDate = Nothing Then
             RecordCnt = oTrnSummaryDBIO.getTrnSummary(oTrnSummary, Nothing, oTran)
-            oTrnSummaryDBIO.GetTrnSummary2(oTrnSummary, Nothing, oTran)
+            'oTrnSummaryDBIO.GetTrnSummary2(oTrnSummary, Nothing, oTran)
         Else
             RecordCnt = oTrnSummaryDBIO.getTrnSummary(oTrnSummary, CLOSE_DATE_T.Text.ToString.Replace(" ", ""), oTran)
-            oTrnSummaryDBIO.GetTrnSummary2(oTrnSummary, CLOSE_DATE_T.Text.ToString.Replace(" ", ""), oTran)
+            'oTrnSummaryDBIO.GetTrnSummary2(oTrnSummary, CLOSE_DATE_T.Text.ToString.Replace(" ", ""), oTran)
         End If
+        '-------------------------------------------------------------------------------------------
+        '2019/11/17 R.Takashima To
         '-------------------------------------------------------------------------------------------
         '2019/10/5 suzuki「送料の合計」と「手数料の合計」を正しく取るためのメゾット呼び出し追加 END
         '-------------------------------------------------------------------------------------------
@@ -1032,15 +1039,25 @@
         '表示設定
         TotalCash = 0
         For i = 0 To RecordCnt - 1
-            SUM_V.Rows.Add( _
-                    oTrnSummary(i).sTrnClass, _
-                    oTrnSummary(i).sChannelName, _
-                    oTrnSummary(i).sBumonShortName, _
-                    oTrnSummary(i).sPaymentName, _
-                    oTrnSummary(i).sCount, _
-                    oTrnSummary(i).sPrice, _
-                    oTrnSummary(i).sShippingCharge, _
-                    oTrnSummary(i).sPaymentCharge _
+
+            '-------------------------------------------------------------------------------------------
+            '2019/11/17 R.Takashima From 　売上金額が税込みのため送料、手数料ともに税込みにする
+            '-------------------------------------------------------------------------------------------
+            oTrnSummary(i).sShippingCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
+            oTrnSummary(i).sPaymentCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
+            ''-------------------------------------------------------------------------------------------
+            '2019/11/17 R.Takashima To
+            '-------------------------------------------------------------------------------------------
+
+            SUM_V.Rows.Add(
+                    oTrnSummary(i).sTrnClass,
+                    oTrnSummary(i).sChannelName,
+                    oTrnSummary(i).sBumonShortName,
+                    oTrnSummary(i).sPaymentName,
+                    oTrnSummary(i).sCount,
+                    oTrnSummary(i).sPrice,
+                    oTrnSummary(i).sShippingCharge,
+                    oTrnSummary(i).sPaymentCharge
             )
             Select Case oTrnSummary(i).sPaymentName
                 Case "現金払い"
@@ -1289,60 +1306,58 @@
         Dim Check_Form As cMessageLib.fCheckMessage
         Dim RecordCount As Long
 
-
         ' 明細部の出力要否を確認する
         MS_PRINT_FLG = False
-        STAFF_RIGHTS_FLG = False
+            STAFF_RIGHTS_FLG = False
 
-        oMstStaffDBIO = New cMstStaffDBIO(oConn, oCommand, oDataReader)
-        RecordCount = oMstStaffDBIO.getStaff(oMstStaff, STAFF_CODE, Nothing, Nothing, Nothing, oTran)
+            oMstStaffDBIO = New cMstStaffDBIO(oConn, oCommand, oDataReader)
+            RecordCount = oMstStaffDBIO.getStaff(oMstStaff, STAFF_CODE, Nothing, Nothing, Nothing, oTran)
 
-        ' 社員のみ、チェックボックスを操作可能にする
-        If oMstStaff(0).sStaffClass = "E" Then
-            STAFF_RIGHTS_FLG = True
-        End If
+            ' 社員のみ、チェックボックスを操作可能にする
+            If oMstStaff(0).sStaffClass = "E" Then
+                STAFF_RIGHTS_FLG = True
+            End If
 
-        Check_Form = New cMessageLib.fCheckMessage("明細部を印書しますか？", _
-                                                   "明細を印書する。", _
-                                                   MS_PRINT_FLG, _
-                                                   STAFF_RIGHTS_FLG)
-        Check_Form.ShowDialog()
+            Check_Form = New cMessageLib.fCheckMessage("明細部を印書しますか？",
+                                                       "明細を印書する。",
+                                                       MS_PRINT_FLG,
+                                                       STAFF_RIGHTS_FLG)
+            Check_Form.ShowDialog()
 
-        Application.DoEvents()
+            Application.DoEvents()
 
-        If Check_Form.DialogResult = Windows.Forms.DialogResult.Yes Then
-            MS_PRINT_FLG = True
-        Else
-            MS_PRINT_FLG = False
-        End If
-        ' *** END   K.MINAGAWA 2013/04/29 ***
+            If Check_Form.DialogResult = Windows.Forms.DialogResult.Yes Then
+                MS_PRINT_FLG = True
+            Else
+                MS_PRINT_FLG = False
+            End If
+            ' *** END   K.MINAGAWA 2013/04/29 ***
 
-        'メッセージウィンドウ表示
-        Dim Message_form As cMessageLib.fMessage
-        Message_form = New cMessageLib.fMessage(0, "日次集計表を印刷中です。", _
-                                        "しばらくお待ちください。", _
-                                        Nothing, Nothing)
-        Message_form.Show()
+            'メッセージウィンドウ表示
+            Dim Message_form As cMessageLib.fMessage
+            Message_form = New cMessageLib.fMessage(0, "日次集計表を印刷中です。",
+                                            "しばらくお待ちください。",
+                                            Nothing, Nothing)
+            Message_form.Show()
 
-        Application.DoEvents()
+            Application.DoEvents()
 
-        AdjustCode = oAdjustDBIO.readMaxAdjustCode("精算", Nothing, "=", oTran)
-        oAdjustDBIO.updateDayCloseDate(AdjustCode, oTool.MaskClear(CLOSE_DATE_T.Text), oTran)
+            AdjustCode = oAdjustDBIO.readMaxAdjustCode("精算", Nothing, "=", oTran)
+            oAdjustDBIO.updateDayCloseDate(AdjustCode, oTool.MaskClear(CLOSE_DATE_T.Text), oTran)
 
-        If OUTPUT1_R.Checked = True Then
-            ret = JURNAL_PRINTING()
-        Else
-            ret = REPORT_PRINTING()
-        End If
-        If ret = True Then
-            PRINT_FLG = True
-        End If
+            If OUTPUT1_R.Checked = True Then
+                ret = JURNAL_PRINTING()
+            Else
+                ret = REPORT_PRINTING()
+            End If
+            If ret = True Then
+                PRINT_FLG = True
+            End If
 
-        ' *** START K.MINAGAWA 2013/04/29 ***
-        Check_Form.Dispose()
+            ' *** START K.MINAGAWA 2013/04/29 ***
+            Check_Form.Dispose()
         ' *** END   K.MINAGAWA 2013/04/29 ***
         Message_form.Dispose()
-
     End Sub
 
     Private Sub RET_CASH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RET_CASH_B.Click

@@ -77,12 +77,12 @@
 
         If POINT_MEMBER_CODE <> "" Then
             oMstPointMemberDBIO = New cMstPointMemberDBIO(oConn, oCommand, oDataReader)
-            RecordCount = oMstPointMemberDBIO.getPointMember(oPointMember, _
-                                           POINT_MEMBER_CODE, _
-                                           POINT_MEMBER_CODE, _
-                                           Nothing, _
-                                           Nothing, _
-                                           Nothing, _
+            RecordCount = oMstPointMemberDBIO.getPointMember(oPointMember,
+                                           POINT_MEMBER_CODE,
+                                           POINT_MEMBER_CODE,
+                                           Nothing,
+                                           Nothing,
+                                           Nothing,
                                            oTran)
             POINT_MEMBER_CODE_T.Text = oPointMember(0).sPointMemberCode
             POINT_MEMBER_NAME_T.Text = oPointMember(0).sPointMemberName
@@ -103,7 +103,12 @@
         Else
             POINT_T.Text = 0
         End If
-        USE_POINT_T.Text = 0
+        '2019.11.16 R.Takashima From
+        '値を取得しているのに使っていないため変更
+        'USE_POINT_T.Text = 0
+        USE_POINT_T.Text = USE_POINT
+        '2019.11.16 R.Takashima To
+
         ADD_P_T.Text = oTool.ToRoundDown((TOTAL_PRICE - CLng(USE_POINT_T.Text)) * (oConf.sPointRATE / oConf.sPointEN), 0)
         RE_POINT_T.Text = POINT_T.Text + ADD_P_T.Text
 
@@ -182,8 +187,15 @@
     End Sub
 
     Private Sub ALL_POINT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ALL_POINT_B.Click
-
-        USE_POINT_T.Text = POINT_T.Text
+        '2019.11.16 R.Takashima From
+        '合計金額よりポイント数が多いと取得ポイント、残りポイントがマイナスになるため修正
+        'USE_POINT_T.Text = POINT_T.Text
+        If CLng(POINT_T.Text) > TOTAL_PRICE Then
+            USE_POINT_T.Text = TOTAL_PRICE
+        Else
+            USE_POINT_T.Text = POINT_T.Text
+        End If
+        '2019.11.16 R.Takashima To
         CAL_PROC()
 
         COMMIT_B.Focus()
@@ -191,6 +203,14 @@
     End Sub
 
     Private Sub USE_POINT_T_TextChanged(sender As Object, e As EventArgs) Handles USE_POINT_T.TextChanged
+        '2019.11.16 R.Takashima From
+        '合計金額よりポイント数が多いと取得ポイント、残りポイントがマイナスになるため修正
+        If IsNumeric(USE_POINT_T.Text) Then
+            If CLng(USE_POINT_T.Text) > TOTAL_PRICE Then
+                USE_POINT_T.Text = TOTAL_PRICE
+            End If
+        End If
+        '2019.11.16 R.Takashima To
         CAL_PROC()
         USE_POINT_T.Focus()
     End Sub

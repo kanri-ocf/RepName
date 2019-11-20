@@ -39,7 +39,12 @@
 
         oDrawer = iDrawer
 
-        oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
+        '2019.11.16 R.Takashima From
+        '決定ボタンでNothingにされているため呼び出し元がオブジェクトを保持してる場合
+        '再読み込み時にoMstMemberDBIOが無効になっているためエラーが発生する
+        'よってこの処理をLoadイベントに移動
+        'oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
+        '2019.11.16 R.Takashima To
 
     End Sub
     '******************************************************************
@@ -91,6 +96,8 @@
         ConArry(12) = WEA_C4
 
         MEMBER_CODE_T.Focus()
+
+        oMstMemberDBIO = New cMstMemberDBIO(oConn, oCommand, oDataReader)
     End Sub
     Public Sub SetData(ByVal Code, ByVal Name)
         STAFF_NAME_T.Text = Name
@@ -647,9 +654,13 @@
         End Select
     End Sub
 
-    'ShowDialogをオーバーライドをし、天気だけデータをクリックされた状態にしてShowDialogを呼び出す
+    'ShowDialogをオーバーロードをし、天気だけデータをクリックされた状態にしてShowDialogを呼び出す
     Public Overloads Sub ShowDialog(ByVal weather As String)
         Dim i As Integer = 0
+        '2019.11.16 R.Takashima FROM
+        '値の初期化
+        MEMBER_INIT()
+        '2019.11.16 R.Takashima TO
         If IsNothing(ConArry) = False Then
 
             For Each arry As CheckBox In ConArry

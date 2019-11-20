@@ -196,5 +196,12 @@ Public Class fSelectJAN
         Me.Dispose()
     End Sub
 
+    '2019.11.15 R.Takashima From
+    'put RETURN BUTTON 
+    Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
+        DialogResult = Windows.Forms.DialogResult.Cancel
+        Dispose()
+    End Sub
+    '2019.11.15 R.Takashima To
 End Class
 

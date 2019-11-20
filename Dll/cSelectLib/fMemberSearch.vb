@@ -246,8 +246,8 @@
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                        "条件を変更して再建策して下さい", _
+            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                        "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
