@@ -378,46 +378,48 @@ Public Class cDataArrivalDBIO
         Try
 
             'SQL文の設定
-            strInsertArrival = "INSERT INTO 入庫情報データ (" & _
-                                                "発注コード, " & _
-                                                "入庫番号, " & _
-                                                "入庫日, " & _
-                                                "仕入先コード, " & _
-                                                "支払方法コード, " & _
-                                                "入庫税抜商品金額, " & _
-                                                "送料, " & _
-                                                "手数料, " & _
-                                                "値引き, " & _
-                                                "ポイント値引き, " & _
-                                                "入庫税抜金額, " & _
-                                                "入庫消費税額, " & _
-                                                "入庫税込金額, " & _
-                                                "完納フラグ, " & _
-                                                "入庫担当者コード, " & _
-                                                "登録日, " & _
-                                                "登録時間, " & _
-                                                "最終更新日, " & _
-                                                "最終更新時間 " & _
-                                            ") VALUES (" & _
-                                                "@OrderCode, " & _
-                                                "@ArrivalNo, " & _
-                                                "@ArrivalDate, " & _
-                                                "@SupplierCode, " & _
-                                                "@PaymentCode, " & _
-                                                "@NoTaxProductPrice, " & _
-                                                "@ShippingCharge, " & _
-                                                "@PaymentCharge, " & _
-                                                "@Discount, " & _
-                                                "@PointDisCount, " & _
-                                                "@NoTaxTotalPrice, " & _
-                                                "@TaxTotal, " & _
-                                                "@TotalPrice, " & _
-                                                "@FinishFlg, " & _
-                                                "@StaffCode, " & _
-                                                "@CreateDate, " & _
-                                                "@CreateTime, " & _
-                                                "@UpdateDate, " & _
-                                                "@UpdateTime " & _
+            strInsertArrival = "INSERT INTO 入庫情報データ (" &
+                                                "発注コード, " &
+                                                "入庫番号, " &
+                                                "入庫日, " &
+                                                "仕入先コード, " &
+                                                "支払方法コード, " &
+                                                "入庫税抜商品金額, " &
+                                                "送料, " &
+                                                "手数料, " &
+                                                "値引き, " &
+                                                "ポイント値引き, " &
+                                                "入庫税抜金額, " &
+                                                "入庫消費税額, " &
+                                                "入庫軽減税額, " &
+                                                "入庫税込金額, " &
+                                                "完納フラグ, " &
+                                                "入庫担当者コード, " &
+                                                "登録日, " &
+                                                "登録時間, " &
+                                                "最終更新日, " &
+                                                "最終更新時間 " &
+                                            ") VALUES (" &
+                                                "@OrderCode, " &
+                                                "@ArrivalNo, " &
+                                                "@ArrivalDate, " &
+                                                "@SupplierCode, " &
+                                                "@PaymentCode, " &
+                                                "@NoTaxProductPrice, " &
+                                                "@ShippingCharge, " &
+                                                "@PaymentCharge, " &
+                                                "@Discount, " &
+                                                "@PointDisCount, " &
+                                                "@NoTaxTotalPrice, " &
+                                                "@TaxTotal, " &
+                                                "@ReducedTaxRate, " &
+                                                "@TotalPrice, " &
+                                                "@FinishFlg, " &
+                                                "@StaffCode, " &
+                                                "@CreateDate, " &
+                                                "@CreateTime, " &
+                                                "@UpdateDate, " &
+                                                "@UpdateTime " &
                                             ")"
 
             pCommand = pConn.CreateCommand
@@ -477,6 +479,14 @@ Public Class cDataArrivalDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TaxTotal", OleDb.OleDbType.Numeric, 10))
             pCommand.Parameters("@TaxTotal").Value = parArrivalData.sTaxTotal
+
+            '2019,11,15 A.Komita 追加 From
+            '入庫軽減税額
+            pCommand.Parameters.Add _
+            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Numeric, 10))
+            pCommand.Parameters("@ReducedTaxRate").Value = parArrivalData.sReducedTaxRate
+            '2019,11,15 A.Komita 追加 To
+
             '入庫税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 10))

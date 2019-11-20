@@ -441,54 +441,56 @@ Public Class cDataArrivalSubDBIO
         Try
 
             'SQL文の設定
-            strInsertArrival = "INSERT INTO 入庫情報明細データ (" & _
-                                    "発注コード, " & _
-                                    "発注明細コード, " & _
-                                    "入庫番号, " & _
-                                    "JANコード, " & _
-                                    "商品コード, " & _
-                                    "商品名称, " & _
-                                    "オプション1, " & _
-                                    "オプション2, " & _
-                                    "オプション3, " & _
-                                    "オプション4, " & _
-                                    "オプション5, " & _
-                                    "定価, " & _
-                                    "仕入単価, " & _
-                                    "入庫商品単価, " & _
-                                    "入庫数量, " & _
-                                    "入庫税抜金額, " & _
-                                    "入庫消費税額, " & _
-                                    "入庫税込金額, " & _
-                                    "納入残数, " & _
-                                    "登録日, " & _
-                                    "登録時間, " & _
-                                    "最終更新日, " & _
-                                    "最終更新時間 " & _
-                            ") VALUES (" & _
-                                    "@OrderCode, " & _
-                                    "@OrderDetailNo, " & _
-                                    "@ArrivalNo, " & _
-                                    "@JANCode, " & _
-                                    "@ProductCode, " & _
-                                    "@ProductName, " & _
-                                    "@Option1, " & _
-                                    "@Option2, " & _
-                                    "@Option3, " & _
-                                    "@Option4, " & _
-                                    "@Option5, " & _
-                                    "@ListPrice, " & _
-                                    "@CostPrice, " & _
-                                    "@UnitPrice, " & _
-                                    "@Count, " & _
-                                    "@NoTaxPrice, " & _
-                                    "@TaxPrice, " & _
-                                    "@Price, " & _
-                                    "@ArrivalStiffness, " & _
-                                    "@CreateDate, " & _
-                                    "@createTime, " & _
-                                    "@UpdateDate, " & _
-                                    "@UpdateTime " & _
+            strInsertArrival = "INSERT INTO 入庫情報明細データ (" &
+                                    "発注コード, " &
+                                    "発注明細コード, " &
+                                    "入庫番号, " &
+                                    "JANコード, " &
+                                    "商品コード, " &
+                                    "商品名称, " &
+                                    "オプション1, " &
+                                    "オプション2, " &
+                                    "オプション3, " &
+                                    "オプション4, " &
+                                    "オプション5, " &
+                                    "定価, " &
+                                    "仕入単価, " &
+                                    "入庫商品単価, " &
+                                    "入庫数量, " &
+                                    "入庫税抜金額, " &
+                                    "入庫消費税額, " &
+                                    "入庫軽減税額, " &
+                                    "入庫税込金額, " &
+                                    "納入残数, " &
+                                    "登録日, " &
+                                    "登録時間, " &
+                                    "最終更新日, " &
+                                    "最終更新時間 " &
+                            ") VALUES (" &
+                                    "@OrderCode, " &
+                                    "@OrderDetailNo, " &
+                                    "@ArrivalNo, " &
+                                    "@JANCode, " &
+                                    "@ProductCode, " &
+                                    "@ProductName, " &
+                                    "@Option1, " &
+                                    "@Option2, " &
+                                    "@Option3, " &
+                                    "@Option4, " &
+                                    "@Option5, " &
+                                    "@ListPrice, " &
+                                    "@CostPrice, " &
+                                    "@UnitPrice, " &
+                                    "@Count, " &
+                                    "@NoTaxPrice, " &
+                                    "@TaxPrice, " &
+                                    "@ReducedTaxRate, " &
+                                    "@Price, " &
+                                    "@ArrivalStiffness, " &
+                                    "@CreateDate, " &
+                                    "@createTime, " &
+                                    "@UpdateDate, " &
+                                    "@UpdateTime " &
                                 ")"
 
             pCommand = pConn.CreateCommand
@@ -568,6 +570,14 @@ Public Class cDataArrivalSubDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TaxPrice", OleDb.OleDbType.Numeric, 6))
             pCommand.Parameters("@TaxPrice").Value = parArrivalSubData.sTaxPrice
+
+            '2019,11,15 A.Komita 追加 From
+            '入庫軽減税額
+            pCommand.Parameters.Add _
+            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Numeric, 6))
+            pCommand.Parameters("@ReducedTaxRate").Value = parArrivalSubData.sReducedTaxRate
+            '2019,11,15 A.Komita 追加 To
+
             '入庫税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Price", OleDb.OleDbType.Numeric, 6))

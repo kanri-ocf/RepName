@@ -175,15 +175,15 @@ Public Class cDataOrderDBIO
                 End If
                 '発注値引き
                 If IsDBNull(pDataReader("値引き")) = True Then
-                    parOrderData(i).sPointDisCount = 0
+                    parOrderData(i).sDiscount = 0
                 Else
-                    parOrderData(i).sPointDisCount = CLng(pDataReader("値引き"))
+                    parOrderData(i).sDiscount = CLng(pDataReader("値引き"))
                 End If
                 '発注ポイント値引き
                 If IsDBNull(pDataReader("ポイント値引き")) = True Then
-                    parOrderData(i).sDiscount = 0
+                    parOrderData(i).sPointDisCount = 0
                 Else
-                    parOrderData(i).sDiscount = CLng(pDataReader("ポイント値引き"))
+                    parOrderData(i).sPointDisCount = CLng(pDataReader("ポイント値引き"))
                 End If
                 '発注税抜金額
                 If IsDBNull(pDataReader("発注税抜金額")) = True Then

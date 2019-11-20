@@ -8310,6 +8310,8 @@ Public Class fRegister
             End If
         End If
     End Sub
+
+
     '2016.06.07 K.OIkawa e
 #End Region
     '***********************************************************************
