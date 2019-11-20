@@ -311,7 +311,7 @@
 
             '2019,9,20 A.Komita 修正 Start
             If oOrderSubData(RECORD_NO).sReducedTaxRate = String.Empty Then
-                Fields("TAX").Value = CLng(8)
+                Fields("TAX").Value = oConf(0).sTax
             Else
                 Fields("TAX").Value = oOrderSubData(RECORD_NO).sReducedTaxRate
             End If
@@ -339,80 +339,84 @@
 
     Private Sub GroupFooter7_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter7.Format
         '送料
-        '2019,9,20 A.Komita 追加 From
-        '2019,9,28 A.Komita 修正 Start
-        POSTAGE.Value = oOrderData(0).sShippingCharge * -1
-        '2019,9,28 A.Komita 修正 End
-        '2019,9,20 A.Komita 追加 To
 
-        '2019,9,20 A.Komita 削除 Del---------------------------------------------------------------------------------
-        'If REPORT_MODE = "税込み" Then
-        '    POSTAGE.Value = oTool.BeforeToAfterTax(oOrderData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
-        'Else
-        '    POSTAGE.Value = oOrderData(0).sShippingCharge
-        'End If
-        'PostagePay = PostagePay + CLng(POSTAGE.Value)
-        '2019,9,20 A.Komita 削除 End---------------------------------------------------------------------------------
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------
+        If REPORT_MODE = "税込み" Then
+            POSTAGE.Value = oTool.BeforeToAfterTax(oOrderData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
+
+        Else
+            POSTAGE.Value = oOrderData(0).sShippingCharge
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------
 
     End Sub
 
     Private Sub GroupFooter6_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter6.Format
         '手数料
-        '2019,9,20 A.Komita 追加 From
-        '2019,9,28 A.Komita 修正 Start
-        FEE.Value = oOrderData(0).sPaymentCharge * -1
-        '2019,9,28 A.Komita 修正 End
-        '2019,9,20 A.Komita 追加 To
 
-        '2019,9,20 A.Komita 削除 Del---------------------------------------------------------------------------------
-        'If REPORT_MODE = "税込み" Then
-        '    FEE.Value = oTool.BeforeToAfterTax(oOrderData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------
+        If REPORT_MODE = "税込み" Then
+            FEE.Value = oTool.BeforeToAfterTax(oOrderData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
+
+        Else
+            FEE.Value = oOrderData(0).sPaymentCharge
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------
 
     End Sub
 
     Private Sub GroupFooter5_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter5.Format
-
         '発注金額（税抜き）
-        NO_TAX_TOTAL.Value = (NoTaxPrice + POSTAGE.Value + FEE.Value)
-        '+ DiscountPay + PointDiscountPay
 
-        '2019,9,20 A.Komita 削除 Del---------------------------------------------------------------------------------
-        'If REPORT_MODE = "税込み" Then
-        '    DISCOUNT.Value = oTool.BeforeToAfterTax(oOrderData(0).sDiscount, oConf(0).sTax, oConf(0).sFracProc)
-        'Else
-        '    DISCOUNT.Value = oOrderData(0).sDiscount
-        'End If
-        'DiscountPay = DiscountPay + CLng(DISCOUNT.Value)
-        '2019,9,20 A.Komita 削除 End---------------------------------------------------------------------------------
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------
+        Dim Postage_No_Tax As Integer = 0
+        Dim Fee_No_Tax As Integer = 0
+
+        If REPORT_MODE = "税込み" Then
+
+            Postage_No_Tax = oTool.AfterToBeforeTax(POSTAGE.Value, oConf(0).sTax, oConf(0).sFracProc)
+            Fee_No_Tax = oTool.AfterToBeforeTax(FEE.Value, oConf(0).sTax, oConf(0).sFracProc)
+
+            NO_TAX_TOTAL.Value = oOrderData(0).sNoTaxTotalProductPrice + Postage_No_Tax + Fee_No_Tax + oOrderData(0).sTaxTotal + oOrderData(0).sReducedTaxRateTotal
+
+        Else
+            NO_TAX_TOTAL.Value = oOrderData(0).sNoTaxTotalProductPrice + POSTAGE.Value + FEE.Value
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------
+
     End Sub
 
     Private Sub GroupFooter4_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter4.Format
-
         '消費税
-        '2019,9,20 A.Komita 追加 From
-        '2019,9,28 A.Komita 修正 Start
-        TAX_TOTAL.Value = oOrderData(0).sTaxTotal * -1
-        '2019,9,28 A.Komita 修正 End
-        '2019,9,20 A.Komita 追加 To
 
-        '2019,9,20 A.Komita 削除 Del---------------------------------------------------------------------------------
-        'If REPORT_MODE = "税込み" Then
-        '    POINT_DISCOUNT.Value = oTool.BeforeToAfterTax(oOrderData(0).sPointDisCount, oConf(0).sTax, oConf(0).sFracProc)
-        'Else
-        '    POINT_DISCOUNT.Value = oOrderData(0).sPointDisCount
-        'End If
-        'PointDiscountPay = PointDiscountPay + CLng(POINT_DISCOUNT.Value)
-        '2019,9,20 A.Komita 削除 End---------------------------------------------------------------------------------
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------
+        If REPORT_MODE = "税込み" Then
+            TAX_TOTAL.Value = 0
+
+        Else
+            TAX_TOTAL.Value = oOrderData(0).sTaxTotal
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------
+
     End Sub
 
     Private Sub GroupFooter3_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter3.Format
 
         '軽減税額
-        '2019,9,27 A.Komita 追加 From
-        '2019,9,28 A.Komita 修正 Start
-        RTAX_RATE.Value = oOrderData(0).sReducedTaxRateTotal * -1
-        '2019,9,28 A.Komita 修正 End
-        '2019,9,27 A.Komita 追加 To
+
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------
+        If REPORT_MODE = "税込み" Then
+            RTAX_RATE.Value = 0
+
+        Else
+            RTAX_RATE.Value = oOrderData(0).sReducedTaxRateTotal
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------
 
     End Sub
 
@@ -420,40 +424,28 @@
 
         '値引き
         '2019,9,20 A.Komita 追加 From
-        DISCOUNT.Value = oOrderData(0).sDiscount * -1
+        DISCOUNT.Value = oOrderData(0).sPointDisCount
         '2019,9,20 A.Komita 追加 To
 
-        '2019,9,20 A.Komita 削除 Del---------------------------------------------------------------------------------
-        '2019,9,13 A.Komita 修正 Start
-        '消費税と軽減税率
-        'If REPORT_MODE = "税込み" Then
-        '    If oOrderData(0).sReducedTaxRate = String.Empty Then
-        '        TAX_TOTAL.Value = oTool.AfterToTax(oOrderData(0).sTotalPrice, oConf(0).sTax, oConf(0).sFracProc)
-        '        RTAX_RATE.Value = 0
-        '    Else
-        '        TAX_TOTAL.Value = 0
-        '        RTAX_RATE.Value = oTool.AfterToTax(oOrderData(0).sTotalPrice, CLng(oOrderData(0).sReducedTaxRate), oConf(0).sFracProc)
-        '    End If
-        'End If
-        '2019,9,13 A.Komita 修正 End
-        '2019,9,20 A.Komita 削除 End---------------------------------------------------------------------------------
 
     End Sub
 
     Private Sub GroupFooter1_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter1.Format
         'ポイント値引き
         '2019,9,20 A.Komita 追加 From
-        POINT_DISCOUNT.Value = oOrderData(0).sPointDisCount * -1
+        POINT_DISCOUNT.Value = oOrderData(0).sDiscount
         '2019,9,20 A.Komita 追加 To
 
-        '2019,9,18 A.Komita 修正 Start
+        '2019,11,17 A.Komita 修正 Start--------------------------------------------------------------------------------------------
         '発注金額（税込み）
-        IN_TAX_TOTAL.Value = (CLng(NO_TAX_TOTAL.Value) + CLng(TAX_TOTAL.Value) + CLng(RTAX_RATE.Value) + POINT_DISCOUNT.Value + DISCOUNT.Value) * -1
-        '(NO_TAX_TOTAL.Value + TaxPay + RedusedTaxPay) - (DiscountPay + PointDiscountPay)
-        '+ CLng(TAX_TOTAL.Value) + CLng(RTAX_RATE.Value)
-        '2019,9,18 A.Komita 修正 End
+        If REPORT_MODE = "税込み" Then
+            IN_TAX_TOTAL.Value = NO_TAX_TOTAL.Value + (DISCOUNT.Value + POINT_DISCOUNT.Value)
+
+        Else
+            IN_TAX_TOTAL.Value = (NO_TAX_TOTAL.Value + TAX_TOTAL.Value + RTAX_RATE.Value) + (DISCOUNT.Value + POINT_DISCOUNT.Value)
+
+        End If
+        '2019,11,17 A.Komita 修正 End----------------------------------------------------------------------------------------------
         MEMO.Value = oOrderData(0).sMemo
     End Sub
-
-
 End Class

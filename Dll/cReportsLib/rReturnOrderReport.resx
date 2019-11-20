@@ -147,6 +147,27 @@
   <data name="RTAX_RATE_PRICE.OutputFormat" xml:space="preserve">
     <value>¥#,##0</value>
   </data>
+  <data name="TEL.OutputFormat" xml:space="preserve">
+    <value />
+  </data>
+  <data name="TOTAL_BEFORE_TAX_PRICE.OutputFormat" xml:space="preserve">
+    <value>¥#,##0</value>
+  </data>
+  <data name="TOTAL_TAX_PRICE.OutputFormat" xml:space="preserve">
+    <value>¥#,##0</value>
+  </data>
+  <data name="TOTAL_AFTER_TAX_PRICE.OutputFormat" xml:space="preserve">
+    <value>¥#,##0</value>
+  </data>
+  <data name="RTAX_RATE_PRICE.OutputFormat" xml:space="preserve">
+    <value>¥#,##0</value>
+  </data>
+  <data name="IN_TAX_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="POINT_DISCOUNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
   <data name="MEMO.Text" xml:space="preserve">
     <value>１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０</value>
   </data>
@@ -162,6 +183,9 @@
   <data name="DISCOUNT.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
+  <data name="DISCOUNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
   <data name="TAX_TOTAL.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
@@ -172,6 +196,21 @@
     <value>#,##0</value>
   </data>
   <data name="POSTAGE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="POSTAGE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TOTAL_COST.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TOTAL_CNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TOTAL_T_PRICE.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
   <data name="TOTAL_COST.OutputFormat" xml:space="preserve">

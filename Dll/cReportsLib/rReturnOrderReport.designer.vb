@@ -212,7 +212,7 @@ Partial Public Class rReturnOrderReport
         '
         Me.Detail.ColumnSpacing = 0!
         Me.Detail.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.No, Me.CNT, Me.JAN_CODE, Me.OPTION_VALUE, Me.PRICE, Me.COST, Me.PRODUCT_NAME, Me.T_PRICE, Me.Line7, Me.Line11, Me.TAX})
-        Me.Detail.Height = 0.1947917!
+        Me.Detail.Height = 0.2!
         Me.Detail.Name = "Detail"
         '
         'No
@@ -296,7 +296,7 @@ Partial Public Class rReturnOrderReport
         Me.PRODUCT_NAME.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
         Me.PRODUCT_NAME.Text = "PRODUCT_NAME"
         Me.PRODUCT_NAME.Top = 0!
-        Me.PRODUCT_NAME.Width = 1.578!
+        Me.PRODUCT_NAME.Width = 1.496!
         '
         'T_PRICE
         '
@@ -600,7 +600,7 @@ Partial Public Class rReturnOrderReport
         Me.MAKE_DATE.DataField = "MAKE_DATE"
         Me.MAKE_DATE.FormatString = "作成日:{RunDateTime:yyyy年M月d日}"
         Me.MAKE_DATE.Height = 0.1692913!
-        Me.MAKE_DATE.Left = 4.729!
+        Me.MAKE_DATE.Left = 4.734!
         Me.MAKE_DATE.Name = "MAKE_DATE"
         Me.MAKE_DATE.Style = "text-align: right"
         Me.MAKE_DATE.Top = 0.2!
@@ -610,7 +610,7 @@ Partial Public Class rReturnOrderReport
         '
         Me.ReportInfo2.FormatString = "{PageNumber} / {PageCount} ページ"
         Me.ReportInfo2.Height = 0.2!
-        Me.ReportInfo2.Left = 4.749!
+        Me.ReportInfo2.Left = 4.754!
         Me.ReportInfo2.Name = "ReportInfo2"
         Me.ReportInfo2.Style = "text-align: right"
         Me.ReportInfo2.Top = 0!
@@ -1157,14 +1157,14 @@ Partial Public Class rReturnOrderReport
         Me.FEE.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.FEE.DataField = "FEE"
         Me.FEE.Height = 0.2!
-        Me.FEE.Left = 4.718!
+        Me.FEE.Left = 4.729!
         Me.FEE.Name = "FEE"
         Me.FEE.OutputFormat = resources.GetString("FEE.OutputFormat")
         Me.FEE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
         Me.FEE.Style = "background-color: #FFE0C0; text-align: right; vertical-align: middle"
         Me.FEE.Text = "FEE"
         Me.FEE.Top = 0.006!
-        Me.FEE.Width = 2.176!
+        Me.FEE.Width = 2.181!
         '
         'Label27
         '
@@ -1231,7 +1231,7 @@ Partial Public Class rReturnOrderReport
         'GroupHeader8
         '
         Me.GroupHeader8.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label18, Me.Label19, Me.Label20, Me.Label12, Me.CrossSectionBox1, Me.CrossSectionBox2, Me.CrossSectionBox3, Me.CrossSectionBox4, Me.CrossSectionBox5, Me.CrossSectionBox6, Me.CrossSectionBox7, Me.CrossSectionBox8, Me.CrossSectionLine1, Me.CrossSectionLine2, Me.CrossSectionLine3, Me.CrossSectionLine4, Me.CrossSectionLine5, Me.CrossSectionLine6, Me.CrossSectionLine7, Me.Label30, Me.CrossSectionLine8, Me.CrossSectionLine9})
-        Me.GroupHeader8.Height = 0.4374016!
+        Me.GroupHeader8.Height = 0.1874015!
         Me.GroupHeader8.Name = "GroupHeader8"
         '
         'Label13
@@ -1459,7 +1459,7 @@ Partial Public Class rReturnOrderReport
         Me.Label30.Style = "background-color: #FFC080; text-align: center"
         Me.Label30.Text = "税率(%)"
         Me.Label30.Top = 0!
-        Me.Label30.Width = 0.5650001!
+        Me.Label30.Width = 0.5810004!
         '
         'CrossSectionLine8
         '
@@ -1583,7 +1583,7 @@ Partial Public Class rReturnOrderReport
         Me.PageSettings.Margins.Right = 0.39375!
         Me.PageSettings.PaperHeight = 11.0!
         Me.PageSettings.PaperWidth = 8.5!
-        Me.PrintWidth = 6.884167!
+        Me.PrintWidth = 6.9103!
         Me.Sections.Add(Me.PageHeader)
         Me.Sections.Add(Me.GroupHeader1)
         Me.Sections.Add(Me.GroupHeader2)

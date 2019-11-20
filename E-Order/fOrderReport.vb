@@ -62,8 +62,9 @@
 
     Private POSTAGE_FLG As String '送料の値が変化があった時のフラグ
     Private FEE_FLG As String '手数料の値が変化があった時のフラグ
+    Private Cal_Money_Flg As Boolean
 
-    Private REDUCED_TAX_RATE_FLG As Long '軽減税率対象商品が入ってたときのフラグ
+    Private REDUCED_TAX_RATE_FLG As Long = 8 '軽減税率対象商品が入ってたときのフラグ
 
     'shimizu end
 
@@ -653,6 +654,8 @@
             Shipping = 0
             Payment = 0
 
+            Cal_Money_Flg = 0
+
             '2019,10,31 A.Komita 修正 End-----------------------------------------------------------------------------------------
             '--------------------------------------------------
             'suzuki 2019/09/29 end
@@ -848,6 +851,7 @@
         Dim TotalPrice As Long
         Dim zero As Integer = 0
 
+
         If CALLING_FLG = False Then
             CALLING_FLG = True
 
@@ -943,19 +947,23 @@
                 '2019,11,2 A.Komita 追加 From
 
                 'ORDER_INSERTで税込モードで登録する際、税抜価格と消費税の値が必要になるのでここで取得している
-                If AFTER_TAX_R.Checked = True Then
-                    If oProduct(0).sReducedTaxRate = String.Empty Then
-                        NoTaxTotal = oTool.AfterToBeforeTax(TotalPrice, oConf(0).sTax, oConf(0).sFracProc)
-                        TaxTotal = oTool.AfterToTax(TotalPrice, oConf(0).sTax, oConf(0).sFracProc)
-                    Else
-                        NoReducedTaxTotal = oTool.AfterToBeforeTax(TotalPrice, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
-                        ReducedTaxTotal = oTool.AfterToTax(TotalPrice, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
-                    End If
+                If Cal_Money_Flg = 0 Then　'最初の読み込み時のみ値を取得したい
+                    If AFTER_TAX_R.Checked = True Then
+                        If oProduct(0).sReducedTaxRate = String.Empty Then
+                            NoTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                            TaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                        Else
+                            NoReducedTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
+                            ReducedTaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
+                        End If
 
-                    '2019,11,2 A.Komita 追加 To
+                    End If
+                Else
+
                 End If
             Next
-
+            Cal_Money_Flg = 1
+            '2019,11,2 A.Komita 追加 To
 
             '---------------------
             '    合計値セット

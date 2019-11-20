@@ -247,9 +247,9 @@ Partial Class fArrival
         Me.Label9.Location = New System.Drawing.Point(453, 140)
         Me.Label9.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(151, 24)
+        Me.Label9.Size = New System.Drawing.Size(130, 24)
         Me.Label9.TabIndex = 19
-        Me.Label9.Text = "（消費税込み）"
+        Me.Label9.Text = "（消費税込）"
         '
         'TOTAL_TAX_T
         '
@@ -543,10 +543,10 @@ Partial Class fArrival
         Me.AFTER_TAX_R.Location = New System.Drawing.Point(59, 30)
         Me.AFTER_TAX_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.AFTER_TAX_R.Name = "AFTER_TAX_R"
-        Me.AFTER_TAX_R.Size = New System.Drawing.Size(110, 28)
+        Me.AFTER_TAX_R.Size = New System.Drawing.Size(89, 28)
         Me.AFTER_TAX_R.TabIndex = 1
         Me.AFTER_TAX_R.TabStop = True
-        Me.AFTER_TAX_R.Text = "税込み"
+        Me.AFTER_TAX_R.Text = "税込"
         Me.AFTER_TAX_R.UseVisualStyleBackColor = True
         '
         'BEFORE_TAX_R
@@ -555,9 +555,9 @@ Partial Class fArrival
         Me.BEFORE_TAX_R.Location = New System.Drawing.Point(210, 30)
         Me.BEFORE_TAX_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.BEFORE_TAX_R.Name = "BEFORE_TAX_R"
-        Me.BEFORE_TAX_R.Size = New System.Drawing.Size(107, 28)
+        Me.BEFORE_TAX_R.Size = New System.Drawing.Size(89, 28)
         Me.BEFORE_TAX_R.TabIndex = 0
-        Me.BEFORE_TAX_R.Text = "税抜き"
+        Me.BEFORE_TAX_R.Text = "税抜"
         Me.BEFORE_TAX_R.UseVisualStyleBackColor = True
         '
         'GroupBox3
@@ -641,6 +641,7 @@ Partial Class fArrival
         Me.T_RTAX_T.Location = New System.Drawing.Point(264, 287)
         Me.T_RTAX_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.T_RTAX_T.Name = "T_RTAX_T"
+        Me.T_RTAX_T.ReadOnly = True
         Me.T_RTAX_T.Size = New System.Drawing.Size(305, 37)
         Me.T_RTAX_T.TabIndex = 76
         Me.T_RTAX_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -674,6 +675,7 @@ Partial Class fArrival
         Me.T_BEFORE_BILL_PRICE_T.Location = New System.Drawing.Point(264, 188)
         Me.T_BEFORE_BILL_PRICE_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.T_BEFORE_BILL_PRICE_T.Name = "T_BEFORE_BILL_PRICE_T"
+        Me.T_BEFORE_BILL_PRICE_T.ReadOnly = True
         Me.T_BEFORE_BILL_PRICE_T.Size = New System.Drawing.Size(305, 37)
         Me.T_BEFORE_BILL_PRICE_T.TabIndex = 54
         Me.T_BEFORE_BILL_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -682,12 +684,12 @@ Partial Class fArrival
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label24.Location = New System.Drawing.Point(72, 196)
+        Me.Label24.Location = New System.Drawing.Point(139, 193)
         Me.Label24.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(185, 24)
+        Me.Label24.Size = New System.Drawing.Size(118, 24)
         Me.Label24.TabIndex = 72
-        Me.Label24.Text = "請求金額(税抜）："
+        Me.Label24.Text = "請求金額："
         '
         'T_TAX_T
         '
@@ -696,6 +698,7 @@ Partial Class fArrival
         Me.T_TAX_T.Location = New System.Drawing.Point(264, 236)
         Me.T_TAX_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.T_TAX_T.Name = "T_TAX_T"
+        Me.T_TAX_T.ReadOnly = True
         Me.T_TAX_T.Size = New System.Drawing.Size(305, 37)
         Me.T_TAX_T.TabIndex = 55
         Me.T_TAX_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
