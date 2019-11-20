@@ -1230,6 +1230,11 @@
         Dim Postage As Integer = 0
         Dim Fee As Integer = 0
 
+        '2019.11.20 R.Takashima FROM
+        '税率変数
+        Dim taxRate As Integer = 0
+        '2019.11.20 R.Takashima TO
+
         '2019,10,09 A.Komita 追加 To
 
 
@@ -1251,6 +1256,9 @@
             End If
             '2019,10,09 A.Komita 追加 To
 
+
+            '2019.11.20 R.Takashima FROM
+            '税モードを切り替えたときの値が正しくなるように変更
             If ChangeMode = True Then
 
                 '税抜きモードなら
@@ -1259,52 +1267,83 @@
                     ORDER_V("発注単価", i).Value = selfNoTaxPrice
 
                     '納入単価の計算
-                    If ORDER_V_MODE(i) = False And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+                    'ORDER_V_MODE = 納入単価を変更したとき税込みモード = TRUE
+                    If ORDER_V_MODE(i) = True And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+
+                        If oOrderSubData(i).sReducedTaxRate = String.Empty Then
+                            taxRate = oConf(0).sTax
+                        Else
+                            taxRate = CLng(oOrderSubData(i).sReducedTaxRate)
+                        End If
+
+                        ORDER_V("納入単価", i).Value = oTool.AfterToBeforeTax(ORDER_V_VALUE(i), taxRate, oConf(0).sFracProc)
+
+                        'ORDER_V_MODE = 納入高を変更したとき税抜きモード = FALSE
+                    ElseIf ORDER_V_MODE(i) = False And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+
                         ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
 
                     Else
+                        '初期値
                         ORDER_V("納入単価", i).Value = selfNoTaxPrice
 
                     End If
+
+
                 Else 'それ以外なら税込みモード
                     ORDER_V("発注単価", i).Value = selfTaxPrice
                     '納入単価の計算
+                    'ORDER_V_MODE = 納入単価を変更したとき税込みモード = TRUE
                     If ORDER_V_MODE(i) = True And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
                         ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
-                    Else
-                        ORDER_V("納入単価", i).Value = selfTaxPrice
-                    End If
 
+                        'ORDER_V_MODE = 納入高を変更したとき税抜きモード = FALSE
+                    ElseIf ORDER_V_MODE(i) = False And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+
+                        If oOrderSubData(i).sReducedTaxRate = String.Empty Then
+                            taxRate = oConf(0).sTax
+                        Else
+                            taxRate = CLng(oOrderSubData(i).sReducedTaxRate)
+                        End If
+
+                        ORDER_V("納入単価", i).Value = oTool.BeforeToAfterTax(ORDER_V_VALUE(i), taxRate, oConf(0).sFracProc)
+
+                    Else
+                        '初期値
+                        ORDER_V("納入単価", i).Value = selfTaxPrice
+
+                    End If
                 End If
             End If
 
 
-            If ChangeMode = True Then
+            'If ChangeMode = True Then
 
-                '税抜きモードなら
-                If BEFORE_TAX_R.Checked = True Then
-                    '発注単価の計算
-                    ORDER_V("発注単価", i).Value = selfNoTaxPrice
-                    '納入単価の計算
-                    If ORDER_V_MODE(i) = False And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
-                        ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
+            '    '税抜きモードなら
+            '    If BEFORE_TAX_R.Checked = True Then
+            '        '発注単価の計算
+            '        ORDER_V("発注単価", i).Value = selfNoTaxPrice
+            '        '納入単価の計算
+            '        If ORDER_V_MODE(i) = False And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+            '            ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
 
-                    Else
-                        ORDER_V("納入単価", i).Value = selfNoTaxPrice
+            '        Else
+            '            ORDER_V("納入単価", i).Value = selfNoTaxPrice
 
-                    End If
-                Else 'それ以外なら税込みモード
+            '        End If
+            '    Else 'それ以外なら税込みモード
 
-                    ORDER_V("発注単価", i).Value = selfTaxPrice
-                    '納入単価の計算
-                    If ORDER_V_MODE(i) = True And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
-                        ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
-                    Else
-                        ORDER_V("納入単価", i).Value = selfTaxPrice
-                    End If
-                End If
+            '        ORDER_V("発注単価", i).Value = selfTaxPrice
+            '        '納入単価の計算
+            '        If ORDER_V_MODE(i) = True And ORDER_V_COUNT(i) = i And ORDER_V_VALUE(i) > 0 Then
+            '            ORDER_V("納入単価", i).Value = ORDER_V_VALUE(i)
+            '        Else
+            '            ORDER_V("納入単価", i).Value = selfTaxPrice
+            '        End If
+            '    End If
 
-            End If
+            'End If
+            '2019.11.20 R.Takashima TO
 
             '納入金額の計算
             ORDER_V("納入金額", i).Value = ORDER_V("納入単価", i).Value * ORDER_V("納入数", i).Value
