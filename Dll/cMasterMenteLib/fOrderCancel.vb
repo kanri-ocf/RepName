@@ -119,6 +119,12 @@
         oOrderSubData(0).sOption5 = oProduct(0).sOption5
         oOrderSubData(0).sCostPrice = oTool.BeforeToAfterTax(oCostPrice(0).sCostPrice, oConf(0).sTax, oConf(0).sFracProc)
 
+        '2019,11,22 A.Komita 追加 From
+        If oOrderSubData(0).sCancelReason <> String.Empty Then
+            REASON_T.Text = oOrderSubData(0).sCancelReason
+        End If
+        '2019,11,22 A.Komita 追加 To
+
         DISP_SET(oOrderSubData(0))
 
     End Sub

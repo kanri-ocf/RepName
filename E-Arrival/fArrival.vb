@@ -619,7 +619,7 @@
         '2019.11.20 R.Takashima FROM
         '既入庫情報の画面セット
         '一つのメソッドにまとめた為、以下一部除きコメントアウト
-        B_TEXT_INIT(oArriveDataFull)
+        'B_TEXT_INIT(oArriveDataFull)
         If RecordCnt = 0 Then
 
             ''完納フラグ
@@ -1289,6 +1289,22 @@
 
                     End If
 
+                    'If ORDER_V("納入単価", i).Value <> selfNoTaxPrice Then
+
+                    '    T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge.ToString.Replace(",", ""))
+                    '    T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge.ToString.Replace(",", ""))
+
+                    '    selfNoTaxPrice = ORDER_V("納入単価", i).Value
+
+                    '    If oOrderSubData(i).sReducedTaxRate = String.Empty Then
+                    '        selfTaxPrice = oTool.AfterToBeforeTax(ORDER_V("納入単価", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                    '    Else
+                    '        selfTaxPrice = oTool.AfterToBeforeTax(ORDER_V("納入単価", i).Value, oOrderSubData(i).sReducedTaxRate, oConf(0).sFracProc)
+                    '    End If
+
+                    'End If
+
+
 
                 Else 'それ以外なら税込みモード
                     ORDER_V("発注単価", i).Value = selfTaxPrice
@@ -1314,7 +1330,42 @@
 
                     End If
                 End If
+
             End If
+
+            '2019,11,21 A.Komita  納入単価を手入力で修正した時に送料,手数料,消費税額,軽減税額の価格が変動しない様にif文を追加 From
+            If ORDER_V("納入単価", i).Value <> selfTaxPrice Then
+
+                '納入単価が変更された時に送料,手数料の正しい値を入れ直す
+                T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge.ToString.Replace(",", ""))
+                T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge.ToString.Replace(",", ""))
+
+                '1403行目で消費税額を算出させる為,税込価格と税抜価格をここで保持する
+                '税込価格の保持
+                If BEFORE_TAX_R.Checked = True Then
+
+                    If oOrderSubData(i).sReducedTaxRate = String.Empty Then
+                        selfTaxPrice = oTool.BeforeToAfterTax(ORDER_V("納入単価", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                    Else
+                        selfTaxPrice = oTool.BeforeToAfterTax(ORDER_V("納入単価", i).Value, oOrderSubData(i).sReducedTaxRate, oConf(0).sFracProc)
+                    End If
+                Else
+                    selfTaxPrice = ORDER_V("納入単価", i).Value
+                End If
+
+                '税抜価格の保持
+                If BEFORE_TAX_R.Checked = True Then
+                    selfNoTaxPrice = ORDER_V("納入単価", i).Value
+
+                Else
+                    If oOrderSubData(i).sReducedTaxRate = String.Empty Then
+                        selfNoTaxPrice = oTool.AfterToBeforeTax(ORDER_V("納入単価", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                    Else
+                        selfNoTaxPrice = oTool.AfterToBeforeTax(ORDER_V("納入単価", i).Value, oOrderSubData(i).sReducedTaxRate, oConf(0).sFracProc)
+                    End If
+                End If
+            End If
+            '2019,11,21 A.Komita 追加 To
 
 
             'If ChangeMode = True Then
@@ -1378,6 +1429,13 @@
 
             '2019,10,3 A.Komita 追加 To
 
+
+            '2019,11,22 A.Komita 2回目以降のJANコード読込時にもグリッドビューに発送中止事由を表示させる為,元のコードにif文を追加 From
+            If oOrderSubData(i).sCancelReason <> String.Empty Then
+                ORDER_V("発注中止事由", i).Value = oOrderSubData(i).sCancelReason
+            End If
+            '2019,11,22 A.Komita 追加 To
+
         Next i
 
 
@@ -1424,10 +1482,27 @@
 
                 '2019,10,30 A.Komita 修正 Start---------------------------------------------------------------------------------------------------
 
-                T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+                '2019,11,21 A.Komita 納入単価を手入力で修正した時に送料手数料の価格が変動しない様にif文を追加 From
+                If T_POSTAGE_T.Modified = False Then
 
-                T_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+                    T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
 
+                Else
+
+                    T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+
+                End If
+
+                If T_FEE_T.Modified = False Then
+
+                    T_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+
+                Else
+
+                    T_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+
+                End If
+                '2019,11,21 A.Komita 追加 To
 
                 '2019,10,30 A.Komita 修正 End-----------------------------------------------------------------------------------------------------
 
@@ -1436,9 +1511,9 @@
 
 
                 T_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}",
-                                                                   CLng(T_BREFORE_PRODUCT_T.Text) +
-                                                                   CLng(T_POSTAGE_T.Text) +
-                                                                   CLng(T_FEE_T.Text))
+                                                                       CLng(T_BREFORE_PRODUCT_T.Text) +
+                                                                       CLng(T_POSTAGE_T.Text) +
+                                                                       CLng(T_FEE_T.Text))
 
                 '2019,10,9 A.Komita 修正 End------------------------------------------------------
 
@@ -1468,9 +1543,9 @@
 
 
                 '2019,11,20 A.Komita メッセージボックスを追加 From
-                Message_form = New cMessageLib.fMessage(2, "税込モードでは税抜で登録する必要があります。",
-                                                             "宜しいですか？",
-                                                                Nothing, Nothing)
+                Message_form = New cMessageLib.fMessage(2, "税抜で変更する必要があります。",
+                                                           "宜しいですか？",
+                                                           Nothing, Nothing)
 
                 Message_form.ShowDialog()
 
@@ -1554,9 +1629,30 @@
 
                 '2019,10,30 A.Komita 修正 Start----------------------------------------------------------------------------------------------------- 
 
-                T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+                '2019,11,21 A.Komita 納入単価を手入力で修正した時に送料手数料の価格が変動しない様にif文を追加 From
+                If T_POSTAGE_T.Modified = False Then
 
-                T_FEE_T.Text = String.Format("{0:#,##0}", oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+                    T_POSTAGE_T.Text = T_POSTAGE_T.Text
+
+                    T_POSTAGE_T.Modified = True
+
+                Else
+
+                    T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+
+                End If
+
+                If T_FEE_T.Modified = False Then
+
+                    T_FEE_T.Text = T_FEE_T.Text
+
+                    T_FEE_T.Modified = True
+                Else
+
+                    T_FEE_T.Text = String.Format("{0:#,##0}", oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+
+                End If
+                '2019,11,21 A.Komita 追加 To
 
                 Postage = String.Format("{0:#,##0}", oTool.BeforeToTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
 
@@ -1570,7 +1666,37 @@
 
                 T_POINT_DISCOUNT_T.Text = T_POINT_DISCOUNT_T.Text
 
+                '2019,11,21 A.Komita 追加 From
+            ElseIf InitFlg = True Then
+
+                If T_POSTAGE_T.Modified = True Then
+
+                    T_POSTAGE_T.Text = T_POSTAGE_T.Text
+
+                End If
+                T_POSTAGE_T.Modified = False
+
+                If T_FEE_T.Modified = True Then
+
+                    T_FEE_T.Text = T_FEE_T.Text
+
+                End If
+                T_FEE_T.Modified = False
+
+                Message_form = New cMessageLib.fMessage(2, "税抜で変更する必要があります。",
+                                                        "宜しいですか？",
+                                                        Nothing, Nothing)
+
+                Message_form.ShowDialog()
+
+                If Message_form.DialogResult = DialogResult.No Then
+                    Return
+
+                ElseIf Message_form.DialogResult = DialogResult.Yes Then
+
+                End If
             End If
+            '20191,11,21 A.Komita 追加 To
 
             '--------------------------------------------------------------------------
 
@@ -1671,84 +1797,85 @@
 
     '2019.11.20 R.Takashima FROM
     '既納入情報欄を別のメソッドに分ける
-    Private Sub B_TEXT_INIT(ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
-        If IsNothing(ArrivalData) = True Or ArrivalData.Length = 0 Then '前回の入庫データがない場合
+    'Private Sub B_TEXT_INIT(ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
 
-            '完納フラグ
-            FINISH_C.Checked = False
-            '納入回数
-            ARRIVE_COUNT_T.Text = 1
-            '商品代金
-            B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", 0)
-            '送料の数値変換
-            B_POSTAGE_T.Text = String.Format("{0:#,##0}", 0)
-            '手数料の数値変換
-            B_FEE_T.Text = String.Format("{0:#,##0}", 0)
-            '税抜き請求金額
-            B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
-            '消費税額
-            B_TAX_T.Text = String.Format("{0:#,##0}", 0)
-            '軽減税額
-            B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
-            '値引きの数値変換
-            B_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
-            'ポイント値引きの数値変換
-            B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
-            '税込み請求金額
-            B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
+    '    If IsNothing(ArrivalData) = True Or ArrivalData.Length = 0 Then '前回の入庫データがない場合
 
-        ElseIf AFTER_TAX_R.Checked = True Then  '前回のデータがあり、税込みモードの場合
+    '        '完納フラグ
+    '        FINISH_C.Checked = False
+    '        '納入回数
+    '        ARRIVE_COUNT_T.Text = 1
+    '        '商品代金
+    '        B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", 0)
+    '        '送料の数値変換
+    '        B_POSTAGE_T.Text = String.Format("{0:#,##0}", 0)
+    '        '手数料の数値変換
+    '        B_FEE_T.Text = String.Format("{0:#,##0}", 0)
+    '        '税抜き請求金額
+    '        B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
+    '        '消費税額
+    '        B_TAX_T.Text = String.Format("{0:#,##0}", 0)
+    '        '軽減税額
+    '        B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
+    '        '値引きの数値変換
+    '        B_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
+    '        'ポイント値引きの数値変換
+    '        B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
+    '        '税込み請求金額
+    '        B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
 
-            '完納フラグ
-            FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
-            '納入回数
-            ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
-            '商品代金
-            B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sNoTaxTotalProductPrice + ArrivalData(0).sTaxTotal + oOrderDataFull(0).sReducedTaxRateTotal)
-            '送料の数値変換
-            B_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
-            '手数料の数値変換
-            B_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
-            '税抜き請求金額
-            B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", CLng(B_BREFORE_PRODUCT_T.Text) + CLng(B_POSTAGE_T.Text) + CLng(B_FEE_T.Text))
-            '消費税額
-            B_TAX_T.Text = String.Format("{0:#,##0}", 0)
-            '軽減税額
-            B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
-            '値引きの数値変換
-            B_DISCOUNT_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sDiscount, oConf(0).sTax, oConf(0).sFracProc))
-            'ポイント値引きの数値変換
-            B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPointDisCount)
-            '税込合計の数値変換
-            B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
+    '    ElseIf AFTER_TAX_R.Checked = True Then  '前回のデータがあり、税込みモードの場合
 
-        ElseIf AFTER_TAX_R.Checked = False Then '前回のデータがあり、税抜きモードの場合
+    '        '完納フラグ
+    '        FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
+    '        '納入回数
+    '        ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
+    '        '商品代金
+    '        B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sNoTaxTotalProductPrice + ArrivalData(0).sTaxTotal + oOrderDataFull(0).sReducedTaxRateTotal)
+    '        '送料の数値変換
+    '        B_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
+    '        '手数料の数値変換
+    '        B_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
+    '        '税抜き請求金額
+    '        B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", CLng(B_BREFORE_PRODUCT_T.Text) + CLng(B_POSTAGE_T.Text) + CLng(B_FEE_T.Text))
+    '        '消費税額
+    '        B_TAX_T.Text = String.Format("{0:#,##0}", 0)
+    '        '軽減税額
+    '        B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
+    '        '値引きの数値変換
+    '        B_DISCOUNT_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(ArrivalData(0).sDiscount, oConf(0).sTax, oConf(0).sFracProc))
+    '        'ポイント値引きの数値変換
+    '        B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPointDisCount)
+    '        '税込合計の数値変換
+    '        B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
 
-            '完納フラグ
-            FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
-            '納入回数
-            ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
-            '商品代金
-            B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sNoTaxTotalProductPrice)
-            '送料の数値変換
-            B_POSTAGE_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sShippingCharge)
-            '手数料の数値変換
-            B_FEE_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPaymentCharge)
-            '税抜き請求金額
-            B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", CLng(B_BREFORE_PRODUCT_T.Text) + CLng(B_POSTAGE_T.Text) + CLng(B_FEE_T.Text))
-            '消費税額
-            B_TAX_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sTaxTotal)
-            '軽減税額
-            B_RTAX_T.Text = String.Format("{0:#,##0}", oOrderDataFull(0).sReducedTaxRateTotal)
-            '値引きの数値変換
-            B_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sDiscount)
-            'ポイント値引きの数値変換
-            B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPointDisCount)
-            '税込合計の数値変換
-            B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
+    '    ElseIf AFTER_TAX_R.Checked = False Then '前回のデータがあり、税抜きモードの場合
 
-        End If
-    End Sub
+    '        '完納フラグ
+    '        FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
+    '        '納入回数
+    '        ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
+    '        '商品代金
+    '        B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sNoTaxTotalProductPrice)
+    '        '送料の数値変換
+    '        B_POSTAGE_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sShippingCharge)
+    '        '手数料の数値変換
+    '        B_FEE_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPaymentCharge)
+    '        '税抜き請求金額
+    '        B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", CLng(B_BREFORE_PRODUCT_T.Text) + CLng(B_POSTAGE_T.Text) + CLng(B_FEE_T.Text))
+    '        '消費税額
+    '        B_TAX_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sTaxTotal)
+    '        '軽減税額
+    '        B_RTAX_T.Text = String.Format("{0:#,##0}", oOrderDataFull(0).sReducedTaxRateTotal)
+    '        '値引きの数値変換
+    '        B_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sDiscount)
+    '        'ポイント値引きの数値変換
+    '        B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPointDisCount)
+    '        '税込合計の数値変換
+    '        B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
+
+    '    End If
+    'End Sub
 
     '2019.11.20 R.Takashima TO
 
@@ -2966,17 +3093,17 @@
     End Function
 
     'Orderで税抜登録→Arrivalのデフォルトが税込なので発注単価と納入単価を税込にするメソッド
-    Private Function Cal_Proc_View(ByVal stopValue As Boolean)
+    Private Sub Cal_Proc_View(ByVal stopValue As Boolean)
         STOP_VALUE = stopValue
 
         '2019.11.20 R.Takashima FROM
         '既納入情報入力
-        B_TEXT_INIT(oArriveDataFull)
+        'B_TEXT_INIT(oArriveDataFull)
         '2019.11.20 R.Takashima TO
 
         CAL_PROC(True, False)
         STOP_VALUE = False
-    End Function
+    End Sub
 
 
 
