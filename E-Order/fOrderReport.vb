@@ -1261,15 +1261,14 @@
 
         '印刷開始
         If ORDER_MODE = 0 Then      '発注伝票印刷
-            ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
-            oReportPage = Nothing
-        Else                        '返品伝票印刷
-            ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+                ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+                oReportPage = Nothing
+            Else                        '返品伝票印刷
+                ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
 
-            oReportPage = Nothing
-        End If
-
-        Message_form.Dispose()
+                oReportPage = Nothing
+            End If
+            Message_form.Dispose()
         Message_form = Nothing
 
         If ret = False Then
