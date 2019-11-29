@@ -296,17 +296,34 @@
                 End Select
             Next
 
-            PRODUCT_V.Rows.Add( _
-                    oViewCandidate(i).sStatus, _
-                    oViewCandidate(i).sJANCode, _
-                    oViewCandidate(i).sProductCode, _
-                    oViewCandidate(i).sProductName, _
-                    str, _
-                    oViewCandidate(i).sPrice, _
-                    oViewCandidate(i).sCostPrice, _
-                    oViewCandidate(i).sCount, _
-                    oViewCandidate(i).sStockCount _
+            '2019.11.29 R.Takashima FROM
+            '仕入先名称を追加
+            'PRODUCT_V.Rows.Add(
+            '        oViewCandidate(i).sStatus,
+            '        oViewCandidate(i).sJANCode,
+            '        oViewCandidate(i).sProductCode,
+            '        oViewCandidate(i).sProductName,
+            '        str,
+            '        oViewCandidate(i).sPrice,
+            '        oViewCandidate(i).sCostPrice,
+            '        oViewCandidate(i).sCount,
+            '        oViewCandidate(i).sStockCount,
+            '        oViewCandidate(i).sSupplierName
+            ')
+
+            PRODUCT_V.Rows.Add(
+                    oViewCandidate(i).sStatus,
+                    oViewCandidate(i).sJANCode,
+                    oViewCandidate(i).sProductCode,
+                    oViewCandidate(i).sProductName,
+                    str,
+                    oViewCandidate(i).sPrice,
+                    oViewCandidate(i).sCostPrice,
+                    oViewCandidate(i).sCount,
+                    oViewCandidate(i).sStockCount,
+                    oViewCandidate(i).sSupplierName
             )
+            '2019.11.29 R.Takashima
         Next i
     End Sub
 
