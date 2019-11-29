@@ -867,7 +867,7 @@
             POSTAGE_TAX = "0"
             FEE_TAX = "0"
 
-
+            '2019,11,29 A.Komita 数量を変更した時に再計算をする為フラグを変数を初期化するコードを追加 From
             If AFTER_TAX_R.Checked = True Then
                 If ORDER_V("数量", i).Value <> 1 Then
                     Cal_Money_Flg = 0
@@ -878,7 +878,7 @@
 
                 End If
             End If
-
+            '2019,11,29 A.Komita 追加 To
 
             For i = 0 To ORDER_V.RowCount - 1
 
@@ -956,25 +956,27 @@
                     TotalPrice = TotalPrice + ORDER_V("金額", i).Value
 
 
-                    '2019,11,2 A.Komita 追加 From
+                '2019,11,2 A.Komita 追加 From
 
-                    'ORDER_INSERTで税込モードで登録する際、税抜価格と消費税の値が必要になるのでここで取得している
+                'ORDER_INSERTで税込モードで登録する際、税抜価格と消費税の値が必要になるのでここで取得している
 
-                    If Cal_Money_Flg = 0 Then
-                        If AFTER_TAX_R.Checked = True Then
-                            If oProduct(0).sReducedTaxRate = String.Empty Then
-                                NoTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
-                                TaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
-                            Else
-                                NoReducedTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
-                                ReducedTaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
-                            End If
+                If Cal_Money_Flg = 0 Then
 
+                    If AFTER_TAX_R.Checked = True Then
+                        If oProduct(0).sReducedTaxRate = String.Empty Then
+                            NoTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                            TaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                        Else
+                            NoReducedTaxTotal += oTool.AfterToBeforeTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
+                            ReducedTaxTotal += oTool.AfterToTax(ORDER_V("金額", i).Value, oProduct(0).sReducedTaxRate, oConf(0).sFracProc)
                         End If
-                    Else
 
                     End If
-                Next
+                Else
+
+                End If
+
+            Next
 
                 Cal_Money_Flg = 1
 
@@ -1276,14 +1278,14 @@
 
         '印刷開始
         If ORDER_MODE = 0 Then      '発注伝票印刷
-                ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
-                oReportPage = Nothing
-            Else                        '返品伝票印刷
-                ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+            ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+            oReportPage = Nothing
+        Else                        '返品伝票印刷
+            ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
 
-                oReportPage = Nothing
-            End If
-            Message_form.Dispose()
+            oReportPage = Nothing
+        End If
+        Message_form.Dispose()
         Message_form = Nothing
 
         If ret = False Then
