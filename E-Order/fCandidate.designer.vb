@@ -22,57 +22,57 @@ Partial Class fCandidate
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.SUPPLIER_L = New System.Windows.Forms.ComboBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.PRODUCT_NAME_T = New System.Windows.Forms.TextBox
-        Me.PRODUCT_V = New System.Windows.Forms.DataGridView
-        Me.SEL_C = New System.Windows.Forms.CheckBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.SEL_COUNT_T = New System.Windows.Forms.TextBox
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.JANCODE_T = New System.Windows.Forms.TextBox
-        Me.SUPPLIER_CODE_T = New System.Windows.Forms.TextBox
-        Me.STAFF_CODE_T = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.STAFF_NAME_T = New System.Windows.Forms.TextBox
-        Me.OPTION_NAME_T = New System.Windows.Forms.TextBox
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer
-        Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape
-        Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape
-        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape
-        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape
-        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.SUPPLIER_L = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.PRODUCT_NAME_T = New System.Windows.Forms.TextBox()
+        Me.PRODUCT_V = New System.Windows.Forms.DataGridView()
+        Me.SEL_C = New System.Windows.Forms.CheckBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.SEL_COUNT_T = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.JANCODE_T = New System.Windows.Forms.TextBox()
+        Me.SUPPLIER_CODE_T = New System.Windows.Forms.TextBox()
+        Me.STAFF_CODE_T = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.STAFF_NAME_T = New System.Windows.Forms.TextBox()
+        Me.OPTION_NAME_T = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.SEARCH_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.OFF_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.CLOSE_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.ON_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.CANCEL_B = New Softgroup.NetButton.NetButton(Me.components)
-        Me.KIKAN_T = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.CYCLE_T = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label15 = New System.Windows.Forms.Label
-        Me.Label16 = New System.Windows.Forms.Label
-        Me.MIN_COUNT_T = New System.Windows.Forms.TextBox
-        Me.BUMON_CODE_T = New System.Windows.Forms.TextBox
-        Me.BUMON_L = New System.Windows.Forms.ComboBox
-        Me.Label17 = New System.Windows.Forms.Label
-        Me.Label18 = New System.Windows.Forms.Label
-        Me.TOTAL_COUNT_T = New System.Windows.Forms.TextBox
-        Me.Label19 = New System.Windows.Forms.Label
+        Me.KIKAN_T = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.CYCLE_T = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.MIN_COUNT_T = New System.Windows.Forms.TextBox()
+        Me.BUMON_CODE_T = New System.Windows.Forms.TextBox()
+        Me.BUMON_L = New System.Windows.Forms.ComboBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TOTAL_COUNT_T = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
         CType(Me.PRODUCT_V, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -242,7 +242,7 @@ Partial Class fCandidate
         'SUPPLIER_CODE_T
         '
         Me.SUPPLIER_CODE_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(654, 80)
+        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(655, 80)
         Me.SUPPLIER_CODE_T.Name = "SUPPLIER_CODE_T"
         Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(21, 19)
         Me.SUPPLIER_CODE_T.TabIndex = 21
@@ -622,11 +622,10 @@ Partial Class fCandidate
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.KIKAN_T)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.CANCEL_B)
-        Me.Controls.Add(Me.CLOSE_B)
         Me.Controls.Add(Me.OFF_B)
+        Me.Controls.Add(Me.CLOSE_B)
         Me.Controls.Add(Me.ON_B)
-        Me.Controls.Add(Me.SEARCH_B)
+        Me.Controls.Add(Me.CANCEL_B)
         Me.Controls.Add(Me.SEL_COUNT_T)
         Me.Controls.Add(Me.JANCODE_T)
         Me.Controls.Add(Me.OPTION_NAME_T)
@@ -637,6 +636,7 @@ Partial Class fCandidate
         Me.Controls.Add(Me.STAFF_NAME_T)
         Me.Controls.Add(Me.STAFF_CODE_T)
         Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.SEARCH_B)
         Me.Controls.Add(Me.SUPPLIER_CODE_T)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)

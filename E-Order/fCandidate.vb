@@ -194,14 +194,14 @@
         Dim column4 As New DataGridViewTextBoxColumn
         column4.HeaderText = "商品名称"
         PRODUCT_V.Columns.Add(column4)
-        column4.Width = 200
+        column4.Width = 150
         column4.ReadOnly = True
         column4.Name = "商品名称"
 
         Dim column5 As New DataGridViewTextBoxColumn
         column5.HeaderText = "オプション"
         PRODUCT_V.Columns.Add(column5)
-        column5.Width = 170
+        column5.Width = 150
         column5.ReadOnly = True
         column5.Name = "オプション"
 
@@ -227,7 +227,7 @@
         Dim column8 As New DataGridViewTextBoxColumn
         column8.HeaderText = "販売数"
         PRODUCT_V.Columns.Add(column8)
-        column8.Width = 70
+        column8.Width = 50
         column8.ReadOnly = True
         column8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column8.Name = "販売数"
@@ -235,10 +235,20 @@
         Dim column9 As New DataGridViewTextBoxColumn
         column9.HeaderText = "在庫数"
         PRODUCT_V.Columns.Add(column9)
-        column9.Width = 70
+        column9.Width = 50
         column9.ReadOnly = True
         column9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column9.Name = "在庫数"
+
+        '2019.11.29 R.Takashima FROM
+        'グリッドビューに仕入先を追加
+        Dim column10 As New DataGridViewTextBoxColumn
+        column10.HeaderText = "仕入先"
+        PRODUCT_V.Columns.Add(column10)
+        column10.Width = 120
+        column10.ReadOnly = True
+        column10.Name = "仕入先"
+        '2019.11.29 R.Takashima TO
 
         '背景色を白に設定
         PRODUCT_V.RowsDefaultCellStyle.BackColor = Color.White
@@ -539,21 +549,40 @@
         pCycleDate = String.Format("{0:yyyy/MM/dd}", Now.AddMonths(CInt(CYCLE_T.Text) * -1))
 
         '商品在庫データの抽出数確認
-        RecordCnt = oViewCandiDateDBIO.getCandidate( _
-                oViewCandidate, _
-                pFromDate, _
-                pToDate, _
-                pCycleDate, _
-                MIN_COUNT_T.Text, _
-                PRODUCT_NAME_T.Text, _
-                OPTION_NAME_T.Text, _
-                PRODUCT_CODE_T.Text, _
-                JANCODE_T.Text, _
-                SEL_C.Checked, _
-                BUMON_L.Text, _
-                SUPPLIER_L.Text, _
-                oTran _
+        '呼び出しの変更
+        '2019.11.27 R.Takashima FROM
+        'RecordCnt = oViewCandiDateDBIO.getCandidate(
+        '        oViewCandidate,
+        '        pFromDate,
+        '        pToDate,
+        '        pCycleDate,
+        '        MIN_COUNT_T.Text,
+        '        PRODUCT_NAME_T.Text,
+        '        OPTION_NAME_T.Text,
+        '        PRODUCT_CODE_T.Text,
+        '        JANCODE_T.Text,
+        '        SEL_C.Checked,
+        '        BUMON_L.Text,
+        '        SUPPLIER_L.Text,
+        '        oTran
+        ')
+
+        RecordCnt = oViewCandiDateDBIO.getCandidateData(
+                oViewCandidate,
+                pFromDate,
+                pToDate,
+                pCycleDate,
+                MIN_COUNT_T.Text,
+                PRODUCT_NAME_T.Text,
+                OPTION_NAME_T.Text,
+                PRODUCT_CODE_T.Text,
+                JANCODE_T.Text,
+                SEL_C.Checked,
+                BUMON_L.Text,
+                SUPPLIER_L.Text,
+                oTran
        )
+        '2019.11.27 R.Takashima
 
         '検索MAX値の確認
         If RecordCnt > DISP_ROW_MAX Then
