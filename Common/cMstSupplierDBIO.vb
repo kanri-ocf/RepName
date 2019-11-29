@@ -17,9 +17,9 @@
     '　引数：なし
     '　戻値：True  --> 存在する.  False --> 存在しない
     '----------------------------------------------------------------------
-    Public Function SupplierExist(ByVal KeyString As Integer, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function SupplierExist(ByVal KeyString As Integer, ByRef Tran As OleDb.OleDbTransaction) As Boolean
 
-        Const strSelectSupplier As String = _
+        Const strSelectSupplier As String =
         "SELECT COUNT(*) FROM 仕入先マスタ WHERE 取引コード = @SupplierCode"
 
         Try

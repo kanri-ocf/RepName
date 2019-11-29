@@ -306,6 +306,7 @@ Partial Class fShipment
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.SHIPMENT_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.SHIPMENT_V.RowHeadersWidth = 82
         Me.SHIPMENT_V.RowTemplate.Height = 21
         Me.SHIPMENT_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.SHIPMENT_V.Size = New System.Drawing.Size(2156, 346)
@@ -1807,7 +1808,7 @@ Partial Class fShipment
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.SHIPMENT_V)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.Name = "fShipment"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual

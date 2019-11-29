@@ -7,7 +7,7 @@ Public Class fShipment
     Private oConn As OleDb.OleDbConnection
     Private oCommand As OleDb.OleDbCommand
     Private oDataReader As OleDb.OleDbDataReader
-    Private oTran As System.Data.OleDb.OleDbTransaction
+    Private oTran As OleDb.OleDbTransaction
 
     Private oRequest() As cStructureLib.sRequestData
     Private oDataRequestDBIO As cDataRequestDBIO
@@ -152,7 +152,7 @@ Public Class fShipment
     '******************************************************************
     'フォームロードイベント
     '******************************************************************
-    Private Sub fShipment_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub fShipment_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'ハンドラのセット
         Dim RecordCnt As Integer
         Dim oMstConfigDBIO As New cMstConfigDBIO(oConn, oCommand, oDataReader)
