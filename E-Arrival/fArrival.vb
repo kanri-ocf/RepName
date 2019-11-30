@@ -1,7 +1,7 @@
 ﻿Public Class fArrival
-    '------------------------------------
+    '-------------------------------------
     ' DBアクセス関連
-    '------------------------------------
+    '-------------------------------------
     Private oConn As OleDb.OleDbConnection
     Private oCommand As OleDb.OleDbCommand
     Private oDataReader As OleDb.OleDbDataReader
