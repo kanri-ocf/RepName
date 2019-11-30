@@ -59,7 +59,7 @@ Public Class rTag_A
         REAL_POINT = 1
         COUNT_NO = 1
     End Sub
-    Private Sub rTag_A_DataInitialize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.DataInitialize
+    Private Sub rTag_A_DataInitialize(ByVal sender As Object, ByVal e As EventArgs) Handles Me.DataInitialize
         Fields.Add("PRODUCT_NAME")
         Fields.Add("BARCODE")
         Fields.Add("OPTION_VALUE")
@@ -67,7 +67,7 @@ Public Class rTag_A
         Fields.Add("SALE_PRICE")
     End Sub
 
-    Private Sub rTag_A_FetchData(ByVal sender As Object, ByVal eArgs As DataDynamics.ActiveReports.ActiveReport.FetchEventArgs) Handles Me.FetchData
+    Private Sub rTag_A_FetchData(ByVal sender As Object, ByVal eArgs As FetchEventArgs) Handles Me.FetchData
         Dim str As String
 
         If REAL_POINT >= START_POINT Then
@@ -105,7 +105,15 @@ Public Class rTag_A
 
                 Fields("OPTION_VALUE").Value = str
                 Fields("PRODUCT_CODE").Value = oProductPrice(0).sProductCode
-                Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oConf(0).sTax, oConf(0).sFracProc))
+
+                '2019,11,30 A.Komita 追加 From
+                If oProductPrice(0).sReducedTaxRate = String.Empty Then
+                    Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oConf(0).sTax, oConf(0).sFracProc))
+                Else
+                    Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oProductPrice(0).sReducedTaxRate, oConf(0).sFracProc))
+                End If
+                '2019,11,30 A.Komita 追加 To
+
 
                 eArgs.EOF = False
                 If oTagPrint(RECORD_NO).sCount = COUNT_NO Then

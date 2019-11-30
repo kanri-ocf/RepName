@@ -103,17 +103,25 @@ Public Class rTag_B
 
                 Fields("OPTION_VALUE").Value = str
                 Fields("PRODUCT_CODE").Value = oProductPrice(0).sProductCode
-                Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oConf(0).sTax, oConf(0).sFracProc))
+
+                '2019,11,30 A.Komita 追加 From
+                If oProductPrice(0).sReducedTaxRate = String.Empty Then
+                    Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oConf(0).sTax, oConf(0).sFracProc))
+                Else
+                    Fields("SALE_PRICE").Value = String.Format("{0:C}", oTool.BeforeToAfterTax(oProductPrice(0).sSalePrice, oProductPrice(0).sReducedTaxRate, oConf(0).sFracProc))
+                End If
+                '2019,11,30 A.Komita 追加 To
+
 
                 eArgs.EOF = False
-                If oTagPrint(RECORD_NO).sCount = COUNT_NO Then
-                    RECORD_NO = RECORD_NO + 1
-                    COUNT_NO = 1
+                    If oTagPrint(RECORD_NO).sCount = COUNT_NO Then
+                        RECORD_NO = RECORD_NO + 1
+                        COUNT_NO = 1
+                    Else
+                        COUNT_NO = COUNT_NO + 1
+                    End If
                 Else
-                    COUNT_NO = COUNT_NO + 1
-                End If
-            Else
-                eArgs.EOF = True
+                    eArgs.EOF = True
             End If
         Else
             eArgs.EOF = False

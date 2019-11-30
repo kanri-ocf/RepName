@@ -526,7 +526,7 @@
         '2016.09.16 K.Oikawa e
 
         'タグ印刷画面を開く
-        ret = ReportPage.TagPrint(oConn, oCommand, oDataReader, CInt(CHANNEL_CODE_T.Text), 0, oTran)
+        ret = ReportPage.TagPrint(oConn, oCommand, oDataReader, CHANNEL_CODE_T.Text, 0, oTran)
 
         If ret = Windows.Forms.DialogResult.OK Then
             INIT_PROC()
