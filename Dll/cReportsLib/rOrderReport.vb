@@ -429,7 +429,7 @@
 
         '値引き
         '2019,9,20 A.Komita 追加 From
-        DISCOUNT.Value = oOrderData(0).sPointDisCount
+        DISCOUNT.Value = oOrderData(0).sDiscount
         '2019,9,20 A.Komita 追加 To
 
 
@@ -438,7 +438,7 @@
     Private Sub GroupFooter1_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter1.Format
         'ポイント値引き
         '2019,9,20 A.Komita 追加 From
-        POINT_DISCOUNT.Value = oOrderData(0).sDiscount
+        POINT_DISCOUNT.Value = oOrderData(0).sPointDisCount
         '2019,9,20 A.Komita 追加 To
 
         '2019,10,23 A.Komita 修正 Start--------------------------------------------------------------------------------------------
