@@ -736,7 +736,7 @@
             End While
 
             'SQLが思いつかなかったためVB上でデータの入れ替えや売上個数、売上サイクルの計算を行っている
-            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate)
+            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate)
 
         Catch oExcept As Exception
             '例外が発生した時の処理
@@ -754,6 +754,7 @@
     End Function
     '2019.11.30 R.Takashima TO
 
+
     '2019.11.30 R.Takashiam FROM
     '----------------------------------------------------------------------
     '　機能：売上サイクル内に存在している商品を仕入先別に数量を計算し並び替える
@@ -761,24 +762,75 @@
     '        Byval count                取得した商品の数量
     '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
     '        Byval cycleDate            売上サイクル
+    '        Byval toDate               候補抽出期間
     '　戻値：データの数量
     '----------------------------------------------------------------------
     Private Function setCandidateData(ByRef svc As cStructureLib.sViewCandidate(),
                                       ByVal count As Long,
                                       ByVal closeDate() As String,
-                                      ByVal cycleDate As String
+                                      ByVal cycleDate As String,
+                                      ByVal toDate As String
                                       ) As Long
         '変数宣言
         Dim i As Long
         Dim j As Long
         Dim k As Long
-        Dim buyCount As Long
+        Dim productCode As String '商品コード
+        Dim latestDate As String '最新日次締め日
+        Dim buyCount As Long     '商品購入数
         Dim tempCandidate As cStructureLib.sViewCandidate()
 
         k = 0
         buyCount = 0
-        ReDim tempCandidate(0)
+        ReDim tempCandidate(count)
 
+        For i = 0 To count - 1
+            productCode = svc(k).sProductCode
+            latestDate = toDate
+
+            For j = i To count - 1
+                If productCode = svc(j).sProductCode Then
+
+                    '候補抽出期間内で最新のデータを検索
+                    If DateTime.Parse(closeDate(j)) >= DateTime.Parse(latestDate) Then
+                        latestDate = closeDate(j)
+                    End If
+
+                Else
+
+                    For k = i To j - 1
+
+                        '最新の売上から売上サイクル期間までに商品があるか検索
+                        'ない場合はNothing
+                        If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
+                            tempCandidate(k) = svc(k)
+                        Else
+                            tempCandidate(k) = Nothing
+                        End If
+
+                    Next
+
+                    i = j - 1
+                    Exit For
+
+                End If
+            Next
+        Next
+
+        j = 0
+        k = 0
+
+        'Nothingを詰める
+        For i = 0 To count - 1
+            If tempCandidate(i).sProductCode <> Nothing Then
+                ReDim Preserve svc(j)
+                svc(j) = tempCandidate(i)
+                j += 1
+            End If
+        Next
+
+        count = j
+        ReDim tempCandidate(0)
 
         '同じ仕入先の商品ごとにデータを挿入する
         For i = 0 To count - 1
