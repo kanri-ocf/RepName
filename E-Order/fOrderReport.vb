@@ -867,8 +867,10 @@
             POSTAGE_TAX = "0"
             FEE_TAX = "0"
 
+
             '2019,11,29 A.Komita 数量を変更した時に再計算をする為フラグを変数を初期化するコードを追加 From
             If AFTER_TAX_R.Checked = True Then
+
                 If ORDER_V("数量", i).Value <> 1 Then
                     Cal_Money_Flg = 0
                     NoTaxTotal = 0
@@ -879,6 +881,7 @@
                 End If
             End If
             '2019,11,29 A.Komita 追加 To
+
 
             For i = 0 To ORDER_V.RowCount - 1
 
