@@ -426,6 +426,7 @@
         strSelect = ""
         strWhere = ""
         strOrderBy = ""
+        ReDim dayCloseDate(0)
 
         '抽出期間のデータを抽出
         strSelect = strSelect &
@@ -658,7 +659,8 @@
                                          "WHERE " &
                                             "(日次取引明細データ.商品コード Is Not Null) " &
                                             "AND (日次取引明細データ.商品コード <> """") " &
-                                    ") "
+                                    ") " &
+                                    "AND 日次取引データ.取引区分 = ""売上"" "
 
 
         ' ORDER BY区生成
@@ -733,7 +735,8 @@
 
             End While
 
-            getCandidateData = i
+            'SQLが思いつかなかったためVB上でデータの入れ替えや売上個数、売上サイクルの計算を行っている
+            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate)
 
         Catch oExcept As Exception
             '例外が発生した時の処理
@@ -754,15 +757,63 @@
     '2019.11.30 R.Takashiam FROM
     '----------------------------------------------------------------------
     '　機能：売上サイクル内に存在している商品を仕入先別に数量を計算し並び替える
-    '　引数：Byref DataTable型オブジェクト(取得された取引レコード値を設定)
-    '　戻値：True  --> レコードの取得成功
-    '　　　　False --> 取得するレコードなし
+    '　引数：Byref sViewCandidate       取得した商品のデータ
+    '        Byval count                取得した商品の数量
+    '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
+    '        Byval cycleDate            売上サイクル
+    '　戻値：データの数量
     '----------------------------------------------------------------------
     Private Function setCandidateData(ByRef svc As cStructureLib.sViewCandidate(),
                                       ByVal count As Long,
                                       ByVal closeDate() As String,
                                       ByVal cycleDate As String
-                                      )
+                                      ) As Long
+        '変数宣言
+        Dim i As Long
+        Dim j As Long
+        Dim k As Long
+        Dim buyCount As Long
+        Dim tempCandidate As cStructureLib.sViewCandidate()
+
+        k = 0
+        buyCount = 0
+        ReDim tempCandidate(0)
+
+
+        For i = 0 To count - 1
+            If k < count - 1 Then
+                ReDim Preserve tempCandidate(i)
+                tempCandidate(i) = svc(k)
+
+                For j = k To count - 1
+
+                    '仕入先別に商品の売上数量を算出する
+                    If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
+                        buyCount += 1
+
+                    Else
+                        tempCandidate(i).sCount = buyCount
+                        k = j
+                        buyCount = 0
+                        Exit For
+
+                    End If
+
+                    '最終ループ時
+                    If j = count - 1 Then
+                        tempCandidate(i).sCount = buyCount
+                        k = j
+
+                    End If
+                Next
+            Else
+                Exit For
+            End If
+        Next
+
+        'データを代入する
+        svc = tempCandidate
+        Return i
 
     End Function
 
