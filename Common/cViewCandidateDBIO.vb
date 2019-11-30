@@ -587,12 +587,6 @@
                     Case 4      'KeyCycleDate
                         scnt = scnt + 1
                     Case 8      'KeyMinCount
-                        If scnt > 0 Then
-                            strWhere = strWhere & "AND "
-                        Else
-                            strWhere = strWhere & "WHERE "
-                        End If
-                        strWhere = strWhere & "商品マスタ.適正在庫数 <= " & KeyMinCount & " "
                         scnt = scnt + 1
                     Case 16      'KeyProductName
                         If scnt > 0 Then
@@ -671,6 +665,9 @@
                                             "AND (日次取引明細データ.商品コード <> """") " &
                                     ") " &
                                     "AND 日次取引データ.取引区分 = ""売上"" "
+
+        '適正在庫数が現在の在庫数以下
+        strWhere = strWhere & "AND 在庫マスタ.在庫数 <= 商品マスタ.適正在庫数 "
 
 
         ' ORDER BY区生成
