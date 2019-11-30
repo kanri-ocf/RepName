@@ -64,7 +64,7 @@
         oTool = New cTool
 
     End Sub
-    Private Sub fOrder_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub fOrder_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim RecordCnt As Integer
 
         '----------------------- SoftGroupライセンス認証 ----------------------
@@ -80,8 +80,8 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -147,7 +147,7 @@
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************
-    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+    Protected Overrides Sub WndProc(ByRef m As Message)
         Const WM_SYSCOMMAND As Integer = &H112
         Const SC_CLOSE As Integer = &HF060
         If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
@@ -275,14 +275,14 @@
 
         oProductStock = Nothing
         '商品在庫データの読み込み
-        RecordCnt = oProductMstStockDBIO.getProductTagPrint( _
-                        oProductStock, _
-                        CInt(CHANNEL_CODE_T.Text), _
-                        JANCODE_T.Text.ToString, _
-                        PRODUCT_CODE_T.Text.ToString, _
-                        PRODUCT_NAME_T.Text.ToString, _
-                        PRINT_C.Checked, _
-                        Trim(YEAR_T.Text) & "/" & Trim(MONTH_T.Text) & "/" & Trim(DAY_T.Text), _
+        RecordCnt = oProductMstStockDBIO.getProductTagPrint(
+                        oProductStock,
+                        CHANNEL_CODE_T.Text,
+                        JANCODE_T.Text.ToString,
+                        PRODUCT_CODE_T.Text.ToString,
+                        PRODUCT_NAME_T.Text.ToString,
+                        PRINT_C.Checked,
+                        Trim(YEAR_T.Text) & "/" & Trim(MONTH_T.Text) & "/" & Trim(DAY_T.Text),
                         oTran)
 
         '検索結果の画面セット
@@ -485,14 +485,14 @@
 
         oProductStock = Nothing
         '商品在庫データの読み込み
-        RecordCnt = oProductMstStockDBIO.getProductTagPrint( _
-                        oProductStock, _
-                        CInt(CHANNEL_CODE_T.Text), _
-                        JANCODE_T.Text.ToString, _
-                        PRODUCT_CODE_T.Text.ToString, _
-                        PRODUCT_NAME_T.Text.ToString, _
-                        PRINT_C.Checked, _
-                        Trim(YEAR_T.Text) & "/" & Trim(MONTH_T.Text) & "/" & Trim(DAY_T.Text), _
+        RecordCnt = oProductMstStockDBIO.getProductTagPrint(
+                        oProductStock,
+                        CHANNEL_CODE_T.Text,
+                        JANCODE_T.Text.ToString,
+                        PRODUCT_CODE_T.Text.ToString,
+                        PRODUCT_NAME_T.Text.ToString,
+                        PRINT_C.Checked,
+                        Trim(YEAR_T.Text) & "/" & Trim(MONTH_T.Text) & "/" & Trim(DAY_T.Text),
                         oTran)
 
         '検索結果の画面セット
