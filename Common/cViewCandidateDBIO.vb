@@ -780,6 +780,7 @@
         ReDim tempCandidate(0)
 
 
+        '同じ仕入先の商品ごとにデータを挿入する
         For i = 0 To count - 1
             If k < count - 1 Then
                 ReDim Preserve tempCandidate(i)
@@ -811,7 +812,7 @@
             End If
         Next
 
-        'データを代入する
+        '作成したデータを代入する
         svc = tempCandidate
         Return i
 
