@@ -949,12 +949,12 @@
         End If
 
         '発注候補選択画面を開く
-        candidate_form = New fCandidate(oConn, _
-                                            oCommand, _
-                                            oDataReader, _
-                                            num, _
-                                            STAFF_CODE, _
-                                            STAFF_NAME, _
+        candidate_form = New fCandidate(oConn,
+                                            oCommand,
+                                            oDataReader,
+                                            num,
+                                            STAFF_CODE,
+                                            STAFF_NAME,
                                             oTran)
         candidate_form.ShowDialog()
         If candidate_form.DialogResult = Windows.Forms.DialogResult.OK Then

@@ -80,6 +80,11 @@
         Softgroup.NetButton.License.LicenseKey = "DDADJEBQ3HL2AOBINJBDGZBFC"
         '----------------------------------------------------------------------
 
+        '2019.11.30 R.Takashima FROM
+        '仕入先を条件としないため隠す
+        SUPPLIER_L.Visible = False
+        '2019.11.30 R.Takashima TO
+
         '仕入先リストボックスセット
         SUPPLIER_SET()
 
@@ -194,14 +199,14 @@
         Dim column4 As New DataGridViewTextBoxColumn
         column4.HeaderText = "商品名称"
         PRODUCT_V.Columns.Add(column4)
-        column4.Width = 150
+        column4.Width = 190
         column4.ReadOnly = True
         column4.Name = "商品名称"
 
         Dim column5 As New DataGridViewTextBoxColumn
         column5.HeaderText = "オプション"
         PRODUCT_V.Columns.Add(column5)
-        column5.Width = 150
+        column5.Width = 190
         column5.ReadOnly = True
         column5.Name = "オプション"
 
@@ -227,7 +232,7 @@
         Dim column8 As New DataGridViewTextBoxColumn
         column8.HeaderText = "販売数"
         PRODUCT_V.Columns.Add(column8)
-        column8.Width = 50
+        column8.Width = 70
         column8.ReadOnly = True
         column8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column8.Name = "販売数"
@@ -235,20 +240,23 @@
         Dim column9 As New DataGridViewTextBoxColumn
         column9.HeaderText = "在庫数"
         PRODUCT_V.Columns.Add(column9)
-        column9.Width = 50
+        column9.Width = 70
         column9.ReadOnly = True
         column9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column9.Name = "在庫数"
 
+        '2019.11.30 R.Takashima FROM
+        '仕入先を削除
         '2019.11.29 R.Takashima FROM
         'グリッドビューに仕入先を追加
-        Dim column10 As New DataGridViewTextBoxColumn
-        column10.HeaderText = "仕入先"
-        PRODUCT_V.Columns.Add(column10)
-        column10.Width = 120
-        column10.ReadOnly = True
-        column10.Name = "仕入先"
+        'Dim column10 As New DataGridViewTextBoxColumn
+        'column10.HeaderText = "仕入先"
+        'PRODUCT_V.Columns.Add(column10)
+        'column10.Width = 120
+        'column10.ReadOnly = True
+        'column10.Name = "仕入先"
         '2019.11.29 R.Takashima TO
+        '2019.11.30 R.Takashima TO
 
         '背景色を白に設定
         PRODUCT_V.RowsDefaultCellStyle.BackColor = Color.White
@@ -298,6 +306,20 @@
 
             '2019.11.29 R.Takashima FROM
             '仕入先名称を追加
+            '2019.11.30 R.Takashima FROM
+            '仕入先名称を条件としない
+            PRODUCT_V.Rows.Add(
+                    oViewCandidate(i).sStatus,
+                    oViewCandidate(i).sJANCode,
+                    oViewCandidate(i).sProductCode,
+                    oViewCandidate(i).sProductName,
+                    str,
+                    oViewCandidate(i).sPrice,
+                    oViewCandidate(i).sCostPrice,
+                    oViewCandidate(i).sCount,
+                    oViewCandidate(i).sStockCount
+            )
+
             'PRODUCT_V.Rows.Add(
             '        oViewCandidate(i).sStatus,
             '        oViewCandidate(i).sJANCode,
@@ -310,20 +332,8 @@
             '        oViewCandidate(i).sStockCount,
             '        oViewCandidate(i).sSupplierName
             ')
-
-            PRODUCT_V.Rows.Add(
-                    oViewCandidate(i).sStatus,
-                    oViewCandidate(i).sJANCode,
-                    oViewCandidate(i).sProductCode,
-                    oViewCandidate(i).sProductName,
-                    str,
-                    oViewCandidate(i).sPrice,
-                    oViewCandidate(i).sCostPrice,
-                    oViewCandidate(i).sCount,
-                    oViewCandidate(i).sStockCount,
-                    oViewCandidate(i).sSupplierName
-            )
-            '2019.11.29 R.Takashima
+            '2019.11.30 R.Takashima TO
+            '2019.11.29 R.Takashima TO
         Next i
     End Sub
 
@@ -665,4 +675,5 @@
         Me.Close()
 
     End Sub
+
 End Class

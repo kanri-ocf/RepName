@@ -819,7 +819,6 @@
                         End If
 
                     Next
-
                     i = j - 1
                     Exit For
 
@@ -850,8 +849,13 @@
 
                 For j = k To count - 1
 
+                    '2019.11.30 R.Takashima FROM
+                    '仕入先を条件としないため変更
+
                     '仕入先別に商品の売上数量を算出する
-                    If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
+                    'If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
+                    If tempCandidate(i).sProductCode = svc(j).sProductCode Then
+                        '2019.11.30 R.Takashima TO
                         buyCount += 1
 
                     Else
