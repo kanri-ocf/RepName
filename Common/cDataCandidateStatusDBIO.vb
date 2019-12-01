@@ -116,8 +116,12 @@
                 parCandidateStatus(i).sProductCode = pDataReader("商品コード").ToString
                 '選択状態
                 parCandidateStatus(i).sCheck = pDataReader("選択状態")
+                '2019.12.1 R.Takashima FROM
+                '数量を抽出するよう変更
                 '数量
-                parCandidateStatus(i).sCount = pDataReader("選択状態")
+                'parCandidateStatus(i).sCount = pDataReader("選択状態")
+                parCandidateStatus(i).sCount = pDataReader("数量")
+                '2019.12.1 R.Takashima TO
 
                 getCandidateStatus = i
                 i = i + 1
