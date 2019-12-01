@@ -100,6 +100,11 @@
         '表示初期化処理
         INIT_PROC()
 
+        '2019.12.1 R.Takashima FROM
+        '選択数のセット
+        SET_ORDER_STATUS()
+        '2019.12.1 R.Takashima TO
+
         '初期表示検索
         SEARCH_PROC()
     End Sub
@@ -477,13 +482,13 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "部門マスタが登録されていません", _
-                                                "部門マスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "部門マスタが登録されていません",
+                                                "部門マスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "部門マスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "部門マスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -497,6 +502,38 @@
         Next
         oDataReader = Nothing
     End Sub
+
+    '2019.12.1 R.Takashima FROM
+    '***************************
+    'OrderStatus取得、選択数セット
+    '***************************
+    Private Sub SET_ORDER_STATUS()
+        Dim status As cStructureLib.sOrderStatus()
+        Dim orderStatusDBIO As cDataOrderStatusDBIO
+        Dim recordCount As Long
+
+        ReDim status(0)
+        orderStatusDBIO = New cDataOrderStatusDBIO(oConn, oCommand, oDataReader)
+
+        '発注状態データ取得
+        recordCount = orderStatusDBIO.getOrderStatus(status, Nothing, oTran)
+
+        '選択されている商品を数え、発注候補選択状態データに挿入
+        For Each arry In status
+            If arry.sCheck = True Then
+                SEL_COUNT += 1
+                oCandidateStatus.sProductCode = arry.sProductCode
+                oCandidateStatus.sCheck = arry.sCheck
+                oCandidateStatus.sCount = arry.sCount
+                oDataCandidateStatusDBIO.insertCandidateStatus(oCandidateStatus, oTran)
+            End If
+        Next
+
+        'テキストボックスに挿入
+        SEL_COUNT_T.Text = SEL_COUNT
+    End Sub
+    '2019.12.1 R.Takashiam TO
+
     '***********************************************************
     '合計消費税のテキストボックスにキャレットを表示出来なくする
     '***********************************************************
