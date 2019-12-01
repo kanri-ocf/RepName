@@ -744,7 +744,9 @@
             End While
 
             'SQLが思いつかなかったためVB上でデータの入れ替えや売上個数、売上サイクルの計算を行っている
-            getCandidateData = setCandidateCycleData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate, KeyMinCount)
+            If i > 0 Then
+                getCandidateData = setCandidateCycleData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyFromDate, KeyMinCount)
+            End If
 
         Catch oExcept As Exception
             '例外が発生した時の処理
@@ -770,7 +772,7 @@
     '        Byval count                取得した商品の数量
     '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
     '        Byval cycleDate            売上サイクル
-    '        Byval toDate               候補抽出期間
+    '        Byval fromDate               候補抽出期間
     '        Byval minCount             最低売上数量
     '　戻値：データの数量
     '----------------------------------------------------------------------
@@ -778,28 +780,29 @@
                                       ByVal count As Long,
                                       ByVal closeDate() As String,
                                       ByVal cycleDate As String,
-                                      ByVal toDate As String,
+                                      ByVal fromDate As String,
                                       ByVal minCount As Long
                                       ) As Long
         '変数宣言
         Dim i As Long
         Dim j As Long
         Dim k As Long
-        Dim productCode As String '商品コード
-        Dim latestDate As String '最新日次締め日
-        Dim buyCount As Long     '商品購入数
+        Dim productCode As String  '商品コード
+        Dim latestDate As String   '最新日次締め日
+        Dim buyCount As Long       '商品購入数
         Dim tempCandidate As cStructureLib.sViewCandidate()
 
         k = 0
         buyCount = 0
-        ReDim tempCandidate(count)
+        ReDim tempCandidate(count - 1)
+
 
         For i = 0 To count - 1
             productCode = svc(k).sProductCode
-            latestDate = toDate
+            latestDate = fromDate
 
             For j = i To count - 1
-                If productCode = svc(j).sProductCode Then
+                If productCode = svc(j).sProductCode Or j < count - 1 Then
 
                     '候補抽出期間内で最新のデータを検索
                     If DateTime.Parse(closeDate(j)) >= DateTime.Parse(latestDate) Then
@@ -811,19 +814,32 @@
                     For k = i To j - 1
 
                         '最新の売上から売上サイクル期間までに商品があるか検索
-                        'ない場合はNothing
+                        'あれば最新のデータを除き挿入
+                        'ない場合はNothingを挿入
                         If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
-                            tempCandidate(k) = svc(k)
-                        Else
-                            tempCandidate(k) = Nothing
+                            If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
+                                tempCandidate(k) = svc(k)
+                            Else
+                                tempCandidate(k) = Nothing
+                            End If
                         End If
-
                     Next
                     i = j - 1
                     Exit For
 
                 End If
             Next
+        Next
+
+        '売上サイクル期間内に売上がある場合、最新の売上データを入れる
+        For i = 0 To count - 1
+            If tempCandidate(i).sProductCode <> Nothing Then
+                For j = 0 To count - 1
+                    If tempCandidate(i).sProductCode = svc(j).sProductCode Then
+                        tempCandidate(j) = svc(j)
+                    End If
+                Next
+            End If
         Next
 
         j = 0
@@ -835,6 +851,13 @@
                 ReDim Preserve svc(j)
                 svc(j) = tempCandidate(i)
                 j += 1
+            End If
+
+            '全てNothingの場合、処理を終了させる
+            If i = count - 1 And j = 0 Then
+                ReDim svc(0)
+                Return 0
+                Exit Function
             End If
         Next
 
@@ -902,6 +925,8 @@
                     If svc(i).sCount < svc(j).sCount Then
                         tempCandidate(i) = svc(j)
                         tempCandidate(j) = svc(i)
+                    Else
+                        tempCandidate(j) = svc(j)
                     End If
                 Next
             Next
