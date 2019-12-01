@@ -801,8 +801,9 @@
             productCode = svc(k).sProductCode
             latestDate = fromDate
 
-            For j = i To count - 1
-                If productCode = svc(j).sProductCode Or j < count - 1 Then
+            For j = k To count - 1
+
+                If productCode = svc(j).sProductCode Then
 
                     '候補抽出期間内で最新のデータを検索
                     If DateTime.Parse(closeDate(j)) >= DateTime.Parse(latestDate) Then
@@ -811,7 +812,7 @@
 
                 Else
 
-                    For k = i To j - 1
+                    For k = k To j - 1
 
                         '最新の売上から売上サイクル期間までに商品があるか検索
                         'あれば最新のデータを除き挿入
@@ -824,12 +825,30 @@
                             End If
                         End If
                     Next
-                    i = j - 1
-                    Exit For
 
+                    Exit For
+                End If
+
+                '最終ループ時
+                If j = count - 1 Then
+                    For k = k To j
+                        '最新の売上から売上サイクル期間までに商品があるか検索
+                        'あれば最新のデータを除き挿入
+                        'ない場合はNothingを挿入
+                        If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
+                            If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
+                                tempCandidate(k) = svc(k)
+                            Else
+                                tempCandidate(k) = Nothing
+                            End If
+                        End If
+                    Next
+                    'k = データの個数  --> ループの終了
+                    i = k
                 End If
             Next
         Next
+
 
         '売上サイクル期間内に売上がある場合、最新の売上データを入れる
         For i = 0 To count - 1
