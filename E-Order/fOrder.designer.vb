@@ -362,7 +362,7 @@ Partial Class fOrder
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1024, 730)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1024, 737)
         Me.ShapeContainer1.TabIndex = 14
         Me.ShapeContainer1.TabStop = False
         '
@@ -457,7 +457,7 @@ Partial Class fOrder
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(1024, 730)
+        Me.ClientSize = New System.Drawing.Size(1024, 737)
         Me.Controls.Add(Me.ON_B)
         Me.Controls.Add(Me.ORDER_B)
         Me.Controls.Add(Me.RETURN_ORDER_B)

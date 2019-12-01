@@ -400,6 +400,7 @@
 
     '2019.11.30 R.Takashima FROM
     '候補抽出期間、売上サイクルを条件として商品のデータを抽出する
+    '戻り値には抽出した商品の個数
     Public Function getCandidateData(ByRef parCandidate() As cStructureLib.sViewCandidate,
                                    ByVal KeyFromDate As String,
                                    ByVal KeyToDate As String,
@@ -743,7 +744,7 @@
             End While
 
             'SQLが思いつかなかったためVB上でデータの入れ替えや売上個数、売上サイクルの計算を行っている
-            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate, KeyMinCount)
+            getCandidateData = setCandidateCycleData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate, KeyMinCount)
 
         Catch oExcept As Exception
             '例外が発生した時の処理
@@ -773,7 +774,7 @@
     '        Byval minCount             最低売上数量
     '　戻値：データの数量
     '----------------------------------------------------------------------
-    Private Function setCandidateData(ByRef svc As cStructureLib.sViewCandidate(),
+    Private Function setCandidateCycleData(ByRef svc As cStructureLib.sViewCandidate(),
                                       ByVal count As Long,
                                       ByVal closeDate() As String,
                                       ByVal cycleDate As String,
@@ -837,7 +838,7 @@
             End If
         Next
 
-        count = j
+        count = svc.Length
         ReDim tempCandidate(0)
 
         '同じ仕入先の商品ごとにデータを挿入する
@@ -890,24 +891,26 @@
         Next
 
         count = j
-        buyCount = svc(0).sCount
-        ReDim tempCandidate(count)
+        ReDim tempCandidate(count - 1)
 
         '売上数量が大きい順に並び替える（降順）
         '選択ソート
-        For i = 0 To count - 1
-            For j = i To count - 1
-                If svc(i).sCount < svc(j).sCount Then
-                    tempCandidate(i) = svc(j)
-                    tempCandidate(j) = svc(i)
-                End If
+        '商品の個数が０や１の場合は並び替える必要は無い
+        If count > 1 Then
+            For i = 0 To count - 1
+                For j = i To count - 1
+                    If svc(i).sCount < svc(j).sCount Then
+                        tempCandidate(i) = svc(j)
+                        tempCandidate(j) = svc(i)
+                    End If
+                Next
             Next
-        Next
 
-        'データを代入する
-        svc = tempCandidate
+            'データを代入する
+            svc = tempCandidate
+        End If
 
-        Return count
+        Return svc.Length
 
     End Function
 
