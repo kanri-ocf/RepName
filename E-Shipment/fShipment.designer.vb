@@ -182,7 +182,7 @@ Partial Class fShipment
         Me.RQ_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_NAME_T.Location = New System.Drawing.Point(124, 18)
-        Me.RQ_NAME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_NAME_T.Name = "RQ_NAME_T"
         Me.RQ_NAME_T.ReadOnly = True
         Me.RQ_NAME_T.Size = New System.Drawing.Size(436, 24)
@@ -205,7 +205,7 @@ Partial Class fShipment
         Me.REQ_CODE_T.BackColor = System.Drawing.Color.LightCyan
         Me.REQ_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.REQ_CODE_T.Location = New System.Drawing.Point(88, 26)
-        Me.REQ_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.REQ_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.REQ_CODE_T.Name = "REQ_CODE_T"
         Me.REQ_CODE_T.Size = New System.Drawing.Size(288, 34)
         Me.REQ_CODE_T.TabIndex = 1
@@ -227,7 +227,7 @@ Partial Class fShipment
         Me.RQ_DATE_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_DATE_T.Location = New System.Drawing.Point(124, 96)
-        Me.RQ_DATE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_DATE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_DATE_T.Name = "RQ_DATE_T"
         Me.RQ_DATE_T.ReadOnly = True
         Me.RQ_DATE_T.Size = New System.Drawing.Size(136, 24)
@@ -250,7 +250,7 @@ Partial Class fShipment
         Me.RQ_ADDR_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_ADDR_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_ADDR_T.Location = New System.Drawing.Point(124, 44)
-        Me.RQ_ADDR_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_ADDR_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_ADDR_T.Name = "RQ_ADDR_T"
         Me.RQ_ADDR_T.ReadOnly = True
         Me.RQ_ADDR_T.Size = New System.Drawing.Size(524, 24)
@@ -295,7 +295,7 @@ Partial Class fShipment
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SHIPMENT_V.DefaultCellStyle = DataGridViewCellStyle2
         Me.SHIPMENT_V.Location = New System.Drawing.Point(18, 358)
-        Me.SHIPMENT_V.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIPMENT_V.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIPMENT_V.MultiSelect = False
         Me.SHIPMENT_V.Name = "SHIPMENT_V"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -329,7 +329,7 @@ Partial Class fShipment
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.STAFF_CODE_T.Location = New System.Drawing.Point(143, 918)
-        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
         Me.STAFF_CODE_T.Size = New System.Drawing.Size(165, 24)
@@ -341,7 +341,7 @@ Partial Class fShipment
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.STAFF_NAME_T.Location = New System.Drawing.Point(319, 918)
-        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
         Me.STAFF_NAME_T.Size = New System.Drawing.Size(227, 24)
@@ -353,7 +353,7 @@ Partial Class fShipment
         Me.RQ_PAYMENT_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_PAYMENT_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_PAYMENT_T.Location = New System.Drawing.Point(124, 202)
-        Me.RQ_PAYMENT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_PAYMENT_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_PAYMENT_T.Name = "RQ_PAYMENT_T"
         Me.RQ_PAYMENT_T.ReadOnly = True
         Me.RQ_PAYMENT_T.Size = New System.Drawing.Size(261, 24)
@@ -376,7 +376,7 @@ Partial Class fShipment
         Me.RQ_CHANNEL_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_CHANNEL_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_CHANNEL_T.Location = New System.Drawing.Point(124, 176)
-        Me.RQ_CHANNEL_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_CHANNEL_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_CHANNEL_T.Name = "RQ_CHANNEL_T"
         Me.RQ_CHANNEL_T.ReadOnly = True
         Me.RQ_CHANNEL_T.Size = New System.Drawing.Size(261, 24)
@@ -409,9 +409,9 @@ Partial Class fShipment
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
         Me.GroupBox1.Location = New System.Drawing.Point(18, 576)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(670, 240)
         Me.GroupBox1.TabIndex = 32
         Me.GroupBox1.TabStop = False
@@ -444,7 +444,7 @@ Partial Class fShipment
         Me.RQ_TIME_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_TIME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_TIME_T.Location = New System.Drawing.Point(287, 96)
-        Me.RQ_TIME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_TIME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_TIME_T.Name = "RQ_TIME_T"
         Me.RQ_TIME_T.ReadOnly = True
         Me.RQ_TIME_T.Size = New System.Drawing.Size(122, 24)
@@ -456,7 +456,7 @@ Partial Class fShipment
         Me.RQ_DAIBIKI_C.AutoSize = True
         Me.RQ_DAIBIKI_C.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.RQ_DAIBIKI_C.Location = New System.Drawing.Point(438, 208)
-        Me.RQ_DAIBIKI_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_DAIBIKI_C.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_DAIBIKI_C.Name = "RQ_DAIBIKI_C"
         Me.RQ_DAIBIKI_C.Size = New System.Drawing.Size(18, 17)
         Me.RQ_DAIBIKI_C.TabIndex = 84
@@ -468,7 +468,7 @@ Partial Class fShipment
         Me.RQ_PAYMENT_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_PAYMENT_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_PAYMENT_CODE_T.Location = New System.Drawing.Point(391, 202)
-        Me.RQ_PAYMENT_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_PAYMENT_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_PAYMENT_CODE_T.Name = "RQ_PAYMENT_CODE_T"
         Me.RQ_PAYMENT_CODE_T.ReadOnly = True
         Me.RQ_PAYMENT_CODE_T.Size = New System.Drawing.Size(37, 24)
@@ -481,7 +481,7 @@ Partial Class fShipment
         Me.SHIP_RQ_DATE_T.BackColor = System.Drawing.Color.Wheat
         Me.SHIP_RQ_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_RQ_DATE_T.Location = New System.Drawing.Point(124, 150)
-        Me.SHIP_RQ_DATE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_RQ_DATE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_RQ_DATE_T.Name = "SHIP_RQ_DATE_T"
         Me.SHIP_RQ_DATE_T.ReadOnly = True
         Me.SHIP_RQ_DATE_T.Size = New System.Drawing.Size(136, 24)
@@ -515,7 +515,7 @@ Partial Class fShipment
         Me.RQ_MAIL_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_MAIL_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_MAIL_T.Location = New System.Drawing.Point(124, 70)
-        Me.RQ_MAIL_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_MAIL_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_MAIL_T.Name = "RQ_MAIL_T"
         Me.RQ_MAIL_T.ReadOnly = True
         Me.RQ_MAIL_T.Size = New System.Drawing.Size(358, 24)
@@ -538,7 +538,7 @@ Partial Class fShipment
         Me.RQ_PONE_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_PONE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_PONE_T.Location = New System.Drawing.Point(124, 122)
-        Me.RQ_PONE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_PONE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_PONE_T.Name = "RQ_PONE_T"
         Me.RQ_PONE_T.ReadOnly = True
         Me.RQ_PONE_T.Size = New System.Drawing.Size(228, 24)
@@ -550,7 +550,7 @@ Partial Class fShipment
         Me.SHIP_RQ_TIME_T.BackColor = System.Drawing.Color.Wheat
         Me.SHIP_RQ_TIME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_RQ_TIME_T.Location = New System.Drawing.Point(287, 150)
-        Me.SHIP_RQ_TIME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_RQ_TIME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_RQ_TIME_T.Name = "SHIP_RQ_TIME_T"
         Me.SHIP_RQ_TIME_T.ReadOnly = True
         Me.SHIP_RQ_TIME_T.Size = New System.Drawing.Size(122, 24)
@@ -562,7 +562,7 @@ Partial Class fShipment
         Me.JANCODE_T.BackColor = System.Drawing.Color.LightCyan
         Me.JANCODE_T.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.JANCODE_T.Location = New System.Drawing.Point(14, 95)
-        Me.JANCODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.JANCODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.JANCODE_T.Multiline = True
         Me.JANCODE_T.Name = "JANCODE_T"
         Me.JANCODE_T.Size = New System.Drawing.Size(486, 45)
@@ -585,7 +585,7 @@ Partial Class fShipment
         Me.COUNT_T.BackColor = System.Drawing.Color.LightCyan
         Me.COUNT_T.Font = New System.Drawing.Font("MS UI Gothic", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.COUNT_T.Location = New System.Drawing.Point(524, 95)
-        Me.COUNT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.COUNT_T.Margin = New System.Windows.Forms.Padding(4)
         Me.COUNT_T.Multiline = True
         Me.COUNT_T.Name = "COUNT_T"
         Me.COUNT_T.Size = New System.Drawing.Size(211, 45)
@@ -623,9 +623,9 @@ Partial Class fShipment
         Me.GroupBox2.Controls.Add(Me.GroupBox5)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
         Me.GroupBox2.Location = New System.Drawing.Point(20, 31)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Size = New System.Drawing.Size(1327, 316)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
@@ -646,7 +646,7 @@ Partial Class fShipment
         Me.SHIP_FIX_C.AutoSize = True
         Me.SHIP_FIX_C.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.SHIP_FIX_C.Location = New System.Drawing.Point(758, 38)
-        Me.SHIP_FIX_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_FIX_C.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_FIX_C.Name = "SHIP_FIX_C"
         Me.SHIP_FIX_C.Size = New System.Drawing.Size(97, 19)
         Me.SHIP_FIX_C.TabIndex = 83
@@ -658,9 +658,9 @@ Partial Class fShipment
         Me.MEISAI_KINGAKU_G.Controls.Add(Me.IN_TAX_R)
         Me.MEISAI_KINGAKU_G.Controls.Add(Me.OUT_TAX_R)
         Me.MEISAI_KINGAKU_G.Location = New System.Drawing.Point(892, 14)
-        Me.MEISAI_KINGAKU_G.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MEISAI_KINGAKU_G.Margin = New System.Windows.Forms.Padding(4)
         Me.MEISAI_KINGAKU_G.Name = "MEISAI_KINGAKU_G"
-        Me.MEISAI_KINGAKU_G.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MEISAI_KINGAKU_G.Padding = New System.Windows.Forms.Padding(4)
         Me.MEISAI_KINGAKU_G.Size = New System.Drawing.Size(223, 51)
         Me.MEISAI_KINGAKU_G.TabIndex = 84
         Me.MEISAI_KINGAKU_G.TabStop = False
@@ -671,7 +671,7 @@ Partial Class fShipment
         Me.IN_TAX_R.AutoSize = True
         Me.IN_TAX_R.Checked = True
         Me.IN_TAX_R.Location = New System.Drawing.Point(23, 21)
-        Me.IN_TAX_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.IN_TAX_R.Margin = New System.Windows.Forms.Padding(4)
         Me.IN_TAX_R.Name = "IN_TAX_R"
         Me.IN_TAX_R.Size = New System.Drawing.Size(71, 19)
         Me.IN_TAX_R.TabIndex = 1
@@ -683,7 +683,7 @@ Partial Class fShipment
         '
         Me.OUT_TAX_R.AutoSize = True
         Me.OUT_TAX_R.Location = New System.Drawing.Point(122, 21)
-        Me.OUT_TAX_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OUT_TAX_R.Margin = New System.Windows.Forms.Padding(4)
         Me.OUT_TAX_R.Name = "OUT_TAX_R"
         Me.OUT_TAX_R.Size = New System.Drawing.Size(69, 19)
         Me.OUT_TAX_R.TabIndex = 0
@@ -720,9 +720,9 @@ Partial Class fShipment
         Me.GroupBox6.Controls.Add(Me.Label10)
         Me.GroupBox6.Controls.Add(Me.ShapeContainer3)
         Me.GroupBox6.Location = New System.Drawing.Point(743, 74)
-        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox6.Size = New System.Drawing.Size(279, 234)
         Me.GroupBox6.TabIndex = 81
         Me.GroupBox6.TabStop = False
@@ -733,7 +733,7 @@ Partial Class fShipment
         Me.RQ_RTAX_RATE_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_RTAX_RATE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_RTAX_RATE_P_T.Location = New System.Drawing.Point(119, 122)
-        Me.RQ_RTAX_RATE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_RTAX_RATE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_RTAX_RATE_P_T.Name = "RQ_RTAX_RATE_P_T"
         Me.RQ_RTAX_RATE_P_T.ReadOnly = True
         Me.RQ_RTAX_RATE_P_T.Size = New System.Drawing.Size(140, 24)
@@ -757,7 +757,7 @@ Partial Class fShipment
         Me.RQ_DISCOUNT_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_DISCOUNT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_DISCOUNT_P_T.Location = New System.Drawing.Point(118, 149)
-        Me.RQ_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_DISCOUNT_P_T.Name = "RQ_DISCOUNT_P_T"
         Me.RQ_DISCOUNT_P_T.ReadOnly = True
         Me.RQ_DISCOUNT_P_T.Size = New System.Drawing.Size(141, 24)
@@ -781,7 +781,7 @@ Partial Class fShipment
         Me.RQ_BILL_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_BILL_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_BILL_P_T.Location = New System.Drawing.Point(118, 202)
-        Me.RQ_BILL_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_BILL_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_BILL_P_T.Name = "RQ_BILL_P_T"
         Me.RQ_BILL_P_T.ReadOnly = True
         Me.RQ_BILL_P_T.Size = New System.Drawing.Size(142, 24)
@@ -816,7 +816,7 @@ Partial Class fShipment
         Me.RQ_PRODUCT_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_PRODUCT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_PRODUCT_P_T.Location = New System.Drawing.Point(120, 15)
-        Me.RQ_PRODUCT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_PRODUCT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_PRODUCT_P_T.Name = "RQ_PRODUCT_P_T"
         Me.RQ_PRODUCT_P_T.ReadOnly = True
         Me.RQ_PRODUCT_P_T.Size = New System.Drawing.Size(140, 24)
@@ -829,7 +829,7 @@ Partial Class fShipment
         Me.RQ_FEE_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_FEE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_FEE_P_T.Location = New System.Drawing.Point(119, 68)
-        Me.RQ_FEE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_FEE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_FEE_P_T.Name = "RQ_FEE_P_T"
         Me.RQ_FEE_P_T.ReadOnly = True
         Me.RQ_FEE_P_T.Size = New System.Drawing.Size(141, 24)
@@ -842,7 +842,7 @@ Partial Class fShipment
         Me.RQ_POSTAGE_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_POSTAGE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_POSTAGE_P_T.Location = New System.Drawing.Point(119, 41)
-        Me.RQ_POSTAGE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_POSTAGE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_POSTAGE_P_T.Name = "RQ_POSTAGE_P_T"
         Me.RQ_POSTAGE_P_T.ReadOnly = True
         Me.RQ_POSTAGE_P_T.Size = New System.Drawing.Size(141, 24)
@@ -855,7 +855,7 @@ Partial Class fShipment
         Me.RQ_P_DISCOUNT_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_P_DISCOUNT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_P_DISCOUNT_P_T.Location = New System.Drawing.Point(118, 175)
-        Me.RQ_P_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_P_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_P_DISCOUNT_P_T.Name = "RQ_P_DISCOUNT_P_T"
         Me.RQ_P_DISCOUNT_P_T.ReadOnly = True
         Me.RQ_P_DISCOUNT_P_T.Size = New System.Drawing.Size(141, 24)
@@ -901,7 +901,7 @@ Partial Class fShipment
         Me.RQ_TAX_P_T.BackColor = System.Drawing.Color.Wheat
         Me.RQ_TAX_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_TAX_P_T.Location = New System.Drawing.Point(119, 95)
-        Me.RQ_TAX_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_TAX_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.RQ_TAX_P_T.Name = "RQ_TAX_P_T"
         Me.RQ_TAX_P_T.ReadOnly = True
         Me.RQ_TAX_P_T.Size = New System.Drawing.Size(140, 24)
@@ -999,9 +999,9 @@ Partial Class fShipment
         Me.GroupBox3.Controls.Add(Me.Label34)
         Me.GroupBox3.ForeColor = System.Drawing.Color.Black
         Me.GroupBox3.Location = New System.Drawing.Point(15, 158)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(724, 150)
         Me.GroupBox3.TabIndex = 60
         Me.GroupBox3.TabStop = False
@@ -1010,7 +1010,7 @@ Partial Class fShipment
         'TIME_CODE_T
         '
         Me.TIME_CODE_T.Location = New System.Drawing.Point(655, 85)
-        Me.TIME_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TIME_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.TIME_CODE_T.Name = "TIME_CODE_T"
         Me.TIME_CODE_T.ReadOnly = True
         Me.TIME_CODE_T.Size = New System.Drawing.Size(26, 22)
@@ -1023,7 +1023,7 @@ Partial Class fShipment
         Me.TIME_NAME_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TIME_NAME_C.FormattingEnabled = True
         Me.TIME_NAME_C.Location = New System.Drawing.Point(460, 84)
-        Me.TIME_NAME_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TIME_NAME_C.Margin = New System.Windows.Forms.Padding(4)
         Me.TIME_NAME_C.Name = "TIME_NAME_C"
         Me.TIME_NAME_C.Size = New System.Drawing.Size(246, 24)
         Me.TIME_NAME_C.TabIndex = 65
@@ -1032,7 +1032,7 @@ Partial Class fShipment
         '
         Me.ARRIVE_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.ARRIVE_DATE_T.Location = New System.Drawing.Point(460, 54)
-        Me.ARRIVE_DATE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ARRIVE_DATE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.ARRIVE_DATE_T.Mask = "0000/00/00"
         Me.ARRIVE_DATE_T.Name = "ARRIVE_DATE_T"
         Me.ARRIVE_DATE_T.Size = New System.Drawing.Size(148, 26)
@@ -1045,7 +1045,7 @@ Partial Class fShipment
         Me.SHIP_PAY_T.BackColor = System.Drawing.Color.White
         Me.SHIP_PAY_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_PAY_T.Location = New System.Drawing.Point(460, 112)
-        Me.SHIP_PAY_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_PAY_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_PAY_T.Name = "SHIP_PAY_T"
         Me.SHIP_PAY_T.Size = New System.Drawing.Size(148, 24)
         Me.SHIP_PAY_T.TabIndex = 13
@@ -1056,7 +1056,7 @@ Partial Class fShipment
         Me.SHIP_COUNT_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.SHIP_COUNT_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_COUNT_T.Location = New System.Drawing.Point(460, 26)
-        Me.SHIP_COUNT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_COUNT_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_COUNT_T.Name = "SHIP_COUNT_T"
         Me.SHIP_COUNT_T.Size = New System.Drawing.Size(52, 24)
         Me.SHIP_COUNT_T.TabIndex = 8
@@ -1076,7 +1076,7 @@ Partial Class fShipment
         'PRODUCT_CODE_T
         '
         Me.PRODUCT_CODE_T.Location = New System.Drawing.Point(260, 114)
-        Me.PRODUCT_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PRODUCT_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.PRODUCT_CODE_T.Name = "PRODUCT_CODE_T"
         Me.PRODUCT_CODE_T.ReadOnly = True
         Me.PRODUCT_CODE_T.Size = New System.Drawing.Size(26, 22)
@@ -1089,7 +1089,7 @@ Partial Class fShipment
         Me.PRODUCT_NAME_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.PRODUCT_NAME_C.FormattingEnabled = True
         Me.PRODUCT_NAME_C.Location = New System.Drawing.Point(118, 112)
-        Me.PRODUCT_NAME_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PRODUCT_NAME_C.Margin = New System.Windows.Forms.Padding(4)
         Me.PRODUCT_NAME_C.Name = "PRODUCT_NAME_C"
         Me.PRODUCT_NAME_C.Size = New System.Drawing.Size(194, 24)
         Me.PRODUCT_NAME_C.TabIndex = 73
@@ -1097,7 +1097,7 @@ Partial Class fShipment
         'SPEED_CODE_T
         '
         Me.SPEED_CODE_T.Location = New System.Drawing.Point(260, 85)
-        Me.SPEED_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SPEED_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SPEED_CODE_T.Name = "SPEED_CODE_T"
         Me.SPEED_CODE_T.ReadOnly = True
         Me.SPEED_CODE_T.Size = New System.Drawing.Size(26, 22)
@@ -1110,7 +1110,7 @@ Partial Class fShipment
         Me.SPEED_NAME_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SPEED_NAME_C.FormattingEnabled = True
         Me.SPEED_NAME_C.Location = New System.Drawing.Point(118, 84)
-        Me.SPEED_NAME_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SPEED_NAME_C.Margin = New System.Windows.Forms.Padding(4)
         Me.SPEED_NAME_C.Name = "SPEED_NAME_C"
         Me.SPEED_NAME_C.Size = New System.Drawing.Size(194, 24)
         Me.SPEED_NAME_C.TabIndex = 70
@@ -1118,7 +1118,7 @@ Partial Class fShipment
         'MOTOCYAKU_CODE_T
         '
         Me.MOTOCYAKU_CODE_T.Location = New System.Drawing.Point(148, 55)
-        Me.MOTOCYAKU_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MOTOCYAKU_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.MOTOCYAKU_CODE_T.Name = "MOTOCYAKU_CODE_T"
         Me.MOTOCYAKU_CODE_T.ReadOnly = True
         Me.MOTOCYAKU_CODE_T.Size = New System.Drawing.Size(26, 22)
@@ -1128,7 +1128,7 @@ Partial Class fShipment
         'CORP_CODE_T
         '
         Me.CORP_CODE_T.Location = New System.Drawing.Point(228, 26)
-        Me.CORP_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CORP_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.CORP_CODE_T.Name = "CORP_CODE_T"
         Me.CORP_CODE_T.ReadOnly = True
         Me.CORP_CODE_T.Size = New System.Drawing.Size(26, 22)
@@ -1141,7 +1141,7 @@ Partial Class fShipment
         Me.CORP_NAME_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CORP_NAME_C.FormattingEnabled = True
         Me.CORP_NAME_C.Location = New System.Drawing.Point(118, 25)
-        Me.CORP_NAME_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CORP_NAME_C.Margin = New System.Windows.Forms.Padding(4)
         Me.CORP_NAME_C.Name = "CORP_NAME_C"
         Me.CORP_NAME_C.Size = New System.Drawing.Size(162, 24)
         Me.CORP_NAME_C.TabIndex = 6
@@ -1152,7 +1152,7 @@ Partial Class fShipment
         Me.MOTOCYAKU_CLASS_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MOTOCYAKU_CLASS_C.FormattingEnabled = True
         Me.MOTOCYAKU_CLASS_C.Location = New System.Drawing.Point(118, 54)
-        Me.MOTOCYAKU_CLASS_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MOTOCYAKU_CLASS_C.Margin = New System.Windows.Forms.Padding(4)
         Me.MOTOCYAKU_CLASS_C.Name = "MOTOCYAKU_CLASS_C"
         Me.MOTOCYAKU_CLASS_C.Size = New System.Drawing.Size(82, 24)
         Me.MOTOCYAKU_CLASS_C.TabIndex = 9
@@ -1273,9 +1273,9 @@ Partial Class fShipment
         Me.GroupBox5.Controls.Add(Me.BT_POSTAGE_P_T)
         Me.GroupBox5.Controls.Add(Me.ShapeContainer1)
         Me.GroupBox5.Location = New System.Drawing.Point(1025, 72)
-        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox5.Size = New System.Drawing.Size(294, 235)
         Me.GroupBox5.TabIndex = 60
         Me.GroupBox5.TabStop = False
@@ -1297,7 +1297,7 @@ Partial Class fShipment
         Me.BT_RTAX_RATE_P_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BT_RTAX_RATE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_RTAX_RATE_P_T.Location = New System.Drawing.Point(129, 120)
-        Me.BT_RTAX_RATE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_RTAX_RATE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_RTAX_RATE_P_T.Name = "BT_RTAX_RATE_P_T"
         Me.BT_RTAX_RATE_P_T.ReadOnly = True
         Me.BT_RTAX_RATE_P_T.Size = New System.Drawing.Size(142, 24)
@@ -1321,7 +1321,7 @@ Partial Class fShipment
         Me.BT_TAX_P_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BT_TAX_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_TAX_P_T.Location = New System.Drawing.Point(129, 94)
-        Me.BT_TAX_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_TAX_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_TAX_P_T.Name = "BT_TAX_P_T"
         Me.BT_TAX_P_T.ReadOnly = True
         Me.BT_TAX_P_T.Size = New System.Drawing.Size(142, 24)
@@ -1345,7 +1345,7 @@ Partial Class fShipment
         Me.BT_DISCOUNT_P_T.BackColor = System.Drawing.Color.White
         Me.BT_DISCOUNT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_DISCOUNT_P_T.Location = New System.Drawing.Point(130, 148)
-        Me.BT_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_DISCOUNT_P_T.Name = "BT_DISCOUNT_P_T"
         Me.BT_DISCOUNT_P_T.Size = New System.Drawing.Size(142, 24)
         Me.BT_DISCOUNT_P_T.TabIndex = 26
@@ -1368,7 +1368,7 @@ Partial Class fShipment
         Me.BT_BILL_P_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BT_BILL_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_BILL_P_T.Location = New System.Drawing.Point(129, 200)
-        Me.BT_BILL_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_BILL_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_BILL_P_T.Name = "BT_BILL_P_T"
         Me.BT_BILL_P_T.ReadOnly = True
         Me.BT_BILL_P_T.Size = New System.Drawing.Size(142, 24)
@@ -1392,7 +1392,7 @@ Partial Class fShipment
         Me.BT_PRODUCT_P_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BT_PRODUCT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_PRODUCT_P_T.Location = New System.Drawing.Point(129, 16)
-        Me.BT_PRODUCT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_PRODUCT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_PRODUCT_P_T.Name = "BT_PRODUCT_P_T"
         Me.BT_PRODUCT_P_T.ReadOnly = True
         Me.BT_PRODUCT_P_T.Size = New System.Drawing.Size(142, 24)
@@ -1416,7 +1416,7 @@ Partial Class fShipment
         Me.BT_P_DISCOUNT_P_T.BackColor = System.Drawing.Color.White
         Me.BT_P_DISCOUNT_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_P_DISCOUNT_P_T.Location = New System.Drawing.Point(130, 172)
-        Me.BT_P_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_P_DISCOUNT_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_P_DISCOUNT_P_T.Name = "BT_P_DISCOUNT_P_T"
         Me.BT_P_DISCOUNT_P_T.Size = New System.Drawing.Size(142, 24)
         Me.BT_P_DISCOUNT_P_T.TabIndex = 27
@@ -1439,7 +1439,7 @@ Partial Class fShipment
         Me.BT_FEE_P_T.BackColor = System.Drawing.Color.White
         Me.BT_FEE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_FEE_P_T.Location = New System.Drawing.Point(129, 69)
-        Me.BT_FEE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_FEE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_FEE_P_T.Name = "BT_FEE_P_T"
         Me.BT_FEE_P_T.Size = New System.Drawing.Size(142, 24)
         Me.BT_FEE_P_T.TabIndex = 25
@@ -1462,7 +1462,7 @@ Partial Class fShipment
         Me.BT_POSTAGE_P_T.BackColor = System.Drawing.Color.White
         Me.BT_POSTAGE_P_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BT_POSTAGE_P_T.Location = New System.Drawing.Point(129, 42)
-        Me.BT_POSTAGE_P_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BT_POSTAGE_P_T.Margin = New System.Windows.Forms.Padding(4)
         Me.BT_POSTAGE_P_T.Name = "BT_POSTAGE_P_T"
         Me.BT_POSTAGE_P_T.Size = New System.Drawing.Size(142, 24)
         Me.BT_POSTAGE_P_T.TabIndex = 24
@@ -1517,9 +1517,9 @@ Partial Class fShipment
         Me.GroupBox4.Controls.Add(Me.Label25)
         Me.GroupBox4.ForeColor = System.Drawing.Color.Black
         Me.GroupBox4.Location = New System.Drawing.Point(702, 576)
-        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Size = New System.Drawing.Size(632, 240)
         Me.GroupBox4.TabIndex = 61
         Me.GroupBox4.TabStop = False
@@ -1530,7 +1530,7 @@ Partial Class fShipment
         Me.SHIP_ADDR4_T.BackColor = System.Drawing.Color.White
         Me.SHIP_ADDR4_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_ADDR4_T.Location = New System.Drawing.Point(159, 176)
-        Me.SHIP_ADDR4_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_ADDR4_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_ADDR4_T.Name = "SHIP_ADDR4_T"
         Me.SHIP_ADDR4_T.Size = New System.Drawing.Size(456, 26)
         Me.SHIP_ADDR4_T.TabIndex = 74
@@ -1552,7 +1552,7 @@ Partial Class fShipment
         Me.SHIP_NAME2_T.BackColor = System.Drawing.Color.White
         Me.SHIP_NAME2_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_NAME2_T.Location = New System.Drawing.Point(159, 39)
-        Me.SHIP_NAME2_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_NAME2_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_NAME2_T.Name = "SHIP_NAME2_T"
         Me.SHIP_NAME2_T.Size = New System.Drawing.Size(307, 26)
         Me.SHIP_NAME2_T.TabIndex = 17
@@ -1574,7 +1574,7 @@ Partial Class fShipment
         Me.SHIP_POSTCODE_T.BackColor = System.Drawing.Color.White
         Me.SHIP_POSTCODE_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_POSTCODE_T.Location = New System.Drawing.Point(159, 66)
-        Me.SHIP_POSTCODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_POSTCODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_POSTCODE_T.Name = "SHIP_POSTCODE_T"
         Me.SHIP_POSTCODE_T.Size = New System.Drawing.Size(141, 26)
         Me.SHIP_POSTCODE_T.TabIndex = 18
@@ -1596,7 +1596,7 @@ Partial Class fShipment
         Me.SHIP_PONE_T.BackColor = System.Drawing.Color.White
         Me.SHIP_PONE_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_PONE_T.Location = New System.Drawing.Point(159, 204)
-        Me.SHIP_PONE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_PONE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_PONE_T.Name = "SHIP_PONE_T"
         Me.SHIP_PONE_T.Size = New System.Drawing.Size(245, 26)
         Me.SHIP_PONE_T.TabIndex = 22
@@ -1618,7 +1618,7 @@ Partial Class fShipment
         Me.SHIP_ADDR3_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.SHIP_ADDR3_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_ADDR3_T.Location = New System.Drawing.Point(159, 149)
-        Me.SHIP_ADDR3_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_ADDR3_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_ADDR3_T.Name = "SHIP_ADDR3_T"
         Me.SHIP_ADDR3_T.Size = New System.Drawing.Size(456, 26)
         Me.SHIP_ADDR3_T.TabIndex = 21
@@ -1640,7 +1640,7 @@ Partial Class fShipment
         Me.SHIP_ADDR2_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.SHIP_ADDR2_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_ADDR2_T.Location = New System.Drawing.Point(159, 121)
-        Me.SHIP_ADDR2_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_ADDR2_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_ADDR2_T.Name = "SHIP_ADDR2_T"
         Me.SHIP_ADDR2_T.Size = New System.Drawing.Size(180, 26)
         Me.SHIP_ADDR2_T.TabIndex = 20
@@ -1662,7 +1662,7 @@ Partial Class fShipment
         Me.SHIP_ADDR1_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.SHIP_ADDR1_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_ADDR1_T.Location = New System.Drawing.Point(159, 94)
-        Me.SHIP_ADDR1_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_ADDR1_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_ADDR1_T.Name = "SHIP_ADDR1_T"
         Me.SHIP_ADDR1_T.Size = New System.Drawing.Size(180, 26)
         Me.SHIP_ADDR1_T.TabIndex = 19
@@ -1684,7 +1684,7 @@ Partial Class fShipment
         Me.SHIP_NAME1_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.SHIP_NAME1_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SHIP_NAME1_T.Location = New System.Drawing.Point(159, 11)
-        Me.SHIP_NAME1_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_NAME1_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_NAME1_T.Name = "SHIP_NAME1_T"
         Me.SHIP_NAME1_T.Size = New System.Drawing.Size(307, 26)
         Me.SHIP_NAME1_T.TabIndex = 16
@@ -1704,7 +1704,7 @@ Partial Class fShipment
         'SHIP_MEMO
         '
         Me.SHIP_MEMO.Location = New System.Drawing.Point(150, 826)
-        Me.SHIP_MEMO.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SHIP_MEMO.Margin = New System.Windows.Forms.Padding(4)
         Me.SHIP_MEMO.Multiline = True
         Me.SHIP_MEMO.Name = "SHIP_MEMO"
         Me.SHIP_MEMO.Size = New System.Drawing.Size(1178, 52)
@@ -1809,7 +1809,7 @@ Partial Class fShipment
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.SHIPMENT_V)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fShipment"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "出庫処理"
