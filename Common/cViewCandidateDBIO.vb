@@ -743,7 +743,7 @@
             End While
 
             'SQLが思いつかなかったためVB上でデータの入れ替えや売上個数、売上サイクルの計算を行っている
-            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate)
+            getCandidateData = setCandidateData(parCandidate, i, dayCloseDate, KeyCycleDate, KeyToDate, KeyMinCount)
 
         Catch oExcept As Exception
             '例外が発生した時の処理
@@ -770,13 +770,15 @@
     '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
     '        Byval cycleDate            売上サイクル
     '        Byval toDate               候補抽出期間
+    '        Byval minCount             最低売上数量
     '　戻値：データの数量
     '----------------------------------------------------------------------
     Private Function setCandidateData(ByRef svc As cStructureLib.sViewCandidate(),
                                       ByVal count As Long,
                                       ByVal closeDate() As String,
                                       ByVal cycleDate As String,
-                                      ByVal toDate As String
+                                      ByVal toDate As String,
+                                      ByVal minCount As Long
                                       ) As Long
         '変数宣言
         Dim i As Long
@@ -875,9 +877,37 @@
             End If
         Next
 
-        '作成したデータを代入する
+        count = i
+        j = 0
+
+        '最低売上数量以上のものだけ表示する
+        For i = 0 To count - 1
+            If tempCandidate(i).sCount >= minCount Then
+                ReDim Preserve svc(j)
+                svc(j) = tempCandidate(i)
+                j += 1
+            End If
+        Next
+
+        count = j
+        buyCount = svc(0).sCount
+        ReDim tempCandidate(count)
+
+        '売上数量が大きい順に並び替える（降順）
+        '選択ソート
+        For i = 0 To count - 1
+            For j = i To count - 1
+                If svc(i).sCount < svc(j).sCount Then
+                    tempCandidate(i) = svc(j)
+                    tempCandidate(j) = svc(i)
+                End If
+            Next
+        Next
+
+        'データを代入する
         svc = tempCandidate
-        Return i
+
+        Return count
 
     End Function
 
