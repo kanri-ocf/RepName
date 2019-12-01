@@ -436,6 +436,19 @@
 
         '検索結果の画面セット
         If RecordCnt > 0 Then
+            '検索MAX値の確認
+            If RecordCnt > DISP_ROW_MAX Then
+                Message_form.Dispose()
+                Message_form = Nothing
+                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                            "条件を変更して再検索して下さい",
+                                            Nothing, Nothing)
+                Message_form.ShowDialog()
+                Message_form = Nothing
+                Exit Sub
+            End If
+
+            '検索結果の画面セット
             SEARCH_RESULT_SET()
         Else
             'メッセージウィンドウのクリア
