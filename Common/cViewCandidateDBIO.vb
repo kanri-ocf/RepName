@@ -772,7 +772,7 @@
     '        Byval count                取得した商品の数量
     '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
     '        Byval cycleDate            売上サイクル
-    '        Byval fromDate               候補抽出期間
+    '        Byval fromDate             候補抽出期間
     '        Byval minCount             最低売上数量
     '　戻値：データの数量
     '----------------------------------------------------------------------
@@ -788,18 +788,21 @@
         Dim j As Long
         Dim k As Long
         Dim productCode As String  '商品コード
-        Dim latestDate As String   '最新日次締め日
+        Dim latestDate As String   '最新日次締め日（最終売上）
         Dim buyCount As Long       '商品購入数
         Dim tempCandidate As cStructureLib.sViewCandidate()
+        Dim latestFlag As Boolean  '最新日時フラグ
 
         k = 0
         buyCount = 0
         ReDim tempCandidate(count - 1)
+        latestFlag = False
 
 
         For i = 0 To count - 1
             productCode = svc(k).sProductCode
             latestDate = fromDate
+            latestFlag = false
 
             For j = k To count - 1
 
@@ -808,21 +811,31 @@
                     '候補抽出期間内で最新のデータを検索
                     If DateTime.Parse(closeDate(j)) >= DateTime.Parse(latestDate) Then
                         latestDate = closeDate(j)
+                        latestFlag = True
                     End If
 
                 Else
 
                     For k = k To j - 1
+                        '2019.12.5 R.Takashima
+                        '候補抽出期間内の商品のみ実行する
+                        If latestFlag = True Then
 
-                        '最新の売上から売上サイクル期間までに商品があるか検索
-                        'あれば最新のデータを除き挿入
-                        'ない場合はNothingを挿入
-                        If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
-                            If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
-                                tempCandidate(k) = svc(k)
-                            Else
-                                tempCandidate(k) = Nothing
+                            '最新の売上から売上サイクル期間までに商品があるか検索
+                            'あれば最新のデータを除き挿入
+                            'ない場合はNothingを挿入
+                            If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
+                                If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
+                                    tempCandidate(k) = svc(k)
+                                Else
+                                    tempCandidate(k) = Nothing
+                                End If
                             End If
+
+                        Else
+
+                            tempCandidate(k) = Nothing
+
                         End If
                     Next
 
@@ -933,14 +946,16 @@
         Next
 
         count = j
-        ReDim tempCandidate(count - 1)
 
         '売上数量が大きい順に並び替える（降順）
         '選択ソート
         '商品の個数が０や１の場合は並び替える必要は無い
         If count > 1 Then
             For i = 0 To count - 1
-                For j = i To count - 1
+                '2019.12.5 R.Takashima
+                'iとjが同じ場所を参照してしまい、値の入れ替え時に値が消えてしまうため同じ場所を参照しないように変更
+                'For j = i To count - 1
+                For j = i + 1 To count - 1
                     If svc(i).sCount < svc(j).sCount Then
                         tempCandidate(i) = svc(j)
                         tempCandidate(j) = svc(i)
