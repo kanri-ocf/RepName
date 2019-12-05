@@ -23,11 +23,11 @@ Partial Class fProductMst
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fProductMst))
         Me.SYUBETU_2_R = New System.Windows.Forms.RadioButton()
         Me.SYUBETU_1_R = New System.Windows.Forms.RadioButton()
@@ -159,6 +159,10 @@ Partial Class fProductMst
         Me.PRODUCT_P1_B = New System.Windows.Forms.Button()
         Me.PRODUCT_P1_PB = New System.Windows.Forms.PictureBox()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape6 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.RectangleShape5 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.LineShape7 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.LineShape12 = New Microsoft.VisualBasic.PowerPacks.LineShape()
@@ -205,7 +209,7 @@ Partial Class fProductMst
         Me.SYUBETU_2_R.Location = New System.Drawing.Point(177, 24)
         Me.SYUBETU_2_R.Margin = New System.Windows.Forms.Padding(6)
         Me.SYUBETU_2_R.Name = "SYUBETU_2_R"
-        Me.SYUBETU_2_R.Size = New System.Drawing.Size(191, 30)
+        Me.SYUBETU_2_R.Size = New System.Drawing.Size(99, 17)
         Me.SYUBETU_2_R.TabIndex = 2
         Me.SYUBETU_2_R.TabStop = True
         Me.SYUBETU_2_R.Text = "サービス品目"
@@ -218,7 +222,7 @@ Partial Class fProductMst
         Me.SYUBETU_1_R.Location = New System.Drawing.Point(26, 24)
         Me.SYUBETU_1_R.Margin = New System.Windows.Forms.Padding(6)
         Me.SYUBETU_1_R.Name = "SYUBETU_1_R"
-        Me.SYUBETU_1_R.Size = New System.Drawing.Size(147, 30)
+        Me.SYUBETU_1_R.Size = New System.Drawing.Size(77, 17)
         Me.SYUBETU_1_R.TabIndex = 1
         Me.SYUBETU_1_R.TabStop = True
         Me.SYUBETU_1_R.Text = "在庫品目"
@@ -244,7 +248,7 @@ Partial Class fProductMst
         Me.SYUBETU_3_R.Location = New System.Drawing.Point(364, 22)
         Me.SYUBETU_3_R.Margin = New System.Windows.Forms.Padding(6)
         Me.SYUBETU_3_R.Name = "SYUBETU_3_R"
-        Me.SYUBETU_3_R.Size = New System.Drawing.Size(147, 30)
+        Me.SYUBETU_3_R.Size = New System.Drawing.Size(77, 17)
         Me.SYUBETU_3_R.TabIndex = 3
         Me.SYUBETU_3_R.TabStop = True
         Me.SYUBETU_3_R.Text = "疑似品目"
@@ -257,7 +261,7 @@ Partial Class fProductMst
         Me.Label11.Location = New System.Drawing.Point(1315, 94)
         Me.Label11.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(129, 26)
+        Me.Label11.Size = New System.Drawing.Size(66, 13)
         Me.Label11.TabIndex = 91
         Me.Label11.Text = "商品種別："
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -266,23 +270,23 @@ Partial Class fProductMst
         '
         Me.SALE_PRICE_V.BackgroundColor = System.Drawing.Color.Wheat
         Me.SALE_PRICE_V.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.SALE_PRICE_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.SALE_PRICE_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.SALE_PRICE_V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.SALE_PRICE_V.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SALE_PRICE_V.DefaultCellStyle = DataGridViewCellStyle2
         Me.SALE_PRICE_V.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.SALE_PRICE_V.Location = New System.Drawing.Point(998, 447)
         Me.SALE_PRICE_V.Margin = New System.Windows.Forms.Padding(6)
@@ -301,7 +305,7 @@ Partial Class fProductMst
         Me.MIN_STOCK_T.Location = New System.Drawing.Point(616, 584)
         Me.MIN_STOCK_T.Margin = New System.Windows.Forms.Padding(6)
         Me.MIN_STOCK_T.Name = "MIN_STOCK_T"
-        Me.MIN_STOCK_T.Size = New System.Drawing.Size(192, 33)
+        Me.MIN_STOCK_T.Size = New System.Drawing.Size(192, 20)
         Me.MIN_STOCK_T.TabIndex = 18
         Me.MIN_STOCK_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -324,7 +328,7 @@ Partial Class fProductMst
         Me.PRICE_T.Location = New System.Drawing.Point(786, 343)
         Me.PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PRICE_T.Name = "PRICE_T"
-        Me.PRICE_T.Size = New System.Drawing.Size(192, 33)
+        Me.PRICE_T.Size = New System.Drawing.Size(192, 20)
         Me.PRICE_T.TabIndex = 15
         Me.PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -346,7 +350,7 @@ Partial Class fProductMst
         Me.OPTION3_T.Location = New System.Drawing.Point(228, 354)
         Me.OPTION3_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OPTION3_T.Name = "OPTION3_T"
-        Me.OPTION3_T.Size = New System.Drawing.Size(388, 33)
+        Me.OPTION3_T.Size = New System.Drawing.Size(388, 20)
         Me.OPTION3_T.TabIndex = 9
         '
         'OPTION2_T
@@ -356,7 +360,7 @@ Partial Class fProductMst
         Me.OPTION2_T.Location = New System.Drawing.Point(228, 314)
         Me.OPTION2_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OPTION2_T.Name = "OPTION2_T"
-        Me.OPTION2_T.Size = New System.Drawing.Size(388, 33)
+        Me.OPTION2_T.Size = New System.Drawing.Size(388, 20)
         Me.OPTION2_T.TabIndex = 8
         '
         'PRODUCT_S_NAME_T
@@ -367,7 +371,7 @@ Partial Class fProductMst
         Me.PRODUCT_S_NAME_T.Location = New System.Drawing.Point(228, 230)
         Me.PRODUCT_S_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PRODUCT_S_NAME_T.Name = "PRODUCT_S_NAME_T"
-        Me.PRODUCT_S_NAME_T.Size = New System.Drawing.Size(388, 33)
+        Me.PRODUCT_S_NAME_T.Size = New System.Drawing.Size(388, 20)
         Me.PRODUCT_S_NAME_T.TabIndex = 6
         '
         'JANCODE_T
@@ -379,7 +383,7 @@ Partial Class fProductMst
         Me.JANCODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.JANCODE_T.MaxLength = 13
         Me.JANCODE_T.Name = "JANCODE_T"
-        Me.JANCODE_T.Size = New System.Drawing.Size(355, 33)
+        Me.JANCODE_T.Size = New System.Drawing.Size(355, 20)
         Me.JANCODE_T.TabIndex = 3
         '
         'PRODUCT_NAME_T
@@ -390,7 +394,7 @@ Partial Class fProductMst
         Me.PRODUCT_NAME_T.Location = New System.Drawing.Point(227, 187)
         Me.PRODUCT_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PRODUCT_NAME_T.Name = "PRODUCT_NAME_T"
-        Me.PRODUCT_NAME_T.Size = New System.Drawing.Size(724, 33)
+        Me.PRODUCT_NAME_T.Size = New System.Drawing.Size(724, 20)
         Me.PRODUCT_NAME_T.TabIndex = 5
         '
         'PRODUCT_CODE_T
@@ -401,7 +405,7 @@ Partial Class fProductMst
         Me.PRODUCT_CODE_T.Location = New System.Drawing.Point(227, 142)
         Me.PRODUCT_CODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PRODUCT_CODE_T.Name = "PRODUCT_CODE_T"
-        Me.PRODUCT_CODE_T.Size = New System.Drawing.Size(212, 33)
+        Me.PRODUCT_CODE_T.Size = New System.Drawing.Size(212, 20)
         Me.PRODUCT_CODE_T.TabIndex = 3
         Me.PRODUCT_CODE_T.TabStop = False
         '
@@ -409,7 +413,7 @@ Partial Class fProductMst
         '
         Me.OPTION3_L.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OPTION3_L.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.OPTION3_L.Location = New System.Drawing.Point(40, 354)
+        Me.OPTION3_L.Location = New System.Drawing.Point(40, 274)
         Me.OPTION3_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.OPTION3_L.Name = "OPTION3_L"
         Me.OPTION3_L.Size = New System.Drawing.Size(182, 24)
@@ -421,7 +425,7 @@ Partial Class fProductMst
         '
         Me.OPTION2_L.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OPTION2_L.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.OPTION2_L.Location = New System.Drawing.Point(35, 310)
+        Me.OPTION2_L.Location = New System.Drawing.Point(773, 275)
         Me.OPTION2_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.OPTION2_L.Name = "OPTION2_L"
         Me.OPTION2_L.Size = New System.Drawing.Size(187, 24)
@@ -447,7 +451,7 @@ Partial Class fProductMst
         Me.Label7.Location = New System.Drawing.Point(515, 145)
         Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(136, 26)
+        Me.Label7.Size = New System.Drawing.Size(68, 13)
         Me.Label7.TabIndex = 76
         Me.Label7.Text = "JANコード："
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -467,7 +471,7 @@ Partial Class fProductMst
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label1.Location = New System.Drawing.Point(79, 138)
+        Me.Label1.Location = New System.Drawing.Point(79, 139)
         Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(143, 26)
@@ -499,14 +503,14 @@ Partial Class fProductMst
         Me.CATEGORY_1_L.Location = New System.Drawing.Point(228, 94)
         Me.CATEGORY_1_L.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_1_L.Name = "CATEGORY_1_L"
-        Me.CATEGORY_1_L.Size = New System.Drawing.Size(355, 34)
+        Me.CATEGORY_1_L.Size = New System.Drawing.Size(355, 21)
         Me.CATEGORY_1_L.TabIndex = 1
         '
         'Label21
         '
         Me.Label21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label21.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label21.Location = New System.Drawing.Point(25, 91)
+        Me.Label21.Location = New System.Drawing.Point(25, 89)
         Me.Label21.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(197, 30)
@@ -524,7 +528,7 @@ Partial Class fProductMst
         Me.CATEGORY_2_L.Location = New System.Drawing.Point(596, 94)
         Me.CATEGORY_2_L.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_2_L.Name = "CATEGORY_2_L"
-        Me.CATEGORY_2_L.Size = New System.Drawing.Size(355, 34)
+        Me.CATEGORY_2_L.Size = New System.Drawing.Size(355, 21)
         Me.CATEGORY_2_L.TabIndex = 2
         '
         'CATEGORY_ID_1_T
@@ -534,7 +538,7 @@ Partial Class fProductMst
         Me.CATEGORY_ID_1_T.Location = New System.Drawing.Point(424, 94)
         Me.CATEGORY_ID_1_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_ID_1_T.Name = "CATEGORY_ID_1_T"
-        Me.CATEGORY_ID_1_T.Size = New System.Drawing.Size(134, 33)
+        Me.CATEGORY_ID_1_T.Size = New System.Drawing.Size(134, 20)
         Me.CATEGORY_ID_1_T.TabIndex = 133
         Me.CATEGORY_ID_1_T.TabStop = False
         Me.CATEGORY_ID_1_T.Visible = False
@@ -546,7 +550,7 @@ Partial Class fProductMst
         Me.CATEGORY_ID_2_T.Location = New System.Drawing.Point(786, 95)
         Me.CATEGORY_ID_2_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_ID_2_T.Name = "CATEGORY_ID_2_T"
-        Me.CATEGORY_ID_2_T.Size = New System.Drawing.Size(134, 33)
+        Me.CATEGORY_ID_2_T.Size = New System.Drawing.Size(134, 20)
         Me.CATEGORY_ID_2_T.TabIndex = 134
         Me.CATEGORY_ID_2_T.TabStop = False
         Me.CATEGORY_ID_2_T.Visible = False
@@ -559,7 +563,7 @@ Partial Class fProductMst
         Me.PLU_CODE_T.Location = New System.Drawing.Point(228, 586)
         Me.PLU_CODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PLU_CODE_T.Name = "PLU_CODE_T"
-        Me.PLU_CODE_T.Size = New System.Drawing.Size(192, 33)
+        Me.PLU_CODE_T.Size = New System.Drawing.Size(192, 20)
         Me.PLU_CODE_T.TabIndex = 17
         '
         'Label42
@@ -569,7 +573,7 @@ Partial Class fProductMst
         Me.Label42.Location = New System.Drawing.Point(154, 587)
         Me.Label42.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(136, 26)
+        Me.Label42.Size = New System.Drawing.Size(68, 13)
         Me.Label42.TabIndex = 137
         Me.Label42.Text = "PLUコード："
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -581,7 +585,7 @@ Partial Class fProductMst
         Me.STOPSALE_C.Location = New System.Drawing.Point(26, 18)
         Me.STOPSALE_C.Margin = New System.Windows.Forms.Padding(6)
         Me.STOPSALE_C.Name = "STOPSALE_C"
-        Me.STOPSALE_C.Size = New System.Drawing.Size(148, 30)
+        Me.STOPSALE_C.Size = New System.Drawing.Size(78, 17)
         Me.STOPSALE_C.TabIndex = 1
         Me.STOPSALE_C.Text = "販売停止"
         Me.STOPSALE_C.UseVisualStyleBackColor = True
@@ -593,7 +597,7 @@ Partial Class fProductMst
         Me.MEMO_T.Location = New System.Drawing.Point(228, 470)
         Me.MEMO_T.Margin = New System.Windows.Forms.Padding(6)
         Me.MEMO_T.Name = "MEMO_T"
-        Me.MEMO_T.Size = New System.Drawing.Size(388, 33)
+        Me.MEMO_T.Size = New System.Drawing.Size(388, 20)
         Me.MEMO_T.TabIndex = 12
         '
         'Label43
@@ -614,7 +618,7 @@ Partial Class fProductMst
         Me.OPTION5_T.Location = New System.Drawing.Point(227, 431)
         Me.OPTION5_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OPTION5_T.Name = "OPTION5_T"
-        Me.OPTION5_T.Size = New System.Drawing.Size(388, 33)
+        Me.OPTION5_T.Size = New System.Drawing.Size(388, 20)
         Me.OPTION5_T.TabIndex = 11
         '
         'OPTION4_T
@@ -624,14 +628,14 @@ Partial Class fProductMst
         Me.OPTION4_T.Location = New System.Drawing.Point(228, 394)
         Me.OPTION4_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OPTION4_T.Name = "OPTION4_T"
-        Me.OPTION4_T.Size = New System.Drawing.Size(388, 33)
+        Me.OPTION4_T.Size = New System.Drawing.Size(388, 20)
         Me.OPTION4_T.TabIndex = 10
         '
         'OPTION5_L
         '
         Me.OPTION5_L.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OPTION5_L.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.OPTION5_L.Location = New System.Drawing.Point(40, 436)
+        Me.OPTION5_L.Location = New System.Drawing.Point(40, 391)
         Me.OPTION5_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.OPTION5_L.Name = "OPTION5_L"
         Me.OPTION5_L.Size = New System.Drawing.Size(182, 24)
@@ -643,7 +647,7 @@ Partial Class fProductMst
         '
         Me.OPTION4_L.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OPTION4_L.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.OPTION4_L.Location = New System.Drawing.Point(35, 394)
+        Me.OPTION4_L.Location = New System.Drawing.Point(35, 354)
         Me.OPTION4_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.OPTION4_L.Name = "OPTION4_L"
         Me.OPTION4_L.Size = New System.Drawing.Size(187, 24)
@@ -658,14 +662,14 @@ Partial Class fProductMst
         Me.OPTION1_T.Location = New System.Drawing.Point(228, 274)
         Me.OPTION1_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OPTION1_T.Name = "OPTION1_T"
-        Me.OPTION1_T.Size = New System.Drawing.Size(388, 33)
+        Me.OPTION1_T.Size = New System.Drawing.Size(388, 20)
         Me.OPTION1_T.TabIndex = 7
         '
         'OPTION1_L
         '
         Me.OPTION1_L.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OPTION1_L.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.OPTION1_L.Location = New System.Drawing.Point(35, 274)
+        Me.OPTION1_L.Location = New System.Drawing.Point(1511, 274)
         Me.OPTION1_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.OPTION1_L.Name = "OPTION1_L"
         Me.OPTION1_L.Size = New System.Drawing.Size(187, 24)
@@ -681,13 +685,13 @@ Partial Class fProductMst
         Me.MAKER_NAME_T.Location = New System.Drawing.Point(795, 230)
         Me.MAKER_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.MAKER_NAME_T.Name = "MAKER_NAME_T"
-        Me.MAKER_NAME_T.Size = New System.Drawing.Size(368, 33)
+        Me.MAKER_NAME_T.Size = New System.Drawing.Size(368, 20)
         Me.MAKER_NAME_T.TabIndex = 13
         '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label5.Location = New System.Drawing.Point(618, 237)
+        Me.Label5.Location = New System.Drawing.Point(618, 230)
         Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(171, 26)
@@ -702,7 +706,7 @@ Partial Class fProductMst
         Me.STOPSUPPLIER_C.Location = New System.Drawing.Point(177, 19)
         Me.STOPSUPPLIER_C.Margin = New System.Windows.Forms.Padding(6)
         Me.STOPSUPPLIER_C.Name = "STOPSUPPLIER_C"
-        Me.STOPSUPPLIER_C.Size = New System.Drawing.Size(148, 30)
+        Me.STOPSUPPLIER_C.Size = New System.Drawing.Size(78, 17)
         Me.STOPSUPPLIER_C.TabIndex = 2
         Me.STOPSUPPLIER_C.Text = "仕入停止"
         Me.STOPSUPPLIER_C.UseVisualStyleBackColor = True
@@ -714,7 +718,7 @@ Partial Class fProductMst
         Me.ORIGINAL_C.Location = New System.Drawing.Point(469, 32)
         Me.ORIGINAL_C.Margin = New System.Windows.Forms.Padding(6)
         Me.ORIGINAL_C.Name = "ORIGINAL_C"
-        Me.ORIGINAL_C.Size = New System.Drawing.Size(125, 30)
+        Me.ORIGINAL_C.Size = New System.Drawing.Size(68, 17)
         Me.ORIGINAL_C.TabIndex = 3
         Me.ORIGINAL_C.Text = "e-Shop"
         Me.ORIGINAL_C.UseVisualStyleBackColor = True
@@ -726,7 +730,7 @@ Partial Class fProductMst
         Me.RAKUTEN_C.Location = New System.Drawing.Point(159, 32)
         Me.RAKUTEN_C.Margin = New System.Windows.Forms.Padding(6)
         Me.RAKUTEN_C.Name = "RAKUTEN_C"
-        Me.RAKUTEN_C.Size = New System.Drawing.Size(96, 30)
+        Me.RAKUTEN_C.Size = New System.Drawing.Size(52, 17)
         Me.RAKUTEN_C.TabIndex = 2
         Me.RAKUTEN_C.Text = "楽天"
         Me.RAKUTEN_C.UseVisualStyleBackColor = True
@@ -738,7 +742,7 @@ Partial Class fProductMst
         Me.YAHOO_C.Location = New System.Drawing.Point(20, 32)
         Me.YAHOO_C.Margin = New System.Windows.Forms.Padding(6)
         Me.YAHOO_C.Name = "YAHOO_C"
-        Me.YAHOO_C.Size = New System.Drawing.Size(110, 30)
+        Me.YAHOO_C.Size = New System.Drawing.Size(61, 17)
         Me.YAHOO_C.TabIndex = 1
         Me.YAHOO_C.Text = "Yahoo"
         Me.YAHOO_C.UseVisualStyleBackColor = True
@@ -747,23 +751,23 @@ Partial Class fProductMst
         '
         Me.COST_PRICE_V.BackgroundColor = System.Drawing.Color.Wheat
         Me.COST_PRICE_V.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.COST_PRICE_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.COST_PRICE_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.COST_PRICE_V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.COST_PRICE_V.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.COST_PRICE_V.DefaultCellStyle = DataGridViewCellStyle4
         Me.COST_PRICE_V.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.COST_PRICE_V.Location = New System.Drawing.Point(1175, 243)
         Me.COST_PRICE_V.Margin = New System.Windows.Forms.Padding(6)
@@ -805,7 +809,7 @@ Partial Class fProductMst
         Me.TAX_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.TAX_PRICE_T.Name = "TAX_PRICE_T"
         Me.TAX_PRICE_T.ReadOnly = True
-        Me.TAX_PRICE_T.Size = New System.Drawing.Size(192, 33)
+        Me.TAX_PRICE_T.Size = New System.Drawing.Size(192, 20)
         Me.TAX_PRICE_T.TabIndex = 16
         Me.TAX_PRICE_T.TabStop = False
         Me.TAX_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -864,7 +868,7 @@ Partial Class fProductMst
         Me.AMAZON_C.Location = New System.Drawing.Point(290, 32)
         Me.AMAZON_C.Margin = New System.Windows.Forms.Padding(6)
         Me.AMAZON_C.Name = "AMAZON_C"
-        Me.AMAZON_C.Size = New System.Drawing.Size(129, 30)
+        Me.AMAZON_C.Size = New System.Drawing.Size(70, 17)
         Me.AMAZON_C.TabIndex = 4
         Me.AMAZON_C.Text = "Amazon"
         Me.AMAZON_C.UseVisualStyleBackColor = True
@@ -890,7 +894,7 @@ Partial Class fProductMst
         Me.BEFORETAX_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.BEFORETAX_PRICE_T.Name = "BEFORETAX_PRICE_T"
         Me.BEFORETAX_PRICE_T.ReadOnly = True
-        Me.BEFORETAX_PRICE_T.Size = New System.Drawing.Size(192, 33)
+        Me.BEFORETAX_PRICE_T.Size = New System.Drawing.Size(192, 20)
         Me.BEFORETAX_PRICE_T.TabIndex = 174
         Me.BEFORETAX_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -944,17 +948,17 @@ Partial Class fProductMst
         Me.NetTab1.Controls.Add(Me.DIRECTRY_1_L)
         Me.NetTab1.Controls.Add(Me.DIRECTRY_ID_T)
         Me.NetTab1.Controls.Add(Me.Label13)
-        Me.NetTab1.Location = New System.Drawing.Point(8, 37)
+        Me.NetTab1.Location = New System.Drawing.Point(4, 28)
         Me.NetTab1.Margin = New System.Windows.Forms.Padding(6)
         Me.NetTab1.Name = "NetTab1"
-        Me.NetTab1.Size = New System.Drawing.Size(2134, 721)
+        Me.NetTab1.Size = New System.Drawing.Size(2142, 734)
         Me.NetTab1.TabIndex = 0
         Me.NetTab1.Text = "ネット掲載情報"
         '
         'IN_DIRECTRY_B
         '
         Me.IN_DIRECTRY_B.ColorBottom = System.Drawing.Color.Wheat
-        Me.IN_DIRECTRY_B.Location = New System.Drawing.Point(514, 8)
+        Me.IN_DIRECTRY_B.Location = New System.Drawing.Point(510, 6)
         Me.IN_DIRECTRY_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.IN_DIRECTRY_B.Name = "IN_DIRECTRY_B"
         Me.IN_DIRECTRY_B.Size = New System.Drawing.Size(314, 58)
@@ -965,14 +969,14 @@ Partial Class fProductMst
         '
         Me.NETUP_V.AllowUserToAddRows = False
         Me.NETUP_V.BackgroundColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Wheat
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.NETUP_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Wheat
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.NETUP_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.NETUP_V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.NETUP_V.Location = New System.Drawing.Point(1436, 170)
         Me.NETUP_V.Margin = New System.Windows.Forms.Padding(6)
@@ -992,7 +996,7 @@ Partial Class fProductMst
         Me.Label41.Location = New System.Drawing.Point(90, 352)
         Me.Label41.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(132, 26)
+        Me.Label41.Size = New System.Drawing.Size(67, 13)
         Me.Label41.TabIndex = 174
         Me.Label41.Text = "(検索対象)"
         Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1002,10 +1006,10 @@ Partial Class fProductMst
         Me.Label40.AutoSize = True
         Me.Label40.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
         Me.Label40.ForeColor = System.Drawing.Color.Red
-        Me.Label40.Location = New System.Drawing.Point(90, 218)
+        Me.Label40.Location = New System.Drawing.Point(119, 214)
         Me.Label40.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(132, 26)
+        Me.Label40.Size = New System.Drawing.Size(67, 13)
         Me.Label40.TabIndex = 173
         Me.Label40.Text = "(検索対象)"
         Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1018,7 +1022,7 @@ Partial Class fProductMst
         Me.Label20.Location = New System.Drawing.Point(103, 477)
         Me.Label20.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(119, 26)
+        Me.Label20.Size = New System.Drawing.Size(61, 13)
         Me.Label20.TabIndex = 172
         Me.Label20.Text = "(HTML可)"
         Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1028,10 +1032,10 @@ Partial Class fProductMst
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
         Me.Label19.ForeColor = System.Drawing.Color.Red
-        Me.Label19.Location = New System.Drawing.Point(103, 326)
+        Me.Label19.Location = New System.Drawing.Point(125, 312)
         Me.Label19.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(119, 26)
+        Me.Label19.Size = New System.Drawing.Size(61, 13)
         Me.Label19.TabIndex = 171
         Me.Label19.Text = "(HTML可)"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1053,7 +1057,7 @@ Partial Class fProductMst
         Me.Label17.Location = New System.Drawing.Point(70, 451)
         Me.Label17.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(155, 26)
+        Me.Label17.Size = New System.Drawing.Size(79, 13)
         Me.Label17.TabIndex = 170
         Me.Label17.Text = "商品説明文："
         Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1084,10 +1088,10 @@ Partial Class fProductMst
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label16.Location = New System.Drawing.Point(96, 282)
+        Me.Label16.Location = New System.Drawing.Point(120, 282)
         Me.Label16.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(129, 26)
+        Me.Label16.Size = New System.Drawing.Size(66, 13)
         Me.Label16.TabIndex = 169
         Me.Label16.Text = "商品情報："
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1107,10 +1111,10 @@ Partial Class fProductMst
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label15.Location = New System.Drawing.Point(0, 174)
+        Me.Label15.Location = New System.Drawing.Point(70, 185)
         Me.Label15.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(234, 26)
+        Me.Label15.Size = New System.Drawing.Size(116, 13)
         Me.Label15.TabIndex = 167
         Me.Label15.Text = "商品キャッチコピー："
         Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1121,7 +1125,7 @@ Partial Class fProductMst
         Me.PATH_2_L.Location = New System.Drawing.Point(1513, 120)
         Me.PATH_2_L.Margin = New System.Windows.Forms.Padding(6)
         Me.PATH_2_L.Name = "PATH_2_L"
-        Me.PATH_2_L.Size = New System.Drawing.Size(493, 32)
+        Me.PATH_2_L.Size = New System.Drawing.Size(493, 20)
         Me.PATH_2_L.TabIndex = 32
         '
         'PATH_1_L
@@ -1130,7 +1134,7 @@ Partial Class fProductMst
         Me.PATH_1_L.Location = New System.Drawing.Point(1008, 120)
         Me.PATH_1_L.Margin = New System.Windows.Forms.Padding(6)
         Me.PATH_1_L.Name = "PATH_1_L"
-        Me.PATH_1_L.Size = New System.Drawing.Size(493, 32)
+        Me.PATH_1_L.Size = New System.Drawing.Size(493, 20)
         Me.PATH_1_L.TabIndex = 31
         '
         'PATH_T
@@ -1140,17 +1144,17 @@ Partial Class fProductMst
         Me.PATH_T.Location = New System.Drawing.Point(232, 122)
         Me.PATH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PATH_T.Name = "PATH_T"
-        Me.PATH_T.Size = New System.Drawing.Size(763, 33)
+        Me.PATH_T.Size = New System.Drawing.Size(763, 20)
         Me.PATH_T.TabIndex = 30
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label14.Location = New System.Drawing.Point(96, 122)
+        Me.Label14.Location = New System.Drawing.Point(118, 125)
         Me.Label14.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(126, 26)
+        Me.Label14.Size = New System.Drawing.Size(65, 13)
         Me.Label14.TabIndex = 165
         Me.Label14.Text = "掲載パス："
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1161,7 +1165,7 @@ Partial Class fProductMst
         Me.DIRECTRY_5_L.Location = New System.Drawing.Point(1763, 74)
         Me.DIRECTRY_5_L.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_5_L.Name = "DIRECTRY_5_L"
-        Me.DIRECTRY_5_L.Size = New System.Drawing.Size(348, 32)
+        Me.DIRECTRY_5_L.Size = New System.Drawing.Size(348, 20)
         Me.DIRECTRY_5_L.TabIndex = 29
         '
         'DIRECTRY_4_L
@@ -1170,7 +1174,7 @@ Partial Class fProductMst
         Me.DIRECTRY_4_L.Location = New System.Drawing.Point(1383, 74)
         Me.DIRECTRY_4_L.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_4_L.Name = "DIRECTRY_4_L"
-        Me.DIRECTRY_4_L.Size = New System.Drawing.Size(374, 32)
+        Me.DIRECTRY_4_L.Size = New System.Drawing.Size(374, 20)
         Me.DIRECTRY_4_L.TabIndex = 28
         '
         'DIRECTRY_3_L
@@ -1179,7 +1183,7 @@ Partial Class fProductMst
         Me.DIRECTRY_3_L.Location = New System.Drawing.Point(999, 74)
         Me.DIRECTRY_3_L.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_3_L.Name = "DIRECTRY_3_L"
-        Me.DIRECTRY_3_L.Size = New System.Drawing.Size(374, 32)
+        Me.DIRECTRY_3_L.Size = New System.Drawing.Size(374, 20)
         Me.DIRECTRY_3_L.TabIndex = 27
         '
         'DIRECTRY_2_L
@@ -1188,7 +1192,7 @@ Partial Class fProductMst
         Me.DIRECTRY_2_L.Location = New System.Drawing.Point(616, 74)
         Me.DIRECTRY_2_L.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_2_L.Name = "DIRECTRY_2_L"
-        Me.DIRECTRY_2_L.Size = New System.Drawing.Size(374, 32)
+        Me.DIRECTRY_2_L.Size = New System.Drawing.Size(374, 20)
         Me.DIRECTRY_2_L.TabIndex = 26
         '
         'DIRECTRY_1_L
@@ -1197,7 +1201,7 @@ Partial Class fProductMst
         Me.DIRECTRY_1_L.Location = New System.Drawing.Point(232, 74)
         Me.DIRECTRY_1_L.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_1_L.Name = "DIRECTRY_1_L"
-        Me.DIRECTRY_1_L.Size = New System.Drawing.Size(374, 32)
+        Me.DIRECTRY_1_L.Size = New System.Drawing.Size(374, 20)
         Me.DIRECTRY_1_L.TabIndex = 25
         '
         'DIRECTRY_ID_T
@@ -1208,17 +1212,17 @@ Partial Class fProductMst
         Me.DIRECTRY_ID_T.Location = New System.Drawing.Point(234, 18)
         Me.DIRECTRY_ID_T.Margin = New System.Windows.Forms.Padding(6)
         Me.DIRECTRY_ID_T.Name = "DIRECTRY_ID_T"
-        Me.DIRECTRY_ID_T.Size = New System.Drawing.Size(262, 33)
+        Me.DIRECTRY_ID_T.Size = New System.Drawing.Size(262, 20)
         Me.DIRECTRY_ID_T.TabIndex = 23
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label13.Location = New System.Drawing.Point(27, 21)
+        Me.Label13.Location = New System.Drawing.Point(89, 25)
         Me.Label13.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(195, 26)
+        Me.Label13.Size = New System.Drawing.Size(97, 13)
         Me.Label13.TabIndex = 164
         Me.Label13.Text = "ディレクトリ－ID："
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1271,10 +1275,10 @@ Partial Class fProductMst
         Me.NetTab2.Controls.Add(Me.PRODUCT_P1_B)
         Me.NetTab2.Controls.Add(Me.PRODUCT_P1_PB)
         Me.NetTab2.Controls.Add(Me.ShapeContainer1)
-        Me.NetTab2.Location = New System.Drawing.Point(8, 37)
+        Me.NetTab2.Location = New System.Drawing.Point(4, 28)
         Me.NetTab2.Margin = New System.Windows.Forms.Padding(6)
         Me.NetTab2.Name = "NetTab2"
-        Me.NetTab2.Size = New System.Drawing.Size(2134, 721)
+        Me.NetTab2.Size = New System.Drawing.Size(2142, 734)
         Me.NetTab2.TabIndex = 1
         Me.NetTab2.Text = "ネット掲載－付加情報"
         '
@@ -1387,7 +1391,7 @@ Partial Class fProductMst
         Me.META_DESCRIPTION_T.Location = New System.Drawing.Point(1450, 78)
         Me.META_DESCRIPTION_T.Margin = New System.Windows.Forms.Padding(6)
         Me.META_DESCRIPTION_T.Name = "META_DESCRIPTION_T"
-        Me.META_DESCRIPTION_T.Size = New System.Drawing.Size(622, 33)
+        Me.META_DESCRIPTION_T.Size = New System.Drawing.Size(622, 20)
         Me.META_DESCRIPTION_T.TabIndex = 45
         '
         'Label39
@@ -1397,7 +1401,7 @@ Partial Class fProductMst
         Me.Label39.Location = New System.Drawing.Point(1294, 83)
         Me.Label39.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(142, 26)
+        Me.Label39.Size = New System.Drawing.Size(73, 13)
         Me.Label39.TabIndex = 243
         Me.Label39.Text = "META説明："
         Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1410,7 +1414,7 @@ Partial Class fProductMst
         Me.META_KEYWORD_T.Location = New System.Drawing.Point(1450, 30)
         Me.META_KEYWORD_T.Margin = New System.Windows.Forms.Padding(6)
         Me.META_KEYWORD_T.Name = "META_KEYWORD_T"
-        Me.META_KEYWORD_T.Size = New System.Drawing.Size(622, 33)
+        Me.META_KEYWORD_T.Size = New System.Drawing.Size(622, 20)
         Me.META_KEYWORD_T.TabIndex = 44
         '
         'Label38
@@ -1420,7 +1424,7 @@ Partial Class fProductMst
         Me.Label38.Location = New System.Drawing.Point(1240, 35)
         Me.Label38.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(192, 26)
+        Me.Label38.Size = New System.Drawing.Size(99, 13)
         Me.Label38.TabIndex = 242
         Me.Label38.Text = "METAキーワード："
         Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1433,7 +1437,7 @@ Partial Class fProductMst
         Me.RECOMMENDATION_T.Location = New System.Drawing.Point(242, 318)
         Me.RECOMMENDATION_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RECOMMENDATION_T.Name = "RECOMMENDATION_T"
-        Me.RECOMMENDATION_T.Size = New System.Drawing.Size(1829, 33)
+        Me.RECOMMENDATION_T.Size = New System.Drawing.Size(1829, 20)
         Me.RECOMMENDATION_T.TabIndex = 46
         '
         'Label37
@@ -1443,7 +1447,7 @@ Partial Class fProductMst
         Me.Label37.Location = New System.Drawing.Point(58, 323)
         Me.Label37.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(163, 26)
+        Me.Label37.Size = New System.Drawing.Size(84, 13)
         Me.Label37.TabIndex = 241
         Me.Label37.Text = "おすすめ商品："
         Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1456,7 +1460,7 @@ Partial Class fProductMst
         Me.Label36.Location = New System.Drawing.Point(1046, 262)
         Me.Label36.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(44, 26)
+        Me.Label36.Size = New System.Drawing.Size(24, 13)
         Me.Label36.TabIndex = 240
         Me.Label36.Text = "cm"
         Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1469,7 +1473,7 @@ Partial Class fProductMst
         Me.Label35.Location = New System.Drawing.Point(1046, 210)
         Me.Label35.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(44, 26)
+        Me.Label35.Size = New System.Drawing.Size(24, 13)
         Me.Label35.TabIndex = 239
         Me.Label35.Text = "cm"
         Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1482,7 +1486,7 @@ Partial Class fProductMst
         Me.Label34.Location = New System.Drawing.Point(1046, 158)
         Me.Label34.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(44, 26)
+        Me.Label34.Size = New System.Drawing.Size(24, 13)
         Me.Label34.TabIndex = 238
         Me.Label34.Text = "cm"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1495,7 +1499,7 @@ Partial Class fProductMst
         Me.Label33.Location = New System.Drawing.Point(1045, 106)
         Me.Label33.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(44, 26)
+        Me.Label33.Size = New System.Drawing.Size(24, 13)
         Me.Label33.TabIndex = 237
         Me.Label33.Text = "cm"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1508,7 +1512,7 @@ Partial Class fProductMst
         Me.Label32.Location = New System.Drawing.Point(564, 206)
         Me.Label32.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(44, 26)
+        Me.Label32.Size = New System.Drawing.Size(24, 13)
         Me.Label32.TabIndex = 236
         Me.Label32.Text = "cm"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1521,7 +1525,7 @@ Partial Class fProductMst
         Me.Label31.Location = New System.Drawing.Point(564, 157)
         Me.Label31.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(44, 26)
+        Me.Label31.Size = New System.Drawing.Size(24, 13)
         Me.Label31.TabIndex = 235
         Me.Label31.Text = "cm"
         Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1534,7 +1538,7 @@ Partial Class fProductMst
         Me.Label30.Location = New System.Drawing.Point(564, 104)
         Me.Label30.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(44, 26)
+        Me.Label30.Size = New System.Drawing.Size(24, 13)
         Me.Label30.TabIndex = 234
         Me.Label30.Text = "cm"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1547,7 +1551,7 @@ Partial Class fProductMst
         Me.SIZE_LENGTH_T.Location = New System.Drawing.Point(882, 250)
         Me.SIZE_LENGTH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_LENGTH_T.Name = "SIZE_LENGTH_T"
-        Me.SIZE_LENGTH_T.Size = New System.Drawing.Size(155, 33)
+        Me.SIZE_LENGTH_T.Size = New System.Drawing.Size(155, 20)
         Me.SIZE_LENGTH_T.TabIndex = 43
         '
         'Label29
@@ -1558,7 +1562,7 @@ Partial Class fProductMst
         Me.Label29.Location = New System.Drawing.Point(730, 258)
         Me.Label29.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(64, 26)
+        Me.Label29.Size = New System.Drawing.Size(33, 13)
         Me.Label29.TabIndex = 233
         Me.Label29.Text = "着丈"
         Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1571,7 +1575,7 @@ Partial Class fProductMst
         Me.SIZE_WAIST_T.Location = New System.Drawing.Point(882, 198)
         Me.SIZE_WAIST_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_WAIST_T.Name = "SIZE_WAIST_T"
-        Me.SIZE_WAIST_T.Size = New System.Drawing.Size(155, 33)
+        Me.SIZE_WAIST_T.Size = New System.Drawing.Size(155, 20)
         Me.SIZE_WAIST_T.TabIndex = 42
         '
         'SIZE_BUST_T
@@ -1582,7 +1586,7 @@ Partial Class fProductMst
         Me.SIZE_BUST_T.Location = New System.Drawing.Point(882, 146)
         Me.SIZE_BUST_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_BUST_T.Name = "SIZE_BUST_T"
-        Me.SIZE_BUST_T.Size = New System.Drawing.Size(155, 33)
+        Me.SIZE_BUST_T.Size = New System.Drawing.Size(155, 20)
         Me.SIZE_BUST_T.TabIndex = 41
         '
         'Label26
@@ -1593,7 +1597,7 @@ Partial Class fProductMst
         Me.Label26.Location = New System.Drawing.Point(730, 206)
         Me.Label26.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(89, 26)
+        Me.Label26.Size = New System.Drawing.Size(46, 13)
         Me.Label26.TabIndex = 232
         Me.Label26.Text = "ウエスト"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1606,7 +1610,7 @@ Partial Class fProductMst
         Me.Label27.Location = New System.Drawing.Point(730, 154)
         Me.Label27.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(72, 26)
+        Me.Label27.Size = New System.Drawing.Size(37, 13)
         Me.Label27.TabIndex = 231
         Me.Label27.Text = "バスト"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1619,7 +1623,7 @@ Partial Class fProductMst
         Me.Label28.Location = New System.Drawing.Point(730, 102)
         Me.Label28.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(80, 26)
+        Me.Label28.Size = New System.Drawing.Size(41, 13)
         Me.Label28.TabIndex = 230
         Me.Label28.Text = "首回り"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1632,7 +1636,7 @@ Partial Class fProductMst
         Me.SIZE_NECK_T.Location = New System.Drawing.Point(882, 94)
         Me.SIZE_NECK_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_NECK_T.Name = "SIZE_NECK_T"
-        Me.SIZE_NECK_T.Size = New System.Drawing.Size(155, 33)
+        Me.SIZE_NECK_T.Size = New System.Drawing.Size(155, 20)
         Me.SIZE_NECK_T.TabIndex = 40
         '
         'SIZE_DEPTH_T
@@ -1643,7 +1647,7 @@ Partial Class fProductMst
         Me.SIZE_DEPTH_T.Location = New System.Drawing.Point(403, 195)
         Me.SIZE_DEPTH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_DEPTH_T.Name = "SIZE_DEPTH_T"
-        Me.SIZE_DEPTH_T.Size = New System.Drawing.Size(149, 33)
+        Me.SIZE_DEPTH_T.Size = New System.Drawing.Size(149, 20)
         Me.SIZE_DEPTH_T.TabIndex = 39
         '
         'SIZE_WIDE_T
@@ -1654,7 +1658,7 @@ Partial Class fProductMst
         Me.SIZE_WIDE_T.Location = New System.Drawing.Point(403, 144)
         Me.SIZE_WIDE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_WIDE_T.Name = "SIZE_WIDE_T"
-        Me.SIZE_WIDE_T.Size = New System.Drawing.Size(149, 33)
+        Me.SIZE_WIDE_T.Size = New System.Drawing.Size(149, 20)
         Me.SIZE_WIDE_T.TabIndex = 38
         '
         'Label25
@@ -1665,7 +1669,7 @@ Partial Class fProductMst
         Me.Label25.Location = New System.Drawing.Point(252, 205)
         Me.Label25.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(89, 26)
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
         Me.Label25.TabIndex = 229
         Me.Label25.Text = "高さ(D)"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1678,7 +1682,7 @@ Partial Class fProductMst
         Me.Label24.Location = New System.Drawing.Point(252, 152)
         Me.Label24.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(73, 26)
+        Me.Label24.Size = New System.Drawing.Size(38, 13)
         Me.Label24.TabIndex = 228
         Me.Label24.Text = "横(W)"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1691,7 +1695,7 @@ Partial Class fProductMst
         Me.Label23.Location = New System.Drawing.Point(252, 99)
         Me.Label23.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(71, 26)
+        Me.Label23.Size = New System.Drawing.Size(36, 13)
         Me.Label23.TabIndex = 227
         Me.Label23.Text = "縦(H)"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1704,7 +1708,7 @@ Partial Class fProductMst
         Me.SIZE_HEIGHT_T.Location = New System.Drawing.Point(403, 93)
         Me.SIZE_HEIGHT_T.Margin = New System.Windows.Forms.Padding(6)
         Me.SIZE_HEIGHT_T.Name = "SIZE_HEIGHT_T"
-        Me.SIZE_HEIGHT_T.Size = New System.Drawing.Size(149, 33)
+        Me.SIZE_HEIGHT_T.Size = New System.Drawing.Size(149, 20)
         Me.SIZE_HEIGHT_T.TabIndex = 37
         '
         'Label22
@@ -1714,7 +1718,7 @@ Partial Class fProductMst
         Me.Label22.Location = New System.Drawing.Point(151, 90)
         Me.Label22.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(77, 26)
+        Me.Label22.Size = New System.Drawing.Size(40, 13)
         Me.Label22.TabIndex = 226
         Me.Label22.Text = "寸法："
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1727,7 +1731,7 @@ Partial Class fProductMst
         Me.MATERIAL_T.Location = New System.Drawing.Point(242, 30)
         Me.MATERIAL_T.Margin = New System.Windows.Forms.Padding(6)
         Me.MATERIAL_T.Name = "MATERIAL_T"
-        Me.MATERIAL_T.Size = New System.Drawing.Size(763, 33)
+        Me.MATERIAL_T.Size = New System.Drawing.Size(763, 20)
         Me.MATERIAL_T.TabIndex = 36
         '
         'Label18
@@ -1737,7 +1741,7 @@ Partial Class fProductMst
         Me.Label18.Location = New System.Drawing.Point(154, 35)
         Me.Label18.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(77, 26)
+        Me.Label18.Size = New System.Drawing.Size(40, 13)
         Me.Label18.TabIndex = 225
         Me.Label18.Text = "素材："
         Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1818,10 +1822,42 @@ Partial Class fProductMst
         Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape7, Me.LineShape1, Me.LineShape12, Me.RectangleShape1, Me.RectangleShape4, Me.LineShape2, Me.LineShape3, Me.LineShape6, Me.LineShape4, Me.LineShape5})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(2134, 721)
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape6, Me.RectangleShape5, Me.RectangleShape3, Me.RectangleShape2, Me.LineShape7, Me.LineShape1, Me.LineShape12, Me.RectangleShape1, Me.RectangleShape4, Me.LineShape2, Me.LineShape3, Me.LineShape6, Me.LineShape4, Me.LineShape5})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(2142, 734)
         Me.ShapeContainer1.TabIndex = 0
         Me.ShapeContainer1.TabStop = False
+        '
+        'RectangleShape6
+        '
+        Me.RectangleShape6.BackColor = System.Drawing.Color.Tan
+        Me.RectangleShape6.Cursor = System.Windows.Forms.Cursors.Default
+        Me.RectangleShape6.Location = New System.Drawing.Point(328, 44)
+        Me.RectangleShape6.Name = "RectangleShape4"
+        Me.RectangleShape6.Size = New System.Drawing.Size(179, 105)
+        '
+        'RectangleShape5
+        '
+        Me.RectangleShape5.BackColor = System.Drawing.Color.Tan
+        Me.RectangleShape5.Cursor = System.Windows.Forms.Cursors.Default
+        Me.RectangleShape5.Location = New System.Drawing.Point(118, 45)
+        Me.RectangleShape5.Name = "RectangleShape1"
+        Me.RectangleShape5.Size = New System.Drawing.Size(179, 78)
+        '
+        'RectangleShape3
+        '
+        Me.RectangleShape3.BackColor = System.Drawing.Color.Tan
+        Me.RectangleShape3.Cursor = System.Windows.Forms.Cursors.Default
+        Me.RectangleShape3.Location = New System.Drawing.Point(123, 44)
+        Me.RectangleShape3.Name = "RectangleShape1"
+        Me.RectangleShape3.Size = New System.Drawing.Size(179, 78)
+        '
+        'RectangleShape2
+        '
+        Me.RectangleShape2.BackColor = System.Drawing.Color.Tan
+        Me.RectangleShape2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.RectangleShape2.Location = New System.Drawing.Point(119, 43)
+        Me.RectangleShape2.Name = "RectangleShape1"
+        Me.RectangleShape2.Size = New System.Drawing.Size(179, 78)
         '
         'LineShape7
         '
@@ -1986,7 +2022,7 @@ Partial Class fProductMst
         Me.CATEGORY_1_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_1_T.Name = "CATEGORY_1_T"
         Me.CATEGORY_1_T.ReadOnly = True
-        Me.CATEGORY_1_T.Size = New System.Drawing.Size(318, 33)
+        Me.CATEGORY_1_T.Size = New System.Drawing.Size(318, 20)
         Me.CATEGORY_1_T.TabIndex = 177
         Me.CATEGORY_1_T.TabStop = False
         '
@@ -1995,11 +2031,11 @@ Partial Class fProductMst
         Me.CATEGORY_2_T.BackColor = System.Drawing.Color.LightGreen
         Me.CATEGORY_2_T.Enabled = False
         Me.CATEGORY_2_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.CATEGORY_2_T.Location = New System.Drawing.Point(596, 95)
+        Me.CATEGORY_2_T.Location = New System.Drawing.Point(596, 96)
         Me.CATEGORY_2_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_2_T.Name = "CATEGORY_2_T"
         Me.CATEGORY_2_T.ReadOnly = True
-        Me.CATEGORY_2_T.Size = New System.Drawing.Size(311, 33)
+        Me.CATEGORY_2_T.Size = New System.Drawing.Size(311, 20)
         Me.CATEGORY_2_T.TabIndex = 178
         Me.CATEGORY_2_T.TabStop = False
         '
@@ -2021,7 +2057,7 @@ Partial Class fProductMst
         Me.RTAX_RATE_T.Location = New System.Drawing.Point(786, 384)
         Me.RTAX_RATE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RTAX_RATE_T.Name = "RTAX_RATE_T"
-        Me.RTAX_RATE_T.Size = New System.Drawing.Size(192, 33)
+        Me.RTAX_RATE_T.Size = New System.Drawing.Size(192, 20)
         Me.RTAX_RATE_T.TabIndex = 180
         Me.RTAX_RATE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -2038,12 +2074,12 @@ Partial Class fProductMst
         '
         'fProductMst
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 24.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(2210, 1516)
+        Me.ClientSize = New System.Drawing.Size(1444, 885)
         Me.Controls.Add(Me.RTAX_RATE_T)
         Me.Controls.Add(Me.Label46)
         Me.Controls.Add(Me.BUMON_LINK_B)
@@ -2287,4 +2323,8 @@ Partial Class fProductMst
     Friend WithEvents BUMON_LINK_B As Softgroup.NetButton.NetButton
     Friend WithEvents RTAX_RATE_T As Windows.Forms.TextBox
     Friend WithEvents Label46 As Windows.Forms.Label
+    Friend WithEvents RectangleShape6 As PowerPacks.RectangleShape
+    Friend WithEvents RectangleShape5 As PowerPacks.RectangleShape
+    Friend WithEvents RectangleShape3 As PowerPacks.RectangleShape
+    Friend WithEvents RectangleShape2 As PowerPacks.RectangleShape
 End Class

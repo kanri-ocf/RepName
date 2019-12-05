@@ -3380,11 +3380,4 @@ Public Class fProductMst
 
     End Sub
 
-    Private Sub OPTION2_L_Click(sender As Object, e As EventArgs) Handles OPTION2_L.Click
-
-    End Sub
-
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-
-    End Sub
 End Class
