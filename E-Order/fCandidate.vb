@@ -83,6 +83,7 @@
         '2019.11.30 R.Takashima FROM
         '仕入先を条件としないため隠す
         SUPPLIER_L.Visible = False
+        Label2.Visible = False
         '2019.11.30 R.Takashima TO
 
         '仕入先リストボックスセット
