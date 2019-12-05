@@ -911,7 +911,13 @@
                     'If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
                     If tempCandidate(i).sProductCode = svc(j).sProductCode Then
                         '2019.11.30 R.Takashima TO
-                        buyCount += 1
+                        '2019.12.5 R.Takashima FROM
+                        '仕入先ごとに個数を足しているため販売数が倍以上になってしまう
+                        'そのため仕入先を一つとみなして販売数を計算
+                        If tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
+                            buyCount += 1
+                        End If
+                        '2019.12.5 R.Takashima TO
 
                     Else
                         tempCandidate(i).sCount = buyCount
@@ -946,27 +952,37 @@
         Next
 
         count = j
-
+        ReDim tempCandidate(0)
         '売上数量が大きい順に並び替える（降順）
         '選択ソート
         '商品の個数が０や１の場合は並び替える必要は無い
         If count > 1 Then
             For i = 0 To count - 1
+
                 '2019.12.5 R.Takashima
                 'iとjが同じ場所を参照してしまい、値の入れ替え時に値が消えてしまうため同じ場所を参照しないように変更
                 'For j = i To count - 1
                 For j = i + 1 To count - 1
                     If svc(i).sCount < svc(j).sCount Then
-                        tempCandidate(i) = svc(j)
-                        tempCandidate(j) = svc(i)
-                    Else
-                        tempCandidate(j) = svc(j)
+
+                        '2019.12.5 R.Takashima FROM
+                        'ELSE部分で余計に値を入れていたため、値が重複することがあり修正
+                        tempCandidate(0) = svc(i)
+                        svc(i) = svc(j)
+                        svc(j) = tempCandidate(0)
+
+                        '    tempCandidate(i) = svc(j)
+                        '    tempCandidat(j) = svc(i)
+                        'Else
+                        '    tempCandidate(j) = svc(j)
+
                     End If
                 Next
             Next
 
             'データを代入する
-            svc = tempCandidate
+            'svc = tempCandidate
+            '2019.12.5 R.Takashima TO
         End If
 
         Return svc.Length
