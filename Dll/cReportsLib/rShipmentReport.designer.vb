@@ -77,6 +77,10 @@ Partial Public Class rShipmentReport
         Me.CrossSectionLine5 = New DataDynamics.ActiveReports.CrossSectionLine()
         Me.CrossSectionLine6 = New DataDynamics.ActiveReports.CrossSectionLine()
         Me.Label18 = New DataDynamics.ActiveReports.Label()
+        Me.CrossSectionLine7 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine8 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine9 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine10 = New DataDynamics.ActiveReports.CrossSectionLine()
         Me.GroupFooter1 = New DataDynamics.ActiveReports.GroupFooter()
         Me.Label21 = New DataDynamics.ActiveReports.Label()
         Me.Shape2 = New DataDynamics.ActiveReports.Shape()
@@ -118,10 +122,6 @@ Partial Public Class rShipmentReport
         Me.R_TAX_RATE_F_PRICE = New DataDynamics.ActiveReports.TextBox()
         Me.Line11 = New DataDynamics.ActiveReports.Line()
         Me.Line22 = New DataDynamics.ActiveReports.Line()
-        Me.CrossSectionLine7 = New DataDynamics.ActiveReports.CrossSectionLine()
-        Me.CrossSectionLine8 = New DataDynamics.ActiveReports.CrossSectionLine()
-        Me.CrossSectionLine9 = New DataDynamics.ActiveReports.CrossSectionLine()
-        Me.CrossSectionLine10 = New DataDynamics.ActiveReports.CrossSectionLine()
         CType(Me.Label1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ADDRESS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CORP_NAME, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -831,9 +831,41 @@ Partial Public Class rShipmentReport
         Me.Label18.Top = 0!
         Me.Label18.Width = 0.6220469!
         '
+        'CrossSectionLine7
+        '
+        Me.CrossSectionLine7.Bottom = 0.009000001!
+        Me.CrossSectionLine7.Left = 2.803!
+        Me.CrossSectionLine7.LineWeight = 1.0!
+        Me.CrossSectionLine7.Name = "CrossSectionLine7"
+        Me.CrossSectionLine7.Top = 0.009000001!
+        '
+        'CrossSectionLine8
+        '
+        Me.CrossSectionLine8.Bottom = 0.201!
+        Me.CrossSectionLine8.Left = 4.855!
+        Me.CrossSectionLine8.LineWeight = 1.0!
+        Me.CrossSectionLine8.Name = "CrossSectionLine8"
+        Me.CrossSectionLine8.Top = 0.014!
+        '
+        'CrossSectionLine9
+        '
+        Me.CrossSectionLine9.Bottom = 0.201!
+        Me.CrossSectionLine9.Left = 5.484!
+        Me.CrossSectionLine9.LineWeight = 1.0!
+        Me.CrossSectionLine9.Name = "CrossSectionLine9"
+        Me.CrossSectionLine9.Top = 0.014!
+        '
+        'CrossSectionLine10
+        '
+        Me.CrossSectionLine10.Bottom = 0.187!
+        Me.CrossSectionLine10.Left = 6.544!
+        Me.CrossSectionLine10.LineWeight = 1.0!
+        Me.CrossSectionLine10.Name = "CrossSectionLine10"
+        Me.CrossSectionLine10.Top = 0!
+        '
         'GroupFooter1
         '
-        Me.GroupFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label21, Me.Shape2, Me.Label9, Me.POINT_DISCOUNT_PRICE_T, Me.Label8, Me.DISCOUNT_PRICE_T, Me.Label23, Me.MEMO, Me.TOTAL_PRICE, Me.TOTAL_CNT, Me.TOTAL_T_PRICE, Me.Line8, Me.Label5, Me.PRODUCT_PRICE_T, Me.Label6, Me.POSTAGE_PRICE_T, Me.Label7, Me.FEE_PRICE_T, Me.Line5, Me.Line4, Me.Line3, Me.Line2, Me.Line12, Me.Line13, Me.Label3, Me.TAX_F_PRICE_T, Me.Line15, Me.Label4, Me.TOTAL_PRICE_T, Me.Line16, Me.Line20, Me.Line9, Me.Line10, Me.Line21, Me.Line19, Me.Label22, Me.Label24, Me.R_TAX_RATE_F_PRICE, Me.Line11, Me.Line22})
+        Me.GroupFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label21, Me.Shape2, Me.Label9, Me.POINT_DISCOUNT_PRICE_T, Me.Label8, Me.DISCOUNT_PRICE_T, Me.Label23, Me.MEMO, Me.TOTAL_PRICE, Me.TOTAL_CNT, Me.TOTAL_T_PRICE, Me.Line8, Me.Label5, Me.PRODUCT_PRICE_T, Me.Label6, Me.POSTAGE_PRICE_T, Me.Label7, Me.FEE_PRICE_T, Me.Line5, Me.Line4, Me.Line3, Me.Line2, Me.Line12, Me.Line13, Me.Label3, Me.TAX_F_PRICE_T, Me.Line15, Me.Label4, Me.TOTAL_PRICE_T, Me.Line16, Me.Line20, Me.Line9, Me.Line21, Me.Line19, Me.Label22, Me.Label24, Me.R_TAX_RATE_F_PRICE, Me.Line11, Me.Line22, Me.Line10})
         Me.GroupFooter1.Height = 2.039944!
         Me.GroupFooter1.Name = "GroupFooter1"
         '
@@ -1264,12 +1296,12 @@ Partial Public Class rShipmentReport
         Me.Line10.LineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Line10.LineWeight = 1.0!
         Me.Line10.Name = "Line10"
-        Me.Line10.Top = 0.338!
+        Me.Line10.Top = 0.341!
         Me.Line10.Width = 0!
         Me.Line10.X1 = 6.99!
         Me.Line10.X2 = 6.99!
-        Me.Line10.Y1 = 0.338!
-        Me.Line10.Y2 = 1.93!
+        Me.Line10.Y1 = 0.341!
+        Me.Line10.Y2 = 1.933!
         '
         'Line21
         '
@@ -1364,38 +1396,6 @@ Partial Public Class rShipmentReport
         Me.Line22.X2 = 6.990493!
         Me.Line22.Y1 = 1.93!
         Me.Line22.Y2 = 1.93!
-        '
-        'CrossSectionLine7
-        '
-        Me.CrossSectionLine7.Bottom = 0.009000001!
-        Me.CrossSectionLine7.Left = 2.803!
-        Me.CrossSectionLine7.LineWeight = 1.0!
-        Me.CrossSectionLine7.Name = "CrossSectionLine7"
-        Me.CrossSectionLine7.Top = 0.009000001!
-        '
-        'CrossSectionLine8
-        '
-        Me.CrossSectionLine8.Bottom = 0.201!
-        Me.CrossSectionLine8.Left = 4.855!
-        Me.CrossSectionLine8.LineWeight = 1.0!
-        Me.CrossSectionLine8.Name = "CrossSectionLine8"
-        Me.CrossSectionLine8.Top = 0.014!
-        '
-        'CrossSectionLine9
-        '
-        Me.CrossSectionLine9.Bottom = 0.201!
-        Me.CrossSectionLine9.Left = 5.484!
-        Me.CrossSectionLine9.LineWeight = 1.0!
-        Me.CrossSectionLine9.Name = "CrossSectionLine9"
-        Me.CrossSectionLine9.Top = 0.014!
-        '
-        'CrossSectionLine10
-        '
-        Me.CrossSectionLine10.Bottom = 0.187!
-        Me.CrossSectionLine10.Left = 6.544!
-        Me.CrossSectionLine10.LineWeight = 1.0!
-        Me.CrossSectionLine10.Name = "CrossSectionLine10"
-        Me.CrossSectionLine10.Top = 0!
         '
         'rShipmentReport
         '
