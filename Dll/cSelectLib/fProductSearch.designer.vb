@@ -22,38 +22,38 @@ Partial Class fProductSearch
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.SUPPLIER_L = New System.Windows.Forms.ComboBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.PRODUCT_NAME_T = New System.Windows.Forms.TextBox
-        Me.PRODUCT_V = New System.Windows.Forms.DataGridView
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.JANCODE_T = New System.Windows.Forms.TextBox
-        Me.SUPPLIER_CODE_T = New System.Windows.Forms.TextBox
-        Me.S_PRODUCT_CODE_T = New System.Windows.Forms.TextBox
-        Me.MAKER_NAME_T = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.S_JAN_CODE_T = New System.Windows.Forms.TextBox
-        Me.OPTION_NAME_T = New System.Windows.Forms.TextBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.STOPSUPPLIE_C = New System.Windows.Forms.CheckBox
-        Me.STOPSALE_C = New System.Windows.Forms.CheckBox
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.SYUBETU_3_R = New System.Windows.Forms.RadioButton
-        Me.SYUBETU_2_R = New System.Windows.Forms.RadioButton
-        Me.SYUBETU_1_R = New System.Windows.Forms.RadioButton
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.SUPPLIER_L = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.PRODUCT_NAME_T = New System.Windows.Forms.TextBox()
+        Me.PRODUCT_V = New System.Windows.Forms.DataGridView()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.JANCODE_T = New System.Windows.Forms.TextBox()
+        Me.SUPPLIER_CODE_T = New System.Windows.Forms.TextBox()
+        Me.S_PRODUCT_CODE_T = New System.Windows.Forms.TextBox()
+        Me.MAKER_NAME_T = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.S_JAN_CODE_T = New System.Windows.Forms.TextBox()
+        Me.OPTION_NAME_T = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.STOPSUPPLIE_C = New System.Windows.Forms.CheckBox()
+        Me.STOPSALE_C = New System.Windows.Forms.CheckBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.SYUBETU_3_R = New System.Windows.Forms.RadioButton()
+        Me.SYUBETU_2_R = New System.Windows.Forms.RadioButton()
+        Me.SYUBETU_1_R = New System.Windows.Forms.RadioButton()
         Me.RETURN_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.SEARCH_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.MAKER_SEARCH_B = New Softgroup.NetButton.NetButton(Me.components)
-        Me.S_PRODUCT_NAME_T = New System.Windows.Forms.TextBox
-        Me.S_OPTION_NAME_T = New System.Windows.Forms.TextBox
+        Me.S_PRODUCT_NAME_T = New System.Windows.Forms.TextBox()
+        Me.S_OPTION_NAME_T = New System.Windows.Forms.TextBox()
         CType(Me.PRODUCT_V, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -388,6 +388,7 @@ Partial Class fProductSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Tan
         Me.ClientSize = New System.Drawing.Size(1024, 695)
         Me.Controls.Add(Me.S_OPTION_NAME_T)
