@@ -442,6 +442,7 @@
                     "日次取引明細データ.オプション4 AS オプション4, " &
                     "日次取引明細データ.オプション5 AS オプション5, " &
                     "日次取引明細データ.定価 AS 定価, " &
+                    "日次取引明細データ.取引数量 AS 取引数量," &
                     "仕入先マスタ.仕入先名称 AS 仕入先名称, " &
                     "仕入価格マスタ.仕入単価 AS 仕入単価, " &
                     "在庫マスタ.在庫数, " &
@@ -665,7 +666,10 @@
                                             "(日次取引明細データ.商品コード Is Not Null) " &
                                             "AND (日次取引明細データ.商品コード <> """") " &
                                     ") " &
-                                    "AND 日次取引データ.取引区分 = ""売上"" "
+                                    "AND 日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"" "
+        '2019.12.5 R.Takashima
+        '戻入時は売上数から戻入数だけ引く
+        'AND 日次取引データ.取引区分 = ""売上"" "
 
         '適正在庫数が現在の在庫数以下
         strWhere = strWhere & "AND 在庫マスタ.在庫数 <= 商品マスタ.適正在庫数 "
@@ -724,6 +728,14 @@
                 Else
                     parCandidate(i).sPrice = 0
                 End If
+                '2019.12.5 R.Takashima FROM
+                '取引数量
+                If IsDBNull(pDataReader("取引数量")) = False Then
+                    parCandidate(i).sCount = CLng(pDataReader("取引数量"))
+                Else
+                    parCandidate(i).sCount = 0
+                End If
+                '2019.12.5 R.Takashima TO
                 '仕入価格
                 If IsDBNull(pDataReader("仕入単価")) = False Then
                     parCandidate(i).sCostPrice = CLng(pDataReader("仕入単価"))
@@ -896,7 +908,7 @@
         count = svc.Length
         ReDim tempCandidate(0)
 
-        '同じ仕入先の商品ごとにデータを挿入する
+        '同じ商品の売上数量
         For i = 0 To count - 1
             If k < count - 1 Then
                 ReDim Preserve tempCandidate(i)
@@ -911,11 +923,13 @@
                     'If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
                     If tempCandidate(i).sProductCode = svc(j).sProductCode Then
                         '2019.11.30 R.Takashima TO
+
                         '2019.12.5 R.Takashima FROM
                         '仕入先ごとに個数を足しているため販売数が倍以上になってしまう
                         'そのため仕入先を一つとみなして販売数を計算
                         If tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
-                            buyCount += 1
+                            'buyCount += 1
+                            buyCount += svc(j).sCount
                         End If
                         '2019.12.5 R.Takashima TO
 
