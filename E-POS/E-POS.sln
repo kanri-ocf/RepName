@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-POS", "E-POS.vbproj", "{F9B0AE8B-EB7E-4BA0-A039-200ED886510C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -75,5 +75,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D56F0ACC-FE2F-47F8-B1E5-E3E02D033CC7}
 	EndGlobalSection
 EndGlobal

@@ -4826,23 +4826,28 @@ Public Class fRegister
 
         '2019.10.23 R.Takashima  FROM
         '課題No.74 ドロワーを閉めるメッセージを表示する
-        If DRAWER_OPEN Then
-            Dim message_form As New cMessageLib.fMessage(0,
-                                          Nothing,
-                                          "ドロワーを閉じて下さい。",
-                                          Nothing, Nothing)
-            message_form.Show()
-            Application.DoEvents()
+        If DRAWER_OPEN = True Then
+            '2019.12.7 R.Takashima FROM
+            'ドロワーメッセージをcDrawer内で表示するように変更したためこちらはコメントアウト
 
-            oTool.Wait(10)
+            'Dim message_form As New cMessageLib.fMessage(0,
+            '                              Nothing,
+            '                              "ドロワーを閉じて下さい。",
+            '                              Nothing, Nothing)
+            'message_form.Show()
+            'Application.DoEvents()
+
+            'oTool.Wait(10)
 
             oDrawer.OpenDrawer()
 
-            message_form.Dispose()
+            'message_form.Dispose()
 
             '2019.10.23 R.Takashima TO
 
-            message_form = New cMessageLib.fMessage(2,
+            '2019.12.7 R.Takashima TO
+
+            Dim message_form = New cMessageLib.fMessage(2,
                                               Nothing,
                                               "領収書を発行しますか？",
                                               Nothing, Nothing)
