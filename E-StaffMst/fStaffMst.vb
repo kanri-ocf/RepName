@@ -1,5 +1,7 @@
 ﻿Public Class fStaffMst
     Private Const DISP_COW_MAX = 500
+    Public Property STAFFCODE As String
+    Public Property STAFFNAME As String
     '------------------------------------
     ' DBアクセス関連
     '------------------------------------
@@ -52,6 +54,7 @@
     Private Sub fStaffMst_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim RecordCnt As Integer
 
+
         '----------------------- SoftGroupライセンス認証 ----------------------
         Softgroup.NetButton.License.LicenseName = "Yooko Satoh"
         Softgroup.NetButton.License.LicenseUser = "yoko.satoh@ocf.co.jp"
@@ -83,7 +86,10 @@
             If staff_form.DialogResult = Windows.Forms.DialogResult.OK Then
                 '担当者セット
                 STAFF_CODE_T.Text = staff_form.STAFF_CODE
+                STAFFCODE = staff_form.STAFF_CODE
                 STAFF_NAME_T.Text = staff_form.STAFF_NAME
+                STAFFNAME = staff_form.STAFF_NAME
+
                 staff_form = Nothing
             Else
                 staff_form = Nothing
@@ -374,4 +380,5 @@
         Me.Close()
 
     End Sub
+
 End Class
