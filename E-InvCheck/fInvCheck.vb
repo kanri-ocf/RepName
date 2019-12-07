@@ -114,6 +114,17 @@ Public Class fInvCheck
 
         channel_form.ShowDialog()
         Application.DoEvents()
+
+        '2019.12.7 R.Takashima FROM
+        'チャネル選択入力ウィンドウ表示時にキャンセルを選択してもこの画面が表示されるため修正
+        If channel_form.DialogResult = DialogResult.Cancel Then
+            channel_form.Dispose()
+            channel_form = Nothing
+
+            Environment.Exit(1)
+        End If
+        '2019.12.7 R.Takashima TO
+
         CHANNEL_CODE = channel_form.CHANNEL_CODE_T.Text
         channel_form = Nothing
 
