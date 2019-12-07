@@ -67,6 +67,11 @@
 
         oTool = New cTool
 
+        '2019.12.7 R.Takashima FROM
+        '環境マスタの取得
+        oMstConfigDBIO.getConfMst(oConf, oTran)
+        '2019.12.7 R.Takashima tO
+
         STAFF_CODE = iStaffCode
         STAFF_NAME = iStaffName
 
@@ -127,9 +132,15 @@
         ON_B.Enabled = False
         OFF_B.Enabled = False
 
-        KIKAN_T.Text = 3
-        CYCLE_T.Text = 6
-        MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima FROM
+        '環境マスタにデフォルトの設定があるためそちらを反映させる
+        KIKAN_T.Text = oConf(0).sOrderListTerm
+        CYCLE_T.Text = oConf(0).sSalesTerm
+        MIN_COUNT_T.Text = oConf(0).sMinimumCount
+        'KIKAN_T.Text = 3
+        'CYCLE_T.Text = 6
+        'MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima TO
 
         PRODUCT_NAME_T.Text = ""
         OPTION_NAME_T.Text = ""
