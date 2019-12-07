@@ -100,6 +100,16 @@ Public Class cDrawer
     Public Sub OpenDrawer()
 
         Try
+            '2019.12.7 R.Takashima FROM
+            'ドロワーオープン時にメッセージを表示させる
+            pMessageBox = New cMessageLib.fMessage(0,
+                                          Nothing,
+                                          "ドロワーを閉じて下さい。",
+                                          Nothing, Nothing)
+            pMessageBox.Show()
+            System.Windows.Forms.Application.DoEvents()
+            '2019.12.7 R.Takashima TO
+
             Select Case MAKER_NAME
                 Case "TEC"
                     AxOPOSDRW_TEC.OpenDrawer()
@@ -137,6 +147,8 @@ Public Class cDrawer
 
                     End If
 
+                    pMessageBox.Dispose()
+                    pMessageBox = Nothing
                     a = AxOPOSDRW_STAR.CapStatus
 
             End Select

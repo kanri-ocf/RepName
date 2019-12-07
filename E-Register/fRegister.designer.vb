@@ -1656,7 +1656,7 @@ Partial Class fRegister
         Me.CLR_B.ColorBottom = System.Drawing.Color.Wheat
         Me.CLR_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CLR_B.Location = New System.Drawing.Point(221, 114)
-        Me.CLR_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CLR_B.Margin = New System.Windows.Forms.Padding(4)
         Me.CLR_B.Name = "CLR_B"
         Me.CLR_B.Size = New System.Drawing.Size(75, 45)
         Me.CLR_B.TabIndex = 318
@@ -1704,7 +1704,7 @@ Partial Class fRegister
         Me.NUM_7_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_7_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_7_B.Location = New System.Drawing.Point(221, 161)
-        Me.NUM_7_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_7_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_7_B.Name = "NUM_7_B"
         Me.NUM_7_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_7_B.TabIndex = 322
@@ -1716,7 +1716,7 @@ Partial Class fRegister
         Me.NUM_8_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_8_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_8_B.Location = New System.Drawing.Point(297, 161)
-        Me.NUM_8_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_8_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_8_B.Name = "NUM_8_B"
         Me.NUM_8_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_8_B.TabIndex = 323
@@ -1728,7 +1728,7 @@ Partial Class fRegister
         Me.NUM_9_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_9_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_9_B.Location = New System.Drawing.Point(373, 161)
-        Me.NUM_9_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_9_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_9_B.Name = "NUM_9_B"
         Me.NUM_9_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_9_B.TabIndex = 324
@@ -1740,7 +1740,7 @@ Partial Class fRegister
         Me.WARU_B.ColorBottom = System.Drawing.Color.Wheat
         Me.WARU_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.WARU_B.Location = New System.Drawing.Point(449, 161)
-        Me.WARU_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.WARU_B.Margin = New System.Windows.Forms.Padding(4)
         Me.WARU_B.Name = "WARU_B"
         Me.WARU_B.Size = New System.Drawing.Size(75, 48)
         Me.WARU_B.TabIndex = 325
@@ -1752,7 +1752,7 @@ Partial Class fRegister
         Me.NUM_4_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_4_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_4_B.Location = New System.Drawing.Point(221, 212)
-        Me.NUM_4_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_4_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_4_B.Name = "NUM_4_B"
         Me.NUM_4_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_4_B.TabIndex = 326
@@ -1764,7 +1764,7 @@ Partial Class fRegister
         Me.NUM_5_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_5_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_5_B.Location = New System.Drawing.Point(297, 212)
-        Me.NUM_5_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_5_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_5_B.Name = "NUM_5_B"
         Me.NUM_5_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_5_B.TabIndex = 327
@@ -1776,7 +1776,7 @@ Partial Class fRegister
         Me.NUM_6_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_6_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_6_B.Location = New System.Drawing.Point(373, 212)
-        Me.NUM_6_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_6_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_6_B.Name = "NUM_6_B"
         Me.NUM_6_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_6_B.TabIndex = 328
@@ -1788,7 +1788,7 @@ Partial Class fRegister
         Me.KAKE_B.ColorBottom = System.Drawing.Color.Wheat
         Me.KAKE_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.KAKE_B.Location = New System.Drawing.Point(449, 212)
-        Me.KAKE_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.KAKE_B.Margin = New System.Windows.Forms.Padding(4)
         Me.KAKE_B.Name = "KAKE_B"
         Me.KAKE_B.Size = New System.Drawing.Size(75, 48)
         Me.KAKE_B.TabIndex = 329
@@ -1800,7 +1800,7 @@ Partial Class fRegister
         Me.NUM_1_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_1_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_1_B.Location = New System.Drawing.Point(221, 263)
-        Me.NUM_1_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_1_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_1_B.Name = "NUM_1_B"
         Me.NUM_1_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_1_B.TabIndex = 330
@@ -1812,7 +1812,7 @@ Partial Class fRegister
         Me.NUM_2_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_2_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_2_B.Location = New System.Drawing.Point(297, 264)
-        Me.NUM_2_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_2_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_2_B.Name = "NUM_2_B"
         Me.NUM_2_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_2_B.TabIndex = 331
@@ -1824,7 +1824,7 @@ Partial Class fRegister
         Me.NUM_3_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_3_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_3_B.Location = New System.Drawing.Point(373, 264)
-        Me.NUM_3_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_3_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_3_B.Name = "NUM_3_B"
         Me.NUM_3_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_3_B.TabIndex = 332
@@ -1836,7 +1836,7 @@ Partial Class fRegister
         Me.HIKU_B.ColorBottom = System.Drawing.Color.Wheat
         Me.HIKU_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HIKU_B.Location = New System.Drawing.Point(449, 264)
-        Me.HIKU_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.HIKU_B.Margin = New System.Windows.Forms.Padding(4)
         Me.HIKU_B.Name = "HIKU_B"
         Me.HIKU_B.Size = New System.Drawing.Size(75, 48)
         Me.HIKU_B.TabIndex = 333
@@ -1848,7 +1848,7 @@ Partial Class fRegister
         Me.NUM_0_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_0_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_0_B.Location = New System.Drawing.Point(221, 314)
-        Me.NUM_0_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_0_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_0_B.Name = "NUM_0_B"
         Me.NUM_0_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_0_B.TabIndex = 334
@@ -1860,7 +1860,7 @@ Partial Class fRegister
         Me.NUM_00_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_00_B.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_00_B.Location = New System.Drawing.Point(297, 314)
-        Me.NUM_00_B.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NUM_00_B.Margin = New System.Windows.Forms.Padding(4)
         Me.NUM_00_B.Name = "NUM_00_B"
         Me.NUM_00_B.Size = New System.Drawing.Size(75, 48)
         Me.NUM_00_B.TabIndex = 335
@@ -1872,7 +1872,7 @@ Partial Class fRegister
         Me.NUM_DOT_B.ColorBottom = System.Drawing.Color.Wheat
         Me.NUM_DOT_B.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NUM_DOT_B.Location = New System.Drawing.Point(373, 314)
-        Me.NUM_DOT_B.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.NUM_DOT_B.Margin = New System.Windows.Forms.Padding(5)
         Me.NUM_DOT_B.Name = "NUM_DOT_B"
         Me.NUM_DOT_B.Size = New System.Drawing.Size(75, 49)
         Me.NUM_DOT_B.TabIndex = 336
@@ -1884,7 +1884,7 @@ Partial Class fRegister
         Me.TASU_B.ColorBottom = System.Drawing.Color.Wheat
         Me.TASU_B.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TASU_B.Location = New System.Drawing.Point(449, 314)
-        Me.TASU_B.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.TASU_B.Margin = New System.Windows.Forms.Padding(5)
         Me.TASU_B.Name = "TASU_B"
         Me.TASU_B.Size = New System.Drawing.Size(75, 49)
         Me.TASU_B.TabIndex = 337
@@ -2017,7 +2017,7 @@ Partial Class fRegister
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.pbImage)
         Me.ForeColor = System.Drawing.Color.Black
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "fRegister"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "E-Register"
