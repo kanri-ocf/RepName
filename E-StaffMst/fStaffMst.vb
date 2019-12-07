@@ -200,6 +200,7 @@
 
         '表示設定
         str = ""
+
         For i = 0 To oStaff.Length - 1
             If oStaff(i).sStaffCode <> "0000000000000" Then
                 Select Case oStaff(i).sStaffClass
@@ -213,16 +214,30 @@
                         str = "その他"
 
                 End Select
-                DATA_V.Rows.Add( _
-                        oStaff(i).sStaffCode, _
-                        oStaff(i).sStaffName, _
-                        str, _
-                        oStaff(i).sRate _
-                )
+                DATA_V.Rows.Add(
+                            oStaff(i).sStaffCode,
+                            oStaff(i).sStaffName,
+                            str,
+                            oStaff(i).sRate
+                    )
             End If
         Next i
     End Sub
+    '***********************************************
+    '検索結果を画面にリセット
+    '***********************************************
+    Sub SEARCH_RESULT_LISET()
+        Dim i As Integer
+        Dim str As String
 
+        For i = 0 To DATA_V.Rows.Count
+            DATA_V.Rows.Clear()
+        Next i
+
+        '表示設定
+        str = ""
+
+    End Sub
     Private Sub SEARCH_PROC()
         Dim pStaffCode As String
         Dim pStaffName As String
@@ -281,8 +296,8 @@
             If RecordCnt > DISP_COW_MAX Then
                 Message_form.Dispose()
                 Message_form = Nothing
-                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                            "条件を変更して再建策して下さい", _
+                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                            "条件を変更して再建策して下さい",
                                             Nothing, Nothing)
                 Message_form.ShowDialog()
                 Message_form = Nothing
@@ -291,6 +306,9 @@
 
             '検索結果の画面セット
             SEARCH_RESULT_SET()
+        ElseIf RecordCnt = 0 Then
+            '検索結果の画面リセット
+            SEARCH_RESULT_LISET()
         End If
 
         'メッセージウィンドウのクリア
