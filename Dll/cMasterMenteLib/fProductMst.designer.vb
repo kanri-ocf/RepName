@@ -485,7 +485,7 @@ Partial Class fProductMst
         Me.MODE_T.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.MODE_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!)
         Me.MODE_T.ForeColor = System.Drawing.Color.White
-        Me.MODE_T.Location = New System.Drawing.Point(32, 18)
+        Me.MODE_T.Location = New System.Drawing.Point(29, 9)
         Me.MODE_T.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.MODE_T.Name = "MODE_T"
         Me.MODE_T.Size = New System.Drawing.Size(2138, 34)
@@ -2031,11 +2031,11 @@ Partial Class fProductMst
         Me.CATEGORY_2_T.BackColor = System.Drawing.Color.LightGreen
         Me.CATEGORY_2_T.Enabled = False
         Me.CATEGORY_2_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.CATEGORY_2_T.Location = New System.Drawing.Point(596, 96)
+        Me.CATEGORY_2_T.Location = New System.Drawing.Point(596, 95)
         Me.CATEGORY_2_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_2_T.Name = "CATEGORY_2_T"
         Me.CATEGORY_2_T.ReadOnly = True
-        Me.CATEGORY_2_T.Size = New System.Drawing.Size(311, 20)
+        Me.CATEGORY_2_T.Size = New System.Drawing.Size(324, 20)
         Me.CATEGORY_2_T.TabIndex = 178
         Me.CATEGORY_2_T.TabStop = False
         '
@@ -2079,7 +2079,10 @@ Partial Class fProductMst
         Me.AutoScroll = True
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(1444, 885)
+        Me.ClientSize = New System.Drawing.Size(1444, 466)
+        Me.Controls.Add(Me.CATEGORY_ID_2_T)
+        Me.Controls.Add(Me.CATEGORY_2_T)
+        Me.Controls.Add(Me.CATEGORY_2_L)
         Me.Controls.Add(Me.RTAX_RATE_T)
         Me.Controls.Add(Me.Label46)
         Me.Controls.Add(Me.BUMON_LINK_B)
@@ -2124,7 +2127,6 @@ Partial Class fProductMst
         Me.Controls.Add(Me.PRODUCT_CODE_T)
         Me.Controls.Add(Me.PRODUCT_NAME_T)
         Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.CATEGORY_ID_2_T)
         Me.Controls.Add(Me.CATEGORY_ID_1_T)
         Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.MODE_T)
@@ -2139,8 +2141,6 @@ Partial Class fProductMst
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.CATEGORY_1_T)
         Me.Controls.Add(Me.CATEGORY_1_L)
-        Me.Controls.Add(Me.CATEGORY_2_T)
-        Me.Controls.Add(Me.CATEGORY_2_L)
         Me.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.0!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Margin = New System.Windows.Forms.Padding(6)
