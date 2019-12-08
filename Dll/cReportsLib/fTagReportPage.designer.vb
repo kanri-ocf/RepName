@@ -22,13 +22,13 @@ Partial Class fTagReportPage
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.MESSAGE_1_T = New System.Windows.Forms.Label
-        Me.CHANNEL_L = New System.Windows.Forms.ComboBox
-        Me.CHANNEL_CODE_T = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TYPE_C = New System.Windows.Forms.ComboBox
+        Me.components = New System.ComponentModel.Container()
+        Me.MESSAGE_1_T = New System.Windows.Forms.Label()
+        Me.CHANNEL_L = New System.Windows.Forms.ComboBox()
+        Me.CHANNEL_CODE_T = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TYPE_C = New System.Windows.Forms.ComboBox()
         Me.OK_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.CANCEL_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.SuspendLayout()
@@ -89,6 +89,7 @@ Partial Class fTagReportPage
         Me.TYPE_C.Name = "TYPE_C"
         Me.TYPE_C.Size = New System.Drawing.Size(257, 27)
         Me.TYPE_C.TabIndex = 2
+        Me.TYPE_C.Text = "バーコード無し(A-One 28879)"
         '
         'OK_B
         '
