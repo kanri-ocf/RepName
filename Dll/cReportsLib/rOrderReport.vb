@@ -426,7 +426,6 @@
     End Sub
 
     Private Sub GroupFooter2_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter2.Format
-
         '値引き
         '2019,9,20 A.Komita 追加 From
         DISCOUNT.Value = oOrderData(0).sDiscount
