@@ -466,6 +466,7 @@ Partial Class fSupplierMstSub
         '
         'CLOSE_DAY_T
         '
+        Me.CLOSE_DAY_T.BackColor = System.Drawing.Color.LemonChiffon
         Me.CLOSE_DAY_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CLOSE_DAY_T.ImeMode = System.Windows.Forms.ImeMode.Off
         Me.CLOSE_DAY_T.Location = New System.Drawing.Point(618, 21)

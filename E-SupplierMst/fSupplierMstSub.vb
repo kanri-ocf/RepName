@@ -1,5 +1,6 @@
 ﻿Public Class fSupplierMstSub
     Private Const DISP_ROW_MAX = 500
+    Dim flag As Boolean
     '------------------------------------
     ' DBアクセス関連
     '------------------------------------
@@ -278,50 +279,63 @@
         Dim Message_form As cMessageLib.fMessage
         Dim ret As Boolean
 
-        ReDim oSupplier(0)
-        oSupplier(0).sSupplierCode = SUPPLIER_CODE_T.Text
-        oSupplier(0).sSupplierName = SUPPLIER_NAME_T.Text
-        oSupplier(0).sPostCode = POST_CODE_T.Text
-        oSupplier(0).sAddress1 = ADDRESS1_C.Text
-        oSupplier(0).sAddress2 = ADDRESS2_T.Text
-        oSupplier(0).sAddress3 = ADDRESS3_T.Text
-        oSupplier(0).sTEL = TEL_T.Text
-        oSupplier(0).sFAX = FAX_T.Text
-        oSupplier(0).sURL = URL_T.Text
-        oSupplier(0).sPersonName = TANTOU_NAME_T.Text
-        oSupplier(0).sCloseDate = CLOSE_DAY_T.Text
-        oSupplier(0).sStanderedRate = RATE_T.Text
-        oSupplier(0).sStanderedLot = MIN_LOT_T.Text
-        oSupplier(0).sPaymentCode1 = PAYMENT_CODE_1_T.Text
-        If PAYMENT_CODE_2_T.Text <> "" Then
-            oSupplier(0).sPaymentCode2 = PAYMENT_CODE_2_T.Text
-        End If
-        If PAYMENT_CODE_3_T.Text <> "" Then
-            oSupplier(0).sPaymentCode3 = PAYMENT_CODE_3_T.Text
-        End If
-        oSupplier(0).sTrnRule = RULE_T.Text
-        oSupplier(0).sMemo = MEMO_T.Text
-        If MODE_L.Text = "新規" Then
-            ret = oMstSupplierDBIO.insertSupplierMst(oSupplier(0), oTran)
-        Else
-            ret = oMstSupplierDBIO.updateSupplierMst(oSupplier(0), CInt(SUPPLIER_CODE_T.Text), oTran)
-        End If
-        If ret = False Then
-            Message_form = New cMessageLib.fMessage(1, "仕入先マスタの登録に失敗しました。", _
-                                            "システム管理者に連絡して下さい", _
-                                            Nothing, Nothing)
-            Me.DialogResult = Windows.Forms.DialogResult.Abort
-        Else
-            Message_form = New cMessageLib.fMessage(1, Nothing, _
-                                            "登録が完了しました。", _
-                                            Nothing, Nothing)
-            Me.DialogResult = Windows.Forms.DialogResult.OK
-        End If
-        Message_form.ShowDialog()
-        Application.DoEvents()
-        Message_form = Nothing
-        CLOSE_PROC()
+        '---------------------------------------------------------------------------------
+        '2019/12/08 suzuki 
+        '必須項目のチェックを追加
+        '---------------------------------------------------------------------------------
+        flag = False
+        Requireditem()
 
+        If flag <> False Then
+            ReDim oSupplier(0)
+            oSupplier(0).sSupplierCode = SUPPLIER_CODE_T.Text
+            oSupplier(0).sSupplierName = SUPPLIER_NAME_T.Text
+            oSupplier(0).sPostCode = POST_CODE_T.Text
+            oSupplier(0).sAddress1 = ADDRESS1_C.Text
+            oSupplier(0).sAddress2 = ADDRESS2_T.Text
+            oSupplier(0).sAddress3 = ADDRESS3_T.Text
+            oSupplier(0).sTEL = TEL_T.Text
+            oSupplier(0).sFAX = FAX_T.Text
+            oSupplier(0).sURL = URL_T.Text
+            oSupplier(0).sPersonName = TANTOU_NAME_T.Text
+            oSupplier(0).sCloseDate = CLOSE_DAY_T.Text
+            oSupplier(0).sStanderedRate = RATE_T.Text
+            oSupplier(0).sStanderedLot = MIN_LOT_T.Text
+            oSupplier(0).sPaymentCode1 = PAYMENT_CODE_1_T.Text
+            If PAYMENT_CODE_2_T.Text <> "" Then
+                oSupplier(0).sPaymentCode2 = PAYMENT_CODE_2_T.Text
+            End If
+            If PAYMENT_CODE_3_T.Text <> "" Then
+                oSupplier(0).sPaymentCode3 = PAYMENT_CODE_3_T.Text
+            End If
+            oSupplier(0).sTrnRule = RULE_T.Text
+            oSupplier(0).sMemo = MEMO_T.Text
+            If MODE_L.Text = "新規" Then
+                ret = oMstSupplierDBIO.insertSupplierMst(oSupplier(0), oTran)
+            Else
+                ret = oMstSupplierDBIO.updateSupplierMst(oSupplier(0), CInt(SUPPLIER_CODE_T.Text), oTran)
+            End If
+            If ret = False Then
+                Message_form = New cMessageLib.fMessage(1, "仕入先マスタの登録に失敗しました。",
+                                            "システム管理者に連絡して下さい",
+                                            Nothing, Nothing)
+                Me.DialogResult = Windows.Forms.DialogResult.Abort
+            Else
+                Message_form = New cMessageLib.fMessage(1, Nothing,
+                                            "登録が完了しました。",
+                                            Nothing, Nothing)
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+            End If
+            Message_form.ShowDialog()
+            Application.DoEvents()
+            Message_form = Nothing
+            CLOSE_PROC()
+        End If
+
+        '---------------------------------------------------------------------------------
+        '2019/12/08 suzuki 
+        '必須項目のチェックを追加　END
+        '---------------------------------------------------------------------------------
     End Sub
 
     Private Sub RETURN_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RETURN_B.Click
@@ -346,11 +360,11 @@
 
         '入力状況チェック
         If POST_CODE_T.Text.Length < 7 Then
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                              Nothing, _
-                                              "郵便番号を確認して下さい", _
-                                              Nothing, _
-                                              Nothing _
+            Dim message_form As New cMessageLib.fMessage(1,
+                                              Nothing,
+                                              "郵便番号を確認して下さい",
+                                              Nothing,
+                                              Nothing
                                               )
             message_form.ShowDialog()
             message_form = Nothing
@@ -361,11 +375,11 @@
         'フォーマットチェック
         For i = 0 To strLen - 1
             If Asc(Mid(sPostCode, i + 1, 1)) < 48 Or Asc(Mid(sPostCode, i + 1, 1)) > 57 Then
-                Dim message_form As New cMessageLib.fMessage(1, _
-                                                  Nothing, _
-                                                  "郵便番号は、－なしの半角数字で入力下さい", _
-                                                  Nothing, _
-                                                  Nothing _
+                Dim message_form As New cMessageLib.fMessage(1,
+                                                  Nothing,
+                                                  "郵便番号は、－なしの半角数字で入力下さい",
+                                                  Nothing,
+                                                  Nothing
                                                   )
                 message_form.ShowDialog()
                 message_form = Nothing
@@ -391,4 +405,75 @@
 
         ADDRESS3_T.Focus()
     End Sub
+    '---------------------------------------------------------------------------------
+    '2019/12/08 suzuki 
+    '必須項目の確認フラグを追加
+    '---------------------------------------------------------------------------------
+    Private Sub Requireditem()
+        Dim Message_form As cMessageLib.fMessage
+
+        If SUPPLIER_CODE_T.Text <> "" Then
+            If SUPPLIER_NAME_T.Text <> "" Then
+                If CLOSE_DAY_T.Text <> "" Then
+                    If RATE_T.Text <> "" Then
+                        If MIN_LOT_T.Text <> "" Then
+                            If PAYMENT_NAME_1_L.Text <> "" Then
+                                flag = True
+                            Else
+                                Message_form = New cMessageLib.fMessage(1, Nothing,
+                                "支払い方法が選択されていません。",
+                                Nothing, Nothing)
+                                Me.DialogResult = Windows.Forms.DialogResult.OK
+                                Message_form.ShowDialog()
+                                Message_form = Nothing
+                            End If
+                        Else
+                            Message_form = New cMessageLib.fMessage(1, Nothing,
+                            "標準ロット数が入力されていません。",
+                            Nothing, Nothing)
+                            Me.DialogResult = Windows.Forms.DialogResult.OK
+                            Message_form.ShowDialog()
+                            Message_form = Nothing
+                        End If
+                    Else
+                        Message_form = New cMessageLib.fMessage(1, Nothing,
+                        "締め日が入力されていません。",
+                         Nothing, Nothing)
+                        Me.DialogResult = Windows.Forms.DialogResult.OK
+                        Message_form.ShowDialog()
+                        Message_form = Nothing
+                    End If
+                Else
+                    Message_form = New cMessageLib.fMessage(1, Nothing,
+                    "標準仕切率が入力されていません。",
+                    Nothing, Nothing)
+                    Me.DialogResult = Windows.Forms.DialogResult.OK
+                    Message_form.ShowDialog()
+                    Message_form = Nothing
+
+                End If
+
+            Else
+                    Message_form = New cMessageLib.fMessage(1, Nothing,
+                            "仕入先名称が入力されていません。",
+                            Nothing, Nothing)
+                Me.DialogResult = Windows.Forms.DialogResult.OK
+                Message_form.ShowDialog()
+                Message_form = Nothing
+            End If
+
+        Else
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+            "仕入先コードが入力されていません。",
+             Nothing, Nothing)
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+            Message_form.ShowDialog()
+            Message_form = Nothing
+        End If
+
+    End Sub
+    '---------------------------------------------------------------------------------
+    '2019/12/08 suzuki 
+    '必須項目の確認フラグを追加　END
+    '---------------------------------------------------------------------------------
 End Class
