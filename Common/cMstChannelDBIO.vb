@@ -18,17 +18,18 @@
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function getChannelMst(ByRef parChannel() As cStructureLib.sChannel, _
-                                  ByVal KeyChannelCode As Integer, _
-                                  ByVal KeyChannelClass As Integer, _
-                                  ByVal KeyChannelName As String, _
-                                  ByVal KeysSaleRegist As Boolean, _
-                                  ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function getChannelMst(ByRef parChannel() As cStructureLib.sChannel,
+                                  ByVal KeyChannelCode As Integer,
+                                  ByVal KeyChannelClass As Integer,
+                                  ByVal KeyChannelName As String,
+                                  ByVal KeysSaleRegist As Boolean,
+                                  ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelect As String
         Dim i As Long
         Dim pc As Integer
         Dim scnt As Integer
         Dim mpc As Integer
+
 
         strSelect = "SELECT * FROM チャネルマスタ "
 
@@ -110,7 +111,7 @@
 
             While pDataReader.Read()
 
-                ReDim Preserve parChannel(CInt(i))
+                ReDim Preserve parChannel(i)
 
                 'レコードが取得できた時の処理
                 'チャネルコード
@@ -168,9 +169,9 @@
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function ExistCMSType(ByRef parChannel() As cStructureLib.sChannel, _
-                                  ByVal KeyCMSType As Integer, _
-                                  ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function ExistCMSType(ByRef parChannel() As cStructureLib.sChannel,
+                                  ByVal KeyCMSType As Integer,
+                                  ByRef Tran As OleDb.OleDbTransaction) As Boolean
         Dim strSelect As String
         Dim i As Long
 
@@ -190,7 +191,7 @@
 
             While pDataReader.Read()
 
-                ReDim Preserve parChannel(CInt(i))
+                ReDim Preserve parChannel(i)
 
                 'レコードが取得できた時の処理
                 'チャネルコード
@@ -291,7 +292,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertChannelMst(ByVal parChannel As cStructureLib.sChannel, _
+    Public Function insertChannelMst(ByVal parChannel As cStructureLib.sChannel,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
         Dim strInsert As String
@@ -302,36 +303,36 @@
 
         Try
             'SQL文の設定
-            strInsert = "INSERT INTO チャネルマスタ ( " & _
-                            "チャネルコード, " & _
-                            "チャネル名称, " & _
-                            "チャネル種別, " & _
-                            "URL, " & _
-                            "レシート印刷フラグ, " & _
-                            "売上計上フラグ, " & _
-                            "注文データファイル有無, " & _
-                            "注文明細データファイル有無, " & _
-                            "CMSタイプ, " & _
-                            "OR受注コード名称, " & _
-                            "登録日, " & _
-                            "登録時間, " & _
-                            "最終更新日, " & _
-                            "最終更新時間 " & _
-                        ") VALUES (" & _
-                            "@ChannelCode, " & _
-                            "@ChannelName, " & _
-                            "@ChannelClass, " & _
-                            "@URL, " & _
-                            "@ReceiptPrint, " & _
-                            "@SaleRegist, " & _
-                            "@RequestFileFlg, " & _
-                            "@RequestSubFileFlg, " & _
-                            "@CMSType, " & _
-                            "@ORRequestCodeName, " & _
-                            "@CreateDate, " & _
-                            "@CreateTime, " & _
-                            "@UpdateDate, " & _
-                            "@UpdateTime " & _
+            strInsert = "INSERT INTO チャネルマスタ ( " &
+                            "チャネルコード, " &
+                            "チャネル名称, " &
+                            "チャネル種別, " &
+                            "URL, " &
+                            "レシート印刷フラグ, " &
+                            "売上計上フラグ, " &
+                            "注文データファイル有無, " &
+                            "注文明細データファイル有無, " &
+                            "CMSタイプ, " &
+                            "OR受注コード名称, " &
+                            "登録日, " &
+                            "登録時間, " &
+                            "最終更新日, " &
+                            "最終更新時間 " &
+                        ") VALUES (" &
+                            "@ChannelCode, " &
+                            "@ChannelName, " &
+                            "@ChannelClass, " &
+                            "@URL, " &
+                            "@ReceiptPrint, " &
+                            "@SaleRegist, " &
+                            "@RequestFileFlg, " &
+                            "@RequestSubFileFlg, " &
+                            "@CMSType, " &
+                            "@ORRequestCodeName, " &
+                            "@CreateDate, " &
+                            "@CreateTime, " &
+                            "@UpdateDate, " &
+                            "@UpdateTime " &
                         ")"
 
             pCommand.CommandText = strInsert
@@ -426,19 +427,19 @@
         Dim strUpdate As String
 
         'SQL文の設定
-        strUpdate = "UPDATE チャネルマスタ SET " & _
-                        "チャネルコード = " & parChannel.sChannelCode & ", " & _
-                        "チャネル名称 = """ & parChannel.sChannelName & """, " & _
-                        "チャネル種別 = " & parChannel.sChannelClass & ", " & _
-                        "URL = """ & parChannel.sURL & """, " & _
-                        "レシート印刷フラグ = " & parChannel.sReceiptPrint & ", " & _
-                        "売上計上フラグ = " & parChannel.sSaleRegist & ", " & _
-                        "注文データファイル有無 = " & parChannel.sRequestFileFlg & ", " & _
-                        "注文明細データファイル有無 = " & parChannel.sRequestSubFileFlg & ", " & _
-                        "CMSタイプ = " & parChannel.sCMSType & ", " & _
-                        "OR受注コード名称 = """ & parChannel.sORRequestCodeFieldName & """, " & _
-                        "最終更新日 = """ & String.Format("{0:yyyy/MM/dd}", Now) & """, " & _
-                        "最終更新時間 = """ & String.Format("{0:HH:mm:ss}", Now) & """ " & _
+        strUpdate = "UPDATE チャネルマスタ SET " &
+                        "チャネルコード = " & parChannel.sChannelCode & ", " &
+                        "チャネル名称 = """ & parChannel.sChannelName & """, " &
+                        "チャネル種別 = " & parChannel.sChannelClass & ", " &
+                        "URL = """ & parChannel.sURL & """, " &
+                        "レシート印刷フラグ = " & parChannel.sReceiptPrint & ", " &
+                        "売上計上フラグ = " & parChannel.sSaleRegist & ", " &
+                        "注文データファイル有無 = " & parChannel.sRequestFileFlg & ", " &
+                        "注文明細データファイル有無 = " & parChannel.sRequestSubFileFlg & ", " &
+                        "CMSタイプ = " & parChannel.sCMSType & ", " &
+                        "OR受注コード名称 = """ & parChannel.sORRequestCodeFieldName & """, " &
+                        "最終更新日 = """ & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
+                        "最終更新時間 = """ & String.Format("{0:HH:mm:ss}", Now) & """ " &
                     "WHERE チャネルマスタ.チャネルコード= " & KeyChannelCode & " "
 
         Try
@@ -478,7 +479,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function deleteChannelMst(ByVal KeyChannelCode As String, _
+    Public Function deleteChannelMst(ByVal KeyChannelCode As String,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim strDelete As String
 

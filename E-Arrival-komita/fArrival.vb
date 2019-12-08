@@ -1938,14 +1938,14 @@
             '2019,12,5 A.Komita グリッドビューに発注中止事由を表示させる為に追加 From
             For i = 0 To ORDER_V.Rows.Count - 1
 
-                If oOrderSubData(0).sCancelReason <> String.Empty Then
-                    ORDER_V("発注中止事由", i).Value = oOrderSubData(i).sCancelReason
+                    If oOrderSubData(0).sCancelReason <> String.Empty Then
+                        ORDER_V("発注中止事由", i).Value = oOrderSubData(i).sCancelReason
 
-                End If
-            Next
-            '2019,12,5 A.Komita 追加 To
+                    End If
+                Next
+                '2019,12,5 A.Komita 追加 To
 
-        End If
+            End If
 
 
     End Sub
