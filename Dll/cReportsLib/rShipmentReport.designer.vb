@@ -19,10 +19,6 @@ Partial Public Class rShipmentReport
     Private Sub InitializeComponent()
         Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(rShipmentReport))
         Me.PageHeader = New DataDynamics.ActiveReports.PageHeader()
-        Me.Detail = New DataDynamics.ActiveReports.Detail()
-        Me.PageFooter = New DataDynamics.ActiveReports.PageFooter()
-        Me.GroupHeader1 = New DataDynamics.ActiveReports.GroupHeader()
-        Me.GroupFooter1 = New DataDynamics.ActiveReports.GroupFooter()
         Me.Shape1 = New DataDynamics.ActiveReports.Shape()
         Me.Label1 = New DataDynamics.ActiveReports.Label()
         Me.ADDRESS = New DataDynamics.ActiveReports.TextBox()
@@ -51,6 +47,18 @@ Partial Public Class rShipmentReport
         Me.RESHIP_L = New DataDynamics.ActiveReports.Label()
         Me.R_TAX_RATE_PRICE_T = New DataDynamics.ActiveReports.TextBox()
         Me.Line17 = New DataDynamics.ActiveReports.Line()
+        Me.Detail = New DataDynamics.ActiveReports.Detail()
+        Me.No = New DataDynamics.ActiveReports.TextBox()
+        Me.CNT = New DataDynamics.ActiveReports.TextBox()
+        Me.JAN_CODE = New DataDynamics.ActiveReports.TextBox()
+        Me.OPTION_VALUE = New DataDynamics.ActiveReports.TextBox()
+        Me.PRICE = New DataDynamics.ActiveReports.TextBox()
+        Me.PRODUCT_NAME = New DataDynamics.ActiveReports.TextBox()
+        Me.T_PRICE = New DataDynamics.ActiveReports.TextBox()
+        Me.Line7 = New DataDynamics.ActiveReports.Line()
+        Me.TAX_RATE = New DataDynamics.ActiveReports.TextBox()
+        Me.PageFooter = New DataDynamics.ActiveReports.PageFooter()
+        Me.GroupHeader1 = New DataDynamics.ActiveReports.GroupHeader()
         Me.Label12 = New DataDynamics.ActiveReports.Label()
         Me.CrossSectionBox1 = New DataDynamics.ActiveReports.CrossSectionBox()
         Me.CrossSectionBox5 = New DataDynamics.ActiveReports.CrossSectionBox()
@@ -69,15 +77,11 @@ Partial Public Class rShipmentReport
         Me.CrossSectionLine5 = New DataDynamics.ActiveReports.CrossSectionLine()
         Me.CrossSectionLine6 = New DataDynamics.ActiveReports.CrossSectionLine()
         Me.Label18 = New DataDynamics.ActiveReports.Label()
-        Me.No = New DataDynamics.ActiveReports.TextBox()
-        Me.CNT = New DataDynamics.ActiveReports.TextBox()
-        Me.JAN_CODE = New DataDynamics.ActiveReports.TextBox()
-        Me.OPTION_VALUE = New DataDynamics.ActiveReports.TextBox()
-        Me.PRICE = New DataDynamics.ActiveReports.TextBox()
-        Me.PRODUCT_NAME = New DataDynamics.ActiveReports.TextBox()
-        Me.T_PRICE = New DataDynamics.ActiveReports.TextBox()
-        Me.Line7 = New DataDynamics.ActiveReports.Line()
-        Me.TAX_RATE = New DataDynamics.ActiveReports.TextBox()
+        Me.CrossSectionLine7 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine8 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine9 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.CrossSectionLine10 = New DataDynamics.ActiveReports.CrossSectionLine()
+        Me.GroupFooter1 = New DataDynamics.ActiveReports.GroupFooter()
         Me.Label21 = New DataDynamics.ActiveReports.Label()
         Me.Shape2 = New DataDynamics.ActiveReports.Shape()
         Me.Label9 = New DataDynamics.ActiveReports.Label()
@@ -140,14 +144,6 @@ Partial Public Class rShipmentReport
         CType(Me.PAYMENT_T, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RESHIP_L, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.R_TAX_RATE_PRICE_T, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Label18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.No, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CNT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JAN_CODE, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,6 +152,14 @@ Partial Public Class rShipmentReport
         CType(Me.PRODUCT_NAME, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.T_PRICE, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TAX_RATE, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Label18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label21, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.POINT_DISCOUNT_PRICE_T, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,30 +190,6 @@ Partial Public Class rShipmentReport
         Me.PageHeader.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Shape1, Me.Label1, Me.ADDRESS, Me.CORP_NAME, Me.TEL, Me.FAX, Me.Label10, Me.TANTOU_NAME, Me.Label11, Me.MAKE_DATE, Me.ReportInfo2, Me.TextBox1, Me.TextBox2, Me.LOGO_P, Me.COSTOMER_NAME, Me.Line6, Me.POSTAL_CODE, Me.BILL_PRICE_T, Me.Label2, Me.TAX_PRICE_T, Me.Label17, Me.PAYMENT_T, Me.Line14, Me.Line1, Me.RESHIP_SHAPE, Me.RESHIP_L, Me.R_TAX_RATE_PRICE_T, Me.Line17})
         Me.PageHeader.Height = 2.743!
         Me.PageHeader.Name = "PageHeader"
-        '
-        'Detail
-        '
-        Me.Detail.ColumnSpacing = 0!
-        Me.Detail.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.No, Me.CNT, Me.JAN_CODE, Me.OPTION_VALUE, Me.PRICE, Me.PRODUCT_NAME, Me.T_PRICE, Me.Line7, Me.TAX_RATE})
-        Me.Detail.Height = 0.2007874!
-        Me.Detail.Name = "Detail"
-        '
-        'PageFooter
-        '
-        Me.PageFooter.Height = 0!
-        Me.PageFooter.Name = "PageFooter"
-        '
-        'GroupHeader1
-        '
-        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.CrossSectionBox1, Me.CrossSectionBox5, Me.Line18, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label19, Me.Label20, Me.CrossSectionBox6, Me.CrossSectionLine1, Me.CrossSectionLine2, Me.CrossSectionLine3, Me.CrossSectionLine4, Me.CrossSectionLine5, Me.CrossSectionLine6, Me.Label18})
-        Me.GroupHeader1.Height = 0.1875!
-        Me.GroupHeader1.Name = "GroupHeader1"
-        '
-        'GroupFooter1
-        '
-        Me.GroupFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label21, Me.Shape2, Me.Label9, Me.POINT_DISCOUNT_PRICE_T, Me.Label8, Me.DISCOUNT_PRICE_T, Me.Label23, Me.MEMO, Me.TOTAL_PRICE, Me.TOTAL_CNT, Me.TOTAL_T_PRICE, Me.Line8, Me.Label5, Me.PRODUCT_PRICE_T, Me.Label6, Me.POSTAGE_PRICE_T, Me.Label7, Me.FEE_PRICE_T, Me.Line5, Me.Line4, Me.Line3, Me.Line2, Me.Line12, Me.Line13, Me.Label3, Me.TAX_F_PRICE_T, Me.Line15, Me.Label4, Me.TOTAL_PRICE_T, Me.Line16, Me.Line20, Me.Line9, Me.Line10, Me.Line21, Me.Line19, Me.Label22, Me.Label24, Me.R_TAX_RATE_F_PRICE, Me.Line11, Me.Line22})
-        Me.GroupFooter1.Height = 2.039944!
-        Me.GroupFooter1.Name = "GroupFooter1"
         '
         'Shape1
         '
@@ -463,14 +443,14 @@ Partial Public Class rShipmentReport
         'Line14
         '
         Me.Line14.Height = 0!
-        Me.Line14.Left = 0.03729966!
+        Me.Line14.Left = 0!
         Me.Line14.LineColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Line14.LineWeight = 3.0!
         Me.Line14.Name = "Line14"
         Me.Line14.Top = 2.743!
-        Me.Line14.Width = 3.364568!
-        Me.Line14.X1 = 0.03729966!
-        Me.Line14.X2 = 3.401867!
+        Me.Line14.Width = 3.364567!
+        Me.Line14.X1 = 0!
+        Me.Line14.X2 = 3.364567!
         Me.Line14.Y1 = 2.743!
         Me.Line14.Y2 = 2.743!
         '
@@ -535,6 +515,135 @@ Partial Public Class rShipmentReport
         Me.Line17.X2 = 3.41738!
         Me.Line17.Y1 = 2.229999!
         Me.Line17.Y2 = 2.229999!
+        '
+        'Detail
+        '
+        Me.Detail.ColumnSpacing = 0!
+        Me.Detail.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.No, Me.CNT, Me.JAN_CODE, Me.OPTION_VALUE, Me.PRICE, Me.PRODUCT_NAME, Me.T_PRICE, Me.Line7, Me.TAX_RATE})
+        Me.Detail.Height = 0.2007874!
+        Me.Detail.Name = "Detail"
+        '
+        'No
+        '
+        Me.No.DataField = "No"
+        Me.No.Height = 0.2!
+        Me.No.Left = 0!
+        Me.No.Name = "No"
+        Me.No.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 1, 0)
+        Me.No.Style = "font-size: 9pt; text-align: right; vertical-align: middle"
+        Me.No.Text = "No"
+        Me.No.Top = 0!
+        Me.No.Width = 0.2929134!
+        '
+        'CNT
+        '
+        Me.CNT.DataField = "CNT"
+        Me.CNT.Height = 0.2007874!
+        Me.CNT.Left = 4.87!
+        Me.CNT.Name = "CNT"
+        Me.CNT.OutputFormat = resources.GetString("CNT.OutputFormat")
+        Me.CNT.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
+        Me.CNT.Style = "text-align: right; vertical-align: middle"
+        Me.CNT.Text = "CNT"
+        Me.CNT.Top = 0!
+        Me.CNT.Width = 0.6200801!
+        '
+        'JAN_CODE
+        '
+        Me.JAN_CODE.DataField = "JAN_CODE"
+        Me.JAN_CODE.Height = 0.2!
+        Me.JAN_CODE.Left = 1.896851!
+        Me.JAN_CODE.Name = "JAN_CODE"
+        Me.JAN_CODE.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
+        Me.JAN_CODE.Text = "JAN_CODE"
+        Me.JAN_CODE.Top = 0!
+        Me.JAN_CODE.Width = 0.9062994!
+        '
+        'OPTION_VALUE
+        '
+        Me.OPTION_VALUE.DataField = "OPTION_VALUE"
+        Me.OPTION_VALUE.Height = 0.2!
+        Me.OPTION_VALUE.Left = 2.80315!
+        Me.OPTION_VALUE.Name = "OPTION_VALUE"
+        Me.OPTION_VALUE.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
+        Me.OPTION_VALUE.Text = "OPTION_VALUE"
+        Me.OPTION_VALUE.Top = 0!
+        Me.OPTION_VALUE.Width = 1.20085!
+        '
+        'PRICE
+        '
+        Me.PRICE.DataField = "PRICE"
+        Me.PRICE.Height = 0.2!
+        Me.PRICE.Left = 4.004!
+        Me.PRICE.Name = "PRICE"
+        Me.PRICE.OutputFormat = resources.GetString("PRICE.OutputFormat")
+        Me.PRICE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
+        Me.PRICE.Style = "text-align: right; vertical-align: middle"
+        Me.PRICE.Text = "PRICE"
+        Me.PRICE.Top = 0!
+        Me.PRICE.Width = 0.8484264!
+        '
+        'PRODUCT_NAME
+        '
+        Me.PRODUCT_NAME.DataField = "PRODUCT_NAME"
+        Me.PRODUCT_NAME.Height = 0.2!
+        Me.PRODUCT_NAME.Left = 0.2929134!
+        Me.PRODUCT_NAME.Name = "PRODUCT_NAME"
+        Me.PRODUCT_NAME.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
+        Me.PRODUCT_NAME.Text = "PRODUCT_NAME"
+        Me.PRODUCT_NAME.Top = 0!
+        Me.PRODUCT_NAME.Width = 1.603937!
+        '
+        'T_PRICE
+        '
+        Me.T_PRICE.DataField = "T_PRICE"
+        Me.T_PRICE.Height = 0.2!
+        Me.T_PRICE.Left = 5.49!
+        Me.T_PRICE.Name = "T_PRICE"
+        Me.T_PRICE.OutputFormat = resources.GetString("T_PRICE.OutputFormat")
+        Me.T_PRICE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
+        Me.T_PRICE.Style = "text-align: right; vertical-align: middle"
+        Me.T_PRICE.Text = "T_PRICE"
+        Me.T_PRICE.Top = 0!
+        Me.T_PRICE.Width = 1.05433!
+        '
+        'Line7
+        '
+        Me.Line7.Height = 0!
+        Me.Line7.Left = 0!
+        Me.Line7.LineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.Line7.LineWeight = 1.0!
+        Me.Line7.Name = "Line7"
+        Me.Line7.Top = 0!
+        Me.Line7.Width = 7.164!
+        Me.Line7.X1 = 0!
+        Me.Line7.X2 = 7.164!
+        Me.Line7.Y1 = 0!
+        Me.Line7.Y2 = 0!
+        '
+        'TAX_RATE
+        '
+        Me.TAX_RATE.DataField = "TAX_RATE"
+        Me.TAX_RATE.Height = 0.19!
+        Me.TAX_RATE.Left = 6.56!
+        Me.TAX_RATE.Name = "TAX_RATE"
+        Me.TAX_RATE.OutputFormat = resources.GetString("TAX_RATE.OutputFormat")
+        Me.TAX_RATE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
+        Me.TAX_RATE.Style = "text-align: right; vertical-align: middle"
+        Me.TAX_RATE.Text = "TAX_RATE"
+        Me.TAX_RATE.Top = 0.01!
+        Me.TAX_RATE.Width = 0.6200801!
+        '
+        'PageFooter
+        '
+        Me.PageFooter.Height = 0!
+        Me.PageFooter.Name = "PageFooter"
+        '
+        'GroupHeader1
+        '
+        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label12, Me.CrossSectionBox1, Me.CrossSectionBox5, Me.Line18, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.Label19, Me.Label20, Me.CrossSectionBox6, Me.CrossSectionLine1, Me.CrossSectionLine2, Me.CrossSectionLine3, Me.CrossSectionLine4, Me.CrossSectionLine5, Me.CrossSectionLine6, Me.Label18, Me.CrossSectionLine7, Me.CrossSectionLine8, Me.CrossSectionLine9, Me.CrossSectionLine10})
+        Me.GroupHeader1.Height = 0.1875!
+        Me.GroupHeader1.Name = "GroupHeader1"
         '
         'Label12
         '
@@ -696,8 +805,8 @@ Partial Public Class rShipmentReport
         '
         'CrossSectionLine5
         '
-        Me.CrossSectionLine5.Bottom = 0!
-        Me.CrossSectionLine5.Left = 0!
+        Me.CrossSectionLine5.Bottom = 0.187!
+        Me.CrossSectionLine5.Left = 3.977!
         Me.CrossSectionLine5.LineWeight = 1.0!
         Me.CrossSectionLine5.Name = "CrossSectionLine5"
         Me.CrossSectionLine5.Top = 0!
@@ -705,7 +814,7 @@ Partial Public Class rShipmentReport
         'CrossSectionLine6
         '
         Me.CrossSectionLine6.Bottom = 0!
-        Me.CrossSectionLine6.Left = 0!
+        Me.CrossSectionLine6.Left = 1.897!
         Me.CrossSectionLine6.LineWeight = 1.0!
         Me.CrossSectionLine6.Name = "CrossSectionLine6"
         Me.CrossSectionLine6.Top = 0!
@@ -722,116 +831,43 @@ Partial Public Class rShipmentReport
         Me.Label18.Top = 0!
         Me.Label18.Width = 0.6220469!
         '
-        'No
+        'CrossSectionLine7
         '
-        Me.No.DataField = "No"
-        Me.No.Height = 0.2!
-        Me.No.Left = 0!
-        Me.No.Name = "No"
-        Me.No.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 1, 0)
-        Me.No.Style = "font-size: 9pt; text-align: right; vertical-align: middle"
-        Me.No.Text = "No"
-        Me.No.Top = 0!
-        Me.No.Width = 0.2929134!
+        Me.CrossSectionLine7.Bottom = 0.009000001!
+        Me.CrossSectionLine7.Left = 2.803!
+        Me.CrossSectionLine7.LineWeight = 1.0!
+        Me.CrossSectionLine7.Name = "CrossSectionLine7"
+        Me.CrossSectionLine7.Top = 0.009000001!
         '
-        'CNT
+        'CrossSectionLine8
         '
-        Me.CNT.DataField = "CNT"
-        Me.CNT.Height = 0.2007874!
-        Me.CNT.Left = 4.87!
-        Me.CNT.Name = "CNT"
-        Me.CNT.OutputFormat = resources.GetString("CNT.OutputFormat")
-        Me.CNT.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
-        Me.CNT.Style = "text-align: right; vertical-align: middle"
-        Me.CNT.Text = "CNT"
-        Me.CNT.Top = 0!
-        Me.CNT.Width = 0.6200801!
+        Me.CrossSectionLine8.Bottom = 0.201!
+        Me.CrossSectionLine8.Left = 4.855!
+        Me.CrossSectionLine8.LineWeight = 1.0!
+        Me.CrossSectionLine8.Name = "CrossSectionLine8"
+        Me.CrossSectionLine8.Top = 0.014!
         '
-        'JAN_CODE
+        'CrossSectionLine9
         '
-        Me.JAN_CODE.DataField = "JAN_CODE"
-        Me.JAN_CODE.Height = 0.2!
-        Me.JAN_CODE.Left = 1.896851!
-        Me.JAN_CODE.Name = "JAN_CODE"
-        Me.JAN_CODE.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
-        Me.JAN_CODE.Text = "JAN_CODE"
-        Me.JAN_CODE.Top = 0!
-        Me.JAN_CODE.Width = 0.9062994!
+        Me.CrossSectionLine9.Bottom = 0.201!
+        Me.CrossSectionLine9.Left = 5.484!
+        Me.CrossSectionLine9.LineWeight = 1.0!
+        Me.CrossSectionLine9.Name = "CrossSectionLine9"
+        Me.CrossSectionLine9.Top = 0.014!
         '
-        'OPTION_VALUE
+        'CrossSectionLine10
         '
-        Me.OPTION_VALUE.DataField = "OPTION_VALUE"
-        Me.OPTION_VALUE.Height = 0.2!
-        Me.OPTION_VALUE.Left = 2.80315!
-        Me.OPTION_VALUE.Name = "OPTION_VALUE"
-        Me.OPTION_VALUE.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
-        Me.OPTION_VALUE.Text = "OPTION_VALUE"
-        Me.OPTION_VALUE.Top = 0!
-        Me.OPTION_VALUE.Width = 1.20085!
+        Me.CrossSectionLine10.Bottom = 0.187!
+        Me.CrossSectionLine10.Left = 6.544!
+        Me.CrossSectionLine10.LineWeight = 1.0!
+        Me.CrossSectionLine10.Name = "CrossSectionLine10"
+        Me.CrossSectionLine10.Top = 0!
         '
-        'PRICE
+        'GroupFooter1
         '
-        Me.PRICE.DataField = "PRICE"
-        Me.PRICE.Height = 0.2!
-        Me.PRICE.Left = 4.004!
-        Me.PRICE.Name = "PRICE"
-        Me.PRICE.OutputFormat = resources.GetString("PRICE.OutputFormat")
-        Me.PRICE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
-        Me.PRICE.Style = "text-align: right; vertical-align: middle"
-        Me.PRICE.Text = "PRICE"
-        Me.PRICE.Top = 0!
-        Me.PRICE.Width = 0.8484264!
-        '
-        'PRODUCT_NAME
-        '
-        Me.PRODUCT_NAME.DataField = "PRODUCT_NAME"
-        Me.PRODUCT_NAME.Height = 0.2!
-        Me.PRODUCT_NAME.Left = 0.2929134!
-        Me.PRODUCT_NAME.Name = "PRODUCT_NAME"
-        Me.PRODUCT_NAME.Style = "font-size: 9pt; text-align: left; vertical-align: middle"
-        Me.PRODUCT_NAME.Text = "PRODUCT_NAME"
-        Me.PRODUCT_NAME.Top = 0!
-        Me.PRODUCT_NAME.Width = 1.603937!
-        '
-        'T_PRICE
-        '
-        Me.T_PRICE.DataField = "T_PRICE"
-        Me.T_PRICE.Height = 0.2!
-        Me.T_PRICE.Left = 5.49!
-        Me.T_PRICE.Name = "T_PRICE"
-        Me.T_PRICE.OutputFormat = resources.GetString("T_PRICE.OutputFormat")
-        Me.T_PRICE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
-        Me.T_PRICE.Style = "text-align: right; vertical-align: middle"
-        Me.T_PRICE.Text = "T_PRICE"
-        Me.T_PRICE.Top = 0!
-        Me.T_PRICE.Width = 1.05433!
-        '
-        'Line7
-        '
-        Me.Line7.Height = 0!
-        Me.Line7.Left = 0!
-        Me.Line7.LineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Line7.LineWeight = 1.0!
-        Me.Line7.Name = "Line7"
-        Me.Line7.Top = 0!
-        Me.Line7.Width = 7.164!
-        Me.Line7.X1 = 0!
-        Me.Line7.X2 = 7.164!
-        Me.Line7.Y1 = 0!
-        Me.Line7.Y2 = 0!
-        '
-        'TAX_RATE
-        '
-        Me.TAX_RATE.DataField = "TAX_RATE"
-        Me.TAX_RATE.Height = 0.19!
-        Me.TAX_RATE.Left = 6.56!
-        Me.TAX_RATE.Name = "TAX_RATE"
-        Me.TAX_RATE.OutputFormat = resources.GetString("TAX_RATE.OutputFormat")
-        Me.TAX_RATE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 3, 0)
-        Me.TAX_RATE.Style = "text-align: right; vertical-align: middle"
-        Me.TAX_RATE.Text = "TAX_RATE"
-        Me.TAX_RATE.Top = 0.01!
-        Me.TAX_RATE.Width = 0.6200801!
+        Me.GroupFooter1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label21, Me.Shape2, Me.Label9, Me.POINT_DISCOUNT_PRICE_T, Me.Label8, Me.DISCOUNT_PRICE_T, Me.Label23, Me.MEMO, Me.TOTAL_PRICE, Me.TOTAL_CNT, Me.TOTAL_T_PRICE, Me.Line8, Me.Label5, Me.PRODUCT_PRICE_T, Me.Label6, Me.POSTAGE_PRICE_T, Me.Label7, Me.FEE_PRICE_T, Me.Line5, Me.Line4, Me.Line3, Me.Line2, Me.Line12, Me.Line13, Me.Label3, Me.TAX_F_PRICE_T, Me.Line15, Me.Label4, Me.TOTAL_PRICE_T, Me.Line16, Me.Line20, Me.Line9, Me.Line21, Me.Line19, Me.Label22, Me.Label24, Me.R_TAX_RATE_F_PRICE, Me.Line11, Me.Line22, Me.Line10})
+        Me.GroupFooter1.Height = 2.039944!
+        Me.GroupFooter1.Name = "GroupFooter1"
         '
         'Label21
         '
@@ -1260,12 +1296,12 @@ Partial Public Class rShipmentReport
         Me.Line10.LineColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.Line10.LineWeight = 1.0!
         Me.Line10.Name = "Line10"
-        Me.Line10.Top = 0.338!
+        Me.Line10.Top = 0.341!
         Me.Line10.Width = 0!
         Me.Line10.X1 = 6.99!
         Me.Line10.X2 = 6.99!
-        Me.Line10.Y1 = 0.338!
-        Me.Line10.Y2 = 1.93!
+        Me.Line10.Y1 = 0.341!
+        Me.Line10.Y2 = 1.933!
         '
         'Line21
         '
@@ -1355,7 +1391,7 @@ Partial Public Class rShipmentReport
         Me.Line22.LineWeight = 1.0!
         Me.Line22.Name = "Line22"
         Me.Line22.Top = 1.93!
-        Me.Line22.Width = 1.844492!
+        Me.Line22.Width = 1.844493!
         Me.Line22.X1 = 5.146!
         Me.Line22.X2 = 6.990493!
         Me.Line22.Y1 = 1.93!
@@ -1401,14 +1437,6 @@ Partial Public Class rShipmentReport
         CType(Me.PAYMENT_T, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RESHIP_L, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.R_TAX_RATE_PRICE_T, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Label18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.No, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CNT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.JAN_CODE, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1417,6 +1445,14 @@ Partial Public Class rShipmentReport
         CType(Me.PRODUCT_NAME, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.T_PRICE, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TAX_RATE, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Label18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label21, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.POINT_DISCOUNT_PRICE_T, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1540,4 +1576,8 @@ Partial Public Class rShipmentReport
     Private WithEvents R_TAX_RATE_F_PRICE As DataDynamics.ActiveReports.TextBox
     Private WithEvents Line11 As DataDynamics.ActiveReports.Line
     Private WithEvents Line22 As DataDynamics.ActiveReports.Line
+    Private WithEvents CrossSectionLine7 As DataDynamics.ActiveReports.CrossSectionLine
+    Private WithEvents CrossSectionLine8 As DataDynamics.ActiveReports.CrossSectionLine
+    Private WithEvents CrossSectionLine9 As DataDynamics.ActiveReports.CrossSectionLine
+    Private WithEvents CrossSectionLine10 As DataDynamics.ActiveReports.CrossSectionLine
 End Class

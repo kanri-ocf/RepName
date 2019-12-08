@@ -177,6 +177,8 @@
             form_message = Nothing
             INPUT_CHECK = False
             Exit Function
+        Else
+            INPUT_CHECK = True
         End If
 
     End Function
@@ -451,29 +453,32 @@
         Dim ret As Boolean
         Dim Message_form As cMessageLib.fMessage
 
-        oTran = oConn.BeginTransaction()
-        '構成マスタ削除
-        ret = oMstBomDBIO.deleteBom(STRUCTURE_CODE_T.Text, oTran)
-        If ret = False Then
+
+        If STRUCTURE_CODE_T.Text <> "" Then
+            oTran = oConn.BeginTransaction()
+            '構成マスタ削除
+            ret = oMstBomDBIO.deleteBom(STRUCTURE_CODE_T.Text, oTran)
+            If ret = False Then
+                'メッセージウィンドウ表示
+                Message_form = New cMessageLib.fMessage(1, "構成マスタの削除処理が失敗しました。", "システム管理者に連絡して下さい。", Nothing, Nothing)
+                Message_form.ShowDialog()
+                Message_form.Dispose()
+                Message_form = Nothing
+
+                oTran.Rollback()
+                Exit Sub
+            End If
+
+            oTran.Commit()
+
             'メッセージウィンドウ表示
-            Message_form = New cMessageLib.fMessage(1, "構成マスタの削除処理が失敗しました。", "システム管理者に連絡して下さい。", Nothing, Nothing)
+            Message_form = New cMessageLib.fMessage(1, "削除が完了しました。", "新規モードに移行します。", Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form.Dispose()
             Message_form = Nothing
-
-            oTran.Rollback()
-            Exit Sub
         End If
-
-        oTran.Commit()
-
-        'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(1, "削除が完了しました。", "新規モードに移行します。", Nothing, Nothing)
-        Message_form.ShowDialog()
-        Message_form.Dispose()
-        Message_form = Nothing
-
         INIT_PROC()
+
 
     End Sub
 
@@ -488,7 +493,7 @@
 
         '必須入力確認
         ret = INPUT_CHECK()
-        If ret <> 0 Then
+        If ret = False Then
             Exit Sub
         End If
 

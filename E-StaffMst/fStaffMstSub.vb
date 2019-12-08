@@ -74,11 +74,11 @@
         oMstStaffDBIO = New cMstStaffDBIO(oConn, oCommand, oDataReader)
         oChannelDBIO = New cMstChannelDBIO(oConn, oCommand, oDataReader)
         oRoleDBIO = New cMstRoleDBIO(oConn, oCommand, oDataReader)
-
         oMstStaffDBIO.getStaff(oStaff, STAFF_CODE_T.Text, Nothing, Nothing, Nothing, oTran)
 
-        STAFF_CODE_T.Text = oStaff(0).sStaffCode
-        STAFF_NAME_T.Text = oStaff(0).sStaffName
+
+        STAFF_CODE_T.Text = fStaffMst.STAFFCODE
+        STAFF_NAME_T.Text = fStaffMst.STAFFNAME
 
         oTool = New cTool
 

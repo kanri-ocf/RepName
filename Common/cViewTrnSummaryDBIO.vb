@@ -636,35 +636,72 @@ Public Class cViewTrnSummaryDBIO
         Dim i As Integer
 
         Try
+            '2019.12.7 R.Takashima FROM
+            'カテゴリマスタがカテゴリ１マスタとカテゴリ２マスタに分かれており存在しないため読み込むことができなくエラーが発生していた
+            'カテゴリ１マスタ、カテゴリ２マスタに対応できるよう修正
             strSelectTrn =
                 "SELECT " &
-                    "カテゴリマスタ.カテゴリ名称_1, " &
-                    "カテゴリマスタ.カテゴリ名称_2,  " &
+                    "カテゴリ1マスタ.カテゴリ1名称, " &
+                    "カテゴリ2マスタ.カテゴリ2名称, " &
                     "サブクエリー.取引数量の合計 AS 数量の合計, " &
                     "サブクエリー.取引税込金額の合計 AS 税込金額の合計 " &
                 "FROM " &
-                    "カテゴリマスタ RIGHT JOIN " &
-                        "(" &
-                            "SELECT " &
+                    "(カテゴリ1マスタ RIGHT JOIN カテゴリ2マスタ " &
+                        "ON カテゴリ1マスタ.カテゴリ1ID = カテゴリ2マスタ.カテゴリ1ID) " &
+                    "LEFT JOIN " &
+                        "( " &
+                             "SELECT " &
                                 "Mid([商品コード],1,2) AS カテゴリコード, " &
                                 "Sum(日次取引明細データ.取引数量) AS 取引数量の合計, " &
                                 "Sum(日次取引明細データ.取引税込金額) AS 取引税込金額の合計, " &
                                 "Mid([商品コード],1,1) AS カテゴリ1, " &
                                 "Mid([商品コード],2,1) AS カテゴリ2 " &
-                            "FROM " &
+                             "FROM " &
                                 "日次取引データ LEFT JOIN 日次取引明細データ " &
-                                    "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
-                            "WHERE " &
+                                "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
+                             "WHERE " &
                                 "日次取引データ.日次締め日 BetWeen """ & keyFromDate & """ " &
                                 "AND """ & keyToDate & """ " &
                                 "AND (日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"") " &
-                            "GROUP BY " &
+                             "GROUP BY " &
                                 "Mid([商品コード],1,2), " &
                                 "Mid([商品コード],1,1), " &
                                 "Mid([商品コード],2,1)" &
                         ") AS サブクエリー " &
-                            "ON (カテゴリマスタ.カテゴリID1 = サブクエリー.カテゴリ1) AND (カテゴリマスタ.カテゴリID2 = サブクエリー.カテゴリ2) " &
+                    "ON (カテゴリ2マスタ.カテゴリ1ID = サブクエリー.カテゴリ1) AND (カテゴリ2マスタ.カテゴリ2ID = サブクエリー.カテゴリ2) " &
                 "ORDER BY サブクエリー.取引税込金額の合計 DESC"
+
+
+            'strSelectTrn =
+            '    "SELECT " &
+            '        "カテゴリマスタ.カテゴリ名称_1, " &
+            '        "カテゴリマスタ.カテゴリ名称_2,  " &
+            '        "サブクエリー.取引数量の合計 AS 数量の合計, " &
+            '        "サブクエリー.取引税込金額の合計 AS 税込金額の合計 " &
+            '    "FROM " &
+            '        "カテゴリマスタ RIGHT JOIN " &
+            '            "(" &
+            '                "SELECT " &
+            '                    "Mid([商品コード],1,2) AS カテゴリコード, " &
+            '                    "Sum(日次取引明細データ.取引数量) AS 取引数量の合計, " &
+            '                    "Sum(日次取引明細データ.取引税込金額) AS 取引税込金額の合計, " &
+            '                    "Mid([商品コード],1,1) AS カテゴリ1, " &
+            '                    "Mid([商品コード],2,1) AS カテゴリ2 " &
+            '                "FROM " &
+            '                    "日次取引データ LEFT JOIN 日次取引明細データ " &
+            '                        "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
+            '                "WHERE " &
+            '                    "日次取引データ.日次締め日 BetWeen """ & keyFromDate & """ " &
+            '                    "AND """ & keyToDate & """ " &
+            '                    "AND (日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"") " &
+            '                "GROUP BY " &
+            '                    "Mid([商品コード],1,2), " &
+            '                    "Mid([商品コード],1,1), " &
+            '                    "Mid([商品コード],2,1)" &
+            '            ") AS サブクエリー " &
+            '                "ON (カテゴリマスタ.カテゴリID1 = サブクエリー.カテゴリ1) AND (カテゴリマスタ.カテゴリID2 = サブクエリー.カテゴリ2) " &
+            '    "ORDER BY サブクエリー.取引税込金額の合計 DESC"
+            '2019.12.7 R.Takashima TO
 
 
             'コマンドオブジェクトの生成
@@ -682,7 +719,8 @@ Public Class cViewTrnSummaryDBIO
 
                 'レコードが取得できた時の処理
                 'カテゴリ名称
-                parMonthTrnSummary(i).sName = pDataReader("カテゴリ名称_1").ToString & "-" & pDataReader("カテゴリ名称_2").ToString
+                'parMonthTrnSummary(i).sName = pDataReader("カテゴリ名称_1").ToString & "-" & pDataReader("カテゴリ名称_2").ToString
+                parMonthTrnSummary(i).sName = pDataReader("カテゴリ1名称").ToString & "-" & pDataReader("カテゴリ2名称").ToString
                 '数量の合計
                 If IsDBNull(pDataReader("数量の合計")) = True Then
                     parMonthTrnSummary(i).sCount = 0

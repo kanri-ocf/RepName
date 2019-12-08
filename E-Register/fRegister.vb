@@ -1199,14 +1199,36 @@ Public Class fRegister
 
         Else     '返品以外
 
-            '日次取引データ登録
-            DAY_TRN_INSERT(sender)
-
             '取引区分="販促"の場合は、取引明細データの金額を0に更新
             Select Case sender.TextButton
                 Case "販促"
+                    '2019.12.6 R.Takashima FROM
+                    '値引き、送料、手数料がある場合清算できないように追加
+                    If CLng(SDISCOUNT_T.Text) <> 0 Or CLng(TDISCOUNT_T.Text) <> 0 Or CLng(PDISCOUNT_T.Text) <> 0 Or CLng(CDISCOUNT_T.Text) <> 0 Or CLng(PDISCOUNT_T.Text) <> 0 Or
+                        CLng(TFEE_T.Text) <> 0 Or CLng(TDELIVALY_T.Text) <> 0 Then
+
+                        Dim message_form As New cMessageLib.fMessage(1,
+                                            String.Format("販促では各種値引き、付加料金類はご利用できません。", CHANGE_CASH * -1),
+                                            "明細行を確認し、再入力をしてください。",
+                                            Nothing,
+                                            Nothing)
+                        message_form.ShowDialog()
+                        message_form = Nothing
+                        D_MODE = 0
+                        Exit Sub
+                    End If
+                    RECEIVE_CASH = 0
+                    CHANGE_CASH = 0
+
+                    '会員情報が残ってしまう場合があるため初期化する
+                    DISP_INIT("MEMBER")
+
+                    '2019.12.6 R.Takashima TO
                     DAY_SUBTRN_UPDATE(sender.TextButton)
             End Select
+
+            '日次取引データ登録
+            DAY_TRN_INSERT(sender)
 
             '在庫更新
             UPDATE_STOCK(sender)
@@ -1677,9 +1699,9 @@ Public Class fRegister
                 '返品数だと思われる。
                 'mCntは購入されている商品数
                 If mCnt <= pCnt Then
-                    pCnt = mCnt
+                    pCnt= mCnt
                     '返品後の数量
-                    MEISAI_V("数量", i).Value = 0
+                                              MEISAI_V("数量", i).Value = 0
                 Else
                     '返品後の数量
                     MEISAI_V("数量", i).Value = mCnt - pCnt
@@ -2797,6 +2819,11 @@ Public Class fRegister
             sumTax = sTotalTaxPrice + sDiscountTotalTax - tDiscountTotalTax - oTool.AfterToTax(pdiscount + cdiscount,
                                              oConf(0).sTax, oConf(0).sFracProc)     '合計税額
             '2019.10.17 R.Takashima TO
+
+            '2019.12.6 R.Takashima FROM
+            '送料、手数料の税額が含まれていないため追加
+            sumTax += oTool.AfterToTax(tdelivaly + tfee, oConf(0).sTax, oConf(0).sFracProc)
+            '2019.12.5 R.Takashima TO
 
         Else
             sbill = stotal + sdiscount                                              '合計金額算出
@@ -4247,6 +4274,9 @@ Public Class fRegister
                     oSubTrn(i).sPrice = 0
                     oSubTrn(i).sUpdateDate = Format(Now, "yyyy/MM/dd")
                     oSubTrn(i).sUpdateTime = Format(Now, "HH:mm:ss")
+                    '2019.12.6 R.Takashima FROM
+                    oSubTrn(i).sReducedTaxRatePrice = 0
+                    '2019.12.6 R.Takashima TO
             End Select
             '日次取引明細データを更新
             Recordi = oSubDataTrnDBIO.updateSubTrn(oSubTrn(i), oTran)
@@ -4796,23 +4826,28 @@ Public Class fRegister
 
         '2019.10.23 R.Takashima  FROM
         '課題No.74 ドロワーを閉めるメッセージを表示する
-        If DRAWER_OPEN Then
-            Dim message_form As New cMessageLib.fMessage(0,
-                                          Nothing,
-                                          "ドロワーを閉じて下さい。",
-                                          Nothing, Nothing)
-            message_form.Show()
-            Application.DoEvents()
+        If DRAWER_OPEN = True Then
+            '2019.12.7 R.Takashima FROM
+            'ドロワーメッセージをcDrawer内で表示するように変更したためこちらはコメントアウト
 
-            oTool.Wait(10)
+            'Dim message_form As New cMessageLib.fMessage(0,
+            '                              Nothing,
+            '                              "ドロワーを閉じて下さい。",
+            '                              Nothing, Nothing)
+            'message_form.Show()
+            'Application.DoEvents()
+
+            'oTool.Wait(10)
 
             oDrawer.OpenDrawer()
 
-            message_form.Dispose()
+            'message_form.Dispose()
 
             '2019.10.23 R.Takashima TO
 
-            message_form = New cMessageLib.fMessage(2,
+            '2019.12.7 R.Takashima TO
+
+            Dim message_form = New cMessageLib.fMessage(2,
                                               Nothing,
                                               "領収書を発行しますか？",
                                               Nothing, Nothing)
@@ -7894,7 +7929,7 @@ Public Class fRegister
 
             '精算ボタンイネーブル
             '2019.11.15 R.Takashima From
-            'チャンネルによって信用払いのみの場合があるため修正
+            'ネット販売チャネルは信用払いのみ
             'CASH_B.Enabled = True
             'CREDIT_B.Enabled = True
             If oChannel(0).sChannelClass = 1 Then

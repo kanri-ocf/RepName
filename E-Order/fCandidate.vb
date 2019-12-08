@@ -67,6 +67,11 @@
 
         oTool = New cTool
 
+        '2019.12.7 R.Takashima FROM
+        '環境マスタの取得
+        oMstConfigDBIO.getConfMst(oConf, oTran)
+        '2019.12.7 R.Takashima tO
+
         STAFF_CODE = iStaffCode
         STAFF_NAME = iStaffName
 
@@ -79,6 +84,12 @@
         Softgroup.NetButton.License.LicenseUser = "yoko.satoh@ocf.co.jp"
         Softgroup.NetButton.License.LicenseKey = "DDADJEBQ3HL2AOBINJBDGZBFC"
         '----------------------------------------------------------------------
+
+        '2019.11.30 R.Takashima FROM
+        '仕入先を条件としないため隠す
+        SUPPLIER_L.Visible = False
+        Label2.Visible = False
+        '2019.11.30 R.Takashima TO
 
         '仕入先リストボックスセット
         SUPPLIER_SET()
@@ -94,6 +105,11 @@
 
         '表示初期化処理
         INIT_PROC()
+
+        '2019.12.1 R.Takashima FROM
+        '選択数のセット
+        SET_ORDER_STATUS()
+        '2019.12.1 R.Takashima TO
 
         '初期表示検索
         SEARCH_PROC()
@@ -116,9 +132,15 @@
         ON_B.Enabled = False
         OFF_B.Enabled = False
 
-        KIKAN_T.Text = 3
-        CYCLE_T.Text = 6
-        MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima FROM
+        '環境マスタにデフォルトの設定があるためそちらを反映させる
+        KIKAN_T.Text = oConf(0).sOrderListTerm
+        CYCLE_T.Text = oConf(0).sSalesTerm
+        MIN_COUNT_T.Text = oConf(0).sMinimumCount
+        'KIKAN_T.Text = 3
+        'CYCLE_T.Text = 6
+        'MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima TO
 
         PRODUCT_NAME_T.Text = ""
         OPTION_NAME_T.Text = ""
@@ -194,14 +216,14 @@
         Dim column4 As New DataGridViewTextBoxColumn
         column4.HeaderText = "商品名称"
         PRODUCT_V.Columns.Add(column4)
-        column4.Width = 150
+        column4.Width = 190
         column4.ReadOnly = True
         column4.Name = "商品名称"
 
         Dim column5 As New DataGridViewTextBoxColumn
         column5.HeaderText = "オプション"
         PRODUCT_V.Columns.Add(column5)
-        column5.Width = 150
+        column5.Width = 190
         column5.ReadOnly = True
         column5.Name = "オプション"
 
@@ -227,7 +249,7 @@
         Dim column8 As New DataGridViewTextBoxColumn
         column8.HeaderText = "販売数"
         PRODUCT_V.Columns.Add(column8)
-        column8.Width = 50
+        column8.Width = 70
         column8.ReadOnly = True
         column8.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column8.Name = "販売数"
@@ -235,20 +257,23 @@
         Dim column9 As New DataGridViewTextBoxColumn
         column9.HeaderText = "在庫数"
         PRODUCT_V.Columns.Add(column9)
-        column9.Width = 50
+        column9.Width = 70
         column9.ReadOnly = True
         column9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         column9.Name = "在庫数"
 
+        '2019.11.30 R.Takashima FROM
+        '仕入先を削除
         '2019.11.29 R.Takashima FROM
         'グリッドビューに仕入先を追加
-        Dim column10 As New DataGridViewTextBoxColumn
-        column10.HeaderText = "仕入先"
-        PRODUCT_V.Columns.Add(column10)
-        column10.Width = 120
-        column10.ReadOnly = True
-        column10.Name = "仕入先"
+        'Dim column10 As New DataGridViewTextBoxColumn
+        'column10.HeaderText = "仕入先"
+        'PRODUCT_V.Columns.Add(column10)
+        'column10.Width = 120
+        'column10.ReadOnly = True
+        'column10.Name = "仕入先"
         '2019.11.29 R.Takashima TO
+        '2019.11.30 R.Takashima TO
 
         '背景色を白に設定
         PRODUCT_V.RowsDefaultCellStyle.BackColor = Color.White
@@ -298,6 +323,20 @@
 
             '2019.11.29 R.Takashima FROM
             '仕入先名称を追加
+            '2019.11.30 R.Takashima FROM
+            '仕入先名称を条件としない
+            PRODUCT_V.Rows.Add(
+                    oViewCandidate(i).sStatus,
+                    oViewCandidate(i).sJANCode,
+                    oViewCandidate(i).sProductCode,
+                    oViewCandidate(i).sProductName,
+                    str,
+                    oViewCandidate(i).sPrice,
+                    oViewCandidate(i).sCostPrice,
+                    oViewCandidate(i).sCount,
+                    oViewCandidate(i).sStockCount
+            )
+
             'PRODUCT_V.Rows.Add(
             '        oViewCandidate(i).sStatus,
             '        oViewCandidate(i).sJANCode,
@@ -310,20 +349,8 @@
             '        oViewCandidate(i).sStockCount,
             '        oViewCandidate(i).sSupplierName
             ')
-
-            PRODUCT_V.Rows.Add(
-                    oViewCandidate(i).sStatus,
-                    oViewCandidate(i).sJANCode,
-                    oViewCandidate(i).sProductCode,
-                    oViewCandidate(i).sProductName,
-                    str,
-                    oViewCandidate(i).sPrice,
-                    oViewCandidate(i).sCostPrice,
-                    oViewCandidate(i).sCount,
-                    oViewCandidate(i).sStockCount,
-                    oViewCandidate(i).sSupplierName
-            )
-            '2019.11.29 R.Takashima
+            '2019.11.30 R.Takashima TO
+            '2019.11.29 R.Takashima TO
         Next i
     End Sub
 
@@ -467,13 +494,13 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "部門マスタが登録されていません", _
-                                                "部門マスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "部門マスタが登録されていません",
+                                                "部門マスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "部門マスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "部門マスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -487,6 +514,38 @@
         Next
         oDataReader = Nothing
     End Sub
+
+    '2019.12.1 R.Takashima FROM
+    '***************************
+    'OrderStatus取得、選択数セット
+    '***************************
+    Private Sub SET_ORDER_STATUS()
+        Dim status As cStructureLib.sOrderStatus()
+        Dim orderStatusDBIO As cDataOrderStatusDBIO
+        Dim recordCount As Long
+
+        ReDim status(0)
+        orderStatusDBIO = New cDataOrderStatusDBIO(oConn, oCommand, oDataReader)
+
+        '発注状態データ取得
+        recordCount = orderStatusDBIO.getOrderStatus(status, Nothing, oTran)
+
+        '選択されている商品を数え、発注候補選択状態データに挿入
+        For Each arry In status
+            If arry.sCheck = True Then
+                SEL_COUNT += 1
+                oCandidateStatus.sProductCode = arry.sProductCode
+                oCandidateStatus.sCheck = arry.sCheck
+                oCandidateStatus.sCount = arry.sCount
+                oDataCandidateStatusDBIO.insertCandidateStatus(oCandidateStatus, oTran)
+            End If
+        Next
+
+        'テキストボックスに挿入
+        SEL_COUNT_T.Text = SEL_COUNT
+    End Sub
+    '2019.12.1 R.Takashiam TO
+
     '***********************************************************
     '合計消費税のテキストボックスにキャレットを表示出来なくする
     '***********************************************************
@@ -605,8 +664,11 @@
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                        "条件を変更して再建策して下さい", _
+            'Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+            '                            "条件を変更して再建策して下さい",
+            '                            Nothing, Nothing)
+            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                        "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -665,4 +727,5 @@
         Me.Close()
 
     End Sub
+
 End Class

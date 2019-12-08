@@ -100,46 +100,73 @@ Public Class cDrawer
     Public Sub OpenDrawer()
 
         Try
-            Select Case MAKER_NAME
-                Case "TEC"
-                    AxOPOSDRW_TEC.OpenDrawer()
-                    While AxOPOSDRW_TEC.DrawerOpened
-                        'ドロワーが閉まるまでWait....
-                    End While
+            '2019.12.7 R.Takashima FROM
+            'ドロワーオープン時にメッセージを表示させる
+            If AxOPOSDRW_TEC.DeviceEnabled = True Or AxOPOSDRW_EPSON.DeviceEnabled = True Or AxOPOSDRW_STAR.DeviceEnabled = True Then
+                pMessageBox = New cMessageLib.fMessage(0,
+                                          Nothing,
+                                          "ドロワーを閉じて下さい。",
+                                          Nothing, Nothing)
+                pMessageBox.Show()
+                System.Windows.Forms.Application.DoEvents()
+                '2019.12.7 R.Takashima TO
 
-                Case "EPSON"
-                    AxOPOSDRW_EPSON.OpenDrawer()
-                    While AxOPOSDRW_EPSON.DrawerOpened
-                        'ドロワーが閉まるまでWait....
-                    End While
-
-                Case "STAR"
-                    AxOPOSDRW_STAR.OpenDrawer()
-                    Dim a As Boolean
-
-                    'これがFalseだとドロワの状態を通知できない
-                    a = AxOPOSDRW_STAR.CapStatus
-
-                    '2019.10.25 R.Takashima
-                    If AxOPOSDRW_STAR.Enabled = True Then
-
-                        While AxOPOSDRW_STAR.DrawerOpened = False
-                            'ドロワーの応答速度やプログラムを実行している環境によっては
-                            '閉じるまでWaitする処理が働かないため（ドロワーが開く前に下の処理を終わらせてしまっている）
-                            'ここでドロワーが開くまでWait
-                        End While
-
-                        While AxOPOSDRW_STAR.DrawerOpened
-                            'TODO:課題表No136 ここが機能していない
+                Select Case MAKER_NAME
+                    Case "TEC"
+                        AxOPOSDRW_TEC.OpenDrawer()
+                        While AxOPOSDRW_TEC.DrawerOpened
                             'ドロワーが閉まるまでWait....
-
                         End While
 
-                    End If
+                    Case "EPSON"
+                        AxOPOSDRW_EPSON.OpenDrawer()
+                        While AxOPOSDRW_EPSON.DrawerOpened
+                            'ドロワーが閉まるまでWait....
+                        End While
 
-                    a = AxOPOSDRW_STAR.CapStatus
+                    Case "STAR"
+                        AxOPOSDRW_STAR.OpenDrawer()
+                        Dim a As Boolean
 
-            End Select
+                        'これがFalseだとドロワの状態を通知できない
+                        a = AxOPOSDRW_STAR.CapStatus
+
+                        '2019.10.25 R.Takashima
+                        If AxOPOSDRW_STAR.Enabled = True Then
+
+                            While AxOPOSDRW_STAR.DrawerOpened = False
+                                'ドロワーの応答速度やプログラムを実行している環境によっては
+                                '閉じるまでWaitする処理が働かないため（ドロワーが開く前に下の処理を終わらせてしまっている）
+                                'ここでドロワーが開くまでWait
+                            End While
+
+                            While AxOPOSDRW_STAR.DrawerOpened
+                                'TODO:課題表No136 ここが機能していない
+                                'ドロワーが閉まるまでWait....
+
+                            End While
+
+                        End If
+
+                        pMessageBox.Dispose()
+                        pMessageBox = Nothing
+                        a = AxOPOSDRW_STAR.CapStatus
+
+                End Select
+            Else
+                '2019.12.7 R.Takashima FROM
+                'ドロワーが接続されていないときにメッセージ表示
+                pMessageBox = New cMessageLib.fMessage(1,
+                                                       Nothing,
+                                                       "ドロワに接続されていません。",
+                                                       Nothing,
+                                                       Nothing
+                                                       )
+                pMessageBox.ShowDialog()
+                pMessageBox.Dispose()
+                pMessageBox = Nothing
+                '2019.12.7 R.Takashima TO
+            End If
 
         Catch oExcept As Exception
             '例外が発生した時の処理

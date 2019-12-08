@@ -914,7 +914,7 @@ Partial Class fArrival
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(991, 756)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(1011, 763)
         Me.ShapeContainer3.TabIndex = 36
         Me.ShapeContainer3.TabStop = False
         '
@@ -1029,7 +1029,7 @@ Partial Class fArrival
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.BurlyWood
-        Me.ClientSize = New System.Drawing.Size(756, 463)
+        Me.ClientSize = New System.Drawing.Size(1011, 763)
         Me.Controls.Add(Me.FINISH_C)
         Me.Controls.Add(Me.RETURN_B)
         Me.Controls.Add(Me.COMMIT_B)
@@ -1048,7 +1048,7 @@ Partial Class fArrival
         Me.Controls.Add(Me.ShapeContainer3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
         Me.Name = "fArrival"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "入庫処理"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

@@ -114,8 +114,38 @@ Public Class fInvCheck
 
         channel_form.ShowDialog()
         Application.DoEvents()
-        CHANNEL_CODE = channel_form.CHANNEL_CODE_T.Text
-        channel_form = Nothing
+
+        '2019.12.7 R.Takashima FROM
+        'チャネル選択入力ウィンドウ表示時にキャンセルを選択してもこの画面が表示されるため修正
+        While IsNothing(channel_form) = False
+            If channel_form.DialogResult = DialogResult.Cancel Then
+                channel_form.Dispose()
+                channel_form = Nothing
+                Environment.Exit(1)
+            Else
+                'チャネルが選択されていないときは次の画面に進まないようにする
+                If channel_form.CHANNEL_NAME_L.Text <> "" And IsNothing(channel_form.CHANNEL_NAME_L.Text) = False Then
+                    CHANNEL_CODE = channel_form.CHANNEL_CODE_T.Text
+                    channel_form.Dispose()
+                    channel_form = Nothing
+                Else
+                    'メッセージを表示
+                    Dim mes = New cMessageLib.fMessage(1,
+                                                Nothing,
+                                                "チャネルが選択されていません。",
+                                                "チャネルを選択してください。",
+                                                Nothing
+                                                )
+                    mes.ShowDialog()
+                    mes.Dispose()
+                    mes = Nothing
+                    channel_form.ShowDialog()
+
+                End If
+            End If
+        End While
+        '2019.12.7 R.Takashima TO
+
 
         'オプションラベルセット
         OPTION_SET()

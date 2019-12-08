@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-POS", "..\E-POS\E-POS.vbproj", "{F9B0AE8B-EB7E-4BA0-A039-200ED886510C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -128,7 +128,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-SupplierMst", "..\E-Suppl
 		{1B88D28B-C691-4A70-A838-FFE508C0111A} = {1B88D28B-C691-4A70-A838-FFE508C0111A}
 	EndProjectSection
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-StaffMst", "..\E-StaffMst\E-StaffMst.vbproj", "{8154F741-2C4C-424E-94D8-D0479F2F2E17}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-StaffMst", "..\E-StaffMst\E-StaffMst.vbproj", "{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-PaymentMst", "..\E-PaymentMst\E-PaymentMst.vbproj", "{4A35F8B3-6BB6-444F-9588-2CB0EDB3F8C8}"
 EndProject
@@ -199,6 +199,8 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-CustmorRequest", "..\E-CustmorRequest\E-CustmorRequest.vbproj", "{FD1583FA-8816-41A5-9BE9-AF230E204404}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-InvCheck", "..\E-InvCheck\E-InvCheck.vbproj", "{B069075F-593E-4885-928C-6BAE7DAE7F38}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "E-RoleMst", "..\E-RoleMst\E-RoleMst.vbproj", "{42A62802-8EF3-464A-84AC-8B0CF05915E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -469,16 +471,16 @@ Global
 		{1204C590-8F94-44FD-A7CD-19C385DA4B80}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1204C590-8F94-44FD-A7CD-19C385DA4B80}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{1204C590-8F94-44FD-A7CD-19C385DA4B80}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{8154F741-2C4C-424E-94D8-D0479F2F2E17}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE51F77-EA18-499E-953D-CCC0CD7B95F7}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 		{4A35F8B3-6BB6-444F-9588-2CB0EDB3F8C8}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
 		{4A35F8B3-6BB6-444F-9588-2CB0EDB3F8C8}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{4A35F8B3-6BB6-444F-9588-2CB0EDB3F8C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -659,8 +661,21 @@ Global
 		{B069075F-593E-4885-928C-6BAE7DAE7F38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B069075F-593E-4885-928C-6BAE7DAE7F38}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{B069075F-593E-4885-928C-6BAE7DAE7F38}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{42A62802-8EF3-464A-84AC-8B0CF05915E4}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ED979F6-A81E-4140-B4A3-90E94EEDD553}
 	EndGlobalSection
 EndGlobal

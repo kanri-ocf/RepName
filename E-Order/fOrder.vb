@@ -731,8 +731,11 @@
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                        "条件を変更して再建策して下さい", _
+            'Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
+            '                            "条件を変更して再建策して下さい", _
+            '                            Nothing, Nothing)
+            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                        "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -940,7 +943,7 @@
         Dim pOrderStatus() As cStructureLib.sOrderStatus
         Dim i As Long
         Dim RecordCnt As Long
-        Dim cnt As Integer
+        Dim cnt As Long
 
         If SUPPLIER_CODE_T.Text = "" Then
             num = Nothing
@@ -949,12 +952,12 @@
         End If
 
         '発注候補選択画面を開く
-        candidate_form = New fCandidate(oConn, _
-                                            oCommand, _
-                                            oDataReader, _
-                                            num, _
-                                            STAFF_CODE, _
-                                            STAFF_NAME, _
+        candidate_form = New fCandidate(oConn,
+                                            oCommand,
+                                            oDataReader,
+                                            num,
+                                            STAFF_CODE,
+                                            STAFF_NAME,
                                             oTran)
         candidate_form.ShowDialog()
         If candidate_form.DialogResult = Windows.Forms.DialogResult.OK Then
@@ -963,24 +966,52 @@
             ReDim pCandidateStatus(0)
             ReDim pOrderStatus(0)
             RecordCnt = pCandidateStatusDBIO.getCandidateStatus(pCandidateStatus, Nothing, oTran)
-            If RecordCnt <> 0 Then
-                For i = 0 To RecordCnt - 1
-                    'すでに選択済みか否かの判定
-                    cnt = oDataOrderStatusDBIO.getOrderStatus(pOrderStatus, pCandidateStatus(i).sProductCode, oTran)
+            oDataOrderStatusDBIO.deleteOrderStatus(Nothing, oTran)
 
-                    '選択済みでない場合
-                    If cnt = 0 Then
-                        pOrderStatus(0).sProductCode = pCandidateStatus(i).sProductCode
-                        pOrderStatus(0).sCheck = pCandidateStatus(i).sCheck
-                        pOrderStatus(0).sCount = 1
+            '2019.12.1 R.Takashima FROM
+            '事前に発注する商品を選択後、発注候補選択で同じ商品の選択をはずすと
+            'DB上でデータが残っており選択状態が更新されないため変更
+            If RecordCnt <> 0 Then
+                For Each arry In pCandidateStatus
+                    If arry.sCheck = True Then
+                        pOrderStatus(0).sProductCode = arry.sProductCode
+                        pOrderStatus(0).sCheck = arry.sCheck
+                        pOrderStatus(0).sCount = arry.sCount
                         oDataOrderStatusDBIO.insertOrderStatus(pOrderStatus(0), oTran)
 
-                        TOTAL_COUNT_T.Text = CInt(TOTAL_COUNT_T.Text) + 1
+                        cnt += 1
                     End If
                 Next
             End If
+            TOTAL_COUNT = cnt
+            TOTAL_COUNT_T.Text = cnt
+            'If RecordCnt <> 0 Then
+            '    For i = 0 To RecordCnt - 1
+            '        'すでに選択済みか否かの判定
+            '        cnt = oDataOrderStatusDBIO.getOrderStatus(pOrderStatus, pCandidateStatus(i).sProductCode, oTran)
+
+            '        '選択済みでない場合
+            '        If cnt = 0 Then
+            '            pOrderStatus(0).sProductCode = pCandidateStatus(i).sProductCode
+            '            pOrderStatus(0).sCheck = pCandidateStatus(i).sCheck
+            '            pOrderStatus(0).sCount = 1
+            '            oDataOrderStatusDBIO.insertOrderStatus(pOrderStatus(0), oTran)
+
+            '            TOTAL_COUNT_T.Text = CInt(TOTAL_COUNT_T.Text) + 1
+            '        End If
+            '    Next
+            'End If
+
+            '2019.12.1 R.Takashima TO
+
         End If
         candidate_form = Nothing
+
+        '発注候補選択で選択された商品がグリッドビューに更新されないため
+        '検索処理を行わせグリッドビューを更新する
+        If PRODUCT_V.Rows.Count <> 0 Then
+            SEARCH_B_Click(Nothing, Nothing)
+        End If
 
     End Sub
 End Class
