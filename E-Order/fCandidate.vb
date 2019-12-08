@@ -356,11 +356,16 @@
 
     Private Sub PRODUCT_V_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles PRODUCT_V.CellClick
         'チェックボックスの列かどうか調べる
-        If e.ColumnIndex <> 0 Then
-            If PRODUCT_V("選択", e.RowIndex).Value = False Then
-                PRODUCT_V("選択", e.RowIndex).Value = True
-            Else
-                PRODUCT_V("選択", e.RowIndex).Value = False
+        '2019.12.8 R.Takashima
+        'カラム名が表示されている行をクリックすると実行されRowIndexでエラーが発生するため
+        '処理を行わないように変更
+        If e.RowIndex >= 0 Then
+            If e.ColumnIndex <> 0 Then
+                If PRODUCT_V("選択", e.RowIndex).Value = False Then
+                    PRODUCT_V("選択", e.RowIndex).Value = True
+                Else
+                    PRODUCT_V("選択", e.RowIndex).Value = False
+                End If
             End If
         End If
 
