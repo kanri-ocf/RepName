@@ -191,9 +191,9 @@ Partial Class fSupplierMstSub
         Me.Label22.ForeColor = System.Drawing.Color.White
         Me.Label22.Location = New System.Drawing.Point(616, 71)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(79, 12)
+        Me.Label22.Size = New System.Drawing.Size(119, 12)
         Me.Label22.TabIndex = 177
-        Me.Label22.Text = "(半角数字-60)"
+        Me.Label22.Text = "(半角数字-60%なら 60)"
         Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label21
@@ -204,9 +204,9 @@ Partial Class fSupplierMstSub
         Me.Label21.ForeColor = System.Drawing.Color.White
         Me.Label21.Location = New System.Drawing.Point(724, 25)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(79, 12)
+        Me.Label21.Size = New System.Drawing.Size(147, 12)
         Me.Label21.TabIndex = 176
-        Me.Label21.Text = "(半角数字-20)"
+        Me.Label21.Text = "(半角数字-20日締めなら 20)"
         Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label20
