@@ -395,10 +395,10 @@ Public Class fStockMst
                                                       "該当のJANコードが登録されていません", _
                                                       "商品登録を行って下さい", _
                                                       Nothing, Nothing)
+                    JANCODE_T.Text = ""
                     message_form.ShowDialog()
                     message_form = Nothing
                     Beep()
-                    JANCODE_T.Text = ""
                     JANCODE_T.Focus()
                     Exit Sub
                 Case 1 '該当JANコードが1レコード存在した場合
