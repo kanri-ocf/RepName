@@ -447,6 +447,7 @@
         Dim StopSales As Integer
         Dim StopSupplier As Integer
         Dim ProductClass As Integer
+        Dim SupplierStr As String
         Dim Message_form As cMessageLib.fMessage
         Dim i As Integer
 
@@ -474,6 +475,14 @@
         Message_form = New cMessageLib.fMessage(0, "データ読込み中", "しばらくお待ちください", Nothing, Nothing)
         Message_form.Show()
         System.Windows.Forms.Application.DoEvents()
+
+        '2019.12.8 R.Takashima FROM
+        '仕入先が「-」の時、全件検索を行う
+        SupplierStr = SUPPLIER_L.Text
+        If SupplierStr = "-" Then
+            SupplierStr = ""
+        End If
+        '2019.12.8 R.Takashima TO
 
         '販売停止フラグ設定
         If STOPSALE_C.Checked = True Then
@@ -508,18 +517,18 @@
         ReDim oProduct(0)
 
         '商品マスタの読み込み
-        RecordCnt = oProductDBIO.getProduct( _
-                        oProduct, _
-                        JANCODE_T.Text.ToString, _
-                        PRODUCT_CODE_T.Text.ToString, _
-                        PRODUCT_NAME_T.Text.ToString, _
-                        OPTION_NAME_T.Text.ToString, _
-                        SUPPLIER_L.Text.ToString, _
-                        MAKER_NAME_T.Text.ToString, _
-                        StopSales, _
-                        StopSupplier, _
-                        ProductClass, _
-                        oTran _
+        RecordCnt = oProductDBIO.getProduct(
+                        oProduct,
+                        JANCODE_T.Text.ToString,
+                        PRODUCT_CODE_T.Text.ToString,
+                        PRODUCT_NAME_T.Text.ToString,
+                        OPTION_NAME_T.Text.ToString,
+                        SupplierStr,
+                        MAKER_NAME_T.Text.ToString,
+                        StopSales,
+                        StopSupplier,
+                        ProductClass,
+                        oTran
         )
 
         If RecordCnt > 0 Then
