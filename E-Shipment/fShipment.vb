@@ -1071,7 +1071,7 @@ Public Class fShipment
         REDUCE_PRICE = 0
         '2019,11,7 A.Komita 追加 To
 
-        RESHIP_B.Enabled = True
+        RESHIP_B.Enabled = False
 
         COMMIT_B.Enabled = False
         DELIVERY_PRINT_B.Enabled = False
@@ -2134,6 +2134,7 @@ Public Class fShipment
             Message_form.Show()
         End If
         COMMIT_B.Enabled = True
+        RESHIP_B.Enabled = True
         DELIVERY_DATA_OUTPUT_B.Enabled = True
 
         Application.DoEvents()
