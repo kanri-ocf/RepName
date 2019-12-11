@@ -969,12 +969,31 @@
         a = CHART_V.Rows.Count
         a = CHART_V.Columns.Count
 
-        '2016.09.13 K.Oikawa s
-        '課題表No.177 縦方向への操作を禁ずる
-        If CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0 Then
-            Exit Sub
+        '2019.12.11 R.Takashima FROM
+        'DataGridViewのRows、Columnsプロパティは行または列が全て選択されているときに実行される
+        'そのため部分選択を行うと行数、列数はGetRowCount、GetColumnCountで取得することはできない
+        'よって下記の処理は全て０を戻り値として縦方向の操作が出来てしまう
+
+        ''2016.09.13 K.Oikawa s
+        ''課題表No.177 縦方向への操作を禁ずる
+        'Dim i = CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected)
+        'If CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0 Then
+        '    Exit Sub
+        'End If
+        ''2016.09.13 K.Oikawa e
+
+        Dim row = CHART_V.SelectedCells(0).RowIndex
+        Dim column = CHART_V.SelectedCells(0).ColumnIndex
+
+        If row > 0 Then
+            If CHART_V(column, row - 1).Selected = True Then
+                Exit Sub
+            ElseIf CHART_V(column, row + 1).Selected = True Then
+                Exit Sub
+            End If
         End If
-        '2016.09.13 K.Oikawa e
+
+        '2019.12.11 R.Takashima TO
 
         If RUN_MODE = 0 Then
             If e.Button = Windows.Forms.MouseButtons.Left Then  '新規入力の場合
