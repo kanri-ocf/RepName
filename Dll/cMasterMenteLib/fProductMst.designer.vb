@@ -322,17 +322,17 @@ Partial Class fProductMst
         Me.PRICE_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.PRICE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.PRICE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.PRICE_T.Location = New System.Drawing.Point(397, 220)
+        Me.PRICE_T.Location = New System.Drawing.Point(398, 193)
         Me.PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.PRICE_T.Name = "PRICE_T"
-        Me.PRICE_T.Size = New System.Drawing.Size(334, 20)
+        Me.PRICE_T.Size = New System.Drawing.Size(195, 20)
         Me.PRICE_T.TabIndex = 15
         Me.PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label8
         '
         Me.Label8.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label8.Location = New System.Drawing.Point(314, 220)
+        Me.Label8.Location = New System.Drawing.Point(318, 193)
         Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(80, 20)
@@ -376,11 +376,11 @@ Partial Class fProductMst
         Me.JANCODE_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.JANCODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.JANCODE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.JANCODE_T.Location = New System.Drawing.Point(398, 110)
+        Me.JANCODE_T.Location = New System.Drawing.Point(397, 119)
         Me.JANCODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.JANCODE_T.MaxLength = 13
         Me.JANCODE_T.Name = "JANCODE_T"
-        Me.JANCODE_T.Size = New System.Drawing.Size(194, 20)
+        Me.JANCODE_T.Size = New System.Drawing.Size(196, 20)
         Me.JANCODE_T.TabIndex = 3
         '
         'PRODUCT_NAME_T
@@ -443,7 +443,7 @@ Partial Class fProductMst
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label7.Location = New System.Drawing.Point(330, 113)
+        Me.Label7.Location = New System.Drawing.Point(331, 122)
         Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(68, 13)
@@ -484,7 +484,7 @@ Partial Class fProductMst
         Me.MODE_T.Location = New System.Drawing.Point(29, 9)
         Me.MODE_T.Margin = New System.Windows.Forms.Padding(6, 10, 6, 0)
         Me.MODE_T.Name = "MODE_T"
-        Me.MODE_T.Size = New System.Drawing.Size(1375, 34)
+        Me.MODE_T.Size = New System.Drawing.Size(1359, 34)
         Me.MODE_T.TabIndex = 128
         Me.MODE_T.Text = "（新規）"
         Me.MODE_T.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -523,7 +523,7 @@ Partial Class fProductMst
         Me.CATEGORY_2_L.Location = New System.Drawing.Point(373, 49)
         Me.CATEGORY_2_L.Margin = New System.Windows.Forms.Padding(6)
         Me.CATEGORY_2_L.Name = "CATEGORY_2_L"
-        Me.CATEGORY_2_L.Size = New System.Drawing.Size(219, 21)
+        Me.CATEGORY_2_L.Size = New System.Drawing.Size(220, 21)
         Me.CATEGORY_2_L.TabIndex = 2
         '
         'CATEGORY_ID_1_T
@@ -674,16 +674,16 @@ Partial Class fProductMst
         Me.MAKER_NAME_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.MAKER_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MAKER_NAME_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.MAKER_NAME_T.Location = New System.Drawing.Point(397, 133)
+        Me.MAKER_NAME_T.Location = New System.Drawing.Point(397, 142)
         Me.MAKER_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.MAKER_NAME_T.Name = "MAKER_NAME_T"
-        Me.MAKER_NAME_T.Size = New System.Drawing.Size(334, 20)
+        Me.MAKER_NAME_T.Size = New System.Drawing.Size(196, 20)
         Me.MAKER_NAME_T.TabIndex = 13
         '
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label5.Location = New System.Drawing.Point(320, 133)
+        Me.Label5.Location = New System.Drawing.Point(320, 141)
         Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 20)
@@ -797,11 +797,11 @@ Partial Class fProductMst
         Me.TAX_PRICE_T.BackColor = System.Drawing.Color.LightGreen
         Me.TAX_PRICE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TAX_PRICE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.TAX_PRICE_T.Location = New System.Drawing.Point(398, 242)
+        Me.TAX_PRICE_T.Location = New System.Drawing.Point(398, 217)
         Me.TAX_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.TAX_PRICE_T.Name = "TAX_PRICE_T"
         Me.TAX_PRICE_T.ReadOnly = True
-        Me.TAX_PRICE_T.Size = New System.Drawing.Size(139, 20)
+        Me.TAX_PRICE_T.Size = New System.Drawing.Size(195, 20)
         Me.TAX_PRICE_T.TabIndex = 16
         Me.TAX_PRICE_T.TabStop = False
         Me.TAX_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -831,7 +831,7 @@ Partial Class fProductMst
         'Label44
         '
         Me.Label44.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label44.Location = New System.Drawing.Point(318, 246)
+        Me.Label44.Location = New System.Drawing.Point(318, 219)
         Me.Label44.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(80, 16)
@@ -882,18 +882,18 @@ Partial Class fProductMst
         Me.BEFORETAX_PRICE_T.BackColor = System.Drawing.Color.LightGreen
         Me.BEFORETAX_PRICE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.BEFORETAX_PRICE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.BEFORETAX_PRICE_T.Location = New System.Drawing.Point(398, 268)
+        Me.BEFORETAX_PRICE_T.Location = New System.Drawing.Point(398, 265)
         Me.BEFORETAX_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.BEFORETAX_PRICE_T.Name = "BEFORETAX_PRICE_T"
         Me.BEFORETAX_PRICE_T.ReadOnly = True
-        Me.BEFORETAX_PRICE_T.Size = New System.Drawing.Size(333, 20)
+        Me.BEFORETAX_PRICE_T.Size = New System.Drawing.Size(195, 20)
         Me.BEFORETAX_PRICE_T.TabIndex = 174
         Me.BEFORETAX_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label45
         '
         Me.Label45.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label45.Location = New System.Drawing.Point(312, 268)
+        Me.Label45.Location = New System.Drawing.Point(313, 264)
         Me.Label45.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(86, 20)
@@ -1911,10 +1911,10 @@ Partial Class fProductMst
         'MAKER_SEARCH_B
         '
         Me.MAKER_SEARCH_B.ColorBottom = System.Drawing.Color.Wheat
-        Me.MAKER_SEARCH_B.Location = New System.Drawing.Point(397, 162)
+        Me.MAKER_SEARCH_B.Location = New System.Drawing.Point(606, 133)
         Me.MAKER_SEARCH_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.MAKER_SEARCH_B.Name = "MAKER_SEARCH_B"
-        Me.MAKER_SEARCH_B.Size = New System.Drawing.Size(334, 51)
+        Me.MAKER_SEARCH_B.Size = New System.Drawing.Size(125, 40)
         Me.MAKER_SEARCH_B.TabIndex = 14
         Me.MAKER_SEARCH_B.TextButton = "メーカー名称検索"
         '
@@ -2009,17 +2009,17 @@ Partial Class fProductMst
         Me.RTAX_RATE_T.BackColor = System.Drawing.Color.White
         Me.RTAX_RATE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RTAX_RATE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.RTAX_RATE_T.Location = New System.Drawing.Point(602, 241)
+        Me.RTAX_RATE_T.Location = New System.Drawing.Point(398, 241)
         Me.RTAX_RATE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RTAX_RATE_T.Name = "RTAX_RATE_T"
-        Me.RTAX_RATE_T.Size = New System.Drawing.Size(129, 20)
+        Me.RTAX_RATE_T.Size = New System.Drawing.Size(195, 20)
         Me.RTAX_RATE_T.TabIndex = 180
         Me.RTAX_RATE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label46
         '
         Me.Label46.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 9.75!)
-        Me.Label46.Location = New System.Drawing.Point(536, 241)
+        Me.Label46.Location = New System.Drawing.Point(331, 240)
         Me.Label46.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(67, 21)
