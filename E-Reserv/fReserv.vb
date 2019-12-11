@@ -984,12 +984,28 @@
 
         Dim row = CHART_V.SelectedCells(0).RowIndex
         Dim column = CHART_V.SelectedCells(0).ColumnIndex
+        Dim message = New cMessageLib.fMessage(1,
+                                            "複数行の選択はできません。",
+                                            "選択をしなおしてください。",
+                                            Nothing,
+                                            Nothing
+                                            )
 
-        If row > 0 Then
+        If row > 0 And row < CHART_V.Rows.Count Then
             If CHART_V(column, row - 1).Selected = True Then
+                message.ShowDialog()
+                message.Dispose()
+                CHART_V.ClearSelection()
                 Exit Sub
-            ElseIf CHART_V(column, row + 1).Selected = True Then
-                Exit Sub
+
+            ElseIf CHART_V.Rows.Count - 1 < row Then
+
+                If CHART_V(column, row + 1).Selected = True Then
+                    message.ShowDialog()
+                    message.Dispose()
+                    CHART_V.ClearSelection()
+                    Exit Sub
+                End If
             End If
         End If
 
