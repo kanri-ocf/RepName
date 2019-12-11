@@ -1097,7 +1097,11 @@
         Dim pHour As Integer
         Dim pMinute As Integer
 
-        If CHART_V.CurrentCell.Value <> "" Then
+        '2019.12.11 R.Takashima FROM
+        '日付、ルーム名称、担当者名称が選択されたとき処理を行わないよう変更
+        'If CHART_V.CurrentCell.Value <> "" Then
+        If CHART_V.CurrentCell.Value <> "" And CHART_V.CurrentCell.ColumnIndex > 8 Then
+            '2019.12.11 R.Takashima TO
             pHour = StartTime + oTool.ToRoundDown((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) / 2, 0)
             pMinute = ((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) Mod 2) * 30
             ReqDate = oTool.MaskClear(MONTH_T.Text) & "/" & (CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET + 1).ToString.PadLeft(2, "0")
