@@ -1249,41 +1249,46 @@
         Dim pHour As Integer
         Dim pMinute As Integer
 
-        If CHART_V.CurrentCell.Value <> "" Then
+        '2019.12.11 R.Takashima FROM
+        '日付、ルーム名称、担当者名称が選択されたとき処理を行わないよう変更
+        'If CHART_V.CurrentCell.Value <> "" Then
+        If CHART_V.CurrentCell.Value <> "" And CHART_V.CurrentCell.ColumnIndex > 8 Then
+            '2019.12.11 R.Takashima TO
+
             pHour = StartTime + oTool.ToRoundDown((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) / 2, 0)
             pMinute = ((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) Mod 2) * 30
             ReqDate = oTool.MaskClear(MONTH_T.Text) & "/" & CHART_V("日付", CHART_V.CurrentCell.RowIndex).Value.ToString.PadLeft(2, "0")
 
-            oDataReservDBIO.getReserv( _
-                                        oReserv, _
-                                        Nothing, _
-                                        ReqDate, _
-                                        ReqDate, _
-                                        BUMON_CODE_T.Text, _
-                                        CInt(CHART_V("ルームコード", CHART_V.CurrentCell.RowIndex).Value), _
-                                        CHART_V("担当者コード", CHART_V.CurrentCell.RowIndex).Value, _
-                                        pHour, _
-                                        pMinute, _
-                                        CInt(CHANNEL_CODE_T.Text), oTran _
+            oDataReservDBIO.getReserv(
+                                        oReserv,
+                                        Nothing,
+                                        ReqDate,
+                                        ReqDate,
+                                        BUMON_CODE_T.Text,
+                                        CInt(CHART_V("ルームコード", CHART_V.CurrentCell.RowIndex).Value),
+                                        CHART_V("担当者コード", CHART_V.CurrentCell.RowIndex).Value,
+                                        pHour,
+                                        pMinute,
+                                        CInt(CHANNEL_CODE_T.Text), oTran
                                     )
 
-            form_ReservSub = New fReservSub( _
-                                        oConn, _
-                                        oCommand, _
-                                        oDataReader, _
-                                        oReserv(0).sReserveCode, _
-                                        CInt(CHANNEL_CODE_T.Text), _
-                                        ReqDate, _
-                                        ReqDate, _
-                                        BUMON_CODE_T.Text, _
-                                        CInt(CHART_V("ルームコード", ColRow).Value), _
-                                        CHART_V("担当者コード", ColRow).Value, _
-                                        Nothing, _
-                                        Nothing, _
-                                        Nothing, _
-                                        Nothing, _
-                                        STAFF_CODE, _
-                                        oTran _
+            form_ReservSub = New fReservSub(
+                                        oConn,
+                                        oCommand,
+                                        oDataReader,
+                                        oReserv(0).sReserveCode,
+                                        CInt(CHANNEL_CODE_T.Text),
+                                        ReqDate,
+                                        ReqDate,
+                                        BUMON_CODE_T.Text,
+                                        CInt(CHART_V("ルームコード", ColRow).Value),
+                                        CHART_V("担当者コード", ColRow).Value,
+                                        Nothing,
+                                        Nothing,
+                                        Nothing,
+                                        Nothing,
+                                        STAFF_CODE,
+                                        oTran
                                 )
             form_ReservSub.ShowDialog()
             form_ReservSub.Dispose()
