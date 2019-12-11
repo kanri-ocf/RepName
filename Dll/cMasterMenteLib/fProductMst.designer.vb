@@ -484,7 +484,7 @@ Partial Class fProductMst
         Me.MODE_T.Location = New System.Drawing.Point(29, 9)
         Me.MODE_T.Margin = New System.Windows.Forms.Padding(6, 10, 6, 0)
         Me.MODE_T.Name = "MODE_T"
-        Me.MODE_T.Size = New System.Drawing.Size(1359, 34)
+        Me.MODE_T.Size = New System.Drawing.Size(1343, 34)
         Me.MODE_T.TabIndex = 128
         Me.MODE_T.Text = "（新規）"
         Me.MODE_T.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
