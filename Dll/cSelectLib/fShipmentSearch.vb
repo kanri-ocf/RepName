@@ -104,6 +104,9 @@
 
         CHANNEL_NAME_L.Text = ""
         CORP_NAME_C.Text = ""
+        SEL_C.Checked = False
+        SEL_COUNT_T.Text = 0
+        COUNT_T.Text = 0
 
     End Sub
 
@@ -235,18 +238,19 @@
         For i = 0 To oShipmentFull.Length - 1
             oChannelDBIO.getChannelMst(oChannel, oShipmentFull(i).sChannelCode, Nothing, Nothing, Nothing, oTran)
             If (pPreNUmber = "") Or (pPreNUmber <> oShipmentFull(i).sShipCode) Then
-                SHIPMENT_V.Rows.Add( _
-                            oShipmentFull(i).sShipCheck, _
-                            oShipmentFull(i).sRequestCode, _
-                            oShipmentFull(i).sShipDate, _
-                            oChannel(0).sChannelName, _
-                            oShipmentFull(i).sFirstName & " " & oShipmentFull(i).sLastName, _
-                            oShipmentFull(i).sTotalPrice, _
-                            oShipmentFull(i).sShipCode _
+                SHIPMENT_V.Rows.Add(
+                            oShipmentFull(i).sShipCheck,
+                            oShipmentFull(i).sRequestCode,
+                            oShipmentFull(i).sShipDate,
+                            oChannel(0).sChannelName,
+                            oShipmentFull(i).sFirstName & " " & oShipmentFull(i).sLastName,
+                            oShipmentFull(i).sTotalPrice,
+                            oShipmentFull(i).sShipCode
                     )
+                cnt = cnt + 1
             End If
             pPreNUmber = oShipmentFull(i).sShipCode
-            cnt = cnt + 1
+
         Next i
         COUNT_T.Text = cnt
         SEL_COUNT_T.Text = oDataShipmentStatusDBIO.ShipStatusCount(oTran)
@@ -609,10 +613,24 @@
             '注文状態レコードの削除
             RecordCnt = oDataShipmentStatusDBIO.deleteShipStatus(ShipCode, oTran)
         End If
+
         SHIPMENT_STATUS_UPDATE = oDataShipmentStatusDBIO.ShipStatusCount(oTran)
     End Function
 
     Private Sub RETURN_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RETURN_B.Click
+        If SEL_COUNT_T.Text = 0 Then
+            'メッセージウィンドウ表示
+            Dim Message_form As cMessageLib.fMessage
+
+            Message_form = New cMessageLib.fMessage(1, "選択されていません",
+                                            "出荷する注文を選択して下さい。",
+                                            Nothing, Nothing)
+            Message_form.ShowDialog()
+            System.Windows.Forms.Application.DoEvents()
+
+            Exit Sub
+        End If
+
         oShipmentFull = Nothing
         oDataShipmentDBIO = Nothing
         oChannel = Nothing
@@ -626,4 +644,5 @@
         Me.Close()
 
     End Sub
+
 End Class
