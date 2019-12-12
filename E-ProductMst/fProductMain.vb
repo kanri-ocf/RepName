@@ -5,11 +5,14 @@
     End Sub
 
     Private Sub PRODUCT_B_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles PRODUCT_B.Click
-        Dim oPrpductMst = New cMasterMenteLib.fProductMst
+        '2019.12.8 R.Takashima
+        'スペルミスの修正
+        'Dim oPrpductMst = New cMasterMenteLib.fProductMst
+        Dim oProductMst = New cMasterMenteLib.fProductMst
 
         Me.Visible = False
-        oPrpductMst.ShowDialog()
-        oPrpductMst = Nothing
+        oProductMst.ShowDialog()
+        oProductMst = Nothing
         Me.Visible = True
 
     End Sub

@@ -2724,49 +2724,65 @@ Public Class fProductMst
     '2019,10,17 A.Komita 追加 To
 
     Private Sub PRICE_T_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles PRICE_T.LostFocus
-        '2019.8.8 A.Komita From
-        If RTAX_RATE_T.Text = String.Empty Then
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
-        End If
-        '2019.8.8 A.Komita To
+        '2019.12.10 R.Takashima FROM
+        '定価欄が空白の場合にフォーカスを失うとキャストエラーになるため修正
+        '定価が空白の場合は処理を行わない
+        If PRICE_T.Text <> String.Empty Then
 
-        BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+            '2019.8.8 A.Komita From
+            If RTAX_RATE_T.Text = String.Empty Then
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+            Else
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+            End If
+            '2019.8.8 A.Komita To
+
+            BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+        End If
+
+        '2019.12.10 R.Takashima TO
 
     End Sub
 
     '2019.8.9 A.Komita From
     Private Sub RTAX_RATE_T_LostFocus(sender As Object, e As EventArgs) Handles RTAX_RATE_T.LostFocus
-        If RTAX_RATE_T.Text = String.Empty Then
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+        '2019.12.10 R.Takashima FROM
+        '定価欄が空白の場合にフォーカスを失うとキャストエラーになるため修正
+        '定価が空白の場合は処理を行わない
+        If PRICE_T.Text <> String.Empty Then
+
+
+            If RTAX_RATE_T.Text = String.Empty Then
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+            Else
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+            End If
+            BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+
+            '2019.8.14 A.Komita From
+            For i = 0 To COST_PRICE_V.Rows.Count - 2
+
+                If RTAX_RATE_T.Text = String.Empty Then
+                    COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
+                End If
+            Next
+
+            For x = 0 To SALE_PRICE_V.Rows.Count - 2
+                If RTAX_RATE_T.Text = String.Empty Then
+                    SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
+                End If
+                '2019.8.15 A.Komita From
+                SALE_PRICE_V("税込価格", x).Value = CLng(SALE_PRICE_V("販売価格", x).Value) + CLng(SALE_PRICE_V("消費税", x).Value)
+                '2019.8.15 A.Komita To
+            Next
+            '2019.8.14 A.Komita To
+
         End If
-        BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
-
-        '2019.8.14 A.Komita From
-        For i = 0 To COST_PRICE_V.Rows.Count - 2
-
-            If RTAX_RATE_T.Text = String.Empty Then
-                COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), oConf(0).sTax, oConf(0).sFracProc)
-            Else
-                COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
-            End If
-        Next
-
-        For x = 0 To SALE_PRICE_V.Rows.Count - 2
-            If RTAX_RATE_T.Text = String.Empty Then
-                SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), oConf(0).sTax, oConf(0).sFracProc)
-            Else
-                SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
-            End If
-            '2019.8.15 A.Komita From
-            SALE_PRICE_V("税込価格", x).Value = CLng(SALE_PRICE_V("販売価格", x).Value) + CLng(SALE_PRICE_V("消費税", x).Value)
-            '2019.8.15 A.Komita To
-        Next
-        '2019.8.14 A.Komita To
-
+        '2019.12.10 R.Takashima TO
     End Sub
     '2019.8.9 A.Komita To
 
@@ -3379,5 +3395,4 @@ Public Class fProductMst
         '2017.09.27 Y.Sato 追加 To
 
     End Sub
-
 End Class
