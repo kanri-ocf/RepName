@@ -1226,6 +1226,7 @@
         '2019,10,09 A.Komita 追加 From
 
         Dim taxSumOnly = 0 '消費税のみの合計
+        Dim rtaxSumOnly = 0 '軽減税のみの合計
         Dim selfTaxPrice As Integer = 0 '商品xの消費税を含めた値
         Dim selfNoTaxPrice As Integer = 0 '商品xの単価
         Dim Postage As Integer = 0
@@ -1410,7 +1411,7 @@
                     If selfNoTaxPrice = oOrderSubData(i).sNoTaxPrice Then
                         taxSumOnly += (selfTaxPrice * ORDER_V("納入数", i).Value) - (selfNoTaxPrice * ORDER_V("納入数", i).Value)
 
-                    Else
+                    Else '
                         If oOrderSubData(i).sReducedTaxRate = String.Empty Then
                             taxSumOnly += oTool.BeforeToTax(selfNoTaxPrice, oConf(0).sTax, oConf(0).sFracProc) * ORDER_V("納入数", i).Value
                         Else
@@ -1430,19 +1431,19 @@
             If oOrderSubData(i).sReducedTaxRate = String.Empty Then
                 ORDER_V("税率", i).Value = oConf(0).sTax.ToString & "%"
 
+
             Else '2019,11,15 A.Komita 税込モードで送料手数料の値を変更した際、軽減税の計算を行ってしまう為if文を追加 From
 
-                ORDER_V("税率", i).Value = oOrderSubData(i).sReducedTaxRate & "%"
-
-                If AFTER_TAX_R.Checked = True Then
-                    T_RTAX_T.Text = 0 '2019,11,15 A.Komita 税込モードの分岐を追加した To
-
-                Else
+                ORDER_V("税率", i).Value = oOrderSubData(i).sReducedTaxRate & "%" '計算は合っているがループ処理で何度もGV内を計算している為値が増える
+                If BEFORE_TAX_R.Checked = True Then
                     T_RTAX_T.Text += oTool.BeforeToTax((ORDER_V("納入金額", i).Value), oOrderSubData(i).sReducedTaxRate, oConf(0).sFracProc)
 
-                End If
+                Else
+                    T_RTAX_T.Text = 0
 
+                End If
             End If
+
 
             '2019,10,3 A.Komita 追加 To
 
@@ -1836,6 +1837,7 @@
         Dim bPostage As Integer = 0
         Dim bFee As Integer = 0
 
+
         If IsNothing(ArrivalData) = True Then '前回の入庫データがない場合
 
             '完納フラグ
@@ -1889,8 +1891,8 @@
             B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", ArrivalData(0).sPointDisCount)
             '税込合計の数値変換
             B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", CLng(B_BEFORE_BILL_PRICE_T.Text)) +
-                                                        ArrivalData(0).sDiscount +
-                                                        ArrivalData(0).sPointDisCount
+                                                            ArrivalData(0).sDiscount +
+                                                            ArrivalData(0).sPointDisCount
 
 
 
@@ -1946,6 +1948,7 @@
             '2019,12,5 A.Komita 追加 To
 
         End If
+
 
 
     End Sub
@@ -2021,9 +2024,11 @@
                                                    "再度ご確認下さい",
                                                    Nothing, Nothing)
                     Message_form.ShowDialog()
-                    'Message_form = Nothing
+
                     If Message_form.DialogResult = DialogResult.OK Then
                         Return (False)
+                        Message_form = Nothing
+
 
                     End If
                 End If
