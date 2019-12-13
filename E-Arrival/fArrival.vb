@@ -619,7 +619,7 @@
         '2019.11.20 R.Takashima FROM
         '既入庫情報の画面セット
         '一つのメソッドにまとめた為、以下一部除きコメントアウト
-        B_TEXT_INIT(oArriveDataFull)
+        B_TEXT_INIT(True, oArriveDataFull)
         If RecordCnt = 0 Then
 
             ''完納フラグ
@@ -702,8 +702,8 @@
 
 
             '2019,11,1 A.Komita 追加 From
-            ORDER_DATA()
-            ORDER_SUB_DATA()
+            'ORDER_DATA()
+            'ORDER_SUB_DATA()
 
             '税込の商品代金を表示する際に使用(CAL_PROCメソッド内)
             'B_Brefore_Product = oOrderSubData(0).sListPrice
@@ -1662,7 +1662,8 @@
                 '2019,11,21 A.Komita 納入単価を手入力で修正した時と税モード切替時に送料手数料の価格が変動しない様にif文を追加 From
                 If T_POSTAGE_T.Modified = False Then
                     If InitFlg = False Or JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
-                        T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge)
+                        T_POSTAGE_T.Text = oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                        'T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge)
 
                     ElseIf JAN_CODE_FLG = False And T_POSTAGE_T.Modified = True Then
                         T_POSTAGE_T.Text = oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
@@ -1680,7 +1681,8 @@
 
                     If T_FEE_T.Modified = False Then
                         If InitFlg = False Or JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
-                            T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge)
+                            T_FEE_T.Text = oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                            'T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge)
 
                         ElseIf JAN_CODE_FLG = False And T_FEE_T.Modified = True Then
                             T_FEE_T.Text = oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
@@ -1844,14 +1846,25 @@
 
     '2019.11.20 R.Takashima FROM
     '既納入情報欄を別のメソッドに分ける
-    Private Sub B_TEXT_INIT(ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
+    Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
         Dim ArrivalTax As Integer = 0
         Dim bTaxKeep As Integer = 0
         Dim bPostage As Integer = 0
         Dim bFee As Integer = 0
 
+        ORDER_DATA()
+        ORDER_SUB_DATA()
 
-        If IsNothing(ArrivalData) = True Then '前回の入庫データがない場合 lengthを0にすればいい？
+        '2019,12,13 A.Komita 注文番号を読み込む前に税モード切替を行った時、下記if文で例外が発生する為意図的に処理を終了させる From
+        If SUPPLIER_T.Text = "" And ChangeMode = True Then
+            STOP_VALUE = True
+            Exit Sub
+        End If
+        '2019,12,13 A.Komita 追加 To
+
+
+        '前回の入庫データがない場合 
+        If IsNothing(ArrivalData) = True Or oOrderSubData(0).sOrderCode <> ArrivalData(0).sOrderCode Then
 
             '完納フラグ
             FINISH_C.Checked = False
@@ -1877,7 +1890,8 @@
             B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
 
 
-        ElseIf AFTER_TAX_R.Checked = True Then  '前回のデータがあり、税込みモードの場合
+            '前回のデータがあり、税込みモードの場合
+        ElseIf AFTER_TAX_R.Checked = True Then
 
             '完納フラグ
             FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
@@ -1920,7 +1934,8 @@
             '2019,12,5 A.Komita 追加 To
 
 
-        ElseIf AFTER_TAX_R.Checked = False Then '前回のデータがあり、税抜きモードの場合
+            '前回のデータがあり、税抜きモードの場合
+        ElseIf AFTER_TAX_R.Checked = False Then
 
             '完納フラグ
             FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
@@ -3185,13 +3200,14 @@
 
     End Function
 
+
     'Orderで税抜登録→Arrivalのデフォルトが税込なので発注単価と納入単価を税込にするメソッド
     Private Sub Cal_Proc_View(ByVal stopValue As Boolean)
         STOP_VALUE = stopValue
 
         '2019.11.20 R.Takashima FROM
         '既納入情報入力
-        B_TEXT_INIT(oArriveDataFull)
+        B_TEXT_INIT(True, oArriveDataFull)
         '2019.11.20 R.Takashima TO
 
         CAL_PROC(True, False)
