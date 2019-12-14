@@ -231,7 +231,7 @@ Partial Class fOrder
         'SUPPLIER_CODE_T
         '
         Me.SUPPLIER_CODE_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(377, 96)
+        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(378, 100)
         Me.SUPPLIER_CODE_T.Name = "SUPPLIER_CODE_T"
         Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(21, 19)
         Me.SUPPLIER_CODE_T.TabIndex = 21
@@ -458,12 +458,10 @@ Partial Class fOrder
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
         Me.ClientSize = New System.Drawing.Size(1024, 737)
-        Me.Controls.Add(Me.ON_B)
-        Me.Controls.Add(Me.ORDER_B)
-        Me.Controls.Add(Me.RETURN_ORDER_B)
         Me.Controls.Add(Me.CANDIDATE_B)
+        Me.Controls.Add(Me.ON_B)
         Me.Controls.Add(Me.CLOSE_B)
-        Me.Controls.Add(Me.OFF_B)
+        Me.Controls.Add(Me.RETURN_ORDER_B)
         Me.Controls.Add(Me.TOTAL_COUNT_T)
         Me.Controls.Add(Me.JANCODE_T)
         Me.Controls.Add(Me.OPTION_NAME_T)
@@ -477,9 +475,11 @@ Partial Class fOrder
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.OFF_B)
         Me.Controls.Add(Me.SUPPLIER_CODE_T)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.SEARCH_B)
+        Me.Controls.Add(Me.ORDER_B)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.PRODUCT_V)
