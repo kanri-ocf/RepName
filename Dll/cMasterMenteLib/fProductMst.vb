@@ -3278,7 +3278,8 @@ Public Class fProductMst
             'ファイルのコピー
             File.Copy(sPath, tPath, True)
             File.SetAttributes(tPath, FileAttributes.Normal)
-
+        Else
+            Exit Sub
         End If
 
         ' テキストファイルの読み込み
