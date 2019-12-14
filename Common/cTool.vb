@@ -203,7 +203,7 @@ Public Class cTool
         OpenFileDialog1.FileName = "初期表示するファイル名をココに書く"
 
         ' ファイルのフィルタを設定する
-        OpenFileDialog1.Filter = "テキスト ファイル|*.txt;*.log|すべてのファイル|*.*"
+        OpenFileDialog1.Filter = "テキスト ファイル|*.txt;*.log|画像 ファイル|*.png;*.jpg|すべてのファイル|*.*"
 
         ' ファイルの種類 の初期設定を 2 番目に設定する (初期値 1)
         OpenFileDialog1.FilterIndex = 1

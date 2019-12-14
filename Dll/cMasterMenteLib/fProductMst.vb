@@ -1504,7 +1504,9 @@ Public Class fProductMst
         Catch ex As System.IO.FileNotFoundException
             FILENOT()
             Exit Sub
-
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
         End Try
     End Sub
     Private Sub PRODUCT_P2_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRODUCT_P2_B.Click
@@ -1538,7 +1540,10 @@ Public Class fProductMst
             End If
         Catch ex As System.IO.FileNotFoundException
             FILENOT()
-        Exit Sub
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
 
         End Try
     End Sub
@@ -1572,7 +1577,10 @@ Public Class fProductMst
             End If
         Catch ex As System.IO.FileNotFoundException
             FILENOT()
-        Exit Sub
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
 
         End Try
 
@@ -1608,7 +1616,10 @@ Public Class fProductMst
             End If
         Catch ex As System.IO.FileNotFoundException
             FILENOT()
-        Exit Sub
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
 
         End Try
     End Sub
@@ -1643,7 +1654,10 @@ Public Class fProductMst
             End If
         Catch ex As System.IO.FileNotFoundException
             FILENOT()
-        Exit Sub
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
 
         End Try
     End Sub
