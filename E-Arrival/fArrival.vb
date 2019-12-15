@@ -1448,7 +1448,7 @@
 
                 'End If
             End If
-
+            'InitFlg = False
 
             '2019,10,3 A.Komita 追加 To
 
@@ -1865,6 +1865,10 @@
             STOP_VALUE = True
             Exit Sub
         End If
+
+        If B_BREFORE_PRODUCT_T.Text = 0 Then
+            ARRIVE_COUNT_T.Text = 1
+        End If
         '2019,12,13 A.Komita 追加 To
 
         Try
@@ -1986,7 +1990,7 @@
             End If
 
         Catch
-            CAL_PROC(True, True)
+
         End Try
 
     End Sub
