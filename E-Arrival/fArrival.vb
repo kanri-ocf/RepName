@@ -1469,7 +1469,7 @@
             '商品代金
             T_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", TOTAL_PRODUCT_ARRIVAL)
 
-            ''送料,手数料,値引き,ポイント値引きの数値変換
+            '''送料,手数料,値引き,ポイント値引きの数値変換
             'If JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
             '    T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge.ToString.Replace(",", ""))
             '    T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge.ToString.Replace(",", ""))
@@ -1514,12 +1514,12 @@
                     T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
                     T_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
 
-                Else
-                    If T_POSTAGE_T.Text = oOrderData(0).sShippingCharge Or T_FEE_T.Text = oOrderData(0).sPaymentCharge Then
-                        T_POSTAGE_T.Text = T_POSTAGE_T.Text
-                        T_FEE_T.Text = T_FEE_T.Text
+                    'Else
+                    '    If T_POSTAGE_T.Text = oOrderData(0).sShippingCharge Or T_FEE_T.Text = oOrderData(0).sPaymentCharge Then
+                    '        T_POSTAGE_T.Text = T_POSTAGE_T.Text
+                    '        T_FEE_T.Text = T_FEE_T.Text
 
-                    Else
+                Else
                         If JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
                             T_POSTAGE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oOrderData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
                             T_FEE_T.Text = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oOrderData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
@@ -1530,7 +1530,7 @@
 
                         End If
                     End If
-                End If
+                'End If
 
                 '2019,11,21 A.Komita 追加 To
 
@@ -1666,7 +1666,6 @@
                 If T_POSTAGE_T.Modified = False Then
                     If InitFlg = False Or JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
                         T_POSTAGE_T.Text = oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                        'T_POSTAGE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sShippingCharge)
 
                     ElseIf JAN_CODE_FLG = False And T_POSTAGE_T.Modified = True Then
                         T_POSTAGE_T.Text = oTool.AfterToBeforeTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
@@ -1685,7 +1684,6 @@
                     If T_FEE_T.Modified = False Then
                         If InitFlg = False Or JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Then
                             T_FEE_T.Text = oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                            'T_FEE_T.Text = String.Format("{0:#,##0}", oOrderData(0).sPaymentCharge)
 
                         ElseIf JAN_CODE_FLG = False And T_FEE_T.Modified = True Then
                             T_FEE_T.Text = oTool.AfterToBeforeTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
@@ -1703,23 +1701,32 @@
 
                     '2019,11,21 A.Komita 追加 To
 
-                    Postage = String.Format("{0:#,##0}", oTool.BeforeToTax(CLng(T_POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
 
-                    Fee = String.Format("{0:#,##0}", oTool.BeforeToTax(CLng(T_FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc))
+                    '2019,12,15 A.Komita  送料手数料の消費税額が税モード切替で変動しないようにコードを追加 From
+                    Postage = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oOrderData(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
+                    Postage = String.Format("{0:#,##0}", oTool.AfterToTax(Postage, oConf(0).sTax, oConf(0).sFracProc))
 
-                    T_TAX_T.Text += Postage + Fee
+                    Fee = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oOrderData(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
+                    Fee = String.Format("{0:#,##0}", oTool.AfterToTax(Fee, oConf(0).sTax, oConf(0).sFracProc))
+
+                    If JAN_CODE_FLG = False And JANCODE_T.Text <> String.Empty Or T_BREFORE_PRODUCT_T.Text <> 0 Then
+                        T_TAX_T.Text += Postage + Fee
+
+                    End If
+
+                    '2019,12,15 A.Komita 追加 To 
 
                     '2019,10,30 A.Komita 修正 End-------------------------------------------------------------------------------------------------------
 
                     T_DISCOUNT_T.Text = T_DISCOUNT_T.Text
 
-                    T_POINT_DISCOUNT_T.Text = T_POINT_DISCOUNT_T.Text
+                        T_POINT_DISCOUNT_T.Text = T_POINT_DISCOUNT_T.Text
 
-                    '2019,11,21 A.Komita 追加 From
+                        '2019,11,21 A.Komita 追加 From
 
-                ElseIf InitFlg = True Then
+                    ElseIf InitFlg = True Then
 
-                    If T_POSTAGE_T.Modified = True Then
+                        If T_POSTAGE_T.Modified = True Then
 
                         T_POSTAGE_T.Text = T_POSTAGE_T.Text
 
@@ -2279,7 +2286,7 @@
             End If
 
             '入庫税込金額
-            oArrivalData(0).sTotalPrice = (oArrivalData(0).sNoTaxTotalPrice + oArrivalData(0).sTaxTotal + oArrivalData(0).sReducedTaxRate) -
+            oArrivalData(0).sTotalPrice = (oArrivalData(0).sNoTaxTotalPrice + oArrivalData(0).sTaxTotal + oArrivalData(0).sReducedTaxRate) +
                                           (oArrivalData(0).sDiscount + oArrivalData(0).sPointDisCount)
 
         Else
