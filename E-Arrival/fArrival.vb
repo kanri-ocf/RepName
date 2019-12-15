@@ -1448,7 +1448,7 @@
 
                 'End If
             End If
-
+            'InitFlg = False
 
             '2019,10,3 A.Komita 追加 To
 
@@ -1986,7 +1986,7 @@
             End If
 
         Catch
-            CAL_PROC(True, True)
+
         End Try
 
     End Sub
