@@ -35,6 +35,7 @@
     Private pStockTotal As Long
     Private pProfit As Long
 
+
     Sub New()
 
         Dim StrPath As String
@@ -542,31 +543,58 @@
     '***********************************************
     Private Function DEFAULT_DATE_SET() As Long
         Dim dt As Date
-        Dim Message_form As cMessageLib.fMessage
+        'Dim Message_form As cMessageLib.fMessage
 
-        If CInt(CLOSE_YEAR_T.Text) < 2013 Or CInt(CLOSE_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "締め日の「年」指定が不正です。", _
-                                                "締め日「年」を訂正して下さい。", _
-                                                Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            CLOSE_YEAR_T.Focus()
-            Message_form = Nothing
-            Exit Function
-        End If
+        '2019.12.18 R.Takashima
+        '日付処理部分を１つにまとめたためコメントアウト
 
-        If CInt(CLOSE_MONTH_T.Text) < 1 Or CInt(CLOSE_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "締め日の「月」指定が不正です。", _
-                                                "締め日「月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'If CInt(CLOSE_YEAR_T.Text) < 2013 Or CInt(CLOSE_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "締め日の「年」指定が不正です。",
+        '                                        "締め日「年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            CLOSE_MONTH_T.Focus()
-            Message_form = Nothing
-            Exit Function
-        End If
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        CLOSE_YEAR_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Function
+        '    Else
+        '        If CLOSE_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'If CInt(CLOSE_MONTH_T.Text) < 1 Or CInt(CLOSE_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "締め日の「月」指定が不正です。",
+        '                                        "締め日「月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        CLOSE_MONTH_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Function
+        '    Else
+        '        If CLOSE_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+        '2019.12.18 R.Takashima TO
 
         dt = CDate(CLOSE_YEAR_T.Text & "/" & CLOSE_MONTH_T.Text & "/" & String.Format("{0:00}", oConf(0).sCloseDay))
 
@@ -1228,6 +1256,10 @@
         CLOSE_YEAR_T.SelectAll()
     End Sub
     Private Sub CLOSE_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CLOSE_YEAR_T.LostFocus
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理部分を呼出
+        SetDate(sender, 0)
+
         DEFAULT_DATE_SET()
     End Sub
 
@@ -1236,9 +1268,13 @@
     End Sub
 
     Private Sub CLOSE_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CLOSE_MONTH_T.LostFocus
-        CLOSE_MONTH_T.Text = String.Format("{0:00}", CInt(CLOSE_MONTH_T.Text))
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理部分を呼出
+        SetDate(sender, 1)
+
         DEFAULT_DATE_SET()
     End Sub
+
     Private Function BACKUP_PROC() As Boolean
         Dim StrPath As String
         Dim DB_Path As String
@@ -1653,21 +1689,36 @@
     End Sub
 
     Private Sub FROM_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_YEAR_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 0)
 
-        If CInt(FROM_YEAR_T.Text) < 2013 Or CInt(FROM_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始年」指定が不正です。", _
-                                                "集計期間「開始年」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            Message_form = Nothing
-            FROM_YEAR_T.Focus()
-            Exit Sub
-        End If
+        'If CInt(FROM_YEAR_T.Text) < 2013 Or CInt(FROM_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始年」指定が不正です。",
+        '                                        "集計期間「開始年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        FROM_YEAR_T.Text = String.Format("{0:0000}", CInt(FROM_YEAR_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        Message_form = Nothing
+        '        FROM_YEAR_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If FROM_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_YEAR_T.Text = String.Format("{0:0000}", CInt(FROM_YEAR_T.Text))
 
     End Sub
 
@@ -1676,21 +1727,36 @@
     End Sub
 
     Private Sub TO_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_YEAR_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 0)
 
-        If CInt(TO_YEAR_T.Text) < 2013 Or CInt(TO_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了年」指定が不正です。", _
-                                                "集計期間「終了年」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_YEAR_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'If CInt(TO_YEAR_T.Text) < 2013 Or CInt(TO_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了年」指定が不正です。",
+        '                                        "集計期間「終了年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        TO_YEAR_T.Text = String.Format("{0:0000}", CInt(TO_YEAR_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_YEAR_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If TO_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_YEAR_T.Text = String.Format("{0:0000}", CInt(TO_YEAR_T.Text))
 
     End Sub
 
@@ -1700,63 +1766,110 @@
 
 
     Private Sub FROM_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_MONTH_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 1)
 
-        If CInt(FROM_MONTH_T.Text) < 1 Or CInt(FROM_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始月」指定が不正です。", _
-                                                "集計期間「開始月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            FROM_MONTH_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'If CInt(FROM_MONTH_T.Text) < 1 Or CInt(FROM_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始月」指定が不正です。",
+        '                                        "集計期間「開始月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        FROM_MONTH_T.Text = String.Format("{0:00}", CInt(FROM_MONTH_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        FROM_MONTH_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If FROM_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_MONTH_T.Text = String.Format("{0:00}", CInt(FROM_MONTH_T.Text))
 
     End Sub
 
     Private Sub FROM_DAY_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_DAY_T.GotFocus
         FROM_DAY_T.SelectAll()
     End Sub
+
     Private Sub FROM_DAY_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_DAY_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 2)
 
-        If CInt(FROM_DAY_T.Text) < 1 Or CInt(FROM_DAY_T.Text) > 31 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始日」指定が不正です。", _
-                                                "集計期間「開始日」を訂正して下さい。", _
-                                                Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            FROM_DAY_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'Dim Message_form As cMessageLib.fMessage
 
-        FROM_DAY_T.Text = String.Format("{0:00}", CInt(FROM_DAY_T.Text))
+        'If CInt(FROM_DAY_T.Text) < 1 Or CInt(FROM_DAY_T.Text) > 31 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始日」指定が不正です。",
+        '                                        "集計期間「開始日」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        FROM_DAY_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If FROM_DAY_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_DAY_T.Text = String.Format("{0:00}", CInt(FROM_DAY_T.Text))
 
     End Sub
     Private Sub TO_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_MONTH_T.GotFocus
         TO_MONTH_T.SelectAll()
     End Sub
     Private Sub TO_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_MONTH_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 1)
 
-        If CInt(TO_MONTH_T.Text) < 1 Or CInt(TO_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了月」指定が不正です。", _
-                                                "集計期間「終了月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_MONTH_T.Focus()
-            Exit Sub
-        End If
+        'If CInt(TO_MONTH_T.Text) < 1 Or CInt(TO_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了月」指定が不正です。",
+        '                                        "集計期間「終了月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        TO_MONTH_T.Text = String.Format("{0:00}", CInt(TO_MONTH_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_MONTH_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If TO_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_MONTH_T.Text = String.Format("{0:00}", CInt(TO_MONTH_T.Text))
 
     End Sub
 
@@ -1765,20 +1878,171 @@
         TO_DAY_T.SelectAll()
     End Sub
     Private Sub TO_DAY_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_DAY_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 2)
 
-        If CInt(TO_DAY_T.Text) < 1 Or CInt(TO_DAY_T.Text) > 31 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了日」指定が不正です。", _
-                                                "集計期間「終了日」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_DAY_T.Focus()
+        'If CInt(TO_DAY_T.Text) < 1 Or CInt(TO_DAY_T.Text) > 31 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了日」指定が不正です。",
+        '                                        "集計期間「終了日」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_DAY_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If TO_DAY_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_DAY_T.Text = String.Format("{0:00}", CInt(TO_DAY_T.Text))
+
+    End Sub
+
+    '2019.12.18 R.Takashima FROM
+    'LostFocusの処理を全てまとめる
+    '-----------------------------
+    '引数：num　日付の種別 | 0 : 年 | 1：月 | 2：日
+    '-----------------------------
+
+    Private Sub SetDate(ByRef control As Control, ByVal num As Integer)
+
+        'メッセージが表示されていたか
+        Static Dim messageFlag As Boolean
+
+        '現在入力途中のコントロール
+        Static Dim CurrentControl As Control
+
+        If IsNothing(CurrentControl) Then
+            CurrentControl = control
+        ElseIf CurrentControl.Equals(control) <> True Then
             Exit Sub
         End If
 
-        TO_DAY_T.Text = String.Format("{0:00}", CInt(TO_DAY_T.Text))
+        Select Case num
+            Case 0
+
+                If CInt(control.Text) < 2013 Or CInt(control.Text) > 2099 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setYear(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:0000}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+
+            Case 1
+
+                If CInt(control.Text) < 1 Or CInt(control.Text) > 12 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setMonth(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:00}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+
+            Case 2
+
+                If CInt(control.Text) < 1 Or CInt(control.Text) > 31 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setDay(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:00}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+        End Select
 
     End Sub
+
+    Private Sub setYear(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        If control.Name = "CLOSE_YEAR_T" Then
+            message(0) = "締め日の「年」指定が不正です。"
+            message(1) = "締め日「年」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「開始年」指定が不正です。"
+            message(1) = "集計期間「開始年」を訂正して下さい。"
+        End If
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                                message(1),
+                                                Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    Private Sub setMonth(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        If control.Name = "CLOSE_MONTH_T" Then
+            message(0) = "締め日の「月」指定が不正です。"
+            message(1) = "締め日「月」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「開始月」指定が不正です。"
+            message(1) = "集計期間「開始月」を訂正して下さい。"
+        End If
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                        message(1),
+                                        Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    Private Sub setDay(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        message(0) = "集計期間の「開始日」指定が不正です。"
+        message(1) = "集計期間「開始日」を訂正して下さい。"
+
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                        message(1),
+                                        Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    '2019.12.18 R.Takashima TO
 End Class
