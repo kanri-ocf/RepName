@@ -959,7 +959,19 @@
 
     End Sub
     Private Sub CAL_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CAL_B.Click
-        CAL_PROC()
+
+        '2019.12.18 R.Takashima FROM
+        '日付の範囲指定にて開始月が終了日以上にならないように変更
+        Dim fromDate = New DateTime(CLng(FROM_YEAR_T.Text), CLng(FROM_MONTH_T.Text), CLng(FROM_DAY_T.Text))
+        Dim toDate = New DateTime(CLng(TO_YEAR_T.Text), CLng(TO_MONTH_T.Text), CLng(TO_DAY_T.Text))
+        If DateDiff("d", fromDate, toDate) >= 0 Then
+            CAL_PROC()
+        Else
+            Dim mes = New cMessageLib.fMessage(1, "開始日が終了日より大きいです。",
+                                    "修正をしてください。",
+                                    Nothing, Nothing).ShowDialog
+        End If
+        '2019.12.18 R.Takashima TO
     End Sub
     Private Sub CAL_PROC()
         Dim Message_form As cMessageLib.fMessage
@@ -1989,9 +2001,12 @@
         If control.Name = "CLOSE_YEAR_T" Then
             message(0) = "締め日の「年」指定が不正です。"
             message(1) = "締め日「年」を訂正して下さい。"
-        Else
+        ElseIf control.Name = "FROM_YEAR_T" Then
             message(0) = "集計期間の「開始年」指定が不正です。"
             message(1) = "集計期間「開始年」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了年」指定が不正です。"
+            message(1) = "集計期間「終了年」を訂正して下さい。"
         End If
 
         message_form = New cMessageLib.fMessage(1, message(0),
@@ -2011,9 +2026,12 @@
         If control.Name = "CLOSE_MONTH_T" Then
             message(0) = "締め日の「月」指定が不正です。"
             message(1) = "締め日「月」を訂正して下さい。"
-        Else
+        ElseIf control.Name = "FROM_MONTH_T" Then
             message(0) = "集計期間の「開始月」指定が不正です。"
             message(1) = "集計期間「開始月」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了月」指定が不正です。"
+            message(1) = "集計期間「終了月」を訂正して下さい。"
         End If
 
         message_form = New cMessageLib.fMessage(1, message(0),
@@ -2030,9 +2048,13 @@
         Dim message_form As cMessageLib.fMessage
         Dim message(2) As String
 
-        message(0) = "集計期間の「開始日」指定が不正です。"
-        message(1) = "集計期間「開始日」を訂正して下さい。"
-
+        If control.Name = "FROM_DAY_T" Then
+            message(0) = "集計期間の「開始日」指定が不正です。"
+            message(1) = "集計期間「開始日」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了日」指定が不正です。"
+            message(1) = "集計期間「終了日」を訂正して下さい。"
+        End If
 
         message_form = New cMessageLib.fMessage(1, message(0),
                                         message(1),
