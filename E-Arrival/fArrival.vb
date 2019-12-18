@@ -1856,7 +1856,7 @@
 
     '2019.11.20 R.Takashima FROM
     '既納入情報欄を別のメソッドに分ける
-    Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
+Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStructureLib.sViewArriveDataFull)
         Dim ArrivalTax As Integer = 0
         Dim bTaxKeep As Integer = 0
         Dim bRtaxKeep As Integer = 0
@@ -2413,9 +2413,9 @@
                 Else
                     If oOrderSubData(0).sReducedTaxRate = String.Empty Then
 
-                        oArrivalSubData(0).sPrice = oTool.BeforeToAfterTax(CLng(ORDER_V_VALUE(i)), oConf(0).sTax, oConf(0).sFracProc) * oArrivalSubData(0).sCount
+                        oArrivalSubData(0).sPrice = oTool.BeforeToAfterTax(ORDER_V_VALUE(i), oConf(0).sTax, oConf(0).sFracProc) * oArrivalSubData(0).sCount
                     Else
-                        oArrivalSubData(0).sPrice = oTool.BeforeToAfterTax(CLng(ORDER_V_VALUE(i)), oOrderSubData(0).sReducedTaxRate, oConf(0).sFracProc) * oArrivalSubData(0).sCount
+                        oArrivalSubData(0).sPrice = oTool.BeforeToAfterTax(ORDER_V_VALUE(i), oOrderSubData(0).sReducedTaxRate, oConf(0).sFracProc) * oArrivalSubData(0).sCount
                     End If
 
                 End If
@@ -2423,9 +2423,9 @@
                 '入庫税抜金額
                 If oOrderSubData(0).sReducedTaxRate = String.Empty Then
 
-                    oArrivalSubData(0).sNoTaxPrice = oTool.AfterToBeforeTax(CLng(ORDER_V_VALUE(i)), oConf(0).sTax, oConf(0).sFracProc) * oArrivalSubData(0).sCount
+                    oArrivalSubData(0).sNoTaxPrice = oTool.AfterToBeforeTax(ORDER_V_VALUE(i), oConf(0).sTax, oConf(0).sFracProc) * oArrivalSubData(0).sCount
                 Else
-                    oArrivalSubData(0).sNoTaxPrice = oTool.AfterToBeforeTax(CLng(ORDER_V_VALUE(i)), oOrderSubData(0).sReducedTaxRate, oConf(0).sFracProc) * oArrivalSubData(0).sCount
+                    oArrivalSubData(0).sNoTaxPrice = oTool.AfterToBeforeTax(ORDER_V_VALUE(i), oOrderSubData(0).sReducedTaxRate, oConf(0).sFracProc) * oArrivalSubData(0).sCount
                 End If
 
             Else
@@ -2469,11 +2469,15 @@
             End If
 
             '入庫消費税額
-            oArrivalSubData(0).sTaxPrice = oArrivalSubData(0).sPrice - oArrivalSubData(0).sNoTaxPrice
+            oArrivalSubData(0).sTaxPrice = oOrderData(0).sTaxTotal
+
 
             '2019,10,3 A.Komita 追加 From
             '入庫軽減税額
-            oArrivalSubData(0).sReducedTaxRate = oArrivalSubData(0).sPrice - oArrivalSubData(0).sNoTaxPrice - oArrivalSubData(0).sTaxPrice
+            oArrivalSubData(0).sReducedTaxRate = oOrderData(0).sReducedTaxRateTotal
+
+
+            'oArrivalSubData(0).sPrice - oArrivalSubData(0).sNoTaxPrice - oArrivalSubData(0).sTaxPrice
             '2019,10,3 A.Komita 追加 To
 
             '----------------------------------------------------
