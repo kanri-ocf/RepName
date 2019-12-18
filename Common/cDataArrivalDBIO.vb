@@ -50,6 +50,7 @@ Public Class cDataArrivalDBIO
                             "入庫情報データ.ポイント値引き, " &
                             "入庫情報データ.入庫税抜金額, " &
                             "入庫情報データ.入庫消費税額, " &
+                            "入庫情報データ.入庫軽減税額, " &
                             "入庫情報データ.入庫税込金額, " &
                             "入庫情報データ.入庫担当者コード, " &
                             "入庫情報データ.登録日, " &
@@ -187,6 +188,12 @@ Public Class cDataArrivalDBIO
                     parArrivalData(i).sTaxTotal = 0
                 Else
                     parArrivalData(i).sTaxTotal = CLng(pDataReader("入庫消費税額"))
+                End If
+                '入庫軽減税額
+                If IsDBNull(pDataReader("入庫軽減税額")) = True Then
+                    parArrivalData(i).sReducedTaxRate = 0
+                Else
+                    parArrivalData(i).sReducedTaxRate = CLng(pDataReader("入庫軽減税額"))
                 End If
                 '入庫税込金額
                 If IsDBNull(pDataReader("入庫税込金額")) = True Then
