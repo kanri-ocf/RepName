@@ -145,9 +145,10 @@
                                 If j > 0 Then
                                     strSelect = strSelect & "Or "
                                 End If
-                                strSelect = strSelect & "スタッフ種別 = """ & keyStaffClass.Substring(j, 1) & """) "
+                                strSelect = strSelect & "スタッフ種別 = """ & keyStaffClass.Substring(j, 1) & """ "
                             Next j
                             scnt = scnt + 1
+                            strSelect = strSelect & ") "
                         Case 8
                             If scnt > 0 Then
                                 strSelect = strSelect & "AND "
