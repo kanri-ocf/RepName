@@ -176,12 +176,23 @@
         str = ""
         For i = 0 To oRole.Length - 1
             If oRole(i).sRoleCode <> "0000000000000" Then
-                DATA_V.Rows.Add( _
-                        oRole(i).sRoleCode, _
-                        oRole(i).sRoleName _
+                DATA_V.Rows.Add(
+                        oRole(i).sRoleCode,
+                        oRole(i).sRoleName
                 )
             End If
         Next i
+    End Sub
+    '***********************************************
+    '検索結果を画面リセット
+    '***********************************************
+    Sub SEARCH_RESULT_LISET()
+        Dim i As Integer
+
+        For i = 0 To DATA_V.Rows.Count
+            DATA_V.Rows.Clear()
+        Next i
+
     End Sub
 
     Private Sub SEARCH_PROC()
@@ -223,16 +234,18 @@
             If RecordCnt > DISP_COW_MAX Then
                 Message_form.Dispose()
                 Message_form = Nothing
-                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                            "条件を変更して再建策して下さい", _
+                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                            "条件を変更して再建策して下さい",
                                             Nothing, Nothing)
                 Message_form.ShowDialog()
                 Message_form = Nothing
                 Exit Sub
             End If
-
             '検索結果の画面セット
             SEARCH_RESULT_SET()
+        ElseIf RecordCnt = 0 Then
+            '検索結果の画面リセット
+            SEARCH_RESULT_LISET()
         End If
 
         'メッセージウィンドウのクリア
@@ -268,7 +281,6 @@
     End Sub
 
     Private Sub NEW_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NEW_B.Click
-        Dim Message_form As cMessageLib.fMessage
 
         Dim fRoleSub_form As New fRoleMstSub(oConn, oCommand, oDataReader, oConf, Nothing, STAFF_CODE_T.Text, oTran)
         fRoleSub_form.ShowDialog()
