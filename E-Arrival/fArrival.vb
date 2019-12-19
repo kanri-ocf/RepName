@@ -1865,7 +1865,6 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
 
         ORDER_DATA()
         ORDER_SUB_DATA()
-        ARRIVAL_DATA()
 
         '2019,12,13 A.Komita 注文番号を読み込む前に税モード切替を行った時、下記if文で例外が発生する為意図的に処理を終了させる From
         If SUPPLIER_T.Text = "" And ChangeMode = True Then
@@ -3225,12 +3224,6 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
 
     End Function
 
-    Private Function ARRIVAL_DATA() As Long
-        Dim RecordCnt As Integer
-
-        RecordCnt = oDataArrivalDBIO.getArrivalData(oArrivalData, ORDER_CODE_T.Text, Nothing, Nothing, oTran)
-
-    End Function
 
     'Orderで税抜登録→Arrivalのデフォルトが税込なので発注単価と納入単価を税込にするメソッド
     Private Sub Cal_Proc_View(ByVal stopValue As Boolean)
