@@ -354,12 +354,17 @@ Public Class cViewTrnSummaryDBIO
 
 
         Try
+            '2019.12.19 R.Takashima  SQLの追加
+            'Sum(日次取引明細データ.取引消費税額) AS 通常税額
+            'Sum(日次取引明細データ.取引軽減消費税額) AS 軽減税額
             strSelectTrn =
                 "SELECT " &
                     "日次取引データ.チャネルコード AS チャネルコード, " &
                     "チャネルマスタ.チャネル名称 AS チャネル名称, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
+                    "Sum(日次取引明細データ.取引消費税額) AS 通常税額 " &
+                    "Sum(日次取引明細データ.取引軽減消費税額) As 軽減税額 " &
                 "FROM " &
                     "(日次取引データ LEFT JOIN チャネルマスタ ON 日次取引データ.チャネルコード = チャネルマスタ.チャネルコード) " &
                     "LEFT JOIN 日次取引明細データ ON 日次取引データ.取引コード = 日次取引明細データ.取引コード "
@@ -436,6 +441,21 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("税込金額の合計"))
                 End If
+
+                '2019.12.19 R.takashima FROM
+                '通常税額
+                If IsDBNull(pDataReader("通常税額")) = True Then
+                    parMonthTrnSummary(i).sTaxPrice = 0
+                Else
+                    parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("通常税額"))
+                End If
+                '軽減税額
+                If IsDBNull(pDataReader("軽減税額")) = True Then
+                    parMonthTrnSummary(i).sReduceTaxPrice = 0
+                Else
+                    parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("軽減税額"))
+                End If
+                '2019.12.19 R.takashima TO
 
                 'レコードが取得できた時の処理
                 i = i + 1

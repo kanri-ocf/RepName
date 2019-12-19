@@ -636,7 +636,12 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.19 R.Takashima FROM
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.19 R.Takashima TO
             End If
 
             CHANNEL_V.Rows.Add( _
@@ -1936,6 +1941,8 @@
         '現在入力途中のコントロール
         Static Dim CurrentControl As Control
 
+        'コントロールが無ければ（初期状態）現在のコントロールを代入
+        'コントロールの値が同じでない場合は処理を終了
         If IsNothing(CurrentControl) Then
             CurrentControl = control
         ElseIf CurrentControl.Equals(control) <> True Then
