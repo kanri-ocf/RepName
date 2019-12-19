@@ -575,8 +575,8 @@
             pCommand.Transaction = Tran
 
             'SQL文の設定
-            strDelete = "DELETE 支払方法マスタ.支払方法コード FROM 支払方法マスタ " & _
-                        "WHERE 支払方法マスタ.支払方法コード=" & KeyPaymentCode & " "
+            strDelete = "DELETE * FROM 支払方法マスタ " &
+                        "WHERE 支払方法マスタ.支払方法コード = " & KeyPaymentCode & " "
 
             pCommand.CommandText = strDelete
 
