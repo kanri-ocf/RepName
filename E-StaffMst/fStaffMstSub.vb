@@ -745,7 +745,7 @@
     End Sub
 
     Private Sub SYAIN_CODE_T_KeyPress(sender As Object, e As KeyPressEventArgs) Handles SYAIN_CODE_T.KeyPress
-        If e.KeyChar < "0"c OrElse "9"c < e.KeyChar Then
+        If （e.KeyChar < "0"c OrElse "9"c < e.KeyChar) And e.KeyChar <> vbBack Then
             '押されたキーが 0～9でない場合は、イベントをキャンセルする
             e.Handled = True
         End If
