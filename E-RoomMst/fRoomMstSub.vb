@@ -361,8 +361,8 @@
         End If
 
         If ROOM_NAME_T.Text = "" Then
-            Message_form = New cMessageLib.fMessage(1, "役割名称が未入力です。", _
-                                             "役割名称を入力して下さい。", _
+            Message_form = New cMessageLib.fMessage(1, "ルーム名称が未入力です。",
+                                             "ルーム名称を入力して下さい。",
                                              Nothing, Nothing)
 
             Message_form.ShowDialog()
