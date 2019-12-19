@@ -191,13 +191,24 @@
 
         '表示設定
         For i = 0 To oSupplier.Length - 1
-            DATA_V.Rows.Add( _
-                    oSupplier(i).sSupplierCode, _
-                    oSupplier(i).sSupplierName, _
-                    oSupplier(i).sTEL _
+            DATA_V.Rows.Add(
+                    oSupplier(i).sSupplierCode,
+                    oSupplier(i).sSupplierName,
+                    oSupplier(i).sTEL
             )
         Next i
     End Sub
+    '***********************************************
+    '検索結果を画面リセット
+    '***********************************************
+    Sub SEARCH_RESULT_LISET()
+        Dim i As Integer
+
+        For i = 0 To DATA_V.Rows.Count
+            DATA_V.Rows.Clear()
+        Next i
+    End Sub
+    '表示設
 
     Private Sub SEARCH_PROC()
         Dim pSupplierCode As String
@@ -241,8 +252,8 @@
             If RecordCnt > DISP_ROW_MAX Then
                 Message_form.Dispose()
                 Message_form = Nothing
-                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                            "条件を変更して再建策して下さい", _
+                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                            "条件を変更して再建策して下さい",
                                             Nothing, Nothing)
                 Message_form.ShowDialog()
                 Message_form = Nothing
@@ -251,6 +262,9 @@
 
             '検索結果の画面セット
             SEARCH_RESULT_SET()
+        ElseIf RecordCnt = 0 Then
+            '検索結果の画面リセット
+            SEARCH_RESULT_LISET()
         End If
 
         'メッセージウィンドウのクリア
