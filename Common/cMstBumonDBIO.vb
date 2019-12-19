@@ -535,8 +535,8 @@
     Public Function insertBumonMst(ByVal parBumon As cStructureLib.sBumon, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
         'SQL文の設定
-        Const strInsert As String = "INSERT INTO 部門マスタ " & _
-        "( 部門コード, 部門名称, 部門略称, 部門種別, 予約フラグ, 予約単位, 税区分名称, 登録日, 登録時間, 最終更新日, 最終更新時間 ) " & _
+        Const strInsert As String = "INSERT INTO 部門マスタ " &
+        "( 部門コード, 部門名称, 部門略称, 部門種別, 予約フラグ, 予約単位, 税区分コード, 登録日, 登録時間, 最終更新日, 最終更新時間 ) " &
         "VALUES (@BumonCode, @BumonName, @BumonShortName, @BumonClass, @ReservFlg, @ReservPeace, @TaxClassName, @CreateDate, @CreateTime, @UpdateDate, @UpdateTime)"
 
         'コマンドオブジェクトの生成
