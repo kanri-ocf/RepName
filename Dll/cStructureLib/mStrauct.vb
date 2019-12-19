@@ -2846,6 +2846,12 @@ Public Structure sViewMonthTrnSummary
     Public sPrice As Long
     '部門種別
     Public sBumonClass As Integer
+    '2019.12.19 R.Takashima FROM
+    '消費税額
+    Public sTaxPrice As Long
+    '軽減消費税額
+    Public sReduceTaxPrice As Long
+    '2019.12.19 R.Takashima TO
 End Structure
 #End Region
 
