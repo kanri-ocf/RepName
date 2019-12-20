@@ -1303,7 +1303,7 @@
         'ADO.NETによる'DB接続文字列の設定
         '注：プロジェクトファイルホルダの下にあるbinホルダにMDBを置く
 
-        StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB_BK.mdb;"
+        StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB.mdb;"
         pConn = New OleDb.OleDbConnection(StrPath)
 
         'ＤＢ接続を開く
