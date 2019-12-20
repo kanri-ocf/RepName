@@ -767,7 +767,7 @@ Public Structure sRoomBumon
     'ルームコード
     Public sRoomCode As Integer
     '部門コード
-    Public sBumonCode As Integer
+    Public sBumonCode As Long
     '登録日
     Public sCreateDate As String
     '登録時間
