@@ -1053,6 +1053,8 @@ Public Structure sAccount
     Public sLinkMasterName As String
     '税区分コード
     Public sTaxClassCode As Integer
+    '税区分名称
+    Public sTaxClassName As String
     '登録日
     Public sCreateDate As String
     '登録時間

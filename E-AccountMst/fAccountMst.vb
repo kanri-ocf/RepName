@@ -141,7 +141,7 @@ Public Class fAccountMst
 
         '勘定科目コンボ内容設定
         ReDim oChannel(0)
-        RecordCnt = oMstAccountDBIO.getAccount(oAccount, Nothing, Nothing, Nothing, Nothing, oTran)
+        RecordCnt = oMstAccountDBIO.getAccount(oAccount, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         'RecordCnt = oMstAccountDBIO.getAccount(oAccount, Nothing, 1, Nothing, Nothing, oTran)
         If RecordCnt < 1 Then
             'メッセージウィンドウ表示
@@ -168,7 +168,9 @@ Public Class fAccountMst
             End If
         Next
         For i = 0 To RecordCnt - 1
-            S_TAX_CLASS_L.Items.Add(oAccount(i).sTaxClassCode)
+            If oAccount(i).sTaxClassName <> "-" Then
+                S_TAX_CLASS_L.Items.Add(oAccount(i).sTaxClassName)
+            End If
         Next
         oDataReader = Nothing
 
@@ -242,6 +244,7 @@ Public Class fAccountMst
                         oAccountFull(i).sTaxClassName
                 )
         Next i
+
     End Sub
     '***********************************************
     '検索結果を画面リセット
@@ -295,14 +298,14 @@ Public Class fAccountMst
         End If
 
         '勘定科目マスタの読み込み
-        RecordCnt = oMstAccountDBIO.getAccountFull( _
-                        oAccountFull, _
-                        pAccountCode, _
-                        pAccountName, _
-                        pLinkMasterName, _
-                        Nothing, _
-                        pTaxClassName, _
-                        oTran _
+        RecordCnt = oMstAccountDBIO.getAccountFull(
+                        oAccountFull,
+                        pAccountCode,
+                        pAccountName,
+                        pLinkMasterName,
+                        Nothing,
+                        pTaxClassName,
+                        oTran
         )
 
         If RecordCnt > 0 Then
@@ -322,7 +325,7 @@ Public Class fAccountMst
             SEARCH_RESULT_SET()
         ElseIf RecordCnt = 0 Then
 
-            '検索結果の画面セット
+            '検索結果の画面リセット
             SEARCH_RESULT_LISET()
         End If
 
