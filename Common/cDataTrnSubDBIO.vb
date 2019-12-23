@@ -316,6 +316,15 @@ Public Class cDataTrnSubDBIO
                 End If
                 '2019.10.16 R.Takashima TO
 
+                '2019,12,23 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parSubTrn(i).sReducedTaxRate = 0
+                Else
+                    parSubTrn(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                End If
+                '2019,12,23 A.Komita 追加 To
+
                 '取引税込金額
                 If IsDBNull(pDataReader("取引税込金額")) = True Then
                     parSubTrn(i).sPrice = 0
@@ -604,6 +613,7 @@ Public Class cDataTrnSubDBIO
                                                 "取引税抜金額, " &
                                                 "取引消費税額, " &
                                                 "取引軽減消費税額, " &
+                                                "軽減税率, " &
                                                 "取引税込金額, " &
                                                 "備考, " &
                                                 "登録日, " &
@@ -637,6 +647,7 @@ Public Class cDataTrnSubDBIO
                                                 "@NoTaxPrice, " &
                                                 "@TaxPrice, " &
                                                 "@ReduceTaxPrice, " &
+                                                "@ReducedTaxRate, " &
                                                 "@Price, " &
                                                 "@Memo, " &
                                                 "@CreateDate, " &
@@ -759,6 +770,14 @@ Public Class cDataTrnSubDBIO
             (New OleDb.OleDbParameter("@ReduceTaxPrice", OleDb.OleDbType.Numeric, 10))
             pCommand.Parameters("@ReduceTaxPrice").Value = parSubTrn.sReducedTaxRatePrice
             '2019.10.5 R.Takashima TO
+
+            '2019,12,23 A.Komita 追加 From
+            '軽減税率
+            pCommand.Parameters.Add _
+            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Char, 10))
+            pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            '2019,12,23 A.Komita 追加 To
+
             '取引税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Price", OleDb.OleDbType.Numeric, 10))
@@ -841,6 +860,7 @@ Public Class cDataTrnSubDBIO
                             "取引税抜金額=" & parSubTrn.sNoTaxPrice & " , " &
                             "取引消費税額=" & parSubTrn.sPointDiscountPrice & " , " &
                             "取引軽減消費税額=" & parSubTrn.sReducedTaxRatePrice & " , " &
+                            "軽減税率=" & parSubTrn.sReducedTaxRate & " , " &
                             "取引税込金額=" & parSubTrn.sPrice & " , " &
                             "備考=""" & parSubTrn.sMemo & """ , " &
                             "最終更新日=""" & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
