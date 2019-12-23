@@ -224,7 +224,7 @@
                 If IsDBNull(pDataReader("部門コード")) = True Then
                     parRoomBumon(i).sBumonCode = 0
                 Else
-                    parRoomBumon(i).sBumonCode = CInt(pDataReader("部門コード"))
+                    parRoomBumon(i).sBumonCode = CLng(pDataReader("部門コード"))
                 End If
                 '登録日
                 parRoomBumon(i).sUpdateDate = pDataReader("登録日").ToString

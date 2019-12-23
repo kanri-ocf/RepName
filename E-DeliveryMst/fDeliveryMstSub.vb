@@ -156,7 +156,30 @@
     Private Sub COMMIT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COMMIT_B.Click
         Dim Message_form As cMessageLib.fMessage
         Dim RecordCount As Long
-
+        If ITEM_NAME_L.Text = "" Then
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+                        "項目種別が選択されていません。",
+                        Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+            Exit Sub
+        End If
+        If NAME_T.Text = "" Then
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+            "種別名称が記入されていません。",
+            Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+            Exit Sub
+        End If
+        'If CLASS_VALUE_T.Text = "" Then
+        '    Message_form = New cMessageLib.fMessage(1, Nothing,
+        '    "種別値が記入されていません。",
+        '    Nothing, Nothing)
+        '    Message_form.ShowDialog()
+        '    Message_form = Nothing
+        '    Exit Sub
+        'End If
         oTran = Nothing
         oTran = oConn.BeginTransaction
 
@@ -190,8 +213,8 @@
         'マスタの登録
         oMstDeliveryClassDBIO.deleteDeliveryClassMst(KEY_CODE, Nothing, oTran)
 
-        Message_form = New cMessageLib.fMessage(1, Nothing, _
-                    "登録が完了しました。", _
+        Message_form = New cMessageLib.fMessage(1, Nothing,
+                    "削除が完了しました。",
                     Nothing, Nothing)
         Message_form.ShowDialog()
         Message_form = Nothing
@@ -213,28 +236,28 @@
         Me.Close()
     End Sub
 
-    Private Sub DELETE_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DELETE_B.Click
-        Dim Message_form As cMessageLib.fMessage
+    'Private Sub DELETE_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DELETE_B.Click
+    '    Dim Message_form As cMessageLib.fMessage
 
-        oTran = Nothing
-        oTran = oConn.BeginTransaction
+    '    'oTran = Nothing
+    '    'oTran = oConn.BeginTransaction
 
 
-        'マスタの登録
-        oMstDeliveryClassDBIO.deleteDeliveryClassMst(KEY_CODE, Nothing, oTran)
+    '    'マスタの登録
+    '    oMstDeliveryClassDBIO.deleteDeliveryClassMst(KEY_CODE, Nothing, oTran)
 
-        oTran.Commit()
+    '    oTran.Commit()
 
-        Message_form = New cMessageLib.fMessage(1, Nothing, _
-                    "登録が完了しました。", _
-                    Nothing, Nothing)
-        Message_form.ShowDialog()
-        Message_form = Nothing
+    '    Message_form = New cMessageLib.fMessage(1, Nothing,
+    '                "削除が完了しました。",
+    '                Nothing, Nothing)
+    '    Message_form.ShowDialog()
+    '    Message_form = Nothing
 
-        Application.DoEvents()
+    '    Application.DoEvents()
 
-        CLOSE_PROC()
+    '    CLOSE_PROC()
 
-    End Sub
+    'End Sub
 
 End Class

@@ -405,7 +405,7 @@
         For i = 0 To DATA_V.Rows.Count - 1
             ReDim oRoomBumon(0)
             oRoomBumon(0).sRoomCode = CInt(ROOM_CODE_T.Text)
-            oRoomBumon(0).sBumonCode = CInt(DATA_V("部門コード", i).Value)
+            oRoomBumon(0).sBumonCode = CLng(DATA_V("部門コード", i).Value)
             oRoomDBIO.insertRoomBumon(oRoomBumon(0), oTran)
         Next i
 
@@ -462,7 +462,7 @@
 
         '部門コンボ内容設定
         ReDim pBumon(0)
-        oBumonDBIO.getBumonMst(pBumon, CInt(BUMON_CODE_T.Text), Nothing, Nothing, True, Nothing, Nothing, oTran)
+        oBumonDBIO.getBumonMst(pBumon, CLng(BUMON_CODE_T.Text), Nothing, Nothing, True, Nothing, Nothing, oTran)
 
         DATA_V.Rows.Add( _
             pBumon(0).sBumonCode, _

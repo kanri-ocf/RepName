@@ -37,7 +37,18 @@
 
     Private Sub OK_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_B.Click
         oTool = Nothing
+        If POINT_T.Text = "" Then
+            'メッセージウィンドウ表示
+            Dim Message_form As cMessageLib.fMessage
 
+            Message_form = New cMessageLib.fMessage(1, "タグ印刷時のスタート位置を",
+                                            "指定して下さい",
+                                            Nothing, Nothing)
+            Message_form.ShowDialog()
+            System.Windows.Forms.Application.DoEvents()
+            POINT_T.Focus()
+            Exit Sub
+        End If
         Me.DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
 

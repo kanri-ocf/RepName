@@ -13,6 +13,8 @@ Public Class fAccountMst
     Private oChannel() As cStructureLib.sChannel
     Private oMstChannelDBIO As cMstChannelDBIO
 
+    Private oAccount() As cStructureLib.sAccount
+
     Private oConf() As cStructureLib.sConfig
     Private oMstConfigDBIO As cMstConfigDBIO
 
@@ -139,7 +141,8 @@ Public Class fAccountMst
 
         '勘定科目コンボ内容設定
         ReDim oChannel(0)
-        RecordCnt = oMstChannelDBIO.getChannelMst(oChannel, Nothing, 1, Nothing, Nothing, oTran)
+        RecordCnt = oMstAccountDBIO.getAccount(oAccount, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
+        'RecordCnt = oMstAccountDBIO.getAccount(oAccount, Nothing, 1, Nothing, Nothing, oTran)
         If RecordCnt < 1 Then
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
@@ -160,7 +163,14 @@ Public Class fAccountMst
 
         'リストボックスへの値セット
         For i = 0 To RecordCnt - 1
-            S_TAX_CLASS_L.Items.Add(oChannel(i).sChannelName)
+            If oAccount(i).sLinkMasterName <> "" Then
+                S_LINK_MASTER_L.Items.Add(oAccount(i).sLinkMasterName)
+            End If
+        Next
+        For i = 0 To RecordCnt - 1
+            If oAccount(i).sTaxClassName <> "-" Then
+                S_TAX_CLASS_L.Items.Add(oAccount(i).sTaxClassName)
+            End If
         Next
         oDataReader = Nothing
 
@@ -227,12 +237,23 @@ Public Class fAccountMst
 
         '表示設定
         For i = 0 To oAccountFull.Length - 1
-            DATA_V.Rows.Add( _
-                        oAccountFull(i).sAccountCode, _
-                        oAccountFull(i).sAccountName, _
-                        oAccountFull(i).sLinkMasterName, _
-                        oAccountFull(i).sTaxClassName _
+            DATA_V.Rows.Add(
+                        oAccountFull(i).sAccountCode,
+                        oAccountFull(i).sAccountName,
+                        oAccountFull(i).sLinkMasterName,
+                        oAccountFull(i).sTaxClassName
                 )
+        Next i
+
+    End Sub
+    '***********************************************
+    '検索結果を画面リセット
+    '***********************************************
+    Sub SEARCH_RESULT_LISET()
+        Dim i As Integer
+
+        For i = 0 To DATA_V.Rows.Count
+            DATA_V.Rows.Clear()
         Next i
     End Sub
 
@@ -277,14 +298,14 @@ Public Class fAccountMst
         End If
 
         '勘定科目マスタの読み込み
-        RecordCnt = oMstAccountDBIO.getAccountFull( _
-                        oAccountFull, _
-                        pAccountCode, _
-                        pAccountName, _
-                        pLinkMasterName, _
-                        Nothing, _
-                        pTaxClassName, _
-                        oTran _
+        RecordCnt = oMstAccountDBIO.getAccountFull(
+                        oAccountFull,
+                        pAccountCode,
+                        pAccountName,
+                        pLinkMasterName,
+                        Nothing,
+                        pTaxClassName,
+                        oTran
         )
 
         If RecordCnt > 0 Then
@@ -292,8 +313,8 @@ Public Class fAccountMst
             If RecordCnt > DISP_COW_MAX Then
                 Message_form.Dispose()
                 Message_form = Nothing
-                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                            "条件を変更して再建策して下さい", _
+                Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                            "条件を変更して再建策して下さい",
                                             Nothing, Nothing)
                 Message_form.ShowDialog()
                 Message_form = Nothing
@@ -302,6 +323,10 @@ Public Class fAccountMst
 
             '検索結果の画面セット
             SEARCH_RESULT_SET()
+        ElseIf RecordCnt = 0 Then
+
+            '検索結果の画面リセット
+            SEARCH_RESULT_LISET()
         End If
 
         'メッセージウィンドウのクリア
