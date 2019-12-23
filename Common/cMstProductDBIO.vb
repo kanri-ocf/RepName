@@ -25,7 +25,7 @@ Public Class cMstProductDBIO
                                ByVal KeyProductCode As String,
                                ByVal KeyJanCode As String,
                                ByVal KeySupplierCode As Integer,
-                               ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                               ByRef Tran As OleDb.OleDbTransaction) As Long
 
         Dim strSelect As String
         Dim i As Long

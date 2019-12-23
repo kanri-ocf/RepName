@@ -1,4 +1,6 @@
-﻿Public Class fMonthClose
+﻿Imports cReportsLib
+
+Public Class fMonthClose
     '------------------------------------
     ' DBアクセス関連
     '------------------------------------
@@ -23,7 +25,7 @@
 
     Private oTool As cTool
 
-    Private oTran As System.Data.OleDb.OleDbTransaction
+    Private oTran As OleDb.OleDbTransaction
 
     Private pProductTotal As Long
     Private pProductSaleTotal As Long
@@ -35,6 +37,9 @@
     Private pStockTotal As Long
     Private pProfit As Long
 
+    '2019,12,23 A.Komita 追加 From
+    Private ORDER_MODE As Integer
+    '2019,12,23 A.Komita 追加 To
 
     Sub New()
 
@@ -73,7 +78,7 @@
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
-    Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Const WS_EX_DLGMODALFRAME As Integer = &H1
             Dim cp As CreateParams = MyBase.CreateParams
@@ -82,7 +87,7 @@
         End Get
     End Property
 
-    Private Sub fMonthClose_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub fMonthClose_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim RecordCnt As Integer
 
         '----------------------- SoftGroupライセンス認証 ----------------------
@@ -105,8 +110,8 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -169,12 +174,21 @@
         CLOSE_YEAR_T.Focus()
     End Sub
 
-    Private Sub fMonthClose_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+    Private Sub fMonthClose_Shown(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Shown
 
         '初期化処理
         INIT_PROC()
 
     End Sub
+
+    '2019,12,23 A.Komita 印刷を実行させる為の変数をメソッド内に追加 From
+    Sub New(ByVal iOrderMode As Integer)
+
+        ORDER_MODE = iOrderMode
+
+    End Sub
+    '2019,12,23 A.Komita 追加 To
+
     '----------------------------------------- < 内部関数 > -------------------------------------------
     '***************************
     'チャネルリストボックスセット
@@ -639,7 +653,6 @@
                 '2019.12.19 R.Takashima FROM
                 '軽減税率が含まれていると数値がずれるため修正
                 'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
-
                 pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
                 '2019.12.19 R.Takashima TO
             End If
@@ -694,7 +707,11 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
             BUMON_V.Rows.Add( _
@@ -742,7 +759,11 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
             PAYMENT_V.Rows.Add( _
@@ -783,7 +804,11 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
             CATEGORY_V.Rows.Add( _
@@ -914,12 +939,12 @@
     End Function
 
 
-    Private Sub QUIT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QUIT_B.Click
+    Private Sub QUIT_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles QUIT_B.Click
         Dim Message_form As cMessageLib.fMessage
 
         'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(2, Nothing, _
-                                        "今回の締め処理は無効となります。", _
+        Message_form = New cMessageLib.fMessage(2, Nothing,
+                                        "今回の締め処理は無効となります。",
                                         "よろしいですか？", Nothing)
         Message_form.ShowDialog()
         '確認ダイアログでNOが選択された場合
@@ -932,13 +957,13 @@
         Me.Close()
     End Sub
 
-    Private Sub COMMIT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COMMIT_B.Click
+    Private Sub COMMIT_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles COMMIT_B.Click
         Dim Message_form As cMessageLib.fMessage
 
         'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(2, _
-                                        oConf(0).sDataPeriod & "ヶ月以前のデータは", _
-                                        "バックアップ後、削除されます。", _
+        Message_form = New cMessageLib.fMessage(2,
+                                        oConf(0).sDataPeriod & "ヶ月以前のデータは",
+                                        "バックアップ後、削除されます。",
                                         "よろしいですか？", Nothing)
         Message_form.ShowDialog()
         '確認ダイアログでNOが選択された場合
@@ -963,7 +988,7 @@
         oTool = Nothing
 
     End Sub
-    Private Sub CAL_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CAL_B.Click
+    Private Sub CAL_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CAL_B.Click
 
         '2019.12.18 R.Takashima FROM
         '日付の範囲指定にて開始月が終了日以上にならないように変更
@@ -1135,6 +1160,7 @@
         pPrice = 0
         pTotal = 0
 
+
         For i = 0 To oMonthTrnSummary.Length - 1
 
             If IN_R.Checked = True Then     '税込みモードの場合
@@ -1143,13 +1169,16 @@
                 pPostageTotal = pPostageTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sPostage, oConf(0).sTax, oConf(0).sFracProc)
                 pFeeTotal = pFeeTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sFee, oConf(0).sTax, oConf(0).sFracProc)
                 pDiscountTotal = pDiscountTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount, oConf(0).sTax, oConf(0).sFracProc)
-            Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
-                pTotal = pTotal + oMonthTrnSummary(i).sPrice
-                pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
-                pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
-                pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
+
+            Else    '税抜きモードの場合              
+            pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                    pTotal = pTotal + oMonthTrnSummary(i).sPrice
+                    pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
+                    pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
+                    pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
+
             End If
+
 
             If pPrice > 0 Then
                 RANK_V.Rows.Add( _
@@ -1667,14 +1696,17 @@
         DATA_SET_SUPPLIER()
     End Sub
 
-    Private Sub IN_R_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles IN_R.CheckedChanged
+    Private Sub IN_R_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles IN_R.CheckedChanged
         CAL_PROC()
     End Sub
 
     Private Sub PRINT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRINT_B.Click
-        Dim form_MonthCloseReport As cReportsLib.fMonthCloseReport
+        Dim form_MonthCloseReport As fMonthCloseReport
         Dim cnCode As Integer
         Dim spCode As Integer
+        'Dim ret As Integer
+        'Dim ReportMode As String
+        'Dim oReportPage As New cReportsLib.cReportsLib
 
         If CHANNEL_NAME_C.Text = "" Then
             cnCode = Nothing
@@ -1688,24 +1720,34 @@
             spCode = CInt(SUPPLIER_CODE_T.Text)
         End If
 
-        form_MonthCloseReport = New cReportsLib.fMonthCloseReport( _
-                                            oConn, _
-                                            oCommand, _
-                                            oDataReader, _
-                                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
-                                            cnCode, _
-                                            spCode, _
+        form_MonthCloseReport = New fMonthCloseReport(
+                                            oConn,
+                                            oCommand,
+                                            oDataReader,
+                                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
+                                            cnCode,
+                                            spCode,
                                             oTran)
+
+        ''印刷開始
+        'If ORDER_MODE = 0 Then      '発注伝票印刷
+        '    ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, CLOSE_YEAR_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+        '    oReportPage = Nothing
+        'Else                        '返品伝票印刷
+        '    ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, CLOSE_YEAR_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+
+        '    oReportPage = Nothing
+        'End If
 
 
     End Sub
 
-    Private Sub FROM_YEAR_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_YEAR_T.GotFocus
+    Private Sub FROM_YEAR_T_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_YEAR_T.GotFocus
         FROM_YEAR_T.SelectAll()
     End Sub
 
-    Private Sub FROM_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_YEAR_T.LostFocus
+    Private Sub FROM_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_YEAR_T.LostFocus
         '2019.12.18 R.Takashima 
         'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
         SetDate(sender, 0)
@@ -2073,5 +2115,10 @@
 
     End Sub
 
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
+    End Sub
+
     '2019.12.18 R.Takashima TO
+
 End Class

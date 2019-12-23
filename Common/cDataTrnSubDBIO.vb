@@ -6,6 +6,7 @@ Public Class cDataTrnSubDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
+
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
         pCommand = iCommand
@@ -569,7 +570,7 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function insertSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
 
         Try
 

@@ -1,8 +1,4 @@
-﻿Imports System
-Imports DataDynamics.ActiveReports
-Imports DataDynamics.ActiveReports.Document
-
-Public Class rDayCloseReport
+﻿Public Class rDayCloseReport
     Private oConn As OleDb.OleDbConnection
     Private oCommand As OleDb.OleDbCommand
     Private oDataReader As OleDb.OleDbDataReader
@@ -49,16 +45,16 @@ Public Class rDayCloseReport
 
     Private oTran As System.Data.OleDb.OleDbTransaction
 
-    Sub New(ByRef iConn As OleDb.OleDbConnection, _
-            ByRef iCommand As OleDb.OleDbCommand, _
-            ByRef iDataReader As OleDb.OleDbDataReader, _
-            ByRef iCalc() As cStructureLib.sCalc, _
-            ByRef iTrnSummary() As cStructureLib.sViewTrnSummary, _
-            ByVal iStaff_Code As String, _
-            ByVal iStaff_Name As String, _
-            ByVal iCloseDate As String, _
-            ByVal iSubCloseDate As String, _
-            ByVal iMeisai_Print_Flg As Boolean, _
+    Sub New(ByRef iConn As OleDb.OleDbConnection,
+            ByRef iCommand As OleDb.OleDbCommand,
+            ByRef iDataReader As OleDb.OleDbDataReader,
+            ByRef iCalc() As cStructureLib.sCalc,
+            ByRef iTrnSummary() As cStructureLib.sViewTrnSummary,
+            ByVal iStaff_Code As String,
+            ByVal iStaff_Name As String,
+            ByVal iCloseDate As String,
+            ByVal iSubCloseDate As String,
+            ByVal iMeisai_Print_Flg As Boolean,
             ByRef iTran As System.Data.OleDb.OleDbTransaction)
         Dim i As Integer
 
@@ -92,8 +88,8 @@ Public Class rDayCloseReport
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             System.Windows.Forms.Application.DoEvents()
@@ -229,7 +225,7 @@ Public Class rDayCloseReport
         Fields.Add("INOUT_DETAIL")
     End Sub
 
-    Private Sub fDayCloseReport_FetchData(ByVal sender As Object, ByVal eArgs As DataDynamics.ActiveReports.ActiveReport.FetchEventArgs) Handles Me.FetchData
+    Private Sub fDayCloseReport_FetchData(ByVal sender As Object, ByVal eArgs As FetchEventArgs) Handles Me.FetchData
         '現金状況情報セット
         If RECORD_NO = 0 Then
             CASH_INFO()

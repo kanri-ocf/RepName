@@ -2205,6 +2205,12 @@ Public Structure sSubTrn
     Public sTaxPrice As Long
     '取引軽減消費税額  2019/10/3 R.Takashima
     Public sReducedTaxRatePrice As Long
+
+    '2019,12,23 A.Komita 追加 From
+    '軽減税率 
+    Public sReducedTaxRate As String
+    '2019,12,23 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
     '備考
