@@ -39,6 +39,7 @@ Public Class cViewTrnSummaryDBIO
                     "チャネルマスタ.チャネル名称 AS チャネル名称, " &
                     "日次取引データ.取引区分 AS 取引区分, " &
                     "日次取引明細データ.部門コード AS 部門コード, " &
+                    "日次取引明細データ.軽減税率 AS 軽減税率, " &
                     "部門マスタ.部門略称 AS 部門略称, " &
                     "日次取引データ.支払方法コード AS 支払方法コード, " &
                     "支払方法マスタ.支払方法名称, " &
@@ -111,6 +112,16 @@ Public Class cViewTrnSummaryDBIO
                 parTrnSummary(i).sTrnClass = pDataReader("取引区分").ToString
                 '部門コード
                 parTrnSummary(i).sBumonCode = pDataReader("部門コード").ToString
+
+                '2019,12,24 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parTrnSummary(i).sReducedTaxRate = ""
+                Else
+                    parTrnSummary(i).sReducedTaxRate = pDataReader("軽減税率").ToString
+                End If
+                '2019,12,24 A.Komita 追加 To
+
                 '部門略称
                 parTrnSummary(i).sBumonShortName = pDataReader("部門略称").ToString
                 '支払方法コード

@@ -887,23 +887,23 @@
         For i = 0 To oAdjust.Count - 1
             Select Case oAdjust(i).sAdjustClass
                 Case "レジ入金"
-                    OpenCash = OpenCash + CLng(oAdjust(i).sTotalPrice)
+                    OpenCash = OpenCash + oAdjust(i).sTotalPrice
 
                 Case "入金"
-                    InputCash = InputCash + CLng(oAdjust(i).sTotalPrice)
+                    InputCash = InputCash + oAdjust(i).sTotalPrice
                     InputCashCnt = InputCashCnt + 1
                 Case "出金"
                     If oAdjust(i).sAccountCode = 0 And oAdjust(i).sSubAccountCode = 0 Then
                         RET_CASH_T.Text = String.Format("{0:C}", System.Math.Abs(oAdjust(i).sTotalPrice))
                     Else
-                        OutPutCash = OutPutCash + CLng(oAdjust(i).sTotalPrice)
+                        OutPutCash = OutPutCash + oAdjust(i).sTotalPrice
                         OutPutCashCnt = OutPutCashCnt + 1
                     End If
                 Case "戻入"
-                    ReturnCash = ReturnCash + CLng(oAdjust(i).sTotalPrice)
+                    ReturnCash = ReturnCash + oAdjust(i).sTotalPrice
                 Case "精算"
-                    AdujustCash = AdujustCash + CLng(oAdjust(i).sTotalPrice)
-                    STIFFNESS_CASH = CLng(oAdjust(i).sTotalPrice)
+                    AdujustCash = AdujustCash + oAdjust(i).sTotalPrice
+                    STIFFNESS_CASH = oAdjust(i).sTotalPrice
 
             End Select
         Next i
@@ -926,7 +926,7 @@
         If STIFFNESS_CASH = 0 Then
             DiffCash = 0
         Else
-            DiffCash = CLng(STIFFNESS_CASH) - CalCash
+            DiffCash = STIFFNESS_CASH - CalCash
         End If
 
         '画面セット

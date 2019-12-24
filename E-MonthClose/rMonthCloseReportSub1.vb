@@ -1,4 +1,4 @@
-﻿Imports DataDynamics.ActiveReports 
+﻿Imports DataDynamics.ActiveReports
 Imports DataDynamics.ActiveReports.Document
 
 
@@ -26,10 +26,10 @@ Public Class rMonthCloseReportSub1
 
     Private oTran As System.Data.OleDb.OleDbTransaction
 
-    Sub New(ByRef iConn As OleDb.OleDbConnection, _
-        ByRef iCommand As OleDb.OleDbCommand, _
-        ByRef iDataReader As OleDb.OleDbDataReader, _
-        ByRef iCloseDate As String, _
+    Sub New(ByRef iConn As OleDb.OleDbConnection,
+        ByRef iCommand As OleDb.OleDbCommand,
+        ByRef iDataReader As OleDb.OleDbDataReader,
+        ByRef iCloseDate As String,
         ByRef iTran As System.Data.OleDb.OleDbTransaction)
 
         Dim RecordCnt As Integer
@@ -53,8 +53,8 @@ Public Class rMonthCloseReportSub1
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             Application.DoEvents()
@@ -100,7 +100,7 @@ Public Class rMonthCloseReportSub1
             If oAdjust(RECORD_NO).sSubAccountName = "" Then
                 oAccountDBIO = New cMstAccountDBIO(oConn, oCommand, oDataReader)
                 'oAccountDBIO.getAccount(oAccount, oAdjust(RECORD_NO).sAccountCode, oTran)
-                oAccountDBIO.getAccount(oAccount, oAdjust(RECORD_NO).sAccountCode, Nothing, Nothing, Nothing, oTran)
+                oAccountDBIO.getAccount(oAccount, oAdjust(RECORD_NO).sAccountCode, Nothing, Nothing, Nothing, Nothing, oTran)
                 Select Case oAccount(0).sLinkMasterName
                     Case "仕入先マスタ"
                         oSupplierDBIO = New cMstSupplierDBIO(oConn, oCommand, oDataReader)

@@ -2790,6 +2790,12 @@ Public Structure sViewTrnSummary
     Public sTrnClass As String
     '部門コード
     Public sBumonCode As String
+
+    '2019,12,24 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As String
+    '2019,12,24 A.Komita 追加 To
+
     '部門略称
     Public sBumonShortName As String
     '支払方法コード
@@ -3947,6 +3953,11 @@ Public Structure sGraphData
     Public sPointDisCount As Long
     'チケット値引き
     Public sTicketDisCount As Long
+
+    '2019,12,24 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As String
+    '2019,12,24 A.Komita 追加 To
 End Structure
 
 '月次締め処理　グラフ生成用ストラクチャ

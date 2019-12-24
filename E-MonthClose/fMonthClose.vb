@@ -1171,16 +1171,20 @@ Public Class fMonthClose
                 pDiscountTotal = pDiscountTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount, oConf(0).sTax, oConf(0).sFracProc)
 
             Else    '税抜きモードの場合              
-            pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
-                    pTotal = pTotal + oMonthTrnSummary(i).sPrice
+                If oMonthTrnSummary(0).sReducedTaxRate = String.Empty Then
+                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(0).sReducedTaxRate, oConf(0).sFracProc)
+                End If
+                pTotal = pTotal + oMonthTrnSummary(i).sPrice
                     pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
                     pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
                     pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
 
-            End If
+                End If
 
 
-            If pPrice > 0 Then
+                If pPrice > 0 Then
                 RANK_V.Rows.Add( _
                     oMonthTrnSummary(i).sProductCode, _
                     oMonthTrnSummary(i).sProductName, _
