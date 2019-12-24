@@ -775,7 +775,11 @@ Public Class cDataTrnSubDBIO
             '軽減税率
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Char, 10))
-            pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            If IsNothing(parSubTrn.sReducedTaxRate) = True Then
+                 pCommand.Parameters("@ReducedTaxRate").Value =0
+            Else
+                pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            End If
             '2019,12,23 A.Komita 追加 To
 
             '取引税込金額

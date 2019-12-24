@@ -23,7 +23,7 @@ Public Class cViewTrnSummaryDBIO
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function getTrnSummary(ByRef parTrnSummary() As cStructureLib.sViewTrnSummary, ByVal keyCloseDate As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function getTrnSummary(ByRef parTrnSummary() As cStructureLib.sViewTrnSummary, ByVal keyCloseDate As String, ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
 
