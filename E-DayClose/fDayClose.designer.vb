@@ -88,7 +88,7 @@ Partial Class fDayClose
         Me.CLOSE_DATE_T.BackColor = System.Drawing.Color.Wheat
         Me.CLOSE_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CLOSE_DATE_T.Location = New System.Drawing.Point(197, 38)
-        Me.CLOSE_DATE_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.CLOSE_DATE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CLOSE_DATE_T.Name = "CLOSE_DATE_T"
         Me.CLOSE_DATE_T.Size = New System.Drawing.Size(389, 49)
         Me.CLOSE_DATE_T.TabIndex = 0
@@ -110,7 +110,7 @@ Partial Class fDayClose
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.STAFF_CODE_T.Location = New System.Drawing.Point(284, 1309)
-        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
         Me.STAFF_CODE_T.Size = New System.Drawing.Size(266, 33)
@@ -122,7 +122,7 @@ Partial Class fDayClose
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.STAFF_NAME_T.Location = New System.Drawing.Point(578, 1309)
-        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
         Me.STAFF_NAME_T.Size = New System.Drawing.Size(366, 33)
@@ -152,9 +152,9 @@ Partial Class fDayClose
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
         Me.GroupBox2.Location = New System.Drawing.Point(65, 77)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(6)
         Me.GroupBox2.Size = New System.Drawing.Size(1750, 522)
         Me.GroupBox2.TabIndex = 49
         Me.GroupBox2.TabStop = False
@@ -165,7 +165,7 @@ Partial Class fDayClose
         Me.RET_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.RET_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RET_CASH_T.Location = New System.Drawing.Point(197, 454)
-        Me.RET_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.RET_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RET_CASH_T.Name = "RET_CASH_T"
         Me.RET_CASH_T.ReadOnly = True
         Me.RET_CASH_T.Size = New System.Drawing.Size(389, 49)
@@ -212,7 +212,7 @@ Partial Class fDayClose
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SUM_V.DefaultCellStyle = DataGridViewCellStyle2
         Me.SUM_V.Location = New System.Drawing.Point(604, 35)
-        Me.SUM_V.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.SUM_V.Margin = New System.Windows.Forms.Padding(6)
         Me.SUM_V.MultiSelect = False
         Me.SUM_V.Name = "SUM_V"
         Me.SUM_V.ReadOnly = True
@@ -247,7 +247,7 @@ Partial Class fDayClose
         Me.RETURN_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.RETURN_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RETURN_CASH_T.Location = New System.Drawing.Point(197, 202)
-        Me.RETURN_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.RETURN_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RETURN_CASH_T.Name = "RETURN_CASH_T"
         Me.RETURN_CASH_T.ReadOnly = True
         Me.RETURN_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -260,7 +260,7 @@ Partial Class fDayClose
         Me.DIFF_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.DIFF_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.DIFF_CASH_T.Location = New System.Drawing.Point(197, 394)
-        Me.DIFF_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.DIFF_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.DIFF_CASH_T.Name = "DIFF_CASH_T"
         Me.DIFF_CASH_T.ReadOnly = True
         Me.DIFF_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -284,7 +284,7 @@ Partial Class fDayClose
         Me.STIFFNESS_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.STIFFNESS_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.STIFFNESS_CASH_T.Location = New System.Drawing.Point(197, 346)
-        Me.STIFFNESS_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.STIFFNESS_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STIFFNESS_CASH_T.Name = "STIFFNESS_CASH_T"
         Me.STIFFNESS_CASH_T.ReadOnly = True
         Me.STIFFNESS_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -308,7 +308,7 @@ Partial Class fDayClose
         Me.OUTPUT_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.OUTPUT_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.OUTPUT_CASH_T.Location = New System.Drawing.Point(197, 154)
-        Me.OUTPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.OUTPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT_CASH_T.Name = "OUTPUT_CASH_T"
         Me.OUTPUT_CASH_T.ReadOnly = True
         Me.OUTPUT_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -343,7 +343,7 @@ Partial Class fDayClose
         Me.INPUT_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.INPUT_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.INPUT_CASH_T.Location = New System.Drawing.Point(197, 106)
-        Me.INPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.INPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.INPUT_CASH_T.Name = "INPUT_CASH_T"
         Me.INPUT_CASH_T.ReadOnly = True
         Me.INPUT_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -356,7 +356,7 @@ Partial Class fDayClose
         Me.CAL_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.CAL_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CAL_CASH_T.Location = New System.Drawing.Point(197, 298)
-        Me.CAL_CASH_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.CAL_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CAL_CASH_T.Name = "CAL_CASH_T"
         Me.CAL_CASH_T.ReadOnly = True
         Me.CAL_CASH_T.Size = New System.Drawing.Size(389, 39)
@@ -380,7 +380,7 @@ Partial Class fDayClose
         Me.TOTAL_SALE_PRICE_T.BackColor = System.Drawing.Color.Wheat
         Me.TOTAL_SALE_PRICE_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TOTAL_SALE_PRICE_T.Location = New System.Drawing.Point(197, 250)
-        Me.TOTAL_SALE_PRICE_T.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TOTAL_SALE_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.TOTAL_SALE_PRICE_T.Name = "TOTAL_SALE_PRICE_T"
         Me.TOTAL_SALE_PRICE_T.ReadOnly = True
         Me.TOTAL_SALE_PRICE_T.Size = New System.Drawing.Size(389, 39)
@@ -426,7 +426,7 @@ Partial Class fDayClose
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.TRN_V.DefaultCellStyle = DataGridViewCellStyle5
         Me.TRN_V.Location = New System.Drawing.Point(58, 618)
-        Me.TRN_V.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TRN_V.Margin = New System.Windows.Forms.Padding(6)
         Me.TRN_V.MultiSelect = False
         Me.TRN_V.Name = "TRN_V"
         Me.TRN_V.ReadOnly = True
@@ -451,9 +451,9 @@ Partial Class fDayClose
         Me.GroupBox1.Controls.Add(Me.OUTPUT1_R)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
         Me.GroupBox1.Location = New System.Drawing.Point(1828, 77)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(6)
         Me.GroupBox1.Size = New System.Drawing.Size(325, 128)
         Me.GroupBox1.TabIndex = 50
         Me.GroupBox1.TabStop = False
@@ -464,7 +464,7 @@ Partial Class fDayClose
         Me.OUTPUT2_R.AutoSize = True
         Me.OUTPUT2_R.Checked = True
         Me.OUTPUT2_R.Location = New System.Drawing.Point(50, 83)
-        Me.OUTPUT2_R.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.OUTPUT2_R.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT2_R.Name = "OUTPUT2_R"
         Me.OUTPUT2_R.Size = New System.Drawing.Size(116, 28)
         Me.OUTPUT2_R.TabIndex = 51
@@ -476,7 +476,7 @@ Partial Class fDayClose
         '
         Me.OUTPUT1_R.AutoSize = True
         Me.OUTPUT1_R.Location = New System.Drawing.Point(50, 38)
-        Me.OUTPUT1_R.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.OUTPUT1_R.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT1_R.Name = "OUTPUT1_R"
         Me.OUTPUT1_R.Size = New System.Drawing.Size(184, 28)
         Me.OUTPUT1_R.TabIndex = 0
@@ -501,7 +501,7 @@ Partial Class fDayClose
         '
         Me.OPOSPrinter1.Enabled = True
         Me.OPOSPrinter1.Location = New System.Drawing.Point(13, 719)
-        Me.OPOSPrinter1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.OPOSPrinter1.Margin = New System.Windows.Forms.Padding(6)
         Me.OPOSPrinter1.Name = "OPOSPrinter1"
         Me.OPOSPrinter1.OcxState = CType(resources.GetObject("OPOSPrinter1.OcxState"), System.Windows.Forms.AxHost.State)
         Me.OPOSPrinter1.Size = New System.Drawing.Size(28, 28)
@@ -587,8 +587,8 @@ Partial Class fDayClose
         Me.Controls.Add(Me.STAFF_CODE_T)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.STAFF_NAME_T)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "fDayClose"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "日次締め処理"

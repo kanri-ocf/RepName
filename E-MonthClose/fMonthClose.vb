@@ -1171,7 +1171,7 @@ Public Class fMonthClose
                 pDiscountTotal = pDiscountTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount, oConf(0).sTax, oConf(0).sFracProc)
 
             Else    '税抜きモードの場合              
-                If oMonthTrnSummary(0).sReducedTaxRate = String.Empty Then
+                If oMonthTrnSummary(0).sReducedTaxRate = 0 Then
                     pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
                 Else
                     pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(0).sReducedTaxRate, oConf(0).sFracProc)

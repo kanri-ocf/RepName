@@ -1360,7 +1360,7 @@
         Message_form.Dispose()
     End Sub
 
-    Private Sub RET_CASH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RET_CASH_B.Click
+    Private Sub RET_CASH_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles RET_CASH_B.Click
         Dim fAdjust_form As New cAdjustLib.fAdjustCount(oConn, oCommand, oDataReader, CLOSE_DATE_T.Text, STAFF_CODE, STAFF_NAME, 5, oTran)
 
         fAdjust_form.ShowDialog()

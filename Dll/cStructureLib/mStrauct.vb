@@ -2845,6 +2845,12 @@ Public Structure sViewArrivalSummary
     Public sNoTaxPrice As Long
     '入庫消費税額
     Public sTaxPrice As Long
+
+    '2019,12,26 A.Komita 追加 From
+    '入庫軽減税額
+    Public sReducedTaxRate As Long
+    '2019,12,26 A.Komita 追加 To
+
     '入庫税込金額
     Public sPrice As Long
 End Structure
@@ -2866,6 +2872,12 @@ Public Structure sViewMonthTrnSummary
     '軽減消費税額
     Public sReduceTaxPrice As Long
     '2019.12.19 R.Takashima TO
+
+    '2019,12,26 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As String
+    '2019,12,26 A.Komita 追加 To
+
 End Structure
 #End Region
 
