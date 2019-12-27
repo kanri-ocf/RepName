@@ -338,6 +338,7 @@ Public Class cDataTrnSubDBIO
                 '登録時間
                 parSubTrn(i).sCreateTime = pDataReader("登録時間").ToString
                 '最終更新日
+
                 parSubTrn(i).sUpdateDate = pDataReader("最終更新日").ToString
                 '最終更新時間
                 parSubTrn(i).sUpdateTime = pDataReader("最終更新時間").ToString
@@ -479,10 +480,10 @@ Public Class cDataTrnSubDBIO
         End Try
 
     End Function
-    Public Function getSumPrice(ByRef parSubTrn() As cStructureLib.sSubTrn, _
-                               ByVal KeyTrnCode As Long, _
-                               ByVal KeySubTrnClass As Integer, _
-                               ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function getSumPrice(ByRef parSubTrn() As cStructureLib.sSubTrn,
+                               ByVal KeyTrnCode As Long,
+                               ByVal KeySubTrnClass As Integer,
+                               ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelect As String
         Dim i As Integer
         Dim pc As Integer
@@ -491,11 +492,11 @@ Public Class cDataTrnSubDBIO
 
         strSelect = ""
 
-        strSelect = "SELECT " & _
-                        "日次取引明細データ.取引コード, " & _
-                        "日次取引明細データ.売上明細区分, " & _
-                        "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " & _
-                    "FROM 日次取引明細データ " & _
+        strSelect = "SELECT " &
+                        "日次取引明細データ.取引コード, " &
+                        "日次取引明細データ.売上明細区分, " &
+                        "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
+                    "FROM 日次取引明細データ " &
                     "GROUP BY 日次取引明細データ.取引コード, 日次取引明細データ.売上明細区分 "
 
         'SQL文の設定
@@ -775,7 +776,11 @@ Public Class cDataTrnSubDBIO
             '軽減税率
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Char, 10))
-            pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            If IsNothing(parSubTrn.sReducedTaxRate) = True Then
+                 pCommand.Parameters("@ReducedTaxRate").Value =0
+            Else
+                pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            End If
             '2019,12,23 A.Komita 追加 To
 
             '取引税込金額

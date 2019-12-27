@@ -3316,9 +3316,9 @@ Public Class fRegister
         Dim oDataArrivalSubDBIO As cDataArrivalSubDBIO
         Dim pStrcutureNo As Integer
 
+
         '2019.10.11 R.Takashima FROM
         Dim tax As Integer
-
         '2019.10.27 R.Takashima
         Dim subTrn As cStructureLib.sSubTrn()
 
@@ -3465,8 +3465,12 @@ Public Class fRegister
                 'oSubTrn(0).sNoTaxPrice = oTool.AfterToBeforeTax(UPRICE * UCOUNT, oConf(0).sTax, oConf(0).sFracProc)
                 oSubTrn(0).sNoTaxPrice = oTool.AfterToBeforeTax(UPRICE * UCOUNT, tax, oConf(0).sFracProc)
 
+
                 If tax = REDUCE_TAX Then
                     oSubTrn(0).sReducedTaxRatePrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
+                    '2019,12,24 A.Komita 軽減税率を登録する構造体の追加 From
+                    oSubTrn(0).sReducedTaxRate = tax
+                    '2019,12,24 A.Komita 追加 To
                 Else
                     oSubTrn(0).sTaxPrice = oSubTrn(0).sPrice - oSubTrn(0).sNoTaxPrice
                 End If
