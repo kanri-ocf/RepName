@@ -22,22 +22,22 @@ Partial Class fReserv
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.CHART_V = New System.Windows.Forms.DataGridView
-        Me.Label33 = New System.Windows.Forms.Label
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.CHART_V = New System.Windows.Forms.DataGridView()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.PRE_MONTH_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.NEXT_MONTH_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.COMMIT_B = New Softgroup.NetButton.NetButton(Me.components)
-        Me.MONTH_T = New System.Windows.Forms.MaskedTextBox
-        Me.CHANNEL_NAME_C = New System.Windows.Forms.ComboBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.CHANNEL_CODE_T = New System.Windows.Forms.TextBox
-        Me.BUMON_CODE_T = New System.Windows.Forms.TextBox
-        Me.BUMON_NAME_C = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label6 = New System.Windows.Forms.Label
+        Me.MONTH_T = New System.Windows.Forms.MaskedTextBox()
+        Me.CHANNEL_NAME_C = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CHANNEL_CODE_T = New System.Windows.Forms.TextBox()
+        Me.BUMON_CODE_T = New System.Windows.Forms.TextBox()
+        Me.BUMON_NAME_C = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SEARCH_B = New Softgroup.NetButton.NetButton(Me.components)
         CType(Me.CHART_V, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -63,7 +63,7 @@ Partial Class fReserv
         Me.CHART_V.ColumnHeadersVisible = False
         Me.CHART_V.EnableHeadersVisualStyles = False
         Me.CHART_V.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.CHART_V.Location = New System.Drawing.Point(7, 109)
+        Me.CHART_V.Location = New System.Drawing.Point(7, 108)
         Me.CHART_V.Name = "CHART_V"
         Me.CHART_V.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.CHART_V.RowHeadersVisible = False

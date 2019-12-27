@@ -653,9 +653,9 @@
 
     End Sub
 
-    Private Sub CHART_V_CellStyleChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellStyleChanged
+    'Private Sub CHART_V_CellStyleChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellStyleChanged
 
-    End Sub
+    'End Sub
 
     Private Sub CHART_V_CellValueChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellValueChanged
         If IVENT_FLG = True Then
@@ -734,13 +734,13 @@
 
             CHART_V.Rows.Add("", "", sRoomCode, sRoomName)
 
-            ''重複項目の色を背景色に・・・
-            'If RowNo > 0 Then
-            '    'ルーム情報作成
-            '    If CInt(CHART_V("ルームコード", RowNo - 1).Value) = oRoom(i).sRoomCode Then
-            '        CHART_V("ルームコード", RowNo).Style.ForeColor = Color.Wheat
-            '    End If
-            'End If
+            '重複項目の色を背景色に・・・
+            If RowNo > 0 Then
+                'ルーム情報作成
+                If CInt(CHART_V("ルームコード", RowNo - 1).Value) = oRoom(i).sRoomCode Then
+                    CHART_V("ルームコード", RowNo).Style.ForeColor = Color.Wheat
+                End If
+            End If
             RowNo = RowNo + 1
         Next i
     End Sub
