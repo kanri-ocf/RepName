@@ -357,7 +357,7 @@
 
         'コンボボックスへのチャネル名セット
         'CHANNEL_C.Items.Add("")
-        CHANNEL_C..Items.Clear()
+        CHANNEL_C.Items.Clear()
         For i = 0 To RecordCount - 1
             CHANNEL_C.Items.Add(oChannel(i).sChannelName)
         Next
