@@ -378,7 +378,8 @@
         SERVICE_NAME_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        SERVICE_NAME_C.Items.Add("")
+        'SERVICE_NAME_C.Items.Add("")
+        SERVICE_NAME_C.Items.Clear()
         For i = 0 To RecordCount - 1
             SERVICE_NAME_C.Items.Add(oService(i).sServiceName)
         Next
