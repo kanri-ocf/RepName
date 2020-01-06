@@ -413,7 +413,7 @@
 
         oMstServiceDBIO.getService(oService, oMember(0).sServiceCode, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         SERVICE_CODE_T.Text = oService(0).sServiceCode
-        SERVICE_NAME_C.Text = oService(0).sServiceName
+        'SERVICE_NAME_C.Text = oService(0).sServiceName
 
         CHANNEL_C.Text = oChannel(0).sChannelName
         MEMBER_NAME_T.Text = oMember(0).sMemberName
