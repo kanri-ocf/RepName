@@ -356,7 +356,8 @@
         CHANNEL_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        CHANNEL_C.Items.Add("")
+        'CHANNEL_C.Items.Add("")
+        CHANNEL_C..Items.Clear()
         For i = 0 To RecordCount - 1
             CHANNEL_C.Items.Add(oChannel(i).sChannelName)
         Next
@@ -575,7 +576,7 @@
             Exit Function
         End If
 
-        If CHANNEL_C.Text = "" Then
+        If CHANNEL_C.Text = "" Or CHANNEL_C.Text = Nothing Then
             Message_form = New cMessageLib.fMessage(1, "チャネルが選択されていません。",
                                 "チャネルを指定して下さい。",
                                 Nothing, Nothing)
