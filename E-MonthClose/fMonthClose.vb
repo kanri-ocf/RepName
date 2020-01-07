@@ -1170,21 +1170,21 @@ Public Class fMonthClose
                 pFeeTotal = pFeeTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sFee, oConf(0).sTax, oConf(0).sFracProc)
                 pDiscountTotal = pDiscountTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount, oConf(0).sTax, oConf(0).sFracProc)
 
+                '2020,1,7 A.Komita 軽減税率計算の分岐を追加 From
             Else    '税抜きモードの場合              
-                If oMonthTrnSummary(0).sReducedTaxRate = 0 Then
+                If oMonthTrnSummary(i).sReducedTaxRate = 0 Then
                     pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
                 Else
-                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(0).sReducedTaxRate, oConf(0).sFracProc)
+                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(i).sReducedTaxRate, oConf(0).sFracProc)
                 End If
                 pTotal = pTotal + oMonthTrnSummary(i).sPrice
                     pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
                     pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
-                    pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
+                pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
+            End If
+            '2020,1,7 A.Komita 追加 To
 
-                End If
-
-
-                If pPrice > 0 Then
+            If pPrice > 0 Then
                 RANK_V.Rows.Add( _
                     oMonthTrnSummary(i).sProductCode, _
                     oMonthTrnSummary(i).sProductName, _
@@ -1253,11 +1253,11 @@ Public Class fMonthClose
         End If
 
         ReDim oArrivalSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getArrivalSummary( _
-                            oArrivalSummary, _
-                            supplierCode, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getArrivalSummary(
+                            oArrivalSummary,
+                            supplierCode,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pUnitPrice = 0
@@ -1408,14 +1408,14 @@ Public Class fMonthClose
             '               pTrn(i).sTrnCode, _
             '               Nothing, _
             '               oTran)
-            RecordCnt = pTrnSubDBIO.getSubTrn(pTrnSub, _
-                       pTrn(i).sTrnCode, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
+            RecordCnt = pTrnSubDBIO.getSubTrn(pTrnSub,
+                       pTrn(i).sTrnCode,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
                        oTran)
             For j = 0 To pTrnSub.Length - 1
                 '移行対象明細データのバックアップ先書込み
@@ -1562,7 +1562,7 @@ Public Class fMonthClose
         Dim pArrival() As cStructureLib.sArrivalData
         Dim pArrivalSubDBIO As cDataArrivalSubDBIO
         Dim pArrivalSub() As cStructureLib.sArrivalSubData
-        Dim pTran As System.Data.OleDb.OleDbTransaction
+        Dim pTran As OleDb.OleDbTransaction
         Dim RecordCnt As Long
         Dim i As Long
         Dim j As Long
@@ -1823,7 +1823,7 @@ Public Class fMonthClose
 
     End Sub
 
-    Private Sub FROM_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_MONTH_T.GotFocus
+    Private Sub FROM_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_MONTH_T.GotFocus
         FROM_MONTH_T.SelectAll()
     End Sub
 
