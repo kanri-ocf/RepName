@@ -218,7 +218,7 @@
 
     Private Sub DISP_INIT()
         Dim RecordCount As Long
-        Dim dt As Date
+        'Dim dt As Date
 
         If MODE = 0 Then
             RETURN_B.Text = "終　了"
@@ -356,7 +356,8 @@
         CHANNEL_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        CHANNEL_C.Items.Add("")
+        'CHANNEL_C.Items.Add("")
+        CHANNEL_C.Items.Clear()
         For i = 0 To RecordCount - 1
             CHANNEL_C.Items.Add(oChannel(i).sChannelName)
         Next
@@ -378,7 +379,8 @@
         SERVICE_NAME_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        SERVICE_NAME_C.Items.Add("")
+        'SERVICE_NAME_C.Items.Add("")
+        SERVICE_NAME_C.Items.Clear()
         For i = 0 To RecordCount - 1
             SERVICE_NAME_C.Items.Add(oService(i).sServiceName)
         Next
@@ -413,7 +415,7 @@
 
         oMstServiceDBIO.getService(oService, oMember(0).sServiceCode, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         SERVICE_CODE_T.Text = oService(0).sServiceCode
-        SERVICE_NAME_C.Text = oService(0).sServiceName
+        'SERVICE_NAME_C.Text = oService(0).sServiceName
 
         CHANNEL_C.Text = oChannel(0).sChannelName
         MEMBER_NAME_T.Text = oMember(0).sMemberName
@@ -574,7 +576,7 @@
             Exit Function
         End If
 
-        If CHANNEL_C.Text = "" Then
+        If CHANNEL_C.Text = "" Or CHANNEL_C.Text = Nothing Then
             Message_form = New cMessageLib.fMessage(1, "チャネルが選択されていません。",
                                 "チャネルを指定して下さい。",
                                 Nothing, Nothing)
@@ -998,6 +1000,13 @@
             ret = WRITE_PROC()
 
             If ret = True Then
+                '2020.01.07 Suzuki s
+                Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, Nothing, oTran)
+                Me.Visible = False
+                oMemberCardPrint_form.ShowDialog()
+                'oMemberCardPrint_form = Nothing
+                Me.Visible = True
+                '2020.01.07 Suzuki e
                 'MEMBER_CARD_PRINT()
             End If
             '2016.06.22 K.Oikawa s

@@ -4,11 +4,11 @@ Partial Public Class rPointCard_Fore
 
     'ActiveReport がコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing Then
-            hStream.Close()
-            hStream = Nothing
-        End If
-        MyBase.Dispose(disposing)
+        '    If disposing Then
+        '        hStream.Close()
+        '        hStream = Nothing
+        '    End If
+        '    MyBase.Dispose(disposing)
     End Sub
 
     'メモ: 以下のプロシージャは ActiveReport デザイナで必要です。
