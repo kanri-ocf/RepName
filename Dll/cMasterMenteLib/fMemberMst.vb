@@ -218,7 +218,7 @@
 
     Private Sub DISP_INIT()
         Dim RecordCount As Long
-        Dim dt As Date
+        'Dim dt As Date
 
         If MODE = 0 Then
             RETURN_B.Text = "終　了"
@@ -1000,6 +1000,13 @@
             ret = WRITE_PROC()
 
             If ret = True Then
+                '2020.01.07 Suzuki s
+                Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, Nothing, oTran)
+                Me.Visible = False
+                oMemberCardPrint_form.ShowDialog()
+                'oMemberCardPrint_form = Nothing
+                Me.Visible = True
+                '2020.01.07 Suzuki e
                 'MEMBER_CARD_PRINT()
             End If
             '2016.06.22 K.Oikawa s

@@ -54,27 +54,27 @@ Public Class fMemberCardReportPage
         '----------------------------------------------------------------------
 
         '2016.07.06 K.Oikawa s
-        '課題表No107 カードプリンタの接続チェック
-        If oConf Is Nothing Then
-            '2016.07.05 K.Oikawa e        
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                              "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
-            message_form.ShowDialog()
-            message_form = Nothing
-            Me.DialogResult = Windows.Forms.DialogResult.No
-            Me.Dispose()
-            Exit Sub
-        End If
-        '2016.07.06 K.Oikawa e
+        ''課題表No107 カードプリンタの接続チェック
+        'If oConf Is Nothing Then
+        '    '2016.07.05 K.Oikawa e        
+        '    Dim message_form As New cMessageLib.fMessage(1, _
+        '                                      "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
+        '    message_form.ShowDialog()
+        '    message_form = Nothing
+        '    Me.DialogResult = Windows.Forms.DialogResult.No
+        '    'Me.Dispose()
+        '    'Exit Sub
+        'End If
+        ''2016.07.06 K.Oikawa e
 
         'カードプリンターの接続確認
-        If oConf(0).sCardPrinterClass > 0 Then
-            Card_Printer_R.Enabled = True
-        Else
-            Card_Printer_R.Enabled = False
-        End If
+        'If oConf(0).sCardPrinterClass > 0 Then
+        Card_Printer_R.Enabled = True
+            'Else
+            '    Card_Printer_R.Enabled = False
+            'End If
 
-        IVENT_FLG = True
+            IVENT_FLG = True
 
         oTran = oConn.BeginTransaction
     End Sub
@@ -232,19 +232,19 @@ Public Class fMemberCardReportPage
         Message_form = Nothing
         System.Windows.Forms.Application.DoEvents()
 
-    End Sub
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************
     '*
     'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    'Const WM_SYSCOMMAND As Integer = &H112
-    'Const SC_CLOSE As Integer = &HF060
+    '    Const WM_SYSCOMMAND As Integer = &H112
+    '    Const SC_CLOSE As Integer = &HF060
     '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
     '        Return  ' Windows標準の処理は行わない
     '    End If
     '    MyBase.WndProc(m)
-    'End Sub
+    'End Sub    End Sub
+
 
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
