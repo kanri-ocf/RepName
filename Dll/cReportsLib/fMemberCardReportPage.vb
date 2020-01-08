@@ -69,7 +69,7 @@ Public Class fMemberCardReportPage
 
         'カードプリンターの接続確認
         'If oConf(0).sCardPrinterClass > 0 Then
-        Card_Printer_R.Enabled = True
+            Card_Printer_R.Enabled = True
             'Else
             '    Card_Printer_R.Enabled = False
             'End If
@@ -232,19 +232,19 @@ Public Class fMemberCardReportPage
         Message_form = Nothing
         System.Windows.Forms.Application.DoEvents()
 
+    End Sub
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************
     '*
     'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    '    Const WM_SYSCOMMAND As Integer = &H112
-    '    Const SC_CLOSE As Integer = &HF060
+    'Const WM_SYSCOMMAND As Integer = &H112
+    'Const SC_CLOSE As Integer = &HF060
     '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
     '        Return  ' Windows標準の処理は行わない
     '    End If
     '    MyBase.WndProc(m)
-    'End Sub    End Sub
-
+    'End Sub
 
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
