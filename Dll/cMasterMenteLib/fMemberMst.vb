@@ -415,7 +415,7 @@
 
         oMstServiceDBIO.getService(oService, oMember(0).sServiceCode, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         SERVICE_CODE_T.Text = oService(0).sServiceCode
-        'SERVICE_NAME_C.Text = oService(0).sServiceName
+        SERVICE_NAME_C.Text = oService(0).sServiceName
 
         CHANNEL_C.Text = oChannel(0).sChannelName
         MEMBER_NAME_T.Text = oMember(0).sMemberName
@@ -1001,7 +1001,7 @@
 
             If ret = True Then
                 '2020.01.07 Suzuki s
-                Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, Nothing, oTran)
+                Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, MEMBER_CODE_T.Text, oTran)
                 Me.Visible = False
                 oMemberCardPrint_form.ShowDialog()
                 'oMemberCardPrint_form = Nothing
