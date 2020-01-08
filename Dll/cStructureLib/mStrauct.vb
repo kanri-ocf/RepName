@@ -2210,7 +2210,7 @@ Public Structure sSubTrn
 
     '2019,12,23 A.Komita 追加 From
     '軽減税率 
-    Public sReducedTaxRate As String
+    Public sReducedTaxRate As Long
     '2019,12,23 A.Komita 追加 To
 
     '取引税込金額
@@ -2875,7 +2875,7 @@ Public Structure sViewMonthTrnSummary
 
     '2019,12,26 A.Komita 追加 From
     '軽減税率
-    Public sReducedTaxRate As String
+    Public sReducedTaxRate As Long
     '2019,12,26 A.Komita 追加 To
 
 End Structure
@@ -3968,7 +3968,7 @@ Public Structure sGraphData
 
     '2019,12,24 A.Komita 追加 From
     '軽減税率
-    Public sReducedTaxRate As String
+    Public sReducedTaxRate As Long
     '2019,12,24 A.Komita 追加 To
 End Structure
 

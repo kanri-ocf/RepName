@@ -14,9 +14,9 @@ Public Class cDataTrnSubDBIO
     End Sub
 
 
-    Public Function TrnExist(ByVal KeyString As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function TrnExist(ByVal KeyString As String, ByRef Tran As OleDb.OleDbTransaction) As Boolean
 
-        Const strSelectTrn As String = _
+        Const strSelectTrn As String =
         "SELECT COUNT(*) FROM 日次取引明細データ WHERE 取引コード = @TrnCode"
 
         Try
@@ -581,13 +581,16 @@ Public Class cDataTrnSubDBIO
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
     Public Function insertSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
+        '2020,1,7 A.Komita 追加 From
+        Dim strInsertTrn As String
+        '2020,1,7 A.Komita 追加 To
 
         Try
 
             '2019.10.5 R.Takashima
             '軽減消費税額の追加
             'SQL文の設定
-            Const strInsertTrn As String = "INSERT INTO 日次取引明細データ (" &
+            strInsertTrn = "INSERT INTO 日次取引明細データ (" &
                                                 "取引コード, " &
                                                 "取引明細コード, " &
                                                 "売上状態, " &
@@ -775,9 +778,9 @@ Public Class cDataTrnSubDBIO
             '2019,12,23 A.Komita 追加 From
             '軽減税率
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Char, 10))
+            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Numeric, 10))
             If IsNothing(parSubTrn.sReducedTaxRate) = True Then
-                 pCommand.Parameters("@ReducedTaxRate").Value =0
+                pCommand.Parameters("@ReducedTaxRate").Value = 0
             Else
                 pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
             End If
@@ -833,7 +836,7 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function updateSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function updateSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
         Dim strUpdate As String
 
         'SQL文の設定
@@ -907,11 +910,11 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function deleteSubTrn( _
-                                    ByVal KeyTrnCode As Long, _
-                                    ByVal KeySubTrnCode As Long, _
-                                    ByVal KeyShipmentCode As String, _
-                                    ByRef Tran As System.Data.OleDb.OleDbTransaction _
+    Public Function deleteSubTrn(
+                                    ByVal KeyTrnCode As Long,
+                                    ByVal KeySubTrnCode As Long,
+                                    ByVal KeyShipmentCode As String,
+                                    ByRef Tran As OleDb.OleDbTransaction
                                 ) As Boolean
 
         Dim strDeleteSubTrn As String
