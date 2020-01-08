@@ -150,8 +150,8 @@ Public Class fMemberCardReportPage
             rCard_Fore_Report.Dispose()
             rCard_Fore_Report = Nothing
 
-            rCard_Back_Report.Dispose()
-            rCard_Back_Report = Nothing
+            'rCard_Back_Report.Dispose()
+            'rCard_Back_Report = Nothing
 
         Else
             '*********************************

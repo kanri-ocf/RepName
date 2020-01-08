@@ -1004,7 +1004,7 @@
                 Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, MEMBER_CODE_T.Text, oTran)
                 Me.Visible = False
                 oMemberCardPrint_form.ShowDialog()
-                'oMemberCardPrint_form = Nothing
+                oMemberCardPrint_form = Nothing
                 Me.Visible = True
                 '2020.01.07 Suzuki e
                 'MEMBER_CARD_PRINT()
