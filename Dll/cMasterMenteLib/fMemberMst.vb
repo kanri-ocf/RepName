@@ -1037,6 +1037,7 @@
         If IO.File.Exists(tPath) Then
             'ファイルの削除
             IO.File.Delete(tPath)
+            DISP_INIT()
         End If
 
         If ret = True Then
