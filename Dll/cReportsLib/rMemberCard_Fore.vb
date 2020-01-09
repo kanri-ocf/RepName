@@ -70,6 +70,7 @@ Public Class rMemberCard_Fore
         RECORD_CNT = oMstMemberDBIO.getMember(oMember, MEMBER_NUMBER, Nothing, Nothing, Nothing, oTran)
 
         ReDim oServiceFull(0)
+        oMstServiceDBIO = New cMstServiceDBIO(oConn, oCommand, oDataReader)
         RecordCnt = oMstServiceDBIO.getServiceFull(oServiceFull, oMember(0).sServiceCode, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
         ReDim Preserve oServiceFull(10)
 
