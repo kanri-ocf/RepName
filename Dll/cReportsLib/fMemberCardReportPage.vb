@@ -61,8 +61,8 @@ Public Class fMemberCardReportPage
                                               "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
             message_form.ShowDialog()
             message_form = Nothing
-            Me.DialogResult = Windows.Forms.DialogResult.No
-            Me.Dispose()
+            'Me.DialogResult = Windows.Forms.DialogResult.No
+            'Me.Dispose()
             'Exit Sub
         End If
         '2016.07.06 K.Oikawa e
