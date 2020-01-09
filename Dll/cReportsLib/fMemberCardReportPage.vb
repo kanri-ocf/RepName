@@ -54,27 +54,27 @@ Public Class fMemberCardReportPage
         '----------------------------------------------------------------------
 
         '2016.07.06 K.Oikawa s
-        ''課題表No107 カードプリンタの接続チェック
-        'If oConf Is Nothing Then
-        '    '2016.07.05 K.Oikawa e        
-        '    Dim message_form As New cMessageLib.fMessage(1, _
-        '                                      "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
-        '    message_form.ShowDialog()
-        '    message_form = Nothing
-        '    Me.DialogResult = Windows.Forms.DialogResult.No
-        '    'Me.Dispose()
-        '    'Exit Sub
-        'End If
-        ''2016.07.06 K.Oikawa e
+        '課題表No107 カードプリンタの接続チェック
+        If oConf Is Nothing Then
+            '2016.07.05 K.Oikawa e        
+            Dim message_form As New cMessageLib.fMessage(1,
+                                              "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
+            message_form.ShowDialog()
+            message_form = Nothing
+            Me.DialogResult = Windows.Forms.DialogResult.No
+            Me.Dispose()
+            'Exit Sub
+        End If
+        '2016.07.06 K.Oikawa e
 
         'カードプリンターの接続確認
-        'If oConf(0).sCardPrinterClass > 0 Then
+        If oConf(0).sCardPrinterClass > 0 Then
             Card_Printer_R.Enabled = True
-            'Else
-            '    Card_Printer_R.Enabled = False
-            'End If
+        Else
+            Card_Printer_R.Enabled = False
+        End If
 
-            IVENT_FLG = True
+        IVENT_FLG = True
 
         oTran = oConn.BeginTransaction
     End Sub
@@ -154,78 +154,78 @@ Public Class fMemberCardReportPage
             'rCard_Back_Report = Nothing
 
         Else
-            '    '*********************************
-            '    '     カードプリンター印刷の場合
-            '    '*********************************
+            '*********************************
+            '     カードプリンター印刷の場合
+            '*********************************
 
-            '    '------------------
-            '    '表面のレポート設定
-            '    '------------------
-            '    rCard_Fore_Report = Nothing
+            '------------------
+            '表面のレポート設定
+            '------------------
+            rCard_Fore_Report = Nothing
 
-            '    rCard_Fore_Report = New rMemberCard_Fore(oConn, oCommand, oDataReader, MEMBER_CODE, oTran)
+            rCard_Fore_Report = New rMemberCard_Fore(oConn, oCommand, oDataReader, MEMBER_CODE, oTran)
 
-            '    With rCard_Fore_Report.PageSettings
-            '        .Orientation = DataDynamics.ActiveReports.Document.PageOrientation.Landscape
+            With rCard_Fore_Report.PageSettings
+                .Orientation = DataDynamics.ActiveReports.Document.PageOrientation.Landscape
 
-            '        ' 上下の余白を 0cm に設定します。
-            '        .Margins.Top = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-            '        .Margins.Bottom = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                ' 上下の余白を 0cm に設定します。
+                .Margins.Top = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                .Margins.Bottom = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
 
-            '        ' 左右の余白を 0cm に設定します。
-            '        .Margins.Left = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-            '        .Margins.Right = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                ' 左右の余白を 0cm に設定します。
+                .Margins.Left = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                .Margins.Right = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
 
-            '    End With
+            End With
 
-            '    rCard_Fore_Report.Run()
-
-
-            '    rCard_Fore_Report.PrintWidth = DataDynamics.ActiveReports.ActiveReport.CmToInch(8.6)
-            '    rCard_Fore_Report.Document.Name = "会員カード表面"
-
-            '    rCard_Fore_Report.Document.Print(True, False)
-
-            '    rCard_Fore_Report.Dispose()
-            '    rCard_Fore_Report = Nothing
+            rCard_Fore_Report.Run()
 
 
-            '    Dim Message_form1 = New cMessageLib.fMessage(1, "裏面を印刷します。", "カードをセットして下さい。", Nothing, Nothing)
-            '    Message_form1.ShowDialog()
-            '    System.Windows.Forms.Application.DoEvents()
-            '    Message_form1.Dispose()
-            '    Message_form1 = Nothing
+            rCard_Fore_Report.PrintWidth = DataDynamics.ActiveReports.ActiveReport.CmToInch(8.6)
+            rCard_Fore_Report.Document.Name = "会員カード表面"
 
-            '    '------------------
-            '    '裏面のレポート設定
-            '    '------------------
-            '    rCard_Back_Report = Nothing
+            rCard_Fore_Report.Document.Print(True, False)
 
-            '    rCard_Back_Report = New rMemberCard_Back(oConn, oCommand, oDataReader, oTran)
-
-            '    With rCard_Back_Report.PageSettings
-            '        .Orientation = DataDynamics.ActiveReports.Document.PageOrientation.Landscape
-
-            '        ' 上下の余白を 0cm に設定します。
-            '        .Margins.Top = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-            '        .Margins.Bottom = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-
-            '        ' 左右の余白を 0cm に設定します。
-            '        .Margins.Left = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-            '        .Margins.Right = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
-
-            '    End With
-
-            '    rCard_Back_Report.Run()
+            rCard_Fore_Report.Dispose()
+            rCard_Fore_Report = Nothing
 
 
-            '    rCard_Back_Report.PrintWidth = DataDynamics.ActiveReports.ActiveReport.CmToInch(8.6)
-            '    rCard_Back_Report.Document.Name = "会員カード裏面"
+            Dim Message_form1 = New cMessageLib.fMessage(1, "裏面を印刷します。", "カードをセットして下さい。", Nothing, Nothing)
+            Message_form1.ShowDialog()
+            System.Windows.Forms.Application.DoEvents()
+            Message_form1.Dispose()
+            Message_form1 = Nothing
 
-            '    rCard_Back_Report.Document.Print(True, False)
+            '------------------
+            '裏面のレポート設定
+            '------------------
+            rCard_Back_Report = Nothing
 
-            '    rCard_Back_Report.Dispose()
-            '    rCard_Back_Report = Nothing
+            rCard_Back_Report = New rMemberCard_Back(oConn, oCommand, oDataReader, oTran)
+
+            With rCard_Back_Report.PageSettings
+                .Orientation = DataDynamics.ActiveReports.Document.PageOrientation.Landscape
+
+                ' 上下の余白を 0cm に設定します。
+                .Margins.Top = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                .Margins.Bottom = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+
+                ' 左右の余白を 0cm に設定します。
+                .Margins.Left = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+                .Margins.Right = DataDynamics.ActiveReports.ActiveReport.CmToInch(0)
+
+            End With
+
+            rCard_Back_Report.Run()
+
+
+            rCard_Back_Report.PrintWidth = DataDynamics.ActiveReports.ActiveReport.CmToInch(8.6)
+            rCard_Back_Report.Document.Name = "会員カード裏面"
+
+            rCard_Back_Report.Document.Print(True, False)
+
+            rCard_Back_Report.Dispose()
+            rCard_Back_Report = Nothing
         End If
 
         Message_form.Dispose()
