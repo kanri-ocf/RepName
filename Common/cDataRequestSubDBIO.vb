@@ -298,9 +298,9 @@ Public Class cDataRequestSubDBIO
                 (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char))
                 pCommand.Parameters("@UpdateTime").Value = parSubRequest(i).sUpdateTime
 
-
                 '受注情報データ挿入処理実行
                 pCommand.ExecuteNonQuery()
+
             Next i
             insertSubRequestData = i + 1
 

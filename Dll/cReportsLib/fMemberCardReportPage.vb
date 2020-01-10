@@ -70,11 +70,11 @@ Public Class fMemberCardReportPage
         'カードプリンターの接続確認
         'If oConf(0).sCardPrinterClass > 0 Then
         Card_Printer_R.Enabled = True
-            'Else
-            '    Card_Printer_R.Enabled = False
-            'End If
+        'Else
+        '    Card_Printer_R.Enabled = False
+        'End If
 
-            IVENT_FLG = True
+        IVENT_FLG = True
 
         oTran = oConn.BeginTransaction
     End Sub
@@ -232,6 +232,7 @@ Public Class fMemberCardReportPage
         Message_form = Nothing
         System.Windows.Forms.Application.DoEvents()
 
+    End Sub
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************

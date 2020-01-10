@@ -204,13 +204,13 @@ Public Class fMonthClose
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "チャネルマスタが登録されていません", _
-                                                "チャネルマスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "チャネルマスタが登録されていません",
+                                                "チャネルマスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "チャネルマスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "チャネルマスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -239,13 +239,13 @@ Public Class fMonthClose
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "仕入先マスタが登録されていません", _
-                                                "仕入先マスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "仕入先マスタが登録されていません",
+                                                "仕入先マスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "仕入先マスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "仕入先マスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -637,11 +637,11 @@ Public Class fMonthClose
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getChannelTrnSummary( _
-                            oMonthTrnSummary, _
-                            Nothing, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getChannelTrnSummary(
+                            oMonthTrnSummary,
+                            Nothing,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
         pPrice = 0
 
@@ -657,10 +657,10 @@ Public Class fMonthClose
                 '2019.12.19 R.Takashima TO
             End If
 
-            CHANNEL_V.Rows.Add( _
-                                oMonthTrnSummary(i).sName, _
-                                oMonthTrnSummary(i).sCount, _
-                                pPrice _
+            CHANNEL_V.Rows.Add(
+                                oMonthTrnSummary(i).sName,
+                                oMonthTrnSummary(i).sCount,
+                                pPrice
                     )
         Next i
 
@@ -692,10 +692,10 @@ Public Class fMonthClose
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getBumonTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getBumonTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pProductTotal = 0
@@ -714,10 +714,10 @@ Public Class fMonthClose
                 '2019.12.20 A.Komita To
             End If
 
-            BUMON_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            BUMON_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
 
             Select Case oMonthTrnSummary(i).sBumonClass
@@ -746,10 +746,10 @@ Public Class fMonthClose
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getPaymentTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getPaymentTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pPrice = 0
@@ -766,10 +766,10 @@ Public Class fMonthClose
                 '2019.12.20 A.Komita To
             End If
 
-            PAYMENT_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            PAYMENT_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
         Next i
 
@@ -791,10 +791,10 @@ Public Class fMonthClose
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getCategoryTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getCategoryTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pPrice = 0
@@ -811,10 +811,10 @@ Public Class fMonthClose
                 '2019.12.20 A.Komita To
             End If
 
-            CATEGORY_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            CATEGORY_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
         Next i
 
@@ -839,9 +839,9 @@ Public Class fMonthClose
         OPOSPrinter1.Close()
         ret = OPOSPrinter1.Open("TRST56U")
         If ret Then
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                  "レシートプリンターの", _
-                                  "接続に失敗しました(ERRCODE:" & Trim(CStr(ret)), _
+            Dim message_form As New cMessageLib.fMessage(1,
+                                  "レシートプリンターの",
+                                  "接続に失敗しました(ERRCODE:" & Trim(CStr(ret)),
                                   "開発元に連絡して下さい", Nothing)
             message_form.ShowDialog()
             message_form = Nothing
@@ -849,9 +849,9 @@ Public Class fMonthClose
 
         ret = OPOSPrinter1.ClaimDevice(1000)
         If ret Then
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                  "レシートプリンターの", _
-                                  "初期化に失敗しました(ERRCODE:" & Trim(CStr(ret)), _
+            Dim message_form As New cMessageLib.fMessage(1,
+                                  "レシートプリンターの",
+                                  "初期化に失敗しました(ERRCODE:" & Trim(CStr(ret)),
                                   "開発元に連絡して下さい", Nothing)
             message_form.ShowDialog()
             message_form = Nothing
@@ -1006,8 +1006,8 @@ Public Class fMonthClose
     Private Sub CAL_PROC()
         Dim Message_form As cMessageLib.fMessage
 
-        Message_form = New cMessageLib.fMessage(1, "データ集計中・・・", _
-                                    "しばらくお待ち下さい。", _
+        Message_form = New cMessageLib.fMessage(1, "データ集計中・・・",
+                                    "しばらくお待ち下さい。",
                                     Nothing, Nothing)
 
         Message_form.Show()
@@ -1062,11 +1062,11 @@ Public Class fMonthClose
 
         'グラフデータ集計
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getGraphSummary( _
-                            oMonthTrnSummary, _
-                            ch, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getGraphSummary(
+                            oMonthTrnSummary,
+                            ch,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         'ランキングデータセット
@@ -1178,8 +1178,8 @@ Public Class fMonthClose
                     pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(i).sReducedTaxRate, oConf(0).sFracProc)
                 End If
                 pTotal = pTotal + oMonthTrnSummary(i).sPrice
-                    pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
-                    pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
+                pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
+                pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
                 pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
             End If
             '2020,1,7 A.Komita 追加 To
@@ -1336,7 +1336,7 @@ Public Class fMonthClose
         'ADO.NETによる'DB接続文字列の設定
         '注：プロジェクトファイルホルダの下にあるbinホルダにMDBを置く
 
-        StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB.mdb;"
+        StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB_BK.mdb;"
         pConn = New OleDb.OleDbConnection(StrPath)
 
         'ＤＢ接続を開く
@@ -1369,7 +1369,7 @@ Public Class fMonthClose
         Dim pTrn() As cStructureLib.sTrn
         Dim pTrnSubDBIO As cDataTrnSubDBIO
         Dim pTrnSub() As cStructureLib.sSubTrn
-        Dim pTran As System.Data.OleDb.OleDbTransaction
+        Dim pTran As OleDb.OleDbTransaction
         Dim RecordCnt As Long
         Dim i As Long
         Dim j As Long
@@ -1417,16 +1417,17 @@ Public Class fMonthClose
                        Nothing,
                        Nothing,
                        oTran)
-            For j = 0 To pTrnSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pTrnSubDBIO.insertSubTrn(pTrnSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    TRN_BACKUP = False
-                    Exit Function
-                End If
-            Next
+            'For j = 0 To pTrnSub.Length - 1
+            '    '    移行対象明細データのバックアップ先書込み 
+            '    If pTrnSubDBIO.insertSubTrn(pTrnSub(j), pTran) = False Then
+            '        pTran.Rollback()
+            '        TRN_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
 
         Next
+        pTran.Commit()
         pTrnDBIO = Nothing
         pTrnSubDBIO = Nothing
         pCommand = Nothing
@@ -1469,27 +1470,28 @@ Public Class fMonthClose
         For i = 0 To pOrder.Length - 1
             '移行対象ヘッダーデータのバックアップ先書込み
             If pOrderDBIO.insertOrderData(pOrder(i), pTran) = False Then
-                pTran.Rollback()
+                oTran.Rollback()
                 ORDER_BACKUP = False
                 Exit Function
             End If
 
             '移行対象明細データの取得
             ReDim pOrderSub(0)
-            RecordCnt = pOrderSubDBIO.getOrderSubData(pOrderSub, _
-                           pOrder(i).sOrderCode, _
-                           Nothing, _
+            RecordCnt = pOrderSubDBIO.getOrderSubData(pOrderSub,
+                           pOrder(i).sOrderCode,
+                           Nothing,
                            oTran)
-            For j = 0 To pOrderSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pOrderSubDBIO.insertOrderSubData(pOrderSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    ORDER_BACKUP = False
-                    Exit Function
-                End If
-            Next
+            'For j = 0 To pOrderSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pOrderSubDBIO.insertOrderSubData(pOrderSub(j), pTran) = False Then
+            '        oTran.Rollback()
+            '        ORDER_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
 
         Next
+        pTran.Commit()
         pOrderDBIO = Nothing
         pOrderSubDBIO = Nothing
         pCommand = Nothing
@@ -1514,11 +1516,11 @@ Public Class fMonthClose
         pRequestSubDBIO = New cDataRequestSubDBIO(oConn, oCommand, oDataReader)
 
         '移行対象ヘッダーデータの取得
-        RecordCnt = pRequestDBIO.getRequest2(pRequest, _
-                          Nothing, _
-                          Nothing, _
-                          FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                          TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = pRequestDBIO.getRequest2(pRequest,
+                          Nothing,
+                          Nothing,
+                          FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                          TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                           oTran)
         pRequestDBIO = Nothing
 
@@ -1537,17 +1539,18 @@ Public Class fMonthClose
 
             '移行対象明細データの取得
             ReDim pRequestSub(0)
-            RecordCnt = pRequestSubDBIO.getSubRequest(pRequestSub, _
-                           pRequest(i).sRequestCode, _
-                           Nothing, _
+            RecordCnt = pRequestSubDBIO.getSubRequest(pRequestSub,
+                           pRequest(i).sRequestCode,
+                           Nothing,
                            oTran)
             '移行対象明細データのバックアップ先書込み
-            If pRequestSubDBIO.insertSubRequestData(pRequestSub, pTran) = False Then
-                pTran.Rollback()
-                REQUEST_BACKUP = False
-                Exit Function
-            End If
+            'If pRequestSubDBIO.insertSubRequestData(pRequestSub, pTran) = False Then
+            '    pTran.Rollback()
+            '    REQUEST_BACKUP = False
+            '    Exit Function
+            'End If
         Next
+        pTran.Commit()
         pRequestDBIO = Nothing
         pRequestSubDBIO = Nothing
         pCommand = Nothing
@@ -1595,19 +1598,20 @@ Public Class fMonthClose
 
             '移行対象明細データの取得
             ReDim pArrivalSub(0)
-            RecordCnt = pArrivalSubDBIO.getArrivalSubData(pArrivalSub, _
-                           pArrival(i).sOrderCode, _
+            RecordCnt = pArrivalSubDBIO.getArrivalSubData(pArrivalSub,
+                           pArrival(i).sOrderCode,
                            oTran)
-            For j = 0 To pArrivalSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pArrivalSubDBIO.insertArrivalSubData(pArrivalSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    ARRIVAL_BACKUP = False
-                    Exit Function
-                End If
-            Next
+            'For j = 0 To pArrivalSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pArrivalSubDBIO.insertArrivalSubData(pArrivalSub(j), oTran) = False Then
+            '        pTran.Rollback()
+            '        ARRIVAL_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
 
         Next
+        pTran.Commit()
         pArrivalDBIO = Nothing
         pArrivalSubDBIO = Nothing
         pCommand = Nothing
@@ -1659,26 +1663,29 @@ Public Class fMonthClose
 
             '移行対象明細データの取得
             ReDim pShipmentSub(0)
-            RecordCnt = pShipmentSubDBIO.getSubShipment(pShipmentSub, _
-                           Nothing, _
-                           pShipment(i).sShipCode, _
-                           Nothing, _
+            RecordCnt = pShipmentSubDBIO.getSubShipment(pShipmentSub,
+                           Nothing,
+                           pShipment(i).sShipCode,
+                           Nothing,
                            oTran)
-            For j = 0 To pShipmentSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pShipmentSubDBIO.insertSubShipmentMst(pShipmentSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    SHIPMENT_BACKUP = False
-                    Exit Function
-                End If
-            Next
+            'For j = 0 To pShipmentSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pShipmentSubDBIO.insertSubShipmentMst(pShipmentSub(j), oTran) = False Then
+            '        pTran.Rollback()
+            '        SHIPMENT_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
 
         Next
+        pTran.Commit()
         pShipmentDBIO = Nothing
         pShipmentSubDBIO = Nothing
         pCommand = Nothing
         pDataReader = Nothing
         SHIPMENT_BACKUP = True
+
+        pTran.Commit()
 
     End Function
 

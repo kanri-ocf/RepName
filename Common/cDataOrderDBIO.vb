@@ -336,13 +336,11 @@ Public Class cDataOrderDBIO
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
     Public Function insertOrderData(ByVal parOrderData As cStructureLib.sOrderData,
-                                    ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+                                    ByRef Tran As OleDb.OleDbTransaction) As Boolean
 
         Dim strInsertOrder As String
 
         'コマンドオブジェクトの生成
-        pCommand = pConn.CreateCommand
-        pCommand.Transaction = Tran
 
         Try
             'SQL文の設定
@@ -399,6 +397,10 @@ Public Class cDataOrderDBIO
                                 "@UpdateDate, " &
                                 "@UpdateTime " &
                             ")"
+
+
+            pCommand = pConn.CreateCommand
+            pCommand.Transaction = Tran
 
             pCommand.CommandText = strInsertOrder
 
@@ -510,7 +512,6 @@ Public Class cDataOrderDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 8))
             pCommand.Parameters("@UpdateTime").Value = String.Format("{0:HH:mm:ss}", Now)
-
 
             '発注情報データ挿入処理実行
             pCommand.ExecuteNonQuery()
