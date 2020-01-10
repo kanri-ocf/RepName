@@ -860,6 +860,8 @@ Public Class cDataRequestDBIO
         '            ") VALUES (" &
         '                "@RequestCode, @ChannelCode, @ORRequestCode, @RequestSite, @RequestMedia, @MobileFlg, @AffiliateFlg, @RequestDate, @RequestTime, @ShipCorpName, @ShipDivName, @ShipKanaShip1stName, @ShipKanaShip2ndName, @ShipKanaAdder1, @ShipKanaAdder2, @ShipKanaCity, @ShipKanaState, @Ship1stName, @Ship2ndName, @ShipAdder1, @ShipAdder2, @ShipCity, @ShipState, @ShipCountry, @ShipPostCode1, @ShipPostCode2, @ShipTel, @BillCorpName, @BillDivName, @BillKanaBill1stName, @BillKanaBill2ndName, @BillKanaAdder1, @BillKanaAdder2, @BillKanaCity, @BillKanaState, @Bill1stName, @Bill2ndName, @BillAdder1, @BillAdder2, @BillCity, @BillState, @BillCountry, @BillPostCode1, @BillPostCode2, @BillTel, @MailAdderss, @Comment, @Status, @EntryPoint, @Link, @CardPayment, @ShipRequestDate, @ShipRequestTime, @ShipMemo, @ShipCorp, @ChannelPaymentCode, @GiftRequest, @GetPoint, @NoTaxTotalProductPrice, @ShippingCharge, @PaymentCharge, @Discount, @PointDisCount, @NoTaxTotalPrice, @TaxTotal, @TotalPrice, @GiftWrapKind, @GiftWrapKindPrice, @NoshiType, @NoshiName, @BillSex, @BillBirthDay, @RakutenCharge, @PrintFlg, @StaffCode, @CreateDate, @CreateTime, @UpdateDate, @UpdateTime" &
         '            ")"
+
+        '2020,1,10 A.Komita SQL文の修正 Start
         strInsert = ""
         strInsert = "INSERT INTO 受注情報データ (" &
                                "受注コード, " &
@@ -1022,7 +1024,7 @@ Public Class cDataRequestDBIO
                                "@UpdateDate, " &
                                "@UpdateTime" &
                            ")"
-
+        '2020,1,10 A.Komita 修正 End
 
         pCommand = pConn.CreateCommand
         pCommand.Transaction = Tran
