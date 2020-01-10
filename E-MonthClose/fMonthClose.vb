@@ -1417,6 +1417,8 @@ Public Class fMonthClose
                        Nothing,
                        Nothing,
                        oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             'For j = 0 To pTrnSub.Length - 1
             '    '    移行対象明細データのバックアップ先書込み 
             '    If pTrnSubDBIO.insertSubTrn(pTrnSub(j), pTran) = False Then
@@ -1425,9 +1427,12 @@ Public Class fMonthClose
             '        Exit Function
             '    End If
             'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
         pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pTrnDBIO = Nothing
         pTrnSubDBIO = Nothing
         pCommand = Nothing
@@ -1481,6 +1486,8 @@ Public Class fMonthClose
                            pOrder(i).sOrderCode,
                            Nothing,
                            oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             'For j = 0 To pOrderSub.Length - 1
             '    '移行対象明細データのバックアップ先書込み
             '    If pOrderSubDBIO.insertOrderSubData(pOrderSub(j), pTran) = False Then
@@ -1489,9 +1496,12 @@ Public Class fMonthClose
             '        Exit Function
             '    End If
             'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
         pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pOrderDBIO = Nothing
         pOrderSubDBIO = Nothing
         pCommand = Nothing
@@ -1543,14 +1553,20 @@ Public Class fMonthClose
                            pRequest(i).sRequestCode,
                            Nothing,
                            oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             '移行対象明細データのバックアップ先書込み
             'If pRequestSubDBIO.insertSubRequestData(pRequestSub, pTran) = False Then
             '    pTran.Rollback()
             '    REQUEST_BACKUP = False
             '    Exit Function
             'End If
+            '2020,1,9 A.Komita 削除 End
+
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
         pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pRequestDBIO = Nothing
         pRequestSubDBIO = Nothing
         pCommand = Nothing
@@ -1601,6 +1617,8 @@ Public Class fMonthClose
             RecordCnt = pArrivalSubDBIO.getArrivalSubData(pArrivalSub,
                            pArrival(i).sOrderCode,
                            oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             'For j = 0 To pArrivalSub.Length - 1
             '    '移行対象明細データのバックアップ先書込み
             '    If pArrivalSubDBIO.insertArrivalSubData(pArrivalSub(j), oTran) = False Then
@@ -1609,9 +1627,12 @@ Public Class fMonthClose
             '        Exit Function
             '    End If
             'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
         pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pArrivalDBIO = Nothing
         pArrivalSubDBIO = Nothing
         pCommand = Nothing
@@ -1668,6 +1689,8 @@ Public Class fMonthClose
                            pShipment(i).sShipCode,
                            Nothing,
                            oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             'For j = 0 To pShipmentSub.Length - 1
             '    '移行対象明細データのバックアップ先書込み
             '    If pShipmentSubDBIO.insertSubShipmentMst(pShipmentSub(j), oTran) = False Then
@@ -1676,9 +1699,12 @@ Public Class fMonthClose
             '        Exit Function
             '    End If
             'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
         pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pShipmentDBIO = Nothing
         pShipmentSubDBIO = Nothing
         pCommand = Nothing
