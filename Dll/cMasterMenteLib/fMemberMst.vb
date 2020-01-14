@@ -404,6 +404,8 @@
 
         IVENT_FLG = False
 
+        RecordCount = 0
+
         RecordCount = oMstMemberDBIO.getMember(oMember,
                                           MemberCode,
                                           "",
@@ -1037,6 +1039,7 @@
         If IO.File.Exists(tPath) Then
             'ファイルの削除
             IO.File.Delete(tPath)
+            '表示初期化
             DISP_INIT()
         End If
 
