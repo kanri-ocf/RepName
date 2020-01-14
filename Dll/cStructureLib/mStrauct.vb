@@ -2775,6 +2775,14 @@ Public Structure sViewTrnFull
     Public sNoTaxPrice As Long
     '取引消費税額
     Public sTaxPrice As Long
+
+    '2020,1,14 A.Komita 追加 From
+    '取引軽減消費税額
+    Public sReducedTaxRatePrice As Long
+    '軽減税率  
+    Public sReducedTaxRate As Long
+    '2020,1,14 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
 End Structure
@@ -2793,7 +2801,7 @@ Public Structure sViewTrnSummary
 
     '2019,12,24 A.Komita 追加 From
     '軽減税率
-    Public sReducedTaxRate As String
+    Public sReducedTaxRate As Integer
     '2019,12,24 A.Komita 追加 To
 
     '部門略称
@@ -2929,6 +2937,14 @@ Public Structure sViewFinTrnFull
     Public sNoTaxPrice As Long
     '取引消費税額
     Public sTaxPrice As Long
+
+    '2020,1,14 A.Komita 追加 From
+    '取引軽減消費税額
+    Public sReducedTaxRatePrice As Long
+    '軽減税率  
+    Public sReducedTaxRate As Long
+    '2020,1,14 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
 End Structure

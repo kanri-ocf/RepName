@@ -188,9 +188,10 @@ Partial Class fMonthClose
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(274, 27)
+        Me.Label2.Location = New System.Drawing.Point(594, 54)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 15)
+        Me.Label2.Size = New System.Drawing.Size(73, 30)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "月度"
         '
@@ -199,10 +200,11 @@ Partial Class fMonthClose
         Me.CLOSE_YEAR_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.CLOSE_YEAR_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CLOSE_YEAR_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.CLOSE_YEAR_T.Location = New System.Drawing.Point(91, 19)
+        Me.CLOSE_YEAR_T.Location = New System.Drawing.Point(197, 38)
+        Me.CLOSE_YEAR_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CLOSE_YEAR_T.MaxLength = 4
         Me.CLOSE_YEAR_T.Name = "CLOSE_YEAR_T"
-        Me.CLOSE_YEAR_T.Size = New System.Drawing.Size(90, 28)
+        Me.CLOSE_YEAR_T.Size = New System.Drawing.Size(190, 49)
         Me.CLOSE_YEAR_T.TabIndex = 1
         Me.CLOSE_YEAR_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -210,9 +212,10 @@ Partial Class fMonthClose
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label12.Location = New System.Drawing.Point(31, 658)
+        Me.Label12.Location = New System.Drawing.Point(67, 1316)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(96, 13)
+        Me.Label12.Size = New System.Drawing.Size(189, 26)
         Me.Label12.TabIndex = 26
         Me.Label12.Text = "締め処理担当者"
         '
@@ -220,10 +223,11 @@ Partial Class fMonthClose
         '
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_CODE_T.Location = New System.Drawing.Point(131, 654)
+        Me.STAFF_CODE_T.Location = New System.Drawing.Point(284, 1308)
+        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
-        Me.STAFF_CODE_T.Size = New System.Drawing.Size(125, 20)
+        Me.STAFF_CODE_T.Size = New System.Drawing.Size(266, 33)
         Me.STAFF_CODE_T.TabIndex = 25
         Me.STAFF_CODE_T.TabStop = False
         '
@@ -231,10 +235,11 @@ Partial Class fMonthClose
         '
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_NAME_T.Location = New System.Drawing.Point(267, 654)
+        Me.STAFF_NAME_T.Location = New System.Drawing.Point(579, 1308)
+        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
-        Me.STAFF_NAME_T.Size = New System.Drawing.Size(171, 20)
+        Me.STAFF_NAME_T.Size = New System.Drawing.Size(366, 33)
         Me.STAFF_NAME_T.TabIndex = 27
         Me.STAFF_NAME_T.TabStop = False
         '
@@ -261,9 +266,11 @@ Partial Class fMonthClose
         Me.GroupBox2.Controls.Add(Me.CLOSE_YEAR_T)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox2.Location = New System.Drawing.Point(30, 38)
+        Me.GroupBox2.Location = New System.Drawing.Point(65, 76)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(808, 113)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.GroupBox2.Size = New System.Drawing.Size(1751, 226)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "【締め情報】"
@@ -273,10 +280,11 @@ Partial Class fMonthClose
         Me.FROM_DAY_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.FROM_DAY_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.FROM_DAY_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FROM_DAY_T.Location = New System.Drawing.Point(293, 53)
+        Me.FROM_DAY_T.Location = New System.Drawing.Point(635, 106)
+        Me.FROM_DAY_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.FROM_DAY_T.MaxLength = 2
         Me.FROM_DAY_T.Name = "FROM_DAY_T"
-        Me.FROM_DAY_T.Size = New System.Drawing.Size(44, 28)
+        Me.FROM_DAY_T.Size = New System.Drawing.Size(91, 49)
         Me.FROM_DAY_T.TabIndex = 5
         Me.FROM_DAY_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -285,10 +293,11 @@ Partial Class fMonthClose
         Me.CLOSE_MONTH_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.CLOSE_MONTH_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.CLOSE_MONTH_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.CLOSE_MONTH_T.Location = New System.Drawing.Point(215, 19)
+        Me.CLOSE_MONTH_T.Location = New System.Drawing.Point(466, 38)
+        Me.CLOSE_MONTH_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CLOSE_MONTH_T.MaxLength = 2
         Me.CLOSE_MONTH_T.Name = "CLOSE_MONTH_T"
-        Me.CLOSE_MONTH_T.Size = New System.Drawing.Size(44, 28)
+        Me.CLOSE_MONTH_T.Size = New System.Drawing.Size(91, 49)
         Me.CLOSE_MONTH_T.TabIndex = 2
         Me.CLOSE_MONTH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -296,9 +305,10 @@ Partial Class fMonthClose
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label11.Location = New System.Drawing.Point(187, 32)
+        Me.Label11.Location = New System.Drawing.Point(405, 64)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(22, 15)
+        Me.Label11.Size = New System.Drawing.Size(43, 30)
         Me.Label11.TabIndex = 77
         Me.Label11.Text = "年"
         '
@@ -306,9 +316,10 @@ Partial Class fMonthClose
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(651, 66)
+        Me.Label7.Location = New System.Drawing.Point(1411, 132)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(22, 15)
+        Me.Label7.Size = New System.Drawing.Size(43, 30)
         Me.Label7.TabIndex = 76
         Me.Label7.Text = "日"
         '
@@ -317,10 +328,11 @@ Partial Class fMonthClose
         Me.TO_DAY_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TO_DAY_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TO_DAY_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.TO_DAY_T.Location = New System.Drawing.Point(601, 53)
+        Me.TO_DAY_T.Location = New System.Drawing.Point(1302, 106)
+        Me.TO_DAY_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.TO_DAY_T.MaxLength = 2
         Me.TO_DAY_T.Name = "TO_DAY_T"
-        Me.TO_DAY_T.Size = New System.Drawing.Size(44, 28)
+        Me.TO_DAY_T.Size = New System.Drawing.Size(91, 49)
         Me.TO_DAY_T.TabIndex = 8
         Me.TO_DAY_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -328,9 +340,10 @@ Partial Class fMonthClose
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(573, 66)
+        Me.Label8.Location = New System.Drawing.Point(1242, 132)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(22, 15)
+        Me.Label8.Size = New System.Drawing.Size(43, 30)
         Me.Label8.TabIndex = 74
         Me.Label8.Text = "月"
         '
@@ -339,10 +352,11 @@ Partial Class fMonthClose
         Me.TO_MONTH_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TO_MONTH_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TO_MONTH_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.TO_MONTH_T.Location = New System.Drawing.Point(523, 53)
+        Me.TO_MONTH_T.Location = New System.Drawing.Point(1133, 106)
+        Me.TO_MONTH_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.TO_MONTH_T.MaxLength = 2
         Me.TO_MONTH_T.Name = "TO_MONTH_T"
-        Me.TO_MONTH_T.Size = New System.Drawing.Size(44, 28)
+        Me.TO_MONTH_T.Size = New System.Drawing.Size(91, 49)
         Me.TO_MONTH_T.TabIndex = 7
         Me.TO_MONTH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -350,9 +364,10 @@ Partial Class fMonthClose
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label10.Location = New System.Drawing.Point(495, 66)
+        Me.Label10.Location = New System.Drawing.Point(1073, 132)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(22, 15)
+        Me.Label10.Size = New System.Drawing.Size(43, 30)
         Me.Label10.TabIndex = 72
         Me.Label10.Text = "年"
         '
@@ -361,10 +376,11 @@ Partial Class fMonthClose
         Me.TO_YEAR_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.TO_YEAR_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TO_YEAR_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.TO_YEAR_T.Location = New System.Drawing.Point(399, 53)
+        Me.TO_YEAR_T.Location = New System.Drawing.Point(865, 106)
+        Me.TO_YEAR_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.TO_YEAR_T.MaxLength = 4
         Me.TO_YEAR_T.Name = "TO_YEAR_T"
-        Me.TO_YEAR_T.Size = New System.Drawing.Size(90, 28)
+        Me.TO_YEAR_T.Size = New System.Drawing.Size(190, 49)
         Me.TO_YEAR_T.TabIndex = 6
         Me.TO_YEAR_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -372,9 +388,10 @@ Partial Class fMonthClose
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(371, 61)
+        Me.Label6.Location = New System.Drawing.Point(804, 122)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(22, 15)
+        Me.Label6.Size = New System.Drawing.Size(43, 30)
         Me.Label6.TabIndex = 70
         Me.Label6.Text = "～"
         '
@@ -382,9 +399,10 @@ Partial Class fMonthClose
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(343, 66)
+        Me.Label5.Location = New System.Drawing.Point(743, 132)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(22, 15)
+        Me.Label5.Size = New System.Drawing.Size(43, 30)
         Me.Label5.TabIndex = 69
         Me.Label5.Text = "日"
         '
@@ -392,9 +410,10 @@ Partial Class fMonthClose
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(265, 66)
+        Me.Label4.Location = New System.Drawing.Point(574, 132)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(22, 15)
+        Me.Label4.Size = New System.Drawing.Size(43, 30)
         Me.Label4.TabIndex = 67
         Me.Label4.Text = "月"
         '
@@ -403,10 +422,11 @@ Partial Class fMonthClose
         Me.FROM_MONTH_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.FROM_MONTH_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.FROM_MONTH_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FROM_MONTH_T.Location = New System.Drawing.Point(215, 53)
+        Me.FROM_MONTH_T.Location = New System.Drawing.Point(466, 106)
+        Me.FROM_MONTH_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.FROM_MONTH_T.MaxLength = 2
         Me.FROM_MONTH_T.Name = "FROM_MONTH_T"
-        Me.FROM_MONTH_T.Size = New System.Drawing.Size(44, 28)
+        Me.FROM_MONTH_T.Size = New System.Drawing.Size(91, 49)
         Me.FROM_MONTH_T.TabIndex = 4
         Me.FROM_MONTH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -414,9 +434,10 @@ Partial Class fMonthClose
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(187, 66)
+        Me.Label3.Location = New System.Drawing.Point(405, 132)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(22, 15)
+        Me.Label3.Size = New System.Drawing.Size(43, 30)
         Me.Label3.TabIndex = 65
         Me.Label3.Text = "年"
         '
@@ -424,9 +445,10 @@ Partial Class fMonthClose
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(23, 61)
+        Me.Label1.Location = New System.Drawing.Point(50, 122)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(67, 15)
+        Me.Label1.Size = New System.Drawing.Size(133, 30)
         Me.Label1.TabIndex = 64
         Me.Label1.Text = "集計期間"
         '
@@ -435,20 +457,21 @@ Partial Class fMonthClose
         Me.FROM_YEAR_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.FROM_YEAR_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.FROM_YEAR_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.FROM_YEAR_T.Location = New System.Drawing.Point(91, 53)
+        Me.FROM_YEAR_T.Location = New System.Drawing.Point(197, 106)
+        Me.FROM_YEAR_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.FROM_YEAR_T.MaxLength = 4
         Me.FROM_YEAR_T.Name = "FROM_YEAR_T"
-        Me.FROM_YEAR_T.Size = New System.Drawing.Size(90, 28)
+        Me.FROM_YEAR_T.Size = New System.Drawing.Size(190, 49)
         Me.FROM_YEAR_T.TabIndex = 3
         Me.FROM_YEAR_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'CAL_B
         '
         Me.CAL_B.ColorBottom = System.Drawing.Color.Tan
-        Me.CAL_B.Location = New System.Drawing.Point(679, 26)
-        Me.CAL_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.CAL_B.Location = New System.Drawing.Point(1471, 52)
+        Me.CAL_B.Margin = New System.Windows.Forms.Padding(15, 12, 15, 12)
         Me.CAL_B.Name = "CAL_B"
-        Me.CAL_B.Size = New System.Drawing.Size(110, 53)
+        Me.CAL_B.Size = New System.Drawing.Size(238, 106)
         Me.CAL_B.TabIndex = 9
         Me.CAL_B.TextButton = "集計実行"
         '
@@ -456,9 +479,10 @@ Partial Class fMonthClose
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label9.Location = New System.Drawing.Point(41, 26)
+        Me.Label9.Location = New System.Drawing.Point(89, 52)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(49, 15)
+        Me.Label9.Size = New System.Drawing.Size(97, 30)
         Me.Label9.TabIndex = 61
         Me.Label9.Text = "締め月"
         '
@@ -467,9 +491,11 @@ Partial Class fMonthClose
         Me.GroupBox1.Controls.Add(Me.OUTPUT2_R)
         Me.GroupBox1.Controls.Add(Me.OUTPUT1_R)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox1.Location = New System.Drawing.Point(844, 38)
+        Me.GroupBox1.Location = New System.Drawing.Point(1829, 76)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(150, 64)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.GroupBox1.Size = New System.Drawing.Size(325, 128)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "【集計表出力方法】"
@@ -478,9 +504,10 @@ Partial Class fMonthClose
         '
         Me.OUTPUT2_R.AutoSize = True
         Me.OUTPUT2_R.Checked = True
-        Me.OUTPUT2_R.Location = New System.Drawing.Point(23, 42)
+        Me.OUTPUT2_R.Location = New System.Drawing.Point(50, 84)
+        Me.OUTPUT2_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.OUTPUT2_R.Name = "OUTPUT2_R"
-        Me.OUTPUT2_R.Size = New System.Drawing.Size(61, 16)
+        Me.OUTPUT2_R.Size = New System.Drawing.Size(116, 28)
         Me.OUTPUT2_R.TabIndex = 1
         Me.OUTPUT2_R.TabStop = True
         Me.OUTPUT2_R.Text = "A4伝票"
@@ -489,9 +516,10 @@ Partial Class fMonthClose
         'OUTPUT1_R
         '
         Me.OUTPUT1_R.AutoSize = True
-        Me.OUTPUT1_R.Location = New System.Drawing.Point(23, 19)
+        Me.OUTPUT1_R.Location = New System.Drawing.Point(50, 38)
+        Me.OUTPUT1_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.OUTPUT1_R.Name = "OUTPUT1_R"
-        Me.OUTPUT1_R.Size = New System.Drawing.Size(95, 16)
+        Me.OUTPUT1_R.Size = New System.Drawing.Size(184, 28)
         Me.OUTPUT1_R.TabIndex = 0
         Me.OUTPUT1_R.Text = "ジャーナル伝票"
         Me.OUTPUT1_R.UseVisualStyleBackColor = True
@@ -502,9 +530,10 @@ Partial Class fMonthClose
         Me.MODE_L.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.MODE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MODE_L.ForeColor = System.Drawing.Color.White
-        Me.MODE_L.Location = New System.Drawing.Point(30, 13)
+        Me.MODE_L.Location = New System.Drawing.Point(65, 26)
+        Me.MODE_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.MODE_L.Name = "MODE_L"
-        Me.MODE_L.Size = New System.Drawing.Size(964, 22)
+        Me.MODE_L.Size = New System.Drawing.Size(2089, 44)
         Me.MODE_L.TabIndex = 54
         Me.MODE_L.Text = "月次締め処理モード"
         Me.MODE_L.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -513,6 +542,7 @@ Partial Class fMonthClose
         '
         Me.OPOSPrinter1.Enabled = True
         Me.OPOSPrinter1.Location = New System.Drawing.Point(13, 719)
+        Me.OPOSPrinter1.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.OPOSPrinter1.Name = "OPOSPrinter1"
         Me.OPOSPrinter1.OcxState = CType(resources.GetObject("OPOSPrinter1.OcxState"), System.Windows.Forms.AxHost.State)
         Me.OPOSPrinter1.Size = New System.Drawing.Size(28, 28)
@@ -521,30 +551,30 @@ Partial Class fMonthClose
         'PRINT_B
         '
         Me.PRINT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.PRINT_B.Location = New System.Drawing.Point(846, 104)
-        Me.PRINT_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.PRINT_B.Location = New System.Drawing.Point(1833, 208)
+        Me.PRINT_B.Margin = New System.Windows.Forms.Padding(15, 12, 15, 12)
         Me.PRINT_B.Name = "PRINT_B"
-        Me.PRINT_B.Size = New System.Drawing.Size(148, 47)
+        Me.PRINT_B.Size = New System.Drawing.Size(321, 94)
         Me.PRINT_B.TabIndex = 2
         Me.PRINT_B.TextButton = "印刷実行"
         '
         'QUIT_B
         '
         Me.QUIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.QUIT_B.Location = New System.Drawing.Point(690, 658)
-        Me.QUIT_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.QUIT_B.Location = New System.Drawing.Point(1495, 1316)
+        Me.QUIT_B.Margin = New System.Windows.Forms.Padding(15, 12, 15, 12)
         Me.QUIT_B.Name = "QUIT_B"
-        Me.QUIT_B.Size = New System.Drawing.Size(148, 47)
+        Me.QUIT_B.Size = New System.Drawing.Size(321, 94)
         Me.QUIT_B.TabIndex = 4
         Me.QUIT_B.TextButton = "中　止"
         '
         'COMMIT_B
         '
         Me.COMMIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.COMMIT_B.Location = New System.Drawing.Point(848, 658)
-        Me.COMMIT_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.COMMIT_B.Location = New System.Drawing.Point(1837, 1316)
+        Me.COMMIT_B.Margin = New System.Windows.Forms.Padding(15, 12, 15, 12)
         Me.COMMIT_B.Name = "COMMIT_B"
-        Me.COMMIT_B.Size = New System.Drawing.Size(148, 47)
+        Me.COMMIT_B.Size = New System.Drawing.Size(321, 94)
         Me.COMMIT_B.TabIndex = 5
         Me.COMMIT_B.TextButton = "終 了"
         '
@@ -553,10 +583,11 @@ Partial Class fMonthClose
         Me.SALER_AREA.Controls.Add(Me.SALER_TAB)
         Me.SALER_AREA.Controls.Add(Me.PRODUCT_TAB)
         Me.SALER_AREA.Controls.Add(Me.SUPPLIER_TAB)
-        Me.SALER_AREA.Location = New System.Drawing.Point(30, 165)
+        Me.SALER_AREA.Location = New System.Drawing.Point(65, 330)
+        Me.SALER_AREA.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SALER_AREA.Name = "SALER_AREA"
         Me.SALER_AREA.SelectedIndex = 0
-        Me.SALER_AREA.Size = New System.Drawing.Size(964, 470)
+        Me.SALER_AREA.Size = New System.Drawing.Size(2089, 940)
         Me.SALER_AREA.TabIndex = 3
         '
         'SALER_TAB
@@ -582,9 +613,10 @@ Partial Class fMonthClose
         Me.SALER_TAB.Controls.Add(Me.Label13)
         Me.SALER_TAB.Controls.Add(Me.CHANNEL_V)
         Me.SALER_TAB.Controls.Add(Me.ShapeContainer1)
-        Me.SALER_TAB.Location = New System.Drawing.Point(4, 28)
+        Me.SALER_TAB.Location = New System.Drawing.Point(8, 37)
+        Me.SALER_TAB.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SALER_TAB.Name = "SALER_TAB"
-        Me.SALER_TAB.Size = New System.Drawing.Size(956, 438)
+        Me.SALER_TAB.Size = New System.Drawing.Size(2073, 895)
         Me.SALER_TAB.TabIndex = 0
         Me.SALER_TAB.Text = "売上集計"
         '
@@ -592,9 +624,10 @@ Partial Class fMonthClose
         '
         Me.Label27.AutoSize = True
         Me.Label27.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label27.Location = New System.Drawing.Point(38, 228)
+        Me.Label27.Location = New System.Drawing.Point(82, 456)
+        Me.Label27.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(298, 12)
+        Me.Label27.Size = New System.Drawing.Size(599, 24)
         Me.Label27.TabIndex = 98
         Me.Label27.Text = "※　「売上集計」においては、すべて税込表記となっております。"
         '
@@ -602,9 +635,10 @@ Partial Class fMonthClose
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label28.Location = New System.Drawing.Point(38, 210)
+        Me.Label28.Location = New System.Drawing.Point(82, 420)
+        Me.Label28.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(408, 12)
+        Me.Label28.Size = New System.Drawing.Size(817, 24)
         Me.Label28.TabIndex = 97
         Me.Label28.Text = "※　概算利益とは、単純に「売上額合計」－「仕入額合計」により算出した金額です。"
         '
@@ -612,9 +646,10 @@ Partial Class fMonthClose
         '
         Me.SERVICE_TOTAL_L.BackColor = System.Drawing.Color.NavajoWhite
         Me.SERVICE_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SERVICE_TOTAL_L.Location = New System.Drawing.Point(196, 74)
+        Me.SERVICE_TOTAL_L.Location = New System.Drawing.Point(425, 148)
+        Me.SERVICE_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.SERVICE_TOTAL_L.Name = "SERVICE_TOTAL_L"
-        Me.SERVICE_TOTAL_L.Size = New System.Drawing.Size(165, 20)
+        Me.SERVICE_TOTAL_L.Size = New System.Drawing.Size(358, 40)
         Me.SERVICE_TOTAL_L.TabIndex = 95
         Me.SERVICE_TOTAL_L.Text = "0"
         Me.SERVICE_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -623,9 +658,10 @@ Partial Class fMonthClose
         '
         Me.PRODUCT_TOTAL_L.BackColor = System.Drawing.Color.NavajoWhite
         Me.PRODUCT_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.PRODUCT_TOTAL_L.Location = New System.Drawing.Point(196, 46)
+        Me.PRODUCT_TOTAL_L.Location = New System.Drawing.Point(425, 92)
+        Me.PRODUCT_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.PRODUCT_TOTAL_L.Name = "PRODUCT_TOTAL_L"
-        Me.PRODUCT_TOTAL_L.Size = New System.Drawing.Size(165, 20)
+        Me.PRODUCT_TOTAL_L.Size = New System.Drawing.Size(358, 40)
         Me.PRODUCT_TOTAL_L.TabIndex = 94
         Me.PRODUCT_TOTAL_L.Text = "0"
         Me.PRODUCT_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -635,9 +671,10 @@ Partial Class fMonthClose
         Me.Label31.AutoSize = True
         Me.Label31.BackColor = System.Drawing.Color.Wheat
         Me.Label31.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label31.Location = New System.Drawing.Point(103, 77)
+        Me.Label31.Location = New System.Drawing.Point(223, 154)
+        Me.Label31.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(48, 13)
+        Me.Label31.Size = New System.Drawing.Size(92, 26)
         Me.Label31.TabIndex = 92
         Me.Label31.Text = "サービス"
         '
@@ -646,9 +683,10 @@ Partial Class fMonthClose
         Me.Label32.AutoSize = True
         Me.Label32.BackColor = System.Drawing.Color.Wheat
         Me.Label32.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label32.Location = New System.Drawing.Point(103, 49)
+        Me.Label32.Location = New System.Drawing.Point(223, 98)
+        Me.Label32.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(33, 13)
+        Me.Label32.Size = New System.Drawing.Size(64, 26)
         Me.Label32.TabIndex = 91
         Me.Label32.Text = "物販"
         '
@@ -656,9 +694,10 @@ Partial Class fMonthClose
         '
         Me.PROFIT_L.BackColor = System.Drawing.Color.NavajoWhite
         Me.PROFIT_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.PROFIT_L.Location = New System.Drawing.Point(196, 174)
+        Me.PROFIT_L.Location = New System.Drawing.Point(425, 348)
+        Me.PROFIT_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.PROFIT_L.Name = "PROFIT_L"
-        Me.PROFIT_L.Size = New System.Drawing.Size(165, 20)
+        Me.PROFIT_L.Size = New System.Drawing.Size(358, 40)
         Me.PROFIT_L.TabIndex = 90
         Me.PROFIT_L.Text = "0"
         Me.PROFIT_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -667,9 +706,10 @@ Partial Class fMonthClose
         '
         Me.STOCK_TOTAL_L.BackColor = System.Drawing.Color.NavajoWhite
         Me.STOCK_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STOCK_TOTAL_L.Location = New System.Drawing.Point(196, 140)
+        Me.STOCK_TOTAL_L.Location = New System.Drawing.Point(425, 280)
+        Me.STOCK_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.STOCK_TOTAL_L.Name = "STOCK_TOTAL_L"
-        Me.STOCK_TOTAL_L.Size = New System.Drawing.Size(165, 20)
+        Me.STOCK_TOTAL_L.Size = New System.Drawing.Size(358, 40)
         Me.STOCK_TOTAL_L.TabIndex = 89
         Me.STOCK_TOTAL_L.Text = "0"
         Me.STOCK_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -678,9 +718,10 @@ Partial Class fMonthClose
         '
         Me.SALE_TOTAL_L.BackColor = System.Drawing.Color.NavajoWhite
         Me.SALE_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SALE_TOTAL_L.Location = New System.Drawing.Point(196, 107)
+        Me.SALE_TOTAL_L.Location = New System.Drawing.Point(425, 214)
+        Me.SALE_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.SALE_TOTAL_L.Name = "SALE_TOTAL_L"
-        Me.SALE_TOTAL_L.Size = New System.Drawing.Size(165, 20)
+        Me.SALE_TOTAL_L.Size = New System.Drawing.Size(358, 40)
         Me.SALE_TOTAL_L.TabIndex = 88
         Me.SALE_TOTAL_L.Text = "0"
         Me.SALE_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -690,9 +731,10 @@ Partial Class fMonthClose
         Me.Label26.AutoSize = True
         Me.Label26.BackColor = System.Drawing.Color.Wheat
         Me.Label26.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label26.Location = New System.Drawing.Point(107, 177)
+        Me.Label26.Location = New System.Drawing.Point(232, 354)
+        Me.Label26.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(59, 13)
+        Me.Label26.Size = New System.Drawing.Size(116, 26)
         Me.Label26.TabIndex = 87
         Me.Label26.Text = "概算利益"
         '
@@ -700,9 +742,10 @@ Partial Class fMonthClose
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label16.Location = New System.Drawing.Point(471, 267)
+        Me.Label16.Location = New System.Drawing.Point(1021, 534)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(141, 15)
+        Me.Label16.Size = New System.Drawing.Size(278, 30)
         Me.Label16.TabIndex = 79
         Me.Label16.Text = "【カテゴリ別売上状況】"
         '
@@ -711,9 +754,10 @@ Partial Class fMonthClose
         Me.Label25.AutoSize = True
         Me.Label25.BackColor = System.Drawing.Color.Wheat
         Me.Label25.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label25.Location = New System.Drawing.Point(103, 143)
+        Me.Label25.Location = New System.Drawing.Point(223, 286)
+        Me.Label25.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(72, 13)
+        Me.Label25.Size = New System.Drawing.Size(142, 26)
         Me.Label25.TabIndex = 84
         Me.Label25.Text = "仕入額合計"
         '
@@ -743,7 +787,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.CATEGORY_V.DefaultCellStyle = DataGridViewCellStyle2
-        Me.CATEGORY_V.Location = New System.Drawing.Point(474, 285)
+        Me.CATEGORY_V.Location = New System.Drawing.Point(1027, 570)
+        Me.CATEGORY_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CATEGORY_V.MultiSelect = False
         Me.CATEGORY_V.Name = "CATEGORY_V"
         Me.CATEGORY_V.ReadOnly = True
@@ -758,7 +803,7 @@ Partial Class fMonthClose
         Me.CATEGORY_V.RowHeadersWidth = 82
         Me.CATEGORY_V.RowTemplate.Height = 21
         Me.CATEGORY_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.CATEGORY_V.Size = New System.Drawing.Size(433, 140)
+        Me.CATEGORY_V.Size = New System.Drawing.Size(938, 280)
         Me.CATEGORY_V.TabIndex = 78
         Me.CATEGORY_V.TabStop = False
         '
@@ -767,9 +812,10 @@ Partial Class fMonthClose
         Me.Label24.AutoSize = True
         Me.Label24.BackColor = System.Drawing.Color.Wheat
         Me.Label24.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label24.Location = New System.Drawing.Point(103, 110)
+        Me.Label24.Location = New System.Drawing.Point(223, 220)
+        Me.Label24.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(72, 13)
+        Me.Label24.Size = New System.Drawing.Size(142, 26)
         Me.Label24.TabIndex = 82
         Me.Label24.Text = "売上額合計"
         '
@@ -777,9 +823,10 @@ Partial Class fMonthClose
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label15.Location = New System.Drawing.Point(471, 144)
+        Me.Label15.Location = New System.Drawing.Point(1021, 288)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(170, 15)
+        Me.Label15.Size = New System.Drawing.Size(337, 30)
         Me.Label15.TabIndex = 77
         Me.Label15.Text = "【支払い方法別売上状況】"
         '
@@ -809,7 +856,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.PAYMENT_V.DefaultCellStyle = DataGridViewCellStyle5
-        Me.PAYMENT_V.Location = New System.Drawing.Point(474, 162)
+        Me.PAYMENT_V.Location = New System.Drawing.Point(1027, 324)
+        Me.PAYMENT_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.PAYMENT_V.MultiSelect = False
         Me.PAYMENT_V.Name = "PAYMENT_V"
         Me.PAYMENT_V.ReadOnly = True
@@ -824,7 +872,7 @@ Partial Class fMonthClose
         Me.PAYMENT_V.RowHeadersWidth = 82
         Me.PAYMENT_V.RowTemplate.Height = 21
         Me.PAYMENT_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.PAYMENT_V.Size = New System.Drawing.Size(433, 97)
+        Me.PAYMENT_V.Size = New System.Drawing.Size(938, 194)
         Me.PAYMENT_V.TabIndex = 76
         Me.PAYMENT_V.TabStop = False
         '
@@ -832,9 +880,10 @@ Partial Class fMonthClose
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label14.Location = New System.Drawing.Point(19, 267)
+        Me.Label14.Location = New System.Drawing.Point(41, 534)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(128, 15)
+        Me.Label14.Size = New System.Drawing.Size(253, 30)
         Me.Label14.TabIndex = 75
         Me.Label14.Text = "【部門別売上状況】"
         '
@@ -864,7 +913,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.BUMON_V.DefaultCellStyle = DataGridViewCellStyle8
-        Me.BUMON_V.Location = New System.Drawing.Point(22, 285)
+        Me.BUMON_V.Location = New System.Drawing.Point(48, 570)
+        Me.BUMON_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.BUMON_V.MultiSelect = False
         Me.BUMON_V.Name = "BUMON_V"
         Me.BUMON_V.ReadOnly = True
@@ -879,7 +929,7 @@ Partial Class fMonthClose
         Me.BUMON_V.RowHeadersWidth = 82
         Me.BUMON_V.RowTemplate.Height = 21
         Me.BUMON_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.BUMON_V.Size = New System.Drawing.Size(433, 140)
+        Me.BUMON_V.Size = New System.Drawing.Size(938, 280)
         Me.BUMON_V.TabIndex = 74
         Me.BUMON_V.TabStop = False
         '
@@ -887,9 +937,10 @@ Partial Class fMonthClose
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label13.Location = New System.Drawing.Point(471, 21)
+        Me.Label13.Location = New System.Drawing.Point(1021, 42)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(144, 15)
+        Me.Label13.Size = New System.Drawing.Size(285, 30)
         Me.Label13.TabIndex = 73
         Me.Label13.Text = "【チャネル別売上状況】"
         '
@@ -919,7 +970,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.CHANNEL_V.DefaultCellStyle = DataGridViewCellStyle11
-        Me.CHANNEL_V.Location = New System.Drawing.Point(474, 40)
+        Me.CHANNEL_V.Location = New System.Drawing.Point(1027, 80)
+        Me.CHANNEL_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CHANNEL_V.MultiSelect = False
         Me.CHANNEL_V.Name = "CHANNEL_V"
         Me.CHANNEL_V.ReadOnly = True
@@ -934,7 +986,7 @@ Partial Class fMonthClose
         Me.CHANNEL_V.RowHeadersWidth = 82
         Me.CHANNEL_V.RowTemplate.Height = 21
         Me.CHANNEL_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.CHANNEL_V.Size = New System.Drawing.Size(433, 97)
+        Me.CHANNEL_V.Size = New System.Drawing.Size(938, 194)
         Me.CHANNEL_V.TabIndex = 58
         Me.CHANNEL_V.TabStop = False
         '
@@ -944,7 +996,7 @@ Partial Class fMonthClose
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape12, Me.RectangleShape11, Me.RectangleShape10, Me.RectangleShape9, Me.RectangleShape6, Me.RectangleShape5, Me.RectangleShape4, Me.RectangleShape3, Me.RectangleShape2, Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(956, 438)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(2073, 895)
         Me.ShapeContainer1.TabIndex = 85
         Me.ShapeContainer1.TabStop = False
         '
@@ -1051,9 +1103,10 @@ Partial Class fMonthClose
         Me.PRODUCT_TAB.Controls.Add(Me.Label17)
         Me.PRODUCT_TAB.Controls.Add(Me.RANK_V)
         Me.PRODUCT_TAB.Controls.Add(Me.ShapeContainer2)
-        Me.PRODUCT_TAB.Location = New System.Drawing.Point(4, 28)
+        Me.PRODUCT_TAB.Location = New System.Drawing.Point(8, 37)
+        Me.PRODUCT_TAB.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.PRODUCT_TAB.Name = "PRODUCT_TAB"
-        Me.PRODUCT_TAB.Size = New System.Drawing.Size(956, 438)
+        Me.PRODUCT_TAB.Size = New System.Drawing.Size(2073, 895)
         Me.PRODUCT_TAB.TabIndex = 1
         Me.PRODUCT_TAB.Text = "製品別売上状況"
         '
@@ -1061,9 +1114,10 @@ Partial Class fMonthClose
         '
         Me.RANK_SALE_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_SALE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_SALE_L.Location = New System.Drawing.Point(795, 247)
+        Me.RANK_SALE_L.Location = New System.Drawing.Point(1723, 494)
+        Me.RANK_SALE_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_SALE_L.Name = "RANK_SALE_L"
-        Me.RANK_SALE_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_SALE_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_SALE_L.TabIndex = 107
         Me.RANK_SALE_L.Text = "0"
         Me.RANK_SALE_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1072,9 +1126,10 @@ Partial Class fMonthClose
         '
         Me.Label34.AutoSize = True
         Me.Label34.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label34.Location = New System.Drawing.Point(706, 247)
+        Me.Label34.Location = New System.Drawing.Point(1530, 494)
+        Me.Label34.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(77, 12)
+        Me.Label34.Size = New System.Drawing.Size(154, 24)
         Me.Label34.TabIndex = 106
         Me.Label34.Text = "商品代金合計"
         '
@@ -1082,9 +1137,10 @@ Partial Class fMonthClose
         '
         Me.RANK_DISCOUNT_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_DISCOUNT_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_DISCOUNT_L.Location = New System.Drawing.Point(795, 322)
+        Me.RANK_DISCOUNT_L.Location = New System.Drawing.Point(1723, 644)
+        Me.RANK_DISCOUNT_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_DISCOUNT_L.Name = "RANK_DISCOUNT_L"
-        Me.RANK_DISCOUNT_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_DISCOUNT_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_DISCOUNT_L.TabIndex = 105
         Me.RANK_DISCOUNT_L.Text = "0"
         Me.RANK_DISCOUNT_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1093,9 +1149,10 @@ Partial Class fMonthClose
         '
         Me.RANK_FEE_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_FEE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_FEE_L.Location = New System.Drawing.Point(795, 296)
+        Me.RANK_FEE_L.Location = New System.Drawing.Point(1723, 592)
+        Me.RANK_FEE_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_FEE_L.Name = "RANK_FEE_L"
-        Me.RANK_FEE_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_FEE_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_FEE_L.TabIndex = 104
         Me.RANK_FEE_L.Text = "0"
         Me.RANK_FEE_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1104,9 +1161,10 @@ Partial Class fMonthClose
         '
         Me.RANK_POSTAGE_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_POSTAGE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_POSTAGE_L.Location = New System.Drawing.Point(795, 272)
+        Me.RANK_POSTAGE_L.Location = New System.Drawing.Point(1723, 544)
+        Me.RANK_POSTAGE_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_POSTAGE_L.Name = "RANK_POSTAGE_L"
-        Me.RANK_POSTAGE_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_POSTAGE_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_POSTAGE_L.TabIndex = 103
         Me.RANK_POSTAGE_L.Text = "0"
         Me.RANK_POSTAGE_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1115,9 +1173,10 @@ Partial Class fMonthClose
         '
         Me.Label36.AutoSize = True
         Me.Label36.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label36.Location = New System.Drawing.Point(726, 272)
+        Me.Label36.Location = New System.Drawing.Point(1573, 544)
+        Me.Label36.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(29, 12)
+        Me.Label36.Size = New System.Drawing.Size(58, 24)
         Me.Label36.TabIndex = 102
         Me.Label36.Text = "送料"
         '
@@ -1125,9 +1184,10 @@ Partial Class fMonthClose
         '
         Me.Label37.AutoSize = True
         Me.Label37.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label37.Location = New System.Drawing.Point(722, 297)
+        Me.Label37.Location = New System.Drawing.Point(1564, 594)
+        Me.Label37.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(41, 12)
+        Me.Label37.Size = New System.Drawing.Size(82, 24)
         Me.Label37.TabIndex = 101
         Me.Label37.Text = "手数料"
         '
@@ -1135,9 +1195,10 @@ Partial Class fMonthClose
         '
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label38.Location = New System.Drawing.Point(724, 322)
+        Me.Label38.Location = New System.Drawing.Point(1569, 644)
+        Me.Label38.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(38, 12)
+        Me.Label38.Size = New System.Drawing.Size(76, 24)
         Me.Label38.TabIndex = 100
         Me.Label38.Text = "値引き"
         '
@@ -1145,9 +1206,10 @@ Partial Class fMonthClose
         '
         Me.RANK_TOTAL_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_TOTAL_L.Location = New System.Drawing.Point(795, 408)
+        Me.RANK_TOTAL_L.Location = New System.Drawing.Point(1723, 816)
+        Me.RANK_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_TOTAL_L.Name = "RANK_TOTAL_L"
-        Me.RANK_TOTAL_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_TOTAL_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_TOTAL_L.TabIndex = 99
         Me.RANK_TOTAL_L.Text = "0"
         Me.RANK_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1156,9 +1218,10 @@ Partial Class fMonthClose
         '
         Me.RANK_TAX_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_TAX_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_TAX_L.Location = New System.Drawing.Point(795, 379)
+        Me.RANK_TAX_L.Location = New System.Drawing.Point(1723, 758)
+        Me.RANK_TAX_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_TAX_L.Name = "RANK_TAX_L"
-        Me.RANK_TAX_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_TAX_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_TAX_L.TabIndex = 98
         Me.RANK_TAX_L.Text = "0"
         Me.RANK_TAX_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1167,9 +1230,10 @@ Partial Class fMonthClose
         '
         Me.RANK_NOTAX_L.BackColor = System.Drawing.Color.Wheat
         Me.RANK_NOTAX_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RANK_NOTAX_L.Location = New System.Drawing.Point(795, 351)
+        Me.RANK_NOTAX_L.Location = New System.Drawing.Point(1723, 702)
+        Me.RANK_NOTAX_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.RANK_NOTAX_L.Name = "RANK_NOTAX_L"
-        Me.RANK_NOTAX_L.Size = New System.Drawing.Size(133, 12)
+        Me.RANK_NOTAX_L.Size = New System.Drawing.Size(288, 24)
         Me.RANK_NOTAX_L.TabIndex = 97
         Me.RANK_NOTAX_L.Text = "0"
         Me.RANK_NOTAX_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1178,9 +1242,10 @@ Partial Class fMonthClose
         '
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label29.Location = New System.Drawing.Point(712, 351)
+        Me.Label29.Location = New System.Drawing.Point(1543, 702)
+        Me.Label29.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(62, 12)
+        Me.Label29.Size = New System.Drawing.Size(124, 24)
         Me.Label29.TabIndex = 95
         Me.Label29.Text = "税抜き金額"
         '
@@ -1188,9 +1253,10 @@ Partial Class fMonthClose
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label30.Location = New System.Drawing.Point(722, 380)
+        Me.Label30.Location = New System.Drawing.Point(1564, 760)
+        Me.Label30.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(41, 12)
+        Me.Label30.Size = New System.Drawing.Size(82, 24)
         Me.Label30.TabIndex = 93
         Me.Label30.Text = "消費税"
         '
@@ -1198,18 +1264,20 @@ Partial Class fMonthClose
         '
         Me.Label33.AutoSize = True
         Me.Label33.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label33.Location = New System.Drawing.Point(711, 408)
+        Me.Label33.Location = New System.Drawing.Point(1541, 816)
+        Me.Label33.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(64, 12)
+        Me.Label33.Size = New System.Drawing.Size(127, 24)
         Me.Label33.TabIndex = 91
         Me.Label33.Text = "税込み金額"
         '
         'CHANNEL_CODE_T
         '
         Me.CHANNEL_CODE_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.CHANNEL_CODE_T.Location = New System.Drawing.Point(899, 12)
+        Me.CHANNEL_CODE_T.Location = New System.Drawing.Point(1948, 24)
+        Me.CHANNEL_CODE_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CHANNEL_CODE_T.Name = "CHANNEL_CODE_T"
-        Me.CHANNEL_CODE_T.Size = New System.Drawing.Size(19, 19)
+        Me.CHANNEL_CODE_T.Size = New System.Drawing.Size(37, 31)
         Me.CHANNEL_CODE_T.TabIndex = 78
         Me.CHANNEL_CODE_T.Visible = False
         '
@@ -1219,37 +1287,41 @@ Partial Class fMonthClose
         ChartArea1.BackColor = System.Drawing.Color.BurlyWood
         ChartArea1.Name = "ChartArea1"
         Me.ALL_Chart.ChartAreas.Add(ChartArea1)
-        Me.ALL_Chart.Location = New System.Drawing.Point(22, 234)
+        Me.ALL_Chart.Location = New System.Drawing.Point(48, 468)
+        Me.ALL_Chart.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.ALL_Chart.Name = "ALL_Chart"
         Me.ALL_Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent
-        Me.ALL_Chart.Size = New System.Drawing.Size(593, 191)
+        Me.ALL_Chart.Size = New System.Drawing.Size(1285, 382)
         Me.ALL_Chart.TabIndex = 77
         '
         'Label18
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label18.Location = New System.Drawing.Point(672, 15)
+        Me.Label18.Location = New System.Drawing.Point(1456, 30)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(83, 15)
+        Me.Label18.Size = New System.Drawing.Size(165, 30)
         Me.Label18.TabIndex = 76
         Me.Label18.Text = "チャネル名称"
         '
         'CHANNEL_NAME_C
         '
         Me.CHANNEL_NAME_C.FormattingEnabled = True
-        Me.CHANNEL_NAME_C.Location = New System.Drawing.Point(757, 12)
+        Me.CHANNEL_NAME_C.Location = New System.Drawing.Point(1640, 24)
+        Me.CHANNEL_NAME_C.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.CHANNEL_NAME_C.Name = "CHANNEL_NAME_C"
-        Me.CHANNEL_NAME_C.Size = New System.Drawing.Size(184, 20)
+        Me.CHANNEL_NAME_C.Size = New System.Drawing.Size(394, 32)
         Me.CHANNEL_NAME_C.TabIndex = 75
         '
         'Label17
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label17.Location = New System.Drawing.Point(19, 26)
+        Me.Label17.Location = New System.Drawing.Point(41, 52)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(109, 15)
+        Me.Label17.Size = New System.Drawing.Size(215, 30)
         Me.Label17.TabIndex = 74
         Me.Label17.Text = "【売上ランキング】"
         '
@@ -1279,7 +1351,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.RANK_V.DefaultCellStyle = DataGridViewCellStyle14
-        Me.RANK_V.Location = New System.Drawing.Point(22, 44)
+        Me.RANK_V.Location = New System.Drawing.Point(48, 88)
+        Me.RANK_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.RANK_V.MultiSelect = False
         Me.RANK_V.Name = "RANK_V"
         Me.RANK_V.ReadOnly = True
@@ -1294,7 +1367,7 @@ Partial Class fMonthClose
         Me.RANK_V.RowHeadersWidth = 82
         Me.RANK_V.RowTemplate.Height = 21
         Me.RANK_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.RANK_V.Size = New System.Drawing.Size(917, 184)
+        Me.RANK_V.Size = New System.Drawing.Size(1987, 368)
         Me.RANK_V.TabIndex = 57
         Me.RANK_V.TabStop = False
         '
@@ -1304,7 +1377,7 @@ Partial Class fMonthClose
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
         Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape30, Me.RectangleShape29, Me.RectangleShape28, Me.RectangleShape27, Me.RectangleShape26, Me.RectangleShape25, Me.RectangleShape24, Me.RectangleShape23, Me.RectangleShape16, Me.RectangleShape15, Me.RectangleShape14, Me.RectangleShape13, Me.RectangleShape8, Me.RectangleShape7})
-        Me.ShapeContainer2.Size = New System.Drawing.Size(956, 438)
+        Me.ShapeContainer2.Size = New System.Drawing.Size(2073, 895)
         Me.ShapeContainer2.TabIndex = 96
         Me.ShapeContainer2.TabStop = False
         '
@@ -1419,27 +1492,30 @@ Partial Class fMonthClose
         Me.SUPPLIER_TAB.Controls.Add(Me.SUPPLIER_CODE_T)
         Me.SUPPLIER_TAB.Controls.Add(Me.Label19)
         Me.SUPPLIER_TAB.Controls.Add(Me.ShapeContainer3)
-        Me.SUPPLIER_TAB.Location = New System.Drawing.Point(4, 28)
+        Me.SUPPLIER_TAB.Location = New System.Drawing.Point(8, 37)
+        Me.SUPPLIER_TAB.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SUPPLIER_TAB.Name = "SUPPLIER_TAB"
-        Me.SUPPLIER_TAB.Size = New System.Drawing.Size(956, 438)
+        Me.SUPPLIER_TAB.Size = New System.Drawing.Size(2073, 895)
         Me.SUPPLIER_TAB.TabIndex = 2
         Me.SUPPLIER_TAB.Text = "仕入状況"
         '
         'SUPPLIER_NAME_C
         '
         Me.SUPPLIER_NAME_C.FormattingEnabled = True
-        Me.SUPPLIER_NAME_C.Location = New System.Drawing.Point(742, 12)
+        Me.SUPPLIER_NAME_C.Location = New System.Drawing.Point(1608, 24)
+        Me.SUPPLIER_NAME_C.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SUPPLIER_NAME_C.Name = "SUPPLIER_NAME_C"
-        Me.SUPPLIER_NAME_C.Size = New System.Drawing.Size(184, 20)
+        Me.SUPPLIER_NAME_C.Size = New System.Drawing.Size(394, 32)
         Me.SUPPLIER_NAME_C.TabIndex = 79
         '
         'SUPPLIER_TOTAL_L
         '
         Me.SUPPLIER_TOTAL_L.BackColor = System.Drawing.Color.Wheat
         Me.SUPPLIER_TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SUPPLIER_TOTAL_L.Location = New System.Drawing.Point(789, 408)
+        Me.SUPPLIER_TOTAL_L.Location = New System.Drawing.Point(1710, 816)
+        Me.SUPPLIER_TOTAL_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.SUPPLIER_TOTAL_L.Name = "SUPPLIER_TOTAL_L"
-        Me.SUPPLIER_TOTAL_L.Size = New System.Drawing.Size(127, 13)
+        Me.SUPPLIER_TOTAL_L.Size = New System.Drawing.Size(275, 26)
         Me.SUPPLIER_TOTAL_L.TabIndex = 100
         Me.SUPPLIER_TOTAL_L.Text = "0"
         Me.SUPPLIER_TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1448,9 +1524,10 @@ Partial Class fMonthClose
         '
         Me.SUPPLIER_TAX_L.BackColor = System.Drawing.Color.Wheat
         Me.SUPPLIER_TAX_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SUPPLIER_TAX_L.Location = New System.Drawing.Point(553, 408)
+        Me.SUPPLIER_TAX_L.Location = New System.Drawing.Point(1198, 816)
+        Me.SUPPLIER_TAX_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.SUPPLIER_TAX_L.Name = "SUPPLIER_TAX_L"
-        Me.SUPPLIER_TAX_L.Size = New System.Drawing.Size(127, 13)
+        Me.SUPPLIER_TAX_L.Size = New System.Drawing.Size(275, 26)
         Me.SUPPLIER_TAX_L.TabIndex = 99
         Me.SUPPLIER_TAX_L.Text = "0"
         Me.SUPPLIER_TAX_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1459,9 +1536,10 @@ Partial Class fMonthClose
         '
         Me.SUPPLIER_NOTAX_L.BackColor = System.Drawing.Color.Wheat
         Me.SUPPLIER_NOTAX_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SUPPLIER_NOTAX_L.Location = New System.Drawing.Point(317, 408)
+        Me.SUPPLIER_NOTAX_L.Location = New System.Drawing.Point(687, 816)
+        Me.SUPPLIER_NOTAX_L.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.SUPPLIER_NOTAX_L.Name = "SUPPLIER_NOTAX_L"
-        Me.SUPPLIER_NOTAX_L.Size = New System.Drawing.Size(127, 13)
+        Me.SUPPLIER_NOTAX_L.Size = New System.Drawing.Size(275, 26)
         Me.SUPPLIER_NOTAX_L.TabIndex = 98
         Me.SUPPLIER_NOTAX_L.Text = "0"
         Me.SUPPLIER_NOTAX_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1470,9 +1548,10 @@ Partial Class fMonthClose
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label22.Location = New System.Drawing.Point(230, 408)
+        Me.Label22.Location = New System.Drawing.Point(498, 816)
+        Me.Label22.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(69, 13)
+        Me.Label22.Size = New System.Drawing.Size(136, 26)
         Me.Label22.TabIndex = 89
         Me.Label22.Text = "税抜き金額"
         '
@@ -1480,9 +1559,10 @@ Partial Class fMonthClose
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label21.Location = New System.Drawing.Point(477, 408)
+        Me.Label21.Location = New System.Drawing.Point(1034, 816)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(46, 13)
+        Me.Label21.Size = New System.Drawing.Size(90, 26)
         Me.Label21.TabIndex = 86
         Me.Label21.Text = "消費税"
         '
@@ -1512,7 +1592,8 @@ Partial Class fMonthClose
         DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SUPPLIER_V.DefaultCellStyle = DataGridViewCellStyle17
-        Me.SUPPLIER_V.Location = New System.Drawing.Point(24, 39)
+        Me.SUPPLIER_V.Location = New System.Drawing.Point(52, 78)
+        Me.SUPPLIER_V.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SUPPLIER_V.MultiSelect = False
         Me.SUPPLIER_V.Name = "SUPPLIER_V"
         Me.SUPPLIER_V.ReadOnly = True
@@ -1527,7 +1608,7 @@ Partial Class fMonthClose
         Me.SUPPLIER_V.RowHeadersWidth = 82
         Me.SUPPLIER_V.RowTemplate.Height = 21
         Me.SUPPLIER_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SUPPLIER_V.Size = New System.Drawing.Size(904, 351)
+        Me.SUPPLIER_V.Size = New System.Drawing.Size(1959, 702)
         Me.SUPPLIER_V.TabIndex = 84
         Me.SUPPLIER_V.TabStop = False
         '
@@ -1535,18 +1616,20 @@ Partial Class fMonthClose
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label20.Location = New System.Drawing.Point(700, 408)
+        Me.Label20.Location = New System.Drawing.Point(1517, 816)
+        Me.Label20.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(71, 13)
+        Me.Label20.Size = New System.Drawing.Size(139, 26)
         Me.Label20.TabIndex = 83
         Me.Label20.Text = "税込み金額"
         '
         'SUPPLIER_CODE_T
         '
         Me.SUPPLIER_CODE_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(890, 12)
+        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(1928, 24)
+        Me.SUPPLIER_CODE_T.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.SUPPLIER_CODE_T.Name = "SUPPLIER_CODE_T"
-        Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(19, 19)
+        Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(37, 31)
         Me.SUPPLIER_CODE_T.TabIndex = 81
         Me.SUPPLIER_CODE_T.Visible = False
         '
@@ -1554,9 +1637,10 @@ Partial Class fMonthClose
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label19.Location = New System.Drawing.Point(658, 15)
+        Me.Label19.Location = New System.Drawing.Point(1426, 30)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(7, 0, 7, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(82, 15)
+        Me.Label19.Size = New System.Drawing.Size(163, 30)
         Me.Label19.TabIndex = 80
         Me.Label19.Text = "仕入先名称"
         '
@@ -1566,7 +1650,7 @@ Partial Class fMonthClose
         Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer3.Name = "ShapeContainer3"
         Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape22, Me.RectangleShape21, Me.RectangleShape20, Me.RectangleShape19, Me.RectangleShape18, Me.RectangleShape17})
-        Me.ShapeContainer3.Size = New System.Drawing.Size(956, 438)
+        Me.ShapeContainer3.Size = New System.Drawing.Size(2073, 895)
         Me.ShapeContainer3.TabIndex = 90
         Me.ShapeContainer3.TabStop = False
         '
@@ -1616,18 +1700,21 @@ Partial Class fMonthClose
         '
         Me.TAX_G.Controls.Add(Me.IN_R)
         Me.TAX_G.Controls.Add(Me.OUT_R)
-        Me.TAX_G.Location = New System.Drawing.Point(859, 160)
+        Me.TAX_G.Location = New System.Drawing.Point(1861, 320)
+        Me.TAX_G.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.TAX_G.Name = "TAX_G"
-        Me.TAX_G.Size = New System.Drawing.Size(128, 30)
+        Me.TAX_G.Padding = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.TAX_G.Size = New System.Drawing.Size(277, 60)
         Me.TAX_G.TabIndex = 87
         Me.TAX_G.TabStop = False
         '
         'IN_R
         '
         Me.IN_R.AutoSize = True
-        Me.IN_R.Location = New System.Drawing.Point(14, 9)
+        Me.IN_R.Location = New System.Drawing.Point(30, 18)
+        Me.IN_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.IN_R.Name = "IN_R"
-        Me.IN_R.Size = New System.Drawing.Size(47, 16)
+        Me.IN_R.Size = New System.Drawing.Size(89, 28)
         Me.IN_R.TabIndex = 1
         Me.IN_R.TabStop = True
         Me.IN_R.Text = "内税"
@@ -1636,9 +1723,10 @@ Partial Class fMonthClose
         'OUT_R
         '
         Me.OUT_R.AutoSize = True
-        Me.OUT_R.Location = New System.Drawing.Point(67, 9)
+        Me.OUT_R.Location = New System.Drawing.Point(145, 18)
+        Me.OUT_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.OUT_R.Name = "OUT_R"
-        Me.OUT_R.Size = New System.Drawing.Size(47, 16)
+        Me.OUT_R.Size = New System.Drawing.Size(89, 28)
         Me.OUT_R.TabIndex = 0
         Me.OUT_R.TabStop = True
         Me.OUT_R.Text = "外税"
@@ -1650,10 +1738,10 @@ Partial Class fMonthClose
         '
         'fMonthClose
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.BurlyWood
-        Me.ClientSize = New System.Drawing.Size(1019, 718)
+        Me.ClientSize = New System.Drawing.Size(2208, 1436)
         Me.Controls.Add(Me.TAX_G)
         Me.Controls.Add(Me.SALER_AREA)
         Me.Controls.Add(Me.COMMIT_B)
@@ -1667,6 +1755,7 @@ Partial Class fMonthClose
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.STAFF_NAME_T)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.Name = "fMonthClose"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "月次締め処理"

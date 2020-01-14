@@ -164,9 +164,9 @@ Public Class cViewTrnSummaryDBIO
                 '2019,12,24 A.Komita 追加 From
                 '軽減税率
                 If IsDBNull(pDataReader("軽減税率")) = True Then
-                    parTrnSummary(i).sReducedTaxRate = "0"
+                    parTrnSummary(i).sReducedTaxRate = 0
                 Else
-                    parTrnSummary(i).sReducedTaxRate = CType(CInt(pDataReader("軽減税率")), String)
+                    parTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
                 End If
                 '2019,12,24 A.Komita 追加 To
 
@@ -378,7 +378,7 @@ Public Class cViewTrnSummaryDBIO
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計, " &
                     "Sum(日次取引明細データ.取引消費税額) AS 通常税額, " &
                     "Sum(日次取引明細データ.取引軽減消費税額) AS 軽減税額, " &
-                    "Sum(日次取引明細データ.軽減税率) AS 軽減税率 " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率 " &
                 "FROM " &
                     "(日次取引データ LEFT JOIN チャネルマスタ ON 日次取引データ.チャネルコード = チャネルマスタ.チャネルコード) " &
                     "LEFT JOIN 日次取引明細データ ON 日次取引データ.取引コード = 日次取引明細データ.取引コード "
@@ -548,7 +548,7 @@ Public Class cViewTrnSummaryDBIO
                 If IsDBNull(pDataReader("軽減税率")) = True Then
                     parMonthTrnSummary(i).sReducedTaxRate = 0
                 Else
-                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
                 End If
                 '2019,12,26 A.Komita 追加 To
 
@@ -646,7 +646,7 @@ Public Class cViewTrnSummaryDBIO
                 If IsDBNull(pDataReader("軽減税率")) = True Then
                     parMonthTrnSummary(i).sReducedTaxRate = 0
                 Else
-                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
                 End If
                 '2019,12,26 A.Komita 追加 To
 
@@ -969,7 +969,7 @@ Public Class cViewTrnSummaryDBIO
                 If IsDBNull(pDataReader("軽減税率")) = True Then
                     parMonthTrnSummary(i).sReducedTaxRate = 0
                 Else
-                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
                 End If
                 '2019,12,26 A.Komtia 追加 To
 

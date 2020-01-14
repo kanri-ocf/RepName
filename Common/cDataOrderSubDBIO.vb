@@ -134,12 +134,16 @@ Public Class cDataOrderSubDBIO
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
             pCommand.Parameters("@OrderCode").Value = KeyOrderCode
 
-            If KeyOrderSubCode <> Nothing Then
-                '発注明細コード
-                pCommand.Parameters.Add _
+            '2020,1,14 A.Komita Nothing判定時のelseを追加 From
+            '発注明細コード
+            pCommand.Parameters.Add _
                 (New OleDb.OleDbParameter("@OrderSubCode", OleDb.OleDbType.Numeric, 2))
+            If KeyOrderSubCode <> Nothing Then
                 pCommand.Parameters("@OrderSubCode").Value = KeyOrderSubCode
+            Else
+                pCommand.Parameters("@OrderSubCode").Value = 0
             End If
+            '2020,1,14 A.Komita 追加 To 
 
             pDataReader = pCommand.ExecuteReader()
 
