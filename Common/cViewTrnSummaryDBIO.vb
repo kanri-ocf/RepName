@@ -463,6 +463,7 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("通常税額"))
                 End If
+
                 '軽減税額
                 If IsDBNull(pDataReader("軽減税額")) = True Then
                     parMonthTrnSummary(i).sReduceTaxPrice = 0
@@ -470,6 +471,15 @@ Public Class cViewTrnSummaryDBIO
                     parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("軽減税額"))
                 End If
                 '2019.12.19 R.takashima TO
+
+                '2020,1,14 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                End If
+                '2020,1,14 A.Komita 追加 To
 
                 'レコードが取得できた時の処理
                 i = i + 1

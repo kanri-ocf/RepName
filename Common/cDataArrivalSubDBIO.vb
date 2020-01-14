@@ -47,9 +47,9 @@ Public Class cDataArrivalSubDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
             If KeyArrivalCode <> Nothing Then
-                pCommand.Parameters("@OrderCode").Value = ""
-            Else
                 pCommand.Parameters("@OrderCode").Value = KeyArrivalCode
+            Else
+                pCommand.Parameters("@OrderCode").Value = ""
             End If
             '2020,1,14 A.Komita 追加 To 
 

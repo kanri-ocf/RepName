@@ -181,14 +181,6 @@ Public Class fMonthClose
 
     End Sub
 
-    '2019,12,23 A.Komita 印刷を実行させる為の変数をメソッド内に追加 From
-    Sub New(ByVal iOrderMode As Integer)
-
-        ORDER_MODE = iOrderMode
-
-    End Sub
-    '2019,12,23 A.Komita 追加 To
-
     '----------------------------------------- < 内部関数 > -------------------------------------------
     '***************************
     'チャネルリストボックスセット
