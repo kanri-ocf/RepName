@@ -129,12 +129,16 @@ Public Class cDataOrderSubDBIO
             '   パラメータの設定
             '***********************
 
+            '2020,1,14 A.Komita Nothing判定時のelseを追加 From
             '発注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
-            pCommand.Parameters("@OrderCode").Value = KeyOrderCode
+            If KeyOrderCode <> Nothing Then
+                pCommand.Parameters("@OrderCode").Value = KeyOrderCode
+            Else
+                pCommand.Parameters("@OrderCode").Value = ""
+            End If
 
-            '2020,1,14 A.Komita Nothing判定時のelseを追加 From
             '発注明細コード
             pCommand.Parameters.Add _
                 (New OleDb.OleDbParameter("@OrderSubCode", OleDb.OleDbType.Numeric, 2))

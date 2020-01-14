@@ -42,10 +42,16 @@ Public Class cDataArrivalSubDBIO
             '   パラメータの設定
             '***********************
 
+            '2020,1,14 A.Komita Nothing判定時のelseを追加 From
             '取引コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
-            pCommand.Parameters("@OrderCode").Value = KeyArrivalCode
+            If KeyArrivalCode <> Nothing Then
+                pCommand.Parameters("@OrderCode").Value = ""
+            Else
+                pCommand.Parameters("@OrderCode").Value = KeyArrivalCode
+            End If
+            '2020,1,14 A.Komita 追加 To 
 
             pDataReader = pCommand.ExecuteReader()
 

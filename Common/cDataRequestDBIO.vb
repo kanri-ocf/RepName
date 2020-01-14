@@ -1036,7 +1036,7 @@ Public Class cDataRequestDBIO
             '***********************
             'パラメータの設定()
             '***********************
-            '2020,1,10 A.Komita Nothingでエラー判定が発生する為、空白を代入するif文を追加 From
+            '2020,1,10 A.Komita Nothingでエラー判定が発生する為、空白もしくは0を代入するif文を追加 From
             '受注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 13))
