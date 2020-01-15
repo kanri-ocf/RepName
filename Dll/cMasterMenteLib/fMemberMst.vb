@@ -743,7 +743,7 @@
 
     Private Sub ENTRY_DATE_D_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ENTRY_DATE_D.ValueChanged
         ENTRY_DATE_D.Format = Windows.Forms.DateTimePickerFormat.Short
-        ST_REG_DATE_D.Value = ENTRY_DATE_D.Value
+        'ST_REG_DATE_D.Value = ENTRY_DATE_D.Value
     End Sub
 
     Private Sub RESIGN_DATE_D_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RESIGN_DATE_D.ValueChanged
@@ -1211,7 +1211,7 @@
                 Close()
             End If
         End If
-        CLOSE_PROC()
+        'CLOSE_PROC()
 
     End Sub
 
