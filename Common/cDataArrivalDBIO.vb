@@ -5,6 +5,8 @@ Public Class cDataArrivalDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
+    Private parMonthTrnSummary As Object
+
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
         pCommand = iCommand
@@ -443,16 +445,12 @@ Public Class cDataArrivalDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
             If pCommand.Parameters("@OrderCode").Value = Nothing Then
-                pCommand.Parameters("@OrderCode").Value = ""
-            Else
                 pCommand.Parameters("@OrderCode").Value = parArrivalData.sOrderCode
             End If
             '入庫番号
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ArrivalNo", OleDb.OleDbType.Numeric, 10))
             If pCommand.Parameters("@ArrivalNo").Value = Nothing Then
-                pCommand.Parameters("@ArrivalNo").Value = 0
-            Else
                 pCommand.Parameters("@ArrivalNo").Value = parArrivalData.sArrivalNo
             End If
             '入庫日
@@ -461,7 +459,7 @@ Public Class cDataArrivalDBIO
             If pCommand.Parameters("@ArrivalDate").Value = Nothing Then
                 pCommand.Parameters("@ArrivalDate").Value = ""
             Else
-                pCommand.Parameters("@ArrivalDate").Value = parArrivalData.sArrivalDate
+                pCommand.Parameters("@ArrivalDate").Value = parMonthTrnSummary.sArrivalDate '2020,1,15 ここまで
             End If
             '仕入先コード
             pCommand.Parameters.Add _

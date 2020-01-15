@@ -4322,7 +4322,7 @@ Public Class fRegister
         For i = 0 To MEISAI_V.RowCount - 1
             If MEISAI_V("返金額", i).Value <> 0 Then
                 '日次取引明細データの読み込み
-                RecordCnt = oSubDataTrnDBIO.getSubTrn(oSubTrn, CLng(MEISAI_V("取引コード", i).Value), CLng(MEISAI_V("取引明細コード", i).Value), Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
+                RecordCnt = oSubDataTrnDBIO.getSubTrn(oSubTrn, MEISAI_V("取引コード", i).Value, CLng(MEISAI_V("取引明細コード", i).Value), Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
 
                 oSubTrn(0).sCount = (oSubTrn(0).sCount - CInt(MEISAI_V("数量", i).Value)) * -1
                 oSubTrn(0).sNoTaxProductPrice = oSubTrn(0).sUnitPrice * (oSubTrn(0).sCount - CInt(MEISAI_V("数量", i).Value))

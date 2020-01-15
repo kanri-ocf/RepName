@@ -21,7 +21,7 @@ Public Class cDataOrderDBIO
                                  ByVal KeySupplierCode As Integer,
                                  ByVal KeyFromDate As String,
                                  ByVal KeyToDate As String,
-                                 ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                 ByRef Tran As OleDb.OleDbTransaction) As Long
 
         Dim strSelect As String
         Dim i As Long

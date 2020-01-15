@@ -7,7 +7,6 @@ Public Class cViewTrnSummaryDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
-
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
         pCommand = iCommand
@@ -16,7 +15,6 @@ Public Class cViewTrnSummaryDBIO
     '---------------------------------------------------------------------------------------------------------
     '2019/10/19 SUZUKI 
     '---------------------------------------------------------------------------------------------------------
-
     '----------------------------------------------------------------------
     '　機能：取引の集計結果を取得する関数
     '　引数：Byref DataTable型オブジェクト(取得された取引レコード値を設定)
@@ -575,7 +573,7 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("税込金額の合計"))
                 End If
-                '部門名称
+                '部門種別
                 If IsDBNull(pDataReader("部門種別")) = True Then
                     parMonthTrnSummary(i).sBumonClass = 0
                 Else
@@ -653,6 +651,7 @@ Public Class cViewTrnSummaryDBIO
                 parMonthTrnSummary(i).sName = pDataReader("支払方法名称").ToString
 
                 '2019,12,26 A.Komita 追加 From
+                '軽減税率
                 If IsDBNull(pDataReader("軽減税率")) = True Then
                     parMonthTrnSummary(i).sReducedTaxRate = 0
                 Else
@@ -1060,10 +1059,10 @@ Public Class cViewTrnSummaryDBIO
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
     Public Function getArrivalSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewArrivalSummary,
-                                       ByVal keySupplierCode As Integer,
-                                       ByVal keyFromDate As String,
-                                       ByVal keyToDate As String,
-                                       ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                      ByVal keySupplierCode As Integer,
+                                      ByVal keyFromDate As String,
+                                      ByVal keyToDate As String,
+                                      ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
         Dim pc As Integer
@@ -1187,6 +1186,8 @@ Public Class cViewTrnSummaryDBIO
                 ReDim Preserve parMonthTrnSummary(i)
 
                 'レコードが取得できた時の処理
+
+                '2020,1,15 A.Komita バックアップ時に構造体へ追加する数値を取得するコードを追加 From
                 '入庫日
                 parMonthTrnSummary(i).sArrivalDate = pDataReader("入庫日").ToString
 

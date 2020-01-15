@@ -812,7 +812,7 @@ Public Class cDataTrnSubDBIO
             pCommand.Parameters("@UpdateTime").Value = String.Format("{0:HH:mm:ss}", Now)
 
             '取引テーブル挿入処理実行
-            'pCommand.ExecuteNonQuery()
+            pCommand.ExecuteNonQuery()
 
             insertSubTrn = True
 
