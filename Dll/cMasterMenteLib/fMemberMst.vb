@@ -404,6 +404,8 @@
 
         IVENT_FLG = False
 
+        RecordCount = 0
+
         RecordCount = oMstMemberDBIO.getMember(oMember,
                                           MemberCode,
                                           "",
@@ -1037,7 +1039,6 @@
         If IO.File.Exists(tPath) Then
             'ファイルの削除
             IO.File.Delete(tPath)
-            DISP_INIT()
         End If
 
         If ret = True Then
@@ -1054,6 +1055,15 @@
         message_form.ShowDialog()
         message_form.Dispose()
 
+        If MODE = 0 Then
+            IVENT_FLG = False
+            '表示初期化
+            DISP_INIT()
+            IVENT_FLG = True
+        Else
+            DialogResult = Windows.Forms.DialogResult.OK
+            Close()
+        End If
     End Sub
     Private Function WRITE_PROC() As Boolean
         Dim ret As Boolean
