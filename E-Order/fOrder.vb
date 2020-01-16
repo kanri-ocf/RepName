@@ -731,9 +731,7 @@
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            'Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-            '                            "条件を変更して再建策して下さい", _
-            '                            Nothing, Nothing)
+
             Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
                                         "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
@@ -871,54 +869,63 @@
         Dim pOrderData() As cStructureLib.sOrderData
         Dim RecordCnt As Long
 
-        '発注データ確認処理
-        RecordCnt = 0
-        ReDim pOrderData(0)
-        RecordCnt = pDataOrderDBIO.getOrderData(pOrderData, ORDER_CODE_T.Text, Nothing, Nothing, Nothing, oTran)
-        If RecordCnt = 0 Then
-            Message_form = New cMessageLib.fMessage(0, "該当データが存在しません。", _
-                                "発注番号を確認して下さい。", _
+        If ORDER_CODE_T.Text <> "" Then
+            '発注データ確認処理
+            RecordCnt = 0
+            ReDim pOrderData(0)
+            RecordCnt = pDataOrderDBIO.getOrderData(pOrderData, ORDER_CODE_T.Text, Nothing, Nothing, Nothing, oTran)
+            If RecordCnt = 0 Then
+                Message_form = New cMessageLib.fMessage(1, "該当データが存在しません。",
+                                "発注番号を確認して下さい。",
                                 Nothing, Nothing)
-            Message_form.ShowDialog()
-            Message_form = Nothing
+                Message_form.ShowDialog()
+                Message_form = Nothing
+                Application.DoEvents()
+
+                pDataOrderDBIO = Nothing
+                pOrderData = Nothing
+                ORDER_CODE_T.Focus()
+                Exit Sub
+            End If
+
+            '伝票印刷モード選択
+            ReportModeSelect_form = New fOrderReportModeSelect(pOrderData(0).sPrintMode)
+            ReportModeSelect_form.ShowDialog()
+            If ReportModeSelect_form.DialogResult = Windows.Forms.DialogResult.Cancel Then
+                ReportModeSelect_form = Nothing
+                Exit Sub
+            Else
+                If ReportModeSelect_form.BEFORE_TAX_R.Checked = True Then
+                    ReportMode = "税抜き"
+                Else
+                    ReportMode = "税込み"
+                End If
+                ReportModeSelect_form = Nothing
+            End If
             Application.DoEvents()
 
-            pDataOrderDBIO = Nothing
-            pOrderData = Nothing
-            ORDER_CODE_T.Focus()
-            Exit Sub
-        End If
-
-        '伝票印刷モード選択
-        ReportModeSelect_form = New fOrderReportModeSelect(pOrderData(0).sPrintMode)
-        ReportModeSelect_form.ShowDialog()
-        If ReportModeSelect_form.DialogResult = Windows.Forms.DialogResult.Cancel Then
-            ReportModeSelect_form = Nothing
-            Exit Sub
-        Else
-            If ReportModeSelect_form.BEFORE_TAX_R.Checked = True Then
-                ReportMode = "税抜き"
-            Else
-                ReportMode = "税込み"
-            End If
-            ReportModeSelect_form = Nothing
-        End If
-        Application.DoEvents()
-
-        'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(0, "発注伝票を作成中です。", _
-                                        "しばらくお待ちください。", _
+            'メッセージウィンドウ表示
+            Message_form = New cMessageLib.fMessage(0, "発注伝票を作成中です。",
+                                        "しばらくお待ちください。",
                                         Nothing, Nothing)
-        Message_form.Show()
+            Message_form.Show()
 
-        Application.DoEvents()
+            Application.DoEvents()
 
-        ret = oOrderReports.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
+            ret = oOrderReports.OrderPrint(oConn, oCommand, oDataReader, ORDER_CODE_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
 
-        oOrderReports = Nothing
+            oOrderReports = Nothing
 
-        Message_form.Dispose()
-        Message_form = Nothing
+            Message_form.Dispose()
+            Message_form = Nothing
+        Else
+            Message_form = New cMessageLib.fMessage(1, "発注番号が記入されていません。",
+                "発注番号を確認して下さい。",
+                Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+        End If
+
 
     End Sub
 
