@@ -5,7 +5,9 @@ Public Class cDataArrivalDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
+    '2020,1,15 A.Komita insertで他クラスの構造体を代入する為に宣言を追加 From
     Private parMonthTrnSummary As Object
+    '2020,1,15 A.Komita 追加 To
 
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
@@ -383,6 +385,9 @@ Public Class cDataArrivalDBIO
     '----------------------------------------------------------------------
     Public Function insertArrivalData(ByVal parArrivalData As cStructureLib.sArrivalData, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim strInsertArrival As String
+        '2020,1,16 A.Komita 追加 From
+        Dim i As Integer
+        '2020,1,16 A.Komita 追加 To
 
         Try
 
@@ -440,168 +445,90 @@ Public Class cDataArrivalDBIO
             '   パラメータの設定
             '***********************
 
-            '2020,1,14 A.Komita Nothingでエラー判定が発生する為、空白もしくは0を代入するif文を追加 From
             '発注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@OrderCode").Value = Nothing Then
-                pCommand.Parameters("@OrderCode").Value = parArrivalData.sOrderCode
-            End If
+            pCommand.Parameters("@OrderCode").Value = parArrivalData.sOrderCode
             '入庫番号
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ArrivalNo", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ArrivalNo").Value = Nothing Then
-                pCommand.Parameters("@ArrivalNo").Value = parArrivalData.sArrivalNo
-            End If
+            pCommand.Parameters("@ArrivalNo").Value = parArrivalData.sArrivalNo
             '入庫日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ArrivalDate", OleDb.OleDbType.Char, 10))
-            If pCommand.Parameters("@ArrivalDate").Value = Nothing Then
-                pCommand.Parameters("@ArrivalDate").Value = ""
-            Else
-                pCommand.Parameters("@ArrivalDate").Value = parMonthTrnSummary.sArrivalDate '2020,1,15 ここまで
-            End If
+            pCommand.Parameters("@ArrivalDate").Value = parArrivalData.sArrivalDate
             '仕入先コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@SupplierCode", OleDb.OleDbType.Numeric, 5))
-            If pCommand.Parameters("@SupplierCode").Value = Nothing Then
-                pCommand.Parameters("@SupplierCode").Value = 0
-            Else
-                pCommand.Parameters("@SupplierCode").Value = parArrivalData.sSupplierCode
-            End If
+            pCommand.Parameters("@SupplierCode").Value = parArrivalData.sSupplierCode
             '支払方法コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PaymentCode", OleDb.OleDbType.Numeric, 2))
-            If pCommand.Parameters("@PaymentCode").Value = Nothing Then
-                pCommand.Parameters("@PaymentCode").Value = 0
-            Else
-                pCommand.Parameters("@PaymentCode").Value = parArrivalData.sPaymentCode
-            End If
+            pCommand.Parameters("@PaymentCode").Value = parArrivalData.sPaymentCode
             '入庫税抜商品金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoTaxProductPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@NoTaxProductPrice").Value = Nothing Then
-                pCommand.Parameters("@NoTaxProductPrice").Value = 0
-            Else
-                pCommand.Parameters("@NoTaxProductPrice").Value = parArrivalData.sNoTaxTotalProductPrice
-            End If
+            pCommand.Parameters("@NoTaxProductPrice").Value = parArrivalData.sNoTaxTotalProductPrice
             '送料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShippingCharge", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ShippingCharge").Value = Nothing Then
-                pCommand.Parameters("@ShippingCharge").Value = 0
-            Else
-                pCommand.Parameters("@ShippingCharge").Value = parArrivalData.sShippingCharge
-            End If
+            pCommand.Parameters("@ShippingCharge").Value = parArrivalData.sShippingCharge
             '手数料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PaymentCharge", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@PaymentCharge").Value = Nothing Then
-                pCommand.Parameters("@PaymentCharge").Value = 0
-            Else
-                pCommand.Parameters("@PaymentCharge").Value = parArrivalData.sPaymentCharge
-            End If
+            pCommand.Parameters("@PaymentCharge").Value = parArrivalData.sPaymentCharge
             '値引き
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Discount", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@Discount").Value = Nothing Then
-                pCommand.Parameters("@Discount").Value = 0
-            Else
-                pCommand.Parameters("@Discount").Value = parArrivalData.sDiscount
-            End If
+            pCommand.Parameters("@Discount").Value = parArrivalData.sDiscount
             'ポイント値引き
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PointDisCount", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@PointDisCount").Value = Nothing Then
-                pCommand.Parameters("@PointDisCount").Value = 0
-            Else
-                pCommand.Parameters("@PointDisCount").Value = parArrivalData.sPointDisCount
-            End If
+            pCommand.Parameters("@PointDisCount").Value = parArrivalData.sPointDisCount
             '入庫税抜金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoTaxTotalPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@NoTaxTotalPrice").Value = Nothing Then
-                pCommand.Parameters("@NoTaxTotalPrice").Value = 0
-            Else
-                pCommand.Parameters("@NoTaxTotalPrice").Value = parArrivalData.sNoTaxTotalPrice
-            End If
+            pCommand.Parameters("@NoTaxTotalPrice").Value = parArrivalData.sNoTaxTotalPrice
             '入庫消費税額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TaxTotal", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@TaxTotal").Value = Nothing Then
-                pCommand.Parameters("@TaxTotal").Value = 0
-            Else
-                pCommand.Parameters("@TaxTotal").Value = parArrivalData.sTaxTotal
-            End If
+            pCommand.Parameters("@TaxTotal").Value = parArrivalData.sTaxTotal
 
             '2019,11,15 A.Komita 追加 From
             '入庫軽減税額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ReducedTaxRate").Value = Nothing Then
-                pCommand.Parameters("@ReducedTaxRate").Value = 0
-            Else
-                pCommand.Parameters("@ReducedTaxRate").Value = parArrivalData.sReducedTaxRate
-            End If
+            pCommand.Parameters("@ReducedTaxRate").Value = parArrivalData.sReducedTaxRate
             '2019,11,15 A.Komita 追加 To
 
             '入庫税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@TotalPrice").Value = Nothing Then
-                pCommand.Parameters("@TotalPrice").Value = 0
-            Else
-                pCommand.Parameters("@TotalPrice").Value = parArrivalData.sTotalPrice
-            End If
+            pCommand.Parameters("@TotalPrice").Value = parArrivalData.sTotalPrice
             '完納フラグ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@FinishFlg", OleDb.OleDbType.Boolean, 1))
-            If pCommand.Parameters("@FinishFlg").Value = Nothing Then
-                pCommand.Parameters("@FinishFlg").Value = 0
-            Else
-                pCommand.Parameters("@FinishFlg").Value = parArrivalData.sFinishFlg
-            End If
+            pCommand.Parameters("@FinishFlg").Value = parArrivalData.sFinishFlg
             '入庫担当者コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@StaffCode", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@StaffCode").Value = Nothing Then
-                pCommand.Parameters("@StaffCode").Value = "Nothing"
-            Else
-                pCommand.Parameters("@StaffCode").Value = parArrivalData.sStaffCode
-            End If
+            pCommand.Parameters("@StaffCode").Value = parArrivalData.sStaffCode
             '登録日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@CreateDate", OleDb.OleDbType.Char, 10))
-            If pCommand.Parameters("@CreateDate").Value = Nothing Then
-                pCommand.Parameters("@CreateDate").Value = ""
-            Else
-                pCommand.Parameters("@CreateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@CreateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '登録時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@CreateTime", OleDb.OleDbType.Char, 8))
-            If pCommand.Parameters("@CreateTime").Value = Nothing Then
-                pCommand.Parameters("@CreateTime").Value = ""
-            Else
-                pCommand.Parameters("@CreateTime").Value = String.Format("{0:HH:mm:ss}", Now)
-            End If
+            pCommand.Parameters("@CreateTime").Value = String.Format("{0:HH:mm:ss}", Now)
             '最終更新日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@UpdateDate", OleDb.OleDbType.Char, 10))
-            If pCommand.Parameters("@UpdateDate").Value = Nothing Then
-                pCommand.Parameters("@UpdateDate").Value = ""
-            Else
-                pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 8))
-            If pCommand.Parameters("@UpdateTime").Value = Nothing Then
-                pCommand.Parameters("@UpdateTime").Value = ""
-            Else
-                pCommand.Parameters("@UpdateTime").Value = String.Format("{0:HH:mm:ss}", Now)
-            End If
-            '2020,1,14 A.Komita 追加 To
+            pCommand.Parameters("@UpdateTime").Value = String.Format("{0:HH:mm:ss}", Now)
 
             '入庫情報データ挿入処理実行
             pCommand.ExecuteNonQuery()
