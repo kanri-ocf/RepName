@@ -1005,6 +1005,7 @@ Public Class fMonthClose
         Message_form.Show()
         System.Windows.Forms.Application.DoEvents()
 
+
         '売上集計タブ
         DATA_SET_CAHNNEL()
         DATA_SET_BUMON()

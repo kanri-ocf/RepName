@@ -2156,8 +2156,8 @@ Public Class cDataRequestDBIO
             pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新時間
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 10))
-            pCommand.Parameters("@UpdateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
+            (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 8))
+            pCommand.Parameters("@UpdateTime").Value = String.Format("{0:HH:mm:ss}", Now)
             '2020,1,10 A.Komita 追加 To
 
             '受注情報データ挿入処理実行
