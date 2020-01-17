@@ -273,8 +273,13 @@ Public Class cDataRequestDBIO
 
                 ReDim Preserve parRequestData(i)
 
+                '2020,1,17 A.Komita バックアップ時に構造体へ追加する数値を取得するコードを追加 From
                 '受注コード
-                parRequestData(i).sRequestCode = pDataReader("受注コード").ToString
+                If IsDBNull(pDataReader("受注コード").ToString) = True Then
+                    parRequestData(i).sRequestCode = ""
+                Else
+                    parRequestData(i).sRequestCode = pDataReader("受注コード").ToString
+                End If
                 'チャネルコード
                 If IsDBNull(pDataReader("チャネルコード")) = True Then
                     parRequestData(i).sChannelCode = 0
@@ -282,111 +287,323 @@ Public Class cDataRequestDBIO
                     parRequestData(i).sChannelCode = CInt(pDataReader("チャネルコード"))
                 End If
                 'OR受注コード
-                parRequestData(i).sORRequestCode = pDataReader("OR受注コード").ToString
+                If IsDBNull(pDataReader("OR受注コード").ToString) = True Then
+                    parRequestData(i).sORRequestCode = ""
+                Else
+                    parRequestData(i).sORRequestCode = pDataReader("OR受注コード").ToString
+                End If
                 '受注サイト
-                parRequestData(i).sRequestSite = pDataReader("受注サイト").ToString
+                If IsDBNull(pDataReader("受注サイト").ToString) = True Then
+                    parRequestData(i).sRequestSite = ""
+                Else
+                    parRequestData(i).sRequestSite = pDataReader("受注サイト").ToString
+                End If
                 '受注媒体
-                parRequestData(i).sRequestMedia = pDataReader("受注媒体").ToString
+                If IsDBNull(pDataReader("受注媒体").ToString) = True Then
+                    parRequestData(i).sRequestMedia = ""
+                Else
+                    parRequestData(i).sRequestMedia = pDataReader("受注媒体").ToString
+                End If
                 'モバイルフラグ
-                parRequestData(i).sMobileFlg = pDataReader("モバイルフラグ").ToString
+                If IsDBNull(pDataReader("モバイルフラグ").ToString) = True Then
+                    parRequestData(i).sMobileFlg = ""
+                Else
+                    parRequestData(i).sMobileFlg = pDataReader("モバイルフラグ").ToString
+                End If
                 'アフェリエイトフラグ
-                parRequestData(i).sAffiliateFlg = pDataReader("アフェリエイトフラグ").ToString
+                If IsDBNull(pDataReader("アフェリエイトフラグ").ToString) = True Then
+                    parRequestData(i).sAffiliateFlg = ""
+                Else
+                    parRequestData(i).sAffiliateFlg = pDataReader("アフェリエイトフラグ").ToString
+                End If
                 '受注日
-                parRequestData(i).sRequestDate = pDataReader("受注日").ToString
+                If IsDBNull(pDataReader("受注日").ToString) = True Then
+                    parRequestData(i).sRequestDate = ""
+                Else
+                    parRequestData(i).sRequestDate = pDataReader("受注日").ToString
+                End If
                 '受注時間
-                parRequestData(i).sRequestTime = pDataReader("受注時間").ToString
+                If IsDBNull(pDataReader("受注時間").ToString) = True Then
+                    parRequestData(i).sRequestTime = ""
+                Else
+                    parRequestData(i).sRequestTime = pDataReader("受注時間").ToString
+                End If
                 '出荷先－会社名
-                parRequestData(i).sShipCorpName = pDataReader("出荷先－会社名").ToString
+                If IsDBNull(pDataReader("出荷先－会社名").ToString) = True Then
+                    parRequestData(i).sShipCorpName = ""
+                Else
+                    parRequestData(i).sShipCorpName = pDataReader("出荷先－会社名").ToString
+                End If
                 '出荷先－支店名
-                parRequestData(i).sShipDivName = pDataReader("出荷先－支店名").ToString
+                If IsDBNull(pDataReader("出荷先－支店名").ToString) = True Then
+                    parRequestData(i).sShipDivName = ""
+                Else
+                    parRequestData(i).sShipDivName = pDataReader("出荷先－支店名").ToString
+                End If
                 '出荷先－姓カナ
-                parRequestData(i).sShipKanaShip1stName = pDataReader("出荷先－姓カナ").ToString
+                If IsDBNull(pDataReader("出荷先－姓カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaShip1stName = ""
+                Else
+                    parRequestData(i).sShipKanaShip1stName = pDataReader("出荷先－姓カナ").ToString
+                End If
                 '出荷先－名カナ
-                parRequestData(i).sShipKanaShip2ndName = pDataReader("出荷先－名カナ").ToString
+                If IsDBNull(pDataReader("出荷先－名カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaShip2ndName = ""
+                Else
+                    parRequestData(i).sShipKanaShip2ndName = pDataReader("出荷先－名カナ").ToString
+                End If
                 '出荷先－住所１カナ
-                parRequestData(i).sShipKanaAdder1 = pDataReader("出荷先－住所１カナ").ToString
+                If IsDBNull(pDataReader("出荷先－住所１カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaAdder1 = ""
+                Else
+                    parRequestData(i).sShipKanaAdder1 = pDataReader("出荷先－住所１カナ").ToString
+                End If
                 '出荷先－住所２カナ
-                parRequestData(i).sShipKanaAdder2 = pDataReader("出荷先－住所２カナ").ToString
+                If IsDBNull(pDataReader("出荷先－住所２カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaAdder2 = ""
+                Else
+                    parRequestData(i).sShipKanaAdder2 = pDataReader("出荷先－住所２カナ").ToString
+                End If
                 '出荷先－住所市区町村カナ
-                parRequestData(i).sShipKanaCity = pDataReader("出荷先－住所市区町村カナ").ToString
+                If IsDBNull(pDataReader("出荷先－住所市区町村カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaCity = ""
+                Else
+                    parRequestData(i).sShipKanaCity = pDataReader("出荷先－住所市区町村カナ").ToString
+                End If
                 '出荷先－都道府県カナ
-                parRequestData(i).sShipKanaState = pDataReader("出荷先－都道府県カナ").ToString
+                If IsDBNull(pDataReader("出荷先－都道府県カナ").ToString) = True Then
+                    parRequestData(i).sShipKanaState = ""
+                Else
+                    parRequestData(i).sShipKanaState = pDataReader("出荷先－都道府県カナ").ToString
+                End If
                 '出荷先－姓
-                parRequestData(i).sShip1stName = pDataReader("出荷先－姓").ToString
+                If IsDBNull(pDataReader("出荷先－姓").ToString) = True Then
+                    parRequestData(i).sShip1stName = ""
+                Else
+                    parRequestData(i).sShip1stName = pDataReader("出荷先－姓").ToString
+                End If
                 '出荷先－名
-                parRequestData(i).sShip2ndName = pDataReader("出荷先－名").ToString
+                If IsDBNull(pDataReader("出荷先－名").ToString) = True Then
+                    parRequestData(i).sShip2ndName = ""
+                Else
+                    parRequestData(i).sShip2ndName = pDataReader("出荷先－名").ToString
+                End If
                 '出荷先－住所１
-                parRequestData(i).sShipAdder1 = pDataReader("出荷先－住所１").ToString
+                If IsDBNull(pDataReader("出荷先－住所１").ToString) = True Then
+                    parRequestData(i).sShipAdder1 = ""
+                Else
+                    parRequestData(i).sShipAdder1 = pDataReader("出荷先－住所１").ToString
+                End If
                 '出荷先－住所２
-                parRequestData(i).sShipAdder2 = pDataReader("出荷先－住所２").ToString
+                If IsDBNull(pDataReader("出荷先－住所２").ToString) = True Then
+                    parRequestData(i).sShipAdder2 = ""
+                Else
+                    parRequestData(i).sShipAdder2 = pDataReader("出荷先－住所２").ToString
+                End If
                 '出荷先－住所市区町村
-                parRequestData(i).sShipCity = pDataReader("出荷先－住所市区町村").ToString
+                If IsDBNull(pDataReader("出荷先－住所市区町村").ToString) = True Then
+                    parRequestData(i).sShipCity = ""
+                Else
+                    parRequestData(i).sShipCity = pDataReader("出荷先－住所市区町村").ToString
+                End If
                 '出荷先－都道府県
-                parRequestData(i).sShipState = pDataReader("出荷先－都道府県").ToString
+                If IsDBNull(pDataReader("出荷先－都道府県").ToString) = True Then
+                    parRequestData(i).sShipState = ""
+                Else
+                    parRequestData(i).sShipState = pDataReader("出荷先－都道府県").ToString
+                End If
                 '出荷先－国名
-                parRequestData(i).sShipCountry = pDataReader("出荷先－国名").ToString
+                If IsDBNull(pDataReader("出荷先－国名").ToString) = True Then
+                    parRequestData(i).sShipCountry = ""
+                Else
+                    parRequestData(i).sShipCountry = pDataReader("出荷先－国名").ToString
+                End If
                 '出荷先－郵便番号1
-                parRequestData(i).sShipPostCode1 = pDataReader("出荷先－郵便番号1").ToString
+                If IsDBNull(pDataReader("出荷先－郵便番号1").ToString) = True Then
+                    parRequestData(i).sShipPostCode1 = ""
+                Else
+                    parRequestData(i).sShipPostCode1 = pDataReader("出荷先－郵便番号1").ToString
+                End If
                 '出荷先－郵便番号2
-                parRequestData(i).sShipPostCode2 = pDataReader("出荷先－郵便番号2").ToString
+                If IsDBNull(pDataReader("出荷先－郵便番号2").ToString) = True Then
+                    parRequestData(i).sShipPostCode2 = ""
+                Else
+                    parRequestData(i).sShipPostCode2 = pDataReader("出荷先－郵便番号2").ToString
+                End If
                 '出荷先－電話番号
-                parRequestData(i).sShipTel = pDataReader("出荷先－電話番号").ToString
+                If IsDBNull(pDataReader("出荷先－電話番号").ToString) = True Then
+                    parRequestData(i).sShipTel = ""
+                Else
+                    parRequestData(i).sShipTel = pDataReader("出荷先－電話番号").ToString
+                End If
                 '請求先－会社名
-                parRequestData(i).sBillCorpName = pDataReader("請求先－会社名").ToString
+                If IsDBNull(pDataReader("請求先－会社名").ToString) = True Then
+                    parRequestData(i).sBillCorpName = ""
+                Else
+                    parRequestData(i).sBillCorpName = pDataReader("請求先－会社名").ToString
+                End If
                 '請求先－支店名
-                parRequestData(i).sBillDivName = pDataReader("請求先－支店名").ToString
+                If IsDBNull(pDataReader("請求先－支店名").ToString) = True Then
+                    parRequestData(i).sBillDivName = ""
+                Else
+                    parRequestData(i).sBillDivName = pDataReader("請求先－支店名").ToString
+                End If
                 '請求先－姓カナ
-                parRequestData(i).sBillKanaBill1stName = pDataReader("請求先－姓カナ").ToString
+                If IsDBNull(pDataReader("請求先－姓カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaBill1stName = ""
+                Else
+                    parRequestData(i).sBillKanaBill1stName = pDataReader("請求先－姓カナ").ToString
+                End If
                 '請求先－名カナ
-                parRequestData(i).sBillKanaBill2ndName = pDataReader("請求先－名カナ").ToString
+                If IsDBNull(pDataReader("請求先－名カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaBill2ndName = ""
+                Else
+                    parRequestData(i).sBillKanaBill2ndName = pDataReader("請求先－名カナ").ToString
+                End If
                 '請求先－住所１カナ
-                parRequestData(i).sBillKanaAdder1 = pDataReader("請求先－住所１カナ").ToString
+                If IsDBNull(pDataReader("請求先－住所１カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaAdder1 = ""
+                Else
+                    parRequestData(i).sBillKanaAdder1 = pDataReader("請求先－住所１カナ").ToString
+                End If
                 '請求先－住所２カナ
-                parRequestData(i).sBillKanaAdder2 = pDataReader("請求先－住所２カナ").ToString
+                If IsDBNull(pDataReader("請求先－住所２カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaAdder2 = ""
+                Else
+                    parRequestData(i).sBillKanaAdder2 = pDataReader("請求先－住所２カナ").ToString
+                End If
                 '請求先－住所市区町村カナ
-                parRequestData(i).sBillKanaCity = pDataReader("請求先－住所市区町村カナ").ToString
+                If IsDBNull(pDataReader("請求先－住所市区町村カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaCity = ""
+                Else
+                    parRequestData(i).sBillKanaCity = pDataReader("請求先－住所市区町村カナ").ToString
+                End If
                 '請求先－都道府県カナ
-                parRequestData(i).sBillKanaState = pDataReader("請求先－都道府県カナ").ToString
+                If IsDBNull(pDataReader("請求先－都道府県カナ").ToString) = True Then
+                    parRequestData(i).sBillKanaState = ""
+                Else
+                    parRequestData(i).sBillKanaState = pDataReader("請求先－都道府県カナ").ToString
+                End If
                 '請求先－姓
-                parRequestData(i).sBill1stName = pDataReader("請求先－姓").ToString
+                If IsDBNull(pDataReader("請求先－姓").ToString) = True Then
+                    parRequestData(i).sBill1stName = ""
+                Else
+                    parRequestData(i).sBill1stName = pDataReader("請求先－姓").ToString
+                End If
                 '請求先－名
-                parRequestData(i).sBill2ndName = pDataReader("請求先－名").ToString
+                If IsDBNull(pDataReader("請求先－名").ToString) = True Then
+                    parRequestData(i).sBill2ndName = ""
+                Else
+                    parRequestData(i).sBill2ndName = pDataReader("請求先－名").ToString
+                End If
                 '請求先－住所１
-                parRequestData(i).sBillAdder1 = pDataReader("請求先－住所１").ToString
+                If IsDBNull(pDataReader("請求先－住所１").ToString) = True Then
+                    parRequestData(i).sBillAdder1 = ""
+                Else
+                    parRequestData(i).sBillAdder1 = pDataReader("請求先－住所１").ToString
+                End If
                 '請求先－住所２
-                parRequestData(i).sBillAdder2 = pDataReader("請求先－住所２").ToString
+                If IsDBNull(pDataReader("請求先－住所２").ToString) = True Then
+                    parRequestData(i).sBillAdder2 = ""
+                Else
+                    parRequestData(i).sBillAdder2 = pDataReader("請求先－住所２").ToString
+                End If
                 '請求先－住所市区町村
-                parRequestData(i).sBillCity = pDataReader("請求先－住所市区町村").ToString
+                If IsDBNull(pDataReader("請求先－住所市区町村").ToString) = True Then
+                    parRequestData(i).sBillCity = ""
+                Else
+                    parRequestData(i).sBillCity = pDataReader("請求先－住所市区町村").ToString
+                End If
                 '請求先－都道府県
-                parRequestData(i).sBillState = pDataReader("請求先－都道府県").ToString
+                If IsDBNull(pDataReader("請求先－都道府県").ToString) = True Then
+                    parRequestData(i).sBillState = ""
+                Else
+                    parRequestData(i).sBillState = pDataReader("請求先－都道府県").ToString
+                End If
                 '請求先－国名
-                parRequestData(i).sBillCountry = pDataReader("請求先－国名").ToString
+                If IsDBNull(pDataReader("請求先－国名").ToString) = True Then
+                    parRequestData(i).sBillCountry = ""
+                Else
+                    parRequestData(i).sBillCountry = pDataReader("請求先－国名").ToString
+                End If
                 '請求先－郵便番号1
-                parRequestData(i).sBillPostCode1 = pDataReader("請求先－郵便番号1").ToString
+                If IsDBNull(pDataReader("請求先－郵便番号1").ToString) = True Then
+                    parRequestData(i).sBillPostCode1 = ""
+                Else
+                    parRequestData(i).sBillPostCode1 = pDataReader("請求先－郵便番号1").ToString
+                End If
                 '請求先－郵便番号2
-                parRequestData(i).sBillPostCode2 = pDataReader("請求先－郵便番号2").ToString
+                If IsDBNull(pDataReader("請求先－郵便番号2").ToString) = True Then
+                    parRequestData(i).sBillPostCode2 = ""
+                Else
+                    parRequestData(i).sBillPostCode2 = pDataReader("請求先－郵便番号2").ToString
+                End If
                 '請求先－電話番号
-                parRequestData(i).sBillTel = pDataReader("請求先－電話番号").ToString
+                If IsDBNull(pDataReader("請求先－電話番号").ToString) = True Then
+                    parRequestData(i).sBillTel = ""
+                Else
+                    parRequestData(i).sBillTel = pDataReader("請求先－電話番号").ToString
+                End If
                 'メールアドレス
-                parRequestData(i).sMailAdderss = pDataReader("メールアドレス").ToString
+                If IsDBNull(pDataReader("メールアドレス").ToString) = True Then
+                    parRequestData(i).sMailAdderss = ""
+                Else
+                    parRequestData(i).sMailAdderss = pDataReader("メールアドレス").ToString
+                End If
                 'コメント
-                parRequestData(i).sComment = pDataReader("コメント").ToString
+                If IsDBNull(pDataReader("コメント").ToString) = True Then
+                    parRequestData(i).sComment = ""
+                Else
+                    parRequestData(i).sComment = pDataReader("コメント").ToString
+                End If
                 'ステータス
-                parRequestData(i).sStatus = pDataReader("ステータス").ToString
+                If IsDBNull(pDataReader("ステータス").ToString) = True Then
+                    parRequestData(i).sStatus = ""
+                Else
+                    parRequestData(i).sStatus = pDataReader("ステータス").ToString
+                End If
                 'エントリーポイント
-                parRequestData(i).sEntryPoint = pDataReader("エントリーポイント").ToString
+                If IsDBNull(pDataReader("エントリーポイント").ToString) = True Then
+                    parRequestData(i).sEntryPoint = ""
+                Else
+                    parRequestData(i).sEntryPoint = pDataReader("エントリーポイント").ToString
+                End If
                 'リンク先
-                parRequestData(i).sLink = pDataReader("リンク先").ToString
+                If IsDBNull(pDataReader("リンク先").ToString) = True Then
+                    parRequestData(i).sLink = ""
+                Else
+                    parRequestData(i).sLink = pDataReader("リンク先").ToString
+                End If
                 'カード支払方法
-                parRequestData(i).sCardPayment = pDataReader("カード支払方法").ToString
+                If IsDBNull(pDataReader("カード支払方法").ToString) = True Then
+                    parRequestData(i).sCardPayment = ""
+                Else
+                    parRequestData(i).sCardPayment = pDataReader("カード支払方法").ToString
+                End If
                 '配達希望日
-                parRequestData(i).sShipRequestDate = pDataReader("配達希望日").ToString
+                If IsDBNull(pDataReader("配達希望日").ToString) = True Then
+                    parRequestData(i).sShipRequestDate = ""
+                Else
+                    parRequestData(i).sShipRequestDate = pDataReader("配達希望日").ToString
+                End If
                 '配達希望時間
-                parRequestData(i).sShipRequestTime = pDataReader("配達希望時間").ToString
+                If IsDBNull(pDataReader("配達希望時間").ToString) = True Then
+                    parRequestData(i).sShipRequestTime = ""
+                Else
+                    parRequestData(i).sShipRequestTime = pDataReader("配達希望時間").ToString
+                End If
                 '配達希望メモ
-                parRequestData(i).sShipMemo = pDataReader("配達希望メモ").ToString
+                If IsDBNull(pDataReader("配達希望メモ").ToString) = True Then
+                    parRequestData(i).sShipMemo = ""
+                Else
+                    parRequestData(i).sShipMemo = pDataReader("配達希望メモ").ToString
+                End If
                 '配送業者
-                parRequestData(i).sShipCorp = pDataReader("配送業者").ToString
+                If IsDBNull(pDataReader("配送業者").ToString) = True Then
+                    parRequestData(i).sShipCorp = ""
+                Else
+                    parRequestData(i).sShipCorp = pDataReader("配送業者").ToString
+                End If
                 'チャネル支払コード
                 If IsDBNull(pDataReader("チャネル支払コード")) = True Then
                     parRequestData(i).sChannelPaymentCode = 0
@@ -458,13 +675,29 @@ Public Class cDataRequestDBIO
                     parRequestData(i).sGiftWrapKindPrice = CLng(pDataReader("ギフト梱包料金"))
                 End If
                 'のし希望
-                parRequestData(i).sNoshiType = pDataReader("のし希望").ToString
+                If IsDBNull(pDataReader("のし希望").ToString) = True Then
+                    parRequestData(i).sNoshiType = ""
+                Else
+                    parRequestData(i).sNoshiType = pDataReader("のし希望").ToString
+                End If
                 'のし記載内容
-                parRequestData(i).sNoshiName = pDataReader("のし記載内容").ToString
+                If IsDBNull(pDataReader("のし記載内容").ToString) = True Then
+                    parRequestData(i).sNoshiName = ""
+                Else
+                    parRequestData(i).sNoshiName = pDataReader("のし記載内容").ToString
+                End If
                 '注文者性別
-                parRequestData(i).sBillSex = pDataReader("注文者性別").ToString
+                If IsDBNull(pDataReader("注文者性別").ToString) = True Then
+                    parRequestData(i).sBillSex = ""
+                Else
+                    parRequestData(i).sBillSex = pDataReader("注文者性別").ToString
+                End If
                 '注文者誕生日
-                parRequestData(i).sBillBirthDay = pDataReader("注文者誕生日").ToString
+                If IsDBNull(pDataReader("注文者誕生日").ToString) = True Then
+                    parRequestData(i).sBillBirthDay = ""
+                Else
+                    parRequestData(i).sBillBirthDay = pDataReader("注文者誕生日").ToString
+                End If
                 '楽天バンク決済手数料
                 If IsDBNull(pDataReader("楽天バンク決済手数料")) = True Then
                     parRequestData(i).sRakutenCharge = 0
@@ -478,15 +711,36 @@ Public Class cDataRequestDBIO
                     parRequestData(i).sPrintFlg = CBool(pDataReader("受注伝票出力フラグ"))
                 End If
                 '受注担当者コード
-                parRequestData(i).sStaffCode = pDataReader("受注担当者コード").ToString
+                If IsDBNull(pDataReader("受注担当者コード").ToString) = True Then
+                    parRequestData(i).sStaffCode = ""
+                Else
+                    parRequestData(i).sStaffCode = pDataReader("受注担当者コード").ToString
+                End If
                 '登録日
-                parRequestData(i).sCreateDate = pDataReader("登録日").ToString
+                If IsDBNull(pDataReader("登録日").ToString) = True Then
+                    parRequestData(i).sCreateDate = ""
+                Else
+                    parRequestData(i).sCreateDate = pDataReader("登録日").ToString
+                End If
                 '登録時間
-                parRequestData(i).sCreateTime = pDataReader("登録時間").ToString
+                If IsDBNull(pDataReader("登録時間").ToString) = True Then
+                    parRequestData(i).sCreateTime = ""
+                Else
+                    parRequestData(i).sCreateTime = pDataReader("登録時間").ToString
+                End If
                 '最終更新日
-                parRequestData(i).sUpdateDate = pDataReader("最終更新日").ToString
+                If IsDBNull(pDataReader("最終更新日").ToString) = True Then
+                    parRequestData(i).sUpdateDate = ""
+                Else
+                    parRequestData(i).sUpdateDate = pDataReader("最終更新日").ToString
+                End If
                 '最終更新時間
-                parRequestData(i).sUpdateTime = pDataReader("最終更新時間").ToString
+                If IsDBNull(pDataReader("最終更新時間").ToString) = True Then
+                    parRequestData(i).sUpdateTime = ""
+                Else
+                    parRequestData(i).sUpdateTime = pDataReader("最終更新時間").ToString
+                End If
+                '2020,1,17 A.Komita 追加 To
 
                 'レコードが取得できた時の処理
                 i = i + 1
@@ -1039,25 +1293,20 @@ Public Class cDataRequestDBIO
             '2020,1,10 A.Komita Nothingでエラー判定が発生する為、空白もしくは0を代入するif文を追加 From
             '受注コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 1)) '2020,1,16　CharとNumericの大きさを変える
+            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 13))
             pCommand.Parameters("@RequestCode").Value = parRequestData.sRequestCode
-            'End If
             'チャネルコード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ChannelCode", OleDb.OleDbType.Numeric, 10))
-            'If parRequestData.sChannelCode = Nothing Then
-            '    pCommand.Parameters("@ChannelCode").Value = 0
-            'Else
             pCommand.Parameters("@ChannelCode").Value = parRequestData.sChannelCode
-            'End If
             'OR受注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ORRequestCode", OleDb.OleDbType.Char, 13))
-            'If parRequestData.sORRequestCode = Nothing Then
-            '    pCommand.Parameters("@ORRequestCode").Value = ""
-            'Else
-            pCommand.Parameters("@ORRequestCode").Value = parRequestData.sORRequestCode
-            'End If
+            If parRequestData.sORRequestCode = Nothing Then
+                pCommand.Parameters("@ORRequestCode").Value = ""
+            Else
+                pCommand.Parameters("@ORRequestCode").Value = parRequestData.sORRequestCode
+            End If
             '受注サイト
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestSite", OleDb.OleDbType.Char, 13))
