@@ -1548,7 +1548,7 @@ Public Class cDataRequestDBIO
             '2020,1,10 A.Komita Nothingでエラー判定が発生する為、空白もしくは0を代入するif文を追加 From
             '受注コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 13))
             If parRequestData.sRequestCode = Nothing Then
                 pCommand.Parameters("@RequestCode").Value = ""
             Else
@@ -1556,11 +1556,11 @@ Public Class cDataRequestDBIO
             End If
             'チャネルコード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ChannelCode", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@ChannelCode", OleDb.OleDbType.Numeric, 2))
             pCommand.Parameters("@ChannelCode").Value = parRequestData.sChannelCode
             'OR受注コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ORRequestCode", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ORRequestCode", OleDb.OleDbType.Char, 50))
             If parRequestData.sORRequestCode = Nothing Then
                 pCommand.Parameters("@ORRequestCode").Value = ""
             Else
@@ -1568,7 +1568,7 @@ Public Class cDataRequestDBIO
             End If
             '受注サイト
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestSite", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@RequestSite", OleDb.OleDbType.Char, 50))
             If parRequestData.sRequestSite = Nothing Then
                 pCommand.Parameters("@RequestSite").Value = ""
             Else
@@ -1576,7 +1576,7 @@ Public Class cDataRequestDBIO
             End If
             '受注媒体
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestMedia", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@RequestMedia", OleDb.OleDbType.Char, 10))
             If parRequestData.sRequestMedia = Nothing Then
                 pCommand.Parameters("@RequestMedia").Value = ""
             Else
@@ -1584,7 +1584,7 @@ Public Class cDataRequestDBIO
             End If
             'モバイルフラグ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@MobileFlg", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@MobileFlg", OleDb.OleDbType.Char, 1))
             If parRequestData.sMobileFlg = Nothing Then
                 pCommand.Parameters("@MobileFlg").Value = ""
             Else
@@ -1592,7 +1592,7 @@ Public Class cDataRequestDBIO
             End If
             'アフェリエイトフラグ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@AffiliateFlg", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@AffiliateFlg", OleDb.OleDbType.Char, 1))
             If parRequestData.sAffiliateFlg = Nothing Then
                 pCommand.Parameters("@AffiliateFlg").Value = ""
             Else
@@ -1600,7 +1600,7 @@ Public Class cDataRequestDBIO
             End If
             '受注日
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestDate", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@RequestDate", OleDb.OleDbType.Char, 10))
             If parRequestData.sRequestDate = Nothing Then
                 pCommand.Parameters("@RequestDate").Value = ""
             Else
@@ -1608,7 +1608,7 @@ Public Class cDataRequestDBIO
             End If
             '受注時間
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestTime", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@RequestTime", OleDb.OleDbType.Char, 8))
             If parRequestData.sRequestTime = Nothing Then
                 pCommand.Parameters("@RequestTime").Value = ""
             Else
@@ -1616,7 +1616,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－会社名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipCorpName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipCorpName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipCorpName = Nothing Then
                 pCommand.Parameters("@ShipCorpName").Value = ""
             Else
@@ -1624,7 +1624,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－支店名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipDivName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipDivName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipDivName = Nothing Then
                 pCommand.Parameters("@ShipDivName").Value = ""
             Else
@@ -1632,7 +1632,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－姓カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaShip1stName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaShip1stName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipKanaShip1stName = Nothing Then
                 pCommand.Parameters("@ShipKanaShip1stName").Value = ""
             Else
@@ -1640,7 +1640,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－名カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaShip2ndName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaShip2ndName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipKanaShip2ndName = Nothing Then
                 pCommand.Parameters("@ShipKanaShip2ndName").Value = ""
             Else
@@ -1648,7 +1648,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所１カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaAdder1", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaAdder1", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipKanaAdder1 = Nothing Then
                 pCommand.Parameters("@ShipKanaAdder1").Value = ""
             Else
@@ -1656,7 +1656,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所２カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaAdder2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaAdder2", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipKanaAdder2 = Nothing Then
                 pCommand.Parameters("@ShipKanaAdder2").Value = ""
             Else
@@ -1664,7 +1664,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所市区町村カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaCity", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaCity", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipKanaCity = Nothing Then
                 pCommand.Parameters("@ShipKanaCity").Value = ""
             Else
@@ -1672,7 +1672,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－都道府県カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipKanaState", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipKanaState", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipKanaState = Nothing Then
                 pCommand.Parameters("@ShipKanaState").Value = ""
             Else
@@ -1680,7 +1680,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－姓
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Ship1stName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Ship1stName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShip1stName = Nothing Then
                 pCommand.Parameters("@Ship1stName").Value = ""
             Else
@@ -1688,7 +1688,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Ship2ndName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Ship2ndName", OleDb.OleDbType.Char, 50))
             If parRequestData.sShip2ndName = Nothing Then
                 pCommand.Parameters("@Ship2ndName").Value = ""
             Else
@@ -1696,7 +1696,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所１
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipAdder1", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipAdder1", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipAdder1 = Nothing Then
                 pCommand.Parameters("@ShipAdder1").Value = ""
             Else
@@ -1704,7 +1704,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所２
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipAdder2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipAdder2", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipAdder2 = Nothing Then
                 pCommand.Parameters("@ShipAdder2").Value = ""
             Else
@@ -1712,7 +1712,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－住所市区町村
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipCity", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipCity", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipCity = Nothing Then
                 pCommand.Parameters("@ShipCity").Value = ""
             Else
@@ -1720,7 +1720,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－都道府県
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipState", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipState", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipState = Nothing Then
                 pCommand.Parameters("@ShipState").Value = ""
             Else
@@ -1728,7 +1728,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－国名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipCountry", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipCountry", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipCountry = Nothing Then
                 pCommand.Parameters("@ShipCountry").Value = ""
             Else
@@ -1736,7 +1736,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－郵便番号1
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipPostCode1", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipPostCode1", OleDb.OleDbType.Char, 3))
             If parRequestData.sShipPostCode1 = Nothing Then
                 pCommand.Parameters("@ShipPostCode1").Value = ""
             Else
@@ -1744,7 +1744,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－郵便番号2
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipPostCode2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipPostCode2", OleDb.OleDbType.Char, 4))
             If parRequestData.sShipPostCode2 = Nothing Then
                 pCommand.Parameters("@ShipPostCode2").Value = ""
             Else
@@ -1752,7 +1752,7 @@ Public Class cDataRequestDBIO
             End If
             '出荷先－電話番号
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipTel", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipTel", OleDb.OleDbType.Char, 13))
             If parRequestData.sShipTel = Nothing Then
                 pCommand.Parameters("@ShipTel").Value = ""
             Else
@@ -1760,7 +1760,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－会社名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillCorpName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillCorpName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillCorpName = Nothing Then
                 pCommand.Parameters("@BillCorpName").Value = ""
             Else
@@ -1768,7 +1768,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－支店名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillDivName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillDivName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillDivName = Nothing Then
                 pCommand.Parameters("@BillDivName").Value = ""
             Else
@@ -1776,7 +1776,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－姓カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaBill1stName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaBill1stName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillKanaBill1stName = Nothing Then
                 pCommand.Parameters("@BillKanaBill1stName").Value = ""
             Else
@@ -1784,7 +1784,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－名カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaBill2ndName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaBill2ndName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillKanaBill2ndName = Nothing Then
                 pCommand.Parameters("@BillKanaBill2ndName").Value = ""
             Else
@@ -1792,7 +1792,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－住所１カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaAdder1", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaAdder1", OleDb.OleDbType.Char, 255))
             If parRequestData.sBillKanaAdder1 = Nothing Then
                 pCommand.Parameters("@BillKanaAdder1").Value = ""
             Else
@@ -1800,7 +1800,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－住所２カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaAdder2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaAdder2", OleDb.OleDbType.Char, 255))
             If parRequestData.sBillKanaAdder2 = Nothing Then
                 pCommand.Parameters("@BillKanaAdder2").Value = ""
             Else
@@ -1808,7 +1808,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－住所市区町村カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaCity", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaCity", OleDb.OleDbType.Char, 255))
             If parRequestData.sBillKanaCity = Nothing Then
                 pCommand.Parameters("@BillKanaCity").Value = ""
             Else
@@ -1816,7 +1816,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－都道府県カナ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillKanaState", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillKanaState", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillKanaState = Nothing Then
                 pCommand.Parameters("@BillKanaState").Value = ""
             Else
@@ -1824,7 +1824,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－姓
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Bill1stName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Bill1stName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBill1stName = Nothing Then
                 pCommand.Parameters("@Bill1stName").Value = ""
             Else
@@ -1832,7 +1832,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Bill2ndName", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Bill2ndName", OleDb.OleDbType.Char, 50))
             If parRequestData.sBill2ndName = Nothing Then
                 pCommand.Parameters("@Bill2ndName").Value = ""
             Else
@@ -1848,7 +1848,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－住所２
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillAdder2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillAdder2", OleDb.OleDbType.Char, 255))
             If parRequestData.sBillAdder2 = Nothing Then
                 pCommand.Parameters("@BillAdder2").Value = ""
             Else
@@ -1856,7 +1856,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－住所市区町村
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillCity", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillCity", OleDb.OleDbType.Char, 255))
             If parRequestData.sBillCity = Nothing Then
                 pCommand.Parameters("@BillCity").Value = ""
             Else
@@ -1864,7 +1864,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－都道府県
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillState", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillState", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillState = Nothing Then
                 pCommand.Parameters("@BillState").Value = ""
             Else
@@ -1872,7 +1872,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－国名
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillCountry", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillCountry", OleDb.OleDbType.Char, 50))
             If parRequestData.sBillCountry = Nothing Then
                 pCommand.Parameters("@BillCountry").Value = ""
             Else
@@ -1880,7 +1880,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－郵便番号1
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillPostCode1", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillPostCode1", OleDb.OleDbType.Char, 3))
             If parRequestData.sBillPostCode1 = Nothing Then
                 pCommand.Parameters("@BillPostCode1").Value = ""
             Else
@@ -1888,7 +1888,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－郵便番号2
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillPostCode2", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillPostCode2", OleDb.OleDbType.Char, 4))
             If parRequestData.sBillPostCode2 = Nothing Then
                 pCommand.Parameters("@BillPostCode2").Value = ""
             Else
@@ -1896,7 +1896,7 @@ Public Class cDataRequestDBIO
             End If
             '請求先－電話番号
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillTel", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillTel", OleDb.OleDbType.Char, 13))
             If parRequestData.sBillTel = Nothing Then
                 pCommand.Parameters("@BillTel").Value = ""
             Else
@@ -1904,7 +1904,7 @@ Public Class cDataRequestDBIO
             End If
             'メールアドレス
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@MailAdderss", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@MailAdderss", OleDb.OleDbType.Char, 50))
             If parRequestData.sMailAdderss = Nothing Then
                 pCommand.Parameters("@MailAdderss").Value = ""
             Else
@@ -1912,7 +1912,7 @@ Public Class cDataRequestDBIO
             End If
             'コメント
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Comment", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Comment", OleDb.OleDbType.Char, 255))
             If parRequestData.sComment = Nothing Then
                 pCommand.Parameters("@Comment").Value = ""
             Else
@@ -1920,7 +1920,7 @@ Public Class cDataRequestDBIO
             End If
             'ステータス
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Status", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Status", OleDb.OleDbType.Char, 50))
             If parRequestData.sStatus = Nothing Then
                 pCommand.Parameters("@Status").Value = ""
             Else
@@ -1928,7 +1928,7 @@ Public Class cDataRequestDBIO
             End If
             'エントリーポイント
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@EntryPoint", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@EntryPoint", OleDb.OleDbType.Char, 255))
             If parRequestData.sEntryPoint = Nothing Then
                 pCommand.Parameters("@EntryPoint").Value = ""
             Else
@@ -1936,7 +1936,7 @@ Public Class cDataRequestDBIO
             End If
             'リンク先
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@Link", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@Link", OleDb.OleDbType.Char, 255))
             If parRequestData.sLink = Nothing Then
                 pCommand.Parameters("@Link").Value = ""
             Else
@@ -1944,7 +1944,7 @@ Public Class cDataRequestDBIO
             End If
             'カード支払方法
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@CardPayment", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@CardPayment", OleDb.OleDbType.Char, 50))
             If parRequestData.sCardPayment = Nothing Then
                 pCommand.Parameters("@CardPayment").Value = ""
             Else
@@ -1952,7 +1952,7 @@ Public Class cDataRequestDBIO
             End If
             '配達希望日
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipRequestDate", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipRequestDate", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipRequestDate = Nothing Then
                 pCommand.Parameters("@ShipRequestDate").Value = ""
             Else
@@ -1960,7 +1960,7 @@ Public Class cDataRequestDBIO
             End If
             '配達希望時間
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipRequestTime", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipRequestTime", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipRequestTime = Nothing Then
                 pCommand.Parameters("@ShipRequestTime").Value = ""
             Else
@@ -1968,7 +1968,7 @@ Public Class cDataRequestDBIO
             End If
             '配達希望メモ
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipMemo", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipMemo", OleDb.OleDbType.Char, 255))
             If parRequestData.sShipMemo = Nothing Then
                 pCommand.Parameters("@ShipMemo").Value = ""
             Else
@@ -1976,7 +1976,7 @@ Public Class cDataRequestDBIO
             End If
             '配送業者
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ShipCorp", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@ShipCorp", OleDb.OleDbType.Char, 50))
             If parRequestData.sShipCorp = Nothing Then
                 pCommand.Parameters("@ShipCorp").Value = ""
             Else
@@ -1984,7 +1984,7 @@ Public Class cDataRequestDBIO
             End If
             'チャネル支払コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@ChannelPaymentCode", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@ChannelPaymentCode", OleDb.OleDbType.Numeric, 2))
             If parRequestData.sChannelPaymentCode = Nothing Then
                 pCommand.Parameters("@ChannelPaymentCode").Value = 0
             Else
@@ -1992,7 +1992,7 @@ Public Class cDataRequestDBIO
             End If
             'ギフト梱包希望
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@GiftRequest", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@GiftRequest", OleDb.OleDbType.Char, 1))
             If parRequestData.sGiftRequest = Nothing Then
                 pCommand.Parameters("@GiftRequest").Value = ""
             Else
@@ -2008,7 +2008,7 @@ Public Class cDataRequestDBIO
             End If
             '受注商品税抜金額
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@NoTaxTotalProductPrice", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@NoTaxTotalProductPrice", OleDb.OleDbType.Numeric, 10))
             If parRequestData.sNoTaxTotalProductPrice = Nothing Then
                 pCommand.Parameters("@NoTaxTotalProductPrice").Value = 0
             Else
@@ -2048,7 +2048,7 @@ Public Class cDataRequestDBIO
             End If
             '受注税抜金額
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@NoTaxTotalPrice", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@NoTaxTotalPrice", OleDb.OleDbType.Numeric, 10))
             If parRequestData.sNoTaxTotalPrice = Nothing Then
                 pCommand.Parameters("@NoTaxTotalPrice").Value = 0
             Else
@@ -2056,7 +2056,7 @@ Public Class cDataRequestDBIO
             End If
             '受注消費税額
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@TaxTotal", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@TaxTotal", OleDb.OleDbType.Numeric, 10))
             If parRequestData.sTaxTotal = Nothing Then
                 pCommand.Parameters("@TaxTotal").Value = 0
             Else
@@ -2064,7 +2064,7 @@ Public Class cDataRequestDBIO
             End If
             '受注税込金額
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 5))
+            (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 10))
             If parRequestData.sTotalPrice = Nothing Then
                 pCommand.Parameters("@TotalPrice").Value = 0
             Else
@@ -2072,7 +2072,7 @@ Public Class cDataRequestDBIO
             End If
             'ギフト梱包材料
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@GiftWrapKind", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@GiftWrapKind", OleDb.OleDbType.Char, 50))
             If parRequestData.sGiftWrapKind = Nothing Then
                 pCommand.Parameters("@GiftWrapKind").Value = ""
             Else
@@ -2088,7 +2088,7 @@ Public Class cDataRequestDBIO
             End If
             'のし希望
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@NoshiType", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@NoshiType", OleDb.OleDbType.Char, 1))
             If parRequestData.sNoshiType = Nothing Then
                 pCommand.Parameters("@NoshiType").Value = ""
             Else
@@ -2096,7 +2096,7 @@ Public Class cDataRequestDBIO
             End If
             'のし記載内容
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@NoshiName", OleDb.OleDbType.Char, 2))
+            (New OleDb.OleDbParameter("@NoshiName", OleDb.OleDbType.Char, 50))
             If parRequestData.sNoshiName = Nothing Then
                 pCommand.Parameters("@NoshiName").Value = ""
             Else
@@ -2104,7 +2104,7 @@ Public Class cDataRequestDBIO
             End If
             '注文者性別
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillSex", OleDb.OleDbType.Char, 5))
+            (New OleDb.OleDbParameter("@BillSex", OleDb.OleDbType.Char, 6))
             If parRequestData.sBillSex = Nothing Then
                 pCommand.Parameters("@BillSex").Value = ""
             Else
@@ -2112,7 +2112,7 @@ Public Class cDataRequestDBIO
             End If
             '注文者誕生日
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@BillBirthDay", OleDb.OleDbType.Char, 1))
+            (New OleDb.OleDbParameter("@BillBirthDay", OleDb.OleDbType.Char, 10))
             If parRequestData.sBillBirthDay = Nothing Then
                 pCommand.Parameters("@BillBirthDay").Value = ""
             Else
@@ -2136,7 +2136,7 @@ Public Class cDataRequestDBIO
             End If
             '受注担当者コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@StaffCode", OleDb.OleDbType.Char, 1))
+            (New OleDb.OleDbParameter("@StaffCode", OleDb.OleDbType.Char, 13))
             If parRequestData.sStaffCode = Nothing Then
                 pCommand.Parameters("@StaffCode").Value = "0"
             Else
@@ -2148,7 +2148,7 @@ Public Class cDataRequestDBIO
             pCommand.Parameters("@CreateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '登録時間
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@CreateTime", OleDb.OleDbType.Char, 10))
+            (New OleDb.OleDbParameter("@CreateTime", OleDb.OleDbType.Char, 8))
             pCommand.Parameters("@CreateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新日
             pCommand.Parameters.Add _
@@ -2156,7 +2156,7 @@ Public Class cDataRequestDBIO
             pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新時間
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 10))
+            (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 8))
             pCommand.Parameters("@UpdateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '2020,1,10 A.Komita 追加 To
 
