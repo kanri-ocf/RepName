@@ -105,7 +105,7 @@
         oDataOrderStatusDBIO = New cDataOrderStatusDBIO(oConn, oCommand, oDataReader)
 
         oSupplierCode = iSupplierCode
-        If iOrderCode = Nothing Then
+        If iOrderCode = "" Then
             EDIT_MODE = 0
         Else
             EDIT_MODE = 1
@@ -426,7 +426,7 @@
             End If
         End If
 
-        oDataOrderDBIO = Nothing
+        'oDataOrderDBIO = Nothing
 
         CALLING_FLG = False
     End Sub
