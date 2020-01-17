@@ -1039,636 +1039,617 @@ Public Class cDataRequestDBIO
             '2020,1,10 A.Komita Nothingでエラー判定が発生する為、空白もしくは0を代入するif文を追加 From
             '受注コード
             pCommand.Parameters.Add _
-            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@RequestCode").Value = Nothing Then
-                pCommand.Parameters("@RequestCode").Value = ""
-            Else
-                pCommand.Parameters("@RequestCode").Value = parRequestData.sRequestCode
-            End If
+            (New OleDb.OleDbParameter("@RequestCode", OleDb.OleDbType.Char, 1)) '2020,1,16　CharとNumericの大きさを変える
+            pCommand.Parameters("@RequestCode").Value = parRequestData.sRequestCode
+            'End If
             'チャネルコード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ChannelCode", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ChannelCode").Value = Nothing Then
-                pCommand.Parameters("@ChannelCode").Value = 0
-            Else
-                pCommand.Parameters("@ChannelCode").Value = parRequestData.sChannelCode
-            End If
+            'If parRequestData.sChannelCode = Nothing Then
+            '    pCommand.Parameters("@ChannelCode").Value = 0
+            'Else
+            pCommand.Parameters("@ChannelCode").Value = parRequestData.sChannelCode
+            'End If
             'OR受注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ORRequestCode", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ORRequestCode").Value = Nothing Then
-                pCommand.Parameters("@ORRequestCode").Value = ""
-            Else
-                pCommand.Parameters("@ORRequestCode").Value = parRequestData.sORRequestCode
-            End If
+            'If parRequestData.sORRequestCode = Nothing Then
+            '    pCommand.Parameters("@ORRequestCode").Value = ""
+            'Else
+            pCommand.Parameters("@ORRequestCode").Value = parRequestData.sORRequestCode
+            'End If
             '受注サイト
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestSite", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@RequestSite").Value = Nothing Then
-                pCommand.Parameters("@RequestSite").Value = ""
-            Else
-                pCommand.Parameters("@RequestSite").Value = parRequestData.sRequestSite
-            End If
+            'If parRequestData.sRequestSite = Nothing Then
+            '    pCommand.Parameters("@RequestSite").Value = ""
+            'Else
+            pCommand.Parameters("@RequestSite").Value = parRequestData.sRequestSite
+            'End If
             '受注媒体
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestMedia", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@RequestMedia").Value = Nothing Then
-                pCommand.Parameters("@RequestMedia").Value = ""
-            Else
-                pCommand.Parameters("@RequestMedia").Value = parRequestData.sRequestMedia
-            End If
+            'If parRequestData.sRequestMedia = Nothing Then
+            '    pCommand.Parameters("@RequestMedia").Value = ""
+            'Else
+            pCommand.Parameters("@RequestMedia").Value = parRequestData.sRequestMedia
+            'End If
             'モバイルフラグ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@MobileFlg", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@MobileFlg").Value = Nothing Then
-                pCommand.Parameters("@MobileFlg").Value = ""
-            Else
-                pCommand.Parameters("@MobileFlg").Value = parRequestData.sMobileFlg
-            End If
+            'If parRequestData.sMobileFlg = Nothing Then
+            '    pCommand.Parameters("@MobileFlg").Value = ""
+            'Else
+            pCommand.Parameters("@MobileFlg").Value = parRequestData.sMobileFlg
+            'End If
             'アフェリエイトフラグ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@AffiliateFlg", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@AffiliateFlg").Value = Nothing Then
-                pCommand.Parameters("@AffiliateFlg").Value = ""
-            Else
-                pCommand.Parameters("@AffiliateFlg").Value = parRequestData.sAffiliateFlg
-            End If
+            'If parRequestData.sAffiliateFlg = Nothing Then
+            '    pCommand.Parameters("@AffiliateFlg").Value = ""
+            'Else
+            pCommand.Parameters("@AffiliateFlg").Value = parRequestData.sAffiliateFlg
+            'End If
             '受注日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestDate", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@RequestDate").Value = Nothing Then
-                pCommand.Parameters("@RequestDate").Value = ""
-            Else
-                pCommand.Parameters("@RequestDate").Value = parRequestData.sRequestDate
-            End If
+            'If parRequestData.sRequestDate = Nothing Then
+            '    pCommand.Parameters("@RequestDate").Value = ""
+            'Else
+            pCommand.Parameters("@RequestDate").Value = parRequestData.sRequestDate
+            'End If
             '受注時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RequestTime", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@RequestTime").Value = Nothing Then
-                pCommand.Parameters("@RequestTime").Value = ""
-            Else
-                pCommand.Parameters("@RequestTime").Value = parRequestData.sRequestTime
-            End If
+            'If parRequestData.sRequestTime = Nothing Then
+            '    pCommand.Parameters("@RequestTime").Value = ""
+            'Else
+            pCommand.Parameters("@RequestTime").Value = parRequestData.sRequestTime
+            'End If
             '出荷先－会社名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipCorpName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipCorpName").Value = Nothing Then
-                pCommand.Parameters("@ShipCorpName").Value = ""
-            Else
-                pCommand.Parameters("@ShipCorpName").Value = parRequestData.sShipCorpName
-            End If
+            'If parRequestData.sShipCorpName = Nothing Then
+            '    pCommand.Parameters("@ShipCorpName").Value = ""
+            'Else
+            pCommand.Parameters("@ShipCorpName").Value = parRequestData.sShipCorpName
+            'End If
             '出荷先－支店名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipDivName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipDivName").Value = Nothing Then
-                pCommand.Parameters("@ShipDivName").Value = ""
-            Else
-                pCommand.Parameters("@ShipDivName").Value = parRequestData.sShipDivName
-            End If
+            'If parRequestData.sShipDivName = Nothing Then
+            '    pCommand.Parameters("@ShipDivName").Value = ""
+            'Else
+            pCommand.Parameters("@ShipDivName").Value = parRequestData.sShipDivName
+            'End If
             '出荷先－姓カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaShip1stName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaShip1stName").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaShip1stName").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaShip1stName").Value = parRequestData.sShipKanaShip1stName
-            End If
+            'If parRequestData.sShipKanaShip1stName = Nothing Then
+            '    pCommand.Parameters("@ShipKanaShip1stName").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaShip1stName").Value = parRequestData.sShipKanaShip1stName
+            'End If
             '出荷先－名カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaShip2ndName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaShip2ndName").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaShip2ndName").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaShip2ndName").Value = parRequestData.sShipKanaShip2ndName
-            End If
+            'If parRequestData.sShipKanaShip2ndName = Nothing Then
+            '    pCommand.Parameters("@ShipKanaShip2ndName").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaShip2ndName").Value = parRequestData.sShipKanaShip2ndName
+            'End If
             '出荷先－住所１カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaAdder1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaAdder1").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaAdder1").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaAdder1").Value = parRequestData.sShipKanaAdder1
-            End If
+            'If parRequestData.sShipKanaAdder1 = Nothing Then
+            '    pCommand.Parameters("@ShipKanaAdder1").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaAdder1").Value = parRequestData.sShipKanaAdder1
+            'End If
             '出荷先－住所２カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaAdder2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaAdder2").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaAdder2").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaAdder2").Value = parRequestData.sShipKanaAdder2
-            End If
+            'If parRequestData.sShipKanaAdder2 = Nothing Then
+            '    pCommand.Parameters("@ShipKanaAdder2").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaAdder2").Value = parRequestData.sShipKanaAdder2
+            'End If
             '出荷先－住所市区町村カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaCity", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaCity").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaCity").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaCity").Value = parRequestData.sShipKanaCity
-            End If
+            'If parRequestData.sShipKanaCity = Nothing Then
+            '    pCommand.Parameters("@ShipKanaCity").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaCity").Value = parRequestData.sShipKanaCity
+            'End If
             '出荷先－都道府県カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipKanaState", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipKanaState").Value = Nothing Then
-                pCommand.Parameters("@ShipKanaState").Value = ""
-            Else
-                pCommand.Parameters("@ShipKanaState").Value = parRequestData.sShipKanaState
-            End If
+            'If parRequestData.sShipKanaState = Nothing Then
+            '    pCommand.Parameters("@ShipKanaState").Value = ""
+            'Else
+            pCommand.Parameters("@ShipKanaState").Value = parRequestData.sShipKanaState
+            'End If
             '出荷先－姓
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Ship1stName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Ship1stName").Value = Nothing Then
-                pCommand.Parameters("@Ship1stName").Value = ""
-            Else
-                pCommand.Parameters("@Ship1stName").Value = parRequestData.sShip1stName
-            End If
+            'If parRequestData.sShip1stName = Nothing Then
+            '    pCommand.Parameters("@Ship1stName").Value = ""
+            'Else
+            pCommand.Parameters("@Ship1stName").Value = parRequestData.sShip1stName
+            'End If
             '出荷先－名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Ship2ndName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Ship2ndName").Value = Nothing Then
-                pCommand.Parameters("@Ship2ndName").Value = ""
-            Else
-                pCommand.Parameters("@Ship2ndName").Value = parRequestData.sShip2ndName
-            End If
+            'If parRequestData.sShip2ndName = Nothing Then
+            '    pCommand.Parameters("@Ship2ndName").Value = ""
+            'Else
+            pCommand.Parameters("@Ship2ndName").Value = parRequestData.sShip2ndName
+            'End If
             '出荷先－住所１
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipAdder1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipAdder1").Value = Nothing Then
-                pCommand.Parameters("@ShipAdder1").Value = ""
-            Else
-                pCommand.Parameters("@ShipAdder1").Value = parRequestData.sShipAdder1
-            End If
+            'If parRequestData.sShipAdder1 = Nothing Then
+            '    pCommand.Parameters("@ShipAdder1").Value = ""
+            'Else
+            pCommand.Parameters("@ShipAdder1").Value = parRequestData.sShipAdder1
+            'End If
             '出荷先－住所２
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipAdder2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipAdder2").Value = Nothing Then
-                pCommand.Parameters("@ShipAdder2").Value = ""
-            Else
-                pCommand.Parameters("@ShipAdder2").Value = parRequestData.sShipAdder2
-            End If
+            'If parRequestData.sShipAdder2 = Nothing Then
+            '    pCommand.Parameters("@ShipAdder2").Value = ""
+            'Else
+            pCommand.Parameters("@ShipAdder2").Value = parRequestData.sShipAdder2
+            'End If
             '出荷先－住所市区町村
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipCity", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipCity").Value = Nothing Then
-                pCommand.Parameters("@ShipCity").Value = ""
-            Else
-                pCommand.Parameters("@ShipCity").Value = parRequestData.sShipCity
-            End If
+            'If parRequestData.sShipCity = Nothing Then
+            '    pCommand.Parameters("@ShipCity").Value = ""
+            'Else
+            pCommand.Parameters("@ShipCity").Value = parRequestData.sShipCity
+            'End If
             '出荷先－都道府県
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipState", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipState").Value = Nothing Then
-                pCommand.Parameters("@ShipState").Value = ""
-            Else
-                pCommand.Parameters("@ShipState").Value = parRequestData.sShipState
-            End If
+            'If parRequestData.sShipState = Nothing Then
+            '    pCommand.Parameters("@ShipState").Value = ""
+            'Else
+            pCommand.Parameters("@ShipState").Value = parRequestData.sShipState
+            'End If
             '出荷先－国名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipCountry", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipCountry").Value = Nothing Then
-                pCommand.Parameters("@ShipCountry").Value = ""
-            Else
-                pCommand.Parameters("@ShipCountry").Value = parRequestData.sShipCountry
-            End If
+            'If parRequestData.sShipCountry = Nothing Then
+            '    pCommand.Parameters("@ShipCountry").Value = ""
+            'Else
+            pCommand.Parameters("@ShipCountry").Value = parRequestData.sShipCountry
+            'End If
             '出荷先－郵便番号1
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipPostCode1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipPostCode1").Value = Nothing Then
-                pCommand.Parameters("@ShipPostCode1").Value = ""
-            Else
-                pCommand.Parameters("@ShipPostCode1").Value = parRequestData.sShipPostCode1
-            End If
+            'If parRequestData.sShipPostCode1 = Nothing Then
+            '    pCommand.Parameters("@ShipPostCode1").Value = ""
+            'Else
+            pCommand.Parameters("@ShipPostCode1").Value = parRequestData.sShipPostCode1
+            'End If
             '出荷先－郵便番号2
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipPostCode2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipPostCode2").Value = Nothing Then
-                pCommand.Parameters("@ShipPostCode2").Value = ""
-            Else
-                pCommand.Parameters("@ShipPostCode2").Value = parRequestData.sShipPostCode2
-            End If
+            'If parRequestData.sShipPostCode2 = Nothing Then
+            '    pCommand.Parameters("@ShipPostCode2").Value = ""
+            'Else
+            pCommand.Parameters("@ShipPostCode2").Value = parRequestData.sShipPostCode2
+            'End If
             '出荷先－電話番号
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipTel", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipTel").Value = Nothing Then
-                pCommand.Parameters("@ShipTel").Value = ""
-            Else
-                pCommand.Parameters("@ShipTel").Value = parRequestData.sShipTel
-            End If
+            'If parRequestData.sShipTel = Nothing Then
+            '    pCommand.Parameters("@ShipTel").Value = ""
+            'Else
+            pCommand.Parameters("@ShipTel").Value = parRequestData.sShipTel
+            'End If
             '請求先－会社名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillCorpName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillCorpName").Value = Nothing Then
-                pCommand.Parameters("@BillCorpName").Value = ""
-            Else
-                pCommand.Parameters("@BillCorpName").Value = parRequestData.sBillCorpName
-            End If
+            'If parRequestData.sBillCorpName = Nothing Then
+            '    pCommand.Parameters("@BillCorpName").Value = ""
+            'Else
+            pCommand.Parameters("@BillCorpName").Value = parRequestData.sBillCorpName
+            'End If
             '請求先－支店名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillDivName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillDivName").Value = Nothing Then
-                pCommand.Parameters("@BillDivName").Value = ""
-            Else
-                pCommand.Parameters("@BillDivName").Value = parRequestData.sBillDivName
-            End If
+            'If parRequestData.sBillDivName = Nothing Then
+            '    pCommand.Parameters("@BillDivName").Value = ""
+            'Else
+            pCommand.Parameters("@BillDivName").Value = parRequestData.sBillDivName
+            'End If
             '請求先－姓カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaBill1stName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaBill1stName").Value = Nothing Then
-                pCommand.Parameters("@BillKanaBill1stName").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaBill1stName").Value = parRequestData.sBillKanaBill1stName
-            End If
+            'If parRequestData.sBillKanaBill1stName = Nothing Then
+            '    pCommand.Parameters("@BillKanaBill1stName").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaBill1stName").Value = parRequestData.sBillKanaBill1stName
+            'End If
             '請求先－名カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaBill2ndName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaBill2ndName").Value = Nothing Then
-                pCommand.Parameters("@BillKanaBill2ndName").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaBill2ndName").Value = parRequestData.sBillKanaBill2ndName
-            End If
+            'If parRequestData.sBillKanaBill2ndName = Nothing Then
+            '    pCommand.Parameters("@BillKanaBill2ndName").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaBill2ndName").Value = parRequestData.sBillKanaBill2ndName
+            'End If
             '請求先－住所１カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaAdder1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaAdder1").Value = Nothing Then
-                pCommand.Parameters("@BillKanaAdder1").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaAdder1").Value = parRequestData.sBillKanaAdder1
-            End If
+            'If parRequestData.sBillKanaAdder1 = Nothing Then
+            '    pCommand.Parameters("@BillKanaAdder1").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaAdder1").Value = parRequestData.sBillKanaAdder1
+            'End If
             '請求先－住所２カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaAdder2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaAdder2").Value = Nothing Then
-                pCommand.Parameters("@BillKanaAdder2").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaAdder2").Value = parRequestData.sBillKanaAdder2
-            End If
+            'If parRequestData.sBillKanaAdder2 = Nothing Then
+            '    pCommand.Parameters("@BillKanaAdder2").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaAdder2").Value = parRequestData.sBillKanaAdder2
+            'End If
             '請求先－住所市区町村カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaCity", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaCity").Value = Nothing Then
-                pCommand.Parameters("@BillKanaCity").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaCity").Value = parRequestData.sBillKanaCity
-            End If
+            'If parRequestData.sBillKanaCity = Nothing Then
+            '    pCommand.Parameters("@BillKanaCity").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaCity").Value = parRequestData.sBillKanaCity
+            'End If
             '請求先－都道府県カナ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillKanaState", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillKanaState").Value = Nothing Then
-                pCommand.Parameters("@BillKanaState").Value = ""
-            Else
-                pCommand.Parameters("@BillKanaState").Value = parRequestData.sBillKanaState
-            End If
+            'If parRequestData.sBillKanaState = Nothing Then
+            '    pCommand.Parameters("@BillKanaState").Value = ""
+            'Else
+            pCommand.Parameters("@BillKanaState").Value = parRequestData.sBillKanaState
+            'End If
             '請求先－姓
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Bill1stName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Bill1stName").Value = Nothing Then
-                pCommand.Parameters("@Bill1stName").Value = ""
-            Else
-                pCommand.Parameters("@Bill1stName").Value = parRequestData.sBill1stName
-            End If
+            'If parRequestData.sBill1stName = Nothing Then
+            '    pCommand.Parameters("@Bill1stName").Value = ""
+            'Else
+            pCommand.Parameters("@Bill1stName").Value = parRequestData.sBill1stName
+            'End If
             '請求先－名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Bill2ndName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Bill2ndName").Value = Nothing Then
-                pCommand.Parameters("@Bill2ndName").Value = ""
-            Else
-                pCommand.Parameters("@Bill2ndName").Value = parRequestData.sBill2ndName
-            End If
+            'If parRequestData.sBill2ndName = Nothing Then
+            '    pCommand.Parameters("@Bill2ndName").Value = ""
+            'Else
+            pCommand.Parameters("@Bill2ndName").Value = parRequestData.sBill2ndName
+            'End If
             '請求先－住所１
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillAdder1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillAdder1").Value = Nothing Then
-                pCommand.Parameters("@BillAdder1").Value = ""
-            Else
-                pCommand.Parameters("@BillAdder1").Value = parRequestData.sBillAdder1
-            End If
+            'If parRequestData.sBillAdder1 = Nothing Then
+            '    pCommand.Parameters("@BillAdder1").Value = ""
+            'Else
+            pCommand.Parameters("@BillAdder1").Value = parRequestData.sBillAdder1
+            'End If
             '請求先－住所２
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillAdder2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillAdder2").Value = Nothing Then
-                pCommand.Parameters("@BillAdder2").Value = ""
-            Else
-                pCommand.Parameters("@BillAdder2").Value = parRequestData.sBillAdder2
-            End If
+            'If parRequestData.sBillAdder2 = Nothing Then
+            '    pCommand.Parameters("@BillAdder2").Value = ""
+            'Else
+            pCommand.Parameters("@BillAdder2").Value = parRequestData.sBillAdder2
+            'End If
             '請求先－住所市区町村
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillCity", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillCity").Value = Nothing Then
-                pCommand.Parameters("@BillCity").Value = ""
-            Else
-                pCommand.Parameters("@BillCity").Value = parRequestData.sBillCity
-            End If
+            'If parRequestData.sBillCity = Nothing Then
+            '    pCommand.Parameters("@BillCity").Value = ""
+            'Else
+            pCommand.Parameters("@BillCity").Value = parRequestData.sBillCity
+            'End If
             '請求先－都道府県
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillState", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillState").Value = Nothing Then
-                pCommand.Parameters("@BillState").Value = ""
-            Else
-                pCommand.Parameters("@BillState").Value = parRequestData.sBillState
-            End If
+            'If parRequestData.sBillState = Nothing Then
+            '    pCommand.Parameters("@BillState").Value = ""
+            'Else
+            pCommand.Parameters("@BillState").Value = parRequestData.sBillState
+            'End If
             '請求先－国名
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillCountry", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillCountry").Value = Nothing Then
-                pCommand.Parameters("@BillCountry").Value = ""
-            Else
-                pCommand.Parameters("@BillCountry").Value = parRequestData.sBillCountry
-            End If
+            'If parRequestData.sBillCountry = Nothing Then
+            '    pCommand.Parameters("@BillCountry").Value = ""
+            'Else
+            pCommand.Parameters("@BillCountry").Value = parRequestData.sBillCountry
+            'End If
             '請求先－郵便番号1
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillPostCode1", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillPostCode1").Value = Nothing Then
-                pCommand.Parameters("@BillPostCode1").Value = ""
-            Else
-                pCommand.Parameters("@BillPostCode1").Value = parRequestData.sBillPostCode1
-            End If
+            'If parRequestData.sBillPostCode1 = Nothing Then
+            '    pCommand.Parameters("@BillPostCode1").Value = ""
+            'Else
+            pCommand.Parameters("@BillPostCode1").Value = parRequestData.sBillPostCode1
+            'End If
             '請求先－郵便番号2
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillPostCode2", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillPostCode2").Value = Nothing Then
-                pCommand.Parameters("@BillPostCode2").Value = ""
-            Else
-                pCommand.Parameters("@BillPostCode2").Value = parRequestData.sBillPostCode2
-            End If
+            'If parRequestData.sBillPostCode2 = Nothing Then
+            '    pCommand.Parameters("@BillPostCode2").Value = ""
+            'Else
+            pCommand.Parameters("@BillPostCode2").Value = parRequestData.sBillPostCode2
+            'End If
             '請求先－電話番号
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillTel", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillTel").Value = Nothing Then
-                pCommand.Parameters("@BillTel").Value = ""
-            Else
-                pCommand.Parameters("@BillTel").Value = parRequestData.sBillTel
-            End If
+            'If parRequestData.sBillTel = Nothing Then
+            '    pCommand.Parameters("@BillTel").Value = ""
+            'Else
+            pCommand.Parameters("@BillTel").Value = parRequestData.sBillTel
+            'End If
             'メールアドレス
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@MailAdderss", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@MailAdderss").Value = Nothing Then
-                pCommand.Parameters("@MailAdderss").Value = ""
-            Else
-                pCommand.Parameters("@MailAdderss").Value = parRequestData.sMailAdderss
-            End If
+            'If parRequestData.sMailAdderss = Nothing Then
+            '    pCommand.Parameters("@MailAdderss").Value = ""
+            'Else
+            pCommand.Parameters("@MailAdderss").Value = parRequestData.sMailAdderss
+            'End If
             'コメント
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Comment", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Comment").Value = Nothing Then
-                pCommand.Parameters("@Comment").Value = ""
-            Else
-                pCommand.Parameters("@Comment").Value = parRequestData.sComment
-            End If
+            'If parRequestData.sComment = Nothing Then
+            '    pCommand.Parameters("@Comment").Value = ""
+            'Else
+            pCommand.Parameters("@Comment").Value = parRequestData.sComment
+            'End If
             'ステータス
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Status", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Status").Value = Nothing Then
-                pCommand.Parameters("@Status").Value = ""
-            Else
-                pCommand.Parameters("@Status").Value = parRequestData.sStatus
-            End If
+            'If parRequestData.sStatus = Nothing Then
+            '    pCommand.Parameters("@Status").Value = ""
+            'Else
+            pCommand.Parameters("@Status").Value = parRequestData.sStatus
+            'End If
             'エントリーポイント
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@EntryPoint", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@EntryPoint").Value = Nothing Then
-                pCommand.Parameters("@EntryPoint").Value = ""
-            Else
-                pCommand.Parameters("@EntryPoint").Value = parRequestData.sEntryPoint
-            End If
+            'If parRequestData.sEntryPoint = Nothing Then
+            '    pCommand.Parameters("@EntryPoint").Value = ""
+            'Else
+            pCommand.Parameters("@EntryPoint").Value = parRequestData.sEntryPoint
+            'End If
             'リンク先
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Link", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@Link").Value = Nothing Then
-                pCommand.Parameters("@Link").Value = ""
-            Else
-                pCommand.Parameters("@Link").Value = parRequestData.sLink
-            End If
+            'If parRequestData.sLink = Nothing Then
+            '    pCommand.Parameters("@Link").Value = ""
+            'Else
+            pCommand.Parameters("@Link").Value = parRequestData.sLink
+            'End If
             'カード支払方法
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@CardPayment", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@CardPayment").Value = Nothing Then
-                pCommand.Parameters("@CardPayment").Value = ""
-            Else
-                pCommand.Parameters("@CardPayment").Value = parRequestData.sCardPayment
-            End If
+            'If parRequestData.sCardPayment = Nothing Then
+            '    pCommand.Parameters("@CardPayment").Value = ""
+            'Else
+            pCommand.Parameters("@CardPayment").Value = parRequestData.sCardPayment
+            'End If
             '配達希望日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipRequestDate", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipRequestDate").Value = Nothing Then
-                pCommand.Parameters("@ShipRequestDate").Value = ""
-            Else
-                pCommand.Parameters("@ShipRequestDate").Value = parRequestData.sShipRequestDate
-            End If
+            'If parRequestData.sShipRequestDate = Nothing Then
+            '    pCommand.Parameters("@ShipRequestDate").Value = ""
+            'Else
+            pCommand.Parameters("@ShipRequestDate").Value = parRequestData.sShipRequestDate
+            'End If
             '配達希望時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipRequestTime", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipRequestTime").Value = Nothing Then
-                pCommand.Parameters("@ShipRequestTime").Value = ""
-            Else
-                pCommand.Parameters("@ShipRequestTime").Value = parRequestData.sShipRequestTime
-            End If
+            'If parRequestData.sShipRequestTime = Nothing Then
+            '    pCommand.Parameters("@ShipRequestTime").Value = ""
+            'Else
+            pCommand.Parameters("@ShipRequestTime").Value = parRequestData.sShipRequestTime
+            'End If
             '配達希望メモ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipMemo", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipMemo").Value = Nothing Then
-                pCommand.Parameters("@ShipMemo").Value = ""
-            Else
-                pCommand.Parameters("@ShipMemo").Value = parRequestData.sShipMemo
-            End If
+            'If parRequestData.sShipMemo = Nothing Then
+            '    pCommand.Parameters("@ShipMemo").Value = ""
+            'Else
+            pCommand.Parameters("@ShipMemo").Value = parRequestData.sShipMemo
+            'End If
             '配送業者
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShipCorp", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@ShipCorp").Value = Nothing Then
-                pCommand.Parameters("@ShipCorp").Value = ""
-            Else
-                pCommand.Parameters("@ShipCorp").Value = parRequestData.sShipCorp
-            End If
+            'If parRequestData.sShipCorp = Nothing Then
+            '    pCommand.Parameters("@ShipCorp").Value = ""
+            'Else
+            pCommand.Parameters("@ShipCorp").Value = parRequestData.sShipCorp
+            'End If
             'チャネル支払コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ChannelPaymentCode", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ChannelPaymentCode").Value = Nothing Then
-                pCommand.Parameters("@ChannelPaymentCode").Value = 0
-            Else
-                pCommand.Parameters("@ChannelPaymentCode").Value = parRequestData.sChannelPaymentCode
-            End If
+            'If parRequestData.sChannelPaymentCode = Nothing Then
+            '    pCommand.Parameters("@ChannelPaymentCode").Value = 0
+            'Else
+            pCommand.Parameters("@ChannelPaymentCode").Value = parRequestData.sChannelPaymentCode
+            'End If
             'ギフト梱包希望
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@GiftRequest", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@GiftRequest").Value = Nothing Then
-                pCommand.Parameters("@GiftRequest").Value = ""
-            Else
-                pCommand.Parameters("@GiftRequest").Value = parRequestData.sGiftRequest
-            End If
+            'If parRequestData.sGiftRequest = Nothing Then
+            '    pCommand.Parameters("@GiftRequest").Value = ""
+            'Else
+            pCommand.Parameters("@GiftRequest").Value = parRequestData.sGiftRequest
+            'End If
             '取得ポイント数
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@GetPoint", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@GetPoint").Value = Nothing Then
-                pCommand.Parameters("@GetPoint").Value = 0
-            Else
-                pCommand.Parameters("@GetPoint").Value = parRequestData.sShippingCharge
-            End If
+            'If parRequestData.sShippingCharge = Nothing Then
+            '    pCommand.Parameters("@GetPoint").Value = 0
+            'Else
+            pCommand.Parameters("@GetPoint").Value = parRequestData.sShippingCharge
+            'End If
             '受注商品税抜金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoTaxTotalProductPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@NoTaxTotalProductPrice").Value = Nothing Then
-                pCommand.Parameters("@NoTaxTotalProductPrice").Value = 0
-            Else
-                pCommand.Parameters("@NoTaxTotalProductPrice").Value = parRequestData.sNoTaxTotalProductPrice
-            End If
+            'If parRequestData.sNoTaxTotalProductPrice = Nothing Then
+            '    pCommand.Parameters("@NoTaxTotalProductPrice").Value = 0
+            'Else
+            pCommand.Parameters("@NoTaxTotalProductPrice").Value = parRequestData.sNoTaxTotalProductPrice
+            'End If
             '送料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@ShippingCharge", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@ShippingCharge").Value = Nothing Then
-                pCommand.Parameters("@ShippingCharge").Value = 0
-            Else
-                pCommand.Parameters("@ShippingCharge").Value = parRequestData.sShippingCharge
-            End If
+            'If parRequestData.sShippingCharge = Nothing Then
+            '    pCommand.Parameters("@ShippingCharge").Value = 0
+            'Else
+            pCommand.Parameters("@ShippingCharge").Value = parRequestData.sShippingCharge
+            'End If
             '手数料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PaymentCharge", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@PaymentCharge").Value = Nothing Then
-                pCommand.Parameters("@PaymentCharge").Value = 0
-            Else
-                pCommand.Parameters("@PaymentCharge").Value = parRequestData.sPaymentCharge
-            End If
+            'If parRequestData.sPaymentCharge = Nothing Then
+            '    pCommand.Parameters("@PaymentCharge").Value = 0
+            'Else
+            pCommand.Parameters("@PaymentCharge").Value = parRequestData.sPaymentCharge
+            'End If
             '値引き
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Discount", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@Discount").Value = Nothing Then
-                pCommand.Parameters("@Discount").Value = 0
-            Else
-                pCommand.Parameters("@Discount").Value = parRequestData.sDiscount
-            End If
+            'If parRequestData.sDiscount = Nothing Then
+            '    pCommand.Parameters("@Discount").Value = 0
+            'Else
+            pCommand.Parameters("@Discount").Value = parRequestData.sDiscount
+            'End If
             'ポイント値引き
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PointDisCount", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@PointDisCount").Value = Nothing Then
-                pCommand.Parameters("@PointDisCount").Value = 0
-            Else
-                pCommand.Parameters("@PointDisCount").Value = parRequestData.sPointDisCount
-            End If
+            'If parRequestData.sPointDisCount = Nothing Then
+            '    pCommand.Parameters("@PointDisCount").Value = 0
+            'Else
+            pCommand.Parameters("@PointDisCount").Value = parRequestData.sPointDisCount
+            'End If
             '受注税抜金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoTaxTotalPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@NoTaxTotalPrice").Value = Nothing Then
-                pCommand.Parameters("@NoTaxTotalPrice").Value = 0
-            Else
-                pCommand.Parameters("@NoTaxTotalPrice").Value = parRequestData.sNoTaxTotalPrice
-            End If
+            'If parRequestData.sNoTaxTotalPrice = Nothing Then
+            '    pCommand.Parameters("@NoTaxTotalPrice").Value = 0
+            'Else
+            pCommand.Parameters("@NoTaxTotalPrice").Value = parRequestData.sNoTaxTotalPrice
+            'End If
             '受注消費税額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TaxTotal", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@TaxTotal").Value = Nothing Then
-                pCommand.Parameters("@TaxTotal").Value = 0
-            Else
-                pCommand.Parameters("@TaxTotal").Value = parRequestData.sTaxTotal
-            End If
+            'If parRequestData.sTaxTotal = Nothing Then
+            '    pCommand.Parameters("@TaxTotal").Value = 0
+            'Else
+            pCommand.Parameters("@TaxTotal").Value = parRequestData.sTaxTotal
+            'End If
             '受注税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@TotalPrice").Value = Nothing Then
-                pCommand.Parameters("@TotalPrice").Value = 0
-            Else
-                pCommand.Parameters("@TotalPrice").Value = parRequestData.sTotalPrice
-            End If
+            'If parRequestData.sTotalPrice = Nothing Then
+            '    pCommand.Parameters("@TotalPrice").Value = 0
+            'Else
+            pCommand.Parameters("@TotalPrice").Value = parRequestData.sTotalPrice
+            'End If
             'ギフト梱包材料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@GiftWrapKind", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@GiftWrapKind").Value = Nothing Then
-                pCommand.Parameters("@GiftWrapKind").Value = ""
-            Else
-                pCommand.Parameters("@GiftWrapKind").Value = parRequestData.sGiftWrapKind
-            End If
+            'If parRequestData.sGiftWrapKind = Nothing Then
+            '    pCommand.Parameters("@GiftWrapKind").Value = ""
+            'Else
+            pCommand.Parameters("@GiftWrapKind").Value = parRequestData.sGiftWrapKind
+            'End If
             'ギフト梱包料金
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@GiftWrapKindPrice", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@GiftWrapKindPrice").Value = Nothing Then
-                pCommand.Parameters("@GiftWrapKindPrice").Value = 0
-            Else
-                pCommand.Parameters("@GiftWrapKindPrice").Value = parRequestData.sGiftWrapKindPrice
-            End If
+            'If parRequestData.sGiftWrapKindPrice = Nothing Then
+            '    pCommand.Parameters("@GiftWrapKindPrice").Value = 0
+            'Else
+            pCommand.Parameters("@GiftWrapKindPrice").Value = parRequestData.sGiftWrapKindPrice
+            'End If
             'のし希望
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoshiType", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@NoshiType").Value = Nothing Then
-                pCommand.Parameters("@NoshiType").Value = ""
-            Else
-                pCommand.Parameters("@NoshiType").Value = parRequestData.sNoshiType
-            End If
+            'If parRequestData.sNoshiType = Nothing Then
+            '    pCommand.Parameters("@NoshiType").Value = ""
+            'Else
+            pCommand.Parameters("@NoshiType").Value = parRequestData.sNoshiType
+            'End If
             'のし記載内容
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@NoshiName", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@NoshiName").Value = Nothing Then
-                pCommand.Parameters("@NoshiName").Value = ""
-            Else
-                pCommand.Parameters("@NoshiName").Value = parRequestData.sNoshiName
-            End If
+            'If parRequestData.sNoshiName = Nothing Then
+            '    pCommand.Parameters("@NoshiName").Value = ""
+            'Else
+            pCommand.Parameters("@NoshiName").Value = parRequestData.sNoshiName
+            'End If
             '注文者性別
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillSex", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillSex").Value = Nothing Then
-                pCommand.Parameters("@BillSex").Value = ""
-            Else
-                pCommand.Parameters("@BillSex").Value = parRequestData.sBillSex
-            End If
+            'If parRequestData.sBillSex = Nothing Then
+            '    pCommand.Parameters("@BillSex").Value = ""
+            'Else
+            pCommand.Parameters("@BillSex").Value = parRequestData.sBillSex
+            'End If
             '注文者誕生日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@BillBirthDay", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@BillBirthDay").Value = Nothing Then
-                pCommand.Parameters("@BillBirthDay").Value = ""
-            Else
-                pCommand.Parameters("@BillBirthDay").Value = parRequestData.sBillBirthDay
-            End If
+            'If parRequestData.sBillBirthDay = Nothing Then
+            '    pCommand.Parameters("@BillBirthDay").Value = ""
+            'Else
+            pCommand.Parameters("@BillBirthDay").Value = parRequestData.sBillBirthDay
+            'End If
             '楽天バンク決済手数料
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@RakutenCharge", OleDb.OleDbType.Numeric, 10))
-            If pCommand.Parameters("@RakutenCharge").Value = Nothing Then
-                pCommand.Parameters("@RakutenCharge").Value = 0
-            Else
-                pCommand.Parameters("@RakutenCharge").Value = parRequestData.sRakutenCharge
-            End If
+            'If parRequestData.sRakutenCharge = Nothing Then
+            '    pCommand.Parameters("@RakutenCharge").Value = 0
+            'Else
+            pCommand.Parameters("@RakutenCharge").Value = parRequestData.sRakutenCharge
+            'End If
             '受注伝票出力フラグ
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PrintFlg", OleDb.OleDbType.Boolean, 1))
-            If pCommand.Parameters("@PrintFlg").Value = Nothing Then
-                pCommand.Parameters("@PrintFlg").Value = 0
-            Else
-                pCommand.Parameters("@PrintFlg").Value = parRequestData.sPrintFlg
-            End If
+            'If parRequestData.sPrintFlg = Nothing Then
+            '    pCommand.Parameters("@PrintFlg").Value = 0
+            'Else
+            pCommand.Parameters("@PrintFlg").Value = parRequestData.sPrintFlg
+            'End If
             '受注担当者コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@StaffCode", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@StaffCode").Value = Nothing Then
-                pCommand.Parameters("@StaffCode").Value = "Nothing"
-            Else
-                pCommand.Parameters("@StaffCode").Value = parRequestData.sStaffCode
-            End If
+            'If parRequestData.sStaffCode = Nothing Then
+            '    pCommand.Parameters("@StaffCode").Value = "Nothing"
+            'Else
+            pCommand.Parameters("@StaffCode").Value = parRequestData.sStaffCode
+            'End If
             '登録日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@CreateDate", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@CreateDate").Value = Nothing Then
-                pCommand.Parameters("@CreateDate").Value = ""
-            Else
-                pCommand.Parameters("@CreateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@CreateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '登録時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@CreateTime", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@CreateTime").Value = Nothing Then
-                pCommand.Parameters("@CreateTime").Value = ""
-            Else
-                pCommand.Parameters("@CreateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@CreateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新日
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@UpdateDate", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@UpdateDate").Value = Nothing Then
-                pCommand.Parameters("@UpdateDate").Value = ""
-            Else
-                pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@UpdateDate").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '最終更新時間
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@UpdateTime", OleDb.OleDbType.Char, 13))
-            If pCommand.Parameters("@UpdateTime").Value = Nothing Then
-                pCommand.Parameters("@UpdateTime").Value = ""
-            Else
-                            pCommand.Parameters("@UpdateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
-            End If
+            pCommand.Parameters("@UpdateTime").Value = String.Format("{0:yyyy/MM/dd}", Now)
             '2020,1,10 A.Komita 追加 To
 
             '受注情報データ挿入処理実行

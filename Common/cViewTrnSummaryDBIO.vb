@@ -1189,38 +1189,65 @@ Public Class cViewTrnSummaryDBIO
 
                 '2020,1,15 A.Komita バックアップ時に構造体へ追加する数値を取得するコードを追加 From
                 '入庫日
-                parMonthTrnSummary(i).sArrivalDate = pDataReader("入庫日").ToString
-
+                If IsNothing(pDataReader("入庫日").ToString) = True Then
+                    parMonthTrnSummary(i).sArrivalDate = ""
+                Else
+                    parMonthTrnSummary(i).sArrivalDate = pDataReader("入庫日").ToString
+                End If
                 '仕入先名称
-                parMonthTrnSummary(i).sSupplierName = pDataReader("仕入先名称").ToString
-
+                If IsNothing(pDataReader("仕入先名称").ToString) = True Then
+                    parMonthTrnSummary(i).sSupplierName = ""
+                Else
+                    parMonthTrnSummary(i).sSupplierName = pDataReader("仕入先名称").ToString
+                End If
                 '商品コード
-                parMonthTrnSummary(i).sProductCode = pDataReader("商品コード").ToString
-
+                If IsNothing(pDataReader("商品コード").ToString) = True Then
+                    parMonthTrnSummary(i).sProductCode = ""
+                Else
+                    parMonthTrnSummary(i).sProductCode = pDataReader("商品コード").ToString
+                End If
                 'JANコード
-                parMonthTrnSummary(i).sJANCode = pDataReader("JANコード").ToString
-
+                If IsNothing(pDataReader("JANコード").ToString) = True Then
+                    parMonthTrnSummary(i).sJANCode = ""
+                Else
+                    parMonthTrnSummary(i).sJANCode = pDataReader("JANコード").ToString
+                End If
                 '商品名称
-                parMonthTrnSummary(i).sProductName = pDataReader("商品名称").ToString
-
+                If IsNothing(pDataReader("商品名称").ToString) = True Then
+                    parMonthTrnSummary(i).sProductName = ""
+                Else
+                    parMonthTrnSummary(i).sProductName = pDataReader("商品名称").ToString
+                End If
                 'オプション
                 parMonthTrnSummary(i).sOption = pDataReader("オプション1").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション2").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション2").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション3").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション3").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション4").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション4").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション5").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
-                parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString
+                If parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString <> "" Then
+                    parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString
+                Else
+                    parMonthTrnSummary(i).sOption = ""
+                End If
 
                 '入庫商品単価
                 If IsDBNull(pDataReader("入庫商品単価")) = True Then
@@ -1265,6 +1292,7 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("入庫商品税込金額"))
                 End If
+                '2020,1,15 A.Komita 追加 To
 
                 'レコードが取得できた時の処理
                 i = i + 1
