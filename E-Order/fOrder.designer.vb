@@ -239,8 +239,8 @@ Partial Class fOrder
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ORDER_REPORT_B)
         Me.GroupBox1.Controls.Add(Me.ORDER_SEARCH_B)
+        Me.GroupBox1.Controls.Add(Me.ORDER_REPORT_B)
         Me.GroupBox1.Controls.Add(Me.ORDER_CODE_T)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Location = New System.Drawing.Point(343, 670)
