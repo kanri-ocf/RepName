@@ -1734,9 +1734,6 @@ Public Class fMonthClose
         Dim form_MonthCloseReport As fMonthCloseReport
         Dim cnCode As Integer
         Dim spCode As Integer
-        'Dim ret As Integer
-        'Dim ReportMode As String
-        'Dim oReportPage As New cReportsLib.cReportsLib
 
         If CHANNEL_NAME_C.Text = "" Then
             cnCode = Nothing
@@ -1759,16 +1756,6 @@ Public Class fMonthClose
                                             cnCode,
                                             spCode,
                                             oTran)
-
-        ''印刷開始
-        'If ORDER_MODE = 0 Then      '発注伝票印刷
-        '    ret = oReportPage.OrderPrint(oConn, oCommand, oDataReader, CLOSE_YEAR_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
-        '    oReportPage = Nothing
-        'Else                        '返品伝票印刷
-        '    ret = oReportPage.ReturnOrderPrint(oConn, oCommand, oDataReader, CLOSE_YEAR_T.Text, STAFF_CODE, STAFF_NAME, ReportMode, oTran)
-
-        '    oReportPage = Nothing
-        'End If
 
 
     End Sub

@@ -39,6 +39,8 @@ Public Class fMonthCloseReport
 
         oSupplierDBIO = New cMstSupplierDBIO(oConn, oCommand, oDataReader)
 
+        fMonthCloseReport_Load(True, Nothing)
+
     End Sub
 
 
@@ -108,15 +110,18 @@ Public Class fMonthCloseReport
             SUPPLIER_NAME_C.Items.Add(oSupplier(i).sSupplierName)
         Next
         SUPPLIER_CODE_T.Text = -1
+
+        PRINT_PROC()
+
     End Sub
     Private Sub PRINT_PROC()
         Dim Message_form As cMessageLib.fMessage
 
 
-        'Dim rTagPrint_A As New rTag_A(oConn, oCommand, oDataReader, CInt(CHANNEL_CODE_T.Text), ST_Point, oConf, oTran)
+        Dim rTagPrint_A As New rTag_A(oConn, oCommand, oDataReader, CHANNEL_REPORT_C.Checked, True, oConf, oTran) 'CInt(CHANNEL_REPORT_C), ST_Point,
 
-        'rTagPrint_A.Run()
-        'rTagPrint_A.Document.Print(True, False)
+        rTagPrint_A.Run()
+        rTagPrint_A.Document.Print(True, False)
 
         Message_form = Nothing
 
