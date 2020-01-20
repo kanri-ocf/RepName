@@ -426,7 +426,7 @@
             End If
         End If
 
-        'oDataOrderDBIO = Nothing
+        oDataOrderDBIO = Nothing
 
         CALLING_FLG = False
     End Sub

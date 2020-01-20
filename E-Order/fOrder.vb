@@ -402,11 +402,12 @@
         oOrderStatus.sProductCode = ProductCode
         oOrderStatus.sCheck = CheckStatus
         oOrderStatus.sCount = 1
+        TOTAL_COUNT = TOTAL_COUNT_T.Text
 
         If CheckStatus = True Then  'チェック済みの場合
             If oDataOrderStatusDBIO.OrderStatusExist(oOrderStatus.sProductCode, oTran) Then
                 ''すでに注文状態レコードが存在した場合（通常はありえない）
-                'RecordCnt = oDataOrderStatusDBIO.updateOrderStatus(oOrderStatus, oTran)
+                RecordCnt = oDataOrderStatusDBIO.updateOrderStatus(oOrderStatus, oTran)
             Else
                 '選択状態レコードの作成
                 RecordCnt = oDataOrderStatusDBIO.insertOrderStatus(oOrderStatus, oTran)
