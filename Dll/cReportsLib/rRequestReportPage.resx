@@ -126,15 +126,6 @@
   <data name="T_PRICE_T.OutputFormat" xml:space="preserve">
     <value>¥#,##0</value>
   </data>
-  <data name="CNT_T.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="PRICE_T.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="T_PRICE_T.OutputFormat" xml:space="preserve">
-    <value>¥#,##0</value>
-  </data>
   <data name="SALE_TOTAL_T.OutputFormat" xml:space="preserve">
     <value>¥#,##0</value>
   </data>
@@ -156,16 +147,7 @@
   <data name="TAX_T.OutputFormat" xml:space="preserve">
     <value>¥#,##0</value>
   </data>
-  <data name="REDUCED_TAX_T.OutputFormat" xml:space="preserve">
-    <value>¥#,##0</value>
-  </data>
-  <data name="TOTAL_PRICE.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="TOTAL_CNT.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="TOTAL_T_PRICE.OutputFormat" xml:space="preserve">
+  <data name="TextBox1.OutputFormat" xml:space="preserve">
     <value>¥#,##0</value>
   </data>
   <data name="TOTAL_PRICE.OutputFormat" xml:space="preserve">
