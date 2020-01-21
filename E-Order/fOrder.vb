@@ -949,7 +949,7 @@
         Dim pCandidateStatusDBIO As New cDataCandidateStatusDBIO(oConn, oCommand, oDataReader)
         Dim pCandidateStatus() As cStructureLib.sCandidateStatus
         Dim pOrderStatus() As cStructureLib.sOrderStatus
-        Dim i As Long
+        'Dim i As Long
         Dim RecordCnt As Long
         Dim cnt As Long
 
