@@ -318,7 +318,7 @@ Public Class rRequestReportPage
         Fields("FEE").Value = oRequestData(H_RECORD_NO).sPaymentCharge
         Fields("TAX").Value = oRequestData(H_RECORD_NO).sTaxTotal
         '2019,10,18 A.Komita 追加 From
-        'Fields("REDUCED_TAX").Value = oRequestData(H_RECORD_NO).sReducedTaxRate
+        Fields("REDUCED_TAX").Value = oRequestData(H_RECORD_NO).sReducedTaxRateTotal
         '2019,10,18 A.Komita 追加 To
         Fields("POINT").Value = oRequestData(H_RECORD_NO).sPointDisCount
         Fields("DISCOUNT").Value = oRequestData(H_RECORD_NO).sDiscount

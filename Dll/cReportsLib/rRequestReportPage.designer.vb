@@ -124,7 +124,7 @@ Partial Public Class rRequestReportPage
         Me.DISCOUNT_T = New DataDynamics.ActiveReports.TextBox()
         Me.TAX_T = New DataDynamics.ActiveReports.TextBox()
         Me.Label75 = New DataDynamics.ActiveReports.Label()
-        Me.TextBox1 = New DataDynamics.ActiveReports.TextBox()
+        Me.REDUCED_TAX_T = New DataDynamics.ActiveReports.TextBox()
         Me.GroupFooter1 = New DataDynamics.ActiveReports.GroupFooter()
         Me.GroupHeader2 = New DataDynamics.ActiveReports.GroupHeader()
         Me.Label12 = New DataDynamics.ActiveReports.Label()
@@ -262,7 +262,7 @@ Partial Public Class rRequestReportPage
         CType(Me.DISCOUNT_T, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TAX_T, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label75, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.REDUCED_TAX_T, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label14, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -462,7 +462,7 @@ Partial Public Class rRequestReportPage
         '
         'GroupHeader1
         '
-        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label74, Me.Label73, Me.Label27, Me.B_TEL_T, Me.Label28, Me.B_MAIL_T, Me.S_POST_CODE_T, Me.Label21, Me.Label43, Me.Label44, Me.S_COUNTRY_T, Me.Label45, Me.S_STATE_T, Me.Label46, Me.S_CITY_T, Me.S_ADDRESS1_T, Me.Label47, Me.Label48, Me.S_ADDRESS2_T, Me.Label49, Me.S_NAME_T, Me.Label50, Me.S_TEL_T, Me.SHIP_CORP_T, Me.Label52, Me.Label53, Me.Label54, Me.SHIP_REQDATE_T, Me.Label55, Me.SHIP_REQTIME_T, Me.Label59, Me.MEMO_T, Me.Label62, Me.Label51, Me.Label63, Me.SALE_TOTAL_T, Me.Label61, Me.Label60, Me.Label64, Me.REQUEST_CODE_T, Me.Label2, Me.Label3, Me.Label4, Me.ORG_REQUEST_CODE_T, Me.Label5, Me.CHANNEL_NAME_T, Me.Label6, Me.REQUEST_DATE_T, Me.B_POST_CODE_T, Me.Label7, Me.Label8, Me.Label9, Me.B_COUNTRY_T, Me.Label10, Me.B_STATE_T, Me.Label22, Me.B_CITY_T, Me.B_ADDRESS1_T, Me.Label24, Me.Label25, Me.B_ADDRESS2_T, Me.Label26, Me.B_NAME_T, Me.Label32, Me.NOSHI_T, Me.Label33, Me.GIFT_TYPE_T, Me.Label35, Me.NOSHI_NAME_T, Me.Label39, Me.GIFT_T, Me.Label30, Me.PAYMENT_T, Me.Label37, Me.Label41, Me.Label42, Me.PAY_COUNT_T, Me.BARCODE_B, Me.Label36, Me.OTHER_REQ_T, Me.Label71, Me.Label72, Me.TOTAL_T, Me.POSTAGE_T, Me.FEE_T, Me.POINT_T, Me.DISCOUNT_T, Me.TAX_T, Me.Label75, Me.TextBox1})
+        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label74, Me.Label73, Me.Label27, Me.B_TEL_T, Me.Label28, Me.B_MAIL_T, Me.S_POST_CODE_T, Me.Label21, Me.Label43, Me.Label44, Me.S_COUNTRY_T, Me.Label45, Me.S_STATE_T, Me.Label46, Me.S_CITY_T, Me.S_ADDRESS1_T, Me.Label47, Me.Label48, Me.S_ADDRESS2_T, Me.Label49, Me.S_NAME_T, Me.Label50, Me.S_TEL_T, Me.SHIP_CORP_T, Me.Label52, Me.Label53, Me.Label54, Me.SHIP_REQDATE_T, Me.Label55, Me.SHIP_REQTIME_T, Me.Label59, Me.MEMO_T, Me.Label62, Me.Label51, Me.Label63, Me.SALE_TOTAL_T, Me.Label61, Me.Label60, Me.Label64, Me.REQUEST_CODE_T, Me.Label2, Me.Label3, Me.Label4, Me.ORG_REQUEST_CODE_T, Me.Label5, Me.CHANNEL_NAME_T, Me.Label6, Me.REQUEST_DATE_T, Me.B_POST_CODE_T, Me.Label7, Me.Label8, Me.Label9, Me.B_COUNTRY_T, Me.Label10, Me.B_STATE_T, Me.Label22, Me.B_CITY_T, Me.B_ADDRESS1_T, Me.Label24, Me.Label25, Me.B_ADDRESS2_T, Me.Label26, Me.B_NAME_T, Me.Label32, Me.NOSHI_T, Me.Label33, Me.GIFT_TYPE_T, Me.Label35, Me.NOSHI_NAME_T, Me.Label39, Me.GIFT_T, Me.Label30, Me.PAYMENT_T, Me.Label37, Me.Label41, Me.Label42, Me.PAY_COUNT_T, Me.BARCODE_B, Me.Label36, Me.OTHER_REQ_T, Me.Label71, Me.Label72, Me.TOTAL_T, Me.POSTAGE_T, Me.FEE_T, Me.POINT_T, Me.DISCOUNT_T, Me.TAX_T, Me.Label75, Me.REDUCED_TAX_T})
         Me.GroupHeader1.DataField = "REQUEST_CODE"
         Me.GroupHeader1.Height = 7.309!
         Me.GroupHeader1.Name = "GroupHeader1"
@@ -1865,7 +1865,7 @@ Partial Public Class rRequestReportPage
         Me.TAX_T.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TAX_T.DataField = "TAX"
         Me.TAX_T.Height = 0.1999998!
-        Me.TAX_T.Left = 4.539!
+        Me.TAX_T.Left = 4.55!
         Me.TAX_T.Name = "TAX_T"
         Me.TAX_T.OutputFormat = resources.GetString("TAX_T.OutputFormat")
         Me.TAX_T.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
@@ -1890,22 +1890,22 @@ Partial Public Class rRequestReportPage
         Me.Label75.Top = 6.644001!
         Me.Label75.Width = 0.9980001!
         '
-        'TextBox1
+        'REDUCED_TAX_T
         '
-        Me.TextBox1.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.DataField = "TAX"
-        Me.TextBox1.Height = 0.1999998!
-        Me.TextBox1.Left = 4.539!
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.OutputFormat = resources.GetString("TextBox1.OutputFormat")
-        Me.TextBox1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox1.Style = "text-align: right; vertical-align: middle"
-        Me.TextBox1.Text = "REDUCED_TAX"
-        Me.TextBox1.Top = 6.644001!
-        Me.TextBox1.Width = 2.551!
+        Me.REDUCED_TAX_T.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.REDUCED_TAX_T.Border.LeftStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.REDUCED_TAX_T.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.REDUCED_TAX_T.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.REDUCED_TAX_T.DataField = "REDUCED_TAX"
+        Me.REDUCED_TAX_T.Height = 0.1999998!
+        Me.REDUCED_TAX_T.Left = 4.539!
+        Me.REDUCED_TAX_T.Name = "REDUCED_TAX_T"
+        Me.REDUCED_TAX_T.OutputFormat = resources.GetString("REDUCED_TAX_T.OutputFormat")
+        Me.REDUCED_TAX_T.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.REDUCED_TAX_T.Style = "text-align: right; vertical-align: middle"
+        Me.REDUCED_TAX_T.Text = "REDUCED_TAX"
+        Me.REDUCED_TAX_T.Top = 6.644001!
+        Me.REDUCED_TAX_T.Width = 2.551!
         '
         'GroupFooter1
         '
@@ -2525,7 +2525,7 @@ Partial Public Class rRequestReportPage
         CType(Me.DISCOUNT_T, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TAX_T, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label75, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.REDUCED_TAX_T, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label14, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2703,5 +2703,5 @@ Partial Public Class rRequestReportPage
     Private WithEvents CrossSectionLine6 As DataDynamics.ActiveReports.CrossSectionLine
     Friend WithEvents Line1 As DataDynamics.ActiveReports.Line
     Private WithEvents Label75 As DataDynamics.ActiveReports.Label
-    Private WithEvents TextBox1 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents REDUCED_TAX_T As DataDynamics.ActiveReports.TextBox
 End Class

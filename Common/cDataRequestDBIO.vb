@@ -660,6 +660,16 @@ Public Class cDataRequestDBIO
                 Else
                     parRequestData(i).sTaxTotal = CLng(pDataReader("受注消費税額"))
                 End If
+
+                '2020,1,21 A.Komita 
+                '受注軽減税額
+                If IsDBNull(pDataReader("受注軽減税額")) = True Then
+                    parRequestData(i).sReducedTaxRateTotal = 0
+                Else
+                    parRequestData(i).sReducedTaxRateTotal = CLng(pDataReader("受注軽減税額"))
+                End If
+                '2020,1,21 A.Komita 追加 To
+
                 '受注税込金額
                 If IsDBNull(pDataReader("受注税込金額")) = True Then
                     parRequestData(i).sTotalPrice = 0
@@ -1250,6 +1260,16 @@ Public Class cDataRequestDBIO
                 Else
                     parRequestData(i).sTaxTotal = CLng(pDataReader("受注消費税額"))
                 End If
+
+                '2020,1,21 A.Komita 
+                '受注軽減税額
+                If IsDBNull(pDataReader("受注軽減税額")) = True Then
+                    parRequestData(i).sReducedTaxRateTotal = 0
+                Else
+                    parRequestData(i).sReducedTaxRateTotal = CLng(pDataReader("受注軽減税額"))
+                End If
+                '2020,1,21 A.Komita 追加 To
+
                 '受注税込金額
                 If IsDBNull(pDataReader("受注税込金額")) = True Then
                     parRequestData(i).sTotalPrice = 0
@@ -1437,6 +1457,7 @@ Public Class cDataRequestDBIO
                                "ポイント値引き, " &
                                "受注税抜金額, " &
                                "受注消費税額, " &
+                               "受注軽減税額, " &
                                "受注税込金額, " &
                                "ギフト梱包材料, " &
                                "ギフト梱包料金, " &
@@ -1517,6 +1538,7 @@ Public Class cDataRequestDBIO
                                "@PointDisCount, " &
                                "@NoTaxTotalPrice, " &
                                "@TaxTotal, " &
+                               "@ReducedTaxRateTotal, " &
                                "@TotalPrice, " &
                                "@GiftWrapKind, " &
                                "@GiftWrapKindPrice, " &
@@ -2062,6 +2084,18 @@ Public Class cDataRequestDBIO
             Else
                 pCommand.Parameters("@TaxTotal").Value = parRequestData.sTaxTotal
             End If
+
+            '2020,1,21 A.Komita 追加 From
+            '受注軽減税額
+            pCommand.Parameters.Add _
+            (New OleDb.OleDbParameter("@ReducedTaxRateTotal", OleDb.OleDbType.Numeric, 10))
+            If parRequestData.sReducedTaxRateTotal = Nothing Then
+                pCommand.Parameters("@ReducedTaxRateTotal").Value = 0
+            Else
+                pCommand.Parameters("@ReducedTaxRateTotal").Value = parRequestData.sReducedTaxRateTotal
+            End If
+            '2020,1,21 A.Komita 追加 To
+
             '受注税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TotalPrice", OleDb.OleDbType.Numeric, 10))
