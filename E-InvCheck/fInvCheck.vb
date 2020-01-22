@@ -483,25 +483,27 @@ Public Class fInvCheck
         Dim ProductCode As String
         Dim SelectJAN_form As cSelectLib.fSelectJAN
 
-        If (JANCODE_T.Text <> "") Then
-            recCount = oMstProductDBIO.getProduct(oProduct, _
-                                                  JANCODE_T.Text, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
+        '2020,1,21 A.Komita 終了を押下すると下記のif文で例外が発生する為、分岐条件にAnd以降の条件を追加 From
+        If (JANCODE_T.Text <> "" And PRODUCT_CODE_T.Text = "") Then
+            recCount = oMstProductDBIO.getProduct(oProduct,
+                                                  JANCODE_T.Text,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
                                                   oTran)
+            '2020,1,21 A.Komita 追加 To
 
             '登録情報の取得
             Select Case recCount
                 Case 0 '該当JANコードが存在しなかった場合
-                    Dim message_form As New cMessageLib.fMessage(1, _
-                                                      "該当のJANコードが登録されていません", _
-                                                      "商品登録を行って下さい", _
+                    Dim message_form As New cMessageLib.fMessage(1,
+                                                      "該当のJANコードが登録されていません",
+                                                      "商品登録を行って下さい",
                                                       Nothing, Nothing)
                     message_form.ShowDialog()
                     message_form = Nothing
@@ -514,12 +516,12 @@ Public Class fInvCheck
                     '重複JANコード商品の選択画面表示
                     JANCODE_T.Enabled = False
 
-                    SelectJAN_form = New cSelectLib.fSelectJAN(oConn, _
-                                                         oCommand, _
-                                                         oDataReader, _
-                                                         CHANNEL_CODE, _
-                                                         JANCODE_T.Text, _
-                                                         oConf, _
+                    SelectJAN_form = New cSelectLib.fSelectJAN(oConn,
+                                                         oCommand,
+                                                         oDataReader,
+                                                         CHANNEL_CODE,
+                                                         JANCODE_T.Text,
+                                                         oConf,
                                                          oTran)
                     SelectJAN_form.ShowDialog()
 
@@ -531,16 +533,16 @@ Public Class fInvCheck
                     SelectJAN_form = Nothing
 
                     '商品情報読込み
-                    recCount = oMstProductDBIO.getProduct(oProduct, _
-                                                          Nothing, _
-                                                          ProductCode, _
-                                                          Nothing, _
-                                                          Nothing, _
-                                                          Nothing, _
-                                                          Nothing, _
-                                                          Nothing, _
-                                                          Nothing, _
-                                                          Nothing, _
+                    recCount = oMstProductDBIO.getProduct(oProduct,
+                                                          Nothing,
+                                                          ProductCode,
+                                                          Nothing,
+                                                          Nothing,
+                                                          Nothing,
+                                                          Nothing,
+                                                          Nothing,
+                                                          Nothing,
+                                                          Nothing,
                                                           oTran)
                     JANCODE_T.Enabled = True
 

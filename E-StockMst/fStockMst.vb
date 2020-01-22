@@ -374,20 +374,19 @@ Public Class fStockMst
         Dim SelectJAN_form As cSelectLib.fSelectJAN
 
         If (JANCODE_T.Text <> "") Then
-            recCount = oMstProductDBIO.getProduct(
-                                        oProduct,
-                                        JANCODE_T.Text,
-                                        PRODUCT_CODE_T.Text,
-                                        PRODUCT_NAME_T.Text,
-                                        Nothing,
-                                        Nothing,
-                                        MAKER_NAME_T.Text,
-                                        STOPSALE_C.Checked,
-                                        SUPPLIESTOP_C.Checked,
-                                        Nothing,
-                                        oTran
+            recCount = oMstProductDBIO.getProduct( _
+                                        oProduct, _
+                                        JANCODE_T.Text, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        Nothing, _
+                                        oTran _
                                     )
-
 
             '登録情報の取得
             Select Case recCount

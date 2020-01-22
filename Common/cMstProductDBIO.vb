@@ -1421,8 +1421,40 @@ Public Class cMstProductDBIO
         'ocf　鈴木　2019/09/20
         '----------------------------------------------------
 
-        'SQL文の設定
-        strUpdate = "UPDATE 商品マスタ SET " &
+        '2020,1,21 A.Komita 軽減税率がNothingの時にエラーが発生する為SQL文を条件分岐で追加 From
+
+        If parProduct(0).sReducedTaxRate = Nothing Then
+
+            strUpdate = "UPDATE 商品マスタ SET " &
+                            "SEQコード=""" & parProduct(0).sSEQCode.ToString & """, " &
+                            "JANコード=""" & parProduct(0).sJANCode.ToString & """, " &
+                            "商品種別=""" & parProduct(0).sProductClass.ToString & """, " &
+                            "商品名称=""" & parProduct(0).sProductName.ToString & """, " &
+                            "商品略称=""" & parProduct(0).sProductShortName.ToString & """, " &
+                            "メーカー名称=""" & parProduct(0).sMakerName.ToString & """, " &
+                            "オプション1=""" & parProduct(0).sOption1.ToString & """, " &
+                            "オプション2=""" & parProduct(0).sOption2.ToString & """, " &
+                            "オプション3=""" & parProduct(0).sOption3.ToString & """, " &
+                            "オプション4=""" & parProduct(0).sOption4.ToString & """, " &
+                            "オプション5=""" & parProduct(0).sOption5.ToString & """, " &
+                            "適用=""" & parProduct(0).sMemo.ToString & """, " &
+                            "定価=" & CLng(parProduct(0).sListPrice) & ", " &
+                            "適正在庫数=" & CLng(parProduct(0).sMinStock) & ", " &
+                            "PLUコード=""" & parProduct(0).sPLUCode.ToString & """, " &
+                            "販売停止フラグ=" & parProduct(0).sStopSaleFlg & ", " &
+                            "仕入停止フラグ=" & parProduct(0).sStopSupplieFlg & ", " &
+                            "Yahoo掲載フラグ=" & parProduct(0).sYahooFlg & ", " &
+                            "楽天掲載フラグ=" & parProduct(0).sRakutenFlg & ", " &
+                            "Amazon掲載フラグ=" & parProduct(0).sAmazonFlg & ", " &
+                            "eShop掲載フラグ=" & parProduct(0).seShopFlg & ", " &
+                            "最終更新日=""" & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
+                            "最終更新時間=""" & String.Format("{0:HH:mm:ss}", Now) & """ " &
+                            "WHERE 商品コード=""" & parProduct(0).sProductCode.ToString & """ "
+
+
+        Else
+            'SQL文の設定
+            strUpdate = "UPDATE 商品マスタ SET " &
                             "SEQコード=""" & parProduct(0).sSEQCode.ToString & """, " &
                             "JANコード=""" & parProduct(0).sJANCode.ToString & """, " &
                             "商品種別=""" & parProduct(0).sProductClass.ToString & """, " &
@@ -1448,6 +1480,10 @@ Public Class cMstProductDBIO
                             "最終更新時間=""" & String.Format("{0:HH:mm:ss}", Now) & """, " &
                             "軽減税率=""" & parProduct(0).sReducedTaxRate.ToString & """ " &
                             "WHERE 商品コード=""" & parProduct(0).sProductCode.ToString & """ "
+
+        End If
+        '2020,1,21 A.Komita 追加 To
+
         '----------------------------------------------------
         'ocf　鈴木　2019/09/20　end
         '----------------------------------------------------
