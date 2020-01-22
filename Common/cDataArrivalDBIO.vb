@@ -386,7 +386,7 @@ Public Class cDataArrivalDBIO
     Public Function insertArrivalData(ByVal parArrivalData As cStructureLib.sArrivalData, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim strInsertArrival As String
         '2020,1,16 A.Komita 追加 From
-        Dim i As Integer
+        'Dim i As Integer
         '2020,1,16 A.Komita 追加 To
 
         Try

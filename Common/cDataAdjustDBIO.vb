@@ -347,9 +347,9 @@
 
         Dim i As Integer
         Dim StrSelect As String
-        Dim pc As Integer
-        Dim scnt As Integer
-        Dim mpc As Integer
+        'Dim pc As Integer
+        'Dim scnt As Integer
+        'Dim mpc As Integer
 
 
         StrSelect = "SELECT 精算データ.精算コード AS 精算コード, " & _

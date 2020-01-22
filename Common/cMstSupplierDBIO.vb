@@ -58,7 +58,9 @@
     ''　戻値：True  --> レコードの取得成功
     ''　　　　False --> 取得するレコードなし
     ''----------------------------------------------------------------------
-    Public Function getSupplier(ByRef parSupplier() As cStructureLib.sSupplier, ByVal KeySupplierCode As String, ByVal KeySupplierName As String, ByRef Tran As OleDb.OleDbTransaction) As Long
+    Public Function getSupplier(ByRef parSupplier() As cStructureLib.sSupplier,
+                                ByVal KeySupplierCode As String, ByVal KeySupplierName As String,
+                                ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim StrSelect As String
         Dim i As Long
         Dim pc As Integer

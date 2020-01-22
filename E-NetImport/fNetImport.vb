@@ -254,7 +254,7 @@ Public Class fNetImport
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
-    Protected Overrides ReadOnly Property CreateParams() As CreateParams
+    Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
         Get
             Const WS_EX_DLGMODALFRAME As Integer = &H1
             Dim cp As CreateParams = MyBase.CreateParams
