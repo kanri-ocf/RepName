@@ -1047,7 +1047,7 @@ Public Class fRegister
 
 
         '2016.06.03 K.Oikawa s
-        '課代表.No62 返品処理の実装
+        '課題表.No62 返品処理の実装
         ''日次取引データ登録
         'If T_MODE = 2 Then  '返品処理
         '    RETURN_DAY_SUBTRN_INSERT()
@@ -3148,8 +3148,10 @@ Public Class fRegister
                 Ope = 1
         End Select
         oTrn(0).sNoTaxTotalProductPrice = noTaxTotalPrice * Ope
-        oTrn(0).sShippingCharge = (oTool.AfterToBeforeTax(CLng(TDELIVALY_T.Text), tax, oConf(0).sFracProc)) * Ope
-        oTrn(0).sPaymentCharge = (oTool.AfterToBeforeTax(CLng(TFEE_T.Text), tax, oConf(0).sFracProc)) * Ope
+        '2020,1,23 A.Komita 税額に誤差が出る為、AfterToTaxからBeforeToTaxへ修正 Start
+        oTrn(0).sShippingCharge = (oTool.BeforeToAfterTax(CLng(TDELIVALY_T.Text), tax, oConf(0).sFracProc)) * Ope
+        oTrn(0).sPaymentCharge = (oTool.BeforeToAfterTax(CLng(TFEE_T.Text), tax, oConf(0).sFracProc)) * Ope
+        '2020,1,23 A.Komita 修正 End
         oTrn(0).sDiscount = (CLng(SDISCOUNT_T.Text) + CLng(TDISCOUNT_T.Text)) * -1 * Ope
         oTrn(0).sPointDiscount = CLng(PDISCOUNT_T.Text) * -1 * Ope
         oTrn(0).sTicketDiscount = CLng(CDISCOUNT_T.Text) * -1 * Ope
@@ -8351,6 +8353,7 @@ Public Class fRegister
             End If
         End If
     End Sub
+
 
 
     '2016.06.07 K.OIkawa e

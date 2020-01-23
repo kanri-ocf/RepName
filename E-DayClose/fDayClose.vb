@@ -1049,6 +1049,7 @@
             '2019/11/17 R.Takashima To
             '--------------------------------------------------------------------------------------------
 
+
             SUM_V.Rows.Add(
                     oTrnSummary(i).sTrnClass,
                     oTrnSummary(i).sChannelName,
@@ -1062,6 +1063,7 @@
             Select Case oTrnSummary(i).sPaymentName
                 Case "現金払い"
                     If oTrnSummary(i).sTrnClass <> "販促" Then
+
                         TotalCash = TotalCash + oTrnSummary(i).sPrice
                         SOU_CASH = TotalCash
                     End If
