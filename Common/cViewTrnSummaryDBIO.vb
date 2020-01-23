@@ -329,10 +329,10 @@ Public Class cViewTrnSummaryDBIO
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
     Public Function getChannelTrnSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewMonthTrnSummary,
-                                     ByVal keyChannelCode As Integer,
-                                       ByVal keyFromDate As String,
-                                       ByVal keyToDate As String,
-                                       ByRef Tran As OleDb.OleDbTransaction) As Long
+                                         ByVal keyChannelCode As Integer,
+                                         ByVal keyFromDate As String,
+                                         ByVal keyToDate As String,
+                                         ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
         Dim pc As Integer
@@ -1272,9 +1272,9 @@ Public Class cViewTrnSummaryDBIO
 
                 '入庫商品消費税額
                 If IsDBNull(pDataReader("入庫商品消費税額")) = True Then
-                    parMonthTrnSummary(i).sPrice = 0
+                    parMonthTrnSummary(i).sTaxPrice = 0
                 Else
-                    parMonthTrnSummary(i).sPrice = CLng(pDataReader("入庫商品消費税額"))
+                    parMonthTrnSummary(i).sTaxPrice = CLng(pDataReader("入庫商品消費税額"))
                 End If
 
                 '2019,12,16 A.Komita 追加 From

@@ -331,7 +331,7 @@
 
         ''<販売金額>
         'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice)
-        ''Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice - oTool.BeforeToAfterTax(oReadData.sDiscountPrice, oConf(0).sTax, oConf(0).sFracProc))
+        'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice - oTool.BeforeToAfterTax(oReadData.sDiscountPrice, oConf(0).sTax, oConf(0).sFracProc))
 
 
         '<数量>

@@ -2822,7 +2822,9 @@ Public Class fRegister
 
             '2019.12.6 R.Takashima FROM
             '送料、手数料の税額が含まれていないため追加
-            sumTax += oTool.AfterToTax(tdelivaly + tfee, oConf(0).sTax, oConf(0).sFracProc)
+            '2020,1,23 A.Komita 税額に誤差が出る為、AfterToTaxからBeforeToTaxへ修正 Start
+            sumTax += oTool.BeforeToTax(tdelivaly + tfee, oConf(0).sTax, oConf(0).sFracProc)
+            '2020,1,23 A.Komita End
             '2019.12.5 R.Takashima TO
 
         Else

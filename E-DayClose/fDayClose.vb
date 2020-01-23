@@ -1045,9 +1045,9 @@
             '-------------------------------------------------------------------------------------------
             oTrnSummary(i).sShippingCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
             oTrnSummary(i).sPaymentCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
-            ''-------------------------------------------------------------------------------------------
+            '--------------------------------------------------------------------------------------------
             '2019/11/17 R.Takashima To
-            '-------------------------------------------------------------------------------------------
+            '--------------------------------------------------------------------------------------------
 
             SUM_V.Rows.Add(
                     oTrnSummary(i).sTrnClass,
@@ -1499,8 +1499,8 @@
         If REPRINT_MODE = False Then
             If CLng(DIFF_CASH_T.Text) <> 0 Then
                 'メッセージウィンドウ表示
-                Message_form = New cMessageLib.fMessage(2, "現金差額が生じています。", _
-                                                "レジ差額として処理して終了します。", _
+                Message_form = New cMessageLib.fMessage(2, "現金差額が生じています。",
+                                                "レジ差額として処理し終了します。",
                                                 "よろしいですか？", Nothing)
                 Message_form.ShowDialog()
                 '確認ダイアログでNOが選択された場合
