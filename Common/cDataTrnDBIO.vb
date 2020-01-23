@@ -575,11 +575,6 @@ Public Class cDataTrnDBIO
             '取引テーブル挿入処理実行
             pCommand.ExecuteNonQuery()
 
-            '2019,11,6 A.Komita 追加 From
-            'pCommand = pConn.CreateCommand
-            'pCommand.Transaction = Tran
-            '2019,11,6 A.Komita 追加 To
-
 
             insertTrn = True
 
