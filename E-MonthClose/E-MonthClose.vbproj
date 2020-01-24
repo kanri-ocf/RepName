@@ -387,6 +387,7 @@
       <DependentUpon>fMonthClose.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="rMonthCloseReport.resx">
       <DependentUpon>rMonthCloseReport.vb</DependentUpon>
       <SubType>Designer</SubType>

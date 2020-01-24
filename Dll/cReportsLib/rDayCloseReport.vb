@@ -311,6 +311,7 @@
 
         oAdjustDBIO = Nothing
     End Sub
+
     Private Sub CAL_INFO(ByVal oReadData As cStructureLib.sViewTrnSummary)
 
         '<取引区分>
