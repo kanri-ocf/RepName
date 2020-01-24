@@ -482,7 +482,7 @@ Public Class cDataArrivalDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PaymentCode", OleDb.OleDbType.Numeric, 2))
             If parArrivalData.sPaymentCode = Nothing Then
-                parArrivalData.sPaymentCode = 0
+                pCommand.Parameters("@PaymentCode").Value = 0
             Else
                 pCommand.Parameters("@PaymentCode").Value = parArrivalData.sPaymentCode
             End If
@@ -522,7 +522,7 @@ Public Class cDataArrivalDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@PointDisCount", OleDb.OleDbType.Numeric, 10))
             If parArrivalData.sPointDisCount = Nothing Then
-                parArrivalData.sPointDisCount = 0
+                pCommand.Parameters("@PointDisCount").Value = 0
             Else
                 pCommand.Parameters("@PointDisCount").Value = parArrivalData.sPointDisCount
             End If
@@ -574,7 +574,7 @@ Public Class cDataArrivalDBIO
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@StaffCode", OleDb.OleDbType.Char, 13))
             If parArrivalData.sStaffCode = Nothing Then
-                pCommand.Parameters("@StaffCode").Value = ""
+                pCommand.Parameters("@StaffCode").Value = "9999999999999"
             Else
                 pCommand.Parameters("@StaffCode").Value = parArrivalData.sStaffCode
             End If
