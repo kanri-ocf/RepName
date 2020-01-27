@@ -72,6 +72,7 @@ Public Class fRegister
     Private oViewBom() As cStructureLib.sViewBom
     Private oMstBomDBIO As cMstBomDBIO
 
+
     Private oStaffFull() As cStructureLib.sViewStaffFull
     Private oStaffDBIO As cMstStaffDBIO
 

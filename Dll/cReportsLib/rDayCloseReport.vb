@@ -22,6 +22,11 @@
     Private oTimeSales() As cStructureLib.sViewTimeSales
     ' *** END   K.MINAGAWA 2013/04/29 ***
 
+    '2020,1,27 A.Komita 追加 From
+    'Private oViewTrnFull() As cStructureLib.sViewTrnFull
+    'Private oViewTrnFullDBIO As cViewTrnFullDBIO
+    '2020,1,27 A.Komita 追加 To
+
     Private Const SRCCOPY As Integer = &HCC0020
 
     Private STAFF_CODE As String
@@ -323,7 +328,7 @@
         '<チャネル名称>
         Fields("S_CHANNEL").Value = oReadData.sChannelName
 
-        '<支払方法>
+        '<支払方法>　'1/28 S_PAYMENT以下全て分岐にする
         Fields("S_PAYMENT").Value = oReadData.sPaymentName
 
         '-----------------------------------------------------------------------
@@ -333,7 +338,6 @@
         ''<販売金額>
         'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice)
         'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice - oTool.BeforeToAfterTax(oReadData.sDiscountPrice, oConf(0).sTax, oConf(0).sFracProc))
-
 
         '<数量>
         Fields("S_CNT").Value = String.Format("{0:#,##0}", oReadData.sCount)
@@ -348,12 +352,19 @@
         Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         '<販売金額>
-        Fields("S_SALES").Value = String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
+        '2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
+        If oReadData.sReducedTaxRate = 0 Then
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
+        Else
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
+        End If
+        '2020,1,27 A.Komita 追加 To
+        Fields("S_SALES").Value = oReadData.sNoTaxProductPrice 'String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
 
 
         '<売上金額>
         'Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
-        Fields("S_BILL").Value = String.Format("{0:#,##0}", oReadData.sPrice)
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）) 'String.Format("{0:#,##0}", oReadData.sPrice)
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki END
         '-----------------------------------------------------------------------
@@ -453,4 +464,5 @@
         End If
         ' *** END   K.MINAGAWA 2013/04/29 ***
     End Sub
+
 End Class
