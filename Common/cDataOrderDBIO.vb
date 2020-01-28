@@ -99,7 +99,7 @@ Public Class cDataOrderDBIO
                         Else
                             strSelect = strSelect & "WHERE "
                         End If
-                        strSelect = strSelect & "発注コード Like ""%" & KeyOrderNumber & "%"" "
+                        strSelect = strSelect & "発注コード Like " & KeyOrderNumber & " "
                         scnt = scnt + 1
 
                     Case 2

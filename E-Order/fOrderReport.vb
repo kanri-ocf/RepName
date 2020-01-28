@@ -1202,7 +1202,7 @@
         End If
 
         '発注データの削除
-        'ORDER_DELETE()
+        ORDER_DELETE()
 
         'デフォルト税モード = 税込みモードにセット
         DefaultTaxMode = 0
