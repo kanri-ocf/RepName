@@ -104,10 +104,10 @@ Public Class cDataOrderSubDBIO
                                 "発注情報明細データ.最終更新日, " &
                                 "発注情報明細データ.最終更新時間 " &
                             "FROM 発注情報明細データ " &
-                            "WHERE 発注情報明細データ.発注コード=@OrderCode "
+                            "WHERE 発注情報明細データ.発注コード = @OrderCode "
 
             If KeyOrderSubCode <> Nothing Then
-                strSelectOrder = strSelectOrder & "AND 発注情報明細データ.発注明細コード=@OrderSubCode "
+                strSelectOrder = strSelectOrder & "AND 発注情報明細データ.発注明細コード = @OrderSubCode "
             End If
 
             strSelectOrder = strSelectOrder & "ORDER BY 発注情報明細データ.商品名称, " &
