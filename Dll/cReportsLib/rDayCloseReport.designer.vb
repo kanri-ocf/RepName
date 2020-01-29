@@ -180,39 +180,59 @@ Partial Public Class rDayCloseReport
         Me.CrossSectionBox1 = New DataDynamics.ActiveReports.CrossSectionBox()
         Me.Label55 = New DataDynamics.ActiveReports.Label()
         Me.CrossSectionBox2 = New DataDynamics.ActiveReports.CrossSectionBox()
+        Me.TextBox24 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupFooter3 = New DataDynamics.ActiveReports.GroupFooter()
         Me.sumS_BILL = New DataDynamics.ActiveReports.TextBox()
         Me.GroupHeader5 = New DataDynamics.ActiveReports.GroupHeader()
         Me.TextBox10 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupFooter5 = New DataDynamics.ActiveReports.GroupFooter()
-        Me.TextBox1 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox3 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox5 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox6 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox7 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_SALES_3 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_DISCOUNT_3 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_POSTAGE_3 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_FEE_3 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_BILL_3 = New DataDynamics.ActiveReports.TextBox()
         Me.Label54 = New DataDynamics.ActiveReports.Label()
-        Me.TextBox2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_CNT_3 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupHeader6 = New DataDynamics.ActiveReports.GroupHeader()
         Me.TextBox11 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox14 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupFooter6 = New DataDynamics.ActiveReports.GroupFooter()
         Me.GroupHeader7 = New DataDynamics.ActiveReports.GroupHeader()
-        Me.S_PAYMENT = New DataDynamics.ActiveReports.TextBox()
+        Me.S_PAYMENT_1 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox12 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox15 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox17 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox19 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox20 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox21 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_PAYMENT_2 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupFooter7 = New DataDynamics.ActiveReports.GroupFooter()
-        Me.S_CNT = New DataDynamics.ActiveReports.TextBox()
-        Me.S_FEE = New DataDynamics.ActiveReports.TextBox()
-        Me.S_DISCOUNT = New DataDynamics.ActiveReports.TextBox()
-        Me.S_BILL = New DataDynamics.ActiveReports.TextBox()
-        Me.S_POSTAGE = New DataDynamics.ActiveReports.TextBox()
+        Me.S_CNT_1 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_FEE_1 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_DISCOUNT_1 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_POSTAGE_1 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox13 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox16 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox18 = New DataDynamics.ActiveReports.TextBox()
-        Me.S_SALES = New DataDynamics.ActiveReports.TextBox()
+        Me.S_SALES_1 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox22 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox23 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox25 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox26 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox27 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_SALES_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_CNT_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_DISCOUNT_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_POSTAGE_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_FEE_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_BILL_2 = New DataDynamics.ActiveReports.TextBox()
+        Me.S_BILL_1 = New DataDynamics.ActiveReports.TextBox()
         Me.GroupHeader4 = New DataDynamics.ActiveReports.GroupHeader()
         Me.GroupFooter4 = New DataDynamics.ActiveReports.GroupFooter()
+        Me.Line22 = New DataDynamics.ActiveReports.Line()
+        Me.Line23 = New DataDynamics.ActiveReports.Line()
+        Me.Line24 = New DataDynamics.ActiveReports.Line()
+        Me.Line25 = New DataDynamics.ActiveReports.Line()
         CType(Me.Label1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportInfo2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -335,35 +355,51 @@ Partial Public Class rDayCloseReport
         CType(Me.sumS_FEE, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label40, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label55, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sumS_BILL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_SALES_3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_DISCOUNT_3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_POSTAGE_3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_FEE_3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_BILL_3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label54, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_CNT_3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_PAYMENT, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_PAYMENT_1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_CNT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_FEE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_DISCOUNT, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_BILL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_POSTAGE, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox21, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_PAYMENT_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_CNT_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_FEE_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_DISCOUNT_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_POSTAGE_1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.S_SALES, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_SALES_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox22, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox23, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox27, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_SALES_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_CNT_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_DISCOUNT_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_POSTAGE_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_FEE_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_BILL_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.S_BILL_1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'PageHeader
         '
-        Me.PageHeader.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label1, Me.Label3, Me.ReportInfo2, Me.STAFFNAME, Me.Label2, Me.Label47, Me.MAKE_DATE, Me.CLOSEDATE})
+        Me.PageHeader.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label1, Me.Label3, Me.ReportInfo2, Me.STAFFNAME, Me.Label2, Me.Label47, Me.MAKE_DATE, Me.CLOSEDATE, Me.Line23})
         Me.PageHeader.Height = 0.676919!
         Me.PageHeader.Name = "PageHeader"
         '
@@ -396,7 +432,7 @@ Partial Public Class rDayCloseReport
         '
         Me.ReportInfo2.FormatString = "{PageNumber} / {PageCount} ページ"
         Me.ReportInfo2.Height = 0.2!
-        Me.ReportInfo2.Left = 4.872!
+        Me.ReportInfo2.Left = 4.86!
         Me.ReportInfo2.Name = "ReportInfo2"
         Me.ReportInfo2.Style = "font-family: ＭＳ Ｐゴシック; font-size: 8.25pt; text-align: right"
         Me.ReportInfo2.Top = 0.291!
@@ -477,7 +513,7 @@ Partial Public Class rDayCloseReport
         Me.S_CLASS.Style = "background-color: White; font-size: 8.25pt; text-align: left; white-space: inheri" &
     "t; ddo-char-set: 128"
         Me.S_CLASS.Text = "売上"
-        Me.S_CLASS.Top = 9.313226E-10!
+        Me.S_CLASS.Top = 0!
         Me.S_CLASS.Width = 0.5417323!
         '
         'S_BUMON
@@ -487,7 +523,7 @@ Partial Public Class rDayCloseReport
         Me.S_BUMON.ClassName = "B_LABEL"
         Me.S_BUMON.DataField = "S_BUMON"
         Me.S_BUMON.Height = 0.1374016!
-        Me.S_BUMON.Left = 1.325197!
+        Me.S_BUMON.Left = 1.314!
         Me.S_BUMON.Name = "S_BUMON"
         Me.S_BUMON.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
     "dle; ddo-char-set: 128"
@@ -499,10 +535,9 @@ Partial Public Class rDayCloseReport
         '
         Me.S_CHANNEL.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.S_CHANNEL.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_CHANNEL.ClassName = "B_LABEL"
         Me.S_CHANNEL.DataField = "S_CHANNEL"
         Me.S_CHANNEL.Height = 0.1374016!
-        Me.S_CHANNEL.Left = 0.5519685!
+        Me.S_CHANNEL.Left = 0.552!
         Me.S_CHANNEL.Name = "S_CHANNEL"
         Me.S_CHANNEL.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
     "dle; ddo-char-set: 128"
@@ -928,8 +963,8 @@ Partial Public Class rDayCloseReport
         '
         'GroupHeader1
         '
-        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label4, Me.Label6, Me.Label7, Me.Label8, Me.Label5, Me.Label9, Me.Label10, Me.Label11, Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.D_R10000, Me.D_R5000, Me.D_R1000, Me.D_R500, Me.D_R100, Me.D_R50, Me.D_R10, Me.D_R5, Me.D_R1, Me.D_K10000, Me.D_K5000, Me.D_K1000, Me.D_K500, Me.D_K100, Me.D_K50, Me.D_K10, Me.D_K5, Me.D_K1, Me.Label17, Me.Label18, Me.Label19, Me.Label20, Me.Label21, Me.Label22, Me.Label23, Me.Label24, Me.Label25, Me.Label26, Me.Label27, Me.Label28, Me.Label29, Me.K_R10000, Me.K_R5000, Me.K_R1000, Me.K_R500, Me.K_R100, Me.K_R50, Me.K_R10, Me.K_R5, Me.K_R1, Me.K_K10000, Me.K_K5000, Me.K_K1000, Me.K_K500, Me.K_K100, Me.K_K50, Me.K_K10, Me.K_K5, Me.K_K1, Me.Label30, Me.Label48, Me.D_R_TOTAL, Me.D_K_TOTAL, Me.Label49, Me.K_R_TOTAL, Me.K_K_TOTAL, Me.Label50, Me.D_TOTAL, Me.Label51, Me.K_TOTAL, Me.Line1, Me.Line2, Me.Line3, Me.Line4, Me.Line5, Me.Line6, Me.Line7, Me.Line8, Me.Line9, Me.Line10, Me.Line11, Me.Line12, Me.Line13, Me.Line14, Me.Line15, Me.Line16, Me.Line17, Me.Line18, Me.Line19, Me.Line20, Me.Line21})
-        Me.GroupHeader1.Height = 2.17289!
+        Me.GroupHeader1.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label4, Me.Label6, Me.Label7, Me.Label8, Me.Label5, Me.Label9, Me.Label10, Me.Label11, Me.Label12, Me.Label13, Me.Label14, Me.Label15, Me.Label16, Me.D_R10000, Me.D_R5000, Me.D_R1000, Me.D_R500, Me.D_R100, Me.D_R50, Me.D_R10, Me.D_R5, Me.D_R1, Me.D_K10000, Me.D_K5000, Me.D_K1000, Me.D_K500, Me.D_K100, Me.D_K50, Me.D_K10, Me.D_K5, Me.D_K1, Me.Label17, Me.Label18, Me.Label19, Me.Label20, Me.Label21, Me.Label22, Me.Label23, Me.Label24, Me.Label25, Me.Label26, Me.Label27, Me.Label28, Me.Label29, Me.K_R10000, Me.K_R5000, Me.K_R1000, Me.K_R500, Me.K_R100, Me.K_R50, Me.K_R10, Me.K_R5, Me.K_R1, Me.K_K10000, Me.K_K5000, Me.K_K1000, Me.K_K500, Me.K_K100, Me.K_K50, Me.K_K10, Me.K_K5, Me.K_K1, Me.Label30, Me.Label48, Me.D_R_TOTAL, Me.D_K_TOTAL, Me.Label49, Me.K_R_TOTAL, Me.K_K_TOTAL, Me.Label50, Me.D_TOTAL, Me.Label51, Me.K_TOTAL, Me.Line1, Me.Line2, Me.Line3, Me.Line4, Me.Line5, Me.Line6, Me.Line7, Me.Line8, Me.Line9, Me.Line10, Me.Line12, Me.Line13, Me.Line14, Me.Line15, Me.Line16, Me.Line17, Me.Line18, Me.Line19, Me.Line20, Me.Line21, Me.Line24})
+        Me.GroupHeader1.Height = 2.126015!
         Me.GroupHeader1.Name = "GroupHeader1"
         '
         'Label17
@@ -1614,28 +1649,28 @@ Partial Public Class rDayCloseReport
         'Line10
         '
         Me.Line10.Height = 0!
-        Me.Line10.Left = 0.00000005960464!
+        Me.Line10.Left = 0!
         Me.Line10.LineWeight = 1.0!
         Me.Line10.Name = "Line10"
-        Me.Line10.Top = 1.504724!
+        Me.Line10.Top = 1.653!
         Me.Line10.Width = 6.741339!
-        Me.Line10.X1 = 0.00000005960464!
+        Me.Line10.X1 = 0!
         Me.Line10.X2 = 6.741339!
-        Me.Line10.Y1 = 1.504724!
-        Me.Line10.Y2 = 1.504724!
+        Me.Line10.Y1 = 1.653!
+        Me.Line10.Y2 = 1.653!
         '
         'Line11
         '
-        Me.Line11.Height = 0!
-        Me.Line11.Left = 0.00000005960464!
+        Me.Line11.Height = 0.00000004470348!
+        Me.Line11.Left = 6.609!
         Me.Line11.LineWeight = 1.0!
         Me.Line11.Name = "Line11"
-        Me.Line11.Top = 1.653937!
-        Me.Line11.Width = 6.741339!
-        Me.Line11.X1 = 0.00000005960464!
-        Me.Line11.X2 = 6.741339!
-        Me.Line11.Y1 = 1.653937!
-        Me.Line11.Y2 = 1.653937!
+        Me.Line11.Top = 0.139!
+        Me.Line11.Width = 0.6290002!
+        Me.Line11.X1 = 6.609!
+        Me.Line11.X2 = 7.238!
+        Me.Line11.Y1 = 0.139!
+        Me.Line11.Y2 = 0.139!
         '
         'Line12
         '
@@ -2045,18 +2080,19 @@ Partial Public Class rDayCloseReport
         '
         'GroupHeader2
         '
+        Me.GroupHeader2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Line22})
         Me.GroupHeader2.Height = 0!
         Me.GroupHeader2.Name = "GroupHeader2"
         '
         'Label31
         '
-        Me.Label31.Height = 0.1165355!
+        Me.Label31.Height = 0.1785355!
         Me.Label31.HyperLink = Nothing
-        Me.Label31.Left = 0!
+        Me.Label31.Left = 0.021!
         Me.Label31.Name = "Label31"
         Me.Label31.Style = "font-family: ＭＳ Ｐゴシック; font-size: 8.25pt; font-weight: bold; text-align: left"
         Me.Label31.Text = "【集計状況】"
-        Me.Label31.Top = 0.07165354!
+        Me.Label31.Top = 0.063!
         Me.Label31.Width = 0.75!
         '
         'Label32
@@ -2197,7 +2233,7 @@ Partial Public Class rDayCloseReport
         'GroupFooter2
         '
         Me.GroupFooter2.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_RETCASH, Me.Label42, Me.Label41, Me.Label43, Me.Label44, Me.Label45, Me.Label52, Me.Label53, Me.TextBox4, Me.Label56, Me.S_YCASH, Me.S_SALECNT, Me.S_SALECASH, Me.TextBox8, Me.TextBox9, Me.S_OUTCNT, Me.S_INCNT, Me.S_OUTCASH, Me.S_INCASH, Me.S_CCASH, Me.S_CALCASH})
-        Me.GroupFooter2.Height = 1.520444!
+        Me.GroupFooter2.Height = 1.473569!
         Me.GroupFooter2.Name = "GroupFooter2"
         '
         'Label52
@@ -2395,9 +2431,9 @@ Partial Public Class rDayCloseReport
         Me.sumS_SALES.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_SALES.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_SALES.ClassName = "G_LABEL"
-        Me.sumS_SALES.DataField = "S_SALES"
+        Me.sumS_SALES.DataField = "sumS_SALES"
         Me.sumS_SALES.Height = 0.1677165!
-        Me.sumS_SALES.Left = 3.540945!
+        Me.sumS_SALES.Left = 3.55!
         Me.sumS_SALES.Name = "sumS_SALES"
         Me.sumS_SALES.OutputFormat = resources.GetString("sumS_SALES.OutputFormat")
         Me.sumS_SALES.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
@@ -2407,14 +2443,14 @@ Partial Public Class rDayCloseReport
         Me.sumS_SALES.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
         Me.sumS_SALES.Text = "販売金額"
         Me.sumS_SALES.Top = 0!
-        Me.sumS_SALES.Width = 0.7074804!
+        Me.sumS_SALES.Width = 0.6984253!
         '
         'sumS_CNT
         '
         Me.sumS_CNT.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_CNT.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_CNT.ClassName = "G_LABEL"
-        Me.sumS_CNT.DataField = "S_CNT"
+        Me.sumS_CNT.DataField = "sumS_CNT"
         Me.sumS_CNT.Height = 0.1677165!
         Me.sumS_CNT.Left = 4.258662!
         Me.sumS_CNT.Name = "sumS_CNT"
@@ -2434,7 +2470,7 @@ Partial Public Class rDayCloseReport
         Me.sumS_DISCOUNT.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_DISCOUNT.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_DISCOUNT.ClassName = "G_LABEL"
-        Me.sumS_DISCOUNT.DataField = "S_DISCOUNT"
+        Me.sumS_DISCOUNT.DataField = "sumS_DISCOUNT"
         Me.sumS_DISCOUNT.Height = 0.1677165!
         Me.sumS_DISCOUNT.Left = 4.718898!
         Me.sumS_DISCOUNT.Name = "sumS_DISCOUNT"
@@ -2454,7 +2490,7 @@ Partial Public Class rDayCloseReport
         Me.sumS_POSTAGE.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_POSTAGE.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_POSTAGE.ClassName = "G_LABEL"
-        Me.sumS_POSTAGE.DataField = "S_POSTAGE"
+        Me.sumS_POSTAGE.DataField = "sumS_POSTAGE"
         Me.sumS_POSTAGE.Height = 0.1677165!
         Me.sumS_POSTAGE.Left = 5.342914!
         Me.sumS_POSTAGE.Name = "sumS_POSTAGE"
@@ -2474,7 +2510,7 @@ Partial Public Class rDayCloseReport
         Me.sumS_FEE.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_FEE.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_FEE.ClassName = "G_LABEL"
-        Me.sumS_FEE.DataField = "S_FEE"
+        Me.sumS_FEE.DataField = "sumS_FEE"
         Me.sumS_FEE.Height = 0.1677165!
         Me.sumS_FEE.Left = 5.970866!
         Me.sumS_FEE.Name = "sumS_FEE"
@@ -2495,7 +2531,7 @@ Partial Public Class rDayCloseReport
         Me.Label40.ClassName = "B_LABEL"
         Me.Label40.Height = 0.1681102!
         Me.Label40.HyperLink = Nothing
-        Me.Label40.Left = 0!
+        Me.Label40.Left = 0.01!
         Me.Label40.Name = "Label40"
         Me.Label40.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
         Me.Label40.Style = "background-color: Silver; font-size: 8.25pt; text-align: center; ddo-char-set: 12" &
@@ -2506,8 +2542,8 @@ Partial Public Class rDayCloseReport
         '
         'GroupHeader3
         '
-        Me.GroupHeader3.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label31, Me.CrossSectionBox1, Me.Label32, Me.Label34, Me.Label33, Me.Label46, Me.Label35, Me.Label36, Me.Label37, Me.Label38, Me.Label39, Me.Label55, Me.CrossSectionBox2})
-        Me.GroupHeader3.Height = 0.4186844!
+        Me.GroupHeader3.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label31, Me.CrossSectionBox1, Me.Label32, Me.Label34, Me.Label33, Me.Label46, Me.Label35, Me.Label36, Me.Label37, Me.Label38, Me.Label39, Me.Label55, Me.CrossSectionBox2, Me.TextBox24})
+        Me.GroupHeader3.Height = 0.4114173!
         Me.GroupHeader3.Name = "GroupHeader3"
         '
         'CrossSectionBox1
@@ -2535,17 +2571,27 @@ Partial Public Class rDayCloseReport
         '
         'CrossSectionBox2
         '
-        Me.CrossSectionBox2.Bottom = 0.1666667!
+        Me.CrossSectionBox2.Bottom = 0.1665407!
         Me.CrossSectionBox2.Left = 0!
         Me.CrossSectionBox2.LineWeight = 1.0!
         Me.CrossSectionBox2.Name = "CrossSectionBox2"
         Me.CrossSectionBox2.Right = 7.237796!
-        Me.CrossSectionBox2.Top = 0.242126!
+        Me.CrossSectionBox2.Top = 0.242!
+        '
+        'TextBox24
+        '
+        Me.TextBox24.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox24.Height = 0.1374016!
+        Me.TextBox24.Left = 0!
+        Me.TextBox24.Name = "TextBox24"
+        Me.TextBox24.Text = Nothing
+        Me.TextBox24.Top = 0.0625!
+        Me.TextBox24.Width = 0.7629923!
         '
         'GroupFooter3
         '
         Me.GroupFooter3.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.Label40, Me.sumS_SALES, Me.sumS_CNT, Me.sumS_DISCOUNT, Me.sumS_POSTAGE, Me.sumS_FEE, Me.sumS_BILL})
-        Me.GroupFooter3.Height = 0.1685039!
+        Me.GroupFooter3.Height = 0.1580872!
         Me.GroupFooter3.Name = "GroupFooter3"
         '
         'sumS_BILL
@@ -2553,7 +2599,7 @@ Partial Public Class rDayCloseReport
         Me.sumS_BILL.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_BILL.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.sumS_BILL.ClassName = "G_LABEL"
-        Me.sumS_BILL.DataField = "S_BILL"
+        Me.sumS_BILL.DataField = "sumS_BILL"
         Me.sumS_BILL.Height = 0.1677165!
         Me.sumS_BILL.Left = 6.608661!
         Me.sumS_BILL.Name = "sumS_BILL"
@@ -2591,104 +2637,104 @@ Partial Public Class rDayCloseReport
         '
         'GroupFooter5
         '
-        Me.GroupFooter5.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.TextBox1, Me.TextBox3, Me.TextBox5, Me.TextBox6, Me.TextBox7, Me.Label54, Me.TextBox2})
+        Me.GroupFooter5.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_SALES_3, Me.S_DISCOUNT_3, Me.S_POSTAGE_3, Me.S_FEE_3, Me.S_BILL_3, Me.Label54, Me.S_CNT_3})
         Me.GroupFooter5.Height = 0.1574803!
         Me.GroupFooter5.Name = "GroupFooter5"
         '
-        'TextBox1
+        'S_SALES_3
         '
-        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.ClassName = "G_LABEL"
-        Me.TextBox1.DataField = "S_SALES"
-        Me.TextBox1.Height = 0.1570866!
-        Me.TextBox1.Left = 3.540945!
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.OutputFormat = resources.GetString("TextBox1.OutputFormat")
-        Me.TextBox1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox1.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_SALES_3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_3.ClassName = "G_LABEL"
+        Me.S_SALES_3.DataField = "S_SALES_3"
+        Me.S_SALES_3.Height = 0.1570866!
+        Me.S_SALES_3.Left = 3.540945!
+        Me.S_SALES_3.Name = "S_SALES_3"
+        Me.S_SALES_3.OutputFormat = resources.GetString("S_SALES_3.OutputFormat")
+        Me.S_SALES_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_SALES_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox1.SummaryGroup = "GroupHeader5"
-        Me.TextBox1.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox1.Text = "販売金額"
-        Me.TextBox1.Top = 0!
-        Me.TextBox1.Width = 0.7074804!
+        Me.S_SALES_3.SummaryGroup = "GroupHeader5"
+        Me.S_SALES_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_SALES_3.Text = "販売金額"
+        Me.S_SALES_3.Top = 0!
+        Me.S_SALES_3.Width = 0.7074804!
         '
-        'TextBox3
+        'S_DISCOUNT_3
         '
-        Me.TextBox3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox3.ClassName = "G_LABEL"
-        Me.TextBox3.DataField = "S_DISCOUNT"
-        Me.TextBox3.Height = 0.1570866!
-        Me.TextBox3.Left = 4.718898!
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.OutputFormat = resources.GetString("TextBox3.OutputFormat")
-        Me.TextBox3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_DISCOUNT_3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_3.ClassName = "G_LABEL"
+        Me.S_DISCOUNT_3.DataField = "S_DISCOUNT_3"
+        Me.S_DISCOUNT_3.Height = 0.1570866!
+        Me.S_DISCOUNT_3.Left = 4.729!
+        Me.S_DISCOUNT_3.Name = "S_DISCOUNT_3"
+        Me.S_DISCOUNT_3.OutputFormat = resources.GetString("S_DISCOUNT_3.OutputFormat")
+        Me.S_DISCOUNT_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_DISCOUNT_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox3.SummaryGroup = "GroupHeader5"
-        Me.TextBox3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox3.Text = "値引き"
-        Me.TextBox3.Top = 0!
-        Me.TextBox3.Width = 0.6137795!
+        Me.S_DISCOUNT_3.SummaryGroup = "GroupHeader5"
+        Me.S_DISCOUNT_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_DISCOUNT_3.Text = "値引き"
+        Me.S_DISCOUNT_3.Top = 0!
+        Me.S_DISCOUNT_3.Width = 0.604!
         '
-        'TextBox5
+        'S_POSTAGE_3
         '
-        Me.TextBox5.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox5.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox5.ClassName = "G_LABEL"
-        Me.TextBox5.DataField = "S_POSTAGE"
-        Me.TextBox5.Height = 0.1570866!
-        Me.TextBox5.Left = 5.342914!
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.OutputFormat = resources.GetString("TextBox5.OutputFormat")
-        Me.TextBox5.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox5.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_POSTAGE_3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_3.ClassName = "G_LABEL"
+        Me.S_POSTAGE_3.DataField = "S_POSTAGE_3"
+        Me.S_POSTAGE_3.Height = 0.1570866!
+        Me.S_POSTAGE_3.Left = 5.342914!
+        Me.S_POSTAGE_3.Name = "S_POSTAGE_3"
+        Me.S_POSTAGE_3.OutputFormat = resources.GetString("S_POSTAGE_3.OutputFormat")
+        Me.S_POSTAGE_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_POSTAGE_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox5.SummaryGroup = "GroupHeader5"
-        Me.TextBox5.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox5.Text = "送料"
-        Me.TextBox5.Top = 0!
-        Me.TextBox5.Width = 0.6153543!
+        Me.S_POSTAGE_3.SummaryGroup = "GroupHeader5"
+        Me.S_POSTAGE_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_POSTAGE_3.Text = "送料"
+        Me.S_POSTAGE_3.Top = 0!
+        Me.S_POSTAGE_3.Width = 0.6153543!
         '
-        'TextBox6
+        'S_FEE_3
         '
-        Me.TextBox6.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox6.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox6.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox6.ClassName = "G_LABEL"
-        Me.TextBox6.DataField = "S_FEE"
-        Me.TextBox6.Height = 0.1570866!
-        Me.TextBox6.Left = 5.970866!
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.OutputFormat = resources.GetString("TextBox6.OutputFormat")
-        Me.TextBox6.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox6.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_FEE_3.Border.BottomStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_3.ClassName = "G_LABEL"
+        Me.S_FEE_3.DataField = "S_FEE_3"
+        Me.S_FEE_3.Height = 0.1570866!
+        Me.S_FEE_3.Left = 5.971!
+        Me.S_FEE_3.Name = "S_FEE_3"
+        Me.S_FEE_3.OutputFormat = resources.GetString("S_FEE_3.OutputFormat")
+        Me.S_FEE_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_FEE_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox6.SummaryGroup = "GroupHeader5"
-        Me.TextBox6.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox6.Text = "手数料"
-        Me.TextBox6.Top = 0!
-        Me.TextBox6.Width = 0.6275591!
+        Me.S_FEE_3.SummaryGroup = "GroupHeader5"
+        Me.S_FEE_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_FEE_3.Text = "手数料"
+        Me.S_FEE_3.Top = 0!
+        Me.S_FEE_3.Width = 0.6270003!
         '
-        'TextBox7
+        'S_BILL_3
         '
-        Me.TextBox7.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox7.ClassName = "G_LABEL"
-        Me.TextBox7.DataField = "S_BILL"
-        Me.TextBox7.Height = 0.1570866!
-        Me.TextBox7.Left = 6.608661!
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.OutputFormat = resources.GetString("TextBox7.OutputFormat")
-        Me.TextBox7.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
-        Me.TextBox7.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_BILL_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_BILL_3.ClassName = "G_LABEL"
+        Me.S_BILL_3.DataField = "S_BILL_3"
+        Me.S_BILL_3.Height = 0.1570866!
+        Me.S_BILL_3.Left = 6.608661!
+        Me.S_BILL_3.Name = "S_BILL_3"
+        Me.S_BILL_3.OutputFormat = resources.GetString("S_BILL_3.OutputFormat")
+        Me.S_BILL_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.S_BILL_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox7.SummaryGroup = "GroupHeader5"
-        Me.TextBox7.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox7.Text = "売上金額"
-        Me.TextBox7.Top = 0!
-        Me.TextBox7.Width = 0.6275591!
+        Me.S_BILL_3.SummaryGroup = "GroupHeader5"
+        Me.S_BILL_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_BILL_3.Text = "売上金額"
+        Me.S_BILL_3.Top = 0!
+        Me.S_BILL_3.Width = 0.6275591!
         '
         'Label54
         '
@@ -2707,24 +2753,24 @@ Partial Public Class rDayCloseReport
         Me.Label54.Top = 0!
         Me.Label54.Width = 3.529134!
         '
-        'TextBox2
+        'S_CNT_3
         '
-        Me.TextBox2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox2.ClassName = "G_LABEL"
-        Me.TextBox2.DataField = "S_CNT"
-        Me.TextBox2.Height = 0.1570866!
-        Me.TextBox2.Left = 4.258662!
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.OutputFormat = resources.GetString("TextBox2.OutputFormat")
-        Me.TextBox2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox2.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
+        Me.S_CNT_3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_3.ClassName = "G_LABEL"
+        Me.S_CNT_3.DataField = "S_CNT_3"
+        Me.S_CNT_3.Height = 0.1570866!
+        Me.S_CNT_3.Left = 4.269!
+        Me.S_CNT_3.Name = "S_CNT_3"
+        Me.S_CNT_3.OutputFormat = resources.GetString("S_CNT_3.OutputFormat")
+        Me.S_CNT_3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_CNT_3.Style = "background-color: #E0E0E0; font-size: 8.25pt; text-align: right; vertical-align: " &
     "bottom; ddo-char-set: 128"
-        Me.TextBox2.SummaryGroup = "GroupHeader5"
-        Me.TextBox2.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
-        Me.TextBox2.Text = "数量"
-        Me.TextBox2.Top = 0!
-        Me.TextBox2.Width = 0.45!
+        Me.S_CNT_3.SummaryGroup = "GroupHeader5"
+        Me.S_CNT_3.SummaryType = DataDynamics.ActiveReports.SummaryType.SubTotal
+        Me.S_CNT_3.Text = "数量"
+        Me.S_CNT_3.Top = 0!
+        Me.S_CNT_3.Width = 0.45!
         '
         'GroupHeader6
         '
@@ -2733,7 +2779,7 @@ Partial Public Class rDayCloseReport
         Me.GroupHeader6.ColumnLayout = False
         Me.GroupHeader6.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_BUMON, Me.TextBox11, Me.TextBox14})
         Me.GroupHeader6.DataField = "S_BUMON"
-        Me.GroupHeader6.Height = 0.1377953!
+        Me.GroupHeader6.Height = 0.1374016!
         Me.GroupHeader6.Name = "GroupHeader6"
         Me.GroupHeader6.RepeatStyle = DataDynamics.ActiveReports.RepeatStyle.OnPageIncludeNoDetail
         Me.GroupHeader6.UnderlayNext = True
@@ -2768,29 +2814,29 @@ Partial Public Class rDayCloseReport
         Me.GroupHeader7.BackColor = System.Drawing.Color.Empty
         Me.GroupHeader7.CanGrow = False
         Me.GroupHeader7.ColumnLayout = False
-        Me.GroupHeader7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_PAYMENT, Me.TextBox12, Me.TextBox15, Me.TextBox17})
+        Me.GroupHeader7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_PAYMENT_1, Me.TextBox12, Me.TextBox15, Me.TextBox17, Me.TextBox19, Me.TextBox20, Me.TextBox21, Me.S_PAYMENT_2})
         Me.GroupHeader7.DataField = "S_PAYMENT"
-        Me.GroupHeader7.Height = 0.1374016!
+        Me.GroupHeader7.Height = 0.2539698!
         Me.GroupHeader7.Name = "GroupHeader7"
         Me.GroupHeader7.RepeatStyle = DataDynamics.ActiveReports.RepeatStyle.OnPageIncludeNoDetail
         Me.GroupHeader7.UnderlayNext = True
         '
-        'S_PAYMENT
+        'S_PAYMENT_1
         '
-        Me.S_PAYMENT.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_PAYMENT.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_PAYMENT.ClassName = "B_LABEL"
-        Me.S_PAYMENT.DataField = "S_PAYMENT"
-        Me.S_PAYMENT.Height = 0.1374016!
-        Me.S_PAYMENT.Left = 2.359!
-        Me.S_PAYMENT.Name = "S_PAYMENT"
-        Me.S_PAYMENT.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
+        Me.S_PAYMENT_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_PAYMENT_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_PAYMENT_1.ClassName = "B_LABEL"
+        Me.S_PAYMENT_1.DataField = "S_PAYMENT_1"
+        Me.S_PAYMENT_1.Height = 0.1374016!
+        Me.S_PAYMENT_1.Left = 2.346!
+        Me.S_PAYMENT_1.Name = "S_PAYMENT_1"
+        Me.S_PAYMENT_1.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
     "dle; ddo-char-set: 128"
-        Me.S_PAYMENT.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.VarP
-        Me.S_PAYMENT.SummaryGroup = "GroupHeader4"
-        Me.S_PAYMENT.Text = "支払方法"
-        Me.S_PAYMENT.Top = 0!
-        Me.S_PAYMENT.Width = 1.182284!
+        Me.S_PAYMENT_1.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.VarP
+        Me.S_PAYMENT_1.SummaryGroup = "GroupHeader4"
+        Me.S_PAYMENT_1.Text = "支払方法"
+        Me.S_PAYMENT_1.Top = 0!
+        Me.S_PAYMENT_1.Width = 1.204!
         '
         'TextBox12
         '
@@ -2822,90 +2868,122 @@ Partial Public Class rDayCloseReport
         Me.TextBox17.Top = 0!
         Me.TextBox17.Width = 1.011024!
         '
+        'TextBox19
+        '
+        Me.TextBox19.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox19.Height = 0.1374016!
+        Me.TextBox19.Left = 0!
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Text = Nothing
+        Me.TextBox19.Top = 0.135!
+        Me.TextBox19.Width = 0.5417323!
+        '
+        'TextBox20
+        '
+        Me.TextBox20.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox20.Height = 0.1374016!
+        Me.TextBox20.Left = 0.552!
+        Me.TextBox20.Name = "TextBox20"
+        Me.TextBox20.Text = Nothing
+        Me.TextBox20.Top = 0.137!
+        Me.TextBox20.Width = 0.7629923!
+        '
+        'TextBox21
+        '
+        Me.TextBox21.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox21.Height = 0.1374016!
+        Me.TextBox21.Left = 1.325!
+        Me.TextBox21.Name = "TextBox21"
+        Me.TextBox21.Text = Nothing
+        Me.TextBox21.Top = 0.135!
+        Me.TextBox21.Width = 1.011024!
+        '
+        'S_PAYMENT_2
+        '
+        Me.S_PAYMENT_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_PAYMENT_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_PAYMENT_2.ClassName = "B_LABEL"
+        Me.S_PAYMENT_2.DataField = "S_PAYMENT_2"
+        Me.S_PAYMENT_2.Height = 0.1374016!
+        Me.S_PAYMENT_2.Left = 2.346!
+        Me.S_PAYMENT_2.Name = "S_PAYMENT_2"
+        Me.S_PAYMENT_2.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
+    "dle; ddo-char-set: 128"
+        Me.S_PAYMENT_2.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.VarP
+        Me.S_PAYMENT_2.SummaryGroup = "GroupHeader4"
+        Me.S_PAYMENT_2.Text = Nothing
+        Me.S_PAYMENT_2.Top = 0.137!
+        Me.S_PAYMENT_2.Width = 1.204!
+        '
         'GroupFooter7
         '
-        Me.GroupFooter7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_CNT, Me.S_FEE, Me.S_DISCOUNT, Me.S_BILL, Me.S_POSTAGE, Me.TextBox13, Me.TextBox16, Me.TextBox18, Me.S_SALES})
-        Me.GroupFooter7.Height = 0.1374016!
+        Me.GroupFooter7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_CNT_1, Me.S_FEE_1, Me.S_DISCOUNT_1, Me.S_POSTAGE_1, Me.TextBox13, Me.TextBox16, Me.TextBox18, Me.S_SALES_1, Me.TextBox22, Me.TextBox23, Me.TextBox25, Me.TextBox26, Me.TextBox27, Me.S_SALES_2, Me.S_CNT_2, Me.S_DISCOUNT_2, Me.S_POSTAGE_2, Me.S_FEE_2, Me.S_BILL_2, Me.S_BILL_1, Me.Line25, Me.Line11})
+        Me.GroupFooter7.Height = 0.2774016!
         Me.GroupFooter7.Name = "GroupFooter7"
         '
-        'S_CNT
+        'S_CNT_1
         '
-        Me.S_CNT.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_CNT.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_CNT.ClassName = "B_LABEL"
-        Me.S_CNT.DataField = "S_CNT"
-        Me.S_CNT.Height = 0.1374016!
-        Me.S_CNT.Left = 4.258662!
-        Me.S_CNT.Name = "S_CNT"
-        Me.S_CNT.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.S_CNT.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+        Me.S_CNT_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_1.ClassName = "B_LABEL"
+        Me.S_CNT_1.DataField = "S_CNT_1"
+        Me.S_CNT_1.Height = 0.137!
+        Me.S_CNT_1.Left = 4.259!
+        Me.S_CNT_1.Name = "S_CNT_1"
+        Me.S_CNT_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_CNT_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
     "ttom; ddo-char-set: 128"
-        Me.S_CNT.Text = "数量"
-        Me.S_CNT.Top = 0!
-        Me.S_CNT.Width = 0.45!
+        Me.S_CNT_1.Text = "数量"
+        Me.S_CNT_1.Top = 0.002!
+        Me.S_CNT_1.Width = 0.4499993!
         '
-        'S_FEE
+        'S_FEE_1
         '
-        Me.S_FEE.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_FEE.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_FEE.ClassName = "B_LABEL"
-        Me.S_FEE.DataField = "S_FEE"
-        Me.S_FEE.Height = 0.1374016!
-        Me.S_FEE.Left = 5.97126!
-        Me.S_FEE.Name = "S_FEE"
-        Me.S_FEE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.S_FEE.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+        Me.S_FEE_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_1.ClassName = "B_LABEL"
+        Me.S_FEE_1.DataField = "S_FEE_1"
+        Me.S_FEE_1.Height = 0.1374016!
+        Me.S_FEE_1.Left = 5.971!
+        Me.S_FEE_1.Name = "S_FEE_1"
+        Me.S_FEE_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_FEE_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
     "ttom; ddo-char-set: 128"
-        Me.S_FEE.Text = "手数料"
-        Me.S_FEE.Top = 0!
-        Me.S_FEE.Width = 0.6275591!
+        Me.S_FEE_1.Text = "手数料"
+        Me.S_FEE_1.Top = 0!
+        Me.S_FEE_1.Width = 0.6270003!
         '
-        'S_DISCOUNT
+        'S_DISCOUNT_1
         '
-        Me.S_DISCOUNT.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_DISCOUNT.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_DISCOUNT.ClassName = "B_LABEL"
-        Me.S_DISCOUNT.DataField = "S_DISCOUNT"
-        Me.S_DISCOUNT.Height = 0.1374016!
-        Me.S_DISCOUNT.Left = 4.718898!
-        Me.S_DISCOUNT.Name = "S_DISCOUNT"
-        Me.S_DISCOUNT.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.S_DISCOUNT.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+        Me.S_DISCOUNT_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_1.ClassName = "B_LABEL"
+        Me.S_DISCOUNT_1.DataField = "S_DISCOUNT_1"
+        Me.S_DISCOUNT_1.Height = 0.135!
+        Me.S_DISCOUNT_1.Left = 4.719!
+        Me.S_DISCOUNT_1.Name = "S_DISCOUNT_1"
+        Me.S_DISCOUNT_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_DISCOUNT_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
     "ttom; ddo-char-set: 128"
-        Me.S_DISCOUNT.Text = "値引き"
-        Me.S_DISCOUNT.Top = 0!
-        Me.S_DISCOUNT.Width = 0.6137795!
+        Me.S_DISCOUNT_1.Text = "値引き"
+        Me.S_DISCOUNT_1.Top = 0.002!
+        Me.S_DISCOUNT_1.Width = 0.6139994!
         '
-        'S_BILL
+        'S_POSTAGE_1
         '
-        Me.S_BILL.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_BILL.ClassName = "B_LABEL"
-        Me.S_BILL.DataField = "S_BILL"
-        Me.S_BILL.Height = 0.1374016!
-        Me.S_BILL.Left = 6.608661!
-        Me.S_BILL.Name = "S_BILL"
-        Me.S_BILL.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
-        Me.S_BILL.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+        Me.S_POSTAGE_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_1.ClassName = "B_LABEL"
+        Me.S_POSTAGE_1.DataField = "S_POSTAGE_1"
+        Me.S_POSTAGE_1.Height = 0.1374016!
+        Me.S_POSTAGE_1.Left = 5.343!
+        Me.S_POSTAGE_1.Name = "S_POSTAGE_1"
+        Me.S_POSTAGE_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_POSTAGE_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
     "ttom; ddo-char-set: 128"
-        Me.S_BILL.Text = "売上金額"
-        Me.S_BILL.Top = 0!
-        Me.S_BILL.Width = 0.6275591!
-        '
-        'S_POSTAGE
-        '
-        Me.S_POSTAGE.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_POSTAGE.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_POSTAGE.ClassName = "B_LABEL"
-        Me.S_POSTAGE.DataField = "S_POSTAGE"
-        Me.S_POSTAGE.Height = 0.1374016!
-        Me.S_POSTAGE.Left = 5.342914!
-        Me.S_POSTAGE.Name = "S_POSTAGE"
-        Me.S_POSTAGE.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.S_POSTAGE.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; ddo-char-set: 128"
-        Me.S_POSTAGE.Text = "送料"
-        Me.S_POSTAGE.Top = 0!
-        Me.S_POSTAGE.Width = 0.6153543!
+        Me.S_POSTAGE_1.Text = "送料"
+        Me.S_POSTAGE_1.Top = 0!
+        Me.S_POSTAGE_1.Width = 0.6149993!
         '
         'TextBox13
         '
@@ -2925,33 +3003,191 @@ Partial Public Class rDayCloseReport
         Me.TextBox16.Name = "TextBox16"
         Me.TextBox16.Text = Nothing
         Me.TextBox16.Top = 0!
-        Me.TextBox16.Width = 0.7629923!
+        Me.TextBox16.Width = 0.7620315!
         '
         'TextBox18
         '
         Me.TextBox18.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
         Me.TextBox18.Height = 0.1374016!
-        Me.TextBox18.Left = 1.325197!
+        Me.TextBox18.Left = 1.325!
         Me.TextBox18.Name = "TextBox18"
         Me.TextBox18.Text = Nothing
         Me.TextBox18.Top = 0!
-        Me.TextBox18.Width = 1.011024!
+        Me.TextBox18.Width = 1.011221!
         '
-        'S_SALES
+        'S_SALES_1
         '
-        Me.S_SALES.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_SALES.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.S_SALES.ClassName = "B_LABEL"
-        Me.S_SALES.DataField = "S_SALES"
-        Me.S_SALES.Height = 0.1374016!
-        Me.S_SALES.Left = 3.540945!
-        Me.S_SALES.Name = "S_SALES"
-        Me.S_SALES.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.S_SALES.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+        Me.S_SALES_1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_1.ClassName = "B_LABEL"
+        Me.S_SALES_1.DataField = "S_SALES_1"
+        Me.S_SALES_1.Height = 0.137!
+        Me.S_SALES_1.Left = 3.541!
+        Me.S_SALES_1.Name = "S_SALES_1"
+        Me.S_SALES_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_SALES_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
     "ttom; ddo-char-set: 128"
-        Me.S_SALES.Text = "販売金額"
-        Me.S_SALES.Top = 0!
-        Me.S_SALES.Width = 0.7074804!
+        Me.S_SALES_1.Text = "販売金額"
+        Me.S_SALES_1.Top = 0!
+        Me.S_SALES_1.Width = 0.707!
+        '
+        'TextBox22
+        '
+        Me.TextBox22.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox22.Height = 0.1374016!
+        Me.TextBox22.Left = 2.346!
+        Me.TextBox22.Name = "TextBox22"
+        Me.TextBox22.Text = Nothing
+        Me.TextBox22.Top = 0.002!
+        Me.TextBox22.Width = 1.183!
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox23.Height = 0.1374016!
+        Me.TextBox23.Left = 0!
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.Text = Nothing
+        Me.TextBox23.Top = 0.137!
+        Me.TextBox23.Width = 0.5417323!
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox25.Height = 0.1374016!
+        Me.TextBox25.Left = 0.551!
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Text = Nothing
+        Me.TextBox25.Top = 0.139!
+        Me.TextBox25.Width = 0.7629923!
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox26.Height = 0.1374016!
+        Me.TextBox26.Left = 1.325!
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Text = Nothing
+        Me.TextBox26.Top = 0.137!
+        Me.TextBox26.Width = 1.011024!
+        '
+        'TextBox27
+        '
+        Me.TextBox27.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox27.Height = 0.1374016!
+        Me.TextBox27.Left = 2.346!
+        Me.TextBox27.Name = "TextBox27"
+        Me.TextBox27.Text = Nothing
+        Me.TextBox27.Top = 0.137!
+        Me.TextBox27.Width = 1.183!
+        '
+        'S_SALES_2
+        '
+        Me.S_SALES_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_SALES_2.ClassName = "B_LABEL"
+        Me.S_SALES_2.DataField = "S_SALES_2"
+        Me.S_SALES_2.Height = 0.1374016!
+        Me.S_SALES_2.Left = 3.55!
+        Me.S_SALES_2.Name = "S_SALES_2"
+        Me.S_SALES_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_SALES_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_SALES_2.Text = Nothing
+        Me.S_SALES_2.Top = 0.14!
+        Me.S_SALES_2.Width = 0.698!
+        '
+        'S_CNT_2
+        '
+        Me.S_CNT_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_CNT_2.ClassName = "B_LABEL"
+        Me.S_CNT_2.DataField = "S_CNT_2"
+        Me.S_CNT_2.Height = 0.1374016!
+        Me.S_CNT_2.Left = 4.259!
+        Me.S_CNT_2.Name = "S_CNT_2"
+        Me.S_CNT_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_CNT_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_CNT_2.Text = Nothing
+        Me.S_CNT_2.Top = 0.137!
+        Me.S_CNT_2.Width = 0.4499998!
+        '
+        'S_DISCOUNT_2
+        '
+        Me.S_DISCOUNT_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_DISCOUNT_2.ClassName = "B_LABEL"
+        Me.S_DISCOUNT_2.DataField = "S_DISCOUNT_2"
+        Me.S_DISCOUNT_2.Height = 0.1374016!
+        Me.S_DISCOUNT_2.Left = 4.719!
+        Me.S_DISCOUNT_2.Name = "S_DISCOUNT_2"
+        Me.S_DISCOUNT_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_DISCOUNT_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_DISCOUNT_2.Text = Nothing
+        Me.S_DISCOUNT_2.Top = 0.139!
+        Me.S_DISCOUNT_2.Width = 0.6139998!
+        '
+        'S_POSTAGE_2
+        '
+        Me.S_POSTAGE_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_POSTAGE_2.ClassName = "B_LABEL"
+        Me.S_POSTAGE_2.DataField = "S_POSTAGE_2"
+        Me.S_POSTAGE_2.Height = 0.1374016!
+        Me.S_POSTAGE_2.Left = 5.343!
+        Me.S_POSTAGE_2.Name = "S_POSTAGE_2"
+        Me.S_POSTAGE_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_POSTAGE_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_POSTAGE_2.Text = Nothing
+        Me.S_POSTAGE_2.Top = 0.139!
+        Me.S_POSTAGE_2.Width = 0.6149998!
+        '
+        'S_FEE_2
+        '
+        Me.S_FEE_2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_FEE_2.ClassName = "B_LABEL"
+        Me.S_FEE_2.DataField = "S_FEE_2"
+        Me.S_FEE_2.Height = 0.1374016!
+        Me.S_FEE_2.Left = 5.971!
+        Me.S_FEE_2.Name = "S_FEE_2"
+        Me.S_FEE_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.S_FEE_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_FEE_2.Text = Nothing
+        Me.S_FEE_2.Top = 0.139!
+        Me.S_FEE_2.Width = 0.6270003!
+        '
+        'S_BILL_2
+        '
+        Me.S_BILL_2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_BILL_2.DataField = "S_BILL_2"
+        Me.S_BILL_2.Height = 0.1354016!
+        Me.S_BILL_2.Left = 6.609!
+        Me.S_BILL_2.Name = "S_BILL_2"
+        Me.S_BILL_2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.S_BILL_2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_BILL_2.Text = Nothing
+        Me.S_BILL_2.Top = 0.139!
+        Me.S_BILL_2.Width = 0.6270003!
+        '
+        'S_BILL_1
+        '
+        Me.S_BILL_1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.S_BILL_1.DataField = "S_BILL_1"
+        Me.S_BILL_1.Height = 0.139!
+        Me.S_BILL_1.Left = 6.609!
+        Me.S_BILL_1.Name = "S_BILL_1"
+        Me.S_BILL_1.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.S_BILL_1.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; ddo-char-set: 128"
+        Me.S_BILL_1.Text = "売上金額"
+        Me.S_BILL_1.Top = 0!
+        Me.S_BILL_1.Width = 0.6270003!
         '
         'GroupHeader4
         '
@@ -2960,7 +3196,7 @@ Partial Public Class rDayCloseReport
         Me.GroupHeader4.ColumnLayout = False
         Me.GroupHeader4.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_CLASS})
         Me.GroupHeader4.DataField = "S_CLASS"
-        Me.GroupHeader4.Height = 0.1430036!
+        Me.GroupHeader4.Height = 0.1328183!
         Me.GroupHeader4.Name = "GroupHeader4"
         Me.GroupHeader4.RepeatStyle = DataDynamics.ActiveReports.RepeatStyle.OnPageIncludeNoDetail
         Me.GroupHeader4.UnderlayNext = True
@@ -2969,6 +3205,58 @@ Partial Public Class rDayCloseReport
         '
         Me.GroupFooter4.Height = 0!
         Me.GroupFooter4.Name = "GroupFooter4"
+        '
+        'Line22
+        '
+        Me.Line22.Height = 0!
+        Me.Line22.Left = 0!
+        Me.Line22.LineWeight = 1.0!
+        Me.Line22.Name = "Line22"
+        Me.Line22.Top = 0!
+        Me.Line22.Width = 6.741339!
+        Me.Line22.X1 = 0!
+        Me.Line22.X2 = 6.741339!
+        Me.Line22.Y1 = 0!
+        Me.Line22.Y2 = 0!
+        '
+        'Line23
+        '
+        Me.Line23.Height = 0.00000007450581!
+        Me.Line23.Left = 0!
+        Me.Line23.LineWeight = 1.0!
+        Me.Line23.Name = "Line23"
+        Me.Line23.Top = 0!
+        Me.Line23.Width = 6.832!
+        Me.Line23.X1 = 0!
+        Me.Line23.X2 = 6.832!
+        Me.Line23.Y1 = 0.00000007450581!
+        Me.Line23.Y2 = 0!
+        '
+        'Line24
+        '
+        Me.Line24.Height = 0!
+        Me.Line24.Left = 0!
+        Me.Line24.LineWeight = 1.0!
+        Me.Line24.Name = "Line24"
+        Me.Line24.Top = 1.506!
+        Me.Line24.Width = 6.741!
+        Me.Line24.X1 = 0!
+        Me.Line24.X2 = 6.741!
+        Me.Line24.Y1 = 1.506!
+        Me.Line24.Y2 = 1.506!
+        '
+        'Line25
+        '
+        Me.Line25.Height = 0!
+        Me.Line25.Left = 0!
+        Me.Line25.LineWeight = 1.0!
+        Me.Line25.Name = "Line25"
+        Me.Line25.Top = 0.137!
+        Me.Line25.Width = 3.529!
+        Me.Line25.X1 = 0!
+        Me.Line25.X2 = 3.529!
+        Me.Line25.Y1 = 0.137!
+        Me.Line25.Y2 = 0.137!
         '
         'rDayCloseReport
         '
@@ -2979,7 +3267,7 @@ Partial Public Class rDayCloseReport
         Me.PageSettings.Margins.Top = 0.3937008!
         Me.PageSettings.PaperHeight = 11.0!
         Me.PageSettings.PaperWidth = 8.5!
-        Me.PrintWidth = 7.240499!
+        Me.PrintWidth = 7.303709!
         Me.Sections.Add(Me.PageHeader)
         Me.Sections.Add(Me.GroupHeader1)
         Me.Sections.Add(Me.GroupHeader2)
@@ -3126,30 +3414,46 @@ Partial Public Class rDayCloseReport
         CType(Me.sumS_FEE, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label40, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label55, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.sumS_BILL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_SALES_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_DISCOUNT_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_POSTAGE_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_FEE_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_BILL_3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Label54, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_CNT_3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_PAYMENT, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_PAYMENT_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox12, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_CNT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_FEE, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_DISCOUNT, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_BILL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_POSTAGE, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox21, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_PAYMENT_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_CNT_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_FEE_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_DISCOUNT_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_POSTAGE_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.S_SALES, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_SALES_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox22, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox23, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox27, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_SALES_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_CNT_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_DISCOUNT_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_POSTAGE_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_FEE_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_BILL_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.S_BILL_1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -3282,14 +3586,14 @@ Partial Public Class rDayCloseReport
     Friend WithEvents MAKE_DATE As DataDynamics.ActiveReports.ReportInfo
     Friend WithEvents CLOSEDATE As DataDynamics.ActiveReports.TextBox
     Friend WithEvents Label54 As DataDynamics.ActiveReports.Label
-    Friend WithEvents TextBox1 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents TextBox2 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents TextBox3 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents TextBox5 As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents TextBox6 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_SALES_3 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_CNT_3 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_DISCOUNT_3 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_POSTAGE_3 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_FEE_3 As DataDynamics.ActiveReports.TextBox
     Friend WithEvents Label55 As DataDynamics.ActiveReports.Label
     Friend WithEvents sumS_BILL As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents TextBox7 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_BILL_3 As DataDynamics.ActiveReports.TextBox
     Private WithEvents Line1 As DataDynamics.ActiveReports.Line
     Private WithEvents Line2 As DataDynamics.ActiveReports.Line
     Private WithEvents Line3 As DataDynamics.ActiveReports.Line
@@ -3325,14 +3629,14 @@ Partial Public Class rDayCloseReport
     Private WithEvents PageBreak2 As DataDynamics.ActiveReports.PageBreak
     Private WithEvents INOUT_DETAIL7 As DataDynamics.ActiveReports.SubReport
     Private WithEvents GroupHeader7 As DataDynamics.ActiveReports.GroupHeader
-    Friend WithEvents S_PAYMENT As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_PAYMENT_1 As DataDynamics.ActiveReports.TextBox
     Private WithEvents GroupFooter7 As DataDynamics.ActiveReports.GroupFooter
-    Friend WithEvents S_SALES As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents S_CNT As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents S_FEE As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents S_DISCOUNT As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents S_BILL As DataDynamics.ActiveReports.TextBox
-    Friend WithEvents S_POSTAGE As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_SALES_1 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_CNT_1 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_FEE_1 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_DISCOUNT_1 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_BILL_1 As DataDynamics.ActiveReports.TextBox
+    Friend WithEvents S_POSTAGE_1 As DataDynamics.ActiveReports.TextBox
     Private WithEvents TextBox10 As DataDynamics.ActiveReports.TextBox
     Private WithEvents TextBox11 As DataDynamics.ActiveReports.TextBox
     Private WithEvents TextBox12 As DataDynamics.ActiveReports.TextBox
@@ -3345,4 +3649,24 @@ Partial Public Class rDayCloseReport
     Private WithEvents GroupHeader4 As DataDynamics.ActiveReports.GroupHeader
     Private WithEvents GroupFooter4 As DataDynamics.ActiveReports.GroupFooter
     Private WithEvents CrossSectionBox2 As DataDynamics.ActiveReports.CrossSectionBox
+    Private WithEvents TextBox19 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox20 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox21 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_PAYMENT_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox24 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox22 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox23 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox25 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox26 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox27 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_SALES_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_CNT_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_DISCOUNT_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_POSTAGE_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_FEE_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents S_BILL_2 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents Line23 As DataDynamics.ActiveReports.Line
+    Private WithEvents Line24 As DataDynamics.ActiveReports.Line
+    Private WithEvents Line22 As DataDynamics.ActiveReports.Line
+    Private WithEvents Line25 As DataDynamics.ActiveReports.Line
 End Class

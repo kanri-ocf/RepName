@@ -300,22 +300,22 @@
   <data name="sumS_BILL.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox1.OutputFormat" xml:space="preserve">
+  <data name="S_SALES_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox3.OutputFormat" xml:space="preserve">
+  <data name="S_DISCOUNT_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox5.OutputFormat" xml:space="preserve">
+  <data name="S_POSTAGE_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox6.OutputFormat" xml:space="preserve">
+  <data name="S_FEE_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox7.OutputFormat" xml:space="preserve">
+  <data name="S_BILL_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
-  <data name="TextBox2.OutputFormat" xml:space="preserve">
+  <data name="S_CNT_3.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
