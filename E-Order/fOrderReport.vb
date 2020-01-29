@@ -1302,7 +1302,6 @@
             Exit Sub
         End If
         Application.DoEvents()
-
         PRINT_FLG = True
 
     End Sub
