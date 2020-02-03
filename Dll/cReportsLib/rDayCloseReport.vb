@@ -199,36 +199,31 @@
         '******************
         '     集計状況
         '******************
-        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドを複数追加 From
         Fields.Add("S_CLASS")
         Fields.Add("S_BUMON")
         Fields.Add("S_CHANNEL")
-        Fields.Add("S_PAYMENT_1")
-        Fields.Add("S_PAYMENT_2")
-        Fields.Add("S_SALES_1")
-        Fields.Add("S_SALES_2")
-        Fields.Add("S_SALES_3")
-        Fields.Add("sumS_SALES")
-        Fields.Add("S_CNT_1")
-        Fields.Add("S_CNT_2")
-        Fields.Add("S_CNT_3")
-        Fields.Add("sumS_CNT")
-        Fields.Add("S_DISCOUNT_1")
-        Fields.Add("S_DISCOUNT_2")
-        Fields.Add("S_DISCOUNT_3")
-        Fields.Add("sumS_DISCOUNT")
-        Fields.Add("S_POSTAGE_1")
-        Fields.Add("S_POSTAGE_2")
-        Fields.Add("S_POSTAGE_3")
-        Fields.Add("sumS_POSTAGE")
-        Fields.Add("S_FEE_1")
-        Fields.Add("S_FEE_2")
-        Fields.Add("S_FEE_3")
-        Fields.Add("sumS_FEE")
-        Fields.Add("S_BILL_1")
-        Fields.Add("S_BILL_2")
-        Fields.Add("S_BILL_3")
-        Fields.Add("sumS_BILL")
+        Fields.Add("S_PAYMENT")
+        Fields.Add("S_SALES")
+        Fields.Add("S_CNT")
+        Fields.Add("S_DISCOUNT")
+        Fields.Add("S_POSTAGE")
+        Fields.Add("S_FEE")
+        Fields.Add("S_BILL")
+        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドを複数追加 From
+        Fields.Add("S_PAYMENT")
+        ' Fields.Add("S_PAYMENT_2")
+        Fields.Add("S_SALES")
+        ' Fields.Add("S_SALES_2")
+        Fields.Add("S_CNT")
+        ' Fields.Add("S_CNT_2")
+        Fields.Add("S_DISCOUNT")
+        ' Fields.Add("S_DISCOUNT_2")
+        Fields.Add("S_POSTAGE")
+        ' Fields.Add("S_POSTAGE_2")
+        Fields.Add("S_FEE")
+        ' Fields.Add("S_FEE_2")
+        Fields.Add("S_BILL")
+        ' Fields.Add("S_BILL_2")
         '2020,1,29 A.Komita 追加 To
 
         Fields.Add("S_YCASH")
@@ -349,14 +344,6 @@
         Dim LngBill As Long
         '2020 1,29 A.Komita 追加 To
 
-        '値を二重に加算するのを防ぐ為変数を初期化
-        LngCnt = 0
-        LngDis = 0
-        LngPost = 0
-        LngFee = 0
-        LngSale = 0
-        LngBill = 0
-
 
         '<取引区分>
         Fields("S_CLASS").Value = oReadData.sTrnClass
@@ -368,10 +355,18 @@
         Fields("S_CHANNEL").Value = oReadData.sChannelName
 
 
-        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドと条件分岐を追加 From
+        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドを追加 From
         '<支払方法>
         'Fields("S_PAYMENT").Value = oReadData.sPaymentName
         StrPay = oReadData.sPaymentName
+        '<販売金額>
+        If oReadData.sReducedTaxRate = 0 Then
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
+        Else
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
+        End If
+
+        LngSale = oReadData.sNoTaxProductPrice
         '<数量>
         LngCnt = oReadData.sCount
         '<値引き>
@@ -380,95 +375,28 @@
         LngPost = oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
         '<手数料>
         LngFee = oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
-        '<販売金額>
-        If oReadData.sReducedTaxRate = 0 Then
-            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
-        End If
-        LngSale = oReadData.sNoTaxProductPrice
         '<売上金額>
-        LngBill = oReadData.sNoTaxProductPrice + LngPost + LngFee - LngDis
+        LngBill = (oReadData.sNoTaxProductPrice + LngPost + LngFee) + LngDis
 
 
-        '空の時は1に代入
-        If Fields("S_PAYMENT_1").Value = String.Empty Then
-
-            Fields("S_PAYMENT_1").Value = StrPay
-            Fields("S_CNT_1").Value = LngCnt
-            Fields("S_DISCOUNT_1").Value = LngDis
-            Fields("S_POSTAGE_1").Value = LngPost
-            Fields("S_FEE_1").Value = LngFee
-            Fields("S_SALES_1").Value = LngSale
-            Fields("S_BILL_1").Value = LngBill
+        Fields("S_PAYMENT").Value = String.Format("{0:#,##0}", StrPay)
+        Fields("S_SALES").Value = String.Format("{0:#,##0}", LngSale)
+        Fields("S_CNT").Value = String.Format("{0:#,##0}", LngCnt)
+        Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", LngDis)
+        Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", LngPost)
+        Fields("S_FEE").Value = String.Format("{0:#,##0}", LngFee)
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", LngBill)
 
 
-            '1と構造体の中身が同じ時は2に代入
-        ElseIf Fields("S_PAYMENT_1").Value = StrPay Then
+        S_SALES.MultiLine = True
 
-            Fields("S_PAYMENT_2").Value = StrPay
-            Fields("S_CNT_2").Value = LngCnt
-            Fields("S_DISCOUNT_2").Value = LngDis
-            Fields("S_POSTAGE_2").Value = LngPost
-            Fields("S_FEE_2").Value = LngFee
-            Fields("S_SALES_2").Value = LngSale
-            Fields("S_BILL_2").Value = LngBill
-
-
-            '1と同じ値かつ2と異なる値の時は1に代入
-        ElseIf Fields("S_PAYMENT_1").Value = StrPay And Fields("S_PAYMENT_2").Value <> StrPay Then
-
-            Fields("S_PAYMENT_1").Value = StrPay
-            Fields("S_CNT_1").Value = LngCnt
-            Fields("S_DISCOUNT_1").Value = LngDis
-            Fields("S_POSTAGE_1").Value = LngPost
-            Fields("S_FEE_1").Value = LngFee
-            Fields("S_SALES_1").Value = LngSale
-            Fields("S_BILL_1").Value = LngBill
-
-
-            '1と異なる値かつ2と同じ値の時は2に代入
-        ElseIf Fields("S_PAYMENT_1").Value <> StrPay And Fields("S_PAYMENT_2").Value = StrPay Then
-
-            Fields("S_PAYMENT_2").Value = StrPay
-            Fields("S_CNT_2").Value = LngCnt
-            Fields("S_DISCOUNT_2").Value = LngDis
-            Fields("S_POSTAGE_2").Value = LngPost
-            Fields("S_FEE_2").Value = LngFee
-            Fields("S_SALES_2").Value = LngSale
-            Fields("S_BILL_2").Value = LngBill
-
-        End If
-
-        '小計と売上合計にそれぞれのフィールドの値を代入
-        Fields("S_CNT_3").Value += LngCnt
-        Fields("S_DISCOUNT_3").Value += LngDis
-        Fields("S_POSTAGE_3").Value += LngPost
-        Fields("S_FEE_3").Value += LngFee
-        Fields("S_SALES_3").Value += LngSale
-        Fields("S_BILL_3").Value += LngBill
 
         '2020,1,29 A.Komita 追加 To
+
 
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki 値引き税率計算なし、販売金額の表示
         '-----------------------------------------------------------------------
-
-        ''<販売金額>
-        'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice)
-        'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice - oTool.BeforeToAfterTax(oReadData.sDiscountPrice, oConf(0).sTax, oConf(0).sFracProc))
-
-        ''<数量>
-        'Fields("S_CNT").Value = String.Format("{0:#,##0}", oReadData.sCount)
-
-        ''<値引き>
-        'Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", oReadData.sDiscountPrice)
-
-        ''<送料>
-        'Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
-
-        ''<手数料>
-        'Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         ''<販売金額>
         ''2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
@@ -481,6 +409,18 @@
         'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sNoTaxProductPrice)
         ''String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
 
+
+        ''<数量>
+        'Fields("S_CNT").Value = String.Format("{0:#,##0}", oReadData.sCount)
+
+        ''<値引き>
+        'Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", oReadData.sDiscountPrice)
+
+        ''<送料>
+        'Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
+
+        ''<手数料>
+        'Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         ''<売上金額>
         ''Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
@@ -586,4 +526,7 @@
         ' *** END   K.MINAGAWA 2013/04/29 ***
     End Sub
 
+End Class
+
+Friend Class S_SALES_1
 End Class
