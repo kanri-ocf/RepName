@@ -232,7 +232,7 @@
         If KeySupplierName = "" Then
             StrSelect = "SELECT * FROM 仕入先マスタ"
         Else
-            StrSelect = "SELECT * FROM 仕入先マスタ WHERE 仕入先名称 = " & KeySupplierName
+            StrSelect = "SELECT * FROM 仕入先マスタ WHERE 仕入先名称 =  @SupplierName"
         End If
 
         Try
