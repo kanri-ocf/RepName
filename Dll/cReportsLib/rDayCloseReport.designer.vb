@@ -223,11 +223,6 @@ Partial Public Class rDayCloseReport
         Me.TextBox18 = New DataDynamics.ActiveReports.TextBox()
         Me.S_SALES = New DataDynamics.ActiveReports.TextBox()
         Me.S_BILL = New DataDynamics.ActiveReports.TextBox()
-        Me.GroupHeader4 = New DataDynamics.ActiveReports.GroupHeader()
-        Me.GroupFooter4 = New DataDynamics.ActiveReports.GroupFooter()
-        Me.TextBox29 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox28 = New DataDynamics.ActiveReports.TextBox()
-        Me.TextBox26 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox1 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox2 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox3 = New DataDynamics.ActiveReports.TextBox()
@@ -235,6 +230,29 @@ Partial Public Class rDayCloseReport
         Me.TextBox7 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox23 = New DataDynamics.ActiveReports.TextBox()
         Me.TextBox25 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox26 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox28 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox29 = New DataDynamics.ActiveReports.TextBox()
+        Me.GroupHeader4 = New DataDynamics.ActiveReports.GroupHeader()
+        Me.GroupFooter4 = New DataDynamics.ActiveReports.GroupFooter()
+        Me.TextBox30 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox31 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox32 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox36 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox37 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox38 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox39 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox40 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox41 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox42 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox43 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox44 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox45 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox46 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox47 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox48 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox49 = New DataDynamics.ActiveReports.TextBox()
+        Me.TextBox50 = New DataDynamics.ActiveReports.TextBox()
         CType(Me.Label1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Label3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ReportInfo2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -391,9 +409,6 @@ Partial Public Class rDayCloseReport
         CType(Me.TextBox18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.S_SALES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.S_BILL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -401,6 +416,27 @@ Partial Public Class rDayCloseReport
         CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextBox25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox28, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox29, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox30, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox31, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox32, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox36, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox37, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox38, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox39, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox40, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox41, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox42, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox43, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox44, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox45, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox46, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox47, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox48, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox49, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextBox50, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'PageHeader
@@ -2858,9 +2894,9 @@ Partial Public Class rDayCloseReport
         Me.GroupHeader7.BackColor = System.Drawing.Color.Empty
         Me.GroupHeader7.CanGrow = False
         Me.GroupHeader7.ColumnLayout = False
-        Me.GroupHeader7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.TextBox12, Me.TextBox15, Me.TextBox17, Me.TextBox19, Me.TextBox20, Me.TextBox21, Me.TextBox33, Me.TextBox34, Me.TextBox35, Me.TextBox22, Me.TextBox27, Me.TextBox5})
+        Me.GroupHeader7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.TextBox12, Me.TextBox15, Me.TextBox17, Me.TextBox19, Me.TextBox20, Me.TextBox21, Me.TextBox33, Me.TextBox34, Me.TextBox35, Me.TextBox22, Me.TextBox27, Me.TextBox5, Me.TextBox30, Me.TextBox31, Me.TextBox32, Me.TextBox36, Me.TextBox37, Me.TextBox38, Me.TextBox39, Me.TextBox40, Me.TextBox41, Me.TextBox42, Me.TextBox43, Me.TextBox44, Me.TextBox45, Me.TextBox46, Me.TextBox47, Me.TextBox48, Me.TextBox49, Me.TextBox50})
         Me.GroupHeader7.DataField = "S_PAYMENT"
-        Me.GroupHeader7.Height = 0.4231934!
+        Me.GroupHeader7.Height = 0.434!
         Me.GroupHeader7.Name = "GroupHeader7"
         Me.GroupHeader7.RepeatStyle = DataDynamics.ActiveReports.RepeatStyle.OnPageIncludeNoDetail
         Me.GroupHeader7.UnderlayNext = True
@@ -2958,10 +2994,12 @@ Partial Public Class rDayCloseReport
         'TextBox22
         '
         Me.TextBox22.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox22.DataField = "S_PAYMENT"
         Me.TextBox22.Height = 0.1374016!
         Me.TextBox22.Left = 2.325!
         Me.TextBox22.MultiLine = False
         Me.TextBox22.Name = "TextBox22"
+        Me.TextBox22.Style = "white-space: inherit"
         Me.TextBox22.Text = Nothing
         Me.TextBox22.Top = 0!
         Me.TextBox22.Width = 1.204!
@@ -2969,6 +3007,7 @@ Partial Public Class rDayCloseReport
         'TextBox27
         '
         Me.TextBox27.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox27.DataField = "S_PAYMENT"
         Me.TextBox27.Height = 0.1374016!
         Me.TextBox27.Left = 2.325!
         Me.TextBox27.Name = "TextBox27"
@@ -2979,6 +3018,7 @@ Partial Public Class rDayCloseReport
         'TextBox5
         '
         Me.TextBox5.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox5.DataField = "S_PAYMENT"
         Me.TextBox5.Height = 0.154!
         Me.TextBox5.Left = 2.325!
         Me.TextBox5.Name = "TextBox5"
@@ -3006,7 +3046,7 @@ Partial Public Class rDayCloseReport
         'GroupFooter7
         '
         Me.GroupFooter7.Controls.AddRange(New DataDynamics.ActiveReports.ARControl() {Me.S_CNT, Me.S_FEE, Me.S_DISCOUNT, Me.S_POSTAGE, Me.TextBox13, Me.TextBox16, Me.TextBox18, Me.S_SALES, Me.S_BILL, Me.S_PAYMENT, Me.TextBox1, Me.TextBox2, Me.TextBox3, Me.TextBox6, Me.TextBox7, Me.TextBox23, Me.TextBox25, Me.TextBox26, Me.TextBox28, Me.TextBox29})
-        Me.GroupFooter7.Height = 0.2804016!
+        Me.GroupFooter7.Height = 0.2751933!
         Me.GroupFooter7.Name = "GroupFooter7"
         '
         'S_CNT
@@ -3136,6 +3176,150 @@ Partial Public Class rDayCloseReport
         Me.S_BILL.Top = 0!
         Me.S_BILL.Width = 0.6290002!
         '
+        'TextBox1
+        '
+        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox1.ClassName = "B_LABEL"
+        Me.TextBox1.DataField = "S_PAYMENT"
+        Me.TextBox1.Height = 0.14!
+        Me.TextBox1.Left = 2.325!
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
+    "dle; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox1.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.VarP
+        Me.TextBox1.SummaryGroup = "GroupHeader4"
+        Me.TextBox1.Text = Nothing
+        Me.TextBox1.Top = 0.14!
+        Me.TextBox1.Width = 1.204!
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox2.ClassName = "B_LABEL"
+        Me.TextBox2.DataField = "S_SALES"
+        Me.TextBox2.Height = 0.137!
+        Me.TextBox2.Left = 3.54!
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox2.Text = Nothing
+        Me.TextBox2.Top = 0.143!
+        Me.TextBox2.Width = 0.708!
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox3.ClassName = "B_LABEL"
+        Me.TextBox3.DataField = "S_CNT"
+        Me.TextBox3.Height = 0.138!
+        Me.TextBox3.Left = 4.259!
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox3.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox3.Text = Nothing
+        Me.TextBox3.Top = 0.14!
+        Me.TextBox3.Width = 0.4499998!
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox6.ClassName = "B_LABEL"
+        Me.TextBox6.DataField = "S_DISCOUNT"
+        Me.TextBox6.Height = 0.135!
+        Me.TextBox6.Left = 4.719!
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox6.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox6.Text = Nothing
+        Me.TextBox6.Top = 0.14!
+        Me.TextBox6.Width = 0.614!
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox7.ClassName = "B_LABEL"
+        Me.TextBox7.DataField = "S_POSTAGE"
+        Me.TextBox7.Height = 0.1374016!
+        Me.TextBox7.Left = 5.343!
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox7.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox7.Text = Nothing
+        Me.TextBox7.Top = 0.143!
+        Me.TextBox7.Width = 0.6149998!
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox23.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox23.ClassName = "B_LABEL"
+        Me.TextBox23.DataField = "S_FEE"
+        Me.TextBox23.Height = 0.1374016!
+        Me.TextBox23.Left = 5.971!
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox23.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox23.Text = Nothing
+        Me.TextBox23.Top = 0.143!
+        Me.TextBox23.Width = 0.6270003!
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox25.DataField = "S_BILL"
+        Me.TextBox25.Height = 0.139!
+        Me.TextBox25.Left = 6.609!
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.TextBox25.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox25.Text = Nothing
+        Me.TextBox25.Top = 0.143!
+        Me.TextBox25.Width = 0.6290002!
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox26.Height = 0.1374016!
+        Me.TextBox26.Left = 1.325!
+        Me.TextBox26.MultiLine = False
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.Text = Nothing
+        Me.TextBox26.Top = 0.135!
+        Me.TextBox26.Width = 1.0!
+        '
+        'TextBox28
+        '
+        Me.TextBox28.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox28.Height = 0.1374016!
+        Me.TextBox28.Left = 0.552!
+        Me.TextBox28.MultiLine = False
+        Me.TextBox28.Name = "TextBox28"
+        Me.TextBox28.Text = Nothing
+        Me.TextBox28.Top = 0.135!
+        Me.TextBox28.Width = 0.7620312!
+        '
+        'TextBox29
+        '
+        Me.TextBox29.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox29.Height = 0.1374016!
+        Me.TextBox29.Left = 0!
+        Me.TextBox29.MultiLine = False
+        Me.TextBox29.Name = "TextBox29"
+        Me.TextBox29.Text = Nothing
+        Me.TextBox29.Top = 0.135!
+        Me.TextBox29.Width = 0.5417323!
+        '
         'GroupHeader4
         '
         Me.GroupHeader4.BackColor = System.Drawing.Color.Empty
@@ -3153,142 +3337,305 @@ Partial Public Class rDayCloseReport
         Me.GroupFooter4.Height = 0!
         Me.GroupFooter4.Name = "GroupFooter4"
         '
-        'TextBox29
+        'TextBox30
         '
-        Me.TextBox29.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox29.Height = 0.1374016!
-        Me.TextBox29.Left = 0!
-        Me.TextBox29.MultiLine = False
-        Me.TextBox29.Name = "TextBox29"
-        Me.TextBox29.Text = Nothing
-        Me.TextBox29.Top = 0.135!
-        Me.TextBox29.Width = 0.5417323!
+        Me.TextBox30.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox30.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox30.ClassName = "B_LABEL"
+        Me.TextBox30.DataField = "S_SALES"
+        Me.TextBox30.Height = 0.137!
+        Me.TextBox30.Left = 3.541!
+        Me.TextBox30.MultiLine = False
+        Me.TextBox30.Name = "TextBox30"
+        Me.TextBox30.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox30.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox30.Text = Nothing
+        Me.TextBox30.Top = 0!
+        Me.TextBox30.Width = 0.708!
         '
-        'TextBox28
+        'TextBox31
         '
-        Me.TextBox28.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox28.Height = 0.1374016!
-        Me.TextBox28.Left = 0.552!
-        Me.TextBox28.MultiLine = False
-        Me.TextBox28.Name = "TextBox28"
-        Me.TextBox28.Text = Nothing
-        Me.TextBox28.Top = 0.135!
-        Me.TextBox28.Width = 0.7620312!
+        Me.TextBox31.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox31.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox31.ClassName = "B_LABEL"
+        Me.TextBox31.DataField = "S_SALES"
+        Me.TextBox31.Height = 0.137!
+        Me.TextBox31.Left = 3.54!
+        Me.TextBox31.MultiLine = False
+        Me.TextBox31.Name = "TextBox31"
+        Me.TextBox31.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox31.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox31.Text = Nothing
+        Me.TextBox31.Top = 0.137!
+        Me.TextBox31.Width = 0.708!
         '
-        'TextBox26
+        'TextBox32
         '
-        Me.TextBox26.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox26.Height = 0.1374016!
-        Me.TextBox26.Left = 1.325!
-        Me.TextBox26.MultiLine = False
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Text = Nothing
-        Me.TextBox26.Top = 0.135!
-        Me.TextBox26.Width = 1.0!
+        Me.TextBox32.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox32.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox32.ClassName = "B_LABEL"
+        Me.TextBox32.DataField = "S_SALES"
+        Me.TextBox32.Height = 0.154!
+        Me.TextBox32.Left = 3.541!
+        Me.TextBox32.MultiLine = False
+        Me.TextBox32.Name = "TextBox32"
+        Me.TextBox32.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox32.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox32.Text = Nothing
+        Me.TextBox32.Top = 0.274!
+        Me.TextBox32.Width = 0.708!
         '
-        'TextBox1
+        'TextBox36
         '
-        Me.TextBox1.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox1.ClassName = "B_LABEL"
-        Me.TextBox1.DataField = "S_PAYMENT"
-        Me.TextBox1.Height = 0.14!
-        Me.TextBox1.Left = 2.325!
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Style = "background-color: White; font-size: 8.25pt; text-align: left; vertical-align: mid" &
-    "dle; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox1.SummaryFunc = DataDynamics.ActiveReports.SummaryFunc.VarP
-        Me.TextBox1.SummaryGroup = "GroupHeader4"
-        Me.TextBox1.Top = 0.14!
-        Me.TextBox1.Width = 1.204!
+        Me.TextBox36.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox36.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox36.ClassName = "B_LABEL"
+        Me.TextBox36.DataField = "S_CNT"
+        Me.TextBox36.Height = 0.138!
+        Me.TextBox36.Left = 4.269!
+        Me.TextBox36.MultiLine = False
+        Me.TextBox36.Name = "TextBox36"
+        Me.TextBox36.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox36.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox36.Text = Nothing
+        Me.TextBox36.Top = 0!
+        Me.TextBox36.Width = 0.4400001!
         '
-        'TextBox2
+        'TextBox37
         '
-        Me.TextBox2.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox2.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox2.ClassName = "B_LABEL"
-        Me.TextBox2.DataField = "S_SALES"
-        Me.TextBox2.Height = 0.137!
-        Me.TextBox2.Left = 3.54!
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox2.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox2.Top = 0.143!
-        Me.TextBox2.Width = 0.708!
+        Me.TextBox37.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox37.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox37.ClassName = "B_LABEL"
+        Me.TextBox37.DataField = "S_CNT"
+        Me.TextBox37.Height = 0.141!
+        Me.TextBox37.Left = 4.269!
+        Me.TextBox37.MultiLine = False
+        Me.TextBox37.Name = "TextBox37"
+        Me.TextBox37.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox37.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox37.Text = Nothing
+        Me.TextBox37.Top = 0.135!
+        Me.TextBox37.Width = 0.4400001!
         '
-        'TextBox3
+        'TextBox38
         '
-        Me.TextBox3.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox3.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox3.ClassName = "B_LABEL"
-        Me.TextBox3.DataField = "S_CNT"
-        Me.TextBox3.Height = 0.138!
-        Me.TextBox3.Left = 4.259!
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox3.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox3.Top = 0.14!
-        Me.TextBox3.Width = 0.4499998!
+        Me.TextBox38.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox38.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox38.ClassName = "B_LABEL"
+        Me.TextBox38.DataField = "S_CNT"
+        Me.TextBox38.Height = 0.152!
+        Me.TextBox38.Left = 4.269!
+        Me.TextBox38.MultiLine = False
+        Me.TextBox38.Name = "TextBox38"
+        Me.TextBox38.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox38.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox38.Text = Nothing
+        Me.TextBox38.Top = 0.276!
+        Me.TextBox38.Width = 0.4400001!
         '
-        'TextBox6
+        'TextBox39
         '
-        Me.TextBox6.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox6.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox6.ClassName = "B_LABEL"
-        Me.TextBox6.DataField = "S_DISCOUNT"
-        Me.TextBox6.Height = 0.135!
-        Me.TextBox6.Left = 4.719!
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox6.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox6.Top = 0.14!
-        Me.TextBox6.Width = 0.614!
+        Me.TextBox39.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox39.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox39.ClassName = "B_LABEL"
+        Me.TextBox39.DataField = "S_DISCOUNT"
+        Me.TextBox39.Height = 0.135!
+        Me.TextBox39.Left = 4.719!
+        Me.TextBox39.MultiLine = False
+        Me.TextBox39.Name = "TextBox39"
+        Me.TextBox39.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox39.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox39.Text = Nothing
+        Me.TextBox39.Top = 0!
+        Me.TextBox39.Width = 0.614!
         '
-        'TextBox7
+        'TextBox40
         '
-        Me.TextBox7.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox7.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox7.ClassName = "B_LABEL"
-        Me.TextBox7.DataField = "S_POSTAGE"
-        Me.TextBox7.Height = 0.1374016!
-        Me.TextBox7.Left = 5.343!
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox7.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox7.Top = 0.143!
-        Me.TextBox7.Width = 0.6149998!
+        Me.TextBox40.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox40.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox40.ClassName = "B_LABEL"
+        Me.TextBox40.DataField = "S_DISCOUNT"
+        Me.TextBox40.Height = 0.141!
+        Me.TextBox40.Left = 4.719!
+        Me.TextBox40.MultiLine = False
+        Me.TextBox40.Name = "TextBox40"
+        Me.TextBox40.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox40.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox40.Text = Nothing
+        Me.TextBox40.Top = 0.135!
+        Me.TextBox40.Width = 0.6139998!
         '
-        'TextBox23
+        'TextBox41
         '
-        Me.TextBox23.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox23.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox23.ClassName = "B_LABEL"
-        Me.TextBox23.DataField = "S_FEE"
-        Me.TextBox23.Height = 0.1374016!
-        Me.TextBox23.Left = 5.971!
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
-        Me.TextBox23.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox23.Top = 0.143!
-        Me.TextBox23.Width = 0.6270003!
+        Me.TextBox41.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox41.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox41.ClassName = "B_LABEL"
+        Me.TextBox41.DataField = "S_DISCOUNT"
+        Me.TextBox41.Height = 0.156!
+        Me.TextBox41.Left = 4.719!
+        Me.TextBox41.MultiLine = False
+        Me.TextBox41.Name = "TextBox41"
+        Me.TextBox41.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox41.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox41.Text = Nothing
+        Me.TextBox41.Top = 0.278!
+        Me.TextBox41.Width = 0.6139998!
         '
-        'TextBox25
+        'TextBox42
         '
-        Me.TextBox25.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
-        Me.TextBox25.DataField = "S_BILL"
-        Me.TextBox25.Height = 0.139!
-        Me.TextBox25.Left = 6.609!
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
-        Me.TextBox25.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
-    "ttom; white-space: nowrap; ddo-char-set: 128"
-        Me.TextBox25.Top = 0.143!
-        Me.TextBox25.Width = 0.6290002!
+        Me.TextBox42.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox42.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox42.ClassName = "B_LABEL"
+        Me.TextBox42.DataField = "S_POSTAGE"
+        Me.TextBox42.Height = 0.1374016!
+        Me.TextBox42.Left = 5.343!
+        Me.TextBox42.MultiLine = False
+        Me.TextBox42.Name = "TextBox42"
+        Me.TextBox42.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox42.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox42.Text = Nothing
+        Me.TextBox42.Top = 0!
+        Me.TextBox42.Width = 0.6149998!
+        '
+        'TextBox43
+        '
+        Me.TextBox43.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox43.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox43.ClassName = "B_LABEL"
+        Me.TextBox43.DataField = "S_POSTAGE"
+        Me.TextBox43.Height = 0.1434016!
+        Me.TextBox43.Left = 5.343!
+        Me.TextBox43.MultiLine = False
+        Me.TextBox43.Name = "TextBox43"
+        Me.TextBox43.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox43.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox43.Text = Nothing
+        Me.TextBox43.Top = 0.135!
+        Me.TextBox43.Width = 0.6149998!
+        '
+        'TextBox44
+        '
+        Me.TextBox44.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox44.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox44.ClassName = "B_LABEL"
+        Me.TextBox44.DataField = "S_POSTAGE"
+        Me.TextBox44.Height = 0.15!
+        Me.TextBox44.Left = 5.343!
+        Me.TextBox44.MultiLine = False
+        Me.TextBox44.Name = "TextBox44"
+        Me.TextBox44.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox44.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox44.Text = Nothing
+        Me.TextBox44.Top = 0.278!
+        Me.TextBox44.Width = 0.6149998!
+        '
+        'TextBox45
+        '
+        Me.TextBox45.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox45.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox45.ClassName = "B_LABEL"
+        Me.TextBox45.DataField = "S_FEE"
+        Me.TextBox45.Height = 0.1374016!
+        Me.TextBox45.Left = 5.971!
+        Me.TextBox45.MultiLine = False
+        Me.TextBox45.Name = "TextBox45"
+        Me.TextBox45.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox45.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox45.Text = Nothing
+        Me.TextBox45.Top = 0!
+        Me.TextBox45.Width = 0.6270003!
+        '
+        'TextBox46
+        '
+        Me.TextBox46.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox46.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox46.ClassName = "B_LABEL"
+        Me.TextBox46.DataField = "S_FEE"
+        Me.TextBox46.Height = 0.1434016!
+        Me.TextBox46.Left = 5.971!
+        Me.TextBox46.MultiLine = False
+        Me.TextBox46.Name = "TextBox46"
+        Me.TextBox46.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox46.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox46.Text = Nothing
+        Me.TextBox46.Top = 0.135!
+        Me.TextBox46.Width = 0.6270003!
+        '
+        'TextBox47
+        '
+        Me.TextBox47.Border.RightStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox47.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox47.ClassName = "B_LABEL"
+        Me.TextBox47.DataField = "S_FEE"
+        Me.TextBox47.Height = 0.15!
+        Me.TextBox47.Left = 5.971!
+        Me.TextBox47.MultiLine = False
+        Me.TextBox47.Name = "TextBox47"
+        Me.TextBox47.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 5, 0)
+        Me.TextBox47.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox47.Text = Nothing
+        Me.TextBox47.Top = 0.278!
+        Me.TextBox47.Width = 0.6270003!
+        '
+        'TextBox48
+        '
+        Me.TextBox48.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox48.DataField = "S_BILL"
+        Me.TextBox48.Height = 0.139!
+        Me.TextBox48.Left = 6.609!
+        Me.TextBox48.MultiLine = False
+        Me.TextBox48.Name = "TextBox48"
+        Me.TextBox48.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.TextBox48.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox48.Text = Nothing
+        Me.TextBox48.Top = 0.002!
+        Me.TextBox48.Width = 0.6290002!
+        '
+        'TextBox49
+        '
+        Me.TextBox49.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox49.DataField = "S_BILL"
+        Me.TextBox49.Height = 0.139!
+        Me.TextBox49.Left = 6.609!
+        Me.TextBox49.MultiLine = False
+        Me.TextBox49.Name = "TextBox49"
+        Me.TextBox49.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.TextBox49.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox49.Text = Nothing
+        Me.TextBox49.Top = 0.135!
+        Me.TextBox49.Width = 0.6290002!
+        '
+        'TextBox50
+        '
+        Me.TextBox50.Border.TopStyle = DataDynamics.ActiveReports.BorderLineStyle.Solid
+        Me.TextBox50.DataField = "S_BILL"
+        Me.TextBox50.Height = 0.15!
+        Me.TextBox50.Left = 6.607!
+        Me.TextBox50.MultiLine = False
+        Me.TextBox50.Name = "TextBox50"
+        Me.TextBox50.Padding = New DataDynamics.ActiveReports.PaddingEx(0, 0, 7, 0)
+        Me.TextBox50.Style = "background-color: White; font-size: 8.25pt; text-align: right; vertical-align: bo" &
+    "ttom; white-space: inherit; ddo-char-set: 128"
+        Me.TextBox50.Text = Nothing
+        Me.TextBox50.Top = 0.278!
+        Me.TextBox50.Width = 0.6290002!
         '
         'rDayCloseReport
         '
@@ -3480,9 +3827,6 @@ Partial Public Class rDayCloseReport
         CType(Me.TextBox18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.S_SALES, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.S_BILL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3490,6 +3834,27 @@ Partial Public Class rDayCloseReport
         CType(Me.TextBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextBox25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox28, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox29, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox30, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox31, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox32, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox36, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox37, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox38, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox39, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox40, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox41, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox42, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox43, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox44, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox45, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox46, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox47, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox48, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox49, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextBox50, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -3707,4 +4072,22 @@ Partial Public Class rDayCloseReport
     Private WithEvents TextBox26 As DataDynamics.ActiveReports.TextBox
     Private WithEvents TextBox28 As DataDynamics.ActiveReports.TextBox
     Private WithEvents TextBox29 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox30 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox31 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox32 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox36 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox37 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox38 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox39 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox40 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox41 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox42 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox43 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox44 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox45 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox46 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox47 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox48 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox49 As DataDynamics.ActiveReports.TextBox
+    Private WithEvents TextBox50 As DataDynamics.ActiveReports.TextBox
 End Class

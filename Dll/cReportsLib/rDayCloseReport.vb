@@ -526,6 +526,7 @@
         ' *** END   K.MINAGAWA 2013/04/29 ***
     End Sub
 
+
 End Class
 
 Friend Class S_SALES_1
