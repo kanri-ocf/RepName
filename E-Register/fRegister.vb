@@ -262,7 +262,7 @@ Public Class fRegister
     '    End If
     '    MyBase.WndProc(m)
     'End Sub
-    ''******************************************************************
+    ''*****************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
     Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
@@ -291,6 +291,7 @@ Public Class fRegister
         '----------------------------------------------------------------------
 
         ''プログラム起動フォルダパスの取得
+
         'strPath = Application.StartupPath
 
 
