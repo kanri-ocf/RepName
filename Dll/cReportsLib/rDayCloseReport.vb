@@ -334,16 +334,6 @@
     End Sub
 
     Private Sub CAL_INFO(ByVal oReadData As cStructureLib.sViewTrnSummary)
-        '2020 1,29 A.Komita 追加 From
-        Dim StrPay As String
-        Dim LngCnt As Long
-        Dim LngDis As Long
-        Dim LngPost As Long
-        Dim LngFee As Long
-        Dim LngSale As Long
-        Dim LngBill As Long
-        '2020 1,29 A.Komita 追加 To
-
 
         '<取引区分>
         Fields("S_CLASS").Value = oReadData.sTrnClass
@@ -354,78 +344,41 @@
         '<チャネル名称>
         Fields("S_CHANNEL").Value = oReadData.sChannelName
 
-
-        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドを追加 From
         '<支払方法>
-        'Fields("S_PAYMENT").Value = oReadData.sPaymentName
-        StrPay = oReadData.sPaymentName
-        '<販売金額>
-        If oReadData.sReducedTaxRate = 0 Then
-            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
-        End If
-
-        LngSale = oReadData.sNoTaxProductPrice
-        '<数量>
-        LngCnt = oReadData.sCount
-        '<値引き>
-        LngDis = oReadData.sDiscountPrice
-        '<送料>
-        LngPost = oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
-        '<手数料>
-        LngFee = oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
-        '<売上金額>
-        LngBill = (oReadData.sNoTaxProductPrice + LngPost + LngFee) + LngDis
-
-
-        Fields("S_PAYMENT").Value = String.Format("{0:#,##0}", StrPay)
-        Fields("S_SALES").Value = String.Format("{0:#,##0}", LngSale)
-        Fields("S_CNT").Value = String.Format("{0:#,##0}", LngCnt)
-        Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", LngDis)
-        Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", LngPost)
-        Fields("S_FEE").Value = String.Format("{0:#,##0}", LngFee)
-        Fields("S_BILL").Value = String.Format("{0:#,##0}", LngBill)
-
-
-        S_SALES.MultiLine = True
-
-
-        '2020,1,29 A.Komita 追加 To
-
+        Fields("S_PAYMENT").Value = oReadData.sPaymentName
 
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki 値引き税率計算なし、販売金額の表示
         '-----------------------------------------------------------------------
 
         ''<販売金額>
-        ''2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
-        'If oReadData.sReducedTaxRate = 0 Then
-        '    oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
-        'Else
-        '    oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
-        'End If
-        ''2020,1,27 A.Komita 追加 To
-        'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sNoTaxProductPrice)
-        ''String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
+        '2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
+        If oReadData.sReducedTaxRate = 0 Then
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
+        Else
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
+        End If
+        '2020,1,27 A.Komita 追加 To
+        Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sNoTaxProductPrice)
+        'String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
 
 
-        ''<数量>
-        'Fields("S_CNT").Value = String.Format("{0:#,##0}", oReadData.sCount)
+        '<数量>
+        Fields("S_CNT").Value = String.Format("{0:#,##0}", oReadData.sCount)
 
-        ''<値引き>
-        'Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", oReadData.sDiscountPrice)
+        '<値引き>
+        Fields("S_DISCOUNT").Value = String.Format("{0:#,##0}", oReadData.sDiscountPrice)
 
-        ''<送料>
-        'Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
+        '<送料>
+        Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
 
-        ''<手数料>
-        'Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
+        '<手数料>
+        Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
 
-        ''<売上金額>
-        ''Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
-        'Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
-        ''String.Format("{0:#,##0}", oReadData.sPrice)
+        '<売上金額>
+        'Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
+        'String.Format("{0:#,##0}", oReadData.sPrice)
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki END
         '-----------------------------------------------------------------------
