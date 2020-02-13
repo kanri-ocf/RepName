@@ -378,7 +378,7 @@
 
         '<売上金額>
         'Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
-        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value)) - Fields("S_DISCOUNT").Value
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value) + Fields("S_DISCOUNT").Value)
         'String.Format("{0:#,##0}", oReadData.sPrice)
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki END
