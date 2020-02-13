@@ -15,8 +15,11 @@ Public Class cDataTrnDBIO
         pDataReader = iDataReader
     End Sub
 
+
+
     '----------------------------------------------------------------------
     '　機能：プロパティの取引コードのレコードが取引テーブルに
+
     '　　　　 存在するか否かを調べるメソッド
     '　引数：なし
     '　戻値：True  --> 存在する.  False --> 存在しない
@@ -35,9 +38,12 @@ Public Class cDataTrnDBIO
             pCommand.CommandText = strSelect
 
             'SQL文パラメータの設定
+
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TrnCode", OleDb.OleDbType.Char, 5))
             pCommand.Parameters("@TrnCode").Value = KeyString
+
+
 
             '取引テーブルから該当取引コードのレコード数読込 
             Dim recCount As Integer

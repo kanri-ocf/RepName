@@ -354,6 +354,7 @@
         ''<販売金額>
         '2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
         If oReadData.sReducedTaxRate = 0 Then
+
             oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
         Else
             oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
@@ -377,7 +378,7 @@
 
         '<売上金額>
         'Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
-        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value) + Fields("S_DISCOUNT").Value）
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value)) - Fields("S_DISCOUNT").Value
         'String.Format("{0:#,##0}", oReadData.sPrice)
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki END
