@@ -2940,7 +2940,11 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
                     Message_form.Dispose()
                     Message_form = Nothing
                     'バーコードタグ印刷
-                    If cnt = 0 Then
+                    '<>のままだとバーコード印刷が出来ない
+                    '<>を=に修正すると印刷自体は可能だが、登録した商品とは全く異なる商品のバーコードが印刷される
+                    '登録した商品の数と印刷されるバーコードの数が合わない(5つ商品登録して印刷すると2つしか出てこない)
+                    '=に修正するとE-Registerでバーコード印刷のメッセージが発生しなくなる
+                    If cnt <> 0 Then
                         Message_form = New cMessageLib.fMessage(2, "バーコード付きのタグを印刷します。",
                                                        "A-One 31516用紙をセットして下さい。",
                                                        "準備が出来たら、""はい""を押下して下さい。",
