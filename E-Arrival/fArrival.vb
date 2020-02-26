@@ -2940,7 +2940,7 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
                     Message_form.Dispose()
                     Message_form = Nothing
                     'バーコードタグ印刷
-                    If cnt <> 0 Then
+                    If cnt = 0 Then
                         Message_form = New cMessageLib.fMessage(2, "バーコード付きのタグを印刷します。",
                                                        "A-One 31516用紙をセットして下さい。",
                                                        "準備が出来たら、""はい""を押下して下さい。",

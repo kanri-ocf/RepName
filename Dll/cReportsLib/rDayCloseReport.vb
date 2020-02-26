@@ -374,6 +374,7 @@
         Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         '<手数料>
+
         Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         '<売上金額>

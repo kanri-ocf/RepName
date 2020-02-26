@@ -3021,10 +3021,15 @@ Public Class fRegister
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
                 Case M_DISCOUNT_P  'ポイント値引きモード
-                    INPUT = CInt(DISPLAY_T.Text)                        '単品金額値引き
+                    INPUT = CInt(DISPLAY_T.Text)
+
+                    '単品金額値引き
                     PRODUCT_NAME_T.Text = "ポイント値引き(" & CInt(DISPLAY_T.Text) & "円)"
                     TOTAL_CASH = TOTAL_CASH - INPUT                     '本商品までの合計金額を計算
                     If TOTAL_CASH < 0 Then
+
+
+
                         TOTAL_CASH = 0
                     End If
                     POINT_CASH = INPUT                                  'ポイント値引き額
@@ -3039,6 +3044,7 @@ Public Class fRegister
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
                 Case M_DISCOUNT_C  'チケット値引きモード
+
                     INPUT = CInt(DISPLAY_T.Text)                        '単品金額値引き
                     PRODUCT_NAME_T.Text = "チケット値引き(" & CInt(DISPLAY_T.Text) & "円)"
                     DISCOUNT_CASH = INPUT                               '値引金額
@@ -3050,7 +3056,8 @@ Public Class fRegister
                     DISPLAY_T.Text = TOTAL_CASH                         '合計金額を画面に表示
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
-                Case M_DISCOUNT_T '合計値引きモード
+                Case M_DISCOUNT_T '合計値引き
+
                     Select Case Mode
                         Case DISCOUNT_R     '％値引き
                             DISCOUNT_RATE = CInt(DISPLAY_T.Text)        '値引率
@@ -3069,6 +3076,8 @@ Public Class fRegister
                     D_MODE = 0                                          '入力中フラグをリセット
                     CAL_PROC = True
                 Case M_MORE  '同一商品モード
+
+
                     UPRICE = DISPLAY_T.Text
                     INPUT = oTool.ToHalfAdjust(UPRICE * UCOUNT, 0)      '現在入力中の商品価格
                     TOTAL_CASH = TOTAL_CASH + INPUT                     '本商品までの合計金額を計算
