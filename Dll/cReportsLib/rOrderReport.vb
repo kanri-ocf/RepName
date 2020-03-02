@@ -189,11 +189,11 @@
         Fields("ORDER_CODE").Value = ORDER_NUMBER
 
         '2019,9,28 A.Komita 修正 Start
-        'If REPORT_MODE = "税込み" Then
-        '    Fields("TOTAL_BEFORE_TAX_PRICE").Value = oOrderData(0).sNoTaxTotalPrice
-        'Else
-        '    Fields("TOTAL_BEFORE_TAX_PRICE").Value = oOrderData(0).sNoTaxTotalProductPrice
-        'End If
+        If REPORT_MODE = "税込み" Then
+            Fields("TOTAL_BEFORE_TAX_PRICE").Value = oOrderData(0).sNoTaxTotalPrice
+        Else
+            Fields("TOTAL_BEFORE_TAX_PRICE").Value = oOrderData(0).sNoTaxTotalProductPrice
+        End If
 
         Fields("TOTAL_BEFORE_TAX_PRICE").Value = oOrderData(0).sNoTaxTotalPrice
 
@@ -426,7 +426,6 @@
     End Sub
 
     Private Sub GroupFooter2_Format(ByVal sender As Object, ByVal e As EventArgs) Handles GroupFooter2.Format
-
         '値引き
         '2019,9,20 A.Komita 追加 From
         DISCOUNT.Value = oOrderData(0).sDiscount

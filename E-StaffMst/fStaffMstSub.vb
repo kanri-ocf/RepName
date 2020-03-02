@@ -74,11 +74,11 @@
         oMstStaffDBIO = New cMstStaffDBIO(oConn, oCommand, oDataReader)
         oChannelDBIO = New cMstChannelDBIO(oConn, oCommand, oDataReader)
         oRoleDBIO = New cMstRoleDBIO(oConn, oCommand, oDataReader)
-
         oMstStaffDBIO.getStaff(oStaff, STAFF_CODE_T.Text, Nothing, Nothing, Nothing, oTran)
 
-        STAFF_CODE_T.Text = oStaff(0).sStaffCode
-        STAFF_NAME_T.Text = oStaff(0).sStaffName
+
+        STAFF_CODE_T.Text = fStaffMst.STAFFCODE
+        STAFF_NAME_T.Text = fStaffMst.STAFFNAME
 
         oTool = New cTool
 
@@ -600,88 +600,95 @@
         Dim ret As Boolean
         Dim sPath As String
         Dim tPath As String
+        If SYAIN_CODE_T.Text <> "" Then
 
-        If EDIT_MODE = True And S_STAFF_CODE_T.Text <> S_STAFF_CODE Then
-            Message_form = New cMessageLib.fMessage(2, _
-                                      "スタッフコードが変更されています。", _
-                                      "スタッフカードの再発行が必要となります。", _
-                                      "変更してよろしいですか？", _
-                                      Nothing)
-            Message_form.ShowDialog()
-            If Message_form.DialogResult = Windows.Forms.DialogResult.No Then
-                Exit Sub      '登録処理の中止
-            Else
-                EDIT_MODE = False   '新規登録モードに変更
+            If EDIT_MODE = True And S_STAFF_CODE_T.Text <> S_STAFF_CODE Then
+                Message_form = New cMessageLib.fMessage(2,
+                                          "スタッフコードが変更されています。",
+                                          "スタッフカードの再発行が必要となります。",
+                                          "変更してよろしいですか？",
+                                          Nothing)
+                Message_form.ShowDialog()
+                If Message_form.DialogResult = Windows.Forms.DialogResult.No Then
+                    Exit Sub      '登録処理の中止
+                Else
+                    EDIT_MODE = False   '新規登録モードに変更
+                End If
+                Message_form = Nothing
             End If
+
+            oStaff(0).sStaffCode = S_STAFF_CODE_T.Text
+            oStaff(0).sStaffName = S_STAFF_NAME_T.Text
+
+            oStaff(0).sRoleCode = CInt(ROLE_CODE_T.Text)
+            If S_E_CLASS_R.Checked = True Then
+                oStaff(0).sStaffClass = "E"
+            End If
+            If S_A_CLASS_R.Checked = True Then
+                oStaff(0).sStaffClass = "A"
+            End If
+            If S_P_CLASS_R.Checked = True Then
+                oStaff(0).sStaffClass = "P"
+            End If
+            If S_O_CLASS_R.Checked = True Then
+                oStaff(0).sStaffClass = "O"
+            End If
+            oStaff(0).sRate = CSng(RATE_T.Text)
+
+            oTran = Nothing
+            oTran = oConn.BeginTransaction
+
+            'スタッフマスタの登録
+            If EDIT_MODE = False Then
+                ret = oMstStaffDBIO.insertStaffMst(oStaff(0), oTran)
+            Else
+                ret = oMstStaffDBIO.updateStaffMst(oStaff(0), S_STAFF_CODE_T.Text, oTran)
+            End If
+
+            sPath = System.Windows.Forms.Application.StartupPath & "\Temp\" & S_STAFF_CODE_T.Text & ".jpg"
+            tPath = System.Windows.Forms.Application.StartupPath & "\StaffPhoto\" & S_STAFF_CODE_T.Text & ".jpg"
+
+            If System.IO.File.Exists(sPath) Then
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
+                System.IO.File.Delete(sPath)
+            End If
+
+            'スタッフ権限マスタの削除
+            ret = oMstStaffDBIO.deleteStaffAuthorityMst(S_STAFF_CODE_T.Text, oTran)
+
+            '----------------------------
+            ' スタッフ権限マスタの挿入
+            '----------------------------
+            '販売管理
+            ret = STAFF_AUTHORITY_INSERT(SALES_V)
+            'ネットショップ管理
+            ret = STAFF_AUTHORITY_INSERT(NET_V)
+            '在庫管理
+            ret = STAFF_AUTHORITY_INSERT(STOCK_V)
+            'マスタ管理
+            ret = STAFF_AUTHORITY_INSERT(MASTER_V)
+            'システム管理
+            ret = STAFF_AUTHORITY_INSERT(SYSTEM_V)
+
+            oTran.Commit()
+
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+                            "登録が完了しました。",
+                            Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+
+            Application.DoEvents()
+            Message_form = Nothing
+            CLOSE_PROC()
+        Else
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+                            "社員コードが空欄です。",
+                            Nothing, Nothing)
+            Message_form.ShowDialog()
             Message_form = Nothing
         End If
-
-        oStaff(0).sStaffCode = S_STAFF_CODE_T.Text
-        oStaff(0).sStaffName = S_STAFF_NAME_T.Text
-
-        oStaff(0).sRoleCode = CInt(ROLE_CODE_T.Text)
-        If S_E_CLASS_R.Checked = True Then
-            oStaff(0).sStaffClass = "E"
-        End If
-        If S_A_CLASS_R.Checked = True Then
-            oStaff(0).sStaffClass = "A"
-        End If
-        If S_P_CLASS_R.Checked = True Then
-            oStaff(0).sStaffClass = "P"
-        End If
-        If S_O_CLASS_R.Checked = True Then
-            oStaff(0).sStaffClass = "O"
-        End If
-        oStaff(0).sRate = CSng(RATE_T.Text)
-
-        oTran = Nothing
-        oTran = oConn.BeginTransaction
-
-        'スタッフマスタの登録
-        If EDIT_MODE = False Then
-            ret = oMstStaffDBIO.insertStaffMst(oStaff(0), oTran)
-        Else
-            ret = oMstStaffDBIO.updateStaffMst(oStaff(0), S_STAFF_CODE_T.Text, oTran)
-        End If
-
-        sPath = System.Windows.Forms.Application.StartupPath & "\Temp\" & S_STAFF_CODE_T.Text & ".jpg"
-        tPath = System.Windows.Forms.Application.StartupPath & "\StaffPhoto\" & S_STAFF_CODE_T.Text & ".jpg"
-
-        If System.IO.File.Exists(sPath) Then
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
-            System.IO.File.Delete(sPath)
-        End If
-
-        'スタッフ権限マスタの削除
-        ret = oMstStaffDBIO.deleteStaffAuthorityMst(S_STAFF_CODE_T.Text, oTran)
-
-        '----------------------------
-        ' スタッフ権限マスタの挿入
-        '----------------------------
-        '販売管理
-        ret = STAFF_AUTHORITY_INSERT(SALES_V)
-        'ネットショップ管理
-        ret = STAFF_AUTHORITY_INSERT(NET_V)
-        '在庫管理
-        ret = STAFF_AUTHORITY_INSERT(STOCK_V)
-        'マスタ管理
-        ret = STAFF_AUTHORITY_INSERT(MASTER_V)
-        'システム管理
-        ret = STAFF_AUTHORITY_INSERT(SYSTEM_V)
-
-        oTran.Commit()
-
-        Message_form = New cMessageLib.fMessage(1, Nothing, _
-                        "登録が完了しました。", _
-                        Nothing, Nothing)
-        Message_form.ShowDialog()
-        Message_form = Nothing
-
-        Application.DoEvents()
-        Message_form = Nothing
-        CLOSE_PROC()
-
     End Sub
 
     Private Sub RETURN_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RETURN_B.Click
@@ -738,7 +745,7 @@
     End Sub
 
     Private Sub SYAIN_CODE_T_KeyPress(sender As Object, e As KeyPressEventArgs) Handles SYAIN_CODE_T.KeyPress
-        If e.KeyChar < "0"c OrElse "9"c < e.KeyChar Then
+        If （e.KeyChar < "0"c OrElse "9"c < e.KeyChar) And e.KeyChar <> vbBack Then
             '押されたキーが 0～9でない場合は、イベントをキャンセルする
             e.Handled = True
         End If

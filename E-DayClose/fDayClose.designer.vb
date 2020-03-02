@@ -76,10 +76,10 @@ Partial Class fDayClose
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(55, 30)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(89, 48)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(63, 19)
+        Me.Label2.Size = New System.Drawing.Size(97, 30)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "締め日"
         '
@@ -87,10 +87,10 @@ Partial Class fDayClose
         '
         Me.CLOSE_DATE_T.BackColor = System.Drawing.Color.Wheat
         Me.CLOSE_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.CLOSE_DATE_T.Location = New System.Drawing.Point(121, 24)
-        Me.CLOSE_DATE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CLOSE_DATE_T.Location = New System.Drawing.Point(197, 38)
+        Me.CLOSE_DATE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CLOSE_DATE_T.Name = "CLOSE_DATE_T"
-        Me.CLOSE_DATE_T.Size = New System.Drawing.Size(241, 34)
+        Me.CLOSE_DATE_T.Size = New System.Drawing.Size(389, 49)
         Me.CLOSE_DATE_T.TabIndex = 0
         Me.CLOSE_DATE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -98,10 +98,10 @@ Partial Class fDayClose
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label12.Location = New System.Drawing.Point(41, 822)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(67, 1315)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(124, 17)
+        Me.Label12.Size = New System.Drawing.Size(189, 26)
         Me.Label12.TabIndex = 26
         Me.Label12.Text = "締め処理担当者"
         '
@@ -109,11 +109,11 @@ Partial Class fDayClose
         '
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_CODE_T.Location = New System.Drawing.Point(175, 818)
-        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_CODE_T.Location = New System.Drawing.Point(284, 1309)
+        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
-        Me.STAFF_CODE_T.Size = New System.Drawing.Size(165, 24)
+        Me.STAFF_CODE_T.Size = New System.Drawing.Size(266, 33)
         Me.STAFF_CODE_T.TabIndex = 25
         Me.STAFF_CODE_T.TabStop = False
         '
@@ -121,11 +121,11 @@ Partial Class fDayClose
         '
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_NAME_T.Location = New System.Drawing.Point(356, 818)
-        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_NAME_T.Location = New System.Drawing.Point(578, 1309)
+        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
-        Me.STAFF_NAME_T.Size = New System.Drawing.Size(227, 24)
+        Me.STAFF_NAME_T.Size = New System.Drawing.Size(366, 33)
         Me.STAFF_NAME_T.TabIndex = 27
         Me.STAFF_NAME_T.TabStop = False
         '
@@ -151,11 +151,11 @@ Partial Class fDayClose
         Me.GroupBox2.Controls.Add(Me.CLOSE_DATE_T)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox2.Location = New System.Drawing.Point(40, 48)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Location = New System.Drawing.Point(65, 77)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(6)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox2.Size = New System.Drawing.Size(1077, 326)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(6)
+        Me.GroupBox2.Size = New System.Drawing.Size(1750, 522)
         Me.GroupBox2.TabIndex = 49
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "【締め情報】"
@@ -164,11 +164,11 @@ Partial Class fDayClose
         '
         Me.RET_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.RET_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RET_CASH_T.Location = New System.Drawing.Point(121, 284)
-        Me.RET_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RET_CASH_T.Location = New System.Drawing.Point(197, 454)
+        Me.RET_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RET_CASH_T.Name = "RET_CASH_T"
         Me.RET_CASH_T.ReadOnly = True
-        Me.RET_CASH_T.Size = New System.Drawing.Size(241, 34)
+        Me.RET_CASH_T.Size = New System.Drawing.Size(389, 49)
         Me.RET_CASH_T.TabIndex = 2
         Me.RET_CASH_T.TabStop = False
         Me.RET_CASH_T.Text = "0"
@@ -178,10 +178,10 @@ Partial Class fDayClose
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(32, 291)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(52, 466)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(85, 19)
+        Me.Label8.Size = New System.Drawing.Size(133, 30)
         Me.Label8.TabIndex = 54
         Me.Label8.Text = "回収金額"
         '
@@ -211,8 +211,8 @@ Partial Class fDayClose
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.SUM_V.DefaultCellStyle = DataGridViewCellStyle2
-        Me.SUM_V.Location = New System.Drawing.Point(372, 22)
-        Me.SUM_V.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SUM_V.Location = New System.Drawing.Point(604, 35)
+        Me.SUM_V.Margin = New System.Windows.Forms.Padding(6)
         Me.SUM_V.MultiSelect = False
         Me.SUM_V.Name = "SUM_V"
         Me.SUM_V.ReadOnly = True
@@ -224,9 +224,10 @@ Partial Class fDayClose
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.SUM_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.SUM_V.RowHeadersWidth = 82
         Me.SUM_V.RowTemplate.Height = 21
         Me.SUM_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SUM_V.Size = New System.Drawing.Size(697, 295)
+        Me.SUM_V.Size = New System.Drawing.Size(1133, 472)
         Me.SUM_V.TabIndex = 51
         Me.SUM_V.TabStop = False
         '
@@ -234,10 +235,10 @@ Partial Class fDayClose
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(51, 131)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(83, 210)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(66, 19)
+        Me.Label7.Size = New System.Drawing.Size(103, 30)
         Me.Label7.TabIndex = 56
         Me.Label7.Text = "戻入額"
         '
@@ -245,11 +246,11 @@ Partial Class fDayClose
         '
         Me.RETURN_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.RETURN_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.RETURN_CASH_T.Location = New System.Drawing.Point(121, 126)
-        Me.RETURN_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RETURN_CASH_T.Location = New System.Drawing.Point(197, 202)
+        Me.RETURN_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.RETURN_CASH_T.Name = "RETURN_CASH_T"
         Me.RETURN_CASH_T.ReadOnly = True
-        Me.RETURN_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.RETURN_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.RETURN_CASH_T.TabIndex = 55
         Me.RETURN_CASH_T.TabStop = False
         Me.RETURN_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -258,11 +259,11 @@ Partial Class fDayClose
         '
         Me.DIFF_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.DIFF_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.DIFF_CASH_T.Location = New System.Drawing.Point(121, 246)
-        Me.DIFF_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DIFF_CASH_T.Location = New System.Drawing.Point(197, 394)
+        Me.DIFF_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.DIFF_CASH_T.Name = "DIFF_CASH_T"
         Me.DIFF_CASH_T.ReadOnly = True
-        Me.DIFF_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.DIFF_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.DIFF_CASH_T.TabIndex = 59
         Me.DIFF_CASH_T.TabStop = False
         Me.DIFF_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -271,10 +272,10 @@ Partial Class fDayClose
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(32, 251)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(52, 402)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(85, 19)
+        Me.Label6.Size = New System.Drawing.Size(133, 30)
         Me.Label6.TabIndex = 60
         Me.Label6.Text = "現金差額"
         '
@@ -282,11 +283,11 @@ Partial Class fDayClose
         '
         Me.STIFFNESS_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.STIFFNESS_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STIFFNESS_CASH_T.Location = New System.Drawing.Point(121, 216)
-        Me.STIFFNESS_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STIFFNESS_CASH_T.Location = New System.Drawing.Point(197, 346)
+        Me.STIFFNESS_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.STIFFNESS_CASH_T.Name = "STIFFNESS_CASH_T"
         Me.STIFFNESS_CASH_T.ReadOnly = True
-        Me.STIFFNESS_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.STIFFNESS_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.STIFFNESS_CASH_T.TabIndex = 57
         Me.STIFFNESS_CASH_T.TabStop = False
         Me.STIFFNESS_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -295,10 +296,10 @@ Partial Class fDayClose
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(32, 221)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(52, 354)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 19)
+        Me.Label5.Size = New System.Drawing.Size(133, 30)
         Me.Label5.TabIndex = 58
         Me.Label5.Text = "計測残高"
         '
@@ -306,11 +307,11 @@ Partial Class fDayClose
         '
         Me.OUTPUT_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.OUTPUT_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.OUTPUT_CASH_T.Location = New System.Drawing.Point(121, 96)
-        Me.OUTPUT_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OUTPUT_CASH_T.Location = New System.Drawing.Point(197, 154)
+        Me.OUTPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT_CASH_T.Name = "OUTPUT_CASH_T"
         Me.OUTPUT_CASH_T.ReadOnly = True
-        Me.OUTPUT_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.OUTPUT_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.OUTPUT_CASH_T.TabIndex = 55
         Me.OUTPUT_CASH_T.TabStop = False
         Me.OUTPUT_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -319,10 +320,10 @@ Partial Class fDayClose
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(52, 101)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(84, 162)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(66, 19)
+        Me.Label4.Size = New System.Drawing.Size(103, 30)
         Me.Label4.TabIndex = 56
         Me.Label4.Text = "出金額"
         '
@@ -330,10 +331,10 @@ Partial Class fDayClose
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(51, 71)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(83, 114)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 19)
+        Me.Label3.Size = New System.Drawing.Size(103, 30)
         Me.Label3.TabIndex = 54
         Me.Label3.Text = "入金額"
         '
@@ -341,11 +342,11 @@ Partial Class fDayClose
         '
         Me.INPUT_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.INPUT_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.INPUT_CASH_T.Location = New System.Drawing.Point(121, 66)
-        Me.INPUT_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.INPUT_CASH_T.Location = New System.Drawing.Point(197, 106)
+        Me.INPUT_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.INPUT_CASH_T.Name = "INPUT_CASH_T"
         Me.INPUT_CASH_T.ReadOnly = True
-        Me.INPUT_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.INPUT_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.INPUT_CASH_T.TabIndex = 53
         Me.INPUT_CASH_T.TabStop = False
         Me.INPUT_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -354,11 +355,11 @@ Partial Class fDayClose
         '
         Me.CAL_CASH_T.BackColor = System.Drawing.Color.Wheat
         Me.CAL_CASH_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.CAL_CASH_T.Location = New System.Drawing.Point(121, 186)
-        Me.CAL_CASH_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CAL_CASH_T.Location = New System.Drawing.Point(197, 298)
+        Me.CAL_CASH_T.Margin = New System.Windows.Forms.Padding(6)
         Me.CAL_CASH_T.Name = "CAL_CASH_T"
         Me.CAL_CASH_T.ReadOnly = True
-        Me.CAL_CASH_T.Size = New System.Drawing.Size(241, 27)
+        Me.CAL_CASH_T.Size = New System.Drawing.Size(389, 39)
         Me.CAL_CASH_T.TabIndex = 51
         Me.CAL_CASH_T.TabStop = False
         Me.CAL_CASH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -367,10 +368,10 @@ Partial Class fDayClose
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(32, 191)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(52, 306)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(85, 19)
+        Me.Label1.Size = New System.Drawing.Size(133, 30)
         Me.Label1.TabIndex = 52
         Me.Label1.Text = "現金残高"
         '
@@ -378,11 +379,11 @@ Partial Class fDayClose
         '
         Me.TOTAL_SALE_PRICE_T.BackColor = System.Drawing.Color.Wheat
         Me.TOTAL_SALE_PRICE_T.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TOTAL_SALE_PRICE_T.Location = New System.Drawing.Point(121, 156)
-        Me.TOTAL_SALE_PRICE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TOTAL_SALE_PRICE_T.Location = New System.Drawing.Point(197, 250)
+        Me.TOTAL_SALE_PRICE_T.Margin = New System.Windows.Forms.Padding(6)
         Me.TOTAL_SALE_PRICE_T.Name = "TOTAL_SALE_PRICE_T"
         Me.TOTAL_SALE_PRICE_T.ReadOnly = True
-        Me.TOTAL_SALE_PRICE_T.Size = New System.Drawing.Size(241, 27)
+        Me.TOTAL_SALE_PRICE_T.Size = New System.Drawing.Size(389, 39)
         Me.TOTAL_SALE_PRICE_T.TabIndex = 4
         Me.TOTAL_SALE_PRICE_T.TabStop = False
         Me.TOTAL_SALE_PRICE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -391,10 +392,10 @@ Partial Class fDayClose
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label16.Location = New System.Drawing.Point(12, 161)
-        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label16.Location = New System.Drawing.Point(20, 258)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(104, 19)
+        Me.Label16.Size = New System.Drawing.Size(163, 30)
         Me.Label16.TabIndex = 40
         Me.Label16.Text = "現金売上額"
         '
@@ -424,8 +425,8 @@ Partial Class fDayClose
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.TRN_V.DefaultCellStyle = DataGridViewCellStyle5
-        Me.TRN_V.Location = New System.Drawing.Point(36, 386)
-        Me.TRN_V.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TRN_V.Location = New System.Drawing.Point(58, 618)
+        Me.TRN_V.Margin = New System.Windows.Forms.Padding(6)
         Me.TRN_V.MultiSelect = False
         Me.TRN_V.Name = "TRN_V"
         Me.TRN_V.ReadOnly = True
@@ -437,9 +438,10 @@ Partial Class fDayClose
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.TRN_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.TRN_V.RowHeadersWidth = 82
         Me.TRN_V.RowTemplate.Height = 21
         Me.TRN_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.TRN_V.Size = New System.Drawing.Size(1292, 424)
+        Me.TRN_V.Size = New System.Drawing.Size(2100, 678)
         Me.TRN_V.TabIndex = 11
         Me.TRN_V.TabStop = False
         '
@@ -448,11 +450,11 @@ Partial Class fDayClose
         Me.GroupBox1.Controls.Add(Me.OUTPUT2_R)
         Me.GroupBox1.Controls.Add(Me.OUTPUT1_R)
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox1.Location = New System.Drawing.Point(1125, 48)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(1828, 77)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 80)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(6)
+        Me.GroupBox1.Size = New System.Drawing.Size(325, 128)
         Me.GroupBox1.TabIndex = 50
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "【集計表出力方法】"
@@ -461,10 +463,10 @@ Partial Class fDayClose
         '
         Me.OUTPUT2_R.AutoSize = True
         Me.OUTPUT2_R.Checked = True
-        Me.OUTPUT2_R.Location = New System.Drawing.Point(31, 52)
-        Me.OUTPUT2_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OUTPUT2_R.Location = New System.Drawing.Point(50, 83)
+        Me.OUTPUT2_R.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT2_R.Name = "OUTPUT2_R"
-        Me.OUTPUT2_R.Size = New System.Drawing.Size(75, 19)
+        Me.OUTPUT2_R.Size = New System.Drawing.Size(116, 28)
         Me.OUTPUT2_R.TabIndex = 51
         Me.OUTPUT2_R.TabStop = True
         Me.OUTPUT2_R.Text = "A4伝票"
@@ -473,10 +475,10 @@ Partial Class fDayClose
         'OUTPUT1_R
         '
         Me.OUTPUT1_R.AutoSize = True
-        Me.OUTPUT1_R.Location = New System.Drawing.Point(31, 24)
-        Me.OUTPUT1_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OUTPUT1_R.Location = New System.Drawing.Point(50, 38)
+        Me.OUTPUT1_R.Margin = New System.Windows.Forms.Padding(6)
         Me.OUTPUT1_R.Name = "OUTPUT1_R"
-        Me.OUTPUT1_R.Size = New System.Drawing.Size(116, 19)
+        Me.OUTPUT1_R.Size = New System.Drawing.Size(184, 28)
         Me.OUTPUT1_R.TabIndex = 0
         Me.OUTPUT1_R.Text = "ジャーナル伝票"
         Me.OUTPUT1_R.UseVisualStyleBackColor = True
@@ -487,10 +489,10 @@ Partial Class fDayClose
         Me.MODE_L.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.MODE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MODE_L.ForeColor = System.Drawing.Color.White
-        Me.MODE_L.Location = New System.Drawing.Point(40, 16)
-        Me.MODE_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.MODE_L.Location = New System.Drawing.Point(65, 26)
+        Me.MODE_L.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.MODE_L.Name = "MODE_L"
-        Me.MODE_L.Size = New System.Drawing.Size(1285, 28)
+        Me.MODE_L.Size = New System.Drawing.Size(2088, 45)
         Me.MODE_L.TabIndex = 54
         Me.MODE_L.Text = "日次締め処理モード"
         Me.MODE_L.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -499,78 +501,78 @@ Partial Class fDayClose
         '
         Me.OPOSPrinter1.Enabled = True
         Me.OPOSPrinter1.Location = New System.Drawing.Point(13, 719)
-        Me.OPOSPrinter1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OPOSPrinter1.Margin = New System.Windows.Forms.Padding(6)
         Me.OPOSPrinter1.Name = "OPOSPrinter1"
         Me.OPOSPrinter1.OcxState = CType(resources.GetObject("OPOSPrinter1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.OPOSPrinter1.Size = New System.Drawing.Size(35, 35)
+        Me.OPOSPrinter1.Size = New System.Drawing.Size(28, 28)
         Me.OPOSPrinter1.TabIndex = 51
         '
         'PRINT_B
         '
         Me.PRINT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.PRINT_B.Location = New System.Drawing.Point(1128, 130)
-        Me.PRINT_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.PRINT_B.Location = New System.Drawing.Point(1833, 208)
+        Me.PRINT_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.PRINT_B.Name = "PRINT_B"
-        Me.PRINT_B.Size = New System.Drawing.Size(197, 59)
+        Me.PRINT_B.Size = New System.Drawing.Size(320, 94)
         Me.PRINT_B.TabIndex = 1
         Me.PRINT_B.TextButton = "印刷実行"
         '
         'RET_CASH_B
         '
         Me.RET_CASH_B.ColorBottom = System.Drawing.Color.Tan
-        Me.RET_CASH_B.Location = New System.Drawing.Point(1128, 192)
-        Me.RET_CASH_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.RET_CASH_B.Location = New System.Drawing.Point(1833, 307)
+        Me.RET_CASH_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.RET_CASH_B.Name = "RET_CASH_B"
-        Me.RET_CASH_B.Size = New System.Drawing.Size(197, 59)
+        Me.RET_CASH_B.Size = New System.Drawing.Size(320, 94)
         Me.RET_CASH_B.TabIndex = 2
         Me.RET_CASH_B.TextButton = "現金回収"
         '
         'SEARCH_B
         '
         Me.SEARCH_B.ColorBottom = System.Drawing.Color.Tan
-        Me.SEARCH_B.Location = New System.Drawing.Point(1128, 255)
-        Me.SEARCH_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.SEARCH_B.Location = New System.Drawing.Point(1833, 408)
+        Me.SEARCH_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.SEARCH_B.Name = "SEARCH_B"
-        Me.SEARCH_B.Size = New System.Drawing.Size(197, 59)
+        Me.SEARCH_B.Size = New System.Drawing.Size(320, 94)
         Me.SEARCH_B.TabIndex = 3
         Me.SEARCH_B.TextButton = "過去データ呼出"
         '
         'RETURN_B
         '
         Me.RETURN_B.ColorBottom = System.Drawing.Color.Tan
-        Me.RETURN_B.Location = New System.Drawing.Point(1128, 318)
-        Me.RETURN_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.RETURN_B.Location = New System.Drawing.Point(1833, 509)
+        Me.RETURN_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.RETURN_B.Name = "RETURN_B"
-        Me.RETURN_B.Size = New System.Drawing.Size(197, 59)
+        Me.RETURN_B.Size = New System.Drawing.Size(320, 94)
         Me.RETURN_B.TabIndex = 4
         Me.RETURN_B.TextButton = "再計測"
         '
         'QUIT_B
         '
         Me.QUIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.QUIT_B.Location = New System.Drawing.Point(920, 822)
-        Me.QUIT_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.QUIT_B.Location = New System.Drawing.Point(1495, 1315)
+        Me.QUIT_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.QUIT_B.Name = "QUIT_B"
-        Me.QUIT_B.Size = New System.Drawing.Size(197, 59)
+        Me.QUIT_B.Size = New System.Drawing.Size(320, 94)
         Me.QUIT_B.TabIndex = 5
         Me.QUIT_B.TextButton = "中　止"
         '
         'COMMIT_B
         '
         Me.COMMIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.COMMIT_B.Location = New System.Drawing.Point(1131, 822)
-        Me.COMMIT_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
+        Me.COMMIT_B.Location = New System.Drawing.Point(1838, 1315)
+        Me.COMMIT_B.Margin = New System.Windows.Forms.Padding(8, 6, 8, 6)
         Me.COMMIT_B.Name = "COMMIT_B"
-        Me.COMMIT_B.Size = New System.Drawing.Size(197, 59)
+        Me.COMMIT_B.Size = New System.Drawing.Size(320, 94)
         Me.COMMIT_B.TabIndex = 6
         Me.COMMIT_B.TextButton = "終 了"
         '
         'fDayClose
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.BurlyWood
-        Me.ClientSize = New System.Drawing.Size(1365, 899)
+        Me.ClientSize = New System.Drawing.Size(2218, 1438)
         Me.Controls.Add(Me.COMMIT_B)
         Me.Controls.Add(Me.QUIT_B)
         Me.Controls.Add(Me.RETURN_B)
@@ -585,8 +587,8 @@ Partial Class fDayClose
         Me.Controls.Add(Me.STAFF_CODE_T)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.STAFF_NAME_T)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "fDayClose"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "日次締め処理"

@@ -6,6 +6,7 @@ Public Class cDataTrnSubDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
+
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
         pCommand = iCommand
@@ -13,9 +14,9 @@ Public Class cDataTrnSubDBIO
     End Sub
 
 
-    Public Function TrnExist(ByVal KeyString As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function TrnExist(ByVal KeyString As String, ByRef Tran As OleDb.OleDbTransaction) As Boolean
 
-        Const strSelectTrn As String = _
+        Const strSelectTrn As String =
         "SELECT COUNT(*) FROM 日次取引明細データ WHERE 取引コード = @TrnCode"
 
         Try
@@ -315,6 +316,15 @@ Public Class cDataTrnSubDBIO
                 End If
                 '2019.10.16 R.Takashima TO
 
+                '2019,12,23 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parSubTrn(i).sReducedTaxRate = 0
+                Else
+                    parSubTrn(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                End If
+                '2019,12,23 A.Komita 追加 To
+
                 '取引税込金額
                 If IsDBNull(pDataReader("取引税込金額")) = True Then
                     parSubTrn(i).sPrice = 0
@@ -328,6 +338,7 @@ Public Class cDataTrnSubDBIO
                 '登録時間
                 parSubTrn(i).sCreateTime = pDataReader("登録時間").ToString
                 '最終更新日
+
                 parSubTrn(i).sUpdateDate = pDataReader("最終更新日").ToString
                 '最終更新時間
                 parSubTrn(i).sUpdateTime = pDataReader("最終更新時間").ToString
@@ -469,10 +480,10 @@ Public Class cDataTrnSubDBIO
         End Try
 
     End Function
-    Public Function getSumPrice(ByRef parSubTrn() As cStructureLib.sSubTrn, _
-                               ByVal KeyTrnCode As Long, _
-                               ByVal KeySubTrnClass As Integer, _
-                               ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function getSumPrice(ByRef parSubTrn() As cStructureLib.sSubTrn,
+                               ByVal KeyTrnCode As Long,
+                               ByVal KeySubTrnClass As Integer,
+                               ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelect As String
         Dim i As Integer
         Dim pc As Integer
@@ -481,11 +492,11 @@ Public Class cDataTrnSubDBIO
 
         strSelect = ""
 
-        strSelect = "SELECT " & _
-                        "日次取引明細データ.取引コード, " & _
-                        "日次取引明細データ.売上明細区分, " & _
-                        "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " & _
-                    "FROM 日次取引明細データ " & _
+        strSelect = "SELECT " &
+                        "日次取引明細データ.取引コード, " &
+                        "日次取引明細データ.売上明細区分, " &
+                        "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
+                    "FROM 日次取引明細データ " &
                     "GROUP BY 日次取引明細データ.取引コード, 日次取引明細データ.売上明細区分 "
 
         'SQL文の設定
@@ -569,14 +580,17 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function insertSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
+        '2020,1,7 A.Komita 追加 From
+        Dim strInsertTrn As String
+        '2020,1,7 A.Komita 追加 To
 
         Try
 
             '2019.10.5 R.Takashima
             '軽減消費税額の追加
             'SQL文の設定
-            Const strInsertTrn As String = "INSERT INTO 日次取引明細データ (" &
+            strInsertTrn = "INSERT INTO 日次取引明細データ (" &
                                                 "取引コード, " &
                                                 "取引明細コード, " &
                                                 "売上状態, " &
@@ -603,6 +617,7 @@ Public Class cDataTrnSubDBIO
                                                 "取引税抜金額, " &
                                                 "取引消費税額, " &
                                                 "取引軽減消費税額, " &
+                                                "軽減税率, " &
                                                 "取引税込金額, " &
                                                 "備考, " &
                                                 "登録日, " &
@@ -636,6 +651,7 @@ Public Class cDataTrnSubDBIO
                                                 "@NoTaxPrice, " &
                                                 "@TaxPrice, " &
                                                 "@ReduceTaxPrice, " &
+                                                "@ReducedTaxRate, " &
                                                 "@Price, " &
                                                 "@Memo, " &
                                                 "@CreateDate, " &
@@ -758,6 +774,18 @@ Public Class cDataTrnSubDBIO
             (New OleDb.OleDbParameter("@ReduceTaxPrice", OleDb.OleDbType.Numeric, 10))
             pCommand.Parameters("@ReduceTaxPrice").Value = parSubTrn.sReducedTaxRatePrice
             '2019.10.5 R.Takashima TO
+
+            '2019,12,23 A.Komita 追加 From
+            '軽減税率
+            pCommand.Parameters.Add _
+            (New OleDb.OleDbParameter("@ReducedTaxRate", OleDb.OleDbType.Numeric, 10))
+            If IsNothing(parSubTrn.sReducedTaxRate) = True Then
+                pCommand.Parameters("@ReducedTaxRate").Value = 0
+            Else
+                pCommand.Parameters("@ReducedTaxRate").Value = parSubTrn.sReducedTaxRate
+            End If
+            '2019,12,23 A.Komita 追加 To
+
             '取引税込金額
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@Price", OleDb.OleDbType.Numeric, 10))
@@ -808,7 +836,7 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function updateSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function updateSubTrn(ByVal parSubTrn As cStructureLib.sSubTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
         Dim strUpdate As String
 
         'SQL文の設定
@@ -840,6 +868,7 @@ Public Class cDataTrnSubDBIO
                             "取引税抜金額=" & parSubTrn.sNoTaxPrice & " , " &
                             "取引消費税額=" & parSubTrn.sPointDiscountPrice & " , " &
                             "取引軽減消費税額=" & parSubTrn.sReducedTaxRatePrice & " , " &
+                            "軽減税率=" & parSubTrn.sReducedTaxRate & " , " &
                             "取引税込金額=" & parSubTrn.sPrice & " , " &
                             "備考=""" & parSubTrn.sMemo & """ , " &
                             "最終更新日=""" & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
@@ -881,11 +910,11 @@ Public Class cDataTrnSubDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function deleteSubTrn( _
-                                    ByVal KeyTrnCode As Long, _
-                                    ByVal KeySubTrnCode As Long, _
-                                    ByVal KeyShipmentCode As String, _
-                                    ByRef Tran As System.Data.OleDb.OleDbTransaction _
+    Public Function deleteSubTrn(
+                                    ByVal KeyTrnCode As Long,
+                                    ByVal KeySubTrnCode As Long,
+                                    ByVal KeyShipmentCode As String,
+                                    ByRef Tran As OleDb.OleDbTransaction
                                 ) As Boolean
 
         Dim strDeleteSubTrn As String

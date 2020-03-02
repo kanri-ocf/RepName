@@ -23,9 +23,9 @@ Partial Class fProductStatus
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PRODUCT_CODE_T = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SUPPLIER_L = New System.Windows.Forms.ComboBox()
@@ -68,9 +68,10 @@ Partial Class fProductStatus
         '
         Me.PRODUCT_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.PRODUCT_CODE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.PRODUCT_CODE_T.Location = New System.Drawing.Point(126, 65)
+        Me.PRODUCT_CODE_T.Location = New System.Drawing.Point(168, 81)
+        Me.PRODUCT_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.PRODUCT_CODE_T.Name = "PRODUCT_CODE_T"
-        Me.PRODUCT_CODE_T.Size = New System.Drawing.Size(100, 20)
+        Me.PRODUCT_CODE_T.Size = New System.Drawing.Size(132, 20)
         Me.PRODUCT_CODE_T.TabIndex = 3
         '
         'Label1
@@ -79,7 +80,8 @@ Partial Class fProductStatus
         Me.Label1.BackColor = System.Drawing.Color.Tan
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(52, 68)
+        Me.Label1.Location = New System.Drawing.Point(69, 85)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(75, 15)
         Me.Label1.TabIndex = 1
@@ -92,9 +94,10 @@ Partial Class fProductStatus
         Me.SUPPLIER_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SUPPLIER_L.FormattingEnabled = True
         Me.SUPPLIER_L.IntegralHeight = False
-        Me.SUPPLIER_L.Location = New System.Drawing.Point(337, 88)
+        Me.SUPPLIER_L.Location = New System.Drawing.Point(449, 110)
+        Me.SUPPLIER_L.Margin = New System.Windows.Forms.Padding(4)
         Me.SUPPLIER_L.Name = "SUPPLIER_L"
-        Me.SUPPLIER_L.Size = New System.Drawing.Size(232, 21)
+        Me.SUPPLIER_L.Size = New System.Drawing.Size(308, 21)
         Me.SUPPLIER_L.TabIndex = 7
         '
         'Label2
@@ -103,7 +106,8 @@ Partial Class fProductStatus
         Me.Label2.BackColor = System.Drawing.Color.Tan
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(277, 92)
+        Me.Label2.Location = New System.Drawing.Point(369, 115)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(60, 15)
         Me.Label2.TabIndex = 3
@@ -116,7 +120,8 @@ Partial Class fProductStatus
         Me.Label3.BackColor = System.Drawing.Color.Tan
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(52, 22)
+        Me.Label3.Location = New System.Drawing.Point(69, 28)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(75, 15)
         Me.Label3.TabIndex = 5
@@ -127,9 +132,10 @@ Partial Class fProductStatus
         '
         Me.PRODUCT_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.PRODUCT_NAME_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.PRODUCT_NAME_T.Location = New System.Drawing.Point(126, 19)
+        Me.PRODUCT_NAME_T.Location = New System.Drawing.Point(168, 24)
+        Me.PRODUCT_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.PRODUCT_NAME_T.Name = "PRODUCT_NAME_T"
-        Me.PRODUCT_NAME_T.Size = New System.Drawing.Size(350, 20)
+        Me.PRODUCT_NAME_T.Size = New System.Drawing.Size(465, 20)
         Me.PRODUCT_NAME_T.TabIndex = 1
         '
         'PRODUCT_V
@@ -137,36 +143,37 @@ Partial Class fProductStatus
         Me.PRODUCT_V.AllowUserToAddRows = False
         Me.PRODUCT_V.BackgroundColor = System.Drawing.Color.Wheat
         Me.PRODUCT_V.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.PRODUCT_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.PRODUCT_V.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.PRODUCT_V.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.PRODUCT_V.DefaultCellStyle = DataGridViewCellStyle5
-        Me.PRODUCT_V.Location = New System.Drawing.Point(23, 117)
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PRODUCT_V.DefaultCellStyle = DataGridViewCellStyle2
+        Me.PRODUCT_V.Location = New System.Drawing.Point(31, 146)
+        Me.PRODUCT_V.Margin = New System.Windows.Forms.Padding(4)
         Me.PRODUCT_V.Name = "PRODUCT_V"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Tan
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.PRODUCT_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Tan
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.PRODUCT_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.PRODUCT_V.RowTemplate.Height = 21
         Me.PRODUCT_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.PRODUCT_V.Size = New System.Drawing.Size(975, 505)
+        Me.PRODUCT_V.Size = New System.Drawing.Size(1300, 631)
         Me.PRODUCT_V.TabIndex = 11
         Me.PRODUCT_V.TabStop = False
         '
@@ -175,9 +182,10 @@ Partial Class fProductStatus
         Me.Label7.BackColor = System.Drawing.Color.Tan
         Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(40, 89)
+        Me.Label7.Location = New System.Drawing.Point(53, 111)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(87, 19)
+        Me.Label7.Size = New System.Drawing.Size(116, 24)
         Me.Label7.TabIndex = 20
         Me.Label7.Text = "JANコード："
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -186,26 +194,29 @@ Partial Class fProductStatus
         '
         Me.JANCODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.JANCODE_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.JANCODE_T.Location = New System.Drawing.Point(126, 88)
+        Me.JANCODE_T.Location = New System.Drawing.Point(168, 110)
+        Me.JANCODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.JANCODE_T.Name = "JANCODE_T"
-        Me.JANCODE_T.Size = New System.Drawing.Size(130, 20)
+        Me.JANCODE_T.Size = New System.Drawing.Size(172, 20)
         Me.JANCODE_T.TabIndex = 4
         '
         'SUPPLIER_CODE_T
         '
         Me.SUPPLIER_CODE_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(536, 90)
+        Me.SUPPLIER_CODE_T.Location = New System.Drawing.Point(715, 112)
+        Me.SUPPLIER_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SUPPLIER_CODE_T.Name = "SUPPLIER_CODE_T"
-        Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(15, 19)
+        Me.SUPPLIER_CODE_T.Size = New System.Drawing.Size(19, 19)
         Me.SUPPLIER_CODE_T.TabIndex = 21
         Me.SUPPLIER_CODE_T.Visible = False
         '
         'S_PRODUCT_CODE_T
         '
         Me.S_PRODUCT_CODE_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.S_PRODUCT_CODE_T.Location = New System.Drawing.Point(207, 65)
+        Me.S_PRODUCT_CODE_T.Location = New System.Drawing.Point(276, 81)
+        Me.S_PRODUCT_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.S_PRODUCT_CODE_T.Name = "S_PRODUCT_CODE_T"
-        Me.S_PRODUCT_CODE_T.Size = New System.Drawing.Size(19, 19)
+        Me.S_PRODUCT_CODE_T.Size = New System.Drawing.Size(24, 19)
         Me.S_PRODUCT_CODE_T.TabIndex = 23
         Me.S_PRODUCT_CODE_T.Visible = False
         '
@@ -213,9 +224,10 @@ Partial Class fProductStatus
         '
         Me.MAKER_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MAKER_NAME_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.MAKER_NAME_T.Location = New System.Drawing.Point(337, 65)
+        Me.MAKER_NAME_T.Location = New System.Drawing.Point(449, 81)
+        Me.MAKER_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.MAKER_NAME_T.Name = "MAKER_NAME_T"
-        Me.MAKER_NAME_T.Size = New System.Drawing.Size(139, 20)
+        Me.MAKER_NAME_T.Size = New System.Drawing.Size(184, 20)
         Me.MAKER_NAME_T.TabIndex = 5
         '
         'Label4
@@ -224,7 +236,8 @@ Partial Class fProductStatus
         Me.Label4.BackColor = System.Drawing.Color.Tan
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(247, 69)
+        Me.Label4.Location = New System.Drawing.Point(329, 86)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(90, 15)
         Me.Label4.TabIndex = 26
@@ -234,9 +247,10 @@ Partial Class fProductStatus
         'S_JAN_CODE_T
         '
         Me.S_JAN_CODE_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.S_JAN_CODE_T.Location = New System.Drawing.Point(237, 89)
+        Me.S_JAN_CODE_T.Location = New System.Drawing.Point(316, 111)
+        Me.S_JAN_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.S_JAN_CODE_T.Name = "S_JAN_CODE_T"
-        Me.S_JAN_CODE_T.Size = New System.Drawing.Size(19, 19)
+        Me.S_JAN_CODE_T.Size = New System.Drawing.Size(24, 19)
         Me.S_JAN_CODE_T.TabIndex = 27
         Me.S_JAN_CODE_T.Visible = False
         '
@@ -244,9 +258,10 @@ Partial Class fProductStatus
         '
         Me.OPTION_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.OPTION_NAME_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.OPTION_NAME_T.Location = New System.Drawing.Point(126, 42)
+        Me.OPTION_NAME_T.Location = New System.Drawing.Point(168, 52)
+        Me.OPTION_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.OPTION_NAME_T.Name = "OPTION_NAME_T"
-        Me.OPTION_NAME_T.Size = New System.Drawing.Size(350, 20)
+        Me.OPTION_NAME_T.Size = New System.Drawing.Size(465, 20)
         Me.OPTION_NAME_T.TabIndex = 2
         '
         'Label5
@@ -255,7 +270,8 @@ Partial Class fProductStatus
         Me.Label5.BackColor = System.Drawing.Color.Tan
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(29, 43)
+        Me.Label5.Location = New System.Drawing.Point(39, 54)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(98, 15)
         Me.Label5.TabIndex = 29
@@ -266,10 +282,11 @@ Partial Class fProductStatus
         '
         Me.GroupBox3.Controls.Add(Me.STOPSUPPLIE_C)
         Me.GroupBox3.Controls.Add(Me.STOPSALE_C)
-        Me.GroupBox3.Location = New System.Drawing.Point(642, 63)
+        Me.GroupBox3.Location = New System.Drawing.Point(856, 79)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox3.Size = New System.Drawing.Size(177, 46)
+        Me.GroupBox3.Size = New System.Drawing.Size(236, 58)
         Me.GroupBox3.TabIndex = 9
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "【取扱状況】"
@@ -278,7 +295,8 @@ Partial Class fProductStatus
         '
         Me.STOPSUPPLIE_C.AutoSize = True
         Me.STOPSUPPLIE_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STOPSUPPLIE_C.Location = New System.Drawing.Point(89, 18)
+        Me.STOPSUPPLIE_C.Location = New System.Drawing.Point(119, 22)
+        Me.STOPSUPPLIE_C.Margin = New System.Windows.Forms.Padding(4)
         Me.STOPSUPPLIE_C.Name = "STOPSUPPLIE_C"
         Me.STOPSUPPLIE_C.Size = New System.Drawing.Size(78, 17)
         Me.STOPSUPPLIE_C.TabIndex = 159
@@ -289,7 +307,8 @@ Partial Class fProductStatus
         '
         Me.STOPSALE_C.AutoSize = True
         Me.STOPSALE_C.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STOPSALE_C.Location = New System.Drawing.Point(9, 18)
+        Me.STOPSALE_C.Location = New System.Drawing.Point(12, 22)
+        Me.STOPSALE_C.Margin = New System.Windows.Forms.Padding(4)
         Me.STOPSALE_C.Name = "STOPSALE_C"
         Me.STOPSALE_C.Size = New System.Drawing.Size(78, 17)
         Me.STOPSALE_C.TabIndex = 141
@@ -301,10 +320,11 @@ Partial Class fProductStatus
         Me.GroupBox1.Controls.Add(Me.SYUBETU_3_R)
         Me.GroupBox1.Controls.Add(Me.SYUBETU_2_R)
         Me.GroupBox1.Controls.Add(Me.SYUBETU_1_R)
-        Me.GroupBox1.Location = New System.Drawing.Point(519, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(692, 15)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(0)
-        Me.GroupBox1.Size = New System.Drawing.Size(300, 45)
+        Me.GroupBox1.Size = New System.Drawing.Size(400, 56)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "【商品種別】"
@@ -313,7 +333,8 @@ Partial Class fProductStatus
         '
         Me.SYUBETU_3_R.AutoSize = True
         Me.SYUBETU_3_R.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SYUBETU_3_R.Location = New System.Drawing.Point(214, 17)
+        Me.SYUBETU_3_R.Location = New System.Drawing.Point(285, 21)
+        Me.SYUBETU_3_R.Margin = New System.Windows.Forms.Padding(4)
         Me.SYUBETU_3_R.Name = "SYUBETU_3_R"
         Me.SYUBETU_3_R.Size = New System.Drawing.Size(77, 17)
         Me.SYUBETU_3_R.TabIndex = 15
@@ -324,7 +345,8 @@ Partial Class fProductStatus
         '
         Me.SYUBETU_2_R.AutoSize = True
         Me.SYUBETU_2_R.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SYUBETU_2_R.Location = New System.Drawing.Point(102, 17)
+        Me.SYUBETU_2_R.Location = New System.Drawing.Point(136, 21)
+        Me.SYUBETU_2_R.Margin = New System.Windows.Forms.Padding(4)
         Me.SYUBETU_2_R.Name = "SYUBETU_2_R"
         Me.SYUBETU_2_R.Size = New System.Drawing.Size(92, 17)
         Me.SYUBETU_2_R.TabIndex = 1
@@ -336,7 +358,8 @@ Partial Class fProductStatus
         Me.SYUBETU_1_R.AutoSize = True
         Me.SYUBETU_1_R.Checked = True
         Me.SYUBETU_1_R.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SYUBETU_1_R.Location = New System.Drawing.Point(8, 16)
+        Me.SYUBETU_1_R.Location = New System.Drawing.Point(11, 20)
+        Me.SYUBETU_1_R.Margin = New System.Windows.Forms.Padding(4)
         Me.SYUBETU_1_R.Name = "SYUBETU_1_R"
         Me.SYUBETU_1_R.Size = New System.Drawing.Size(77, 17)
         Me.SYUBETU_1_R.TabIndex = 14
@@ -347,45 +370,50 @@ Partial Class fProductStatus
         'RETURN_B
         '
         Me.RETURN_B.ColorBottom = System.Drawing.Color.Tan
-        Me.RETURN_B.Location = New System.Drawing.Point(885, 637)
+        Me.RETURN_B.Location = New System.Drawing.Point(1180, 796)
+        Me.RETURN_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.RETURN_B.Name = "RETURN_B"
-        Me.RETURN_B.Size = New System.Drawing.Size(113, 46)
+        Me.RETURN_B.Size = New System.Drawing.Size(151, 58)
         Me.RETURN_B.TabIndex = 12
         Me.RETURN_B.TextButton = "終了"
         '
         'SEARCH_B
         '
         Me.SEARCH_B.ColorBottom = System.Drawing.Color.Tan
-        Me.SEARCH_B.Location = New System.Drawing.Point(825, 63)
+        Me.SEARCH_B.Location = New System.Drawing.Point(1100, 79)
+        Me.SEARCH_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.SEARCH_B.Name = "SEARCH_B"
-        Me.SEARCH_B.Size = New System.Drawing.Size(177, 46)
+        Me.SEARCH_B.Size = New System.Drawing.Size(236, 58)
         Me.SEARCH_B.TabIndex = 10
         Me.SEARCH_B.TextButton = "検　索"
         '
         'S_PRODUCT_NAME_T
         '
         Me.S_PRODUCT_NAME_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.S_PRODUCT_NAME_T.Location = New System.Drawing.Point(482, 19)
+        Me.S_PRODUCT_NAME_T.Location = New System.Drawing.Point(643, 24)
+        Me.S_PRODUCT_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.S_PRODUCT_NAME_T.Name = "S_PRODUCT_NAME_T"
-        Me.S_PRODUCT_NAME_T.Size = New System.Drawing.Size(19, 19)
+        Me.S_PRODUCT_NAME_T.Size = New System.Drawing.Size(24, 19)
         Me.S_PRODUCT_NAME_T.TabIndex = 30
         Me.S_PRODUCT_NAME_T.Visible = False
         '
         'S_OPTION_NAME_T
         '
         Me.S_OPTION_NAME_T.BackColor = System.Drawing.SystemColors.Menu
-        Me.S_OPTION_NAME_T.Location = New System.Drawing.Point(482, 39)
+        Me.S_OPTION_NAME_T.Location = New System.Drawing.Point(643, 49)
+        Me.S_OPTION_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.S_OPTION_NAME_T.Name = "S_OPTION_NAME_T"
-        Me.S_OPTION_NAME_T.Size = New System.Drawing.Size(19, 19)
+        Me.S_OPTION_NAME_T.Size = New System.Drawing.Size(24, 19)
         Me.S_OPTION_NAME_T.TabIndex = 31
         Me.S_OPTION_NAME_T.Visible = False
         '
         'COMMIT_B
         '
         Me.COMMIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.COMMIT_B.Location = New System.Drawing.Point(754, 637)
+        Me.COMMIT_B.Location = New System.Drawing.Point(1005, 796)
+        Me.COMMIT_B.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.COMMIT_B.Name = "COMMIT_B"
-        Me.COMMIT_B.Size = New System.Drawing.Size(113, 46)
+        Me.COMMIT_B.Size = New System.Drawing.Size(151, 58)
         Me.COMMIT_B.TabIndex = 32
         Me.COMMIT_B.TextButton = "登録"
         '
@@ -393,9 +421,10 @@ Partial Class fProductStatus
         '
         Me.SELECT_CNT_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.SELECT_CNT_T.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.SELECT_CNT_T.Location = New System.Drawing.Point(898, 24)
+        Me.SELECT_CNT_T.Location = New System.Drawing.Point(1197, 30)
+        Me.SELECT_CNT_T.Margin = New System.Windows.Forms.Padding(4)
         Me.SELECT_CNT_T.Name = "SELECT_CNT_T"
-        Me.SELECT_CNT_T.Size = New System.Drawing.Size(100, 22)
+        Me.SELECT_CNT_T.Size = New System.Drawing.Size(132, 22)
         Me.SELECT_CNT_T.TabIndex = 33
         Me.SELECT_CNT_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -405,7 +434,8 @@ Partial Class fProductStatus
         Me.Label6.BackColor = System.Drawing.Color.Tan
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(825, 28)
+        Me.Label6.Location = New System.Drawing.Point(1100, 35)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(75, 15)
         Me.Label6.TabIndex = 34
@@ -416,10 +446,11 @@ Partial Class fProductStatus
         '
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_CODE_T.Location = New System.Drawing.Point(75, 650)
+        Me.STAFF_CODE_T.Location = New System.Drawing.Point(100, 812)
+        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(4)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
-        Me.STAFF_CODE_T.Size = New System.Drawing.Size(87, 19)
+        Me.STAFF_CODE_T.Size = New System.Drawing.Size(115, 19)
         Me.STAFF_CODE_T.TabIndex = 36
         Me.STAFF_CODE_T.TabStop = False
         '
@@ -427,17 +458,19 @@ Partial Class fProductStatus
         '
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_NAME_T.Location = New System.Drawing.Point(168, 650)
+        Me.STAFF_NAME_T.Location = New System.Drawing.Point(224, 812)
+        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(4)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
-        Me.STAFF_NAME_T.Size = New System.Drawing.Size(192, 19)
+        Me.STAFF_NAME_T.Size = New System.Drawing.Size(255, 19)
         Me.STAFF_NAME_T.TabIndex = 35
         Me.STAFF_NAME_T.TabStop = False
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(31, 654)
+        Me.Label8.Location = New System.Drawing.Point(41, 818)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(47, 12)
         Me.Label8.TabIndex = 37
@@ -445,10 +478,10 @@ Partial Class fProductStatus
         '
         'fProductStatus
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(1024, 695)
+        Me.ClientSize = New System.Drawing.Size(1365, 869)
         Me.Controls.Add(Me.STAFF_CODE_T)
         Me.Controls.Add(Me.STAFF_NAME_T)
         Me.Controls.Add(Me.Label8)
@@ -477,9 +510,11 @@ Partial Class fProductStatus
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "fProductStatus"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "商品ステータス更新画面"
         CType(Me.PRODUCT_V, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)

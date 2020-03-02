@@ -120,9 +120,6 @@
   <data name="TEL.OutputFormat" xml:space="preserve">
     <value />
   </data>
-  <data name="TEL.OutputFormat" xml:space="preserve">
-    <value />
-  </data>
   <data name="CNT.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
   </data>
@@ -134,27 +131,6 @@
   </data>
   <data name="TAX_RATE.OutputFormat" xml:space="preserve">
     <value>#,##0</value>
-  </data>
-  <data name="CNT.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="PRICE.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="T_PRICE.OutputFormat" xml:space="preserve">
-    <value>¥#,##0</value>
-  </data>
-  <data name="TAX_RATE.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="TOTAL_PRICE.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="TOTAL_CNT.OutputFormat" xml:space="preserve">
-    <value>#,##0</value>
-  </data>
-  <data name="TOTAL_T_PRICE.OutputFormat" xml:space="preserve">
-    <value>¥#,##0</value>
   </data>
   <data name="TOTAL_PRICE.OutputFormat" xml:space="preserve">
     <value>#,##0</value>

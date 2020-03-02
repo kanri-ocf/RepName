@@ -57,13 +57,13 @@ Public Class fMemberCardReportPage
         '課題表No107 カードプリンタの接続チェック
         If oConf Is Nothing Then
             '2016.07.05 K.Oikawa e        
-            Dim message_form As New cMessageLib.fMessage(1, _
+            Dim message_form As New cMessageLib.fMessage(1,
                                               "カードプリンターの接続を確認してください", Nothing, Nothing, Nothing)
             message_form.ShowDialog()
             message_form = Nothing
-            Me.DialogResult = Windows.Forms.DialogResult.No
-            Me.Dispose()
-            Exit Sub
+            'Me.DialogResult = Windows.Forms.DialogResult.No
+            'Me.Dispose()
+            'Exit Sub
         End If
         '2016.07.06 K.Oikawa e
 
@@ -86,7 +86,7 @@ Public Class fMemberCardReportPage
 
         Message_form = New cMessageLib.fMessage(0, Nothing, "会員カード印刷準備中...", Nothing, Nothing)
         Message_form.Show()
-        System.Windows.Forms.Application.DoEvents()
+        'System.Windows.Forms.Application.DoEvents()
 
         If A4_Printer_R.Checked = True Then
             '*********************************
@@ -116,9 +116,9 @@ Public Class fMemberCardReportPage
 
             rCard_Fore_Report.Run()
 
-            '------------------
-            '裏面のレポート設定
-            '------------------
+            '    '------------------
+            '    '裏面のレポート設定
+            '    '------------------
             rCard_Back_Report = New rMemberCard_Back(oConn, oCommand, oDataReader, oTran)
 
             rCard_Back_Report.PrintWidth = DataDynamics.ActiveReports.ActiveReport.CmToInch(17.2)
@@ -150,8 +150,8 @@ Public Class fMemberCardReportPage
             rCard_Fore_Report.Dispose()
             rCard_Fore_Report = Nothing
 
-            rCard_Back_Report.Dispose()
-            rCard_Back_Report = Nothing
+            'rCard_Back_Report.Dispose()
+            'rCard_Back_Report = Nothing
 
         Else
             '*********************************
@@ -236,15 +236,15 @@ Public Class fMemberCardReportPage
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************
-    '*
-    'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    'Const WM_SYSCOMMAND As Integer = &H112
-    'Const SC_CLOSE As Integer = &HF060
-    '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
-    '        Return  ' Windows標準の処理は行わない
-    '    End If
-    '    MyBase.WndProc(m)
-    'End Sub
+
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        Const WM_SYSCOMMAND As Integer = &H112
+        Const SC_CLOSE As Integer = &HF060
+        If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
+            Return  ' Windows標準の処理は行わない
+        End If
+        MyBase.WndProc(m)
+    End Sub
 
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる

@@ -2042,7 +2042,7 @@ Partial Class fRegister
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(2227, 1536)
+        Me.ClientSize = New System.Drawing.Size(2262, 1174)
         Me.ControlBox = False
         Me.Controls.Add(Me.TRAN_HISTORY_B)
         Me.Controls.Add(Me.POINT_MEMBER_B)

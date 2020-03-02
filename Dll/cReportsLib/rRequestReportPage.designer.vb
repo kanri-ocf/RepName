@@ -485,7 +485,7 @@ Partial Public Class rRequestReportPage
         Me.Label73.Left = 6.216!
         Me.Label73.Name = "Label73"
         Me.Label73.Style = "font-size: 9.75pt; text-align: right; vertical-align: middle"
-        Me.Label73.Text = "単位：円(税込)"
+        Me.Label73.Text = "単位：円(税抜)"
         Me.Label73.Top = 5.671!
         Me.Label73.Width = 0.885434!
         '

@@ -112,6 +112,7 @@
         SHIPMENT_C.Checked = oChannelPaymentFull(0).sShipmentFlg
         ORDER_C.Checked = oChannelPaymentFull(0).sOrderFlg
         ARRIVE_C.Checked = oChannelPaymentFull(0).sArrivalFlg
+        RETURN_C.Checked = oChannelPaymentFull(0).sReturnFlg
 
     End Sub
     Private Sub CHANNEL_PAYMENT_DISP()
@@ -262,13 +263,34 @@
 
         '支払方法マスタの登録
         ReDim oPayment(0)
-        oPayment(0).sPaymentCode = CInt(PAYMENT_CODE_T.Text)
-        oPayment(0).sPaymentName = PAYMENT_NAME_T.Text
+        If PAYMENT_CODE_T.Text <> "" Then
+            oPayment(0).sPaymentCode = CInt(PAYMENT_CODE_T.Text)
+        Else
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+                        "支払い方法コードが空欄です。",
+                        Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+            Exit Sub
+        End If
+        If PAYMENT_NAME_T.Text <> "" Then
+            oPayment(0).sPaymentName = PAYMENT_NAME_T.Text
+        Else
+            Message_form = New cMessageLib.fMessage(1, Nothing,
+                        "支払い方法名称が空欄です。",
+                        Nothing, Nothing)
+            Message_form.ShowDialog()
+            Message_form = Nothing
+            Exit Sub
+        End If
+
         oPayment(0).sCreditFlg = CREDIT_C.Checked
         oPayment(0).sRequestFlg = REQUEST_C.Checked
         oPayment(0).sShipmentFlg = SHIPMENT_C.Checked
         oPayment(0).sOrderFlg = ORDER_C.Checked
         oPayment(0).sArriveFlg = ARRIVE_C.Checked
+        oPayment(0).sReturnFlg = RETURN_C.Checked
+
 
         If MODE_L.Text = "新規" Then
             ret = oPaymentDBIO.insertPaymentMst(oPayment(0), oTran)
@@ -282,16 +304,28 @@
         'チャネル別支払方法マスタの登録
         ReDim oChannelPayment(0)
         For i = 0 To CHANNEL_PAYMENT_V.Rows.Count - 2
-            If CHANNEL_PAYMENT_V("チャネル別支払コード", i).Value = 0 Then
-                oChannelPayment(0).sChannelPaymentCode = oMstChannelPaymentDBIO.getNewChannelPaymentCode(oTran)
-            Else
-                oChannelPayment(0).sChannelPaymentCode = CInt(CHANNEL_PAYMENT_V("チャネル別支払コード", i).Value)
-            End If
-            oChannelPayment(0).sChannelCode = CInt(CHANNEL_PAYMENT_V("チャネルコード", i).Value)
-            oChannelPayment(0).sPaymentCode = CInt(CHANNEL_PAYMENT_V("支払方法コード", i).Value)
-            oChannelPayment(0).sChannelPaymentName = CHANNEL_PAYMENT_V("チャネル別支払方法名称", i).Value
+            If CHANNEL_PAYMENT_V("チャネル別支払方法名称", i).Value <> "" Then
 
-            ret = oMstChannelPaymentDBIO.insertChannelPaymentMst(oChannelPayment(0), oTran)
+
+                If CHANNEL_PAYMENT_V("チャネル別支払コード", i).Value = 0 Then
+                    oChannelPayment(0).sChannelPaymentCode = oMstChannelPaymentDBIO.getNewChannelPaymentCode(oTran)
+                Else
+                    oChannelPayment(0).sChannelPaymentCode = CInt(CHANNEL_PAYMENT_V("チャネル別支払コード", i).Value)
+                End If
+                oChannelPayment(0).sChannelCode = CInt(CHANNEL_PAYMENT_V("チャネルコード", i).Value)
+                oChannelPayment(0).sPaymentCode = CInt(CHANNEL_PAYMENT_V("支払方法コード", i).Value)
+                oChannelPayment(0).sChannelPaymentName = CHANNEL_PAYMENT_V("チャネル別支払方法名称", i).Value
+
+                ret = oMstChannelPaymentDBIO.insertChannelPaymentMst(oChannelPayment(0), oTran)
+            Else
+                Message_form = New cMessageLib.fMessage(1, Nothing,
+                        "チャネル別支払方法名称が空欄です。",
+                        Nothing, Nothing)
+                Message_form.ShowDialog()
+                Message_form = Nothing
+                Exit Sub
+            End If
+
         Next
 
         oTran.Commit()
@@ -370,7 +404,7 @@
         Dim RowNo As Integer
 
         RowNo = CHANNEL_PAYMENT_V.CurrentRow.Index
-        If RowNo < CHANNEL_PAYMENT_V.Rows.Count - 1 Then
+        If RowNo <CHANNEL_PAYMENT_V.Rows.Count - 1 Then
             Dim message_form As New cMessageLib.fMessage(2, _
                                           "チャネル別支払名称を削除します", _
                                           "よろしいですか？", _

@@ -152,7 +152,7 @@ Public Class rDayCloseReportSub1
             Fields("KANJYOU").Value = oAdjust(RECORD_NO).sAccountName
             If oAdjust(RECORD_NO).sSubAccountName = "" Then
                 oAccountDBIO = New cMstAccountDBIO(oConn, oCommand, oDataReader)
-                oAccountDBIO.getAccount(oAccount, oAdjust(RECORD_NO).sAccountCode, Nothing, Nothing, Nothing, oTran)
+                oAccountDBIO.getAccount(oAccount, oAdjust(RECORD_NO).sAccountCode, Nothing, Nothing, Nothing, Nothing, oTran)
                 Select Case oAccount(0).sLinkMasterName
                     Case "仕入先マスタ"
                         oSupplierDBIO = New cMstSupplierDBIO(oConn, oCommand, oDataReader)

@@ -442,6 +442,7 @@
                     "日次取引明細データ.オプション4 AS オプション4, " &
                     "日次取引明細データ.オプション5 AS オプション5, " &
                     "日次取引明細データ.定価 AS 定価, " &
+                    "日次取引明細データ.取引数量 AS 取引数量," &
                     "仕入先マスタ.仕入先名称 AS 仕入先名称, " &
                     "仕入価格マスタ.仕入単価 AS 仕入単価, " &
                     "在庫マスタ.在庫数, " &
@@ -664,8 +665,12 @@
                                          "WHERE " &
                                             "(日次取引明細データ.商品コード Is Not Null) " &
                                             "AND (日次取引明細データ.商品コード <> """") " &
+                                            "AND (在庫マスタ.在庫数 <= 商品マスタ.適正在庫数) " &
                                     ") " &
-                                    "AND 日次取引データ.取引区分 = ""売上"" "
+                                    "AND 日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"" "
+        '2019.12.5 R.Takashima
+        '戻入時は売上数から戻入数だけ引く
+        'AND 日次取引データ.取引区分 = ""売上"" "
 
         '適正在庫数が現在の在庫数以下
         strWhere = strWhere & "AND 在庫マスタ.在庫数 <= 商品マスタ.適正在庫数 "
@@ -724,6 +729,14 @@
                 Else
                     parCandidate(i).sPrice = 0
                 End If
+                '2019.12.5 R.Takashima FROM
+                '取引数量
+                If IsDBNull(pDataReader("取引数量")) = False Then
+                    parCandidate(i).sCount = CLng(pDataReader("取引数量"))
+                Else
+                    parCandidate(i).sCount = 0
+                End If
+                '2019.12.5 R.Takashima TO
                 '仕入価格
                 If IsDBNull(pDataReader("仕入単価")) = False Then
                     parCandidate(i).sCostPrice = CLng(pDataReader("仕入単価"))
@@ -772,7 +785,7 @@
     '        Byval count                取得した商品の数量
     '        Byval closeDate            取得した商品の日次締め日（売上が発生した日）
     '        Byval cycleDate            売上サイクル
-    '        Byval fromDate               候補抽出期間
+    '        Byval fromDate             候補抽出期間
     '        Byval minCount             最低売上数量
     '　戻値：データの数量
     '----------------------------------------------------------------------
@@ -788,18 +801,21 @@
         Dim j As Long
         Dim k As Long
         Dim productCode As String  '商品コード
-        Dim latestDate As String   '最新日次締め日
+        Dim latestDate As String   '最新日次締め日（最終売上）
         Dim buyCount As Long       '商品購入数
         Dim tempCandidate As cStructureLib.sViewCandidate()
+        Dim latestFlag As Boolean  '最新日時フラグ
 
         k = 0
         buyCount = 0
         ReDim tempCandidate(count - 1)
+        latestFlag = False
 
 
         For i = 0 To count - 1
             productCode = svc(k).sProductCode
             latestDate = fromDate
+            latestFlag = false
 
             For j = k To count - 1
 
@@ -808,21 +824,31 @@
                     '候補抽出期間内で最新のデータを検索
                     If DateTime.Parse(closeDate(j)) >= DateTime.Parse(latestDate) Then
                         latestDate = closeDate(j)
+                        latestFlag = True
                     End If
 
                 Else
 
                     For k = k To j - 1
+                        '2019.12.5 R.Takashima
+                        '候補抽出期間内の商品のみ実行する
+                        If latestFlag = True Then
 
-                        '最新の売上から売上サイクル期間までに商品があるか検索
-                        'あれば最新のデータを除き挿入
-                        'ない場合はNothingを挿入
-                        If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
-                            If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
-                                tempCandidate(k) = svc(k)
-                            Else
-                                tempCandidate(k) = Nothing
+                            '最新の売上から売上サイクル期間までに商品があるか検索
+                            'あれば最新のデータを除き挿入
+                            'ない場合はNothingを挿入
+                            If DateTime.Parse(closeDate(k)) > DateTime.Parse(DateAdd("m", DateDiff("m", Now(), cycleDate), latestDate)) Then
+                                If DateTime.Parse(closeDate(k)) < DateTime.Parse(latestDate) Then
+                                    tempCandidate(k) = svc(k)
+                                Else
+                                    tempCandidate(k) = Nothing
+                                End If
                             End If
+
+                        Else
+
+                            tempCandidate(k) = Nothing
+
                         End If
                     Next
 
@@ -883,7 +909,7 @@
         count = svc.Length
         ReDim tempCandidate(0)
 
-        '同じ仕入先の商品ごとにデータを挿入する
+        '同じ商品の売上数量
         For i = 0 To count - 1
             If k < count - 1 Then
                 ReDim Preserve tempCandidate(i)
@@ -898,7 +924,15 @@
                     'If tempCandidate(i).sProductCode = svc(j).sProductCode And tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
                     If tempCandidate(i).sProductCode = svc(j).sProductCode Then
                         '2019.11.30 R.Takashima TO
-                        buyCount += 1
+
+                        '2019.12.5 R.Takashima FROM
+                        '仕入先ごとに個数を足しているため販売数が倍以上になってしまう
+                        'そのため仕入先を一つとみなして販売数を計算
+                        If tempCandidate(i).sSupplierName = svc(j).sSupplierName Then
+                            'buyCount += 1
+                            buyCount += svc(j).sCount
+                        End If
+                        '2019.12.5 R.Takashima TO
 
                     Else
                         tempCandidate(i).sCount = buyCount
@@ -933,25 +967,37 @@
         Next
 
         count = j
-        ReDim tempCandidate(count - 1)
-
+        ReDim tempCandidate(0)
         '売上数量が大きい順に並び替える（降順）
         '選択ソート
         '商品の個数が０や１の場合は並び替える必要は無い
         If count > 1 Then
             For i = 0 To count - 1
-                For j = i To count - 1
+
+                '2019.12.5 R.Takashima
+                'iとjが同じ場所を参照してしまい、値の入れ替え時に値が消えてしまうため同じ場所を参照しないように変更
+                'For j = i To count - 1
+                For j = i + 1 To count - 1
                     If svc(i).sCount < svc(j).sCount Then
-                        tempCandidate(i) = svc(j)
-                        tempCandidate(j) = svc(i)
-                    Else
-                        tempCandidate(j) = svc(j)
+
+                        '2019.12.5 R.Takashima FROM
+                        'ELSE部分で余計に値を入れていたため、値が重複することがあり修正
+                        tempCandidate(0) = svc(i)
+                        svc(i) = svc(j)
+                        svc(j) = tempCandidate(0)
+
+                        '    tempCandidate(i) = svc(j)
+                        '    tempCandidat(j) = svc(i)
+                        'Else
+                        '    tempCandidate(j) = svc(j)
+
                     End If
                 Next
             Next
 
             'データを代入する
-            svc = tempCandidate
+            'svc = tempCandidate
+            '2019.12.5 R.Takashima TO
         End If
 
         Return svc.Length

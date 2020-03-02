@@ -22,25 +22,25 @@ Partial Class fStaffMst
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.DATA_V = New System.Windows.Forms.DataGridView
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.S_STAFF_CODE_T = New System.Windows.Forms.TextBox
-        Me.S_STAFF_NAME_T = New System.Windows.Forms.TextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.STAFF_CODE_T = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.STAFF_NAME_T = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.BUMON_CLASS_G = New System.Windows.Forms.GroupBox
-        Me.S_O_CLASS_C = New System.Windows.Forms.CheckBox
-        Me.S_P_CLASS_C = New System.Windows.Forms.CheckBox
-        Me.S_A_CLASS_C = New System.Windows.Forms.CheckBox
-        Me.S_E_CLASS_C = New System.Windows.Forms.CheckBox
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.DATA_V = New System.Windows.Forms.DataGridView()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.S_STAFF_CODE_T = New System.Windows.Forms.TextBox()
+        Me.S_STAFF_NAME_T = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.STAFF_CODE_T = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.STAFF_NAME_T = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.BUMON_CLASS_G = New System.Windows.Forms.GroupBox()
+        Me.S_O_CLASS_C = New System.Windows.Forms.CheckBox()
+        Me.S_P_CLASS_C = New System.Windows.Forms.CheckBox()
+        Me.S_A_CLASS_C = New System.Windows.Forms.CheckBox()
+        Me.S_E_CLASS_C = New System.Windows.Forms.CheckBox()
         Me.SEARCH_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.NEW_B = New Softgroup.NetButton.NetButton(Me.components)
         Me.RETURN_B = New Softgroup.NetButton.NetButton(Me.components)

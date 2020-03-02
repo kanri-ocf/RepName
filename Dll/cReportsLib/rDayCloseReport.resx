@@ -112,40 +112,213 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CrossSectionBox1.End" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0yLjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJh
-        d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAAAAAAAAAAAAAL
-</value>
+  <data name="D_R10000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
   </data>
-  <data name="CrossSectionBox1.Start" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0yLjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJh
-        d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAAAAAAAAAAAAAL
-</value>
+  <data name="D_R5000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
   </data>
-  <data name="CrossSectionBox2.End" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0yLjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJh
-        d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAABpznQKuqKj4L
-</value>
+  <data name="D_R1000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
   </data>
-  <data name="CrossSectionBox2.Start" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0yLjAuMC4wLCBDdWx0
-        dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJh
-        d2luZy5Qb2ludEYCAAAAAXgBeQAACwsCAAAAAAAAAOHvdz4L
-</value>
+  <data name="D_R500.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
   </data>
-  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="D_R100.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_R50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_R10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_R5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_R1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K10000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K5000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K1000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K500.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K100.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R10000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R5000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R1000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R500.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R100.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K10000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K5000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K1000.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K500.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K100.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K50.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K10.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K5.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K1.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_R_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_K_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_R_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_K_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="D_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="K_TOTAL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_OUTCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_INCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_CALCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_RETCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_CCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox4.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_YCASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_SALECNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_SALECASH.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox8.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="TextBox9.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_OUTCNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="S_INCNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_SALES.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_CNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_DISCOUNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_POSTAGE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_FEE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="sumS_BILL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_SALES.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_DISCOUNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_POSTAGE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_FEE.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_BILL.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <data name="subS_CNT.OutputFormat" xml:space="preserve">
+    <value>#,##0</value>
+  </data>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.StyleSheet" xml:space="preserve">

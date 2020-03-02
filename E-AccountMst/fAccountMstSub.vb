@@ -169,7 +169,7 @@ Public Class fAccountMstSub
 
     Private Sub ACCOUNT_DISP()
         ReDim oAccount(0)
-        oAccountDBIO.getAccount(oAccount, S_ACCOUNT_CODE, Nothing, Nothing, Nothing, oTran)
+        oAccountDBIO.getAccount(oAccount, S_ACCOUNT_CODE, Nothing, Nothing, Nothing, Nothing, oTran)
 
         ACCOUNT_CODE_T.Text = oAccount(0).sAccountCode
         ACCOUNT_CODE_T.ReadOnly = True

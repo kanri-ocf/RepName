@@ -105,7 +105,7 @@
         oDataOrderStatusDBIO = New cDataOrderStatusDBIO(oConn, oCommand, oDataReader)
 
         oSupplierCode = iSupplierCode
-        If iOrderCode = Nothing Then
+        If iOrderCode = "" Then
             EDIT_MODE = 0
         Else
             EDIT_MODE = 1
@@ -218,11 +218,16 @@
 
         '仕入先名称のセット
         SUPPLIER_C.BeginUpdate()
-        If EDIT_MODE = 0 Then
-            '発注番号発番
-            OrderNumber = ORDER_NUMBER_CREATE()
+        '2020/01/30 suzuki from
+        '過去発注書を呼び出して商品再選択後の発注書印刷で発注番号が重複するエラーの為　ひとまずIF文をコメントアウト
+
+        'If EDIT_MODE = 0 Then
+        '発注番号発番
+        OrderNumber = ORDER_NUMBER_CREATE()
             ORDER_CODE_T.Text = OrderNumber
-        End If
+        'End If
+
+        '2020/01/30 suzuki to
 
         For i = 0 To oSupplierCode.Length - 1
             RecordCnt = oSupplierDBIO.getSupplier(oSupplier, oSupplierCode(i), Nothing, oTran)
@@ -657,9 +662,6 @@
             Cal_Money_Flg = 0
 
             '2019,10,31 A.Komita 修正 End-----------------------------------------------------------------------------------------
-            '--------------------------------------------------
-            'suzuki 2019/09/29 end
-            '--------------------------------------------------
 
         End If
 
@@ -1205,7 +1207,7 @@
         End If
 
         '発注データの削除
-        ORDER_DELETE()
+        'ORDER_DELETE()
 
         'デフォルト税モード = 税込みモードにセット
         DefaultTaxMode = 0
@@ -1305,7 +1307,6 @@
             Exit Sub
         End If
         Application.DoEvents()
-
         PRINT_FLG = True
 
     End Sub

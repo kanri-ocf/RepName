@@ -1,7 +1,4 @@
-﻿Imports DataDynamics.ActiveReports 
-Imports DataDynamics.ActiveReports.Document 
-
-Public Class rTag_A
+﻿Public Class rTag_A
     Private oConn As OleDb.OleDbConnection
     Private oCommand As OleDb.OleDbCommand
     Private oDataReader As OleDb.OleDbDataReader
@@ -27,13 +24,13 @@ Public Class rTag_A
 
     Private oTran As System.Data.OleDb.OleDbTransaction
 
-    Sub New(ByRef iConn As OleDb.OleDbConnection, _
-            ByRef iCommand As OleDb.OleDbCommand, _
-            ByRef iDataReader As OleDb.OleDbDataReader, _
-            ByVal iChannelCode As Integer, _
-            ByVal iStartPoint As Integer, _
-            ByRef iConf() As cStructureLib.sConfig, _
-            ByRef iTran As System.Data.OleDb.OleDbTransaction _
+    Sub New(ByRef iConn As OleDb.OleDbConnection,
+            ByRef iCommand As OleDb.OleDbCommand,
+            ByRef iDataReader As OleDb.OleDbDataReader,
+            ByVal iChannelCode As Integer,
+            ByVal iStartPoint As Integer,
+            ByRef iConf() As cStructureLib.sConfig,
+            ByRef iTran As System.Data.OleDb.OleDbTransaction
             )
 
         ' この呼び出しは、Windows フォーム デザイナで必要です。

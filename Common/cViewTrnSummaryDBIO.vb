@@ -7,7 +7,6 @@ Public Class cViewTrnSummaryDBIO
     Private pDataReader As OleDb.OleDbDataReader
     Private pMessageBox As cMessageLib.fMessage
 
-
     Sub New(ByRef iConn As OleDb.OleDbConnection, ByRef iCommand As OleDb.OleDbCommand, ByRef iDataReader As OleDb.OleDbDataReader)
         pConn = iConn
         pCommand = iCommand
@@ -16,14 +15,13 @@ Public Class cViewTrnSummaryDBIO
     '---------------------------------------------------------------------------------------------------------
     '2019/10/19 SUZUKI 
     '---------------------------------------------------------------------------------------------------------
-
     '----------------------------------------------------------------------
     '　機能：取引の集計結果を取得する関数
     '　引数：Byref DataTable型オブジェクト(取得された取引レコード値を設定)
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function getTrnSummary(ByRef parTrnSummary() As cStructureLib.sViewTrnSummary, ByVal keyCloseDate As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function getTrnSummary(ByRef parTrnSummary() As cStructureLib.sViewTrnSummary, ByVal keyCloseDate As String, ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
 
@@ -42,6 +40,7 @@ Public Class cViewTrnSummaryDBIO
                     "部門マスタ.部門略称 AS 部門略称, " &
                     "日次取引データ.支払方法コード AS 支払方法コード, " &
                     "支払方法マスタ.支払方法名称, " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税抜商品金額) AS 税抜金額の合計, " &
                     "Sum(日次取引明細データ.送料) AS 送料の合計, " &
@@ -76,6 +75,7 @@ Public Class cViewTrnSummaryDBIO
                     "チャネルマスタ.チャネル名称, " &
                     "日次取引データ.取引区分, " &
                     "日次取引明細データ.部門コード, " &
+                    "日次取引明細データ.軽減税率, " &
                     "部門マスタ.部門略称, " &
                     "日次取引データ.支払方法コード, " &
                     "支払方法マスタ.支払方法名称 " &
@@ -83,6 +83,7 @@ Public Class cViewTrnSummaryDBIO
                     "日次取引データ.取引区分, " &
                     "日次取引データ.チャネルコード, " &
                     "日次取引明細データ.部門コード, " &
+                    "日次取引明細データ.軽減税率, " &
                     "日次取引データ.支払方法コード"
 
             'コマンドオブジェクトの生成
@@ -157,6 +158,16 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parTrnSummary(i).sPointDiscountPrice = CLng(pDataReader("ポイント値引きの合計"))
                 End If
+
+                '2019,12,24 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
+                End If
+                '2019,12,24 A.Komita 追加 To
+
                 '税込金額の合計
                 If IsDBNull(pDataReader("税込金額の合計")) = True Then
                     parTrnSummary(i).sPrice = 0
@@ -318,10 +329,10 @@ Public Class cViewTrnSummaryDBIO
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
     Public Function getChannelTrnSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewMonthTrnSummary,
-                                     ByVal keyChannelCode As Integer,
-                                       ByVal keyFromDate As String,
-                                       ByVal keyToDate As String,
-                                       ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                         ByVal keyChannelCode As Integer,
+                                         ByVal keyFromDate As String,
+                                         ByVal keyToDate As String,
+                                         ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
         Dim pc As Integer
@@ -354,17 +365,23 @@ Public Class cViewTrnSummaryDBIO
 
 
         Try
+            '2019.12.19 R.Takashima  SQLの追加
+            'Sum(日次取引明細データ.取引消費税額) AS 通常税額
+            'Sum(日次取引明細データ.取引軽減消費税額) AS 軽減税額
             strSelectTrn =
                 "SELECT " &
                     "日次取引データ.チャネルコード AS チャネルコード, " &
                     "チャネルマスタ.チャネル名称 AS チャネル名称, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
-                    "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
+                    "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計, " &
+                    "Sum(日次取引明細データ.取引消費税額) AS 通常税額, " &
+                    "Sum(日次取引明細データ.取引軽減消費税額) AS 軽減税額, " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率 " &
                 "FROM " &
                     "(日次取引データ LEFT JOIN チャネルマスタ ON 日次取引データ.チャネルコード = チャネルマスタ.チャネルコード) " &
                     "LEFT JOIN 日次取引明細データ ON 日次取引データ.取引コード = 日次取引明細データ.取引コード "
 
-            'パラメータ指定がある場合
+            'パラメータ指定がある場
             If (maxpc And pc) > 0 Then
                 i = 1
                 scnt = 0
@@ -437,6 +454,31 @@ Public Class cViewTrnSummaryDBIO
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("税込金額の合計"))
                 End If
 
+                '2019.12.19 R.takashima FROM
+                '通常税額
+                If IsDBNull(pDataReader("通常税額")) = True Then
+                    parMonthTrnSummary(i).sTaxPrice = 0
+                Else
+                    parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("通常税額"))
+                End If
+
+                '軽減税額
+                If IsDBNull(pDataReader("軽減税額")) = True Then
+                    parMonthTrnSummary(i).sReduceTaxPrice = 0
+                Else
+                    parMonthTrnSummary(i).sReduceTaxPrice = CLng(pDataReader("軽減税額"))
+                End If
+                '2019.12.19 R.takashima TO
+
+                '2020,1,14 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("軽減税率"))
+                End If
+                '2020,1,14 A.Komita 追加 To
+
                 'レコードが取得できた時の処理
                 i = i + 1
             End While
@@ -470,11 +512,13 @@ Public Class cViewTrnSummaryDBIO
         Dim strSelectTrn As String
         Dim i As Integer
 
+
         Try
             strSelectTrn =
                 "SELECT " &
                     "日次取引明細データ.部門コード AS 部門コード, " &
                     "部門マスタ.部門名称 AS 部門名称, " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計, " &
                     "部門マスタ.部門種別 AS 部門種別 " &
@@ -506,20 +550,35 @@ Public Class cViewTrnSummaryDBIO
                 'レコードが取得できた時の処理
                 '部門名称
                 parMonthTrnSummary(i).sName = pDataReader("部門名称").ToString
+
+                '2019,12,26 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
+                End If
+                '2019,12,26 A.Komita 追加 To
+
                 '数量の合計
                 If IsDBNull(pDataReader("数量の合計")) = True Then
                     parMonthTrnSummary(i).sCount = 0
                 Else
                     parMonthTrnSummary(i).sCount = CInt(pDataReader("数量の合計"))
                 End If
+
                 '税込金額の合計
                 If IsDBNull(pDataReader("税込金額の合計")) = True Then
                     parMonthTrnSummary(i).sPrice = 0
                 Else
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("税込金額の合計"))
                 End If
-                '部門名称
-                parMonthTrnSummary(i).sBumonClass = CInt(pDataReader("部門種別"))
+                '部門種別
+                If IsDBNull(pDataReader("部門種別")) = True Then
+                    parMonthTrnSummary(i).sBumonClass = 0
+                Else
+                    parMonthTrnSummary(i).sBumonClass = CInt(pDataReader("部門種別"))
+                End If
 
                 'レコードが取得できた時の処理
                 i = i + 1
@@ -550,7 +609,7 @@ Public Class cViewTrnSummaryDBIO
     Public Function getPaymentTrnSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewMonthTrnSummary,
                                        ByVal keyFromDate As String,
                                        ByVal keyToDate As String,
-                                       ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                       ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
 
@@ -559,6 +618,7 @@ Public Class cViewTrnSummaryDBIO
                 "SELECT " &
                     "日次取引データ.支払方法コード AS 支払方法コード, " &
                     "支払方法マスタ.支払方法名称 AS 支払方法名称, " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計 " &
                 "FROM " &
@@ -589,12 +649,23 @@ Public Class cViewTrnSummaryDBIO
                 'レコードが取得できた時の処理
                 '支払方法名称
                 parMonthTrnSummary(i).sName = pDataReader("支払方法名称").ToString
+
+                '2019,12,26 A.Komita 追加 From
+                '軽減税率
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
+                End If
+                '2019,12,26 A.Komita 追加 To
+
                 '数量の合計
                 If IsDBNull(pDataReader("数量の合計")) = True Then
                     parMonthTrnSummary(i).sCount = 0
                 Else
                     parMonthTrnSummary(i).sCount = CInt(pDataReader("数量の合計"))
                 End If
+
                 '税込金額の合計
                 If IsDBNull(pDataReader("税込金額の合計")) = True Then
                     parMonthTrnSummary(i).sPrice = 0
@@ -631,40 +702,77 @@ Public Class cViewTrnSummaryDBIO
     Public Function getCategoryTrnSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewMonthTrnSummary,
                                        ByVal keyFromDate As String,
                                        ByVal keyToDate As String,
-                                       ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                       ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
 
         Try
+            '2019.12.7 R.Takashima FROM
+            'カテゴリマスタがカテゴリ１マスタとカテゴリ２マスタに分かれており存在しないため読み込むことができなくエラーが発生していた
+            'カテゴリ１マスタ、カテゴリ２マスタに対応できるよう修正
             strSelectTrn =
                 "SELECT " &
-                    "カテゴリマスタ.カテゴリ名称_1, " &
-                    "カテゴリマスタ.カテゴリ名称_2,  " &
+                    "カテゴリ1マスタ.カテゴリ1名称, " &
+                    "カテゴリ2マスタ.カテゴリ2名称, " &
                     "サブクエリー.取引数量の合計 AS 数量の合計, " &
                     "サブクエリー.取引税込金額の合計 AS 税込金額の合計 " &
                 "FROM " &
-                    "カテゴリマスタ RIGHT JOIN " &
-                        "(" &
-                            "SELECT " &
+                    "(カテゴリ1マスタ RIGHT JOIN カテゴリ2マスタ " &
+                        "ON カテゴリ1マスタ.カテゴリ1ID = カテゴリ2マスタ.カテゴリ1ID) " &
+                    "LEFT JOIN " &
+                        "( " &
+                             "SELECT " &
                                 "Mid([商品コード],1,2) AS カテゴリコード, " &
                                 "Sum(日次取引明細データ.取引数量) AS 取引数量の合計, " &
                                 "Sum(日次取引明細データ.取引税込金額) AS 取引税込金額の合計, " &
                                 "Mid([商品コード],1,1) AS カテゴリ1, " &
                                 "Mid([商品コード],2,1) AS カテゴリ2 " &
-                            "FROM " &
+                             "FROM " &
                                 "日次取引データ LEFT JOIN 日次取引明細データ " &
-                                    "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
-                            "WHERE " &
+                                "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
+                             "WHERE " &
                                 "日次取引データ.日次締め日 BetWeen """ & keyFromDate & """ " &
                                 "AND """ & keyToDate & """ " &
                                 "AND (日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"") " &
-                            "GROUP BY " &
+                             "GROUP BY " &
                                 "Mid([商品コード],1,2), " &
                                 "Mid([商品コード],1,1), " &
                                 "Mid([商品コード],2,1)" &
                         ") AS サブクエリー " &
-                            "ON (カテゴリマスタ.カテゴリID1 = サブクエリー.カテゴリ1) AND (カテゴリマスタ.カテゴリID2 = サブクエリー.カテゴリ2) " &
+                    "ON (カテゴリ2マスタ.カテゴリ1ID = サブクエリー.カテゴリ1) AND (カテゴリ2マスタ.カテゴリ2ID = サブクエリー.カテゴリ2) " &
                 "ORDER BY サブクエリー.取引税込金額の合計 DESC"
+
+
+            'strSelectTrn =
+            '    "SELECT " &
+            '        "カテゴリマスタ.カテゴリ名称_1, " &
+            '        "カテゴリマスタ.カテゴリ名称_2,  " &
+            '        "サブクエリー.取引数量の合計 AS 数量の合計, " &
+            '        "サブクエリー.取引税込金額の合計 AS 税込金額の合計 " &
+            '    "FROM " &
+            '        "カテゴリマスタ RIGHT JOIN " &
+            '            "(" &
+            '                "SELECT " &
+            '                    "Mid([商品コード],1,2) AS カテゴリコード, " &
+            '                    "Sum(日次取引明細データ.取引数量) AS 取引数量の合計, " &
+            '                    "Sum(日次取引明細データ.取引税込金額) AS 取引税込金額の合計, " &
+            '                    "Mid([商品コード],1,1) AS カテゴリ1, " &
+            '                    "Mid([商品コード],2,1) AS カテゴリ2 " &
+            '                "FROM " &
+            '                    "日次取引データ LEFT JOIN 日次取引明細データ " &
+            '                        "ON 日次取引データ.取引コード = 日次取引明細データ.取引コード " &
+            '                "WHERE " &
+            '                    "日次取引データ.日次締め日 BetWeen """ & keyFromDate & """ " &
+            '                    "AND """ & keyToDate & """ " &
+            '                    "AND (日次取引データ.取引区分 = ""売上"" OR 日次取引データ.取引区分 = ""戻入"") " &
+            '                "GROUP BY " &
+            '                    "Mid([商品コード],1,2), " &
+            '                    "Mid([商品コード],1,1), " &
+            '                    "Mid([商品コード],2,1)" &
+            '            ") AS サブクエリー " &
+            '                "ON (カテゴリマスタ.カテゴリID1 = サブクエリー.カテゴリ1) AND (カテゴリマスタ.カテゴリID2 = サブクエリー.カテゴリ2) " &
+            '    "ORDER BY サブクエリー.取引税込金額の合計 DESC"
+            '2019.12.7 R.Takashima TO
 
 
             'コマンドオブジェクトの生成
@@ -682,7 +790,8 @@ Public Class cViewTrnSummaryDBIO
 
                 'レコードが取得できた時の処理
                 'カテゴリ名称
-                parMonthTrnSummary(i).sName = pDataReader("カテゴリ名称_1").ToString & "-" & pDataReader("カテゴリ名称_2").ToString
+                'parMonthTrnSummary(i).sName = pDataReader("カテゴリ名称_1").ToString & "-" & pDataReader("カテゴリ名称_2").ToString
+                parMonthTrnSummary(i).sName = pDataReader("カテゴリ1名称").ToString & "-" & pDataReader("カテゴリ2名称").ToString
                 '数量の合計
                 If IsDBNull(pDataReader("数量の合計")) = True Then
                     parMonthTrnSummary(i).sCount = 0
@@ -768,6 +877,7 @@ Public Class cViewTrnSummaryDBIO
                     "Max(日次取引明細データ.オプション3) AS オプション3, " &
                     "Max(日次取引明細データ.オプション4) AS オプション4, " &
                     "Max(日次取引明細データ.オプション5) AS オプション5, " &
+                    "Max(日次取引明細データ.軽減税率) AS 軽減税率, " &
                     "Sum(日次取引明細データ.取引数量) AS 数量の合計, " &
                     "Sum(日次取引明細データ.取引税込金額) AS 税込金額の合計, " &
                     "Sum(日次取引データ.送料) AS 送料の合計, " &
@@ -864,6 +974,14 @@ Public Class cViewTrnSummaryDBIO
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString
 
+                '2019,12,26 A.Komtia 追加 From
+                If IsDBNull(pDataReader("軽減税率")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CInt(pDataReader("軽減税率"))
+                End If
+                '2019,12,26 A.Komtia 追加 To
+
                 '数量の合計
                 If IsDBNull(pDataReader("数量の合計")) = True Then
                     parMonthTrnSummary(i).sCount = 0
@@ -941,10 +1059,10 @@ Public Class cViewTrnSummaryDBIO
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
     Public Function getArrivalSummary(ByRef parMonthTrnSummary() As cStructureLib.sViewArrivalSummary,
-                                       ByVal keySupplierCode As Integer,
-                                       ByVal keyFromDate As String,
-                                       ByVal keyToDate As String,
-                                       ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+                                      ByVal keySupplierCode As Integer,
+                                      ByVal keyFromDate As String,
+                                      ByVal keyToDate As String,
+                                      ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
         Dim i As Integer
         Dim pc As Integer
@@ -996,6 +1114,7 @@ Public Class cViewTrnSummaryDBIO
                     "Sum(入庫情報明細データ.入庫数量) AS 入庫数量, " &
                     "Sum(入庫情報明細データ.入庫税抜金額) AS 入庫商品税抜金額, " &
                     "Sum(入庫情報明細データ.入庫消費税額) AS 入庫商品消費税額, " &
+                    "Sum(入庫情報明細データ.入庫軽減税額) AS 入庫商品軽減税額, " &
                     "Sum(入庫情報明細データ.入庫税込金額) AS 入庫商品税込金額 " &
                 "FROM " &
                     "(入庫情報データ LEFT JOIN 入庫情報明細データ ON " &
@@ -1067,39 +1186,68 @@ Public Class cViewTrnSummaryDBIO
                 ReDim Preserve parMonthTrnSummary(i)
 
                 'レコードが取得できた時の処理
+
+                '2020,1,15 A.Komita バックアップ時に構造体へ追加する数値を取得するコードを追加 From
                 '入庫日
-                parMonthTrnSummary(i).sArrivalDate = pDataReader("入庫日").ToString
-
+                If IsNothing(pDataReader("入庫日").ToString) = True Then
+                    parMonthTrnSummary(i).sArrivalDate = ""
+                Else
+                    parMonthTrnSummary(i).sArrivalDate = pDataReader("入庫日").ToString
+                End If
                 '仕入先名称
-                parMonthTrnSummary(i).sSupplierName = pDataReader("仕入先名称").ToString
-
+                If IsNothing(pDataReader("仕入先名称").ToString) = True Then
+                    parMonthTrnSummary(i).sSupplierName = ""
+                Else
+                    parMonthTrnSummary(i).sSupplierName = pDataReader("仕入先名称").ToString
+                End If
                 '商品コード
-                parMonthTrnSummary(i).sProductCode = pDataReader("商品コード").ToString
-
+                If IsNothing(pDataReader("商品コード").ToString) = True Then
+                    parMonthTrnSummary(i).sProductCode = ""
+                Else
+                    parMonthTrnSummary(i).sProductCode = pDataReader("商品コード").ToString
+                End If
                 'JANコード
-                parMonthTrnSummary(i).sJANCode = pDataReader("JANコード").ToString
-
+                If IsNothing(pDataReader("JANコード").ToString) = True Then
+                    parMonthTrnSummary(i).sJANCode = ""
+                Else
+                    parMonthTrnSummary(i).sJANCode = pDataReader("JANコード").ToString
+                End If
                 '商品名称
-                parMonthTrnSummary(i).sProductName = pDataReader("商品名称").ToString
-
+                If IsNothing(pDataReader("商品名称").ToString) = True Then
+                    parMonthTrnSummary(i).sProductName = ""
+                Else
+                    parMonthTrnSummary(i).sProductName = pDataReader("商品名称").ToString
+                End If
                 'オプション
                 parMonthTrnSummary(i).sOption = pDataReader("オプション1").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション2").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション2").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション3").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション3").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション4").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
                 parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション4").ToString
                 If parMonthTrnSummary(i).sOption <> "" And pDataReader("オプション5").ToString <> "" Then
                     parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & " / "
+                Else
+                    parMonthTrnSummary(i).sOption = ""
                 End If
-                parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString
+                If parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString <> "" Then
+                    parMonthTrnSummary(i).sOption = parMonthTrnSummary(i).sOption & pDataReader("オプション5").ToString
+                Else
+                    parMonthTrnSummary(i).sOption = ""
+                End If
 
                 '入庫商品単価
                 If IsDBNull(pDataReader("入庫商品単価")) = True Then
@@ -1124,10 +1272,19 @@ Public Class cViewTrnSummaryDBIO
 
                 '入庫商品消費税額
                 If IsDBNull(pDataReader("入庫商品消費税額")) = True Then
-                    parMonthTrnSummary(i).sPrice = 0
+                    parMonthTrnSummary(i).sTaxPrice = 0
                 Else
-                    parMonthTrnSummary(i).sPrice = CLng(pDataReader("入庫商品消費税額"))
+                    parMonthTrnSummary(i).sTaxPrice = CLng(pDataReader("入庫商品消費税額"))
                 End If
+
+                '2019,12,16 A.Komita 追加 From
+                '入庫商品軽減税額
+                If IsDBNull(pDataReader("入庫商品軽減税額")) = True Then
+                    parMonthTrnSummary(i).sReducedTaxRate = 0
+                Else
+                    parMonthTrnSummary(i).sReducedTaxRate = CLng(pDataReader("入庫商品軽減税額"))
+                End If
+                '2019,12,16 A.Komita 追加 To
 
                 '入庫商品税込金額
                 If IsDBNull(pDataReader("入庫商品税込金額")) = True Then
@@ -1135,6 +1292,7 @@ Public Class cViewTrnSummaryDBIO
                 Else
                     parMonthTrnSummary(i).sPrice = CLng(pDataReader("入庫商品税込金額"))
                 End If
+                '2020,1,15 A.Komita 追加 To
 
                 'レコードが取得できた時の処理
                 i = i + 1

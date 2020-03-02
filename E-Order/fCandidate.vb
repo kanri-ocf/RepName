@@ -67,6 +67,11 @@
 
         oTool = New cTool
 
+        '2019.12.7 R.Takashima FROM
+        '環境マスタの取得
+        oMstConfigDBIO.getConfMst(oConf, oTran)
+        '2019.12.7 R.Takashima tO
+
         STAFF_CODE = iStaffCode
         STAFF_NAME = iStaffName
 
@@ -83,6 +88,7 @@
         '2019.11.30 R.Takashima FROM
         '仕入先を条件としないため隠す
         SUPPLIER_L.Visible = False
+        Label2.Visible = False
         '2019.11.30 R.Takashima TO
 
         '仕入先リストボックスセット
@@ -126,9 +132,15 @@
         ON_B.Enabled = False
         OFF_B.Enabled = False
 
-        KIKAN_T.Text = 3
-        CYCLE_T.Text = 6
-        MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima FROM
+        '環境マスタにデフォルトの設定があるためそちらを反映させる
+        KIKAN_T.Text = oConf(0).sOrderListTerm
+        CYCLE_T.Text = oConf(0).sSalesTerm
+        MIN_COUNT_T.Text = oConf(0).sMinimumCount
+        'KIKAN_T.Text = 3
+        'CYCLE_T.Text = 6
+        'MIN_COUNT_T.Text = 1
+        '2019.12.7 R.Takashima TO
 
         PRODUCT_NAME_T.Text = ""
         OPTION_NAME_T.Text = ""
@@ -344,11 +356,16 @@
 
     Private Sub PRODUCT_V_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles PRODUCT_V.CellClick
         'チェックボックスの列かどうか調べる
-        If e.ColumnIndex <> 0 Then
-            If PRODUCT_V("選択", e.RowIndex).Value = False Then
-                PRODUCT_V("選択", e.RowIndex).Value = True
-            Else
-                PRODUCT_V("選択", e.RowIndex).Value = False
+        '2019.12.8 R.Takashima
+        'カラム名が表示されている行をクリックすると実行されRowIndexでエラーが発生するため
+        '処理を行わないように変更
+        If e.RowIndex >= 0 Then
+            If e.ColumnIndex <> 0 Then
+                If PRODUCT_V("選択", e.RowIndex).Value = False Then
+                    PRODUCT_V("選択", e.RowIndex).Value = True
+                Else
+                    PRODUCT_V("選択", e.RowIndex).Value = False
+                End If
             End If
         End If
 
@@ -652,8 +669,11 @@
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                        "条件を変更して再建策して下さい", _
+            'Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+            '                            "条件を変更して再建策して下さい",
+            '                            Nothing, Nothing)
+            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                        "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing

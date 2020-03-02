@@ -1,0 +1,4 @@
+﻿[*.vb]
+
+# BC42104: 変数が、値が割り当てられる前に使用されています
+dotnet_diagnostic.BC42104.severity = none

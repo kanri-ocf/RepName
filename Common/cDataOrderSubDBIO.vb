@@ -104,10 +104,10 @@ Public Class cDataOrderSubDBIO
                                 "発注情報明細データ.最終更新日, " &
                                 "発注情報明細データ.最終更新時間 " &
                             "FROM 発注情報明細データ " &
-                            "WHERE 発注情報明細データ.発注コード=@OrderCode "
+                            "WHERE 発注情報明細データ.発注コード = @OrderCode "
 
             If KeyOrderSubCode <> Nothing Then
-                strSelectOrder = strSelectOrder & "AND 発注情報明細データ.発注明細コード=@OrderSubCode "
+                strSelectOrder = strSelectOrder & "AND 発注情報明細データ.発注明細コード = @OrderSubCode "
             End If
 
             strSelectOrder = strSelectOrder & "ORDER BY 発注情報明細データ.商品名称, " &
@@ -129,17 +129,25 @@ Public Class cDataOrderSubDBIO
             '   パラメータの設定
             '***********************
 
+            '2020,1,14 A.Komita Nothing判定時のelseを追加 From
             '発注コード
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@OrderCode", OleDb.OleDbType.Char, 13))
-            pCommand.Parameters("@OrderCode").Value = KeyOrderCode
-
-            If KeyOrderSubCode <> Nothing Then
-                '発注明細コード
-                pCommand.Parameters.Add _
-                (New OleDb.OleDbParameter("@OrderSubCode", OleDb.OleDbType.Numeric, 2))
-                pCommand.Parameters("@OrderSubCode").Value = KeyOrderSubCode
+            If KeyOrderCode <> Nothing Then
+                pCommand.Parameters("@OrderCode").Value = KeyOrderCode
+            Else
+                pCommand.Parameters("@OrderCode").Value = ""
             End If
+
+            '発注明細コード
+            pCommand.Parameters.Add _
+                (New OleDb.OleDbParameter("@OrderSubCode", OleDb.OleDbType.Numeric, 2))
+            If KeyOrderSubCode <> Nothing Then
+                pCommand.Parameters("@OrderSubCode").Value = KeyOrderSubCode
+            Else
+                pCommand.Parameters("@OrderSubCode").Value = 0
+            End If
+            '2020,1,14 A.Komita 追加 To 
 
             pDataReader = pCommand.ExecuteReader()
 

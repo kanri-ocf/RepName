@@ -15,8 +15,11 @@ Public Class cDataTrnDBIO
         pDataReader = iDataReader
     End Sub
 
+
+
     '----------------------------------------------------------------------
     '　機能：プロパティの取引コードのレコードが取引テーブルに
+
     '　　　　 存在するか否かを調べるメソッド
     '　引数：なし
     '　戻値：True  --> 存在する.  False --> 存在しない
@@ -35,9 +38,12 @@ Public Class cDataTrnDBIO
             pCommand.CommandText = strSelect
 
             'SQL文パラメータの設定
+
             pCommand.Parameters.Add _
             (New OleDb.OleDbParameter("@TrnCode", OleDb.OleDbType.Char, 5))
             pCommand.Parameters("@TrnCode").Value = KeyString
+
+
 
             '取引テーブルから該当取引コードのレコード数読込 
             Dim recCount As Integer
@@ -312,7 +318,7 @@ Public Class cDataTrnDBIO
         End Try
 
     End Function
-    Public Function readMaxTrnCode(ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
+    Public Function readMaxTrnCode(ByRef Tran As OleDb.OleDbTransaction) As Long
         Dim strSelectTrn As String
 
         'strSelectTrn = "SELECT 取引コード FROM 日次取引データ WHERE チャネルコード= " & ChannelCode & " ORDER BY 取引コード DESC"
@@ -366,74 +372,75 @@ Public Class cDataTrnDBIO
     '　引数：in cSubTrnオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertTrn(ByRef parTrn As cStructureLib.sTrn, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
+    Public Function insertTrn(ByRef parTrn As cStructureLib.sTrn, ByRef Tran As OleDb.OleDbTransaction) As Boolean
         Dim strInsertTrn As String
+
 
         Try
 
             'SQL文の設定
-            strInsertTrn = "INSERT INTO 日次取引データ (" & _
-                                "取引コード, " & _
-                                "取引区分, " & _
-                                "チャネルコード, " & _
-                                "受注日, " & _
-                                "受注時間, " & _
-                                "支払方法コード, " & _
-                                "取引税抜商品金額, " & _
-                                "送料, " & _
-                                "手数料, " & _
-                                "値引き, " & _
-                                "ポイント値引き, " & _
-                                "チケット値引き, " & _
-                                "差額, " & _
-                                "取引税抜金額, " & _
-                                "取引消費税額, " & _
-                                "取引税込金額, " & _
-                                "出荷コード, " & _
-                                "会員コード, " & _
-                                "ポイント会員コード, " & _
-                                "性別, " & _
-                                "年代, " & _
-                                "天気, " & _
-                                "日次締め日, " & _
-                                "月次締め日, " & _
-                                "備考, " & _
-                                "取引担当者コード, " & _
-                                "登録日, " & _
-                                "登録時間, " & _
-                                "最終更新日, " & _
-                                "最終更新時間 " & _
-                        ") VALUES (" & _
-                                "@TrnCode, " & _
-                                "@TrnClass, " & _
-                                "@Channel, " & _
-                                "@RequestDate, " & _
-                                "@RequestTime, " & _
-                                "@PaymentCode, " & _
-                                "@NoTaxProductPrice, " & _
-                                "@ShippingCharge, " & _
-                                "@PaymentCharge, " & _
-                                "@Discount, " & _
-                                "@PointDisCount, " & _
-                                "@TicketDisCount, " & _
-                                "@Difference, " & _
-                                "@NoTaxTotalPrice, " & _
-                                "@TaxTotal, " & _
-                                "@TotalPrice, " & _
-                                "@ShipCode, " & _
-                                "@MemberCode, " & _
-                                "@PointMemberCode, " & _
-                                "@Sex, " & _
-                                "@Generation, " & _
-                                "@Weather, " & _
-                                "@DayCloseDate, " & _
-                                "@MonthCloseDate, " & _
-                                "@Memo, " & _
-                                "@StaffCode, " & _
-                                "@CreateDate, " & _
-                                "@CreateTime, " & _
-                                "@UpdateDate, " & _
-                                "@UpdateTime " & _
+            strInsertTrn = "INSERT INTO 日次取引データ (" &
+                                "取引コード, " &
+                                "取引区分, " &
+                                "チャネルコード, " &
+                                "受注日, " &
+                                "受注時間, " &
+                                "支払方法コード, " &
+                                "取引税抜商品金額, " &
+                                "送料, " &
+                                "手数料, " &
+                                "値引き, " &
+                                "ポイント値引き, " &
+                                "チケット値引き, " &
+                                "差額, " &
+                                "取引税抜金額, " &
+                                "取引消費税額, " &
+                                "取引税込金額, " &
+                                "出荷コード, " &
+                                "会員コード, " &
+                                "ポイント会員コード, " &
+                                "性別, " &
+                                "年代, " &
+                                "天気, " &
+                                "日次締め日, " &
+                                "月次締め日, " &
+                                "備考, " &
+                                "取引担当者コード, " &
+                                "登録日, " &
+                                "登録時間, " &
+                                "最終更新日, " &
+                                "最終更新時間 " &
+                        ") VALUES (" &
+                                "@TrnCode, " &
+                                "@TrnClass, " &
+                                "@Channel, " &
+                                "@RequestDate, " &
+                                "@RequestTime, " &
+                                "@PaymentCode, " &
+                                "@NoTaxProductPrice, " &
+                                "@ShippingCharge, " &
+                                "@PaymentCharge, " &
+                                "@Discount, " &
+                                "@PointDisCount, " &
+                                "@TicketDisCount, " &
+                                "@Difference, " &
+                                "@NoTaxTotalPrice, " &
+                                "@TaxTotal, " &
+                                "@TotalPrice, " &
+                                "@ShipCode, " &
+                                "@MemberCode, " &
+                                "@PointMemberCode, " &
+                                "@Sex, " &
+                                "@Generation, " &
+                                "@Weather, " &
+                                "@DayCloseDate, " &
+                                "@MonthCloseDate, " &
+                                "@Memo, " &
+                                "@StaffCode, " &
+                                "@CreateDate, " &
+                                "@CreateTime, " &
+                                "@UpdateDate, " &
+                                "@UpdateTime " &
                         ")"
 
             pCommand = pConn.CreateCommand
@@ -573,11 +580,6 @@ Public Class cDataTrnDBIO
 
             '取引テーブル挿入処理実行
             pCommand.ExecuteNonQuery()
-
-            '2019,11,6 A.Komita 追加 From
-            pCommand = pConn.CreateCommand
-            pCommand.Transaction = Tran
-            '2019,11,6 A.Komita 追加 To
 
 
             insertTrn = True

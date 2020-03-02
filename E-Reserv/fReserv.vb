@@ -653,9 +653,9 @@
 
     End Sub
 
-    Private Sub CHART_V_CellStyleChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellStyleChanged
+    'Private Sub CHART_V_CellStyleChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellStyleChanged
 
-    End Sub
+    'End Sub
 
     Private Sub CHART_V_CellValueChanged(ByVal sCloseer As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles CHART_V.CellValueChanged
         If IVENT_FLG = True Then
@@ -734,13 +734,13 @@
 
             CHART_V.Rows.Add("", "", sRoomCode, sRoomName)
 
-            ''重複項目の色を背景色に・・・
-            'If RowNo > 0 Then
-            '    'ルーム情報作成
-            '    If CInt(CHART_V("ルームコード", RowNo - 1).Value) = oRoom(i).sRoomCode Then
-            '        CHART_V("ルームコード", RowNo).Style.ForeColor = Color.Wheat
-            '    End If
-            'End If
+            '重複項目の色を背景色に・・・
+            If RowNo > 0 Then
+                'ルーム情報作成
+                If CInt(CHART_V("ルームコード", RowNo - 1).Value) = oRoom(i).sRoomCode Then
+                    CHART_V("ルームコード", RowNo).Style.ForeColor = Color.Wheat
+                End If
+            End If
             RowNo = RowNo + 1
         Next i
     End Sub
@@ -969,12 +969,47 @@
         a = CHART_V.Rows.Count
         a = CHART_V.Columns.Count
 
-        '2016.09.13 K.Oikawa s
-        '課題表No.177 縦方向への操作を禁ずる
-        If CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0 Then
-            Exit Sub
+        '2019.12.11 R.Takashima FROM
+        'DataGridViewのRows、Columnsプロパティは行または列が全て選択されているときに実行される
+        'そのため部分選択を行うと行数、列数はGetRowCount、GetColumnCountで取得することはできない
+        'よって下記の処理は全て０を戻り値として縦方向の操作が出来てしまう
+
+        ''2016.09.13 K.Oikawa s
+        ''課題表No.177 縦方向への操作を禁ずる
+        'Dim i = CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected)
+        'If CHART_V.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0 Then
+        '    Exit Sub
+        'End If
+        ''2016.09.13 K.Oikawa e
+
+        Dim row = CHART_V.SelectedCells(0).RowIndex
+        Dim column = CHART_V.SelectedCells(0).ColumnIndex
+        Dim message = New cMessageLib.fMessage(1,
+                                            "複数行の選択はできません。",
+                                            "選択をしなおしてください。",
+                                            Nothing,
+                                            Nothing
+                                            )
+
+        If row > 0 And row < CHART_V.Rows.Count Then
+            If CHART_V(column, row - 1).Selected = True Then
+                message.ShowDialog()
+                message.Dispose()
+                CHART_V.ClearSelection()
+                Exit Sub
+
+            ElseIf CHART_V.Rows.Count - 1 < row Then
+
+                If CHART_V(column, row + 1).Selected = True Then
+                    message.ShowDialog()
+                    message.Dispose()
+                    CHART_V.ClearSelection()
+                    Exit Sub
+                End If
+            End If
         End If
-        '2016.09.13 K.Oikawa e
+
+        '2019.12.11 R.Takashima TO
 
         If RUN_MODE = 0 Then
             If e.Button = Windows.Forms.MouseButtons.Left Then  '新規入力の場合
@@ -1097,7 +1132,11 @@
         Dim pHour As Integer
         Dim pMinute As Integer
 
-        If CHART_V.CurrentCell.Value <> "" Then
+        '2019.12.11 R.Takashima FROM
+        '日付、ルーム名称、担当者名称が選択されたとき処理を行わないよう変更
+        'If CHART_V.CurrentCell.Value <> "" Then
+        If CHART_V.CurrentCell.Value <> "" And CHART_V.CurrentCell.ColumnIndex > 8 Then
+            '2019.12.11 R.Takashima TO
             pHour = StartTime + oTool.ToRoundDown((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) / 2, 0)
             pMinute = ((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) Mod 2) * 30
             ReqDate = oTool.MaskClear(MONTH_T.Text) & "/" & (CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET + 1).ToString.PadLeft(2, "0")
@@ -1249,41 +1288,46 @@
         Dim pHour As Integer
         Dim pMinute As Integer
 
-        If CHART_V.CurrentCell.Value <> "" Then
+        '2019.12.11 R.Takashima FROM
+        '日付、ルーム名称、担当者名称が選択されたとき処理を行わないよう変更
+        'If CHART_V.CurrentCell.Value <> "" Then
+        If CHART_V.CurrentCell.Value <> "" And CHART_V.CurrentCell.ColumnIndex > 8 Then
+            '2019.12.11 R.Takashima TO
+
             pHour = StartTime + oTool.ToRoundDown((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) / 2, 0)
             pMinute = ((CInt(CHART_V.CurrentCell.ColumnIndex) - OFFSET) Mod 2) * 30
             ReqDate = oTool.MaskClear(MONTH_T.Text) & "/" & CHART_V("日付", CHART_V.CurrentCell.RowIndex).Value.ToString.PadLeft(2, "0")
 
-            oDataReservDBIO.getReserv( _
-                                        oReserv, _
-                                        Nothing, _
-                                        ReqDate, _
-                                        ReqDate, _
-                                        BUMON_CODE_T.Text, _
-                                        CInt(CHART_V("ルームコード", CHART_V.CurrentCell.RowIndex).Value), _
-                                        CHART_V("担当者コード", CHART_V.CurrentCell.RowIndex).Value, _
-                                        pHour, _
-                                        pMinute, _
-                                        CInt(CHANNEL_CODE_T.Text), oTran _
+            oDataReservDBIO.getReserv(
+                                        oReserv,
+                                        Nothing,
+                                        ReqDate,
+                                        ReqDate,
+                                        BUMON_CODE_T.Text,
+                                        CInt(CHART_V("ルームコード", CHART_V.CurrentCell.RowIndex).Value),
+                                        CHART_V("担当者コード", CHART_V.CurrentCell.RowIndex).Value,
+                                        pHour,
+                                        pMinute,
+                                        CInt(CHANNEL_CODE_T.Text), oTran
                                     )
 
-            form_ReservSub = New fReservSub( _
-                                        oConn, _
-                                        oCommand, _
-                                        oDataReader, _
-                                        oReserv(0).sReserveCode, _
-                                        CInt(CHANNEL_CODE_T.Text), _
-                                        ReqDate, _
-                                        ReqDate, _
-                                        BUMON_CODE_T.Text, _
-                                        CInt(CHART_V("ルームコード", ColRow).Value), _
-                                        CHART_V("担当者コード", ColRow).Value, _
-                                        Nothing, _
-                                        Nothing, _
-                                        Nothing, _
-                                        Nothing, _
-                                        STAFF_CODE, _
-                                        oTran _
+            form_ReservSub = New fReservSub(
+                                        oConn,
+                                        oCommand,
+                                        oDataReader,
+                                        oReserv(0).sReserveCode,
+                                        CInt(CHANNEL_CODE_T.Text),
+                                        ReqDate,
+                                        ReqDate,
+                                        BUMON_CODE_T.Text,
+                                        CInt(CHART_V("ルームコード", ColRow).Value),
+                                        CHART_V("担当者コード", ColRow).Value,
+                                        Nothing,
+                                        Nothing,
+                                        Nothing,
+                                        Nothing,
+                                        STAFF_CODE,
+                                        oTran
                                 )
             form_ReservSub.ShowDialog()
             form_ReservSub.Dispose()

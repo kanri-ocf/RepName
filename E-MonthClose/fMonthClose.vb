@@ -1,4 +1,6 @@
-﻿Public Class fMonthClose
+﻿Imports cReportsLib
+
+Public Class fMonthClose
     '------------------------------------
     ' DBアクセス関連
     '------------------------------------
@@ -23,7 +25,7 @@
 
     Private oTool As cTool
 
-    Private oTran As System.Data.OleDb.OleDbTransaction
+    Private oTran As OleDb.OleDbTransaction
 
     Private pProductTotal As Long
     Private pProductSaleTotal As Long
@@ -34,6 +36,10 @@
     Private pSaleTotal As Long
     Private pStockTotal As Long
     Private pProfit As Long
+
+    '2019,12,23 A.Komita 追加 From
+    Private ORDER_MODE As Integer
+    '2019,12,23 A.Komita 追加 To
 
     Sub New()
 
@@ -72,7 +78,7 @@
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
-    Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Const WS_EX_DLGMODALFRAME As Integer = &H1
             Dim cp As CreateParams = MyBase.CreateParams
@@ -81,7 +87,7 @@
         End Get
     End Property
 
-    Private Sub fMonthClose_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub fMonthClose_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim RecordCnt As Integer
 
         '----------------------- SoftGroupライセンス認証 ----------------------
@@ -104,8 +110,8 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -168,12 +174,13 @@
         CLOSE_YEAR_T.Focus()
     End Sub
 
-    Private Sub fMonthClose_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+    Private Sub fMonthClose_Shown(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Shown
 
         '初期化処理
         INIT_PROC()
 
     End Sub
+
     '----------------------------------------- < 内部関数 > -------------------------------------------
     '***************************
     'チャネルリストボックスセット
@@ -189,13 +196,13 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "チャネルマスタが登録されていません", _
-                                                "チャネルマスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "チャネルマスタが登録されていません",
+                                                "チャネルマスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "チャネルマスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "チャネルマスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -224,13 +231,13 @@
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
             If RecordCnt = 0 Then
-                Message_form = New cMessageLib.fMessage(1, "仕入先マスタが登録されていません", _
-                                                "仕入先マスタを登録してください", _
+                Message_form = New cMessageLib.fMessage(1, "仕入先マスタが登録されていません",
+                                                "仕入先マスタを登録してください",
                                                 Nothing, Nothing)
 
             Else
-                Message_form = New cMessageLib.fMessage(1, "仕入先マスタの読込みに失敗しました", _
-                                                "開発元にお問い合わせ下さい", _
+                Message_form = New cMessageLib.fMessage(1, "仕入先マスタの読込みに失敗しました",
+                                                "開発元にお問い合わせ下さい",
                                                 Nothing, Nothing)
             End If
             Message_form.ShowDialog()
@@ -542,31 +549,58 @@
     '***********************************************
     Private Function DEFAULT_DATE_SET() As Long
         Dim dt As Date
-        Dim Message_form As cMessageLib.fMessage
+        'Dim Message_form As cMessageLib.fMessage
 
-        If CInt(CLOSE_YEAR_T.Text) < 2013 Or CInt(CLOSE_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "締め日の「年」指定が不正です。", _
-                                                "締め日「年」を訂正して下さい。", _
-                                                Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            CLOSE_YEAR_T.Focus()
-            Message_form = Nothing
-            Exit Function
-        End If
+        '2019.12.18 R.Takashima
+        '日付処理部分を１つにまとめたためコメントアウト
 
-        If CInt(CLOSE_MONTH_T.Text) < 1 Or CInt(CLOSE_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "締め日の「月」指定が不正です。", _
-                                                "締め日「月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'If CInt(CLOSE_YEAR_T.Text) < 2013 Or CInt(CLOSE_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "締め日の「年」指定が不正です。",
+        '                                        "締め日「年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            CLOSE_MONTH_T.Focus()
-            Message_form = Nothing
-            Exit Function
-        End If
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        CLOSE_YEAR_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Function
+        '    Else
+        '        If CLOSE_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'If CInt(CLOSE_MONTH_T.Text) < 1 Or CInt(CLOSE_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "締め日の「月」指定が不正です。",
+        '                                        "締め日「月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        CLOSE_MONTH_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Function
+        '    Else
+        '        If CLOSE_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+        '2019.12.18 R.Takashima TO
 
         dt = CDate(CLOSE_YEAR_T.Text & "/" & CLOSE_MONTH_T.Text & "/" & String.Format("{0:00}", oConf(0).sCloseDay))
 
@@ -595,11 +629,11 @@
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getChannelTrnSummary( _
-                            oMonthTrnSummary, _
-                            Nothing, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getChannelTrnSummary(
+                            oMonthTrnSummary,
+                            Nothing,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
         pPrice = 0
 
@@ -608,13 +642,17 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.19 R.Takashima FROM
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.19 R.Takashima TO
             End If
 
-            CHANNEL_V.Rows.Add( _
-                                oMonthTrnSummary(i).sName, _
-                                oMonthTrnSummary(i).sCount, _
-                                pPrice _
+            CHANNEL_V.Rows.Add(
+                                oMonthTrnSummary(i).sName,
+                                oMonthTrnSummary(i).sCount,
+                                pPrice
                     )
         Next i
 
@@ -646,10 +684,10 @@
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getBumonTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getBumonTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pProductTotal = 0
@@ -661,13 +699,17 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
-            BUMON_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            BUMON_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
 
             Select Case oMonthTrnSummary(i).sBumonClass
@@ -696,10 +738,10 @@
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getPaymentTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getPaymentTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pPrice = 0
@@ -709,13 +751,17 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
-            PAYMENT_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            PAYMENT_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
         Next i
 
@@ -737,10 +783,10 @@
         Next
 
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getCategoryTrnSummary( _
-                            oMonthTrnSummary, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getCategoryTrnSummary(
+                            oMonthTrnSummary,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pPrice = 0
@@ -750,13 +796,17 @@
             If IN_R.Checked = True Then     '税込みモードの場合
                 pPrice = oMonthTrnSummary(i).sPrice
             Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                '2019.12.20 A.Komita From
+                '軽減税率が含まれていると数値がずれるため修正
+                'pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                pPrice = oMonthTrnSummary(i).sPrice - (oMonthTrnSummary(i).sTaxPrice + oMonthTrnSummary(i).sReduceTaxPrice)
+                '2019.12.20 A.Komita To
             End If
 
-            CATEGORY_V.Rows.Add( _
-                            oMonthTrnSummary(i).sName, _
-                            oMonthTrnSummary(i).sCount, _
-                            pPrice _
+            CATEGORY_V.Rows.Add(
+                            oMonthTrnSummary(i).sName,
+                            oMonthTrnSummary(i).sCount,
+                            pPrice
                 )
         Next i
 
@@ -781,9 +831,9 @@
         OPOSPrinter1.Close()
         ret = OPOSPrinter1.Open("TRST56U")
         If ret Then
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                  "レシートプリンターの", _
-                                  "接続に失敗しました(ERRCODE:" & Trim(CStr(ret)), _
+            Dim message_form As New cMessageLib.fMessage(1,
+                                  "レシートプリンターの",
+                                  "接続に失敗しました(ERRCODE:" & Trim(CStr(ret)),
                                   "開発元に連絡して下さい", Nothing)
             message_form.ShowDialog()
             message_form = Nothing
@@ -791,9 +841,9 @@
 
         ret = OPOSPrinter1.ClaimDevice(1000)
         If ret Then
-            Dim message_form As New cMessageLib.fMessage(1, _
-                                  "レシートプリンターの", _
-                                  "初期化に失敗しました(ERRCODE:" & Trim(CStr(ret)), _
+            Dim message_form As New cMessageLib.fMessage(1,
+                                  "レシートプリンターの",
+                                  "初期化に失敗しました(ERRCODE:" & Trim(CStr(ret)),
                                   "開発元に連絡して下さい", Nothing)
             message_form.ShowDialog()
             message_form = Nothing
@@ -881,12 +931,12 @@
     End Function
 
 
-    Private Sub QUIT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QUIT_B.Click
+    Private Sub QUIT_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles QUIT_B.Click
         Dim Message_form As cMessageLib.fMessage
 
         'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(2, Nothing, _
-                                        "今回の締め処理は無効となります。", _
+        Message_form = New cMessageLib.fMessage(2, Nothing,
+                                        "今回の締め処理は無効となります。",
                                         "よろしいですか？", Nothing)
         Message_form.ShowDialog()
         '確認ダイアログでNOが選択された場合
@@ -899,13 +949,13 @@
         Me.Close()
     End Sub
 
-    Private Sub COMMIT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COMMIT_B.Click
+    Private Sub COMMIT_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles COMMIT_B.Click
         Dim Message_form As cMessageLib.fMessage
 
         'メッセージウィンドウ表示
-        Message_form = New cMessageLib.fMessage(2, _
-                                        oConf(0).sDataPeriod & "ヶ月以前のデータは", _
-                                        "バックアップ後、削除されます。", _
+        Message_form = New cMessageLib.fMessage(2,
+                                        oConf(0).sDataPeriod & "ヶ月以前のデータは",
+                                        "バックアップ後、削除されます。",
                                         "よろしいですか？", Nothing)
         Message_form.ShowDialog()
         '確認ダイアログでNOが選択された場合
@@ -930,18 +980,31 @@
         oTool = Nothing
 
     End Sub
-    Private Sub CAL_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CAL_B.Click
-        CAL_PROC()
+    Private Sub CAL_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles CAL_B.Click
+
+        '2019.12.18 R.Takashima FROM
+        '日付の範囲指定にて開始月が終了日以上にならないように変更
+        Dim fromDate = New DateTime(CLng(FROM_YEAR_T.Text), CLng(FROM_MONTH_T.Text), CLng(FROM_DAY_T.Text))
+        Dim toDate = New DateTime(CLng(TO_YEAR_T.Text), CLng(TO_MONTH_T.Text), CLng(TO_DAY_T.Text))
+        If DateDiff("d", fromDate, toDate) >= 0 Then
+            CAL_PROC()
+        Else
+            Dim mes = New cMessageLib.fMessage(1, "開始日が終了日より大きいです。",
+                                    "修正をしてください。",
+                                    Nothing, Nothing).ShowDialog
+        End If
+        '2019.12.18 R.Takashima TO
     End Sub
     Private Sub CAL_PROC()
         Dim Message_form As cMessageLib.fMessage
 
-        Message_form = New cMessageLib.fMessage(1, "データ集計中・・・", _
-                                    "しばらくお待ち下さい。", _
+        Message_form = New cMessageLib.fMessage(1, "データ集計中・・・",
+                                    "しばらくお待ち下さい。",
                                     Nothing, Nothing)
 
         Message_form.Show()
         System.Windows.Forms.Application.DoEvents()
+
 
         '売上集計タブ
         DATA_SET_CAHNNEL()
@@ -992,11 +1055,11 @@
 
         'グラフデータ集計
         ReDim oMonthTrnSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getGraphSummary( _
-                            oMonthTrnSummary, _
-                            ch, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getGraphSummary(
+                            oMonthTrnSummary,
+                            ch,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         'ランキングデータセット
@@ -1090,6 +1153,7 @@
         pPrice = 0
         pTotal = 0
 
+
         For i = 0 To oMonthTrnSummary.Length - 1
 
             If IN_R.Checked = True Then     '税込みモードの場合
@@ -1098,13 +1162,20 @@
                 pPostageTotal = pPostageTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sPostage, oConf(0).sTax, oConf(0).sFracProc)
                 pFeeTotal = pFeeTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sFee, oConf(0).sTax, oConf(0).sFracProc)
                 pDiscountTotal = pDiscountTotal + oTool.BeforeToAfterTax(oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount, oConf(0).sTax, oConf(0).sFracProc)
-            Else    '税抜きモードの場合
-                pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+
+                '2020,1,7 A.Komita 軽減税率計算の分岐を追加 From
+            Else    '税抜きモードの場合              
+                If oMonthTrnSummary(i).sReducedTaxRate = 0 Then
+                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    pPrice = oTool.AfterToBeforeTax(oMonthTrnSummary(i).sPrice, oMonthTrnSummary(i).sReducedTaxRate, oConf(0).sFracProc)
+                End If
                 pTotal = pTotal + oMonthTrnSummary(i).sPrice
                 pPostageTotal = pPostageTotal + oMonthTrnSummary(i).sPostage
                 pFeeTotal = pFeeTotal + oMonthTrnSummary(i).sFee
                 pDiscountTotal = pDiscountTotal + oMonthTrnSummary(i).sDisCount + oMonthTrnSummary(i).sPointDisCount + oMonthTrnSummary(i).sTicketDisCount
             End If
+            '2020,1,7 A.Komita 追加 To
 
             If pPrice > 0 Then
                 RANK_V.Rows.Add( _
@@ -1175,11 +1246,11 @@
         End If
 
         ReDim oArrivalSummary(0)
-        RecordCnt = oTrnSummaryDBIO.getArrivalSummary( _
-                            oArrivalSummary, _
-                            supplierCode, _
-                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = oTrnSummaryDBIO.getArrivalSummary(
+                            oArrivalSummary,
+                            supplierCode,
+                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                             oTran)
 
         pUnitPrice = 0
@@ -1228,6 +1299,10 @@
         CLOSE_YEAR_T.SelectAll()
     End Sub
     Private Sub CLOSE_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CLOSE_YEAR_T.LostFocus
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理部分を呼出
+        SetDate(sender, 0)
+
         DEFAULT_DATE_SET()
     End Sub
 
@@ -1236,9 +1311,13 @@
     End Sub
 
     Private Sub CLOSE_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles CLOSE_MONTH_T.LostFocus
-        CLOSE_MONTH_T.Text = String.Format("{0:00}", CInt(CLOSE_MONTH_T.Text))
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理部分を呼出
+        SetDate(sender, 1)
+
         DEFAULT_DATE_SET()
     End Sub
+
     Private Function BACKUP_PROC() As Boolean
         Dim StrPath As String
         Dim DB_Path As String
@@ -1283,7 +1362,7 @@
         Dim pTrn() As cStructureLib.sTrn
         Dim pTrnSubDBIO As cDataTrnSubDBIO
         Dim pTrnSub() As cStructureLib.sSubTrn
-        Dim pTran As System.Data.OleDb.OleDbTransaction
+        Dim pTran As OleDb.OleDbTransaction
         Dim RecordCnt As Long
         Dim i As Long
         Dim j As Long
@@ -1322,25 +1401,31 @@
             '               pTrn(i).sTrnCode, _
             '               Nothing, _
             '               oTran)
-            RecordCnt = pTrnSubDBIO.getSubTrn(pTrnSub, _
-                       pTrn(i).sTrnCode, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
-                       Nothing, _
+            RecordCnt = pTrnSubDBIO.getSubTrn(pTrnSub,
+                       pTrn(i).sTrnCode,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
+                       Nothing,
                        oTran)
-            For j = 0 To pTrnSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pTrnSubDBIO.insertSubTrn(pTrnSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    TRN_BACKUP = False
-                    Exit Function
-                End If
-            Next
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
+            'For j = 0 To pTrnSub.Length - 1
+            '    '    移行対象明細データのバックアップ先書込み 
+            '    If pTrnSubDBIO.insertSubTrn(pTrnSub(j), pTran) = False Then
+            '        pTran.Rollback()
+            '        TRN_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
+        pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pTrnDBIO = Nothing
         pTrnSubDBIO = Nothing
         pCommand = Nothing
@@ -1383,27 +1468,33 @@
         For i = 0 To pOrder.Length - 1
             '移行対象ヘッダーデータのバックアップ先書込み
             If pOrderDBIO.insertOrderData(pOrder(i), pTran) = False Then
-                pTran.Rollback()
+                oTran.Rollback()
                 ORDER_BACKUP = False
                 Exit Function
             End If
 
             '移行対象明細データの取得
             ReDim pOrderSub(0)
-            RecordCnt = pOrderSubDBIO.getOrderSubData(pOrderSub, _
-                           pOrder(i).sOrderCode, _
-                           Nothing, _
+            RecordCnt = pOrderSubDBIO.getOrderSubData(pOrderSub,
+                           pOrder(i).sOrderCode,
+                           Nothing,
                            oTran)
-            For j = 0 To pOrderSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pOrderSubDBIO.insertOrderSubData(pOrderSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    ORDER_BACKUP = False
-                    Exit Function
-                End If
-            Next
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
+            'For j = 0 To pOrderSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pOrderSubDBIO.insertOrderSubData(pOrderSub(j), pTran) = False Then
+            '        oTran.Rollback()
+            '        ORDER_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
+        pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pOrderDBIO = Nothing
         pOrderSubDBIO = Nothing
         pCommand = Nothing
@@ -1428,11 +1519,11 @@
         pRequestSubDBIO = New cDataRequestSubDBIO(oConn, oCommand, oDataReader)
 
         '移行対象ヘッダーデータの取得
-        RecordCnt = pRequestDBIO.getRequest2(pRequest, _
-                          Nothing, _
-                          Nothing, _
-                          FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                          TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
+        RecordCnt = pRequestDBIO.getRequest2(pRequest,
+                          Nothing,
+                          Nothing,
+                          FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                          TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
                           oTran)
         pRequestDBIO = Nothing
 
@@ -1451,17 +1542,24 @@
 
             '移行対象明細データの取得
             ReDim pRequestSub(0)
-            RecordCnt = pRequestSubDBIO.getSubRequest(pRequestSub, _
-                           pRequest(i).sRequestCode, _
-                           Nothing, _
+            RecordCnt = pRequestSubDBIO.getSubRequest(pRequestSub,
+                           pRequest(i).sRequestCode,
+                           Nothing,
                            oTran)
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
             '移行対象明細データのバックアップ先書込み
-            If pRequestSubDBIO.insertSubRequestData(pRequestSub, pTran) = False Then
-                pTran.Rollback()
-                REQUEST_BACKUP = False
-                Exit Function
-            End If
+            'If pRequestSubDBIO.insertSubRequestData(pRequestSub, pTran) = False Then
+            '    pTran.Rollback()
+            '    REQUEST_BACKUP = False
+            '    Exit Function
+            'End If
+            '2020,1,9 A.Komita 削除 End
+
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
+        pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pRequestDBIO = Nothing
         pRequestSubDBIO = Nothing
         pCommand = Nothing
@@ -1476,7 +1574,7 @@
         Dim pArrival() As cStructureLib.sArrivalData
         Dim pArrivalSubDBIO As cDataArrivalSubDBIO
         Dim pArrivalSub() As cStructureLib.sArrivalSubData
-        Dim pTran As System.Data.OleDb.OleDbTransaction
+        Dim pTran As OleDb.OleDbTransaction
         Dim RecordCnt As Long
         Dim i As Long
         Dim j As Long
@@ -1509,19 +1607,25 @@
 
             '移行対象明細データの取得
             ReDim pArrivalSub(0)
-            RecordCnt = pArrivalSubDBIO.getArrivalSubData(pArrivalSub, _
-                           pArrival(i).sOrderCode, _
+            RecordCnt = pArrivalSubDBIO.getArrivalSubData(pArrivalSub,
+                           pArrival(i).sOrderCode,
                            oTran)
-            For j = 0 To pArrivalSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pArrivalSubDBIO.insertArrivalSubData(pArrivalSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    ARRIVAL_BACKUP = False
-                    Exit Function
-                End If
-            Next
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
+            'For j = 0 To pArrivalSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pArrivalSubDBIO.insertArrivalSubData(pArrivalSub(j), oTran) = False Then
+            '        pTran.Rollback()
+            '        ARRIVAL_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
+        pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pArrivalDBIO = Nothing
         pArrivalSubDBIO = Nothing
         pCommand = Nothing
@@ -1573,26 +1677,34 @@
 
             '移行対象明細データの取得
             ReDim pShipmentSub(0)
-            RecordCnt = pShipmentSubDBIO.getSubShipment(pShipmentSub, _
-                           Nothing, _
-                           pShipment(i).sShipCode, _
-                           Nothing, _
+            RecordCnt = pShipmentSubDBIO.getSubShipment(pShipmentSub,
+                           Nothing,
+                           pShipment(i).sShipCode,
+                           Nothing,
                            oTran)
-            For j = 0 To pShipmentSub.Length - 1
-                '移行対象明細データのバックアップ先書込み
-                If pShipmentSubDBIO.insertSubShipmentMst(pShipmentSub(j), pTran) = False Then
-                    pTran.Rollback()
-                    SHIPMENT_BACKUP = False
-                    Exit Function
-                End If
-            Next
+
+            '2020,1,9 A.Komita トランザクション完了済みの為削除 Start
+            'For j = 0 To pShipmentSub.Length - 1
+            '    '移行対象明細データのバックアップ先書込み
+            '    If pShipmentSubDBIO.insertSubShipmentMst(pShipmentSub(j), oTran) = False Then
+            '        pTran.Rollback()
+            '        SHIPMENT_BACKUP = False
+            '        Exit Function
+            '    End If
+            'Next
+            '2020,1,9 A.Komita 削除 End
 
         Next
+        '2020,1,9 A.Komita トランザクション終了のコードを追加 Start
+        pTran.Commit()
+        '2020,1,9 A.Komita 追加 End
         pShipmentDBIO = Nothing
         pShipmentSubDBIO = Nothing
         pCommand = Nothing
         pDataReader = Nothing
         SHIPMENT_BACKUP = True
+
+        pTran.Commit()
 
     End Function
 
@@ -1614,12 +1726,12 @@
         DATA_SET_SUPPLIER()
     End Sub
 
-    Private Sub IN_R_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles IN_R.CheckedChanged
+    Private Sub IN_R_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles IN_R.CheckedChanged
         CAL_PROC()
     End Sub
 
     Private Sub PRINT_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRINT_B.Click
-        Dim form_MonthCloseReport As cReportsLib.fMonthCloseReport
+        Dim form_MonthCloseReport As fMonthCloseReport
         Dim cnCode As Integer
         Dim spCode As Integer
 
@@ -1635,39 +1747,54 @@
             spCode = CInt(SUPPLIER_CODE_T.Text)
         End If
 
-        form_MonthCloseReport = New cReportsLib.fMonthCloseReport( _
-                                            oConn, _
-                                            oCommand, _
-                                            oDataReader, _
-                                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text, _
-                                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text, _
-                                            cnCode, _
-                                            spCode, _
+        form_MonthCloseReport = New fMonthCloseReport(
+                                            oConn,
+                                            oCommand,
+                                            oDataReader,
+                                            FROM_YEAR_T.Text & "/" & FROM_MONTH_T.Text & "/" & FROM_DAY_T.Text,
+                                            TO_YEAR_T.Text & "/" & TO_MONTH_T.Text & "/" & TO_DAY_T.Text,
+                                            cnCode,
+                                            spCode,
                                             oTran)
 
 
     End Sub
 
-    Private Sub FROM_YEAR_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_YEAR_T.GotFocus
+    Private Sub FROM_YEAR_T_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_YEAR_T.GotFocus
         FROM_YEAR_T.SelectAll()
     End Sub
 
-    Private Sub FROM_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_YEAR_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+    Private Sub FROM_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_YEAR_T.LostFocus
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 0)
 
-        If CInt(FROM_YEAR_T.Text) < 2013 Or CInt(FROM_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始年」指定が不正です。", _
-                                                "集計期間「開始年」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            Message_form = Nothing
-            FROM_YEAR_T.Focus()
-            Exit Sub
-        End If
+        'If CInt(FROM_YEAR_T.Text) < 2013 Or CInt(FROM_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始年」指定が不正です。",
+        '                                        "集計期間「開始年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        FROM_YEAR_T.Text = String.Format("{0:0000}", CInt(FROM_YEAR_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        Message_form = Nothing
+        '        FROM_YEAR_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If FROM_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_YEAR_T.Text = String.Format("{0:0000}", CInt(FROM_YEAR_T.Text))
 
     End Sub
 
@@ -1676,87 +1803,149 @@
     End Sub
 
     Private Sub TO_YEAR_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_YEAR_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 0)
 
-        If CInt(TO_YEAR_T.Text) < 2013 Or CInt(TO_YEAR_T.Text) > 2099 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了年」指定が不正です。", _
-                                                "集計期間「終了年」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_YEAR_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'If CInt(TO_YEAR_T.Text) < 2013 Or CInt(TO_YEAR_T.Text) > 2099 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了年」指定が不正です。",
+        '                                        "集計期間「終了年」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        TO_YEAR_T.Text = String.Format("{0:0000}", CInt(TO_YEAR_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_YEAR_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If TO_YEAR_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_YEAR_T.Text = String.Format("{0:0000}", CInt(TO_YEAR_T.Text))
 
     End Sub
 
-    Private Sub FROM_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_MONTH_T.GotFocus
+    Private Sub FROM_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles FROM_MONTH_T.GotFocus
         FROM_MONTH_T.SelectAll()
     End Sub
 
 
     Private Sub FROM_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_MONTH_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 1)
 
-        If CInt(FROM_MONTH_T.Text) < 1 Or CInt(FROM_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始月」指定が不正です。", _
-                                                "集計期間「開始月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            FROM_MONTH_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'If CInt(FROM_MONTH_T.Text) < 1 Or CInt(FROM_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始月」指定が不正です。",
+        '                                        "集計期間「開始月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        FROM_MONTH_T.Text = String.Format("{0:00}", CInt(FROM_MONTH_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        FROM_MONTH_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If FROM_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_MONTH_T.Text = String.Format("{0:00}", CInt(FROM_MONTH_T.Text))
 
     End Sub
 
     Private Sub FROM_DAY_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_DAY_T.GotFocus
         FROM_DAY_T.SelectAll()
     End Sub
+
     Private Sub FROM_DAY_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles FROM_DAY_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 2)
 
-        If CInt(FROM_DAY_T.Text) < 1 Or CInt(FROM_DAY_T.Text) > 31 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「開始日」指定が不正です。", _
-                                                "集計期間「開始日」を訂正して下さい。", _
-                                                Nothing, Nothing)
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            FROM_DAY_T.Focus()
-            Message_form = Nothing
-            Exit Sub
-        End If
+        'Dim Message_form As cMessageLib.fMessage
 
-        FROM_DAY_T.Text = String.Format("{0:00}", CInt(FROM_DAY_T.Text))
+        'If CInt(FROM_DAY_T.Text) < 1 Or CInt(FROM_DAY_T.Text) > 31 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「開始日」指定が不正です。",
+        '                                        "集計期間「開始日」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        FROM_DAY_T.Focus()
+        '        Message_form = Nothing
+        '        Exit Sub
+        '    Else
+        '        If FROM_DAY_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'FROM_DAY_T.Text = String.Format("{0:00}", CInt(FROM_DAY_T.Text))
 
     End Sub
     Private Sub TO_MONTH_T_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_MONTH_T.GotFocus
         TO_MONTH_T.SelectAll()
     End Sub
     Private Sub TO_MONTH_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_MONTH_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 1)
 
-        If CInt(TO_MONTH_T.Text) < 1 Or CInt(TO_MONTH_T.Text) > 12 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了月」指定が不正です。", _
-                                                "集計期間「終了月」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_MONTH_T.Focus()
-            Exit Sub
-        End If
+        'If CInt(TO_MONTH_T.Text) < 1 Or CInt(TO_MONTH_T.Text) > 12 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了月」指定が不正です。",
+        '                                        "集計期間「終了月」を訂正して下さい。",
+        '                                        Nothing, Nothing)
 
-        TO_MONTH_T.Text = String.Format("{0:00}", CInt(TO_MONTH_T.Text))
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_MONTH_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If TO_MONTH_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_MONTH_T.Text = String.Format("{0:00}", CInt(TO_MONTH_T.Text))
 
     End Sub
 
@@ -1765,20 +1954,188 @@
         TO_DAY_T.SelectAll()
     End Sub
     Private Sub TO_DAY_T_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TO_DAY_T.LostFocus
-        Dim Message_form As cMessageLib.fMessage
+        '2019.12.18 R.Takashima 
+        'LostFocusの処理を１つにまとめたためコメントアウトし、処理部分を呼出
+        SetDate(sender, 2)
 
-        If CInt(TO_DAY_T.Text) < 1 Or CInt(TO_DAY_T.Text) > 31 Then
-            Message_form = New cMessageLib.fMessage(1, "集計期間の「終了日」指定が不正です。", _
-                                                "集計期間「終了日」を訂正して下さい。", _
-                                                Nothing, Nothing)
+        'Dim Message_form As cMessageLib.fMessage
 
-            Message_form.ShowDialog()
-            System.Windows.Forms.Application.DoEvents()
-            TO_DAY_T.Focus()
+        'If CInt(TO_DAY_T.Text) < 1 Or CInt(TO_DAY_T.Text) > 31 Then
+        '    '2019.12.14 R.Takashima
+        '    'メッセージフォームにフォーカスが行くことで
+        '    'テキストボックスのフォーカスが失いさらにメッセージフォームにフォーカスが行きテキストボックスのフォーカスが失い・・・
+        '    'という無限ループになるためメッセージが１回表示されたらそれ以降ループが起きないように修正
+        '    If messageFlag <> True Then
+        '        messageFlag = True
+        '        Message_form = New cMessageLib.fMessage(1, "集計期間の「終了日」指定が不正です。",
+        '                                        "集計期間「終了日」を訂正して下さい。",
+        '                                        Nothing, Nothing)
+
+        '        Message_form.ShowDialog()
+        '        System.Windows.Forms.Application.DoEvents()
+        '        TO_DAY_T.Focus()
+        '        Exit Sub
+        '    Else
+        '        If TO_DAY_T.Equals(ActiveControl) = False Then
+        '            messageFlag = False
+        '        End If
+        '    End If
+        'End If
+
+        'TO_DAY_T.Text = String.Format("{0:00}", CInt(TO_DAY_T.Text))
+
+    End Sub
+
+    '2019.12.18 R.Takashima FROM
+    'LostFocusの処理を全てまとめる
+    '-----------------------------
+    '引数：num　日付の種別 | 0 : 年 | 1：月 | 2：日
+    '-----------------------------
+
+    Private Sub SetDate(ByRef control As Control, ByVal num As Integer)
+
+        'メッセージが表示されていたか
+        Static Dim messageFlag As Boolean
+
+        '現在入力途中のコントロール
+        Static Dim CurrentControl As Control
+
+        'コントロールが無ければ（初期状態）現在のコントロールを代入
+        'コントロールの値が同じでない場合は処理を終了
+        If IsNothing(CurrentControl) Then
+            CurrentControl = control
+        ElseIf CurrentControl.Equals(control) <> True Then
             Exit Sub
         End If
 
-        TO_DAY_T.Text = String.Format("{0:00}", CInt(TO_DAY_T.Text))
+        Select Case num
+            Case 0
+
+                If CInt(control.Text) < 2013 Or CInt(control.Text) > 2099 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setYear(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:0000}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+
+            Case 1
+
+                If CInt(control.Text) < 1 Or CInt(control.Text) > 12 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setMonth(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:00}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+
+            Case 2
+
+                If CInt(control.Text) < 1 Or CInt(control.Text) > 31 Then
+                    If messageFlag <> True Then
+                        messageFlag = True
+                        setDay(control)
+                        messageFlag = False
+                    End If
+                Else
+                    If CurrentControl.Equals(control) Then
+                        messageFlag = False
+                        control.Text = String.Format("{0:00}", CInt(control.Text))
+                        CurrentControl = Nothing
+                    End If
+                End If
+        End Select
 
     End Sub
+
+    Private Sub setYear(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        If control.Name = "CLOSE_YEAR_T" Then
+            message(0) = "締め日の「年」指定が不正です。"
+            message(1) = "締め日「年」を訂正して下さい。"
+        ElseIf control.Name = "FROM_YEAR_T" Then
+            message(0) = "集計期間の「開始年」指定が不正です。"
+            message(1) = "集計期間「開始年」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了年」指定が不正です。"
+            message(1) = "集計期間「終了年」を訂正して下さい。"
+        End If
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                                message(1),
+                                                Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    Private Sub setMonth(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        If control.Name = "CLOSE_MONTH_T" Then
+            message(0) = "締め日の「月」指定が不正です。"
+            message(1) = "締め日「月」を訂正して下さい。"
+        ElseIf control.Name = "FROM_MONTH_T" Then
+            message(0) = "集計期間の「開始月」指定が不正です。"
+            message(1) = "集計期間「開始月」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了月」指定が不正です。"
+            message(1) = "集計期間「終了月」を訂正して下さい。"
+        End If
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                        message(1),
+                                        Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    Private Sub setDay(ByRef control As Control)
+        Dim message_form As cMessageLib.fMessage
+        Dim message(2) As String
+
+        If control.Name = "FROM_DAY_T" Then
+            message(0) = "集計期間の「開始日」指定が不正です。"
+            message(1) = "集計期間「開始日」を訂正して下さい。"
+        Else
+            message(0) = "集計期間の「終了日」指定が不正です。"
+            message(1) = "集計期間「終了日」を訂正して下さい。"
+        End If
+
+        message_form = New cMessageLib.fMessage(1, message(0),
+                                        message(1),
+                                        Nothing, Nothing)
+        message_form.ShowDialog()
+        control.Focus()
+        System.Windows.Forms.Application.DoEvents()
+        message_form = Nothing
+
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
+    End Sub
+
+    '2019.12.18 R.Takashima TO
+
 End Class

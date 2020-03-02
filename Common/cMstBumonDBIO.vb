@@ -535,8 +535,8 @@
     Public Function insertBumonMst(ByVal parBumon As cStructureLib.sBumon, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
         'SQL文の設定
-        Const strInsert As String = "INSERT INTO 部門マスタ " & _
-        "( 部門コード, 部門名称, 部門略称, 部門種別, 予約フラグ, 予約単位, 税区分名称, 登録日, 登録時間, 最終更新日, 最終更新時間 ) " & _
+        Const strInsert As String = "INSERT INTO 部門マスタ " &
+        "( 部門コード, 部門名称, 部門略称, 部門種別, 予約フラグ, 予約単位, 税区分コード, 登録日, 登録時間, 最終更新日, 最終更新時間 ) " &
         "VALUES (@BumonCode, @BumonName, @BumonShortName, @BumonClass, @ReservFlg, @ReservPeace, @TaxClassName, @CreateDate, @CreateTime, @UpdateDate, @UpdateTime)"
 
         'コマンドオブジェクトの生成
@@ -687,15 +687,15 @@
         Dim strUpdate As String
 
         'SQL文の設定
-        strUpdate = "UPDATE 部門マスタ SET " & _
-                            "部門名称=""" & parBumon.sBumonName & """, " & _
-                            "部門略称=""" & parBumon.sBumonName & """, " & _
-                            "部門種別=" & parBumon.sBumonClass & ", " & _
-                            "予約フラグ=" & parBumon.sReservFlg & ", " & _
-                            "予約単位=""" & parBumon.sReservPeace & """, " & _
-                            "税区分コード=" & parBumon.sTaxClassCode & ", " & _
-                            "最終更新日=""" & String.Format("{0:yyyy/MM/dd}", Now) & """, " & _
-                            "最終更新時間=""" & String.Format("{0:HH:mm:ss}", Now) & """ " & _
+        strUpdate = "UPDATE 部門マスタ SET " &
+                            "部門名称=""" & parBumon.sBumonName & """, " &
+                            "部門略称=""" & parBumon.sBumonShortName & """, " &
+                            "部門種別=" & parBumon.sBumonClass & ", " &
+                            "予約フラグ=" & parBumon.sReservFlg & ", " &
+                            "予約単位=""" & parBumon.sReservPeace & """, " &
+                            "税区分コード=" & parBumon.sTaxClassCode & ", " &
+                            "最終更新日=""" & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
+                            "最終更新時間=""" & String.Format("{0:HH:mm:ss}", Now) & """ " &
                             "WHERE 部門コード=""" & parBumon.sBumonCode & """ "
         Try
             pCommand = pConn.CreateCommand

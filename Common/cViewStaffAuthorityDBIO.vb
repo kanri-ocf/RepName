@@ -53,7 +53,6 @@ Public Class cViewStaffAuthorityDBIO
 
             'SQL文の設定
             pCommand.CommandText = strSelect
-
             pDataReader = pCommand.ExecuteReader()
 
             i = 0

@@ -1481,26 +1481,33 @@ Public Class fProductMst
         If PRODUCT_CODE_T.Text = "" Then
 
         End If
+        Try
+            sPath = oTool.FileSearch("ファイル選択", Nothing)
+            If sPath <> "" Then
+                Derimita = sPath.LastIndexOf("."c)
+                tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
+                tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_1.jpg"
 
-        sPath = oTool.FileSearch("ファイル選択", Nothing)
-        If sPath <> "" Then
-            Derimita = sPath.LastIndexOf("."c)
-            tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
-            tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_1.jpg"
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
 
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
+                ' FileStream を開く
+                Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
 
-            ' FileStream を開く
-            Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
+                ' FileStream から画像を読み込んで表示
+                PRODUCT_P1_PB.Image = System.Drawing.Image.FromStream(hStream)
+                PRODUCT_P1_PB.Text = tPath
 
-            ' FileStream から画像を読み込んで表示
-            PRODUCT_P1_PB.Image = System.Drawing.Image.FromStream(hStream)
-            PRODUCT_P1_PB.Text = tPath
-
-            ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
-            hStream.Close()
-        End If
+                ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
+                hStream.Close()
+            End If
+        Catch ex As System.IO.FileNotFoundException
+            FILENOT()
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
+        End Try
     End Sub
     Private Sub PRODUCT_P2_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRODUCT_P2_B.Click
         Dim sPath As String
@@ -1510,26 +1517,35 @@ Public Class fProductMst
         If PRODUCT_CODE_T.Text = "" Then
 
         End If
+        Try
 
-        sPath = oTool.FileSearch("ファイル選択", Nothing)
-        If sPath <> "" Then
-            Derimita = sPath.LastIndexOf("."c)
-            tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
-            tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_2.jpg"
+            sPath = oTool.FileSearch("ファイル選択", Nothing)
+            If sPath <> "" Then
+                Derimita = sPath.LastIndexOf("."c)
+                tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
+                tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_2.jpg"
 
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
 
-            ' FileStream を開く
-            Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
+                ' FileStream を開く
+                Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
 
-            ' FileStream から画像を読み込んで表示
-            PRODUCT_P2_PB.Image = System.Drawing.Image.FromStream(hStream)
-            PRODUCT_P2_PB.Text = tPath
+                ' FileStream から画像を読み込んで表示
+                PRODUCT_P2_PB.Image = System.Drawing.Image.FromStream(hStream)
+                PRODUCT_P2_PB.Text = tPath
 
-            ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
-            hStream.Close()
-        End If
+                ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
+                hStream.Close()
+            End If
+        Catch ex As System.IO.FileNotFoundException
+            FILENOT()
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
+
+        End Try
     End Sub
     Private Sub PRODUCT_P3_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRODUCT_P3_B.Click
         Dim sPath As String
@@ -1539,26 +1555,35 @@ Public Class fProductMst
         If PRODUCT_CODE_T.Text = "" Then
 
         End If
+        Try
+            sPath = oTool.FileSearch("ファイル選択", Nothing)
+            If sPath <> "" Then
+                Derimita = sPath.LastIndexOf("."c)
+                tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
+                tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_3.jpg"
 
-        sPath = oTool.FileSearch("ファイル選択", Nothing)
-        If sPath <> "" Then
-            Derimita = sPath.LastIndexOf("."c)
-            tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
-            tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_3.jpg"
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
 
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
+                ' FileStream を開く
+                Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
 
-            ' FileStream を開く
-            Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
+                ' FileStream から画像を読み込んで表示
+                PRODUCT_P3_PB.Image = System.Drawing.Image.FromStream(hStream)
+                PRODUCT_P3_PB.Text = tPath
 
-            ' FileStream から画像を読み込んで表示
-            PRODUCT_P3_PB.Image = System.Drawing.Image.FromStream(hStream)
-            PRODUCT_P3_PB.Text = tPath
+                ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
+                hStream.Close()
+            End If
+        Catch ex As System.IO.FileNotFoundException
+            FILENOT()
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
 
-            ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
-            hStream.Close()
-        End If
+        End Try
+
     End Sub
     Private Sub PRODUCT_P4_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRODUCT_P4_B.Click
         Dim sPath As String
@@ -1568,26 +1593,35 @@ Public Class fProductMst
         If PRODUCT_CODE_T.Text = "" Then
 
         End If
+        Try
 
-        sPath = oTool.FileSearch("ファイル選択", Nothing)
-        If sPath <> "" Then
-            Derimita = sPath.LastIndexOf("."c)
-            tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
-            tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_4.jpg"
+            sPath = oTool.FileSearch("ファイル選択", Nothing)
+            If sPath <> "" Then
+                Derimita = sPath.LastIndexOf("."c)
+                tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
+                tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_4.jpg"
 
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
 
-            ' FileStream を開く
-            Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
+                ' FileStream を開く
+                Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
 
-            ' FileStream から画像を読み込んで表示
-            PRODUCT_P4_PB.Image = System.Drawing.Image.FromStream(hStream)
-            PRODUCT_P4_PB.Text = tPath
+                ' FileStream から画像を読み込んで表示
+                PRODUCT_P4_PB.Image = System.Drawing.Image.FromStream(hStream)
+                PRODUCT_P4_PB.Text = tPath
 
-            ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
-            hStream.Close()
-        End If
+                ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
+                hStream.Close()
+            End If
+        Catch ex As System.IO.FileNotFoundException
+            FILENOT()
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
+
+        End Try
     End Sub
     Private Sub PRODUCT_P5_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PRODUCT_P5_B.Click
         Dim sPath As String
@@ -1597,26 +1631,47 @@ Public Class fProductMst
         If PRODUCT_CODE_T.Text = "" Then
 
         End If
+        Try
 
-        sPath = oTool.FileSearch("ファイル選択", Nothing)
-        If sPath <> "" Then
-            Derimita = sPath.LastIndexOf("."c)
-            tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
-            tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_5.jpg"
+            sPath = oTool.FileSearch("ファイル選択", Nothing)
+            If sPath <> "" Then
+                Derimita = sPath.LastIndexOf("."c)
+                tPath = sPath.Substring(Derimita, sPath.Length - Derimita)
+                tPath = oTool.RegistryRead("File1") & "\Temp\" & PRODUCT_CODE_T.Text & "_5.jpg"
 
-            'ファイルのコピー
-            System.IO.File.Copy(sPath, tPath, True)
+                'ファイルのコピー
+                System.IO.File.Copy(sPath, tPath, True)
 
-            ' FileStream を開く
-            Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
+                ' FileStream を開く
+                Dim hStream As New System.IO.FileStream(tPath, System.IO.FileMode.Open)
 
-            ' FileStream から画像を読み込んで表示
-            PRODUCT_P5_PB.Image = System.Drawing.Image.FromStream(hStream)
-            PRODUCT_P5_PB.Text = tPath
+                ' FileStream から画像を読み込んで表示
+                PRODUCT_P5_PB.Image = System.Drawing.Image.FromStream(hStream)
+                PRODUCT_P5_PB.Text = tPath
 
-            ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
-            hStream.Close()
-        End If
+                ' FileStream を閉じる (正しくは オブジェクトの破棄を保証する を参照)
+                hStream.Close()
+            End If
+        Catch ex As System.IO.FileNotFoundException
+            FILENOT()
+            Exit Sub
+        Catch ex As System.IO.DirectoryNotFoundException
+            FILENOT()
+            Exit Sub
+
+        End Try
+    End Sub
+    Private Sub FILENOT()
+        Dim Message_form As cMessageLib.fMessage
+
+        'メッセージウィンドウ表示
+        Message_form = New cMessageLib.fMessage(1, "ファイルが見つかりません",
+                                              "商品画像を選択して",
+                                              "再度登録処理を行って下さい。",
+                                              Nothing)
+        Message_form.ShowDialog()
+        Message_form.Dispose()
+        Message_form = Nothing
     End Sub
     Private Function GET_TAGET_PATH(ByVal sPath As String) As String
         Dim tPath As String
@@ -2724,49 +2779,65 @@ Public Class fProductMst
     '2019,10,17 A.Komita 追加 To
 
     Private Sub PRICE_T_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles PRICE_T.LostFocus
-        '2019.8.8 A.Komita From
-        If RTAX_RATE_T.Text = String.Empty Then
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
-        End If
-        '2019.8.8 A.Komita To
+        '2019.12.10 R.Takashima FROM
+        '定価欄が空白の場合にフォーカスを失うとキャストエラーになるため修正
+        '定価が空白の場合は処理を行わない
+        If PRICE_T.Text <> String.Empty Then
 
-        BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+            '2019.8.8 A.Komita From
+            If RTAX_RATE_T.Text = String.Empty Then
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+            Else
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+            End If
+            '2019.8.8 A.Komita To
+
+            BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+        End If
+
+        '2019.12.10 R.Takashima TO
 
     End Sub
 
     '2019.8.9 A.Komita From
     Private Sub RTAX_RATE_T_LostFocus(sender As Object, e As EventArgs) Handles RTAX_RATE_T.LostFocus
-        If RTAX_RATE_T.Text = String.Empty Then
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-        Else
-            TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+        '2019.12.10 R.Takashima FROM
+        '定価欄が空白の場合にフォーカスを失うとキャストエラーになるため修正
+        '定価が空白の場合は処理を行わない
+        If PRICE_T.Text <> String.Empty Then
+
+
+            If RTAX_RATE_T.Text = String.Empty Then
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+            Else
+                TAX_PRICE_T.Text = oTool.BeforeToTax(CLng(PRICE_T.Text), RTAX_RATE_T.Text, oConf(0).sFracProc)
+            End If
+            BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
+
+            '2019.8.14 A.Komita From
+            For i = 0 To COST_PRICE_V.Rows.Count - 2
+
+                If RTAX_RATE_T.Text = String.Empty Then
+                    COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
+                End If
+            Next
+
+            For x = 0 To SALE_PRICE_V.Rows.Count - 2
+                If RTAX_RATE_T.Text = String.Empty Then
+                    SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), oConf(0).sTax, oConf(0).sFracProc)
+                Else
+                    SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
+                End If
+                '2019.8.15 A.Komita From
+                SALE_PRICE_V("税込価格", x).Value = CLng(SALE_PRICE_V("販売価格", x).Value) + CLng(SALE_PRICE_V("消費税", x).Value)
+                '2019.8.15 A.Komita To
+            Next
+            '2019.8.14 A.Komita To
+
         End If
-        BEFORETAX_PRICE_T.Text = CLng(PRICE_T.Text) + CLng(TAX_PRICE_T.Text)
-
-        '2019.8.14 A.Komita From
-        For i = 0 To COST_PRICE_V.Rows.Count - 2
-
-            If RTAX_RATE_T.Text = String.Empty Then
-                COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), oConf(0).sTax, oConf(0).sFracProc)
-            Else
-                COST_PRICE_V("消費税", i).Value = oTool.BeforeToTax(CLng(COST_PRICE_V("仕入価格", i).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
-            End If
-        Next
-
-        For x = 0 To SALE_PRICE_V.Rows.Count - 2
-            If RTAX_RATE_T.Text = String.Empty Then
-                SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), oConf(0).sTax, oConf(0).sFracProc)
-            Else
-                SALE_PRICE_V("消費税", x).Value = oTool.BeforeToTax(CLng(SALE_PRICE_V("販売価格", x).Value), RTAX_RATE_T.Text, oConf(0).sFracProc)
-            End If
-            '2019.8.15 A.Komita From
-            SALE_PRICE_V("税込価格", x).Value = CLng(SALE_PRICE_V("販売価格", x).Value) + CLng(SALE_PRICE_V("消費税", x).Value)
-            '2019.8.15 A.Komita To
-        Next
-        '2019.8.14 A.Komita To
-
+        '2019.12.10 R.Takashima TO
     End Sub
     '2019.8.9 A.Komita To
 
@@ -3262,7 +3333,8 @@ Public Class fProductMst
             'ファイルのコピー
             File.Copy(sPath, tPath, True)
             File.SetAttributes(tPath, FileAttributes.Normal)
-
+        Else
+            Exit Sub
         End If
 
         ' テキストファイルの読み込み
@@ -3380,11 +3452,4 @@ Public Class fProductMst
 
     End Sub
 
-    Private Sub OPTION2_L_Click(sender As Object, e As EventArgs) Handles OPTION2_L.Click
-
-    End Sub
-
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
-
-    End Sub
 End Class

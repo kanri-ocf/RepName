@@ -425,20 +425,23 @@
         'キー入力音出力
         oTool.PlaySound()
 
+        '2019.12.7 R.Takashima FROM
+        'ドロワーメッセージをcDrawer内で表示するように変更したためこちらはコメントアウト
+
         '2019.10.23 R.Takashima  FROM
         '課題No.74 ドロワーを閉めるメッセージを表示する
-        Dim message_form As New cMessageLib.fMessage(0,
-                                          Nothing,
-                                          "ドロワーを閉じて下さい。",
-                                          Nothing, Nothing)
-        message_form.Show()
-        Application.DoEvents()
+        'Dim message_form As New cMessageLib.fMessage(0,
+        '                                  Nothing,
+        '                                  "ドロワーを閉じて下さい。",
+        '                                  Nothing, Nothing)
+        'message_form.Show()
+        'Application.DoEvents()
 
         oDrawer.OpenDrawer()
 
-        message_form.Dispose()
 
         '2019.10.23 R.Takashima TO
+        '2019.12.7 R.Takashima TO
 
     End Sub
 

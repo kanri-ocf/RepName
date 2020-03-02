@@ -767,7 +767,7 @@ Public Structure sRoomBumon
     'ルームコード
     Public sRoomCode As Integer
     '部門コード
-    Public sBumonCode As Integer
+    Public sBumonCode As Long
     '登録日
     Public sCreateDate As String
     '登録時間
@@ -1053,6 +1053,8 @@ Public Structure sAccount
     Public sLinkMasterName As String
     '税区分コード
     Public sTaxClassCode As Integer
+    '税区分名称
+    Public sTaxClassName As String
     '登録日
     Public sCreateDate As String
     '登録時間
@@ -2205,6 +2207,12 @@ Public Structure sSubTrn
     Public sTaxPrice As Long
     '取引軽減消費税額  2019/10/3 R.Takashima
     Public sReducedTaxRatePrice As Long
+
+    '2019,12,23 A.Komita 追加 From
+    '軽減税率 
+    Public sReducedTaxRate As Long
+    '2019,12,23 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
     '備考
@@ -2767,6 +2775,14 @@ Public Structure sViewTrnFull
     Public sNoTaxPrice As Long
     '取引消費税額
     Public sTaxPrice As Long
+
+    '2020,1,14 A.Komita 追加 From
+    '取引軽減消費税額
+    Public sReducedTaxRatePrice As Long
+    '軽減税率  
+    Public sReducedTaxRate As Long
+    '2020,1,14 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
 End Structure
@@ -2782,6 +2798,12 @@ Public Structure sViewTrnSummary
     Public sTrnClass As String
     '部門コード
     Public sBumonCode As String
+
+    '2019,12,24 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As Integer
+    '2019,12,24 A.Komita 追加 To
+
     '部門略称
     Public sBumonShortName As String
     '支払方法コード
@@ -2831,6 +2853,12 @@ Public Structure sViewArrivalSummary
     Public sNoTaxPrice As Long
     '入庫消費税額
     Public sTaxPrice As Long
+
+    '2019,12,26 A.Komita 追加 From
+    '入庫軽減税額
+    Public sReducedTaxRate As Long
+    '2019,12,26 A.Komita 追加 To
+
     '入庫税込金額
     Public sPrice As Long
 End Structure
@@ -2846,6 +2874,18 @@ Public Structure sViewMonthTrnSummary
     Public sPrice As Long
     '部門種別
     Public sBumonClass As Integer
+    '2019.12.19 R.Takashima FROM
+    '消費税額
+    Public sTaxPrice As Long
+    '軽減消費税額
+    Public sReduceTaxPrice As Long
+    '2019.12.19 R.Takashima TO
+
+    '2019,12,26 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As Long
+    '2019,12,26 A.Komita 追加 To
+
 End Structure
 #End Region
 
@@ -2897,6 +2937,14 @@ Public Structure sViewFinTrnFull
     Public sNoTaxPrice As Long
     '取引消費税額
     Public sTaxPrice As Long
+
+    '2020,1,14 A.Komita 追加 From
+    '取引軽減消費税額
+    Public sReducedTaxRatePrice As Long
+    '軽減税率  
+    Public sReducedTaxRate As Long
+    '2020,1,14 A.Komita 追加 To
+
     '取引税込金額
     Public sPrice As Long
 End Structure
@@ -3933,6 +3981,11 @@ Public Structure sGraphData
     Public sPointDisCount As Long
     'チケット値引き
     Public sTicketDisCount As Long
+
+    '2019,12,24 A.Komita 追加 From
+    '軽減税率
+    Public sReducedTaxRate As Long
+    '2019,12,24 A.Komita 追加 To
 End Structure
 
 '月次締め処理　グラフ生成用ストラクチャ

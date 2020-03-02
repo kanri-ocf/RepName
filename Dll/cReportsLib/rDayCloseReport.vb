@@ -1,8 +1,4 @@
-﻿Imports System
-Imports DataDynamics.ActiveReports
-Imports DataDynamics.ActiveReports.Document
-
-Public Class rDayCloseReport
+﻿Public Class rDayCloseReport
     Private oConn As OleDb.OleDbConnection
     Private oCommand As OleDb.OleDbCommand
     Private oDataReader As OleDb.OleDbDataReader
@@ -25,6 +21,11 @@ Public Class rDayCloseReport
     Private oDataTrnMsDBIO As cDataTrnMsDBIO
     Private oTimeSales() As cStructureLib.sViewTimeSales
     ' *** END   K.MINAGAWA 2013/04/29 ***
+
+    '2020,1,27 A.Komita 追加 From
+    'Private oViewTrnFull() As cStructureLib.sViewTrnFull
+    'Private oViewTrnFullDBIO As cViewTrnFullDBIO
+    '2020,1,27 A.Komita 追加 To
 
     Private Const SRCCOPY As Integer = &HCC0020
 
@@ -49,16 +50,16 @@ Public Class rDayCloseReport
 
     Private oTran As System.Data.OleDb.OleDbTransaction
 
-    Sub New(ByRef iConn As OleDb.OleDbConnection, _
-            ByRef iCommand As OleDb.OleDbCommand, _
-            ByRef iDataReader As OleDb.OleDbDataReader, _
-            ByRef iCalc() As cStructureLib.sCalc, _
-            ByRef iTrnSummary() As cStructureLib.sViewTrnSummary, _
-            ByVal iStaff_Code As String, _
-            ByVal iStaff_Name As String, _
-            ByVal iCloseDate As String, _
-            ByVal iSubCloseDate As String, _
-            ByVal iMeisai_Print_Flg As Boolean, _
+    Sub New(ByRef iConn As OleDb.OleDbConnection,
+            ByRef iCommand As OleDb.OleDbCommand,
+            ByRef iDataReader As OleDb.OleDbDataReader,
+            ByRef iCalc() As cStructureLib.sCalc,
+            ByRef iTrnSummary() As cStructureLib.sViewTrnSummary,
+            ByVal iStaff_Code As String,
+            ByVal iStaff_Name As String,
+            ByVal iCloseDate As String,
+            ByVal iSubCloseDate As String,
+            ByVal iMeisai_Print_Flg As Boolean,
             ByRef iTran As System.Data.OleDb.OleDbTransaction)
         Dim i As Integer
 
@@ -92,8 +93,8 @@ Public Class rDayCloseReport
             'メッセージウィンドウ表示
             Dim Message_form As cMessageLib.fMessage
 
-            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました", _
-                                            "開発元にお問い合わせ下さい", _
+            Message_form = New cMessageLib.fMessage(1, "環境マスタの読込みに失敗しました",
+                                            "開発元にお問い合わせ下さい",
                                             Nothing, Nothing)
             Message_form.ShowDialog()
             System.Windows.Forms.Application.DoEvents()
@@ -208,6 +209,22 @@ Public Class rDayCloseReport
         Fields.Add("S_POSTAGE")
         Fields.Add("S_FEE")
         Fields.Add("S_BILL")
+        '2020,1,29 A.Komita 2回目以降のループで同じ支払方法が連続すると値を上書きする為、S_PAYMENT以降のフィールドを複数追加 From
+        Fields.Add("S_PAYMENT")
+        ' Fields.Add("S_PAYMENT_2")
+        Fields.Add("S_SALES")
+        ' Fields.Add("S_SALES_2")
+        Fields.Add("S_CNT")
+        ' Fields.Add("S_CNT_2")
+        Fields.Add("S_DISCOUNT")
+        ' Fields.Add("S_DISCOUNT_2")
+        Fields.Add("S_POSTAGE")
+        ' Fields.Add("S_POSTAGE_2")
+        Fields.Add("S_FEE")
+        ' Fields.Add("S_FEE_2")
+        Fields.Add("S_BILL")
+        ' Fields.Add("S_BILL_2")
+        '2020,1,29 A.Komita 追加 To
 
         Fields.Add("S_YCASH")
         Fields.Add("S_YCNT")
@@ -229,7 +246,7 @@ Public Class rDayCloseReport
         Fields.Add("INOUT_DETAIL")
     End Sub
 
-    Private Sub fDayCloseReport_FetchData(ByVal sender As Object, ByVal eArgs As DataDynamics.ActiveReports.ActiveReport.FetchEventArgs) Handles Me.FetchData
+    Private Sub fDayCloseReport_FetchData(ByVal sender As Object, ByVal eArgs As FetchEventArgs) Handles Me.FetchData
         '現金状況情報セット
         If RECORD_NO = 0 Then
             CASH_INFO()
@@ -315,6 +332,7 @@ Public Class rDayCloseReport
 
         oAdjustDBIO = Nothing
     End Sub
+
     Private Sub CAL_INFO(ByVal oReadData As cStructureLib.sViewTrnSummary)
 
         '<取引区分>
@@ -334,8 +352,16 @@ Public Class rDayCloseReport
         '-----------------------------------------------------------------------
 
         ''<販売金額>
-        'Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice)
-        ''Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sPrice - oTool.BeforeToAfterTax(oReadData.sDiscountPrice, oConf(0).sTax, oConf(0).sFracProc))
+        '2020,1,27 A.Komita 日時集計表の通常税率商品の販売金額を税込にする為条件分岐を追加 From
+        If oReadData.sReducedTaxRate = 0 Then
+
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oConf(0).sTax, oConf(0).sFracProc)
+        Else
+            oReadData.sNoTaxProductPrice = oTool.BeforeToAfterTax(oReadData.sNoTaxProductPrice, oReadData.sReducedTaxRate, oConf(0).sFracProc)
+        End If
+        '2020,1,27 A.Komita 追加 To
+        Fields("S_SALES").Value = String.Format("{0:#,##0}", oReadData.sNoTaxProductPrice)
+        'String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
 
 
         '<数量>
@@ -348,15 +374,13 @@ Public Class rDayCloseReport
         Fields("S_POSTAGE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sShippingCharge, oConf(0).sTax, oConf(0).sFracProc))
 
         '<手数料>
+
         Fields("S_FEE").Value = String.Format("{0:#,##0}", oTool.BeforeToAfterTax(oReadData.sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc))
-
-        '<販売金額>
-        Fields("S_SALES").Value = String.Format("{0:#,##0}", （oReadData.sPrice - Fields("S_FEE").Value - Fields("S_POSTAGE").Value - Fields("S_DISCOUNT").Value）)
-
 
         '<売上金額>
         'Fields("S_BILL").Value = String.Format("{0:#,##0}", CLng(Fields("S_SALES").Value) + CLng(Fields("S_DISCOUNT").Value) + CLng(Fields("S_POSTAGE").Value) + CLng(Fields("S_FEE").Value))
-        Fields("S_BILL").Value = String.Format("{0:#,##0}", oReadData.sPrice)
+        Fields("S_BILL").Value = String.Format("{0:#,##0}", （oReadData.sNoTaxProductPrice + Fields("S_FEE").Value + Fields("S_POSTAGE").Value) + Fields("S_DISCOUNT").Value)
+        'String.Format("{0:#,##0}", oReadData.sPrice)
         '-----------------------------------------------------------------------
         ' 2019/10/24  suzuki END
         '-----------------------------------------------------------------------
@@ -456,4 +480,9 @@ Public Class rDayCloseReport
         End If
         ' *** END   K.MINAGAWA 2013/04/29 ***
     End Sub
+
+
+End Class
+
+Friend Class S_SALES_1
 End Class

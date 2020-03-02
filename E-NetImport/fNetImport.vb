@@ -420,8 +420,8 @@ Public Class fNetImport
         If RecordCnt > DISP_ROW_MAX Then
             Message_form.Dispose()
             Message_form = Nothing
-            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています", _
-                                        "条件を変更して再建策して下さい", _
+            Message_form = New cMessageLib.fMessage(1, "データ件数が500件を超えています",
+                                        "条件を変更して再検索して下さい",
                                         Nothing, Nothing)
             Message_form.ShowDialog()
             Message_form = Nothing
@@ -452,18 +452,18 @@ Public Class fNetImport
         '表示設定
         For i = 0 To RecordCnt - 1
             oMstChannelPaymentDBIO.getChannelPaymentMst(oChannelPayment, oRequestData(i).sChannelPaymentCode, Nothing, Nothing, Nothing, oTran)
-            REQUEST_V.Rows.Add( _
-                    False, _
-                    oRequestData(i).sRequestCode, _
-                    oRequestData(i).sRequestDate, _
-                    oRequestData(i).sBill1stName & " " & oRequestData(i).sBill2ndName, _
-                    oRequestData(i).sBillState, _
-                    oRequestData(i).sBillCity, _
-                    oRequestData(i).sBillAdder1, _
-                    oRequestData(i).sBillAdder2, _
-                    oRequestData(i).sBillTel, _
-                    oRequestData(i).sTotalPrice, _
-                    oChannelPayment(0).sChannelPaymentName _
+            REQUEST_V.Rows.Add(
+                    False,
+                    oRequestData(i).sRequestCode,
+                    oRequestData(i).sRequestDate,
+                    oRequestData(i).sShip1stName & " " & oRequestData(i).sShip2ndName,
+                    oRequestData(i).sShipState,
+                    oRequestData(i).sShipCity,
+                    oRequestData(i).sShipAdder1,
+                    oRequestData(i).sShipAdder2,
+                    oRequestData(i).sShipTel,
+                    oRequestData(i).sTotalPrice,
+                    oChannelPayment(0).sChannelPaymentName
             )
         Next i
     End Sub
@@ -502,21 +502,21 @@ Public Class fNetImport
 
         ReDim oRequestData(0)
         '受注コードが同じである、受注情報データの存在確認
-        RecordCount = oDataRequestDBIO.getRequest(oRequestData, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  ORRequestCode, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
-                                                  Nothing, _
+        RecordCount = oDataRequestDBIO.getRequest(oRequestData,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  ORRequestCode,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
+                                                  Nothing,
                                                   oTran)
 
         '受注コードが同じである、受注情報データTMPの存在確認
@@ -525,8 +525,8 @@ Public Class fNetImport
         End If
 
         REQUEST_NUMBER_READ = oRequestData(0).sRequestCode
-    End Function
 
+    End Function
     Private Sub REQUEST_V_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles REQUEST_V.CellClick
         'チェックボックスの列かどうか調べる
         If e.RowIndex >= 0 Then

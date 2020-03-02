@@ -115,7 +115,7 @@
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
-    Protected Overrides ReadOnly Property CreateParams() As System.Windows.Forms.CreateParams
+    Protected Overrides ReadOnly Property CreateParams() As CreateParams
         Get
             Const WS_EX_DLGMODALFRAME As Integer = &H1
             Dim cp As CreateParams = MyBase.CreateParams
@@ -887,23 +887,23 @@
         For i = 0 To oAdjust.Count - 1
             Select Case oAdjust(i).sAdjustClass
                 Case "レジ入金"
-                    OpenCash = OpenCash + CLng(oAdjust(i).sTotalPrice)
+                    OpenCash = OpenCash + oAdjust(i).sTotalPrice
 
                 Case "入金"
-                    InputCash = InputCash + CLng(oAdjust(i).sTotalPrice)
+                    InputCash = InputCash + oAdjust(i).sTotalPrice
                     InputCashCnt = InputCashCnt + 1
                 Case "出金"
                     If oAdjust(i).sAccountCode = 0 And oAdjust(i).sSubAccountCode = 0 Then
                         RET_CASH_T.Text = String.Format("{0:C}", System.Math.Abs(oAdjust(i).sTotalPrice))
                     Else
-                        OutPutCash = OutPutCash + CLng(oAdjust(i).sTotalPrice)
+                        OutPutCash = OutPutCash + oAdjust(i).sTotalPrice
                         OutPutCashCnt = OutPutCashCnt + 1
                     End If
                 Case "戻入"
-                    ReturnCash = ReturnCash + CLng(oAdjust(i).sTotalPrice)
+                    ReturnCash = ReturnCash + oAdjust(i).sTotalPrice
                 Case "精算"
-                    AdujustCash = AdujustCash + CLng(oAdjust(i).sTotalPrice)
-                    STIFFNESS_CASH = CLng(oAdjust(i).sTotalPrice)
+                    AdujustCash = AdujustCash + oAdjust(i).sTotalPrice
+                    STIFFNESS_CASH = oAdjust(i).sTotalPrice
 
             End Select
         Next i
@@ -926,7 +926,7 @@
         If STIFFNESS_CASH = 0 Then
             DiffCash = 0
         Else
-            DiffCash = CLng(STIFFNESS_CASH) - CalCash
+            DiffCash = STIFFNESS_CASH - CalCash
         End If
 
         '画面セット
@@ -1045,9 +1045,10 @@
             '-------------------------------------------------------------------------------------------
             oTrnSummary(i).sShippingCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
             oTrnSummary(i).sPaymentCharge = oTool.BeforeToAfterTax(oTrnSummary(i).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
-            ''-------------------------------------------------------------------------------------------
+            '--------------------------------------------------------------------------------------------
             '2019/11/17 R.Takashima To
-            '-------------------------------------------------------------------------------------------
+            '--------------------------------------------------------------------------------------------
+
 
             SUM_V.Rows.Add(
                     oTrnSummary(i).sTrnClass,
@@ -1062,6 +1063,7 @@
             Select Case oTrnSummary(i).sPaymentName
                 Case "現金払い"
                     If oTrnSummary(i).sTrnClass <> "販促" Then
+
                         TotalCash = TotalCash + oTrnSummary(i).sPrice
                         SOU_CASH = TotalCash
                     End If
@@ -1360,7 +1362,7 @@
         Message_form.Dispose()
     End Sub
 
-    Private Sub RET_CASH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RET_CASH_B.Click
+    Private Sub RET_CASH_B_Click(ByVal sender As Object, ByVal e As EventArgs) Handles RET_CASH_B.Click
         Dim fAdjust_form As New cAdjustLib.fAdjustCount(oConn, oCommand, oDataReader, CLOSE_DATE_T.Text, STAFF_CODE, STAFF_NAME, 5, oTran)
 
         fAdjust_form.ShowDialog()
@@ -1499,8 +1501,8 @@
         If REPRINT_MODE = False Then
             If CLng(DIFF_CASH_T.Text) <> 0 Then
                 'メッセージウィンドウ表示
-                Message_form = New cMessageLib.fMessage(2, "現金差額が生じています。", _
-                                                "レジ差額として処理して終了します。", _
+                Message_form = New cMessageLib.fMessage(2, "現金差額が生じています。",
+                                                "レジ差額として処理し終了します。",
                                                 "よろしいですか？", Nothing)
                 Message_form.ShowDialog()
                 '確認ダイアログでNOが選択された場合

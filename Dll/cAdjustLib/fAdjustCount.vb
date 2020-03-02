@@ -663,7 +663,7 @@
         Dim RecordCount As Integer
 
         ReDim oAccount(0)
-        RecordCount = oAccountDBIO.getAccount(oAccount, Nothing, Nothing, Nothing, Nothing, oTran)
+        RecordCount = oAccountDBIO.getAccount(oAccount, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
 
         'リストボックスへの値セット
         For i = 0 To RecordCount - 1

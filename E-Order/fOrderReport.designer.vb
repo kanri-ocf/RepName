@@ -84,10 +84,9 @@ Partial Class fOrderReport
         '
         Me.SUPPLIER_L.AutoSize = True
         Me.SUPPLIER_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SUPPLIER_L.Location = New System.Drawing.Point(50, 81)
-        Me.SUPPLIER_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.SUPPLIER_L.Location = New System.Drawing.Point(37, 65)
         Me.SUPPLIER_L.Name = "SUPPLIER_L"
-        Me.SUPPLIER_L.Size = New System.Drawing.Size(76, 19)
+        Me.SUPPLIER_L.Size = New System.Drawing.Size(60, 15)
         Me.SUPPLIER_L.TabIndex = 3
         Me.SUPPLIER_L.Text = "注文先："
         '
@@ -95,10 +94,9 @@ Partial Class fOrderReport
         '
         Me.ORDER_NUMBER_L.AutoSize = True
         Me.ORDER_NUMBER_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.ORDER_NUMBER_L.Location = New System.Drawing.Point(31, 52)
-        Me.ORDER_NUMBER_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.ORDER_NUMBER_L.Location = New System.Drawing.Point(23, 42)
         Me.ORDER_NUMBER_L.Name = "ORDER_NUMBER_L"
-        Me.ORDER_NUMBER_L.Size = New System.Drawing.Size(95, 19)
+        Me.ORDER_NUMBER_L.Size = New System.Drawing.Size(75, 15)
         Me.ORDER_NUMBER_L.TabIndex = 5
         Me.ORDER_NUMBER_L.Text = "注文番号："
         '
@@ -106,11 +104,10 @@ Partial Class fOrderReport
         '
         Me.ORDER_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.ORDER_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.ORDER_CODE_T.Location = New System.Drawing.Point(128, 49)
-        Me.ORDER_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ORDER_CODE_T.Location = New System.Drawing.Point(96, 39)
         Me.ORDER_CODE_T.Name = "ORDER_CODE_T"
         Me.ORDER_CODE_T.ReadOnly = True
-        Me.ORDER_CODE_T.Size = New System.Drawing.Size(188, 24)
+        Me.ORDER_CODE_T.Size = New System.Drawing.Size(142, 20)
         Me.ORDER_CODE_T.TabIndex = 4
         Me.ORDER_CODE_T.TabStop = False
         '
@@ -118,10 +115,9 @@ Partial Class fOrderReport
         '
         Me.DATE_L.AutoSize = True
         Me.DATE_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.DATE_L.Location = New System.Drawing.Point(31, 162)
-        Me.DATE_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.DATE_L.Location = New System.Drawing.Point(23, 130)
         Me.DATE_L.Name = "DATE_L"
-        Me.DATE_L.Size = New System.Drawing.Size(95, 19)
+        Me.DATE_L.Size = New System.Drawing.Size(75, 15)
         Me.DATE_L.TabIndex = 9
         Me.DATE_L.Text = "納品期限："
         '
@@ -129,10 +125,9 @@ Partial Class fOrderReport
         '
         Me.RQ_DATE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_DATE_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.RQ_DATE_T.Location = New System.Drawing.Point(128, 159)
-        Me.RQ_DATE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_DATE_T.Location = New System.Drawing.Point(96, 127)
         Me.RQ_DATE_T.Name = "RQ_DATE_T"
-        Me.RQ_DATE_T.Size = New System.Drawing.Size(188, 24)
+        Me.RQ_DATE_T.Size = New System.Drawing.Size(142, 20)
         Me.RQ_DATE_T.TabIndex = 4
         Me.RQ_DATE_T.Text = "別途ご相談"
         '
@@ -140,10 +135,9 @@ Partial Class fOrderReport
         '
         Me.PLACE_L.AutoSize = True
         Me.PLACE_L.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.PLACE_L.Location = New System.Drawing.Point(31, 135)
-        Me.PLACE_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.PLACE_L.Location = New System.Drawing.Point(23, 108)
         Me.PLACE_L.Name = "PLACE_L"
-        Me.PLACE_L.Size = New System.Drawing.Size(95, 19)
+        Me.PLACE_L.Size = New System.Drawing.Size(75, 15)
         Me.PLACE_L.TabIndex = 11
         Me.PLACE_L.Text = "納品場所："
         '
@@ -151,30 +145,27 @@ Partial Class fOrderReport
         '
         Me.RQ_PLACE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.RQ_PLACE_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.RQ_PLACE_T.Location = New System.Drawing.Point(128, 131)
-        Me.RQ_PLACE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RQ_PLACE_T.Location = New System.Drawing.Point(96, 105)
         Me.RQ_PLACE_T.Name = "RQ_PLACE_T"
-        Me.RQ_PLACE_T.Size = New System.Drawing.Size(464, 24)
+        Me.RQ_PLACE_T.Size = New System.Drawing.Size(349, 20)
         Me.RQ_PLACE_T.TabIndex = 3
         Me.RQ_PLACE_T.Text = "右記弊社事業所"
         '
         'PAYMENT_L
         '
         Me.PAYMENT_L.FormattingEnabled = True
-        Me.PAYMENT_L.Location = New System.Drawing.Point(128, 104)
-        Me.PAYMENT_L.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PAYMENT_L.Location = New System.Drawing.Point(96, 83)
         Me.PAYMENT_L.Name = "PAYMENT_L"
-        Me.PAYMENT_L.Size = New System.Drawing.Size(269, 23)
+        Me.PAYMENT_L.Size = New System.Drawing.Size(203, 20)
         Me.PAYMENT_L.TabIndex = 2
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label6.Location = New System.Drawing.Point(31, 106)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(23, 85)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 19)
+        Me.Label6.Size = New System.Drawing.Size(75, 15)
         Me.Label6.TabIndex = 13
         Me.Label6.Text = "支払方法："
         '
@@ -182,22 +173,21 @@ Partial Class fOrderReport
         '
         Me.MEMO_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.MEMO_T.ImeMode = System.Windows.Forms.ImeMode.[On]
-        Me.MEMO_T.Location = New System.Drawing.Point(439, 580)
-        Me.MEMO_T.Margin = New System.Windows.Forms.Padding(26, 25, 26, 25)
+        Me.MEMO_T.Location = New System.Drawing.Point(329, 464)
+        Me.MEMO_T.Margin = New System.Windows.Forms.Padding(19, 20, 19, 20)
         Me.MEMO_T.MaxLength = 496
         Me.MEMO_T.Multiline = True
         Me.MEMO_T.Name = "MEMO_T"
-        Me.MEMO_T.Size = New System.Drawing.Size(888, 128)
+        Me.MEMO_T.Size = New System.Drawing.Size(667, 103)
         Me.MEMO_T.TabIndex = 7
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label8.Location = New System.Drawing.Point(440, 560)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(330, 448)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(215, 17)
+        Me.Label8.Size = New System.Drawing.Size(166, 13)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "備考  (７０文字 × ７行 以内)"
         '
@@ -228,8 +218,7 @@ Partial Class fOrderReport
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ORDER_V.DefaultCellStyle = DataGridViewCellStyle2
         Me.ORDER_V.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.ORDER_V.Location = New System.Drawing.Point(54, 198)
-        Me.ORDER_V.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ORDER_V.Location = New System.Drawing.Point(41, 158)
         Me.ORDER_V.MultiSelect = False
         Me.ORDER_V.Name = "ORDER_V"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -240,19 +229,19 @@ Partial Class fOrderReport
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ORDER_V.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.ORDER_V.RowHeadersWidth = 82
         Me.ORDER_V.RowTemplate.Height = 21
         Me.ORDER_V.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.ORDER_V.Size = New System.Drawing.Size(1294, 354)
+        Me.ORDER_V.Size = New System.Drawing.Size(971, 283)
         Me.ORDER_V.TabIndex = 6
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label12.Location = New System.Drawing.Point(426, 775)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(319, 620)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(102, 17)
+        Me.Label12.Size = New System.Drawing.Size(79, 13)
         Me.Label12.TabIndex = 26
         Me.Label12.Text = "発注担当者："
         '
@@ -260,11 +249,10 @@ Partial Class fOrderReport
         '
         Me.STAFF_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_CODE_T.Location = New System.Drawing.Point(530, 770)
-        Me.STAFF_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_CODE_T.Location = New System.Drawing.Point(397, 616)
         Me.STAFF_CODE_T.Name = "STAFF_CODE_T"
         Me.STAFF_CODE_T.ReadOnly = True
-        Me.STAFF_CODE_T.Size = New System.Drawing.Size(131, 24)
+        Me.STAFF_CODE_T.Size = New System.Drawing.Size(99, 20)
         Me.STAFF_CODE_T.TabIndex = 25
         Me.STAFF_CODE_T.TabStop = False
         Me.STAFF_CODE_T.Text = "1234567890123"
@@ -273,21 +261,19 @@ Partial Class fOrderReport
         '
         Me.STAFF_NAME_T.BackColor = System.Drawing.Color.Wheat
         Me.STAFF_NAME_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.STAFF_NAME_T.Location = New System.Drawing.Point(671, 770)
-        Me.STAFF_NAME_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.STAFF_NAME_T.Location = New System.Drawing.Point(503, 616)
         Me.STAFF_NAME_T.Name = "STAFF_NAME_T"
         Me.STAFF_NAME_T.ReadOnly = True
-        Me.STAFF_NAME_T.Size = New System.Drawing.Size(232, 24)
+        Me.STAFF_NAME_T.Size = New System.Drawing.Size(175, 20)
         Me.STAFF_NAME_T.TabIndex = 27
         Me.STAFF_NAME_T.TabStop = False
         '
         'SUPPLIER_C
         '
         Me.SUPPLIER_C.FormattingEnabled = True
-        Me.SUPPLIER_C.Location = New System.Drawing.Point(128, 76)
-        Me.SUPPLIER_C.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SUPPLIER_C.Location = New System.Drawing.Point(96, 61)
         Me.SUPPLIER_C.Name = "SUPPLIER_C"
-        Me.SUPPLIER_C.Size = New System.Drawing.Size(464, 23)
+        Me.SUPPLIER_C.Size = New System.Drawing.Size(349, 20)
         Me.SUPPLIER_C.TabIndex = 1
         '
         'TITLE_L
@@ -296,10 +282,9 @@ Partial Class fOrderReport
         Me.TITLE_L.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.TITLE_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.TITLE_L.ForeColor = System.Drawing.Color.White
-        Me.TITLE_L.Location = New System.Drawing.Point(34, 14)
-        Me.TITLE_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.TITLE_L.Location = New System.Drawing.Point(25, 11)
         Me.TITLE_L.Name = "TITLE_L"
-        Me.TITLE_L.Size = New System.Drawing.Size(1294, 22)
+        Me.TITLE_L.Size = New System.Drawing.Size(971, 18)
         Me.TITLE_L.TabIndex = 30
         Me.TITLE_L.Text = "注文伝票作成中"
         Me.TITLE_L.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -308,11 +293,10 @@ Partial Class fOrderReport
         '
         Me.SUPPER_CODE_T.BackColor = System.Drawing.Color.Wheat
         Me.SUPPER_CODE_T.Font = New System.Drawing.Font("MS UI Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.SUPPER_CODE_T.Location = New System.Drawing.Point(543, 76)
-        Me.SUPPER_CODE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SUPPER_CODE_T.Location = New System.Drawing.Point(407, 61)
         Me.SUPPER_CODE_T.Name = "SUPPER_CODE_T"
         Me.SUPPER_CODE_T.ReadOnly = True
-        Me.SUPPER_CODE_T.Size = New System.Drawing.Size(24, 26)
+        Me.SUPPER_CODE_T.Size = New System.Drawing.Size(19, 22)
         Me.SUPPER_CODE_T.TabIndex = 31
         Me.SUPPER_CODE_T.TabStop = False
         Me.SUPPER_CODE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -322,11 +306,9 @@ Partial Class fOrderReport
         '
         Me.MEISAI_KINGAKU_G.Controls.Add(Me.AFTER_TAX_R)
         Me.MEISAI_KINGAKU_G.Controls.Add(Me.BEFORE_TAX_R)
-        Me.MEISAI_KINGAKU_G.Location = New System.Drawing.Point(1105, 122)
-        Me.MEISAI_KINGAKU_G.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MEISAI_KINGAKU_G.Location = New System.Drawing.Point(829, 98)
         Me.MEISAI_KINGAKU_G.Name = "MEISAI_KINGAKU_G"
-        Me.MEISAI_KINGAKU_G.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.MEISAI_KINGAKU_G.Size = New System.Drawing.Size(220, 59)
+        Me.MEISAI_KINGAKU_G.Size = New System.Drawing.Size(165, 47)
         Me.MEISAI_KINGAKU_G.TabIndex = 11
         Me.MEISAI_KINGAKU_G.TabStop = False
         Me.MEISAI_KINGAKU_G.Text = "【明細金額】"
@@ -334,10 +316,9 @@ Partial Class fOrderReport
         'AFTER_TAX_R
         '
         Me.AFTER_TAX_R.AutoSize = True
-        Me.AFTER_TAX_R.Location = New System.Drawing.Point(16, 24)
-        Me.AFTER_TAX_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.AFTER_TAX_R.Location = New System.Drawing.Point(12, 19)
         Me.AFTER_TAX_R.Name = "AFTER_TAX_R"
-        Me.AFTER_TAX_R.Size = New System.Drawing.Size(71, 19)
+        Me.AFTER_TAX_R.Size = New System.Drawing.Size(58, 16)
         Me.AFTER_TAX_R.TabIndex = 1
         Me.AFTER_TAX_R.TabStop = True
         Me.AFTER_TAX_R.Text = "税込み"
@@ -347,10 +328,9 @@ Partial Class fOrderReport
         '
         Me.BEFORE_TAX_R.AutoSize = True
         Me.BEFORE_TAX_R.Checked = True
-        Me.BEFORE_TAX_R.Location = New System.Drawing.Point(135, 24)
-        Me.BEFORE_TAX_R.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BEFORE_TAX_R.Location = New System.Drawing.Point(101, 19)
         Me.BEFORE_TAX_R.Name = "BEFORE_TAX_R"
-        Me.BEFORE_TAX_R.Size = New System.Drawing.Size(69, 19)
+        Me.BEFORE_TAX_R.Size = New System.Drawing.Size(56, 16)
         Me.BEFORE_TAX_R.TabIndex = 2
         Me.BEFORE_TAX_R.TabStop = True
         Me.BEFORE_TAX_R.Text = "税抜き"
@@ -378,11 +358,9 @@ Partial Class fOrderReport
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.ShapeContainer1)
-        Me.GroupBox2.Location = New System.Drawing.Point(34, 560)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Location = New System.Drawing.Point(25, 448)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBox2.Size = New System.Drawing.Size(384, 240)
+        Me.GroupBox2.Size = New System.Drawing.Size(288, 192)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "【注文金額】"
@@ -391,10 +369,9 @@ Partial Class fOrderReport
         '
         Me.P_DISCOUNT_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.P_DISCOUNT_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.P_DISCOUNT_T.Location = New System.Drawing.Point(162, 191)
-        Me.P_DISCOUNT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.P_DISCOUNT_T.Location = New System.Drawing.Point(121, 153)
         Me.P_DISCOUNT_T.Name = "P_DISCOUNT_T"
-        Me.P_DISCOUNT_T.Size = New System.Drawing.Size(186, 24)
+        Me.P_DISCOUNT_T.Size = New System.Drawing.Size(141, 20)
         Me.P_DISCOUNT_T.TabIndex = 4
         Me.P_DISCOUNT_T.Text = "0"
         Me.P_DISCOUNT_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -403,10 +380,9 @@ Partial Class fOrderReport
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label3.Location = New System.Drawing.Point(42, 193)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(31, 154)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(115, 17)
+        Me.Label3.Size = New System.Drawing.Size(89, 13)
         Me.Label3.TabIndex = 42
         Me.Label3.Text = "ポイント値引き："
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -415,10 +391,9 @@ Partial Class fOrderReport
         '
         Me.DISCOUNT_T.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DISCOUNT_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.DISCOUNT_T.Location = New System.Drawing.Point(162, 166)
-        Me.DISCOUNT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DISCOUNT_T.Location = New System.Drawing.Point(121, 133)
         Me.DISCOUNT_T.Name = "DISCOUNT_T"
-        Me.DISCOUNT_T.Size = New System.Drawing.Size(186, 24)
+        Me.DISCOUNT_T.Size = New System.Drawing.Size(141, 20)
         Me.DISCOUNT_T.TabIndex = 3
         Me.DISCOUNT_T.Text = "0"
         Me.DISCOUNT_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -428,20 +403,20 @@ Partial Class fOrderReport
         Me.RTAX_RATE_T.AcceptsReturn = True
         Me.RTAX_RATE_T.BackColor = System.Drawing.Color.Wheat
         Me.RTAX_RATE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!)
-        Me.RTAX_RATE_T.Location = New System.Drawing.Point(162, 139)
-        Me.RTAX_RATE_T.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.RTAX_RATE_T.Location = New System.Drawing.Point(121, 111)
+        Me.RTAX_RATE_T.Margin = New System.Windows.Forms.Padding(1, 2, 1, 2)
         Me.RTAX_RATE_T.Name = "RTAX_RATE_T"
-        Me.RTAX_RATE_T.Size = New System.Drawing.Size(186, 24)
+        Me.RTAX_RATE_T.Size = New System.Drawing.Size(141, 20)
         Me.RTAX_RATE_T.TabIndex = 50
         Me.RTAX_RATE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(76, 144)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Location = New System.Drawing.Point(57, 115)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(1, 0, 1, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(75, 15)
+        Me.Label11.Size = New System.Drawing.Size(59, 12)
         Me.Label11.TabIndex = 49
         Me.Label11.Text = "軽減税額："
         '
@@ -449,10 +424,9 @@ Partial Class fOrderReport
         '
         Me.FEE_T.BackColor = System.Drawing.Color.White
         Me.FEE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.FEE_T.Location = New System.Drawing.Point(162, 61)
-        Me.FEE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.FEE_T.Location = New System.Drawing.Point(121, 49)
         Me.FEE_T.Name = "FEE_T"
-        Me.FEE_T.Size = New System.Drawing.Size(186, 24)
+        Me.FEE_T.Size = New System.Drawing.Size(141, 20)
         Me.FEE_T.TabIndex = 2
         Me.FEE_T.Text = "0"
         Me.FEE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -461,10 +435,9 @@ Partial Class fOrderReport
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label5.Location = New System.Drawing.Point(86, 66)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(65, 53)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(68, 17)
+        Me.Label5.Size = New System.Drawing.Size(53, 13)
         Me.Label5.TabIndex = 46
         Me.Label5.Text = "手数料："
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -473,10 +446,9 @@ Partial Class fOrderReport
         '
         Me.POSTAGE_T.BackColor = System.Drawing.Color.White
         Me.POSTAGE_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.POSTAGE_T.Location = New System.Drawing.Point(162, 34)
-        Me.POSTAGE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.POSTAGE_T.Location = New System.Drawing.Point(121, 27)
         Me.POSTAGE_T.Name = "POSTAGE_T"
-        Me.POSTAGE_T.Size = New System.Drawing.Size(186, 24)
+        Me.POSTAGE_T.Size = New System.Drawing.Size(141, 20)
         Me.POSTAGE_T.TabIndex = 1
         Me.POSTAGE_T.Text = "0"
         Me.POSTAGE_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -485,10 +457,9 @@ Partial Class fOrderReport
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label7.Location = New System.Drawing.Point(102, 39)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(77, 31)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(51, 17)
+        Me.Label7.Size = New System.Drawing.Size(40, 13)
         Me.Label7.TabIndex = 44
         Me.Label7.Text = "送料："
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -497,10 +468,9 @@ Partial Class fOrderReport
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(89, 168)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(67, 134)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(64, 17)
+        Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 40
         Me.Label2.Text = "値引き："
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -509,11 +479,10 @@ Partial Class fOrderReport
         '
         Me.BEFORE_TAX_PRODUCT_T.BackColor = System.Drawing.Color.Wheat
         Me.BEFORE_TAX_PRODUCT_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.BEFORE_TAX_PRODUCT_T.Location = New System.Drawing.Point(162, 11)
-        Me.BEFORE_TAX_PRODUCT_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BEFORE_TAX_PRODUCT_T.Location = New System.Drawing.Point(121, 9)
         Me.BEFORE_TAX_PRODUCT_T.Name = "BEFORE_TAX_PRODUCT_T"
         Me.BEFORE_TAX_PRODUCT_T.ReadOnly = True
-        Me.BEFORE_TAX_PRODUCT_T.Size = New System.Drawing.Size(186, 24)
+        Me.BEFORE_TAX_PRODUCT_T.Size = New System.Drawing.Size(141, 20)
         Me.BEFORE_TAX_PRODUCT_T.TabIndex = 1
         Me.BEFORE_TAX_PRODUCT_T.TabStop = False
         Me.BEFORE_TAX_PRODUCT_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -523,10 +492,9 @@ Partial Class fOrderReport
         Me.TOTAL_L.AutoSize = True
         Me.TOTAL_L.BackColor = System.Drawing.Color.BurlyWood
         Me.TOTAL_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TOTAL_L.Location = New System.Drawing.Point(70, 14)
-        Me.TOTAL_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.TOTAL_L.Location = New System.Drawing.Point(53, 11)
         Me.TOTAL_L.Name = "TOTAL_L"
-        Me.TOTAL_L.Size = New System.Drawing.Size(85, 17)
+        Me.TOTAL_L.Size = New System.Drawing.Size(66, 13)
         Me.TOTAL_L.TabIndex = 38
         Me.TOTAL_L.Text = "商品代金："
         Me.TOTAL_L.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -535,11 +503,10 @@ Partial Class fOrderReport
         '
         Me.BEFORE_TAX_ORDER_T.BackColor = System.Drawing.Color.Wheat
         Me.BEFORE_TAX_ORDER_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.BEFORE_TAX_ORDER_T.Location = New System.Drawing.Point(162, 88)
-        Me.BEFORE_TAX_ORDER_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.BEFORE_TAX_ORDER_T.Location = New System.Drawing.Point(121, 70)
         Me.BEFORE_TAX_ORDER_T.Name = "BEFORE_TAX_ORDER_T"
         Me.BEFORE_TAX_ORDER_T.ReadOnly = True
-        Me.BEFORE_TAX_ORDER_T.Size = New System.Drawing.Size(186, 24)
+        Me.BEFORE_TAX_ORDER_T.Size = New System.Drawing.Size(141, 20)
         Me.BEFORE_TAX_ORDER_T.TabIndex = 35
         Me.BEFORE_TAX_ORDER_T.TabStop = False
         Me.BEFORE_TAX_ORDER_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -548,10 +515,9 @@ Partial Class fOrderReport
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label4.Location = New System.Drawing.Point(38, 92)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(29, 74)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(119, 17)
+        Me.Label4.Size = New System.Drawing.Size(92, 13)
         Me.Label4.TabIndex = 36
         Me.Label4.Text = "税抜発注金額："
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -560,11 +526,10 @@ Partial Class fOrderReport
         '
         Me.AFTER_TAX_ORDER_T.BackColor = System.Drawing.Color.Wheat
         Me.AFTER_TAX_ORDER_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.AFTER_TAX_ORDER_T.Location = New System.Drawing.Point(162, 216)
-        Me.AFTER_TAX_ORDER_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.AFTER_TAX_ORDER_T.Location = New System.Drawing.Point(121, 173)
         Me.AFTER_TAX_ORDER_T.Name = "AFTER_TAX_ORDER_T"
         Me.AFTER_TAX_ORDER_T.ReadOnly = True
-        Me.AFTER_TAX_ORDER_T.Size = New System.Drawing.Size(186, 24)
+        Me.AFTER_TAX_ORDER_T.Size = New System.Drawing.Size(141, 20)
         Me.AFTER_TAX_ORDER_T.TabIndex = 23
         Me.AFTER_TAX_ORDER_T.TabStop = False
         Me.AFTER_TAX_ORDER_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -573,11 +538,10 @@ Partial Class fOrderReport
         '
         Me.TAX_T.BackColor = System.Drawing.Color.Wheat
         Me.TAX_T.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.TAX_T.Location = New System.Drawing.Point(162, 114)
-        Me.TAX_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TAX_T.Location = New System.Drawing.Point(121, 91)
         Me.TAX_T.Name = "TAX_T"
         Me.TAX_T.ReadOnly = True
-        Me.TAX_T.Size = New System.Drawing.Size(186, 24)
+        Me.TAX_T.Size = New System.Drawing.Size(141, 20)
         Me.TAX_T.TabIndex = 26
         Me.TAX_T.TabStop = False
         Me.TAX_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -586,10 +550,9 @@ Partial Class fOrderReport
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(38, 220)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(29, 176)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 17)
+        Me.Label1.Size = New System.Drawing.Size(92, 13)
         Me.Label1.TabIndex = 29
         Me.Label1.Text = "税込発注金額："
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -598,21 +561,20 @@ Partial Class fOrderReport
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label10.Location = New System.Drawing.Point(70, 118)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(53, 94)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(85, 17)
+        Me.Label10.Size = New System.Drawing.Size(66, 13)
         Me.Label10.TabIndex = 27
         Me.Label10.Text = "消費税額："
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ShapeContainer1
         '
-        Me.ShapeContainer1.Location = New System.Drawing.Point(4, 19)
+        Me.ShapeContainer1.Location = New System.Drawing.Point(3, 15)
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape2, Me.LineShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(376, 217)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(282, 174)
         Me.ShapeContainer1.TabIndex = 48
         Me.ShapeContainer1.TabStop = False
         '
@@ -640,10 +602,9 @@ Partial Class fOrderReport
         Me.EDIT_L.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.EDIT_L.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.EDIT_L.ForeColor = System.Drawing.Color.White
-        Me.EDIT_L.Location = New System.Drawing.Point(34, 808)
-        Me.EDIT_L.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.EDIT_L.Location = New System.Drawing.Point(25, 646)
         Me.EDIT_L.Name = "EDIT_L"
-        Me.EDIT_L.Size = New System.Drawing.Size(1294, 22)
+        Me.EDIT_L.Size = New System.Drawing.Size(971, 18)
         Me.EDIT_L.TabIndex = 34
         Me.EDIT_L.Text = "注文伝票作成中"
         Me.EDIT_L.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -651,11 +612,10 @@ Partial Class fOrderReport
         'TRN_RULE_T
         '
         Me.TRN_RULE_T.BackColor = System.Drawing.Color.Wheat
-        Me.TRN_RULE_T.Location = New System.Drawing.Point(624, 65)
-        Me.TRN_RULE_T.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TRN_RULE_T.Location = New System.Drawing.Point(468, 52)
         Me.TRN_RULE_T.Name = "TRN_RULE_T"
         Me.TRN_RULE_T.ReadOnly = True
-        Me.TRN_RULE_T.Size = New System.Drawing.Size(460, 118)
+        Me.TRN_RULE_T.Size = New System.Drawing.Size(346, 95)
         Me.TRN_RULE_T.TabIndex = 35
         Me.TRN_RULE_T.Text = ""
         '
@@ -663,50 +623,49 @@ Partial Class fOrderReport
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label9.Location = New System.Drawing.Point(624, 49)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(468, 39)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(83, 15)
+        Me.Label9.Size = New System.Drawing.Size(65, 12)
         Me.Label9.TabIndex = 36
         Me.Label9.Text = "【取引条件】"
         '
         'RETURN_B
         '
         Me.RETURN_B.ColorBottom = System.Drawing.Color.Tan
-        Me.RETURN_B.Location = New System.Drawing.Point(1105, 49)
-        Me.RETURN_B.Margin = New System.Windows.Forms.Padding(9, 8, 9, 8)
+        Me.RETURN_B.Location = New System.Drawing.Point(829, 39)
+        Me.RETURN_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.RETURN_B.Name = "RETURN_B"
-        Me.RETURN_B.Size = New System.Drawing.Size(223, 72)
+        Me.RETURN_B.Size = New System.Drawing.Size(167, 58)
         Me.RETURN_B.TabIndex = 10
         Me.RETURN_B.TextButton = "検索画面に戻る"
         '
         'PRINT_START_B
         '
         Me.PRINT_START_B.ColorBottom = System.Drawing.Color.Tan
-        Me.PRINT_START_B.Location = New System.Drawing.Point(914, 729)
-        Me.PRINT_START_B.Margin = New System.Windows.Forms.Padding(9, 8, 9, 8)
+        Me.PRINT_START_B.Location = New System.Drawing.Point(685, 582)
+        Me.PRINT_START_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.PRINT_START_B.Name = "PRINT_START_B"
-        Me.PRINT_START_B.Size = New System.Drawing.Size(201, 72)
+        Me.PRINT_START_B.Size = New System.Drawing.Size(151, 58)
         Me.PRINT_START_B.TabIndex = 8
         Me.PRINT_START_B.TextButton = "登録／伝票印刷"
         '
         'EXIT_B
         '
         Me.EXIT_B.ColorBottom = System.Drawing.Color.Tan
-        Me.EXIT_B.Location = New System.Drawing.Point(1127, 728)
-        Me.EXIT_B.Margin = New System.Windows.Forms.Padding(9, 8, 9, 8)
+        Me.EXIT_B.Location = New System.Drawing.Point(845, 582)
+        Me.EXIT_B.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.EXIT_B.Name = "EXIT_B"
-        Me.EXIT_B.Size = New System.Drawing.Size(201, 72)
+        Me.EXIT_B.Size = New System.Drawing.Size(151, 58)
         Me.EXIT_B.TabIndex = 9
         Me.EXIT_B.TextButton = "終 了"
         '
         'fOrderReport
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.BurlyWood
-        Me.ClientSize = New System.Drawing.Size(1357, 884)
+        Me.ClientSize = New System.Drawing.Size(1044, 678)
         Me.Controls.Add(Me.EXIT_B)
         Me.Controls.Add(Me.PRINT_START_B)
         Me.Controls.Add(Me.RETURN_B)
@@ -734,7 +693,6 @@ Partial Class fOrderReport
         Me.Controls.Add(Me.DATE_L)
         Me.Controls.Add(Me.PLACE_L)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "fOrderReport"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

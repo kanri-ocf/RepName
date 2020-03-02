@@ -18,11 +18,12 @@
     ''　戻値：True  --> レコードの取得成功
     ''　　　　False --> 取得するレコードなし
     ''----------------------------------------------------------------------
-    Public Function getAccount(ByRef parAccount() As cStructureLib.sAccount, _
-                               ByVal KeyAccountCode As Integer, _
-                               ByVal KeyAccountName As String, _
-                               ByVal KeyLinkMasterName As String, _
-                               ByVal KeyTaxClass As String, _
+    Public Function getAccount(ByRef parAccount() As cStructureLib.sAccount,
+                               ByVal KeyAccountCode As Integer,
+                               ByVal KeyAccountName As String,
+                               ByVal KeyLinkMasterName As String,
+                               ByVal KeyTaxClass As String,
+                               ByVal KeyTaxName As String,
                                ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
         Dim strSelect As String
         Dim i As Long
@@ -36,7 +37,13 @@
 
         strSelect = ""
 
-        strSelect = "SELECT * FROM 勘定科目マスタ "
+        strSelect = "SELECT " &
+                        "勘定科目マスタ.勘定科目コード AS 勘定科目コード, " &
+                        "勘定科目マスタ.勘定科目名称 AS 勘定科目名称, " &
+                        "勘定科目マスタ.連携マスタ名称 AS 連携マスタ名称, " &
+                        "税区分マスタ.税区分コード AS 税区分コード, " &
+                        "税区分マスタ.税区分名称 AS 税区分名称 " &
+                    "FROM 勘定科目マスタ LEFT JOIN 税区分マスタ ON 勘定科目マスタ.税区分コード = 税区分マスタ.税区分コード "
 
         'パラメータ数のカウント
         pc = 0
@@ -54,6 +61,10 @@
         End If
         If KeyTaxClass <> Nothing Then
             maxpc = 8
+            pc = pc Or maxpc
+        End If
+        If KeyTaxName <> Nothing Then
+            maxpc = 10
             pc = pc Or maxpc
         End If
 
@@ -95,6 +106,14 @@
                         End If
                         strSelect = strSelect & "税区分名称 Like ""%" & KeyTaxClass & "%"" "
                         scnt = scnt + 1
+                    Case 10
+                        If scnt > 0 Then
+                            strSelect = strSelect & "AND "
+                        Else
+                            strSelect = strSelect & "WHERE "
+                        End If
+                        strSelect = strSelect & "税区分名称 Like ""%" & KeyTaxName & "%"" "
+                        scnt = scnt + 1
                 End Select
                 i = i * 2
             End While
@@ -128,14 +147,16 @@
                 Else
                     parAccount(i).sTaxClassCode = CInt(pDataReader("税区分コード"))
                 End If
-                '登録日
-                parAccount(i).sCreateDate = pDataReader("登録日").ToString
-                '登録日時
-                parAccount(i).sCreateTime = pDataReader("登録時間").ToString
-                '最終更新日
-                parAccount(i).sUpdateDate = pDataReader("最終更新日").ToString
-                '最終更新日時
-                parAccount(i).sUpdateTime = pDataReader("最終更新時間").ToString
+                '税区分名称
+                parAccount(i).sTaxClassName = pDataReader("税区分名称").ToString
+                ''登録日
+                'parAccount(i).sCreateDate = pDataReader("登録日").ToString
+                ''登録日時
+                'parAccount(i).sCreateTime = pDataReader("登録時間").ToString
+                ''最終更新日
+                'parAccount(i).sUpdateDate = pDataReader("最終更新日").ToString
+                ''最終更新日時
+                'parAccount(i).sUpdateTime = pDataReader("最終更新時間").ToString
                 'レコードが取得できた時の処理
                 i = i + 1
             End While

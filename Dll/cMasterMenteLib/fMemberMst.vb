@@ -218,7 +218,7 @@
 
     Private Sub DISP_INIT()
         Dim RecordCount As Long
-        Dim dt As Date
+        'Dim dt As Date
 
         If MODE = 0 Then
             RETURN_B.Text = "終　了"
@@ -356,7 +356,8 @@
         CHANNEL_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        CHANNEL_C.Items.Add("")
+        'CHANNEL_C.Items.Add("")
+        CHANNEL_C.Items.Clear()
         For i = 0 To RecordCount - 1
             CHANNEL_C.Items.Add(oChannel(i).sChannelName)
         Next
@@ -378,7 +379,8 @@
         SERVICE_NAME_C.BeginUpdate()
 
         'コンボボックスへのチャネル名セット
-        SERVICE_NAME_C.Items.Add("")
+        'SERVICE_NAME_C.Items.Add("")
+        SERVICE_NAME_C.Items.Clear()
         For i = 0 To RecordCount - 1
             SERVICE_NAME_C.Items.Add(oService(i).sServiceName)
         Next
@@ -401,6 +403,8 @@
         MODE_L.BackColor = Drawing.Color.Blue
 
         IVENT_FLG = False
+
+        RecordCount = 0
 
         RecordCount = oMstMemberDBIO.getMember(oMember,
                                           MemberCode,
@@ -574,7 +578,7 @@
             Exit Function
         End If
 
-        If CHANNEL_C.Text = "" Then
+        If CHANNEL_C.Text = "" Or CHANNEL_C.Text = Nothing Then
             Message_form = New cMessageLib.fMessage(1, "チャネルが選択されていません。",
                                 "チャネルを指定して下さい。",
                                 Nothing, Nothing)
@@ -739,7 +743,7 @@
 
     Private Sub ENTRY_DATE_D_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ENTRY_DATE_D.ValueChanged
         ENTRY_DATE_D.Format = Windows.Forms.DateTimePickerFormat.Short
-        ST_REG_DATE_D.Value = ENTRY_DATE_D.Value
+        'ST_REG_DATE_D.Value = ENTRY_DATE_D.Value
     End Sub
 
     Private Sub RESIGN_DATE_D_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RESIGN_DATE_D.ValueChanged
@@ -998,6 +1002,13 @@
             ret = WRITE_PROC()
 
             If ret = True Then
+                '2020.01.07 Suzuki s
+                Dim oMemberCardPrint_form = New cReportsLib.fMemberCardReportPage(oConn, oCommand, oDataReader, MEMBER_CODE_T.Text, oTran)
+                Me.Visible = False
+                oMemberCardPrint_form.ShowDialog()
+                oMemberCardPrint_form = Nothing
+                Me.Visible = True
+                '2020.01.07 Suzuki e
                 'MEMBER_CARD_PRINT()
             End If
             '2016.06.22 K.Oikawa s
@@ -1044,6 +1055,15 @@
         message_form.ShowDialog()
         message_form.Dispose()
 
+        If MODE = 0 Then
+            IVENT_FLG = False
+            '表示初期化
+            DISP_INIT()
+            IVENT_FLG = True
+        Else
+            DialogResult = Windows.Forms.DialogResult.OK
+            Close()
+        End If
     End Sub
     Private Function WRITE_PROC() As Boolean
         Dim ret As Boolean
@@ -1191,7 +1211,7 @@
                 Close()
             End If
         End If
-        CLOSE_PROC()
+        'CLOSE_PROC()
 
     End Sub
 
