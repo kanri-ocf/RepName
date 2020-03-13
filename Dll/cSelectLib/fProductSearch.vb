@@ -738,6 +738,7 @@
         If e.KeyCode = System.Windows.Forms.Keys.Enter Then
             If e.Control = False Then
                 'タイトル行の下の行を1行目として返す
+
                 SelRow = PRODUCT_V.CurrentRow.Index - 1
                 If PRODUCT_V("商品コード", SelRow).Value.ToString() = Nothing Then
                     Exit Sub

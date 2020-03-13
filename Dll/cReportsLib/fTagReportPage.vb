@@ -229,4 +229,5 @@ Public Class fTagReportPage
         Me.Dispose()
 
     End Sub
+
 End Class

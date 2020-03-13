@@ -3,6 +3,7 @@
 
 Public Class fRegister
 
+
     '2019.10.6 R.Takashima
     '数が多く見づらいのでアウトラインでまとめる。
 #Region "定数関連"
@@ -201,16 +202,19 @@ Public Class fRegister
         ' この呼び出しは、Windows フォーム デザイナで必要です。
         InitializeComponent()
 
+
         oTool = New cTool
         DB_Path = oTool.RegistryRead("File1")
+
 
         'ADO.NETによる'DB接続文字列の設定
         '注：プロジェクトファイルホルダの下にあるbinホルダにMDBを置く
 
         StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB.mdb;"
-        oConn = New OleDb.OleDbConnection(StrPath)
+        oConn = New OleDb.OleDbConnection(StrPath)[]
 
         'ＤＢ接続を開く
+
         oConn.Open()
 
         oDataTrnDBIO = New cDataTrnDBIO(oConn, oCommand, oDataReader)
@@ -1701,9 +1705,9 @@ Public Class fRegister
                 '返品数だと思われる。
                 'mCntは購入されている商品数
                 If mCnt <= pCnt Then
-                    pCnt= mCnt
+                    pCnt = mCnt
                     '返品後の数量
-                                              MEISAI_V("数量", i).Value = 0
+                    MEISAI_V("数量", i).Value = 0
                 Else
                     '返品後の数量
                     MEISAI_V("数量", i).Value = mCnt - pCnt
@@ -5587,7 +5591,7 @@ Public Class fRegister
                 pData = RECEIPT_LEFT_MARGIN_STAR & String.Format("(ポイント値引き)  \  {0,9:C}", System.Math.Abs(DPGOUKEI)) & Chr(10)
                 '2016.07.01 K.Oikawa e
         End Select
-            ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
+        ret = oPrinter.PrintNormal(PTR_S_RECEIPT, pData)
         'End If
 
 
@@ -7174,7 +7178,7 @@ Public Class fRegister
                 MEISAI_V.Rows.RemoveAt(RowNo)
 
             Else
-                    TOTAL_CASH = TOTAL_CASH - MEISAI_V("金額", RowNo).Value + MEISAI_V("値引き", RowNo).Value  '本商品までの合計金額を計算
+                TOTAL_CASH = TOTAL_CASH - MEISAI_V("金額", RowNo).Value + MEISAI_V("値引き", RowNo).Value  '本商品までの合計金額を計算
 
                 '2016.06.23 K.Oikawa s
                 '課代表.No87 参照できない行数を参照してしまうためエラーとなるので修正
@@ -7976,36 +7980,36 @@ Public Class fRegister
             '合計モード On
             G_MODE = True
 
-                MORE_B.Enabled = False
-            Else    '返品モードの場合
+            MORE_B.Enabled = False
+        Else    '返品モードの場合
 
-                '2016.06.28 K.Oikawa s
-                'ポイントメンバーの場合、利用ポイント数の入力
-                'If POINT_MEMBER_CODE <> "" Then
-                '    fPointCheck_form = New fPointCheck(oConn, oCommand, oDataReader, oConf(0), POINT_MEMBER_CODE, TOTAL_CASH * -1, 0, oTran)
-                '    fPointCheck_form.ShowDialog()
-                '    If fPointCheck_form.DialogResult = Windows.Forms.DialogResult.Cancel Or CLng(fPointCheck_form.USE_POINT_T.Text) = 0 Then
-                '        fPointCheck_form.Dispose()
-                '        fPointCheck_form = Nothing
-                '    Else
-                '        USE_POINT_i = USE_POINT_i + CLng(fPointCheck_form.USE_POINT_T.Text)
-                '        POINT_i = POINT_INSERT(0, CLng(fPointCheck_form.USE_POINT_T.Text))
-                '        DISPLAY_T.Text = fPointCheck_form.USE_POINT_T.Text
-                '        fPointCheck_form.Dispose()
-                '        fPointCheck_form = Nothing
+            '2016.06.28 K.Oikawa s
+            'ポイントメンバーの場合、利用ポイント数の入力
+            'If POINT_MEMBER_CODE <> "" Then
+            '    fPointCheck_form = New fPointCheck(oConn, oCommand, oDataReader, oConf(0), POINT_MEMBER_CODE, TOTAL_CASH * -1, 0, oTran)
+            '    fPointCheck_form.ShowDialog()
+            '    If fPointCheck_form.DialogResult = Windows.Forms.DialogResult.Cancel Or CLng(fPointCheck_form.USE_POINT_T.Text) = 0 Then
+            '        fPointCheck_form.Dispose()
+            '        fPointCheck_form = Nothing
+            '    Else
+            '        USE_POINT_i = USE_POINT_i + CLng(fPointCheck_form.USE_POINT_T.Text)
+            '        POINT_i = POINT_INSERT(0, CLng(fPointCheck_form.USE_POINT_T.Text))
+            '        DISPLAY_T.Text = fPointCheck_form.USE_POINT_T.Text
+            '        fPointCheck_form.Dispose()
+            '        fPointCheck_form = Nothing
 
-                '        D_MODE = 1
+            '        D_MODE = 1
 
-                '        '取引明細区分=値引きを設定
-                '        SUBTRNCLASS = M_DISCOUNT_P
+            '        '取引明細区分=値引きを設定
+            '        SUBTRNCLASS = M_DISCOUNT_P
 
-                '        DISCOUNT_PROC(Nothing)
-                '    End If
-                'End If
-                '2016.06.28 K.Oikawa e
+            '        DISCOUNT_PROC(Nothing)
+            '    End If
+            'End If
+            '2016.06.28 K.Oikawa e
 
-                'キー入力音出力
-                oTool.PlaySound()
+            'キー入力音出力
+            oTool.PlaySound()
 
             '取引明細区分=値引きを設定
             SUBTRNCLASS = M_DISCOUNT_T
