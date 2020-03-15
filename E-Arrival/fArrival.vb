@@ -2942,9 +2942,9 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
                     'バーコードタグ印刷
                     '<>のままだとバーコード印刷が出来ない
                     '<>を=に修正すると印刷自体は可能だが、登録した商品とは全く異なる商品のバーコードが印刷される
-                    '登録した商品の数と印刷されるバーコードの数が合わない(5つ商品登録して印刷すると2つしか出てこない)
-                    'If cnt <> 0 Then
-                    Message_form = New cMessageLib.fMessage(2, "バーコード付きのタグを印刷します。",
+                    '登録した商品の数と印刷されるバーコードの数が合わない(例えば5つ商品登録して印刷すると2つしか出てこない)
+                    If cnt = 0 Then
+                        Message_form = New cMessageLib.fMessage(2, "バーコード付きのタグを印刷します。",
                                                        "A-One 31516用紙をセットして下さい。",
                                                        "準備が出来たら、""はい""を押下して下さい。",
                                                        Nothing)
@@ -2956,7 +2956,7 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
 
                             Dim oReportPage = New cReportsLib.fTagReportPage(oConn, oCommand, oDataReader, Nothing, 1, oTran)
                             oReportPage.ShowDialog()
-                            If oReportPage.DialogResult = DialogResult.OK Then
+                            If oReportPage.DialogResult = DialogResult.Yes Then
                                 '画面初期化
                                 INIT_PROC(1)
                             End If
@@ -2964,7 +2964,7 @@ Private Sub B_TEXT_INIT(ByVal ChangeMode As Boolean, ByVal ArrivalData() As cStr
                             oReportPage = Nothing
                         End If
                     End If
-                'End If
+                End If
 
             ElseIf Message_form.DialogResult = DialogResult.No Then
 
