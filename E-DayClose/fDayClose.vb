@@ -121,6 +121,7 @@
             Dim cp As CreateParams = MyBase.CreateParams
             cp.ExStyle = cp.ExStyle Or WS_EX_DLGMODALFRAME
             Return cp
+
         End Get
     End Property
 

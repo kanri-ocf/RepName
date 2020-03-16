@@ -41,7 +41,7 @@ Partial Class fTagReportPage
         Me.MESSAGE_1_T.Name = "MESSAGE_1_T"
         Me.MESSAGE_1_T.Size = New System.Drawing.Size(934, 134)
         Me.MESSAGE_1_T.TabIndex = 15
-        Me.MESSAGE_1_T.Text = "タグ出力するチャネルおよびタイプを指定して下さい指定して下さい。"
+        Me.MESSAGE_1_T.Text = "タグ出力するチャネルおよびタイプを指定して下さい。"
         Me.MESSAGE_1_T.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'CHANNEL_L
