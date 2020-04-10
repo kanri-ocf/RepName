@@ -33,29 +33,33 @@ Public Class cViewArriveDataFullDBIO
         pCommand = pConn.CreateCommand()
         pCommand.Transaction = Tran
 
+        '2020,4,7 A.Komita SQLに入庫軽減税額を追加 From
         strSelect = ""
-        strSelect = "SELECT " & _
-                        "入庫情報データ.発注コード, " & _
-                        "Count(入庫情報データ.入庫番号) AS 入庫番号, " & _
-                        "入庫情報データ.仕入先コード, " & _
-                        "仕入先マスタ.仕入先名称, " & _
-                        "入庫情報データ.支払方法コード, " & _
-                        "支払方法マスタ.支払方法名称, " & _
-                        "Sum(入庫情報データ.入庫税抜商品金額) AS 入庫税抜商品金額, " & _
-                        "Sum(入庫情報データ.送料) AS 送料, " & _
-                        "Sum(入庫情報データ.手数料) AS 手数料, " & _
-                        "Sum(入庫情報データ.値引き) AS 値引き, " & _
-                        "Sum(入庫情報データ.ポイント値引き) AS ポイント値引き, " & _
-                        "Sum(入庫情報データ.入庫税抜金額) AS 入庫税抜金額, " & _
-                        "Sum(入庫情報データ.入庫消費税額) AS 入庫消費税額, " & _
-                        "Sum(入庫情報データ.入庫税込金額) AS 入庫税込金額, " & _
-                        "Sum(入庫情報データ.完納フラグ) AS 完納フラグ, " & _
-                        "入庫情報データ.入庫担当者コード AS 入庫担当者コード, " & _
-                        "スタッフマスタ.スタッフ名称 AS 入庫担当者名称 " & _
-                    "FROM スタッフマスタ RIGHT JOIN (仕入先マスタ RIGHT JOIN (支払方法マスタ RIGHT JOIN " & _
-                        "入庫情報データ ON 支払方法マスタ.支払方法コード = 入庫情報データ.支払方法コード) " & _
-                        "ON 仕入先マスタ.仕入先コード = 入庫情報データ.仕入先コード) " & _
+        strSelect = "SELECT " &
+                        "入庫情報データ.発注コード, " &
+                        "Count(入庫情報データ.入庫番号) AS 入庫番号, " &
+                        "入庫情報データ.仕入先コード, " &
+                        "仕入先マスタ.仕入先名称, " &
+                        "入庫情報データ.支払方法コード, " &
+                        "支払方法マスタ.支払方法名称, " &
+                        "Sum(入庫情報データ.入庫税抜商品金額) AS 入庫税抜商品金額, " &
+                        "Sum(入庫情報データ.送料) AS 送料, " &
+                        "Sum(入庫情報データ.手数料) AS 手数料, " &
+                        "Sum(入庫情報データ.値引き) AS 値引き, " &
+                        "Sum(入庫情報データ.ポイント値引き) AS ポイント値引き, " &
+                        "Sum(入庫情報データ.入庫税抜金額) AS 入庫税抜金額, " &
+                        "Sum(入庫情報データ.入庫消費税額) AS 入庫消費税額, " &
+                        "Sum(入庫情報データ.入庫軽減税額) AS 入庫軽減税額, " &
+                        "Sum(入庫情報データ.入庫税込金額) AS 入庫税込金額, " &
+                        "Sum(入庫情報データ.完納フラグ) AS 完納フラグ, " &
+                        "入庫情報データ.入庫担当者コード AS 入庫担当者コード, " &
+                        "スタッフマスタ.スタッフ名称 AS 入庫担当者名称 " &
+                    "FROM スタッフマスタ RIGHT JOIN (仕入先マスタ RIGHT JOIN (支払方法マスタ RIGHT JOIN " &
+                        "入庫情報データ ON 支払方法マスタ.支払方法コード = 入庫情報データ.支払方法コード) " &
+                        "ON 仕入先マスタ.仕入先コード = 入庫情報データ.仕入先コード) " &
                         "ON スタッフマスタ.スタッフコード = 入庫情報データ.入庫担当者コード "
+        '2020,4,7 A.Komita 追加 To
+
 
         '***********************
         '   パラメータの設定
@@ -231,6 +235,16 @@ Public Class cViewArriveDataFullDBIO
                 Else
                     parArriveDataFull(i).sTaxTotal = CLng(pDataReader("入庫消費税額"))
                 End If
+
+                '2020,4,7 A.Komita 追加 From
+                '入庫軽減税額
+                If IsDBNull(pDataReader("入庫軽減税額")) = True Then
+                    parArriveDataFull(i).sReducedTaxRate = 0
+                Else
+                    parArriveDataFull(i).sReducedTaxRate = CLng(pDataReader("入庫軽減税額"))
+                End If
+                '2020,4,7 A.Komita 追加 To
+
                 '入庫税込金額
                 If IsDBNull(pDataReader("入庫税込金額")) = True Then
                     parArriveDataFull(i).sTotalPrice = 0
