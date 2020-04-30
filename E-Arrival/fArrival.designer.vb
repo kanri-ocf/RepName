@@ -539,24 +539,24 @@ Partial Class fArrival
         'AFTER_TAX_R
         '
         Me.AFTER_TAX_R.AutoSize = True
-        Me.AFTER_TAX_R.Checked = True
         Me.AFTER_TAX_R.Location = New System.Drawing.Point(59, 30)
         Me.AFTER_TAX_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.AFTER_TAX_R.Name = "AFTER_TAX_R"
         Me.AFTER_TAX_R.Size = New System.Drawing.Size(89, 28)
         Me.AFTER_TAX_R.TabIndex = 1
-        Me.AFTER_TAX_R.TabStop = True
         Me.AFTER_TAX_R.Text = "税込"
         Me.AFTER_TAX_R.UseVisualStyleBackColor = True
         '
         'BEFORE_TAX_R
         '
         Me.BEFORE_TAX_R.AutoSize = True
+        Me.BEFORE_TAX_R.Checked = True
         Me.BEFORE_TAX_R.Location = New System.Drawing.Point(210, 30)
         Me.BEFORE_TAX_R.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.BEFORE_TAX_R.Name = "BEFORE_TAX_R"
         Me.BEFORE_TAX_R.Size = New System.Drawing.Size(89, 28)
         Me.BEFORE_TAX_R.TabIndex = 0
+        Me.BEFORE_TAX_R.TabStop = True
         Me.BEFORE_TAX_R.Text = "税抜"
         Me.BEFORE_TAX_R.UseVisualStyleBackColor = True
         '
