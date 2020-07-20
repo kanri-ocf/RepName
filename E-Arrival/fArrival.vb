@@ -1580,83 +1580,77 @@
         'B_RTAX_T.Text = String.Format("{0:#,##0}", S_B_RTAX_T)
 
 
-
-        '2020,4,6 A.Komita 既納入情報を表示させるコードを追加 From--------------------------------------------------------------------------------------------
-
+        '2020,4,6 A.Komita 追加 From
         RecordCnt = oViewArriveDataFullDBIO.getArriveSearch(oArriveDataFull, ORDER_CODE_T.Text, Nothing, Nothing, oTran)
 
-        '2020,4,13 A.Komita 注文番号読込前に税モードを切り替えた場合に既納入情報へ値が出力されるのを防ぐ為、ORDER_CODE_T.Text <> String.Emptyの条件を追加 From
-        If ORDER_CODE_T.Text <> String.Empty Then
-            '2020,4,13 A.Komita 追加 To
-            If RecordCnt = 0 Then
 
-                '完納フラグ
-                FINISH_C.Checked = False
-                '納入回数
-                ARRIVE_COUNT_T.Text = 1
-                '商品代金
-                B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", 0)
-                '送料の数値変換
-                B_POSTAGE_T.Text = String.Format("{0:#,##0}", 0)
-                '手数料の数値変換
-                B_FEE_T.Text = String.Format("{0:#,##0}", 0)
-                '税抜き請求金額
-                B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
-                '消費税額
-                B_TAX_T.Text = String.Format("{0:#,##0}", 0)
+        If RecordCnt = 0 Then
 
-                '2019,10,3 A.Komita 追加 From
-                '軽減税額
-                B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
-                '2019,10,3 A.Komita 追加 To
+            '完納フラグ
+            FINISH_C.Checked = False
+            '納入回数
+            ARRIVE_COUNT_T.Text = 1
+            '商品代金
+            B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", 0)
+            '送料の数値変換
+            B_POSTAGE_T.Text = String.Format("{0:#,##0}", 0)
+            '手数料の数値変換
+            B_FEE_T.Text = String.Format("{0:#,##0}", 0)
+            '税抜き請求金額
+            B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
+            '消費税額
+            B_TAX_T.Text = String.Format("{0:#,##0}", 0)
 
-                '値引きの数値変換
-                B_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
-                'ポイント値引きの数値変換
-                B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
-                '税込み請求金額
-                B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
-            Else
-                '完納フラグ
-                FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
-                '納入回数
-                ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
-                '商品代金
-                B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sNoTaxTotalProductPrice)
-                '送料の数値変換
-                B_POSTAGE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sShippingCharge)
-                '手数料の数値変換
-                B_FEE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sPaymentCharge)
-                '-------------------------------------------------------------------
-                '2019/10/26 suzuki 
-                '-------------------------------------------------------------------
-                ''税抜き請求金額
-                'B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sNoTaxTotalPrice)
-                '請求金額
-                B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", (oArriveDataFull(0).sNoTaxTotalProductPrice + oArriveDataFull(0).sShippingCharge + oArriveDataFull(0).sPaymentCharge))
-                '-------------------------------------------------------------------
-                '2019/10/26 suzuki 
-                '-------------------------------------------------------------------
-                '消費税額
-                B_TAX_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTaxTotal)
+            '2019,10,3 A.Komita 追加 From
+            '軽減税額
+            B_RTAX_T.Text = String.Format("{0:#,##0}", 0)
+            '2019,10,3 A.Komita 追加 To
 
-                '2019,10,3 A.Komita 追加 From
-                '軽減税額
-                B_RTAX_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sReducedTaxRate)
-                '2019,10,3 A.Komita 追加 To
+            '値引きの数値変換
+            B_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
+            'ポイント値引きの数値変換
+            B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", 0)
+            '税込み請求金額
+            B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", 0)
+        Else
+            '完納フラグ
+            FINISH_C.Checked = oArriveDataFull(0).sFinishFlg
+            '納入回数
+            ARRIVE_COUNT_T.Text = oArriveDataFull(0).sArrivalNo + 1
+            '商品代金
+            B_BREFORE_PRODUCT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sNoTaxTotalProductPrice)
+            '送料の数値変換
+            B_POSTAGE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sShippingCharge)
+            '手数料の数値変換
+            B_FEE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sPaymentCharge)
+            '-------------------------------------------------------------------
+            '2019/10/26 suzuki 
+            '-------------------------------------------------------------------
+            ''税抜き請求金額
+            'B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sNoTaxTotalPrice)
+            '請求金額
+            B_BEFORE_BILL_PRICE_T.Text = String.Format("{0:#,##0}", (oArriveDataFull(0).sNoTaxTotalProductPrice + oArriveDataFull(0).sShippingCharge + oArriveDataFull(0).sPaymentCharge))
+            '-------------------------------------------------------------------
+            '2019/10/26 suzuki 
+            '-------------------------------------------------------------------
+            '消費税額
+            B_TAX_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTaxTotal)
 
-                '値引きの数値変換
-                B_DISCOUNT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sDiscount)
-                'ポイント値引きの数値変換
-                B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sPointDisCount)
-                '税込み請求金額
-                B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
-            End If
+            '2019,10,3 A.Komita 追加 From
+            '軽減税額
+            B_RTAX_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sReducedTaxRate)
+            '2019,10,3 A.Komita 追加 To
+
+            '値引きの数値変換
+            B_DISCOUNT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sDiscount)
+            'ポイント値引きの数値変換
+            B_POINT_DISCOUNT_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sPointDisCount)
+            '税込み請求金額
+            B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
         End If
 
-        '2020,4,13 A.Komita 1586行目と同じ理由でORDER_CODE_T.Text <> String.Emptyの条件を追加 From
-        If RecordCnt <> 0 And ORDER_CODE_T.Text <> String.Empty Then
-            '2020,4,13 A.Komita 追加 To
+
+        If RecordCnt <> 0 Then
             If AFTER_TAX_R.Checked = True Then
                 '--------------------------------------------------------------------
                 '2019/10/26 suzuki 初期値を税率とするので税率計算変更
@@ -1755,7 +1749,7 @@
                 B_AFTER_BILL_PRICE_T.Text = String.Format("{0:#,##0}", oArriveDataFull(0).sTotalPrice)
             End If
         End If
-        '2020,4,6 A.Komita 追加 To-----------------------------------------------------------------------------------------------------------------------------
+        '2020,4,6 A.Komita 追加 To
 
     End Sub
 
@@ -2276,10 +2270,129 @@
 
 
 
+    Private Sub ORDER_V_CellDoubleClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles ORDER_V.CellDoubleClick
+        Dim Message_form As cMessageLib.fMessage
+        Dim fOrderCancel_form As New cMasterMenteLib.fOrderCancel(
+                    oConn,
+                    oCommand,
+                    oDataReader,
+                    ORDER_CODE_T.Text,
+                    ORDER_V("発注明細コード", ORDER_V.CurrentRow.Index).Value,
+                    STAFF_CODE,
+                    STAFF_NAME,
+                    oTran
+        )
 
 
 
-    Private Sub ORDER_V_CellValueChanged(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles ORDER_V.CellValueChanged, ORDER_V.CellDoubleClick
+        '----------------------------------------------------
+        '2015/06/28
+        '及川和彦
+        'ダブルクリック後に「入庫」ボタンをクリックすると、
+        '2回入庫された状態になるため、ChangeValueを無効化するために追加
+        'FROM
+        '----------------------------------------------------
+        STOP_VALUE = True
+        '----------------------------------------------------
+        'HERE
+        '----------------------------------------------------
+
+        fOrderCancel_form.ShowDialog()
+
+        Select Case fOrderCancel_form.DialogResult
+            Case DialogResult.OK
+                ORDER_DETAIL_LINE_UPDATE(ORDER_V.CurrentRow.Index, ORDER_CODE_T.Text, ORDER_V("発注明細コード", ORDER_V.CurrentRow.Index).Value)
+
+                '----------------------------------------------------
+                '2015/06/21
+                '及川和彦
+                'データベース読み込みの追加
+                'FROM
+                '----------------------------------------------------
+            Case DialogResult.Abort
+                ORDER_DETAIL_CANCEL_UPDATE(ORDER_V.CurrentRow.Index, ORDER_CODE_T.Text, ORDER_V("発注明細コード", ORDER_V.CurrentRow.Index).Value)
+
+            Case DialogResult.Yes
+
+                'TODO:now 商品情報の取得
+                Dim RecordCnt As Integer
+                RecordCnt = oProductDBIO.getProduct(oProduct, Nothing, ORDER_V("商品コード", e.RowIndex).Value, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, oTran)
+                RecordCnt = oCostPriceDBIO.getPriceMst(oCostPrice, ORDER_V("商品コード", e.RowIndex).Value, SUPPLIER_CODE, oTran)
+
+
+                'TODO:now 商品情報を画面に設定する
+                ORDER_V("JANコード", ORDER_V.CurrentRow.Index).Value = oProduct(0).sJANCode
+                ORDER_V("商品名称", ORDER_V.CurrentRow.Index).Value = oProduct(0).sProductName
+
+                'TODO:now オプションの設定
+                Dim wString As String
+                wString = oProduct(0).sOption1
+
+                If oProduct(0).sOption2 <> "" Then
+                    wString = wString & ":" & oProduct(0).sOption2
+                End If
+                If oProduct(0).sOption3 <> "" Then
+                    wString = wString & ":" & oProduct(0).sOption3
+                End If
+                If oProduct(0).sOption4 <> "" Then
+                    wString = wString & ":" & oProduct(0).sOption4
+                End If
+                If oProduct(0).sOption5 <> "" Then
+                    wString = wString & ":" & oProduct(0).sOption5
+                End If
+                ORDER_V("オプション", ORDER_V.CurrentRow.Index).Value = wString
+
+                'TODO:now 納入単価の設定
+
+
+                '今回納入情報の表示値を変更するため、一時的にChangeValueを許可する
+                STOP_VALUE = False
+
+                ORDER_DETAIL_ARRIVAL_UPDATE(ORDER_V.CurrentRow.Index, ORDER_CODE_T.Text, ORDER_V("発注明細コード", ORDER_V.CurrentRow.Index).Value)
+
+                STOP_VALUE = True
+            Case DialogResult.No
+
+            Case DialogResult.Cancel
+                ORDER_V("発注中止事由", ORDER_V.CurrentRow.Index).Value = ""
+                '----------------------------------------------------
+                'HERE
+                '----------------------------------------------------
+
+            Case DialogResult.Ignore
+
+                If ORDER_V("納入残", ORDER_V.CurrentRow.Index).Value = 0 Then
+                    '納入残が０の場合→メッセージウィンドウ表示
+                    Message_form = New cMessageLib.fMessage(1, "納入済みデータです",
+                                                    "再度ご確認下さい",
+                                                    Nothing, Nothing)
+                    Message_form.ShowDialog()
+                    Message_form = Nothing
+
+                    JANCODE_T.Text = ""
+                    COUNT_T.Text = 1
+                    JANCODE_T.Focus()
+                    Exit Sub
+                End If
+
+
+
+                '合計納入金額算出
+                'CAL_PROC(False)
+                CAL_PROC(False, False, False)
+                COMMIT_B.Enabled = True
+
+
+        End Select
+
+        STOP_VALUE = False
+
+    End Sub
+
+
+
+
+    Private Sub ORDER_V_CellValueChanged(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles ORDER_V.CellValueChanged
         Dim Message_form As cMessageLib.fMessage
         Dim RecordCnt As Long
         Dim pProduct() As cStructureLib.sProduct
@@ -2478,17 +2591,13 @@
             CAL_PROC(True, False, False)
 
             '2020,4,8 A.Komita 税モード切替時、完納フラグが立っていたら保持する為にコードを追加 From
-            '2020,4,13 A.Komita 注文番号読込前に税モードを切り替えた場合は完納フラグを立てさせない為ORDER_CODE_T.Text <> String.Emptyの条件を追加 From
-            If ORDER_CODE_T.Text <> String.Empty Then
-                '2020,4,13 A.Komita 追加 To
-                If REST_COUNT() = 0 Then
-                    FINISH_C.Checked = True
-                End If
+            If REST_COUNT() = 0 Then
+                FINISH_C.Checked = True
             End If
             '2020,4,8 A.Komita 追加 To
 
             STOP_VALUE = False
-            End If
+        End If
 
 
     End Sub
