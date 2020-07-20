@@ -211,7 +211,7 @@ Public Class fRegister
         '注：プロジェクトファイルホルダの下にあるbinホルダにMDBを置く
 
         StrPath = "Provider=Microsoft.Jet.OLEDB.4.0;" & "Data Source=" & DB_Path & "\OwP-DB.mdb;"
-        oConn = New OleDb.OleDbConnection(StrPath)[]
+        oConn = New OleDb.OleDbConnection(StrPath)
 
         'ＤＢ接続を開く
 

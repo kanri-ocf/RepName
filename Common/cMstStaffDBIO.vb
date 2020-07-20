@@ -18,7 +18,7 @@
     '----------------------------------------------------------------------
     Public Function StaffMstExist(ByVal KeyString As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
-        Const strSelect As String = _
+        Const strSelect As String =
         "SELECT COUNT(*) FROM スタッフマスタ WHERE スタッフコード = @StaffCode"
 
         Try
@@ -65,11 +65,11 @@
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function getStaff(ByRef parStaff() As cStructureLib.sStaff, _
-                                ByVal keyStaffCode As String, _
-                                ByVal keyStaffName As String, _
-                                ByVal keyStaffClass As String, _
-                                ByVal keyStaffBumon As String, _
+    Public Function getStaff(ByRef parStaff() As cStructureLib.sStaff,
+                                ByVal keyStaffCode As String,
+                                ByVal keyStaffName As String,
+                                ByVal keyStaffClass As String,
+                                ByVal keyStaffBumon As String,
                                 ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
 
         Dim strSelect As String
@@ -229,9 +229,9 @@
     '　戻値：True  --> レコードの取得成功
     '　　　　False --> 取得するレコードなし
     '----------------------------------------------------------------------
-    Public Function getStaffAuthority(ByRef parStaffAuthority() As cStructureLib.sStaffAuthority, _
-                                ByVal keyStaffCode As String, _
-                                ByVal keyApplicationID As String, _
+    Public Function getStaffAuthority(ByRef parStaffAuthority() As cStructureLib.sStaffAuthority,
+                                ByVal keyStaffCode As String,
+                                ByVal keyApplicationID As String,
                                 ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
 
         Dim strSelect As String
@@ -411,11 +411,11 @@
         End Try
 
     End Function
-    Public Function getStaffFull(ByRef parStaffFull() As cStructureLib.sViewStaffFull, _
-                                          ByVal keyStaffCode As String, _
-                                          ByVal keyStaffName As String, _
-                                          ByVal keyStaffClass As String, _
-                                          ByVal keyGroupName As String, _
+    Public Function getStaffFull(ByRef parStaffFull() As cStructureLib.sViewStaffFull,
+                                          ByVal keyStaffCode As String,
+                                          ByVal keyStaffName As String,
+                                          ByVal keyStaffClass As String,
+                                          ByVal keyGroupName As String,
                                           ByRef Tran As System.Data.OleDb.OleDbTransaction) As Long
 
         Dim strSelect As String
@@ -432,25 +432,25 @@
             pCommand = pConn.CreateCommand()
             pCommand.Transaction = Tran
 
-            strSelect = "SELECT " & _
-                            "スタッフマスタ.スタッフコード AS スタッフコード, " & _
-                            "スタッフマスタ.役割コード AS 役割コード, " & _
-                            "役割マスタ.役割名称 AS 役割名称, " & _
-                            "スタッフマスタ.スタッフ種別 AS スタッフ種別, " & _
-                            "スタッフマスタ.部門コード AS 部門コード, " & _
-                            "スタッフマスタ.社販レート AS 社販レート, " & _
-                            "スタッフマスタ.スタッフ名称 AS スタッフ名称, " & _
-                            "スタッフ権限マスタ.アプリケーションID AS アプリケーションID, " & _
-                            "アプリケーションマスタ.グループID AS グループID, " & _
-                            "アプリケーションマスタ.グループ名称 AS グループ名称, " & _
-                            "アプリケーションマスタ.メニュー名称 AS メニュー名称, " & _
-                            "アプリケーションマスタ.コントロール名称 AS コントロール名称, " & _
-                            "アプリケーションマスタ.実行モジュール名称 AS 実行モジュール名称 " & _
-                        "FROM " & _
-                            "役割マスタ RIGHT JOIN ((スタッフマスタ LEFT JOIN スタッフ権限マスタ " & _
-                            "ON スタッフマスタ.スタッフコード = スタッフ権限マスタ.スタッフコード) " & _
-                            "LEFT JOIN アプリケーションマスタ " & _
-                            "ON スタッフ権限マスタ.アプリケーションID = アプリケーションマスタ.アプリケーションID) " & _
+            strSelect = "SELECT " &
+                            "スタッフマスタ.スタッフコード AS スタッフコード, " &
+                            "スタッフマスタ.役割コード AS 役割コード, " &
+                            "役割マスタ.役割名称 AS 役割名称, " &
+                            "スタッフマスタ.スタッフ種別 AS スタッフ種別, " &
+                            "スタッフマスタ.部門コード AS 部門コード, " &
+                            "スタッフマスタ.社販レート AS 社販レート, " &
+                            "スタッフマスタ.スタッフ名称 AS スタッフ名称, " &
+                            "スタッフ権限マスタ.アプリケーションID AS アプリケーションID, " &
+                            "アプリケーションマスタ.グループID AS グループID, " &
+                            "アプリケーションマスタ.グループ名称 AS グループ名称, " &
+                            "アプリケーションマスタ.メニュー名称 AS メニュー名称, " &
+                            "アプリケーションマスタ.コントロール名称 AS コントロール名称, " &
+                            "アプリケーションマスタ.実行モジュール名称 AS 実行モジュール名称 " &
+                        "FROM " &
+                            "役割マスタ RIGHT JOIN ((スタッフマスタ LEFT JOIN スタッフ権限マスタ " &
+                            "ON スタッフマスタ.スタッフコード = スタッフ権限マスタ.スタッフコード) " &
+                            "LEFT JOIN アプリケーションマスタ " &
+                            "ON スタッフ権限マスタ.アプリケーションID = アプリケーションマスタ.アプリケーションID) " &
                             "ON 役割マスタ.役割コード = スタッフマスタ.役割コード "
 
             '***********************
@@ -597,7 +597,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertStaffMst(ByVal parStaff As cStructureLib.sStaff, _
+    Public Function insertStaffMst(ByVal parStaff As cStructureLib.sStaff,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
         Dim strInsertOrder As String
@@ -608,28 +608,28 @@
 
         Try
             'SQL文の設定
-            strInsertOrder = "INSERT INTO スタッフマスタ ( " & _
-                                "スタッフコード, " & _
-                                "役割コード, " & _
-                                "スタッフ種別, " & _
-                                "部門コード, " & _
-                                "社販レート, " & _
-                                "スタッフ名称, " & _
-                                "登録日, " & _
-                                "登録時間, " & _
-                                "最終更新日, " & _
-                                "最終更新時間 " & _
-                            ") VALUES (" & _
-                                "@StaffCode, " & _
-                                "@RoleCode, " & _
-                                "@StaffClass, " & _
-                                "@BumonCode, " & _
-                                "@Rate, " & _
-                                "@StaffName, " & _
-                                "@CreateDate, " & _
-                                "@CreateTime, " & _
-                                "@UpdateDate, " & _
-                                "@UpdateTime " & _
+            strInsertOrder = "INSERT INTO スタッフマスタ ( " &
+                                "スタッフコード, " &
+                                "役割コード, " &
+                                "スタッフ種別, " &
+                                "部門コード, " &
+                                "社販レート, " &
+                                "スタッフ名称, " &
+                                "登録日, " &
+                                "登録時間, " &
+                                "最終更新日, " &
+                                "最終更新時間 " &
+                            ") VALUES (" &
+                                "@StaffCode, " &
+                                "@RoleCode, " &
+                                "@StaffClass, " &
+                                "@BumonCode, " &
+                                "@Rate, " &
+                                "@StaffName, " &
+                                "@CreateDate, " &
+                                "@CreateTime, " &
+                                "@UpdateDate, " &
+                                "@UpdateTime " &
                             ")"
 
             pCommand.CommandText = strInsertOrder
@@ -703,7 +703,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertStaffAuthorityMst(ByVal parStaffAuthority As cStructureLib.sStaffAuthority, _
+    Public Function insertStaffAuthorityMst(ByVal parStaffAuthority As cStructureLib.sStaffAuthority,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
 
         Dim strInsert As String
@@ -714,20 +714,20 @@
 
         Try
             'SQL文の設定
-            strInsert = "INSERT INTO スタッフ権限マスタ ( " & _
-                                "スタッフコード, " & _
-                                "アプリケーションID, " & _
-                                "登録日, " & _
-                                "登録時間, " & _
-                                "最終更新日, " & _
-                                "最終更新時間 " & _
-                            ") VALUES (" & _
-                                "@StaffCode, " & _
-                                "@ApplicationID, " & _
-                                "@CreateDate, " & _
-                                "@CreateTime, " & _
-                                "@UpdateDate, " & _
-                                "@UpdateTime " & _
+            strInsert = "INSERT INTO スタッフ権限マスタ ( " &
+                                "スタッフコード, " &
+                                "アプリケーションID, " &
+                                "登録日, " &
+                                "登録時間, " &
+                                "最終更新日, " &
+                                "最終更新時間 " &
+                            ") VALUES (" &
+                                "@StaffCode, " &
+                                "@ApplicationID, " &
+                                "@CreateDate, " &
+                                "@CreateTime, " &
+                                "@UpdateDate, " &
+                                "@UpdateTime " &
                             ")"
 
             pCommand.CommandText = strInsert
@@ -788,19 +788,38 @@
     Public Function updateStaffMst(ByVal parStaff As cStructureLib.sStaff, ByVal KeyStaffCode As String, ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim RecordCount As Integer
         Dim strUpdate As String
+        '---------------------------------------------------------------------------------------------
+        '2020/04/15 suzuki from
+
+
+        '(変更前)
+        ''SQL文の設定
+        'strUpdate = "UPDATE スタッフマスタ SET " & _
+        '                "スタッフコード = """ & parStaff.sStaffCode & """, " & _
+        '                "スタッフ名称 = """ & parStaff.sStaffName & """, " & _
+        '                "役割コード = " & parStaff.sRoleCode & ", " & _
+        '                "スタッフ種別 = """ & parStaff.sStaffClass & """, " & _
+        '                "部門コード = """ & parStaff.sBumonCode & """, " & _
+        '                "社販レート = " & parStaff.sRate & ", " & _
+        '                "最終更新日 = """ & String.Format("{0:yyyy/MM/dd}", Now) & """, " & _
+        '                "最終更新時間 = """ & String.Format("{0:HH:mm:ss}", Now) & """ " & _
+        '            "WHERE スタッフマスタ.スタッフコード= """ & KeyStaffCode & """ "
+
+        '---------------------------------------------------------------------------------------------
 
         'SQL文の設定
-        strUpdate = "UPDATE スタッフマスタ SET " & _
-                        "スタッフコード = """ & parStaff.sStaffCode & """, " & _
-                        "スタッフ名称 = """ & parStaff.sStaffName & """, " & _
-                        "役割コード = " & parStaff.sRoleCode & ", " & _
-                        "スタッフ種別 = """ & parStaff.sStaffClass & """, " & _
-                        "部門コード = """ & parStaff.sBumonCode & """, " & _
-                        "社販レート = " & parStaff.sRate & ", " & _
-                        "最終更新日 = """ & String.Format("{0:yyyy/MM/dd}", Now) & """, " & _
-                        "最終更新時間 = """ & String.Format("{0:HH:mm:ss}", Now) & """ " & _
+        strUpdate = "UPDATE スタッフマスタ SET " &
+                        "スタッフコード = """ & parStaff.sStaffCode & """, " &
+                        "スタッフ名称 = """ & parStaff.sStaffName & """, " &
+                        "役割コード = " & parStaff.sRoleCode & ", " &
+                        "スタッフ種別 = """ & parStaff.sStaffClass & """, " &
+                        "社販レート = " & parStaff.sRate & ", " &
+                        "最終更新日 = """ & String.Format("{0:yyyy/MM/dd}", Now) & """, " &
+                        "最終更新時間 = """ & String.Format("{0:HH:mm:ss}", Now) & """ " &
                     "WHERE スタッフマスタ.スタッフコード= """ & KeyStaffCode & """ "
-
+        '---------------------------------------------------------------------------------------------
+        '2020/04/15 suzuki to
+        '---------------------------------------------------------------------------------------------
         Try
             'コマンドオブジェクトの生成
             pCommand = pConn.CreateCommand()
@@ -839,7 +858,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function deleteStaffMst(ByVal KeyStaffCode As String, _
+    Public Function deleteStaffMst(ByVal KeyStaffCode As String,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim strDelete As String
 
@@ -849,7 +868,7 @@
             pCommand.Transaction = Tran
 
             'SQL文の設定
-            strDelete = "DELETE スタッフマスタ.スタッフコード FROM スタッフマスタ " & _
+            strDelete = "DELETE スタッフマスタ.スタッフコード FROM スタッフマスタ " &
                         "WHERE スタッフマスタ.スタッフコード=""" & KeyStaffCode & """ "
 
             pCommand.CommandText = strDelete
@@ -877,7 +896,7 @@
     '　引数：in cSubOrderオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function deleteStaffAuthorityMst(ByVal KeyStaffCode As String, _
+    Public Function deleteStaffAuthorityMst(ByVal KeyStaffCode As String,
                                     ByRef Tran As System.Data.OleDb.OleDbTransaction) As Boolean
         Dim strDelete As String
 
@@ -887,7 +906,7 @@
             pCommand.Transaction = Tran
 
             'SQL文の設定
-            strDelete = "DELETE スタッフ権限マスタ.スタッフコード FROM スタッフ権限マスタ " & _
+            strDelete = "DELETE スタッフ権限マスタ.スタッフコード FROM スタッフ権限マスタ " &
                         "WHERE スタッフ権限マスタ.スタッフコード=""" & KeyStaffCode & """ "
 
             pCommand.CommandText = strDelete

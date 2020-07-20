@@ -348,6 +348,12 @@ Public Class cDataArrivalDBIO
                 Else
                     parArrivalData(i).sTotalPrice = CLng(pDataReader("入庫税込金額"))
                 End If
+
+                '2020,4,8 A.Komita 追加 From
+                '完納フラグ
+                parArrivalData(i).sFinishFlg = pDataReader("完納フラグ").ToString
+                '2020,4,8 A.Komita 追加 To
+
                 '入庫担当者コード
                 parArrivalData(i).sStaffCode = pDataReader("入庫担当者コード").ToString
                 '登録日

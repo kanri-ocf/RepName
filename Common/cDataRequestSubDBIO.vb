@@ -58,7 +58,7 @@ Public Class cDataRequestSubDBIO
                         Else
                             strSelect = strSelect & "WHERE "
                         End If
-                        strSelect = strSelect & "受注コード =@RequestCode "
+                        strSelect = strSelect & "受注コード = """ & KeyRequestCode & """ "
                         scnt = scnt + 1
                         'Case 2
                         '    If scnt > 0 Then

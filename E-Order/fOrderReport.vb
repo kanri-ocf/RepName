@@ -1019,7 +1019,7 @@
 
                     Else
 
-                        POSTAGE_TAX = oTool.BeforeToTax(CLng(POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                    POSTAGE_TAX = oTool.BeforeToTax(CLng(POSTAGE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
                         FEE_TAX = oTool.BeforeToTax(CLng(FEE_T.Text), oConf(0).sTax, oConf(0).sFracProc)
 
 

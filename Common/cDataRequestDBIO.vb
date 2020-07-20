@@ -45,6 +45,9 @@ Public Class cDataRequestDBIO
         Dim i As Long
         Dim pc As Integer
         Dim scnt As Integer
+        '2020,4,17 A.Komita 追加 From
+        Dim maxpc As Integer
+        '2020,4,17 A.Komita 追加 To
 
         'コマンドオブジェクトの生成
         pCommand = pConn.CreateCommand()
@@ -54,55 +57,80 @@ Public Class cDataRequestDBIO
 
         strSelect = "SELECT * FROM 受注情報データ "
         'パラメータ数のカウント
+        '2020,4,17 A.Komita 62行目から117行目にかけて『 maxpc = 』と『pc = pc Or maxpc』を追加 From
         pc = 0
         If KeyChannelCode <> Nothing Then
-            pc = pc Or 1
+            maxpc = 1
+            pc = pc Or maxpc
         End If
         If KeyRequestCode <> "" Then
-            pc = pc Or 2
+            maxpc = 2
+            pc = pc Or maxpc
         End If
         If KeyRequestFromDate <> "" Then
-            pc = pc Or 4
+            maxpc = 4
+            pc = pc Or maxpc
         End If
         If KeyRequestToDate <> "" Then
-            pc = pc Or 8
+            maxpc = 8
+            pc = pc Or maxpc
         End If
         If KeyCustmorName <> "" Then
-            pc = pc Or 16
+            maxpc = 16
+            pc = pc Or maxpc
         End If
         If KeyOriginalOrderCode <> "" Then
-            pc = pc Or 32
+            maxpc = 32
+            pc = pc Or maxpc
         End If
         If KeyPrintedFlg = True Then
-            pc = pc Or 64
+            maxpc = 64
+            pc = pc Or maxpc
         End If
         If KeyUnPrintFlg = True Then
-            pc = pc Or 128
+            maxpc = 128
+            pc = pc Or maxpc
         End If
         If KeyShipedFlg = True Then
-            pc = pc Or 256
+            maxpc = 256
+            pc = pc Or maxpc
         End If
         If KeyUnShipFlg = True Then
-            pc = pc Or 512
+            maxpc = 512
+            pc = pc Or maxpc
         End If
         If KeyChannelClass <> "" Then
-            pc = pc Or 1024
+            maxpc = 1024
+            pc = pc Or maxpc
         End If
         If KeyProductCode <> "" Then
-            pc = pc Or 2048
+            maxpc = 2048
+            pc = pc Or maxpc
         End If
         If KeyProductName <> "" Then
-            pc = pc Or 4096
+            maxpc = 4096
+            pc = pc Or maxpc
         End If
         If KeyOptionName <> "" Then
-            pc = pc Or 8192
+            maxpc = 8192
+            pc = pc Or maxpc
         End If
+        '2020,4,17 A.Komita 追加 To
 
         'パラメータ指定がある場合
-        If 1024 And pc > 0 Then
+        If maxpc And pc > 0 Then
+
+            '2020,4,17 A.Komita 削除 start----
+            'If 1024 And pc > 0 Then
+            '2020,4,17 A.Komita 削除 end------
+
             i = 1
             scnt = 0
-            While i <= 1024
+
+            '2020,4,17 A.Komita While条件を『While i <= 1024』から『 While i <= maxpc』へ変更 start
+            While i <= maxpc '1024
+                '2020,4,17 A.Komita 変更 end
+
                 Select Case i And pc
                     Case 1
                         If scnt > 0 Then
@@ -178,7 +206,7 @@ Public Class cDataRequestDBIO
                         Else
                             strSelect = strSelect & "WHERE "
                         End If
-                        strSelect = strSelect & "EXISTS (SELECT 1 FROM 出荷情報データ " &
+                        strSelect = strSelect & "EXISTS (SELECT * FROM 出荷情報データ " &
                                                 "WHERE 出荷情報データ.受注コード = 受注情報データ.受注コード AND 出荷情報データ.出荷完了フラグ = 1) "
                         scnt = scnt + 1
                     Case 512
@@ -191,7 +219,7 @@ Public Class cDataRequestDBIO
                         Else
                             strSelect = strSelect & "WHERE "
                         End If
-                        strSelect = strSelect & "NOT EXISTS (SELECT 1 FROM 出荷情報データ " &
+                        strSelect = strSelect & "NOT EXISTS (SELECT * FROM 出荷情報データ " &
                                                 "WHERE 出荷情報データ.受注コード = 受注情報データ.受注コード AND 出荷情報データ.出荷完了フラグ = 1) "
                         scnt = scnt + 1
                     Case 1024
@@ -202,7 +230,7 @@ Public Class cDataRequestDBIO
                         End If
                         strSelect = strSelect &
                                     "EXISTS(" &
-                                    "    SELECT 1 FROM チャネルマスタ " &
+                                    "    SELECT * FROM チャネルマスタ " &
                                     "    WHERE チャネルマスタ.チャネルコード = 受注情報データ.チャネルコード " &
                                     "    AND   チャネルマスタ.チャネル種別 = 2" &
                                     ") "
@@ -215,7 +243,7 @@ Public Class cDataRequestDBIO
                         End If
                         strSelect = strSelect &
                                     "EXISTS(" &
-                                    "    SELECT 1 FROM 受注情報明細データ " &
+                                    "    SELECT * FROM 受注情報明細データ " &
                                     "    WHERE 受注情報明細データ.受注コード = 受注情報データ.受注コード " &
                                     "    AND   ( " &
                                     "                  受注情報明細データ.商品コード = '" & KeyProductCode & "' " &
@@ -232,7 +260,7 @@ Public Class cDataRequestDBIO
                         End If
                         strSelect = strSelect &
                                     "EXISTS(" &
-                                    "    SELECT 1 FROM 受注情報明細データ " &
+                                    "    SELECT * FROM 受注情報明細データ " &
                                     "    WHERE 受注情報明細データ.受注コード = 受注情報データ.受注コード " &
                                     "    AND   ( " &
                                     "                  受注情報明細データ.商品名称 = '" & KeyProductName & "' " &
@@ -247,7 +275,7 @@ Public Class cDataRequestDBIO
                         End If
                         strSelect = strSelect &
                                     "EXISTS(" &
-                                    "    SELECT 1 FROM 受注情報明細データ " &
+                                    "    SELECT * FROM 受注情報明細データ " &
                                     "    WHERE 受注情報明細データ.受注コード = 受注情報データ.受注コード " &
                                     "    AND   ( " &
                                     "                  受注情報明細データ.オプション値 = '" & KeyOptionName & "' " &
@@ -660,6 +688,15 @@ Public Class cDataRequestDBIO
                 Else
                     parRequestData(i).sTaxTotal = CLng(pDataReader("受注消費税額"))
                 End If
+
+                '2020,4,15 A.Komita 追加 From
+                If IsDBNull(pDataReader("受注軽減税額")) = True Then
+                    parRequestData(i).sReducedTaxRateTotal = 0
+                Else
+                    parRequestData(i).sReducedTaxRateTotal = CLng(pDataReader("受注軽減税額"))
+                End If
+                '2020,4,15 A.Komita 追加 To
+
                 '受注税込金額
                 If IsDBNull(pDataReader("受注税込金額")) = True Then
                     parRequestData(i).sTotalPrice = 0

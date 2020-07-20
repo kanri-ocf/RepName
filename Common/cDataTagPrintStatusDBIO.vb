@@ -161,16 +161,16 @@
     '　引数：in cSubPrdMstオブジェクト
     '　戻値：True  --> 登録成功.  False --> 登録失敗
     '----------------------------------------------------------------------
-    Public Function insertTagPrintStatus(ByVal parTagPrintStatus As cStructureLib.sTagPrintStatus) As Boolean
+    Public Function insertTagPrintStatus(ByVal parTagPrintStatus As cStructureLib.sTagPrintStatus) As Boolean ', ByRef Tran As System.Data.OleDb.OleDbTransaction
         Dim strInsert As String
 
         Try
 
             'SQL文の設定
-            strInsert = "INSERT INTO タグ印刷状態データ" & _
-                            "( 商品コード, タグ印刷状態, 枚数 ) VALUES (" & _
-                            """" & parTagPrintStatus.sProductCode & """, " & _
-                            parTagPrintStatus.sTagPrintCheck & ", " & _
+            strInsert = "INSERT INTO タグ印刷状態データ" &
+                            "( 商品コード, タグ印刷状態, 枚数 ) VALUES (" &
+                            """" & parTagPrintStatus.sProductCode & """, " &
+                            parTagPrintStatus.sTagPrintCheck & ", " &
                             parTagPrintStatus.sCount & ")"
 
             'コマンドオブジェクトの生成
