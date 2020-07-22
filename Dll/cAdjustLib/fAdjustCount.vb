@@ -395,7 +395,14 @@
                             K_Y1000_T.Text = CStr(CInt(K_Y1000_T.Text) + oAdjust(i).sD1000Yen + oAdjust(i).sK1000Yen)
                             K_Y5000_T.Text = CStr(CInt(K_Y5000_T.Text) + oAdjust(i).sD5000Yen + oAdjust(i).sK5000Yen)
                             K_Y10000_T.Text = CStr(CInt(K_Y10000_T.Text) + oAdjust(i).sD10000Yen + oAdjust(i).sK10000Yen)
-                        Else
+
+                            '----------------------------------------------------------------------------
+                            'suzuki 2020/07/10 再レジ入金の計算が倍になる為の処理　from
+                            '----------------------------------------------------------------------------
+                        ElseIf ADD_MODE = False Then
+                            '----------------------------------------------------------------------------
+                            'suzuki 2020/07/10 再レジ入金の計算が倍になる為の処理　end
+                            '----------------------------------------------------------------------------
                             K_Y1_T.Text = oAdjust(i).sK1Yen
                             K_Y5_T.Text = oAdjust(i).sK5Yen
                             K_Y10_T.Text = oAdjust(i).sK10Yen
@@ -1522,6 +1529,12 @@
                 'oAdjust(0).sAdjustClass = "入金"
                 'OPE = 1
 
+                '----------------------------------------------------
+                '2020/07/10
+                'suzuki
+                '勘定科目、補助勘定科目が―を選択した場合、メッセージ追加
+                'FROM
+                '----------------------------------------------------
 
                 '----------------------------------------------------
                 '2015/06/25
@@ -1529,11 +1542,12 @@
                 '入金時の勘定科目が空の場合、メッセージを出すため追加
                 'FROM
                 '----------------------------------------------------
-                If ACCOUNT_C.Text = "" Then
+                'If ACCOUNT_C.Text = ""Then
+                If ACCOUNT_C.Text = "" Or ACCOUNT_C.Text = "－" Then
                     'メッセージウィンドウ表示
                     Dim Message_form As cMessageLib.fMessage
-                    Message_form = New cMessageLib.fMessage(1, Nothing, _
-                                                    "入金対象の勘定科目を指定して下さい。", _
+                    Message_form = New cMessageLib.fMessage(1, Nothing,
+                                                    "入金対象の勘定科目を指定して下さい。",
                                                     Nothing, Nothing)
                     Message_form.ShowDialog()
                     Message_form = Nothing
@@ -1543,34 +1557,35 @@
                     End If
                     Exit Sub
                 End If
-                If SUB_ACCOUNT_C.Text = "" Then
-                    'メッセージウィンドウ表示
-                    Dim Message_form As cMessageLib.fMessage
-                    Message_form = New cMessageLib.fMessage(1, Nothing, _
-                                                    "入金対象の補助勘定科目を指定して下さい。", _
-                                                    Nothing, Nothing)
-                    Message_form.ShowDialog()
-                    Message_form = Nothing
-                    SUB_ACCOUNT_C.Focus()
-                    If oTranOn = True Then
-                        oTran = Nothing
-                        Exit Sub
-                    End If
-                End If
-                oAdjust(0).sAdjustClass = "入金"
-                OPE = 1
-                '----------------------------------------------------
-                'HERE
-                '----------------------------------------------------
-
-
-            Else
-                If OUTPUT_R.ColorBottom = Drawing.Color.Red Or COLLECTION_L.Visible = True Then
-                    If ACCOUNT_C.Text = "" Then
+                'If SUB_ACCOUNT_C.Text = "" Then
+                If SUB_ACCOUNT_C.Text = "" Or ACCOUNT_C.Text = "－" Then
                         'メッセージウィンドウ表示
                         Dim Message_form As cMessageLib.fMessage
-                        Message_form = New cMessageLib.fMessage(1, Nothing, _
-                                                        "出金対象の勘定科目を指定して下さい。", _
+                        Message_form = New cMessageLib.fMessage(1, Nothing,
+                                                    "入金対象の補助勘定科目を指定して下さい。",
+                                                    Nothing, Nothing)
+                        Message_form.ShowDialog()
+                        Message_form = Nothing
+                        SUB_ACCOUNT_C.Focus()
+                        If oTranOn = True Then
+                            oTran = Nothing
+                            Exit Sub
+                        End If
+                    End If
+                    oAdjust(0).sAdjustClass = "入金"
+                    OPE = 1
+                    '----------------------------------------------------
+                    'HERE
+                    '----------------------------------------------------
+
+
+                Else
+                    If OUTPUT_R.ColorBottom = Drawing.Color.Red Or COLLECTION_L.Visible = True Then
+                    If ACCOUNT_C.Text = "" Or ACCOUNT_C.Text = "－" Then
+                        'メッセージウィンドウ表示
+                        Dim Message_form As cMessageLib.fMessage
+                        Message_form = New cMessageLib.fMessage(1, Nothing,
+                                                        "出金対象の勘定科目を指定して下さい。",
                                                         Nothing, Nothing)
                         Message_form.ShowDialog()
                         Message_form = Nothing
@@ -1580,11 +1595,11 @@
                         End If
                         Exit Sub
                     End If
-                    If SUB_ACCOUNT_C.Text = "" Then
+                    If SUB_ACCOUNT_C.Text = "" Or ACCOUNT_C.Text = "－" Then
                         'メッセージウィンドウ表示
                         Dim Message_form As cMessageLib.fMessage
-                        Message_form = New cMessageLib.fMessage(1, Nothing, _
-                                                        "出金対象の補助勘定科目を指定して下さい。", _
+                        Message_form = New cMessageLib.fMessage(1, Nothing,
+                                                        "出金対象の補助勘定科目を指定して下さい。",
                                                         Nothing, Nothing)
                         Message_form.ShowDialog()
                         Message_form = Nothing
@@ -1600,6 +1615,12 @@
                     oAdjust(0).sAdjustClass = "精算"
                     OPE = 1
                 End If
+                '----------------------------------------------------
+                '2020/07/10
+                'suzuki
+                '勘定科目、補助勘定科目が―を選択した場合、メッセージ追加
+                'end
+                '----------------------------------------------------
             End If
         End If
 

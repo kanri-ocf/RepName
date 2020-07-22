@@ -103,14 +103,14 @@
     '******************************************************************
     'システム・ショートカット・キーによるダイアログの終了を阻止する
     '******************************************************************
-    'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    '    Const WM_SYSCOMMAND As Integer = &H112
-    '    Const SC_CLOSE As Integer = &HF060
-    '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
-    '        Return  ' Windows標準の処理は行わない
-    '    End If
-    '    MyBase.WndProc(m)
-    'End Sub
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        Const WM_SYSCOMMAND As Integer = &H112
+        Const SC_CLOSE As Integer = &HF060
+        If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
+            Return  ' Windows標準の処理は行わない
+        End If
+        MyBase.WndProc(m)
+    End Sub
 
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
