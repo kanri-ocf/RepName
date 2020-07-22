@@ -35,6 +35,7 @@ Partial Class cDrawer
         '
         Me.AxOPOSDRW_TEC.Enabled = True
         Me.AxOPOSDRW_TEC.Location = New System.Drawing.Point(109, 22)
+        Me.AxOPOSDRW_TEC.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.AxOPOSDRW_TEC.Name = "AxOPOSDRW_TEC"
         Me.AxOPOSDRW_TEC.OcxState = CType(resources.GetObject("AxOPOSDRW_TEC.OcxState"), System.Windows.Forms.AxHost.State)
         Me.AxOPOSDRW_TEC.Size = New System.Drawing.Size(28, 28)
@@ -44,28 +45,31 @@ Partial Class cDrawer
         '
         Me.AxOPOSDRW_EPSON.Enabled = True
         Me.AxOPOSDRW_EPSON.Location = New System.Drawing.Point(25, 21)
+        Me.AxOPOSDRW_EPSON.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.AxOPOSDRW_EPSON.Name = "AxOPOSDRW_EPSON"
         Me.AxOPOSDRW_EPSON.OcxState = CType(resources.GetObject("AxOPOSDRW_EPSON.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxOPOSDRW_EPSON.Size = New System.Drawing.Size(46, 45)
+        Me.AxOPOSDRW_EPSON.Size = New System.Drawing.Size(58, 56)
         Me.AxOPOSDRW_EPSON.TabIndex = 2
         '
         'AxOPOSDRW_STAR
         '
         Me.AxOPOSDRW_STAR.Enabled = True
         Me.AxOPOSDRW_STAR.Location = New System.Drawing.Point(25, 72)
+        Me.AxOPOSDRW_STAR.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.AxOPOSDRW_STAR.Name = "AxOPOSDRW_STAR"
         Me.AxOPOSDRW_STAR.OcxState = CType(resources.GetObject("AxOPOSDRW_STAR.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxOPOSDRW_STAR.Size = New System.Drawing.Size(46, 37)
+        Me.AxOPOSDRW_STAR.Size = New System.Drawing.Size(384, 384)
         Me.AxOPOSDRW_STAR.TabIndex = 3
         '
         'cDrawer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(235, 150)
+        Me.ClientSize = New System.Drawing.Size(509, 300)
         Me.Controls.Add(Me.AxOPOSDRW_STAR)
         Me.Controls.Add(Me.AxOPOSDRW_EPSON)
         Me.Controls.Add(Me.AxOPOSDRW_TEC)
+        Me.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.Name = "cDrawer"
         Me.Text = "cDrawer"
         CType(Me.AxOPOSDRW_TEC, System.ComponentModel.ISupportInitialize).EndInit()

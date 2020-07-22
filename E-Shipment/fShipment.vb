@@ -129,14 +129,14 @@ Public Class fShipment
     ''******************************************************************
     ''システム・ショートカット・キーによるダイアログの終了を阻止する
     ''******************************************************************
-    'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    '    Const WM_SYSCOMMAND As Integer = &H112
-    '    Const SC_CLOSE As Integer = &HF060
-    '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
-    '        Return  ' Windows標準の処理は行わない
-    '    End If
-    '    MyBase.WndProc(m)
-    'End Sub
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        Const WM_SYSCOMMAND As Integer = &H112
+        Const SC_CLOSE As Integer = &HF060
+        If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
+            Return  ' Windows標準の処理は行わない
+        End If
+        MyBase.WndProc(m)
+    End Sub
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
@@ -536,7 +536,15 @@ Public Class fShipment
         Dim MaxCd As Integer
 
         '受注番号コード未入力の場合は処理を抜ける
-        If REQ_CODE_T.Text = "" Then Exit Sub
+        If REQ_CODE_T.Text = "" Then
+
+            '2020,4,17 A.Komita 受注番号を手動で削除した際データクリアを行わせる為追加 From
+            'データクリア
+            INIT_PROC(False)
+            '2020,4,17 A.Komita 追加 To
+
+            Exit Sub
+        End If
 
 
         REQUEST_CODE = REQ_CODE_T.Text
@@ -604,7 +612,7 @@ Public Class fShipment
         Dim column3 As New DataGridViewTextBoxColumn
         column3.HeaderText = "オプション"
         SHIPMENT_V.Columns.Add(column3)
-        column3.Width = 190
+        column3.Width = 175
         column3.ReadOnly = True
         column3.Name = "オプション"
 
@@ -1119,6 +1127,7 @@ Public Class fShipment
 
         '明細画面更新および出荷情報の集計
         For i = 0 To SHIPMENT_V.RowCount - 1
+
             If IN_TAX_R.Checked = True Then  '税込みモードの場合
 
                 '2019/10/3 shimizu upd start
@@ -1182,12 +1191,17 @@ Public Class fShipment
         Next
 
         '出荷残量=0の場合
-        If pRemnant = 0 Then
-            '出荷完了フラグ=On
-            SHIP_FIX_C.Checked = True
-        Else
-            SHIP_FIX_C.Checked = False
+        '2020,4,15 A.Komita 受注番号読込前に税モードを切り替えた時に
+        '出荷完了フラグにチェックが付くのを防ぐ為、REQ_CODE_T.Textに値があるかを判定する条件を追加 From
+        If REQ_CODE_T.Text <> "" Then
+            If pRemnant = 0 Then
+                '出荷完了フラグ=On
+                SHIP_FIX_C.Checked = True
+            Else
+                SHIP_FIX_C.Checked = False
+            End If
         End If
+        '2020,4,15 A.Komita 追加 To
 
         '集計エリアの計算
         If IN_TAX_R.Checked = True Then  '税込みモードの場合
@@ -1195,44 +1209,58 @@ Public Class fShipment
                 RQ_PRODUCT_P_T.Text = 0
                 Dim PRODUCT3 As Long
                 For i = 0 To SHIPMENT_V.RowCount - 1
+                    '2020,4,15 A.Komita 税計算部分の修正 start-----------------------------------------------------------------------------------------
                     If oRequestSubData(i).sReducedTaxRate = String.Empty Then
-                        PRODUCT3 = oTool.BeforeToAfterTax(SHIPMENT_V("税込単価", i).Value, oConf(0).sTax, oConf(0).sFracProc)
+                        PRODUCT3 = oTool.BeforeToAfterTax(oRequest(0).sNoTaxTotalProductPrice, oConf(0).sTax, oConf(0).sFracProc)
+                        'PRODUCT3 = oTool.BeforeToAfterTax(SHIPMENT_V("税込単価", i).Value, oConf(0).sTax, oConf(0).sFracProc)
                     Else
-                        PRODUCT3 = oTool.BeforeToAfterTax(SHIPMENT_V("税込単価", i).Value, oRequestSubData(i).sReducedTaxRate, oConf(0).sFracProc)
+                        PRODUCT3 = oTool.BeforeToAfterTax(oRequest(0).sNoTaxTotalProductPrice, oRequestSubData(i).sReducedTaxRate, oConf(0).sFracProc)
+                        'PRODUCT3 = oTool.BeforeToAfterTax(SHIPMENT_V("税込単価", i).Value, oRequestSubData(i).sReducedTaxRate, oConf(0).sFracProc)
                     End If
+                    '2020,4,15 A.Komita 税計算部分の修正 end-----------------------------------------------------------------------------------------
                     RQ_PRODUCT_P_T.Text = RQ_PRODUCT_P_T.Text + PRODUCT3
                 Next
-                RQ_POSTAGE_P_T.Text = oTool.BeforeToAfterTax(CLng(RQ_POSTAGE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                RQ_FEE_P_T.Text = oTool.BeforeToAfterTax(CLng(RQ_FEE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
 
-                RQ_DISCOUNT_P_T.Text = CLng(RQ_DISCOUNT_P_T.Text)
-                RQ_P_DISCOUNT_P_T.Text = CLng(RQ_P_DISCOUNT_P_T.Text)
+                '2020,4,20 A.Komita TBに対して税計算を行うと期待値が取れない為修正 start-------------------------------------------
+                If REQ_CODE_T.Text <> String.Empty Then
+                    RQ_POSTAGE_P_T.Text = oTool.BeforeToAfterTax(oRequest(0).sShippingCharge, oConf(0).sTax, oConf(0).sFracProc)
+                    RQ_FEE_P_T.Text = oTool.BeforeToAfterTax(oRequest(0).sPaymentCharge, oConf(0).sTax, oConf(0).sFracProc)
+                End If
+                '2020,4,20 A.Komita 修正 end---------------------------------------------------------------------------------------
+
+                '2020,4,20 A.Komita 削除 start-------------------------------------------------------------------------------------
+                'RQ_POSTAGE_P_T.Text = oTool.BeforeToAfterTax(CLng(RQ_POSTAGE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                'RQ_FEE_P_T.Text = oTool.BeforeToAfterTax(CLng(RQ_FEE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                '2020,4,20 A.Komita 削除 end---------------------------------------------------------------------------------------
 
                 RQ_TAX_P_T.Text = 0
-                RQ_RTAX_RATE_P_T.Text = 0
+                    RQ_RTAX_RATE_P_T.Text = 0
 
-                RQ_BILL_P_T.Text = CLng(RQ_PRODUCT_P_T.Text) +
-                                        CLng(RQ_POSTAGE_P_T.Text) +
-                                        CLng(RQ_FEE_P_T.Text) +
-                                        CLng(RQ_DISCOUNT_P_T.Text) +
-                                        CLng(RQ_P_DISCOUNT_P_T.Text)
+                    RQ_DISCOUNT_P_T.Text = CLng(RQ_DISCOUNT_P_T.Text)
+                    RQ_P_DISCOUNT_P_T.Text = CLng(RQ_P_DISCOUNT_P_T.Text)
 
-                '再出荷モードフラグがTrueなら
-                If RESHIP_FLG = True Then
-                    BT_POSTAGE_P_T.Text = 0
-                    BT_FEE_P_T.Text = 0
-                    BT_DISCOUNT_P_T.Text = 0
-                    BT_P_DISCOUNT_P_T.Text = 0
-                Else
-                    BT_POSTAGE_P_T.Text = oTool.BeforeToAfterTax(CLng(BT_POSTAGE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                    BT_FEE_P_T.Text = oTool.BeforeToAfterTax(CLng(BT_FEE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                    BT_DISCOUNT_P_T.Text = CLng(BT_DISCOUNT_P_T.Text)
-                    BT_P_DISCOUNT_P_T.Text = CLng(BT_P_DISCOUNT_P_T.Text)
+                    RQ_BILL_P_T.Text = CLng(RQ_PRODUCT_P_T.Text) +
+                                            CLng(RQ_POSTAGE_P_T.Text) +
+                                            CLng(RQ_FEE_P_T.Text) +
+                                            CLng(RQ_DISCOUNT_P_T.Text) +
+                                            CLng(RQ_P_DISCOUNT_P_T.Text)
+
+                    '再出荷モードフラグがTrueなら
+                    If RESHIP_FLG = True Then
+                        BT_POSTAGE_P_T.Text = 0
+                        BT_FEE_P_T.Text = 0
+                        BT_DISCOUNT_P_T.Text = 0
+                        BT_P_DISCOUNT_P_T.Text = 0
+                    Else
+                        BT_POSTAGE_P_T.Text = oTool.BeforeToAfterTax(CLng(BT_POSTAGE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                        BT_FEE_P_T.Text = oTool.BeforeToAfterTax(CLng(BT_FEE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
+                        BT_DISCOUNT_P_T.Text = CLng(BT_DISCOUNT_P_T.Text)
+                        BT_P_DISCOUNT_P_T.Text = CLng(BT_P_DISCOUNT_P_T.Text)
+                    End If
+
                 End If
 
-            End If
-
-            BT_PRODUCT_P_T.Text = pSALE + pRSALE
+                BT_PRODUCT_P_T.Text = pSALE + pRSALE
             BT_TAX_P_T.Text = 0
             BT_RTAX_RATE_P_T.Text = 0
 
@@ -1252,17 +1280,44 @@ Public Class fShipment
 
         Else    '税抜きモードの場合
 
-            If CalMode = True Then 'Calモード??????????????????????????????
+            If CalMode = True Then
 
                 If oRequestSubData IsNot Nothing Then
-                    RQ_PRODUCT_P_T.Text = oRequest(0).sNoTaxTotalProductPrice
+                    '2020,4,16 A.Komita 商品が複数ある場合の合計値をとる為コードを修正 start------------
+                    Dim PRODUCT4 As Long
+                    For i = 0 To SHIPMENT_V.RowCount - 1
+
+                        PRODUCT4 = PRODUCT4 + oRequest(0).sNoTaxTotalProductPrice
+                        'RQ_PRODUCT_P_T.Text = oRequest(0).sNoTaxTotalProductPrice
+                    Next
+                    RQ_PRODUCT_P_T.Text = PRODUCT4
+                    '2020,4,16 A.Komita 修正 end--------------------------------------------------------
+
                     RQ_POSTAGE_P_T.Text = oRequest(0).sShippingCharge
                     RQ_FEE_P_T.Text = oRequest(0).sPaymentCharge
-                    RQ_DISCOUNT_P_T.Text = oRequest(0).sDiscount
-                    RQ_P_DISCOUNT_P_T.Text = oRequest(0).sPointDisCount
                     RQ_POSTAGE_TAX = oTool.BeforeToTax(CLng(RQ_POSTAGE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
                     RQ_FEE_TAX = oTool.BeforeToTax(CLng(RQ_FEE_P_T.Text), oConf(0).sTax, oConf(0).sFracProc)
-                    RQ_TAX_P_T.Text = CLng(RQ_TAX_P_T.Text) + RQ_POSTAGE_TAX + RQ_FEE_TAX
+
+                    '2020,4,15 A.Komita 修正 start-------------------------------------------------------------------------------------------------------
+                    RQ_TAX_P_T.Text = oTool.BeforeToTax(CLng(RQ_PRODUCT_P_T.Text), oConf(0).sTax, oConf(0).sFracProc) + RQ_POSTAGE_TAX + RQ_FEE_TAX
+                    'RQ_TAX_P_T.Text = CLng(RQ_TAX_P_T.Text) + RQ_POSTAGE_TAX + RQ_FEE_TAX
+                    '2020,4,15 A.Komita 修正 end---------------------------------------------------------------------------------------------------------
+
+                    '2020,4,15 A.Komita 追加 From
+                    RQ_RTAX_RATE_P_T.Text = oRequest(0).sReducedTaxRateTotal
+                    '2020,4,15 A.Komita 追加 From
+                    RQ_DISCOUNT_P_T.Text = oRequest(0).sDiscount
+                    RQ_P_DISCOUNT_P_T.Text = oRequest(0).sPointDisCount
+
+                    '2020,4,15 A.Komita 追加 From
+                    RQ_BILL_P_T.Text = CLng(RQ_PRODUCT_P_T.Text) +
+                                        CLng(RQ_POSTAGE_P_T.Text) +
+                                        CLng(RQ_FEE_P_T.Text) +
+                                        CLng(RQ_TAX_P_T.Text) +
+                                        CLng(RQ_RTAX_RATE_P_T.Text) +
+                                        CLng(RQ_DISCOUNT_P_T.Text) +
+                                        CLng(RQ_P_DISCOUNT_P_T.Text)
+                    '2020,4,15 A.Komita 追加 From
 
                     If RESHIP_FLG = True Then '再出荷モードがTrue?
                         BT_POSTAGE_P_T.Text = 0

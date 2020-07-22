@@ -309,7 +309,7 @@ Public Class fMonthClose
         bumon0.Name = "部門名称"
 
         Dim bumon1 As New DataGridViewTextBoxColumn
-        bumon1.HeaderText = "売上数量ﾞ"
+        bumon1.HeaderText = "売上数量"
         BUMON_V.Columns.Add(bumon1)
         bumon1.Width = 120
         bumon1.ReadOnly = True
@@ -347,7 +347,7 @@ Public Class fMonthClose
         payment0.Name = "チャネル名称"
 
         Dim payment1 As New DataGridViewTextBoxColumn
-        payment1.HeaderText = "売上数量ﾞ"
+        payment1.HeaderText = "売上数量"
         PAYMENT_V.Columns.Add(payment1)
         payment1.Width = 120
         payment1.ReadOnly = True
@@ -384,7 +384,7 @@ Public Class fMonthClose
         category0.Name = "カテゴリ名称"
 
         Dim category1 As New DataGridViewTextBoxColumn
-        category1.HeaderText = "売上数量ﾞ"
+        category1.HeaderText = "売上数量"
         CATEGORY_V.Columns.Add(category1)
         category1.Width = 120
         category1.ReadOnly = True

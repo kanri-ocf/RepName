@@ -1553,6 +1553,12 @@ Public Structure sRequestData
     Public sNoTaxTotalPrice As Long
     '受注消費税額
     Public sTaxTotal As Long
+
+    '2020,4,15 A.Komita 追加 From
+    '受注軽減税額
+    Public sReducedTaxRateTotal As Long
+    '2020,4,15 A.Komita 追加 To
+
     '受注税込金額
     Public sTotalPrice As Long
     'ギフト梱包材料
@@ -1606,7 +1612,7 @@ Public Structure sRequestSubData
     Public sOptionValue As String
     '定価
     Public sListPrice As Long
-    '仕入単価ArriveDataFull
+    '仕入単価
     Public sCostPrice As Long
     '軽減税率
     Public sReducedTaxRate As String
@@ -3266,10 +3272,10 @@ Public Structure sViewArriveDataFull
     '2019,10,19 A.Komita 追加 From
     '入庫消費税額
     Public sTaxTotal As Long
+    '入庫軽減税額
+    Public sReducedTaxRate As String
     '2019,10,19 A.Komita 追加 To
 
-    '軽減税率
-    Public sReducedTaxRate As String
     '入庫税込金額
     Public sTotalPrice As Long
     '完納フラグ 

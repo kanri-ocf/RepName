@@ -52,7 +52,13 @@
 
         oTool = New cTool
 
-        Request_CODE_T.Text = iRequest_Code
+        REQUEST_CODE_T.Text = iRequest_Code
+
+        '2020,4,20 A.Komita 検索実行時に結果が表示される量の件数でも件数オーバーになるのを防ぐ為初期化処理を追加 From
+        '表示初期化処理
+        INIT_PROC()
+        '2020,4,20 A.Komita 追加 To
+
     End Sub
 
     Private Sub fRequestSearch_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -85,8 +91,12 @@
         Dim i As Integer
 
         '明細行クリア
-        For i = 0 To Request_V.Rows.Count - 1
-            Request_V.Rows.Clear()
+        'For i = 0 To Request_V.Rows.Count - 1
+        '    Request_V.Rows.Clear()
+        'Next i
+
+        For i = 0 To REQUEST_V.Rows.Count
+            REQUEST_V.Rows.Clear()
         Next i
 
         CHANNEL_L.Text = ""
@@ -95,14 +105,14 @@
     ''******************************************************************
     ''システム・ショートカット・キーによるダイアログの終了を阻止する
     ''******************************************************************
-    'Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
-    '    Const WM_SYSCOMMAND As Integer = &H112
-    '    Const SC_CLOSE As Integer = &HF060
-    '    If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
-    '        Return  ' Windows標準の処理は行わない
-    '    End If
-    '    MyBase.WndProc(m)
-    'End Sub
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        Const WM_SYSCOMMAND As Integer = &H112
+        Const SC_CLOSE As Integer = &HF060
+        If (m.Msg = WM_SYSCOMMAND) AndAlso (m.WParam.ToInt32() = SC_CLOSE) Then
+            Return  ' Windows標準の処理は行わない
+        End If
+        MyBase.WndProc(m)
+    End Sub
     '******************************************************************
     'タイトルバーのないウィンドウに3Dの境界線を持たせる
     '******************************************************************
@@ -233,13 +243,13 @@
                         str = "再出荷"
                 End Select
             End If
-            REQUEST_V.Rows.Add( _
-             oRequestData(i).sRequestCode, _
-             oRequestData(i).sRequestDate, _
-             oChannel(0).sChannelName, _
-             oRequestData(i).sTotalPrice, _
-             oRequestData(i).sShipRequestDate, _
-             str _
+            REQUEST_V.Rows.Add(
+             oRequestData(i).sRequestCode, _ '受注コード
+             oRequestData(i).sRequestDate, _ '
+             oChannel(0).sChannelName, _ 'チャネル名称
+             oRequestData(i).sTotalPrice, _ '受注税込金額
+             oRequestData(i).sShipRequestDate, _ '配達希望日
+             str
         )
             cnt = cnt + 1
         Next i
@@ -293,8 +303,8 @@
     '************************
     '検索ボタン押下時の処理
     '************************
-    Private Sub SEARCH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    End Sub
+    'Private Sub SEARCH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    'End Sub
     Private Sub RETURN_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         oConn = Nothing
         'oStaffDBIO = Nothing
@@ -335,7 +345,7 @@
         '商品選択ウィンドウを閉じる
     End Sub
 
-    Private Sub SEARCH_B_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SEARCH_B.Click
+    Private Sub SEARCH_B_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SEARCH_B.Click
         Dim Message_form As cMessageLib.fMessage
         Dim RecordCnt As Long
         Dim i As Long
@@ -350,10 +360,21 @@
 
         REQUEST_V.SuspendLayout()
 
+        '2020,4,20 A.Komita 削除 start-----------
         '明細行クリア
-        For i = 0 To REQUEST_V.Rows.Count - 1
+        'For i = 0 To REQUEST_V.Rows.Count - 1
+        '    REQUEST_V.Rows.Clear()
+        'Next i
+        '2020,4,20 A.Komita 削除 end-------------
+
+
+        '2020,4,20 A.Komita 追加 From
+
+        '明細行クリア
+        For i = 0 To REQUEST_V.Rows.Count
             REQUEST_V.Rows.Clear()
         Next i
+        '2020,4,20 A.Komita 追加 To
 
         'データ検索中メッセージ表示
         Message_form = New cMessageLib.fMessage(0, "データ読込み中", "しばらくお待ちください", Nothing, Nothing)
@@ -415,23 +436,23 @@
             pShipFlg = Nothing
         End If
 
-        RecordCnt = oRequestDataDBIO.getRequest( _
-                        oRequestData, _
-                        pChannelCode, _
-                        REQUEST_CODE_T.Text, _
-                        pFromDate, _
-                        pToDate, _
-                        Nothing, _
-                        Nothing, _
-                        Nothing, _
-                        Nothing, _
-                        pShipFlg, _
-                        pUnShipFlg, _
-                        Nothing, _
-                        pProductCode, _
-                        pProductName, _
-                        pOptionName, _
-                        oTran _
+        RecordCnt = oRequestDataDBIO.getRequest(
+                        oRequestData,
+                        pChannelCode,
+                        REQUEST_CODE_T.Text,
+                        pFromDate,
+                        pToDate,
+                        Nothing,
+                        Nothing,
+                        Nothing,
+                        Nothing,
+                        pShipFlg,
+                        pUnShipFlg,
+                        Nothing,
+                        pProductCode,
+                        pProductName,
+                        pOptionName,
+                        oTran
         )
 
         '検索結果の画面セット
@@ -454,7 +475,7 @@
             End If
             '-----------------------------------------------------------------------------------------
             '2019/12/01 suzuki
-            
+
             '-----------------------------------------------------------------------------------------
             '検索結果の画面セット
             SEARCH_RESULT_SET()
@@ -463,8 +484,8 @@
             Message_form.Dispose()
             Message_form = Nothing
 
-            Message_form = New cMessageLib.fMessage(1, "該当データが存在しません。", _
-                                                  "条件を変更後再度検索して下さい。", _
+            Message_form = New cMessageLib.fMessage(1, "該当データが存在しません。",
+                                                  "条件を変更後再度検索して下さい。",
                                                   Nothing, Nothing)
             Message_form.ShowDialog()
             System.Windows.Forms.Application.DoEvents()
